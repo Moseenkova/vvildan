@@ -10,7 +10,9 @@ class MyCallback(CallbackData, prefix="my"):
 sender_button = InlineKeyboardButton(
     text="Отправитель", callback_data=MyCallback(text="sender").pack()
 )
+
 courier_button = InlineKeyboardButton(
     text="Курьер", callback_data=MyCallback(text="courier").pack()
 )
+
 role_markup = InlineKeyboardMarkup(inline_keyboard=[[sender_button, courier_button]])
