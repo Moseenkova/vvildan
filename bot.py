@@ -3,16 +3,14 @@ import logging
 import sys
 from os import getenv
 
-from aiogram import Bot, Dispatcher, Router, types, F
+from aiogram import Bot, Dispatcher, F
 from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart
 from aiogram.types import Message
-from aiogram.utils.markdown import hbold
-from aiogram.types.inline_keyboard_button import InlineKeyboardButton
-from aiogram.types.inline_keyboard_markup import InlineKeyboardMarkup
 from aiogram.types.callback_query import CallbackQuery
-from aiogram.filters.callback_data import CallbackData
+from aiogram.utils.markdown import hbold
 from dotenv import load_dotenv
+
 from my_keyboards import MyCallback, role_markup
 
 load_dotenv()
@@ -22,8 +20,10 @@ dp = Dispatcher()
 
 @dp.message(CommandStart())
 async def command_start_handler(message: Message) -> None:
-    await message.answer(f"Привет, {hbold(message.from_user.full_name)}!\nВыбери свою роль.", 
-                         reply_markup=role_markup)
+    await message.answer(
+        f"Привет, {hbold(message.from_user.full_name)}!\nВыбери свою роль.",
+        reply_markup=role_markup,
+    )
 
 
 @dp.callback_query(MyCallback.filter(F.text == "sender"))
