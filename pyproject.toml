@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "courier-bot"
+version = "0.1.0"
+description = ""
+authors = ["bikmetle <hamid-nv@vivaldi.net>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.black]
+target-version = ["py311"]
+
+
+[tool.ruff]
+select = ["E", "F"]
+ignore = ["E501", "E741"]
