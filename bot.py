@@ -10,7 +10,10 @@ from aiogram.types import Message
 from aiogram.types.callback_query import CallbackQuery
 from aiogram.utils.markdown import hbold
 from dotenv import load_dotenv
+from sqlalchemy import insert
+from sqlalchemy.exc import IntegrityError
 
+from database import User, async_session_maker
 from my_keyboards import MyCallback, role_markup
 
 load_dotenv()
@@ -28,6 +31,23 @@ async def command_start_handler(message: Message) -> None:
 
 @dp.callback_query(MyCallback.filter(F.text == "sender"))
 async def sender_button_handler(query: CallbackQuery, callback_data: MyCallback):
+    await query.message.answer("hello")
+    async with async_session_maker() as session:
+        try:
+            data = insert(User).values(
+                tg_id=query.message.chat.id, name=query.message.chat.full_name
+            )
+            await session.execute(data)
+            await session.commit()
+        except IntegrityError:
+            await session.rollback()
+            print("User already exists")
+
+    await query.answer()
+
+
+@dp.callback_query(MyCallback.filter(F.text == "courier"))
+async def courier_button_handler(query: CallbackQuery, callback_data: MyCallback):
     await query.message.answer("hello")
 
     await query.answer()
