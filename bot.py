@@ -13,7 +13,7 @@ from dotenv import load_dotenv
 from sqlalchemy import insert
 from sqlalchemy.exc import IntegrityError
 
-from database import User, async_session_maker
+from database import Courier, Sender, User, async_session_maker
 from my_keyboards import MyCallback, role_markup
 
 load_dotenv()
@@ -23,6 +23,16 @@ dp = Dispatcher()
 
 @dp.message(CommandStart())
 async def command_start_handler(message: Message) -> None:
+    async with async_session_maker() as session:
+        try:
+            data = insert(User).values(
+                tg_id=message.chat.id, name=message.chat.full_name
+            )
+            await session.execute(data)
+            await session.commit()
+        except IntegrityError:
+            await session.rollback()
+            print("User already exists")
     await message.answer(
         f"Привет, {hbold(message.from_user.full_name)}!\nВыбери свою роль.",
         reply_markup=role_markup,
@@ -34,14 +44,12 @@ async def sender_button_handler(query: CallbackQuery, callback_data: MyCallback)
     await query.message.answer("hello")
     async with async_session_maker() as session:
         try:
-            data = insert(User).values(
-                tg_id=query.message.chat.id, name=query.message.chat.full_name
-            )
+            data = insert(Sender).values(user_id=query.message.chat.id)
             await session.execute(data)
             await session.commit()
         except IntegrityError:
             await session.rollback()
-            print("User already exists")
+            print("sender already exists")
 
     await query.answer()
 
@@ -49,6 +57,14 @@ async def sender_button_handler(query: CallbackQuery, callback_data: MyCallback)
 @dp.callback_query(MyCallback.filter(F.text == "courier"))
 async def courier_button_handler(query: CallbackQuery, callback_data: MyCallback):
     await query.message.answer("hello")
+    async with async_session_maker() as session:
+        try:
+            data = insert(Courier).values(user_id=query.message.chat.id)
+            await session.execute(data)
+            await session.commit()
+        except IntegrityError:
+            await session.rollback()
+            print("courier already exists")
 
     await query.answer()
 
