@@ -87,6 +87,3 @@ class Request(Base):
     volume_kind: Mapped[str] = mapped_column(Enum(VolumeKind))
     volume: Mapped[int]
     status: Mapped[str] = mapped_column(Enum(Status))
-
-
-Base.metadata.create_all(engine)
