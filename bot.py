@@ -43,7 +43,7 @@ async def command_start_handler(message: Message) -> None:
 async def sender_button_handler(
     callback_query: CallbackQuery, callback_data: MyCallback
 ):
-    await callback_query.message.answer("hello")
+    await callback_query.message.answer("Выберите город отпавления")
     async with async_session_maker() as session:
         query = select(User.__table__.columns).filter_by(
             tg_id=callback_query.message.chat.id

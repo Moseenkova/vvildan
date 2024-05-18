@@ -59,6 +59,7 @@ class Sender(Base):
     __tablename__ = "senders"
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     user: Mapped["User"] = relationship(back_populates="sender")
+    requests: Mapped["Request"] = relationship(back_populates="sender")
 
     __table_args__ = (UniqueConstraint("user_id"),)
 
@@ -88,6 +89,7 @@ class Status(enum.Enum):
 class Request(Base):
     __tablename__ = "requests"
     sender_id: Mapped[int] = mapped_column(ForeignKey("senders.id"))
+    sender: Mapped["Sender"] = relationship(back_populates="requests")
     origin: Mapped[str]
     destination: Mapped[str]
     date_from: Mapped[date] = mapped_column(Date)
@@ -96,3 +98,22 @@ class Request(Base):
     volume_kind: Mapped[str] = mapped_column(Enum(VolumeKind))
     volume: Mapped[int]
     status: Mapped[str] = mapped_column(Enum(Status))
+
+
+class Country(Base):
+    __tablename__ = "countries"
+    name: Mapped[str]
+    created_by_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
+    cities: Mapped["City"] = relationship(back_populates="country")
+
+    __table_args__ = (UniqueConstraint("name"),)
+
+
+class City(Base):
+    __tablename__ = "cities"
+    name: Mapped[str]
+    created_by_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
+    country_id: Mapped[int] = mapped_column(ForeignKey("countries.id"))
+    country: Mapped["Country"] = relationship(back_populates="cities")
+
+    __table_args__ = (UniqueConstraint("name"),)
