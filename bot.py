@@ -10,7 +10,7 @@ from aiogram.types import Message
 from aiogram.types.callback_query import CallbackQuery
 from aiogram.utils.markdown import hbold
 from dotenv import load_dotenv
-from sqlalchemy import insert
+from sqlalchemy import insert, select
 from sqlalchemy.exc import IntegrityError
 
 from database import Courier, Sender, User, async_session_maker
@@ -25,10 +25,10 @@ dp = Dispatcher()
 async def command_start_handler(message: Message) -> None:
     async with async_session_maker() as session:
         try:
-            data = insert(User).values(
+            query = insert(User).values(
                 tg_id=message.chat.id, name=message.chat.full_name
             )
-            await session.execute(data)
+            await session.execute(query)
             await session.commit()
         except IntegrityError:
             await session.rollback()
@@ -40,18 +40,25 @@ async def command_start_handler(message: Message) -> None:
 
 
 @dp.callback_query(MyCallback.filter(F.text == "sender"))
-async def sender_button_handler(query: CallbackQuery, callback_data: MyCallback):
-    await query.message.answer("hello")
+async def sender_button_handler(
+    callback_query: CallbackQuery, callback_data: MyCallback
+):
+    await callback_query.message.answer("hello")
     async with async_session_maker() as session:
+        query = select(User.__table__.columns).filter_by(
+            tg_id=callback_query.message.chat.id
+        )
+        result = await session.execute(query)
+        user = result.mappings().one_or_none()
         try:
-            data = insert(Sender).values(user_id=query.message.chat.id)
-            await session.execute(data)
+            query = insert(Sender).values(user_id=user["id"])
+            await session.execute(query)
             await session.commit()
         except IntegrityError:
             await session.rollback()
             print("sender already exists")
 
-    await query.answer()
+    await callback_query.answer()
 
 
 @dp.callback_query(MyCallback.filter(F.text == "courier"))
