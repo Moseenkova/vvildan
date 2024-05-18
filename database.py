@@ -1,9 +1,18 @@
 import enum
-from datetime import date
+from datetime import date, datetime
 from os import getenv
+from typing import Optional
 
 from dotenv import load_dotenv
-from sqlalchemy import BigInteger, Date, Enum, ForeignKey, UniqueConstraint
+from sqlalchemy import (
+    BigInteger,
+    Date,
+    DateTime,
+    Enum,
+    ForeignKey,
+    UniqueConstraint,
+    func,
+)
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import (
     DeclarativeBase,
@@ -24,14 +33,14 @@ async_session_maker = sessionmaker(engine, class_=AsyncSession, expire_on_commit
 
 class Base(DeclarativeBase):
     id: Mapped[int] = mapped_column(primary_key=True)
-    created_at: Mapped[date] = mapped_column(Date)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=func.now())
 
 
 class User(Base):
     __tablename__ = "users"
     tg_id: Mapped[int] = mapped_column(BigInteger)
     name: Mapped[str]
-    phone: Mapped[int]
+    phone: Mapped[Optional[int]]
     courier: Mapped["Courier"] = relationship(back_populates="user")
     sender: Mapped["Sender"] = relationship(back_populates="user")
 
