@@ -59,7 +59,8 @@ async def country_keyboard(direction):
             ).pack(),
         )
     builder.button(
-        text="Нет в списке", callback_data=MyCallback(text="absent_country").pack()
+        text="Нет в списке",
+        callback_data=MyCallback(text=f"absent_country_{direction}").pack(),
     )
 
     return builder.as_markup()
