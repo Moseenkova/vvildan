@@ -1,6 +1,7 @@
 import enum
 from datetime import date
 from os import getenv
+from typing import Optional
 
 from dotenv import load_dotenv
 from sqlalchemy import BigInteger, Date, Enum, ForeignKey, UniqueConstraint
@@ -31,7 +32,8 @@ class User(Base):
     __tablename__ = "users"
     tg_id: Mapped[int] = mapped_column(BigInteger)
     name: Mapped[str]
-    phone: Mapped[int]
+    phone: Mapped[Optional[int]]
+
     courier: Mapped["Courier"] = relationship(back_populates="user")
     sender: Mapped["Sender"] = relationship(back_populates="user")
 
@@ -87,3 +89,12 @@ class Request(Base):
     volume_kind: Mapped[str] = mapped_column(Enum(VolumeKind))
     volume: Mapped[int]
     status: Mapped[str] = mapped_column(Enum(Status))
+
+
+class Country(Base):
+    __tablename__ = "countries"
+    name: Mapped[str]
+    created_by_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
+    # cities: Mapped["City"] = relationship(back_populates="country")
+
+    __table_args__ = (UniqueConstraint("name"),)

@@ -6,29 +6,30 @@ from os import getenv
 from aiogram import Bot, Dispatcher, F
 from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart
-from aiogram.types import Message
-from aiogram.types.callback_query import CallbackQuery
+from aiogram.types import CallbackQuery, Message
 from aiogram.utils.markdown import hbold
 from dotenv import load_dotenv
-from sqlalchemy import insert
+from sqlalchemy import insert, select
 from sqlalchemy.exc import IntegrityError
 
 from database import Courier, Sender, User, async_session_maker
-from my_keyboards import MyCallback, role_markup
+from my_keyboards import RoleCallback, country_keyboard, role_markup
 
+# Load environment variables from a .env file
 load_dotenv()
 TOKEN = getenv("BOT_TOKEN")
 dp = Dispatcher()
 
 
+# Handler for the /start command
 @dp.message(CommandStart())
 async def command_start_handler(message: Message) -> None:
     async with async_session_maker() as session:
         try:
-            data = insert(User).values(
+            query = insert(User).values(
                 tg_id=message.chat.id, name=message.chat.full_name
             )
-            await session.execute(data)
+            await session.execute(query)
             await session.commit()
         except IntegrityError:
             await session.rollback()
@@ -39,41 +40,67 @@ async def command_start_handler(message: Message) -> None:
     )
 
 
-@dp.callback_query(MyCallback.filter(F.text == "sender"))
-async def sender_button_handler(query: CallbackQuery, callback_data: MyCallback):
-    await query.message.answer("hello")
+# Handler for the 'sender' role callback
+@dp.callback_query(RoleCallback.filter(F.text == "sender"))
+async def sender_button_handler(
+    callback_query: CallbackQuery, callback_data: RoleCallback
+):
+    await callback_query.message.answer(
+        "Отправить из:", reply_markup=await country_keyboard(direction="from")
+    )
+    await callback_query.message.delete()
     async with async_session_maker() as session:
+        query = select(User.__table__.columns).filter_by(
+            tg_id=callback_query.message.chat.id
+        )
+        result = await session.execute(query)
+        user = result.mappings().one_or_none()
+        if user is None:
+            print(f"User with tg_id {callback_query.message.chat.id} not found")
+            return
         try:
-            data = insert(Sender).values(user_id=query.message.chat.id)
-            await session.execute(data)
+            query = insert(Sender).values(user_id=user["id"])
+            await session.execute(query)
             await session.commit()
         except IntegrityError:
             await session.rollback()
-            print("sender already exists")
-
-    await query.answer()
+            print("Sender already exists")
 
 
-@dp.callback_query(MyCallback.filter(F.text == "courier"))
-async def courier_button_handler(query: CallbackQuery, callback_data: MyCallback):
-    await query.message.answer("hello")
+# Handler for the 'courier' role callback
+@dp.callback_query(RoleCallback.filter(F.text == "courier"))
+async def courier_button_handler(
+    callback_query: CallbackQuery, callback_data: RoleCallback
+):
+    await callback_query.message.answer(
+        "Отправить из:", reply_markup=await country_keyboard(direction="from")
+    )
+    await callback_query.message.delete()
     async with async_session_maker() as session:
+        query = select(User.__table__.columns).filter_by(
+            tg_id=callback_query.message.chat.id
+        )
+        result = await session.execute(query)
+        user = result.mappings().one_or_none()
+        if user is None:
+            print(f"User with tg_id {callback_query.message.chat.id} not found")
+            return
         try:
-            data = insert(Courier).values(user_id=query.message.chat.id)
-            await session.execute(data)
+            query = insert(Courier).values(user_id=user["id"])
+            await session.execute(query)
             await session.commit()
         except IntegrityError:
             await session.rollback()
-            print("courier already exists")
-
-    await query.answer()
+            print("Courier already exists")
 
 
+# Main function to start the bot
 async def main() -> None:
     bot = Bot(TOKEN, parse_mode=ParseMode.HTML)
     await dp.start_polling(bot)
 
 
+# Entry point for the script
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     asyncio.run(main())
