@@ -13,7 +13,7 @@ from sqlalchemy import insert, select
 from sqlalchemy.exc import IntegrityError
 
 from database import Courier, Sender, User, async_session_maker
-from my_keyboards import RoleCallback, country_keyboard, role_markup
+from my_keyboards import GeneralCallback, RoleCallback, country_keyboard, role_markup
 
 # Load environment variables from a .env file
 load_dotenv()
@@ -92,6 +92,28 @@ async def courier_button_handler(
         except IntegrityError:
             await session.rollback()
             print("Courier already exists")
+
+
+@dp.callback_query(GeneralCallback.filter(F.text == "absent_country_from"))
+async def absent_country_from_button_handler(
+    callback_query: CallbackQuery, callback_data: GeneralCallback
+):
+    await callback_query.message.answer(
+        "Свайп на лево и введите название страны отправления"
+    )
+    await callback_query.message.delete()
+    await callback_query.answer()
+
+
+@dp.callback_query(GeneralCallback.filter(F.text == "absent_country_to"))
+async def absent_country_to_button_handler(
+    callback_query: CallbackQuery, callback_data: GeneralCallback
+):
+    await callback_query.message.answer(
+        "Свайп на лево и введите название страны прибытия"
+    )
+    await callback_query.message.delete()
+    await callback_query.answer()
 
 
 # Main function to start the bot
