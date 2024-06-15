@@ -53,7 +53,7 @@ async def country_keyboard(direction):
     return builder.as_markup()
 
 
-async def month_keyboard(direction):
+async def city_keyboard(direction):
     builder = InlineKeyboardBuilder()
     builder.button(
         text="",

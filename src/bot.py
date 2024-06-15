@@ -16,8 +16,8 @@ from database import Country, Courier, Sender, User, async_session_maker
 from my_keyboards import (
     GeneralCallback,
     RoleCallback,
+    city_keyboard,
     country_keyboard,
-    month_keyboard,
     role_markup,
 )
 
@@ -173,7 +173,7 @@ async def message_handler(message: Message) -> None:
                 print("Country already exists")
 
         await message.reply_to_message.edit_text(f"Отправить в: {message.text}")
-        await message.answer("Месяц:", reply_markup=await month_keyboard(date="from"))
+        await message.answer("Месяц:", reply_markup=await city_keyboard(date="from"))
 
     await message.delete()
 
