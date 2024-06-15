@@ -13,13 +13,7 @@ from sqlalchemy import insert, select
 from sqlalchemy.exc import IntegrityError
 
 from database import Country, Courier, Sender, User, async_session_maker
-from my_keyboards import (
-    GeneralCallback,
-    RoleCallback,
-    city_keyboard,
-    country_keyboard,
-    role_markup,
-)
+from my_keyboards import GeneralCallback, RoleCallback, country_keyboard, role_markup
 
 # Load environment variables from a .env file
 load_dotenv()
@@ -173,7 +167,7 @@ async def message_handler(message: Message) -> None:
                 print("Country already exists")
 
         await message.reply_to_message.edit_text(f"Отправить в: {message.text}")
-        await message.answer("Месяц:", reply_markup=await city_keyboard(date="from"))
+        await message.answer("Город:")
 
     await message.delete()
 

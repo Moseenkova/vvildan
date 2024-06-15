@@ -51,13 +51,3 @@ async def country_keyboard(direction):
     )
 
     return builder.as_markup()
-
-
-async def city_keyboard(direction):
-    builder = InlineKeyboardBuilder()
-    builder.button(
-        text="",
-        callback_data=GeneralCallback(text="").pack(),
-    )
-
-    return builder.as_markup()
