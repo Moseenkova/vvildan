@@ -18,8 +18,17 @@ from database import (  # Ensure Country is imported
     Sender,
     User,
     async_session_maker,
+    get_or_create,
 )
-from my_keyboards import GeneralCallback, RoleCallback, country_keyboard, role_markup
+from my_keyboards import (
+    CountryCallback,
+    DirectionEnum,
+    GeneralCallback,
+    RoleCallback,
+    city_keyboard,
+    country_keyboard,
+    role_markup,
+)
 
 # Load environment variables from a .env file
 load_dotenv()
@@ -122,16 +131,26 @@ async def absent_country_to_button_handler(
     await callback_query.answer()
 
 
-# Handler for the 'not in the list' callback
-@dp.callback_query(GeneralCallback.filter(F.action == "not_in_list"))
-async def not_in_list_handler(
-    callback_query: CallbackQuery, callback_data: GeneralCallback
+@dp.callback_query(CountryCallback.filter())
+async def country_button_handler(
+    callback_query: CallbackQuery, callback_data: CountryCallback
 ):
-    direction = callback_data.direction
+    if not callback_data.id:
+        text = (
+            "Свайп на лево и введите название города отправления"
+            if callback_data.direction == DirectionEnum.from_
+            else "Свайп на лево и введите название города прибытия"
+        )
+        await callback_query.message.answer(text)
+        await callback_query.message.delete()
+        await callback_query.answer()
+        return
+
+    text = (
+        "Из города:" if callback_data.direction == DirectionEnum.from_ else "В город:"
+    )
     await callback_query.message.answer(
-        "Свайп на лево и введите название страны отправления"
-        if direction == "from"
-        else "Свайп на лево и введите название страны прибытия"
+        text, reply_markup=await city_keyboard(callback_data)
     )
     await callback_query.message.delete()
 
@@ -151,22 +170,17 @@ async def text_input_handler(message: Message) -> None:
         == "Свайп на лево и введите название страны отправления"
     ):
         async with async_session_maker() as session:
-            query = select(User.__table__.columns).filter_by(tg_id=message.chat.id)
-            result = await session.execute(query)
-            user = result.mappings().one_or_none()
-            try:
-                query = insert(Country).values(
-                    name=message.text, created_by_id=user["id"]
-                )
-                await session.execute(query)
-                await session.commit()
-            except IntegrityError:
-                await session.rollback()
-                print("Country already exists")
+            user, _ = await get_or_create(session, User, tg_id=message.chat.id)
+            country, _ = await get_or_create(
+                session, Country, defaults={"created_by_id": user.id}, name=message.text
+            )
 
         await message.reply_to_message.edit_text(f"Отправить из: {message.text}")
         await message.answer(
-            "Отправить в:", reply_markup=await country_keyboard(direction="to")
+            "Из города:",
+            reply_markup=await city_keyboard(
+                CountryCallback(direction=DirectionEnum.from_, id=country.id)
+            ),
         )
 
     if (
@@ -174,21 +188,18 @@ async def text_input_handler(message: Message) -> None:
         == "Свайп на лево и введите название страны прибытия"
     ):
         async with async_session_maker() as session:
-            query = select(User.__table__.columns).filter_by(tg_id=message.chat.id)
-            result = await session.execute(query)
-            user = result.mappings().one_or_none()
-            try:
-                query = insert(Country).values(
-                    name=message.text, created_by_id=user["id"]
-                )
-                await session.execute(query)
-                await session.commit()
-            except IntegrityError:
-                await session.rollback()
-                print("Country already exists")
+            user, _ = await get_or_create(session, User, tg_id=message.chat.id)
+            country, _ = await get_or_create(
+                session, Country, defaults={"created_by_id": user.id}, name=message.text
+            )
 
         await message.reply_to_message.edit_text(f"Отправить в: {message.text}")
-        await message.answer("Месяц:")
+        await message.answer(
+            "В город:",
+            reply_markup=await city_keyboard(
+                CountryCallback(direction=DirectionEnum.to, id=country.id)
+            ),
+        )
 
     await message.delete()
 

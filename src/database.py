@@ -12,7 +12,10 @@ from sqlalchemy import (
     ForeignKey,
     UniqueConstraint,
     func,
+    insert,
+    select,
 )
+from sqlalchemy.exc import NoResultFound
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import (
     DeclarativeBase,
@@ -117,3 +120,21 @@ class City(Base):
     country: Mapped["Country"] = relationship(back_populates="cities")
 
     __table_args__ = (UniqueConstraint("name"),)
+
+
+async def get_or_create(session, model, defaults=None, **kwargs):
+    if defaults is None:
+        defaults = {}
+
+    try:
+        query = select(model).filter_by(**kwargs)
+        result = await session.execute(query)
+        instance = result.scalars().one()
+        return instance, False
+    except NoResultFound:
+        params = {**kwargs, **defaults}
+        query = insert(model).values(**params).returning(model)
+        result = await session.execute(query)
+        await session.commit()
+        instance = result.scalars().one()
+        return instance, True
