@@ -9,16 +9,8 @@ from aiogram.filters import CommandStart
 from aiogram.types import CallbackQuery, Message
 from aiogram.utils.markdown import hbold
 from dotenv import load_dotenv
-from sqlalchemy import insert, select
-from sqlalchemy.exc import IntegrityError
 
-from database import (  # Ensure Country is imported
-    Country,
-    Courier,
-    Sender,
-    User,
-    async_session_maker,
-)
+from database import Country, Courier, Sender, User, async_session_maker, get_or_create
 from my_keyboards import GeneralCallback, RoleCallback, country_keyboard, role_markup
 
 # Load environment variables from a .env file
@@ -31,15 +23,12 @@ dp = Dispatcher()
 @dp.message(CommandStart())
 async def command_start_handler(message: Message) -> None:
     async with async_session_maker() as session:
-        try:
-            query = insert(User).values(
-                tg_id=message.chat.id, name=message.chat.full_name
-            )
-            await session.execute(query)
-            await session.commit()
-        except IntegrityError:
-            await session.rollback()
-            print("User already exists")
+        await get_or_create(
+            session,
+            User,
+            defaults={"name": message.chat.full_name},
+            tg_id=message.chat.id,
+        )
     await message.answer(
         f"Привет, {hbold(message.from_user.full_name)}!\nВыбери свою роль.",
         reply_markup=role_markup,
@@ -56,21 +45,13 @@ async def sender_button_handler(
     )
     await callback_query.message.delete()
     async with async_session_maker() as session:
-        query = select(User.__table__.columns).filter_by(
-            tg_id=callback_query.message.chat.id
+        user, _ = await get_or_create(
+            session,
+            User,
+            defaults={"name": callback_query.message.chat.full_name},
+            tg_id=callback_query.message.chat.id,
         )
-        result = await session.execute(query)
-        user = result.mappings().one_or_none()
-        if user is None:
-            print(f"User with tg_id {callback_query.message.chat.id} not found")
-            return
-        try:
-            query = insert(Sender).values(user_id=user["id"])
-            await session.execute(query)
-            await session.commit()
-        except IntegrityError:
-            await session.rollback()
-            print("Sender already exists")
+        await get_or_create(session, Sender, user_id=user.id)
 
 
 # Handler for the 'courier' role callback
@@ -83,21 +64,13 @@ async def courier_button_handler(
     )
     await callback_query.message.delete()
     async with async_session_maker() as session:
-        query = select(User.__table__.columns).filter_by(
-            tg_id=callback_query.message.chat.id
+        user, _ = await get_or_create(
+            session,
+            User,
+            defaults={"name": callback_query.message.chat.full_name},
+            tg_id=callback_query.message.chat.id,
         )
-        result = await session.execute(query)
-        user = result.mappings().one_or_none()
-        if user is None:
-            print(f"User with tg_id {callback_query.message.chat.id} not found")
-            return
-        try:
-            query = insert(Courier).values(user_id=user["id"])
-            await session.execute(query)
-            await session.commit()
-        except IntegrityError:
-            await session.rollback()
-            print("Courier already exists")
+        await get_or_create(session, Courier, user_id=user.id)
 
 
 @dp.callback_query(GeneralCallback.filter(F.text == "absent_country_from"))
@@ -151,18 +124,15 @@ async def text_input_handler(message: Message) -> None:
         == "Свайп на лево и введите название страны отправления"
     ):
         async with async_session_maker() as session:
-            query = select(User.__table__.columns).filter_by(tg_id=message.chat.id)
-            result = await session.execute(query)
-            user = result.mappings().one_or_none()
-            try:
-                query = insert(Country).values(
-                    name=message.text, created_by_id=user["id"]
-                )
-                await session.execute(query)
-                await session.commit()
-            except IntegrityError:
-                await session.rollback()
-                print("Country already exists")
+            user, _ = await get_or_create(
+                session,
+                User,
+                defaults={"name": message.chat.full_name},
+                tg_id=message.chat.id,
+            )
+            await get_or_create(
+                session, Country, defaults={"created_by_id": user.id}, name=message.text
+            )
 
         await message.reply_to_message.edit_text(f"Отправить из: {message.text}")
         await message.answer(
@@ -174,18 +144,15 @@ async def text_input_handler(message: Message) -> None:
         == "Свайп на лево и введите название страны прибытия"
     ):
         async with async_session_maker() as session:
-            query = select(User.__table__.columns).filter_by(tg_id=message.chat.id)
-            result = await session.execute(query)
-            user = result.mappings().one_or_none()
-            try:
-                query = insert(Country).values(
-                    name=message.text, created_by_id=user["id"]
-                )
-                await session.execute(query)
-                await session.commit()
-            except IntegrityError:
-                await session.rollback()
-                print("Country already exists")
+            user, _ = await get_or_create(
+                session,
+                User,
+                defaults={"name": message.chat.full_name},
+                tg_id=message.chat.id,
+            )
+            await get_or_create(
+                session, Country, defaults={"created_by_id": user.id}, name=message.text
+            )
 
         await message.reply_to_message.edit_text(f"Отправить в: {message.text}")
         await message.answer("Месяц:")
