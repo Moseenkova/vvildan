@@ -19,7 +19,15 @@ from database import (  # Ensure Country is imported
     User,
     async_session_maker,
 )
-from my_keyboards import GeneralCallback, RoleCallback, country_keyboard, role_markup
+from my_keyboards import (
+    CountryCallback,
+    DirectionEnum,
+    GeneralCallback,
+    RoleCallback,
+    city_keyboard,
+    country_keyboard,
+    role_markup,
+)
 
 # Load environment variables from a .env file
 load_dotenv()
@@ -120,6 +128,30 @@ async def absent_country_to_button_handler(
     )
     await callback_query.message.delete()
     await callback_query.answer()
+
+
+@dp.callback_query(CountryCallback.filter())
+async def country_button_handler(
+    callback_query: CallbackQuery, callback_data: CountryCallback
+):
+    if not callback_data.id:
+        text = (
+            "Свайп на лево и введите название города отправления"
+            if callback_data.direction == DirectionEnum.from_
+            else "Свайп на лево и введите название города прибытия"
+        )
+        await callback_query.message.answer(text)
+        await callback_query.message.delete()
+        await callback_query.answer()
+        return
+
+    text = (
+        "Из города:" if callback_data.direction == DirectionEnum.from_ else "В город:"
+    )
+    await callback_query.message.answer(
+        text, reply_markup=await city_keyboard(callback_data)
+    )
+    await callback_query.message.delete()
 
 
 # Handler for processing text input after the "not in the list" callback
