@@ -18,6 +18,7 @@ from database import (  # Ensure Country is imported
     Sender,
     User,
     async_session_maker,
+    get_or_create,
 )
 from my_keyboards import (
     CountryCallback,
@@ -169,22 +170,17 @@ async def text_input_handler(message: Message) -> None:
         == "Свайп на лево и введите название страны отправления"
     ):
         async with async_session_maker() as session:
-            query = select(User.__table__.columns).filter_by(tg_id=message.chat.id)
-            result = await session.execute(query)
-            user = result.mappings().one_or_none()
-            try:
-                query = insert(Country).values(
-                    name=message.text, created_by_id=user["id"]
-                )
-                await session.execute(query)
-                await session.commit()
-            except IntegrityError:
-                await session.rollback()
-                print("Country already exists")
+            user, _ = await get_or_create(session, User, tg_id=message.chat.id)
+            country, _ = await get_or_create(
+                session, Country, defaults={"created_by_id": user.id}, name=message.text
+            )
 
         await message.reply_to_message.edit_text(f"Отправить из: {message.text}")
         await message.answer(
-            "Отправить в:", reply_markup=await country_keyboard(direction="to")
+            "Из города:",
+            reply_markup=await city_keyboard(
+                CountryCallback(direction=DirectionEnum.from_, id=country.id)
+            ),
         )
 
     if (
@@ -192,21 +188,18 @@ async def text_input_handler(message: Message) -> None:
         == "Свайп на лево и введите название страны прибытия"
     ):
         async with async_session_maker() as session:
-            query = select(User.__table__.columns).filter_by(tg_id=message.chat.id)
-            result = await session.execute(query)
-            user = result.mappings().one_or_none()
-            try:
-                query = insert(Country).values(
-                    name=message.text, created_by_id=user["id"]
-                )
-                await session.execute(query)
-                await session.commit()
-            except IntegrityError:
-                await session.rollback()
-                print("Country already exists")
+            user, _ = await get_or_create(session, User, tg_id=message.chat.id)
+            country, _ = await get_or_create(
+                session, Country, defaults={"created_by_id": user.id}, name=message.text
+            )
 
         await message.reply_to_message.edit_text(f"Отправить в: {message.text}")
-        await message.answer("Месяц:")
+        await message.answer(
+            "В город:",
+            reply_markup=await city_keyboard(
+                CountryCallback(direction=DirectionEnum.to, id=country.id)
+            ),
+        )
 
     await message.delete()
 
