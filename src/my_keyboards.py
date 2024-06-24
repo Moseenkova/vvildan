@@ -4,7 +4,7 @@ from aiogram.types.inline_keyboard_markup import InlineKeyboardMarkup
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from sqlalchemy import select
 
-from src.database import Country, async_session_maker
+from database import Country, async_session_maker
 
 
 class RoleCallback(CallbackData, prefix="role"):
