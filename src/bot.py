@@ -100,6 +100,28 @@ async def courier_button_handler(
             print("Courier already exists")
 
 
+@dp.callback_query(GeneralCallback.filter(F.text == "absent_country_from"))
+async def absent_country_from_button_handler(
+    callback_query: CallbackQuery, callback_data: GeneralCallback
+):
+    await callback_query.message.answer(
+        "Свайп на лево и введите название страны отправления"
+    )
+    await callback_query.message.delete()
+    await callback_query.answer()
+
+
+@dp.callback_query(GeneralCallback.filter(F.text == "absent_country_to"))
+async def absent_country_to_button_handler(
+    callback_query: CallbackQuery, callback_data: GeneralCallback
+):
+    await callback_query.message.answer(
+        "Свайп на лево и введите название страны прибытия"
+    )
+    await callback_query.message.delete()
+    await callback_query.answer()
+
+
 # Handler for the 'not in the list' callback
 @dp.callback_query(GeneralCallback.filter(F.action == "not_in_list"))
 async def not_in_list_handler(
