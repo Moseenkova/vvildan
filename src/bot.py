@@ -12,8 +12,14 @@ from dotenv import load_dotenv
 from sqlalchemy import insert, select
 from sqlalchemy.exc import IntegrityError
 
-from database import Courier, Sender, User, async_session_maker
-from my_keyboards import RoleCallback, country_keyboard, role_markup
+from database import (  # Ensure Country is imported
+    Country,
+    Courier,
+    Sender,
+    User,
+    async_session_maker,
+)
+from my_keyboards import GeneralCallback, RoleCallback, country_keyboard, role_markup
 
 # Load environment variables from a .env file
 load_dotenv()
@@ -92,6 +98,77 @@ async def courier_button_handler(
         except IntegrityError:
             await session.rollback()
             print("Courier already exists")
+
+
+# Handler for the 'not in the list' callback
+@dp.callback_query(GeneralCallback.filter(F.action == "not_in_list"))
+async def not_in_list_handler(
+    callback_query: CallbackQuery, callback_data: GeneralCallback
+):
+    direction = callback_data.direction
+    await callback_query.message.answer(
+        "Свайп на лево и введите название страны отправления"
+        if direction == "from"
+        else "Свайп на лево и введите название страны прибытия"
+    )
+    await callback_query.message.delete()
+
+
+# Handler for processing text input after the "not in the list" callback
+@dp.message()
+async def text_input_handler(message: Message) -> None:
+    if not message.reply_to_message:
+        answer = await message.answer("Сделайте свайп по сообщению выше ^^^")
+        await message.delete()
+        await asyncio.sleep(10)
+        await answer.delete()
+        return
+
+    if (
+        message.reply_to_message.text
+        == "Свайп на лево и введите название страны отправления"
+    ):
+        async with async_session_maker() as session:
+            query = select(User.__table__.columns).filter_by(tg_id=message.chat.id)
+            result = await session.execute(query)
+            user = result.mappings().one_or_none()
+            try:
+                query = insert(Country).values(
+                    name=message.text, created_by_id=user["id"]
+                )
+                await session.execute(query)
+                await session.commit()
+            except IntegrityError:
+                await session.rollback()
+                print("Country already exists")
+
+        await message.reply_to_message.edit_text(f"Отправить из: {message.text}")
+        await message.answer(
+            "Отправить в:", reply_markup=await country_keyboard(direction="to")
+        )
+
+    if (
+        message.reply_to_message.text
+        == "Свайп на лево и введите название страны прибытия"
+    ):
+        async with async_session_maker() as session:
+            query = select(User.__table__.columns).filter_by(tg_id=message.chat.id)
+            result = await session.execute(query)
+            user = result.mappings().one_or_none()
+            try:
+                query = insert(Country).values(
+                    name=message.text, created_by_id=user["id"]
+                )
+                await session.execute(query)
+                await session.commit()
+            except IntegrityError:
+                await session.rollback()
+                print("Country already exists")
+
+        await message.reply_to_message.edit_text(f"Отправить в: {message.text}")
+        await message.answer("Месяц:")
+
+    await message.delete()
 
 
 # Main function to start the bot
