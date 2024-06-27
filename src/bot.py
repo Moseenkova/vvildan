@@ -2,157 +2,166 @@ import asyncio
 import logging
 import sys
 from os import getenv
+from typing import Any, Dict
 
-from aiogram import Bot, Dispatcher, F
+from aiogram import Bot, Dispatcher, F, Router, html
+from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
-from aiogram.filters import CommandStart
-from aiogram.types import CallbackQuery, Message
-from aiogram.utils.markdown import hbold
+from aiogram.filters import Command, CommandStart
+from aiogram.fsm.context import FSMContext
+from aiogram.fsm.state import State, StatesGroup
+from aiogram.types import (
+    KeyboardButton,
+    Message,
+    ReplyKeyboardMarkup,
+    ReplyKeyboardRemove,
+)
 from dotenv import load_dotenv
-
-from database import Country, Courier, Sender, User, async_session_maker, get_or_create
-from my_keyboards import GeneralCallback, RoleCallback, country_keyboard, role_markup
 
 # Load environment variables from a .env file
 load_dotenv()
 TOKEN = getenv("BOT_TOKEN")
-dp = Dispatcher()
+form_router = Router()
 
 
-# Handler for the /start command
-@dp.message(CommandStart())
-async def command_start_handler(message: Message) -> None:
-    async with async_session_maker() as session:
-        await get_or_create(
-            session,
-            User,
-            defaults={"name": message.chat.full_name},
-            tg_id=message.chat.id,
-        )
+class Form(StatesGroup):
+    name = State()
+
+    like_bots = State()
+
+    language = State()
+
+
+@form_router.message(CommandStart())
+async def command_start(message: Message, state: FSMContext) -> None:
+    await state.set_state(Form.name)
+
     await message.answer(
-        f"Привет, {hbold(message.from_user.full_name)}!\nВыбери свою роль.",
-        reply_markup=role_markup,
+        "Hi there! What's your name?",
+        reply_markup=ReplyKeyboardRemove(),
     )
 
 
-# Handler for the 'sender' role callback
-@dp.callback_query(RoleCallback.filter(F.text == "sender"))
-async def sender_button_handler(
-    callback_query: CallbackQuery, callback_data: RoleCallback
-):
-    await callback_query.message.answer(
-        "Отправить из:", reply_markup=await country_keyboard(direction="from")
-    )
-    await callback_query.message.delete()
-    async with async_session_maker() as session:
-        user, _ = await get_or_create(
-            session,
-            User,
-            defaults={"name": callback_query.message.chat.full_name},
-            tg_id=callback_query.message.chat.id,
-        )
-        await get_or_create(session, Sender, user_id=user.id)
+@form_router.message(Command("cancel"))
+@form_router.message(F.text.casefold() == "cancel")
+async def cancel_handler(message: Message, state: FSMContext) -> None:
+    """
 
+    Allow user to cancel any action
 
-# Handler for the 'courier' role callback
-@dp.callback_query(RoleCallback.filter(F.text == "courier"))
-async def courier_button_handler(
-    callback_query: CallbackQuery, callback_data: RoleCallback
-):
-    await callback_query.message.answer(
-        "Отправить из:", reply_markup=await country_keyboard(direction="from")
-    )
-    await callback_query.message.delete()
-    async with async_session_maker() as session:
-        user, _ = await get_or_create(
-            session,
-            User,
-            defaults={"name": callback_query.message.chat.full_name},
-            tg_id=callback_query.message.chat.id,
-        )
-        await get_or_create(session, Courier, user_id=user.id)
+    """
 
+    current_state = await state.get_state()
 
-@dp.callback_query(GeneralCallback.filter(F.text == "absent_country_from"))
-async def absent_country_from_button_handler(
-    callback_query: CallbackQuery, callback_data: GeneralCallback
-):
-    await callback_query.message.answer(
-        "Свайп на лево и введите название страны отправления"
-    )
-    await callback_query.message.delete()
-    await callback_query.answer()
-
-
-@dp.callback_query(GeneralCallback.filter(F.text == "absent_country_to"))
-async def absent_country_to_button_handler(
-    callback_query: CallbackQuery, callback_data: GeneralCallback
-):
-    await callback_query.message.answer(
-        "Свайп на лево и введите название страны прибытия"
-    )
-    await callback_query.message.delete()
-    await callback_query.answer()
-
-
-# Handler for processing text input after the "not in the list" callback
-@dp.message()
-async def text_input_handler(message: Message) -> None:
-    if not message.reply_to_message:
-        answer = await message.answer("Сделайте свайп по сообщению выше ^^^")
-        await message.delete()
-        await asyncio.sleep(10)
-        await answer.delete()
+    if current_state is None:
         return
 
-    if (
-        message.reply_to_message.text
-        == "Свайп на лево и введите название страны отправления"
-    ):
-        async with async_session_maker() as session:
-            user, _ = await get_or_create(
-                session,
-                User,
-                defaults={"name": message.chat.full_name},
-                tg_id=message.chat.id,
-            )
-            await get_or_create(
-                session, Country, defaults={"created_by_id": user.id}, name=message.text
-            )
+    logging.info("Cancelling state %r", current_state)
 
-        await message.reply_to_message.edit_text(f"Отправить из: {message.text}")
-        await message.answer(
-            "Отправить в:", reply_markup=await country_keyboard(direction="to")
+    await state.clear()
+
+    await message.answer(
+        "Cancelled.",
+        reply_markup=ReplyKeyboardRemove(),
+    )
+
+
+@form_router.message(Form.name)
+async def process_name(message: Message, state: FSMContext) -> None:
+    await state.update_data(name=message.text)
+
+    await state.set_state(Form.like_bots)
+
+    await message.answer(
+        f"Nice to meet you, {html.quote(message.text)}!\nDid you like to write bots?",
+        reply_markup=ReplyKeyboardMarkup(
+            keyboard=[
+                [
+                    KeyboardButton(text="Yes"),
+                    KeyboardButton(text="No"),
+                ]
+            ],
+            resize_keyboard=True,
+        ),
+    )
+
+
+@form_router.message(Form.like_bots, F.text.casefold() == "no")
+async def process_dont_like_write_bots(message: Message, state: FSMContext) -> None:
+    data = await state.get_data()
+
+    await state.clear()
+
+    await message.answer(
+        "Not bad not terrible.\nSee you soon.",
+        reply_markup=ReplyKeyboardRemove(),
+    )
+
+    await show_summary(message=message, data=data, positive=False)
+
+
+@form_router.message(Form.like_bots, F.text.casefold() == "yes")
+async def process_like_write_bots(message: Message, state: FSMContext) -> None:
+    await state.set_state(Form.language)
+
+    await message.reply(
+        "Cool! I'm too!\nWhat programming language did you use for it?",
+        reply_markup=ReplyKeyboardRemove(),
+    )
+
+
+@form_router.message(Form.like_bots)
+async def process_unknown_write_bots(message: Message) -> None:
+    await message.reply("I don't understand you :(")
+
+
+@form_router.message(Form.language)
+async def process_language(message: Message, state: FSMContext) -> None:
+    data = await state.update_data(language=message.text)
+
+    await state.clear()
+
+    if message.text.casefold() == "python":
+        await message.reply(
+            "Python, you say? That's the language that makes my circuits light up! 😉"
         )
 
-    if (
-        message.reply_to_message.text
-        == "Свайп на лево и введите название страны прибытия"
-    ):
-        async with async_session_maker() as session:
-            user, _ = await get_or_create(
-                session,
-                User,
-                defaults={"name": message.chat.full_name},
-                tg_id=message.chat.id,
-            )
-            await get_or_create(
-                session, Country, defaults={"created_by_id": user.id}, name=message.text
-            )
-
-        await message.reply_to_message.edit_text(f"Отправить в: {message.text}")
-        await message.answer("Месяц:")
-
-    await message.delete()
+    await show_summary(message=message, data=data)
 
 
-# Main function to start the bot
-async def main() -> None:
-    bot = Bot(TOKEN, parse_mode=ParseMode.HTML)
+async def show_summary(
+    message: Message, data: Dict[str, Any], positive: bool = True
+) -> None:
+    name = data["name"]
+
+    language = data.get("language", "<something unexpected>")
+
+    text = f"I'll keep in mind that, {html.quote(name)}, "
+
+    text += (
+        f"you like to write bots with {html.quote(language)}."
+        if positive
+        else "you don't like to write bots, so sad..."
+    )
+
+    await message.answer(text=text, reply_markup=ReplyKeyboardRemove())
+
+
+async def main():
+    # Initialize Bot instance with default bot properties which will be passed to all API calls
+
+    bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
+
+    dp = Dispatcher()
+
+    dp.include_router(form_router)
+
+    # Start event dispatching
+
     await dp.start_polling(bot)
 
 
-# Entry point for the script
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
+
     asyncio.run(main())
