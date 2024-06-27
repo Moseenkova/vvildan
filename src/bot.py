@@ -95,20 +95,6 @@ async def absent_country_to_button_handler(
     await callback_query.answer()
 
 
-# Handler for the 'not in the list' callback
-@dp.callback_query(GeneralCallback.filter(F.action == "not_in_list"))
-async def not_in_list_handler(
-    callback_query: CallbackQuery, callback_data: GeneralCallback
-):
-    direction = callback_data.direction
-    await callback_query.message.answer(
-        "Свайп на лево и введите название страны отправления"
-        if direction == "from"
-        else "Свайп на лево и введите название страны прибытия"
-    )
-    await callback_query.message.delete()
-
-
 # Handler for processing text input after the "not in the list" callback
 @dp.message()
 async def text_input_handler(message: Message) -> None:
