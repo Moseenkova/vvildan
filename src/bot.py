@@ -94,6 +94,7 @@ async def process_city_to(message: Message, state: FSMContext) -> None:
     await bot.edit_message_text(
         text=text, chat_id=message.chat.id, message_id=data["message_id"]
     )
+    await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id - 1)
     await message.delete()
     await message.answer("Месяц:")
 

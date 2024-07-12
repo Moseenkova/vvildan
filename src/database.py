@@ -1,7 +1,7 @@
 import enum
 from datetime import date, datetime
 from os import getenv
-from typing import Optional
+from typing import List, Optional
 
 from dotenv import load_dotenv
 from sqlalchemy import (
@@ -118,6 +118,16 @@ class City(Base):
     created_by_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     country_id: Mapped[int] = mapped_column(ForeignKey("countries.id"))
     country: Mapped["Country"] = relationship(back_populates="cities")
+    user_cities: Mapped[List["UserCity"]] = relationship(back_populates="city")
+
+    __table_args__ = (UniqueConstraint("name"),)
+
+
+class UserCity(Base):
+    __tablename__ = "user_cities"
+    name: Mapped[str]
+    city_id: Mapped[int] = mapped_column(ForeignKey("cities.id"))
+    city: Mapped["City"] = relationship(back_populates="user_cities")
 
     __table_args__ = (UniqueConstraint("name"),)
 
