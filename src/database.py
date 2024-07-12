@@ -106,7 +106,6 @@ class Request(Base):
 class Country(Base):
     __tablename__ = "countries"
     name: Mapped[str]
-    created_by_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     cities: Mapped["City"] = relationship(back_populates="country")
 
     __table_args__ = (UniqueConstraint("name"),)
@@ -126,8 +125,8 @@ class UserCity(Base):
     __tablename__ = "user_cities"
     name: Mapped[str]
     created_by_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
-    city_id: Mapped[int] = mapped_column(ForeignKey("cities.id"))
-    city: Mapped["City"] = relationship(back_populates="user_cities")
+    city_id: Mapped[Optional[int]] = mapped_column(ForeignKey("cities.id"))
+    city: Mapped[Optional["City"]] = relationship(back_populates="user_cities")
 
     __table_args__ = (UniqueConstraint("name"),)
 

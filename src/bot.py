@@ -14,7 +14,14 @@ from aiogram.utils.markdown import hbold
 from dotenv import load_dotenv
 
 import database
-from database import Country, Courier, User, async_session_maker, get_or_create
+from database import (
+    Country,
+    Courier,
+    User,
+    UserCity,
+    async_session_maker,
+    get_or_create,
+)
 from my_keyboards import GeneralCallback, RoleCallback, country_keyboard, role_markup
 
 # Load environment variables from a .env file
@@ -27,8 +34,10 @@ form_router = Router()
 class Form(StatesGroup):
     name = State()
     role = State()
-    city_from = State()
-    city_to = State()
+    city_from_name = State()
+    city_to_name = State()
+    city_from_id = State()
+    city_to_id = State()
     month_from = State()
     month_to = State()
     day_from = State()
@@ -56,7 +65,7 @@ async def command_start_handler(message: Message, state: FSMContext) -> None:
 async def role_button_handler(
     callback_query: CallbackQuery, callback_data: RoleCallback, state: FSMContext
 ):
-    await state.set_state(Form.city_from)
+    await state.set_state(Form.city_from_name)
     answer = await callback_query.message.answer(
         "Отправить из:\n(введите название города)"
     )
@@ -73,24 +82,52 @@ async def role_button_handler(
         await get_or_create(session, model, user_id=user.id)
 
 
-@form_router.message(Form.city_from)
+@form_router.message(Form.city_from_name)
 async def process_city_from(message: Message, state: FSMContext) -> None:
-    await state.update_data(city_from=message.text)
+    async with async_session_maker() as session:
+        user, _ = await get_or_create(
+            session,
+            User,
+            defaults={"name": message.chat.full_name},
+            tg_id=message.chat.id,
+        )
+        user_city, created = await get_or_create(
+            session, UserCity, defaults={"created_by_id": user.id}, name=message.text
+        )
+    if created:
+        # send msg to the team
+        ...
+    await state.update_data(city_from_id=user_city.id)
+    await state.update_data(city_from_name=message.text)
     text = f"Отправить\nИз: {message.text}"
     data = await state.get_data()
     await bot.edit_message_text(
         text=text, chat_id=message.chat.id, message_id=data["message_id"]
     )
     await message.delete()
-    await state.set_state(Form.city_to)
+    await state.set_state(Form.city_to_name)
     await message.answer("Отправить в:\n(введите название города)")
 
 
-@form_router.message(Form.city_to)
+@form_router.message(Form.city_to_name)
 async def process_city_to(message: Message, state: FSMContext) -> None:
-    await state.update_data(city_to=message.text)
+    async with async_session_maker() as session:
+        user, _ = await get_or_create(
+            session,
+            User,
+            defaults={"name": message.chat.full_name},
+            tg_id=message.chat.id,
+        )
+        user_city, created = await get_or_create(
+            session, UserCity, defaults={"created_by_id": user.id}, name=message.text
+        )
+    if created:
+        # send msg to the team
+        ...
+    await state.update_data(city_to_id=user_city.id)
+    await state.update_data(city_to_name=message.text)
     data = await state.get_data()
-    text = f"Отправить\nИз: {data['city_from']}\nВ: {message.text}"
+    text = f"Отправить\nИз: {data['city_from_name']}\nВ: {message.text}"
     await bot.edit_message_text(
         text=text, chat_id=message.chat.id, message_id=data["message_id"]
     )
