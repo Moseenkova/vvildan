@@ -3,25 +3,42 @@ import logging
 import sys
 from os import getenv
 
-from aiogram import Bot, F, Router
+from aiogram import Bot, Dispatcher, F, Router
+from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart
+from aiogram.fsm.context import FSMContext
+from aiogram.fsm.state import State, StatesGroup
 from aiogram.types import CallbackQuery, Message
 from aiogram.utils.markdown import hbold
 from dotenv import load_dotenv
 
-from database import Country, Courier, Sender, User, async_session_maker, get_or_create
+import database
+from database import Country, Courier, User, async_session_maker, get_or_create
 from my_keyboards import GeneralCallback, RoleCallback, country_keyboard, role_markup
 
 # Load environment variables from a .env file
 load_dotenv()
 TOKEN = getenv("BOT_TOKEN")
+bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 form_router = Router()
 
 
-# Handler for the /start command
+class Form(StatesGroup):
+    name = State()
+    role = State()
+    city_from = State()
+    city_to = State()
+    month_from = State()
+    month_to = State()
+    day_from = State()
+    day_to = State()
+    message_id = State()
+
+
 @form_router.message(CommandStart())
-async def command_start_handler(message: Message) -> None:
+async def command_start_handler(message: Message, state: FSMContext) -> None:
+    await state.set_data({"name": message.from_user.full_name})
     async with async_session_maker() as session:
         await get_or_create(
             session,
@@ -35,15 +52,17 @@ async def command_start_handler(message: Message) -> None:
     )
 
 
-# Handler for the 'sender' role callback
-@form_router.callback_query(RoleCallback.filter(F.text == "sender"))
-async def sender_button_handler(
-    callback_query: CallbackQuery, callback_data: RoleCallback
+@form_router.callback_query(RoleCallback.filter())
+async def role_button_handler(
+    callback_query: CallbackQuery, callback_data: RoleCallback, state: FSMContext
 ):
-    await callback_query.message.answer(
-        "Отправить из:", reply_markup=await country_keyboard(direction="from")
+    await state.set_state(Form.city_from)
+    answer = await callback_query.message.answer(
+        "Отправить из:\n(введите название города)"
     )
+    await state.set_data({"role": callback_data.model, "message_id": answer.message_id})
     await callback_query.message.delete()
+    model = getattr(database, callback_data.model)
     async with async_session_maker() as session:
         user, _ = await get_or_create(
             session,
@@ -51,7 +70,32 @@ async def sender_button_handler(
             defaults={"name": callback_query.message.chat.full_name},
             tg_id=callback_query.message.chat.id,
         )
-        await get_or_create(session, Sender, user_id=user.id)
+        await get_or_create(session, model, user_id=user.id)
+
+
+@form_router.message(Form.city_from)
+async def process_city_from(message: Message, state: FSMContext) -> None:
+    await state.update_data(city_from=message.text)
+    text = f"Отправить\nИз: {message.text}"
+    data = await state.get_data()
+    await bot.edit_message_text(
+        text=text, chat_id=message.chat.id, message_id=data["message_id"]
+    )
+    await message.delete()
+    await state.set_state(Form.city_to)
+    await message.answer("Отправить в:\n(введите название города)")
+
+
+@form_router.message(Form.city_to)
+async def process_city_to(message: Message, state: FSMContext) -> None:
+    await state.update_data(city_to=message.text)
+    data = await state.get_data()
+    text = f"Отправить\nИз: {data['city_from']}\nВ: {message.text}"
+    await bot.edit_message_text(
+        text=text, chat_id=message.chat.id, message_id=data["message_id"]
+    )
+    await message.delete()
+    await message.answer("Месяц:")
 
 
 # Handler for the 'courier' role callback
@@ -148,8 +192,10 @@ async def text_input_handler(message: Message) -> None:
 
 # Main function to start the bot
 async def main() -> None:
-    bot = Bot(TOKEN, parse_mode=ParseMode.HTML)
-    await form_router.start_polling(bot)
+    dp = Dispatcher()
+    dp.include_router(form_router)
+    # Start event dispatching
+    await dp.start_polling(bot)
 
 
 # Entry point for the script

@@ -8,7 +8,7 @@ from database import Country, async_session_maker
 
 
 class RoleCallback(CallbackData, prefix="role"):
-    text: str
+    model: str
 
 
 class GeneralCallback(CallbackData, prefix="general"):
@@ -16,11 +16,11 @@ class GeneralCallback(CallbackData, prefix="general"):
 
 
 sender_button = InlineKeyboardButton(
-    text="Отправитель", callback_data=RoleCallback(text="sender").pack()
+    text="Отправитель", callback_data=RoleCallback(model="Sender").pack()
 )
 
 courier_button = InlineKeyboardButton(
-    text="Курьер", callback_data=RoleCallback(text="courier").pack()
+    text="Курьер", callback_data=RoleCallback(model="Courier").pack()
 )
 
 role_markup = InlineKeyboardMarkup(inline_keyboard=[[sender_button, courier_button]])
