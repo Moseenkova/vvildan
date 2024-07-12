@@ -115,7 +115,6 @@ class Country(Base):
 class City(Base):
     __tablename__ = "cities"
     name: Mapped[str]
-    created_by_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     country_id: Mapped[int] = mapped_column(ForeignKey("countries.id"))
     country: Mapped["Country"] = relationship(back_populates="cities")
     user_cities: Mapped[List["UserCity"]] = relationship(back_populates="city")
@@ -126,6 +125,7 @@ class City(Base):
 class UserCity(Base):
     __tablename__ = "user_cities"
     name: Mapped[str]
+    created_by_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     city_id: Mapped[int] = mapped_column(ForeignKey("cities.id"))
     city: Mapped["City"] = relationship(back_populates="user_cities")
 
