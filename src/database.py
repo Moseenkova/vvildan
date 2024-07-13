@@ -1,7 +1,7 @@
 import enum
 from datetime import date, datetime
 from os import getenv
-from typing import Optional
+from typing import List, Optional
 
 from dotenv import load_dotenv
 from sqlalchemy import (
@@ -106,7 +106,6 @@ class Request(Base):
 class Country(Base):
     __tablename__ = "countries"
     name: Mapped[str]
-    created_by_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     cities: Mapped["City"] = relationship(back_populates="country")
 
     __table_args__ = (UniqueConstraint("name"),)
@@ -115,9 +114,19 @@ class Country(Base):
 class City(Base):
     __tablename__ = "cities"
     name: Mapped[str]
-    created_by_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     country_id: Mapped[int] = mapped_column(ForeignKey("countries.id"))
     country: Mapped["Country"] = relationship(back_populates="cities")
+    user_cities: Mapped[List["UserCity"]] = relationship(back_populates="city")
+
+    __table_args__ = (UniqueConstraint("name"),)
+
+
+class UserCity(Base):
+    __tablename__ = "user_cities"
+    name: Mapped[str]
+    created_by_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
+    city_id: Mapped[Optional[int]] = mapped_column(ForeignKey("cities.id"))
+    city: Mapped[Optional["City"]] = relationship(back_populates="user_cities")
 
     __table_args__ = (UniqueConstraint("name"),)
 
