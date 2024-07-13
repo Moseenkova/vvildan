@@ -24,7 +24,6 @@ from database import (
 )
 from my_keyboards import GeneralCallback, RoleCallback, country_keyboard, role_markup
 
-# Load environment variables from a .env file
 load_dotenv()
 TOKEN = getenv("BOT_TOKEN")
 bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
@@ -95,7 +94,7 @@ async def process_city_from(message: Message, state: FSMContext) -> None:
             session, UserCity, defaults={"created_by_id": user.id}, name=message.text
         )
     if created:
-        # send msg to the team
+        # TODO: send msg to the team
         ...
     await state.update_data(city_from_id=user_city.id)
     await state.update_data(city_from_name=message.text)
@@ -122,7 +121,7 @@ async def process_city_to(message: Message, state: FSMContext) -> None:
             session, UserCity, defaults={"created_by_id": user.id}, name=message.text
         )
     if created:
-        # send msg to the team
+        # TODO: send msg to the team
         ...
     await state.update_data(city_to_id=user_city.id)
     await state.update_data(city_to_name=message.text)
@@ -136,7 +135,6 @@ async def process_city_to(message: Message, state: FSMContext) -> None:
     await message.answer("Месяц:")
 
 
-# Handler for the 'courier' role callback
 @form_router.callback_query(RoleCallback.filter(F.text == "courier"))
 async def courier_button_handler(
     callback_query: CallbackQuery, callback_data: RoleCallback
@@ -177,7 +175,6 @@ async def absent_country_to_button_handler(
     await callback_query.answer()
 
 
-# Handler for processing text input after the "not in the list" callback
 @form_router.message()
 async def text_input_handler(message: Message) -> None:
     if not message.reply_to_message:
@@ -228,15 +225,12 @@ async def text_input_handler(message: Message) -> None:
     await message.delete()
 
 
-# Main function to start the bot
 async def main() -> None:
     dp = Dispatcher()
     dp.include_router(form_router)
-    # Start event dispatching
     await dp.start_polling(bot)
 
 
-# Entry point for the script
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     asyncio.run(main())
