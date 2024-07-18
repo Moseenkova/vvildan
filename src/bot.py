@@ -23,10 +23,12 @@ from database import (
     get_or_create,
 )
 from my_keyboards import (
+    DateCallback,
     GeneralCallback,
     RoleCallback,
     country_keyboard,
     month_keyboard,
+    months,
     role_markup,
 )
 
@@ -37,16 +39,15 @@ form_router = Router()
 
 
 class Form(StatesGroup):
-    name = State()
+    # TODO keep message text here
+    message = State()
     role = State()
     city_from_name = State()
     city_to_name = State()
     city_from_id = State()
     city_to_id = State()
-    month_from = State()
-    month_to = State()
-    day_from = State()
-    day_to = State()
+    month = State()
+    day = State()
     # TODO delete the last msg and send new instead of editing
     message_id = State()
 
@@ -103,6 +104,7 @@ async def process_city_from(message: Message, state: FSMContext) -> None:
     if created:
         # TODO: send msg to the team
         ...
+    # TODO combine
     await state.update_data(city_from_id=user_city.id)
     await state.update_data(city_from_name=message.text)
     text = f"Отправить\nИз: {message.text}"
@@ -130,6 +132,7 @@ async def process_city_to(message: Message, state: FSMContext) -> None:
     if created:
         # TODO: send msg to the team
         ...
+    # TODO combine
     await state.update_data(city_to_id=user_city.id)
     await state.update_data(city_to_name=message.text)
     data = await state.get_data()
@@ -140,6 +143,20 @@ async def process_city_to(message: Message, state: FSMContext) -> None:
     await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id - 1)
     await message.delete()
     await message.answer("Месяц:", reply_markup=await month_keyboard())
+
+
+@form_router.callback_query(DateCallback.filter())
+async def date_button_handler(
+    callback_query: CallbackQuery, callback_data: DateCallback, state: FSMContext
+):
+    data = await state.get_data()
+    await state.update_data(month=callback_data.month)
+    await callback_query.message.answer("День:")
+    await callback_query.message.delete()
+    text = f"Отправить\nИз: {data['city_from_name']}\nВ: {data['city_to_name']}\nДата: {months[callback_data.month]}"
+    await bot.edit_message_text(
+        text=text, chat_id=callback_query.message.chat.id, message_id=data["message_id"]
+    )
 
 
 @form_router.callback_query(RoleCallback.filter(F.text == "courier"))
