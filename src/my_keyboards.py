@@ -1,3 +1,5 @@
+from enum import Enum
+
 from aiogram.filters.callback_data import CallbackData
 from aiogram.types.inline_keyboard_button import InlineKeyboardButton
 from aiogram.types.inline_keyboard_markup import InlineKeyboardMarkup
@@ -7,8 +9,18 @@ from sqlalchemy import select
 from database import Country, async_session_maker
 
 
+class DirectionEnum(str, Enum):
+    from_ = "from"
+    to = "to"
+
+
+class RoleModelEnum(str, Enum):
+    sender = "Sender"
+    courier = "Courier"
+
+
 class RoleCallback(CallbackData, prefix="role"):
-    model: str
+    model: RoleModelEnum
 
 
 class GeneralCallback(CallbackData, prefix="general"):
@@ -27,7 +39,7 @@ role_markup = InlineKeyboardMarkup(inline_keyboard=[[sender_button, courier_butt
 
 
 class CountryCallback(CallbackData, prefix="country"):
-    direction: str
+    direction: DirectionEnum
     name: str
 
 
