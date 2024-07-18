@@ -22,7 +22,13 @@ from database import (
     async_session_maker,
     get_or_create,
 )
-from my_keyboards import GeneralCallback, RoleCallback, country_keyboard, role_markup
+from my_keyboards import (
+    GeneralCallback,
+    RoleCallback,
+    country_keyboard,
+    month_keyboard,
+    role_markup,
+)
 
 load_dotenv()
 TOKEN = getenv("BOT_TOKEN")
@@ -41,6 +47,7 @@ class Form(StatesGroup):
     month_to = State()
     day_from = State()
     day_to = State()
+    # TODO delete the last msg and send new instead of editing
     message_id = State()
 
 
@@ -132,7 +139,7 @@ async def process_city_to(message: Message, state: FSMContext) -> None:
     )
     await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id - 1)
     await message.delete()
-    await message.answer("Месяц:")
+    await message.answer("Месяц:", reply_markup=await month_keyboard())
 
 
 @form_router.callback_query(RoleCallback.filter(F.text == "courier"))

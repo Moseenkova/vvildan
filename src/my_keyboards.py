@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 from enum import Enum
 
 from aiogram.filters.callback_data import CallbackData
@@ -7,6 +8,21 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 from sqlalchemy import select
 
 from database import City, Country, async_session_maker
+
+months = {
+    1: "Январь",
+    2: "Февраль",
+    3: "Март",
+    4: "Апрель",
+    5: "Май",
+    6: "Июнь",
+    7: "Июль",
+    8: "Август",
+    9: "Сентябрь",
+    10: "Октябрь",
+    11: "Ноябрь",
+    12: "Декабрь",
+}
 
 
 class DirectionEnum(str, Enum):
@@ -48,6 +64,11 @@ class CityCallback(CallbackData, prefix="city"):
     id: int
 
 
+class DateCallback(CallbackData, prefix="date"):
+    month: int
+    day: int = 0
+
+
 async def country_keyboard(direction):
     builder = InlineKeyboardBuilder()
     async with async_session_maker() as session:
@@ -87,6 +108,28 @@ async def city_keyboard(callback_data):
     builder.button(
         text="Нет в списке",
         callback_data=CityCallback(direction=callback_data.direction, id=0).pack(),
+    )
+
+    return builder.as_markup()
+
+
+async def month_keyboard():
+    builder = InlineKeyboardBuilder()
+    today = datetime.today().replace(day=15)
+    current_month = today
+    next_month = today + timedelta(days=30)
+    after_next_month = today + timedelta(days=60)
+    builder.button(
+        text=months[current_month.month],
+        callback_data=DateCallback(month=current_month.month).pack(),
+    )
+    builder.button(
+        text=months[next_month.month],
+        callback_data=DateCallback(month=next_month.month).pack(),
+    )
+    builder.button(
+        text=months[after_next_month.month],
+        callback_data=DateCallback(month=after_next_month.month).pack(),
     )
 
     return builder.as_markup()
