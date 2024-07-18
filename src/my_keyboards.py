@@ -6,7 +6,7 @@ from aiogram.types.inline_keyboard_markup import InlineKeyboardMarkup
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from sqlalchemy import select
 
-from database import Country, async_session_maker
+from database import City, Country, async_session_maker
 
 
 class DirectionEnum(str, Enum):
@@ -43,6 +43,11 @@ class CountryCallback(CallbackData, prefix="country"):
     name: str
 
 
+class CityCallback(CallbackData, prefix="city"):
+    direction: DirectionEnum
+    id: int
+
+
 async def country_keyboard(direction):
     builder = InlineKeyboardBuilder()
     async with async_session_maker() as session:
@@ -60,6 +65,28 @@ async def country_keyboard(direction):
     builder.button(
         text="Нет в списке",
         callback_data=GeneralCallback(text=f"absent_country_{direction}").pack(),
+    )
+
+    return builder.as_markup()
+
+
+async def city_keyboard(callback_data):
+    builder = InlineKeyboardBuilder()
+    async with async_session_maker() as session:
+        query = select(City.__table__.columns).filter_by(country_id=callback_data.id)
+        result = await session.execute(query)
+        cities = result.mappings().all()
+
+    for city in cities:
+        builder.button(
+            text=city.name,
+            callback_data=CityCallback(
+                direction=callback_data.direction, id=city.id
+            ).pack(),
+        )
+    builder.button(
+        text="Нет в списке",
+        callback_data=CityCallback(direction=callback_data.direction, id=0).pack(),
     )
 
     return builder.as_markup()
