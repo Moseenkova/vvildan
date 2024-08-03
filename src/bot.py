@@ -154,13 +154,21 @@ async def process_date(message: Message, state: FSMContext) -> None:
     await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id - 1)
     date_string = message.text
     try:
-        datetime.strptime(date_string, "%d.%m.%Y")
+        user_datetime = datetime.strptime(date_string, "%d.%m.%Y")
     except Exception:
         await message.delete()
         await state.set_state(Form.date)
         await message.answer(
             f"{message.text} неккоректная дата\nПожалуйста, введите дату в формате ДД.ММ.ГГГГ."
         )
+        return
+    if user_datetime < datetime.now():
+        await message.delete()
+        await state.set_state(Form.date)
+        await message.answer(
+            f"{message.text} неккоректная дата\nВаша дата из прошлого, введите актуальную дату"
+        )
+        return
 
 
 @form_router.callback_query(RoleCallback.filter(F.text == "courier"))
