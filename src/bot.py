@@ -169,6 +169,13 @@ async def process_date(message: Message, state: FSMContext) -> None:
             f"{message.text} неккоректная дата\nВаша дата из прошлого, введите актуальную дату"
         )
         return
+    if user_datetime > datetime.now() + timedelta(days=60):
+        await message.delete()
+        await state.set_state(Form.date)
+        await message.answer(
+            f"{message.text} неккоректная дата\nВыберите дату на ближайшие 2 месяца"
+        )
+        return
 
 
 @form_router.callback_query(RoleCallback.filter(F.text == "courier"))
