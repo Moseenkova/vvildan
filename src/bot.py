@@ -1,6 +1,7 @@
 import asyncio
 import logging
 import sys
+from datetime import datetime, timedelta
 from os import getenv
 
 from aiogram import Bot, Dispatcher, F, Router
@@ -33,6 +34,7 @@ form_router = Router()
 class Form(StatesGroup):
     name = State()
     role = State()
+    date = State()
     city_from_name = State()
     city_to_name = State()
     city_from_id = State()
@@ -132,7 +134,40 @@ async def process_city_to(message: Message, state: FSMContext) -> None:
     )
     await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id - 1)
     await message.delete()
-    await message.answer("Месяц:")
+    await state.set_state(Form.date)
+    await message.answer("Пожалуйста, введите дату в формате ДД.ММ.ГГГГ.")
+
+
+@form_router.message(Form.date)
+async def process_date(message: Message, state: FSMContext) -> None:
+    await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id - 1)
+    await message.delete()
+    date_string = message.text
+    try:
+        user_datetime = datetime.strptime(date_string, "%d.%m.%Y")
+    except Exception:
+        await state.set_state(Form.date)
+        await message.answer(
+            f"{message.text} неккоректная дата\nПожалуйста, введите дату в формате ДД.ММ.ГГГГ."
+        )
+        return
+    if user_datetime < datetime.now():
+        await state.set_state(Form.date)
+        await message.answer(
+            f"{message.text} неккоректная дата\nВаша дата из прошлого, введите актуальную дату"
+        )
+        return
+    if user_datetime > datetime.now() + timedelta(days=60):
+        await state.set_state(Form.date)
+        await message.answer(
+            f"{message.text} неккоректная дата\nВыберите дату на ближайшие 2 месяца"
+        )
+        return
+    data = await state.get_data()
+    text = f"Отправить\nИз: {data['city_from_name']}\nВ: {data['city_to_name']}\nдата: {message.text}"
+    await bot.edit_message_text(
+        text=text, chat_id=message.chat.id, message_id=data["message_id"]
+    )
 
 
 @form_router.callback_query(RoleCallback.filter(F.text == "courier"))
@@ -176,7 +211,7 @@ async def absent_country_to_button_handler(
 
 
 @form_router.message()
-async def text_input_handler(message: Message) -> None:
+async def text_input_handler(message: Message, state: FSMContext) -> None:
     if not message.reply_to_message:
         answer = await message.answer("Сделайте свайп по сообщению выше ^^^")
         await message.delete()
@@ -220,7 +255,8 @@ async def text_input_handler(message: Message) -> None:
             )
 
         await message.reply_to_message.edit_text(f"Отправить в: {message.text}")
-        await message.answer("Месяц:")
+        await state.set_state(Form.city_to_name)
+        await message.answer(" Пожалуйста, введите дату в формате ДД.ММ.ГГГГ.")
 
     await message.delete()
 
