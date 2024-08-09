@@ -45,10 +45,6 @@ class Form(StatesGroup):
     day_to = State()
     message_id = State()
 
-    class Form(StatesGroup):
-        date = State()
-        next_step = State()  # Состояние для следующего шага
-
 
 @form_router.message(CommandStart())
 async def command_start_handler(message: Message, state: FSMContext) -> None:
@@ -144,31 +140,24 @@ async def process_city_to(message: Message, state: FSMContext) -> None:
 
 @form_router.message(Form.date)
 async def process_date(message: Message, state: FSMContext) -> None:
-    # 1.Неправильно ввел.
-    # 2.Формат верный но дата некорректная.
-    # 3.Число из прошлого (число меньше текущий даты).
-    # 4.Число из будущего (больше двух месяцев).
-    # 5.Успешно (число из будущего меньше 2 месяцев).
     await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id - 1)
+    await message.delete()
     date_string = message.text
     try:
         user_datetime = datetime.strptime(date_string, "%d.%m.%Y")
     except Exception:
-        await message.delete()
         await state.set_state(Form.date)
         await message.answer(
             f"{message.text} неккоректная дата\nПожалуйста, введите дату в формате ДД.ММ.ГГГГ."
         )
         return
     if user_datetime < datetime.now():
-        await message.delete()
         await state.set_state(Form.date)
         await message.answer(
             f"{message.text} неккоректная дата\nВаша дата из прошлого, введите актуальную дату"
         )
         return
     if user_datetime > datetime.now() + timedelta(days=60):
-        await message.delete()
         await state.set_state(Form.date)
         await message.answer(
             f"{message.text} неккоректная дата\nВыберите дату на ближайшие 2 месяца"
@@ -179,7 +168,6 @@ async def process_date(message: Message, state: FSMContext) -> None:
     await bot.edit_message_text(
         text=text, chat_id=message.chat.id, message_id=data["message_id"]
     )
-    await message.delete()
 
 
 @form_router.callback_query(RoleCallback.filter(F.text == "courier"))
@@ -220,10 +208,6 @@ async def absent_country_to_button_handler(
     )
     await callback_query.message.delete()
     await callback_query.answer()
-
-
-class CallbackContext:
-    pass
 
 
 @form_router.message()
