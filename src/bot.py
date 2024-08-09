@@ -10,13 +10,7 @@ from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
-from aiogram.types import (
-    CallbackQuery,
-    InlineKeyboardButton,
-    InlineKeyboardMarkup,
-    Message,
-    Update,
-)
+from aiogram.types import CallbackQuery, Message
 from aiogram.utils.markdown import hbold
 from dotenv import load_dotenv
 
@@ -50,6 +44,10 @@ class Form(StatesGroup):
     day_from = State()
     day_to = State()
     message_id = State()
+
+    class Form(StatesGroup):
+        date = State()
+        next_step = State()  # Состояние для следующего шага
 
 
 @form_router.message(CommandStart())
@@ -176,6 +174,12 @@ async def process_date(message: Message, state: FSMContext) -> None:
             f"{message.text} неккоректная дата\nВыберите дату на ближайшие 2 месяца"
         )
         return
+    data = await state.get_data()
+    text = f"Отправить\nИз: {data['city_from_name']}\nВ: {data['city_to_name']}\nдата: {message.text}"
+    await bot.edit_message_text(
+        text=text, chat_id=message.chat.id, message_id=data["message_id"]
+    )
+    await message.delete()
 
 
 @form_router.callback_query(RoleCallback.filter(F.text == "courier"))
@@ -271,56 +275,6 @@ async def text_input_handler(message: Message, state: FSMContext) -> None:
         await message.answer(" Пожалуйста, введите дату в формате ДД.ММ.ГГГГ.")
 
     await message.delete()
-
-    def start(update: Update, context: CallbackContext) -> None:
-        today = datetime.today()
-        two_months_later = today + timedelta(days=60)
-        buttons = []
-
-        # Создаем кнопки для каждого дня в пределах двух месяцев
-        current_date = today
-        while current_date <= two_months_later:
-            buttons.append(
-                [
-                    InlineKeyboardButton(
-                        current_date.strftime("%d.%m.%Y"),
-                        callback_data=current_date.strftime("%d.%m.%Y"),
-                    )
-                ]
-            )
-            current_date += timedelta(days=1)
-
-        reply_markup = InlineKeyboardMarkup(buttons)
-        update.message.reply_text(
-            "Пожалуйста, выберите дату:", reply_markup=reply_markup
-        )
-
-    def button(update: Update, context: CallbackContext) -> None:
-        query = update.callback_query
-        query.answer()
-        selected_date = query.data
-        query.edit_message_text(text=f"Вы выбрали дату: {selected_date}")
-
-    def handle_date_input(update: Update, context: CallbackContext) -> None:
-        user_text = update.message.text
-
-        try:
-            selected_date = datetime.strptime(user_text, "%d.%m.%Y")
-            today = datetime.today()
-            two_months_later = today + timedelta(days=60)
-
-            if today <= selected_date <= two_months_later:
-                update.message.reply_text(
-                    f"Вы выбрали дату: {selected_date.strftime('%d.%m.%Y')}"
-                )
-            else:
-                update.message.reply_text(
-                    "Выбранная дата вне допустимого диапазона. Пожалуйста, выберите дату в пределах ближайших двух месяцев."
-                )
-        except ValueError:
-            update.message.reply_text(
-                "Неправильный формат даты. Пожалуйста, введите дату в формате ДД.ММ.ГГГГ."
-            )
 
 
 async def main() -> None:
