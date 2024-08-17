@@ -54,12 +54,6 @@ class Form(StatesGroup):
 
 @form_router.message(CommandStart())
 async def command_start_handler(message: Message, state: FSMContext) -> None:
-    # TODO delete
-    await message.answer(
-        f"Привет, {hbold(message.from_user.full_name)}!\nВыбери свою роль.",
-        reply_markup=await baggage_type_keyboard(),
-    )
-
     await state.set_data({"name": message.from_user.full_name})
     async with async_session_maker() as session:
         await get_or_create(
@@ -124,6 +118,7 @@ async def process_city_from(message: Message, state: FSMContext) -> None:
 
 @form_router.message(Form.city_to_name)
 async def process_city_to(message: Message, state: FSMContext) -> None:
+    # TODO нельзя что бы из и в города были одинаковы
     async with async_session_maker() as session:
         user, _ = await get_or_create(
             session,
@@ -179,6 +174,9 @@ async def process_date(message: Message, state: FSMContext) -> None:
     text = f"Отправить\nИз: {data['city_from_name']}\nВ: {data['city_to_name']}\nдата: {message.text}"
     await bot.edit_message_text(
         text=text, chat_id=message.chat.id, message_id=data["message_id"]
+    )
+    await message.answer(
+        text="Выберите багаж", reply_markup=await baggage_type_keyboard()
     )
 
 
