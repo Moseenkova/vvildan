@@ -23,7 +23,13 @@ from database import (
     async_session_maker,
     get_or_create,
 )
-from my_keyboards import GeneralCallback, RoleCallback, country_keyboard, role_markup
+from my_keyboards import (
+    GeneralCallback,
+    RoleCallback,
+    baggage_type_keyboard,
+    country_keyboard,
+    role_markup,
+)
 
 load_dotenv()
 TOKEN = getenv("BOT_TOKEN")
@@ -48,6 +54,12 @@ class Form(StatesGroup):
 
 @form_router.message(CommandStart())
 async def command_start_handler(message: Message, state: FSMContext) -> None:
+    # TODO delete
+    await message.answer(
+        f"Привет, {hbold(message.from_user.full_name)}!\nВыбери свою роль.",
+        reply_markup=await baggage_type_keyboard(),
+    )
+
     await state.set_data({"name": message.from_user.full_name})
     async with async_session_maker() as session:
         await get_or_create(

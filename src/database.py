@@ -68,11 +68,12 @@ class Sender(Base):
 
 
 class BaggageKind(enum.Enum):
-    usual = 1
-    liquid = 2
-    expensive = 3
-    document = 4
-    troublesome = 5
+    usual = "Обычный"
+    liquid = "Жидкость"
+    expensive = "Ценный"
+    document = "Документ"
+    troublesome = "Проблемный"
+    other = "Другое"
 
 
 class VolumeKind(enum.Enum):
