@@ -67,6 +67,7 @@ class Sender(Base):
     __table_args__ = (UniqueConstraint("user_id"),)
 
 
+# TODO может быть наоброт порядок
 class BaggageKind(enum.Enum):
     usual = "Обычный"
     liquid = "Жидкость"

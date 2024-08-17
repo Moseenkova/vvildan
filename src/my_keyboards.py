@@ -48,6 +48,10 @@ class CityCallback(CallbackData, prefix="city"):
     id: int
 
 
+class BaggageKindCallback(CallbackData, prefix="baggage_kind"):
+    kind: BaggageKind
+
+
 async def country_keyboard(direction):
     builder = InlineKeyboardBuilder()
     async with async_session_maker() as session:
@@ -96,7 +100,9 @@ async def baggage_type_keyboard():
     builder = InlineKeyboardBuilder()
 
     for kind in BaggageKind:
-        builder.button(text=kind.value, callback_data=f"set:{kind.name}")
+        builder.button(
+            text=kind.value, callback_data=BaggageKindCallback(kind=kind.value).pack()
+        )
 
     builder.adjust(3, 3)
     return builder.as_markup()
