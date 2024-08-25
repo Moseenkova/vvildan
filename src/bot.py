@@ -51,6 +51,7 @@ class Form(StatesGroup):
     day_from = State()
     day_to = State()
     message_id = State()
+    baggage_type = State()
 
 
 @form_router.message(CommandStart())
@@ -147,6 +148,7 @@ async def process_city_to(message: Message, state: FSMContext) -> None:
     await message.answer("Пожалуйста, введите дату в формате ДД.ММ.ГГГГ.")
 
 
+# TODO добавить данные о дате в форму
 @form_router.message(Form.date)
 async def process_date(message: Message, state: FSMContext) -> None:
     await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id - 1)
@@ -187,6 +189,7 @@ async def process_date(message: Message, state: FSMContext) -> None:
 async def baggage_kind_button_handler(
     callback_query: CallbackQuery, callback_data: BaggageKindCallback, state: FSMContext
 ):
+    data = await state.get_data()
     await callback_query.message.delete()
     data = await state.get_data()
     text = (
