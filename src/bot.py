@@ -184,24 +184,42 @@ async def process_date(message: Message, state: FSMContext) -> None:
     )
 
 
-# TODO DRY
+# TODO при нажатии можно выбрать только один раз, добавить кнопку финиш,как писать тесты аирограмм
 @form_router.callback_query(BaggageKindCallback.filter())
 async def baggage_kind_button_handler(
     callback_query: CallbackQuery, callback_data: BaggageKindCallback, state: FSMContext
 ):
     data = await state.get_data()
+    baggage_types = data.get("baggage_types", [])
+
+    if callback_data.kind in baggage_types:
+        await callback_query.answer(
+            text=f"{callback_data.kind.value} уже выбран", show_alert=True
+        )
+        return
+
     await callback_query.message.delete()
-    data = await state.get_data()
-    text = (
-        f"Отправить\nИз: {data['city_from_name']}"
-        f"\nВ: {data['city_to_name']}"
-        f"\nдата: {data['city_to_name']}"
-        f"\nтип: {callback_data.kind.value}"
+    if callback_data.kind == "finish":
+        text = (
+            f"Отправить\nИз: {data['city_from_name']}"
+            f"\nВ: {data['city_to_name']}"
+            f"\nдата: {data['city_to_name']}"
+            f"\nтип: {callback_data.kind.value}"
+        )
+        await bot.edit_message_text(
+            text=text,
+            chat_id=callback_query.message.chat.id,
+            message_id=data["message_id"],
+        )
+        await callback_query.message.answer(text="Единица измерения")
+        return
+    baggage_types.append(callback_data.kind)
+    await state.update_data(baggage_types=baggage_types)
+    chosen_types = " ".join([i.value for i in baggage_types])
+    await callback_query.message.answer(
+        text=f"{chosen_types}\nВыберите багаж, выберите необходимое и после нажмите готово",
+        reply_markup=await baggage_type_keyboard(),
     )
-    await bot.edit_message_text(
-        text=text, chat_id=callback_query.message.chat.id, message_id=data["message_id"]
-    )
-    await callback_query.message.answer(text="Единица измерения")
 
 
 @form_router.callback_query(RoleCallback.filter(F.text == "courier"))

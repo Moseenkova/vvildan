@@ -48,8 +48,18 @@ class CityCallback(CallbackData, prefix="city"):
     id: int
 
 
+class BaggageKinds(Enum):
+    usual = "Обычный"
+    liquid = "Жидкость"
+    expensive = "Ценный"
+    document = "Документ"
+    troublesome = "Проблемный"
+    other = "Другое"
+    finish = "Дальше"
+
+
 class BaggageKindCallback(CallbackData, prefix="baggage_kind"):
-    kind: BaggageKind
+    kind: BaggageKinds
 
 
 async def country_keyboard(direction):
@@ -104,5 +114,5 @@ async def baggage_type_keyboard():
             text=kind.value, callback_data=BaggageKindCallback(kind=kind.value).pack()
         )
 
-    builder.adjust(3, 3)
+    builder.adjust(3, 4)
     return builder.as_markup()
