@@ -6,7 +6,7 @@ from aiogram.types.inline_keyboard_markup import InlineKeyboardMarkup
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from sqlalchemy import select
 
-from database import BaggageKind, City, Country, async_session_maker
+from database import City, Country, async_session_maker
 
 
 class DirectionEnum(str, Enum):
@@ -55,7 +55,7 @@ class BaggageKinds(Enum):
     document = "Документ"
     troublesome = "Проблемный"
     other = "Другое"
-    finish = "Дальше"
+    finish = "Готово"
 
 
 class BaggageKindCallback(CallbackData, prefix="baggage_kind"):
@@ -109,10 +109,11 @@ async def city_keyboard(callback_data):
 async def baggage_type_keyboard():
     builder = InlineKeyboardBuilder()
 
-    for kind in BaggageKind:
+    for kind in BaggageKinds:
         builder.button(
             text=kind.value, callback_data=BaggageKindCallback(kind=kind.value).pack()
         )
 
     builder.adjust(3, 4)
+
     return builder.as_markup()

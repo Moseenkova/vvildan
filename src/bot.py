@@ -25,6 +25,7 @@ from database import (
 )
 from my_keyboards import (
     BaggageKindCallback,
+    BaggageKinds,
     GeneralCallback,
     RoleCallback,
     baggage_type_keyboard,
@@ -175,6 +176,7 @@ async def process_date(message: Message, state: FSMContext) -> None:
         )
         return
     data = await state.get_data()
+    await state.update_data(date=message.text)
     text = f"Отправить\nИз: {data['city_from_name']}\nВ: {data['city_to_name']}\nдата: {message.text}"
     await bot.edit_message_text(
         text=text, chat_id=message.chat.id, message_id=data["message_id"]
@@ -197,21 +199,22 @@ async def baggage_kind_button_handler(
             text=f"{callback_data.kind.value} уже выбран", show_alert=True
         )
         return
-
+    # Todo если пользователь нажал готово но не выбрал багаж
     await callback_query.message.delete()
-    if callback_data.kind == "finish":
+    if callback_data.kind == BaggageKinds.finish:
+        chosen_types = " ".join([i.value for i in baggage_types])
         text = (
             f"Отправить\nИз: {data['city_from_name']}"
             f"\nВ: {data['city_to_name']}"
-            f"\nдата: {data['city_to_name']}"
-            f"\nтип: {callback_data.kind.value}"
+            f"\nдата: {data['date']}"
+            f"\nтип: {chosen_types}"
         )
         await bot.edit_message_text(
             text=text,
             chat_id=callback_query.message.chat.id,
             message_id=data["message_id"],
         )
-        await callback_query.message.answer(text="Единица измерения")
+        await callback_query.message.answer(text="Добавьте описания багажа")
         return
     baggage_types.append(callback_data.kind)
     await state.update_data(baggage_types=baggage_types)
