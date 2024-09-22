@@ -25,6 +25,7 @@ from database import (
 )
 from my_keyboards import (
     BaggageKindCallback,
+    BaggageKinds,
     GeneralCallback,
     RoleCallback,
     baggage_type_keyboard,
@@ -51,6 +52,9 @@ class Form(StatesGroup):
     day_from = State()
     day_to = State()
     message_id = State()
+    baggage_type = State()
+    extra = State()
+    comment = State()
 
 
 @form_router.message(CommandStart())
@@ -147,6 +151,7 @@ async def process_city_to(message: Message, state: FSMContext) -> None:
     await message.answer("Пожалуйста, введите дату в формате ДД.ММ.ГГГГ.")
 
 
+# TODO добавить данные о дате в форму
 @form_router.message(Form.date)
 async def process_date(message: Message, state: FSMContext) -> None:
     await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id - 1)
@@ -173,32 +178,67 @@ async def process_date(message: Message, state: FSMContext) -> None:
         )
         return
     data = await state.get_data()
+    await state.update_data(date=message.text)
     text = f"Отправить\nИз: {data['city_from_name']}\nВ: {data['city_to_name']}\nдата: {message.text}"
     await bot.edit_message_text(
         text=text, chat_id=message.chat.id, message_id=data["message_id"]
     )
+    await state.set_state(Form.baggage_type)
+
     await message.answer(
         text="Выберите багаж", reply_markup=await baggage_type_keyboard()
     )
 
 
-# TODO DRY
+# TODO aiogram test
 @form_router.callback_query(BaggageKindCallback.filter())
 async def baggage_kind_button_handler(
     callback_query: CallbackQuery, callback_data: BaggageKindCallback, state: FSMContext
 ):
-    await callback_query.message.delete()
     data = await state.get_data()
-    text = (
-        f"Отправить\nИз: {data['city_from_name']}"
-        f"\nВ: {data['city_to_name']}"
-        f"\nдата: {data['city_to_name']}"
-        f"\nтип: {callback_data.kind.value}"
+    baggage_types = data.get("baggage_types", [])
+    if baggage_types == [] and callback_data.kind == BaggageKinds.finish:
+        await callback_query.answer(text="выберите вид багажа", show_alert=True)
+        return
+
+    if callback_data.kind == BaggageKinds.finish:
+        chosen_types = " ".join([i.value for i in baggage_types])
+        text = (
+            f"Отправить\nИз: {data['city_from_name']}"
+            f"\nВ: {data['city_to_name']}"
+            f"\nдата: {data['date']}"
+            f"\nтип: {chosen_types}"
+        )
+        await bot.delete_message(
+            chat_id=callback_query.message.chat.id,
+            message_id=callback_query.message.message_id,
+        )
+        await bot.edit_message_text(
+            text=text,
+            chat_id=callback_query.message.chat.id,
+            message_id=data["message_id"],
+        )
+        await callback_query.message.answer(text="Добавьте описания багажа")
+        await state.set_state(Form.comment)
+
+        return
+
+    if callback_data.kind in baggage_types:
+        await callback_query.answer(
+            text=f"{callback_data.kind.value} уже выбран", show_alert=True
+        )
+        return
+
+    await callback_query.message.delete()
+
+    baggage_types.append(callback_data.kind)
+    await state.update_data(baggage_types=baggage_types)
+    chosen_types = " ".join([i.value for i in baggage_types])
+    await callback_query.message.answer(
+        text=f"{chosen_types}\nВыберите багаж, выберите необходимое и после нажмите готово",
+        reply_markup=await baggage_type_keyboard(),
     )
-    await bot.edit_message_text(
-        text=text, chat_id=callback_query.message.chat.id, message_id=data["message_id"]
-    )
-    await callback_query.message.answer(text="Единица измерения")
+    await state.set_state(Form.extra)
 
 
 @form_router.callback_query(RoleCallback.filter(F.text == "courier"))
