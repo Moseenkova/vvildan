@@ -186,7 +186,7 @@ async def process_date(message: Message, state: FSMContext) -> None:
     )
 
 
-# TODO при нажатии можно выбрать только один раз, добавить кнопку финиш,как писать тесты аирограмм
+# TODO aiogram test
 @form_router.callback_query(BaggageKindCallback.filter())
 async def baggage_kind_button_handler(
     callback_query: CallbackQuery, callback_data: BaggageKindCallback, state: FSMContext
@@ -196,16 +196,13 @@ async def baggage_kind_button_handler(
     if baggage_types == [] and callback_data.kind == BaggageKinds.finish:
         await callback_query.answer(text="выберите вид багажа", show_alert=True)
         return
-    if baggage_types == []:
-        await callback_query.answer(text="уже выбрано", show_alert=True)
-        return
 
     if callback_data.kind in baggage_types:
         await callback_query.answer(
             text=f"{callback_data.kind.value} уже выбран", show_alert=True
         )
         return
-    # Todo если пользователь нажал готово но не выбрал багаж
+
     await callback_query.message.delete()
     if callback_data.kind == BaggageKinds.finish:
         chosen_types = " ".join([i.value for i in baggage_types])
