@@ -193,6 +193,9 @@ async def baggage_kind_button_handler(
 ):
     data = await state.get_data()
     baggage_types = data.get("baggage_types", [])
+    if baggage_types == []:
+        await callback_query.answer(text="выберите вид багажа", show_alert=True)
+        return
 
     if callback_data.kind in baggage_types:
         await callback_query.answer(
