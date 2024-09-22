@@ -53,6 +53,8 @@ class Form(StatesGroup):
     day_to = State()
     message_id = State()
     baggage_type = State()
+    extra = State()
+    comment = State()
 
 
 @form_router.message(CommandStart())
@@ -181,6 +183,8 @@ async def process_date(message: Message, state: FSMContext) -> None:
     await bot.edit_message_text(
         text=text, chat_id=message.chat.id, message_id=data["message_id"]
     )
+    await state.set_state(Form.baggage_type)
+
     await message.answer(
         text="Выберите багаж", reply_markup=await baggage_type_keyboard()
     )
@@ -197,13 +201,6 @@ async def baggage_kind_button_handler(
         await callback_query.answer(text="выберите вид багажа", show_alert=True)
         return
 
-    if callback_data.kind in baggage_types:
-        await callback_query.answer(
-            text=f"{callback_data.kind.value} уже выбран", show_alert=True
-        )
-        return
-
-    await callback_query.message.delete()
     if callback_data.kind == BaggageKinds.finish:
         chosen_types = " ".join([i.value for i in baggage_types])
         text = (
@@ -212,13 +209,28 @@ async def baggage_kind_button_handler(
             f"\nдата: {data['date']}"
             f"\nтип: {chosen_types}"
         )
+        await bot.delete_message(
+            chat_id=callback_query.message.chat.id,
+            message_id=callback_query.message.message_id,
+        )
         await bot.edit_message_text(
             text=text,
             chat_id=callback_query.message.chat.id,
             message_id=data["message_id"],
         )
         await callback_query.message.answer(text="Добавьте описания багажа")
+        await state.set_state(Form.comment)
+
         return
+
+    if callback_data.kind in baggage_types:
+        await callback_query.answer(
+            text=f"{callback_data.kind.value} уже выбран", show_alert=True
+        )
+        return
+
+    await callback_query.message.delete()
+
     baggage_types.append(callback_data.kind)
     await state.update_data(baggage_types=baggage_types)
     chosen_types = " ".join([i.value for i in baggage_types])
@@ -226,6 +238,7 @@ async def baggage_kind_button_handler(
         text=f"{chosen_types}\nВыберите багаж, выберите необходимое и после нажмите готово",
         reply_markup=await baggage_type_keyboard(),
     )
+    await state.set_state(Form.extra)
 
 
 @form_router.callback_query(RoleCallback.filter(F.text == "courier"))
