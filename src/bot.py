@@ -52,6 +52,7 @@ class Form(StatesGroup):
     day_from = State()
     day_to = State()
     message_id = State()
+    # TODO message_text
     baggage_type = State()
     extra = State()
     comment = State()
@@ -73,7 +74,6 @@ async def command_start_handler(message: Message, state: FSMContext) -> None:
     )
 
 
-# TODO если не выберит роль а просто введет текст
 @form_router.callback_query(RoleCallback.filter())
 async def role_button_handler(
     callback_query: CallbackQuery, callback_data: RoleCallback, state: FSMContext
@@ -239,6 +239,32 @@ async def baggage_kind_button_handler(
         reply_markup=await baggage_type_keyboard(),
     )
     await state.set_state(Form.extra)
+
+
+@form_router.message(Form.baggage_type)
+async def process_baggage_type(message: Message, state: FSMContext) -> None:
+    await message.answer("Пожалуйста, добавьте описания багажа:")
+    await state.set_state(Form.comment)  # Переход к состоянию ожидания комментария.
+
+
+@form_router.message(Form.comment)
+async def process_comment(message: Message, state: FSMContext) -> None:
+    await state.update_data(comment=message.text)
+    data = await state.get_data()
+    text = (
+        f"Отправить\nИз: {data['city_from_name']}"
+        f"\nВ: {data['city_to_name']}"
+        f"\nдата: {data['date']}"
+        f"\nтип: {data['baggage_type']}"
+        f"\nкомментарий: {message.text}"
+    )
+    await bot.edit_message_text(
+        text=text, chat_id=message.chat.id, message_id=data["message_id"]
+    )
+    await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id - 1)
+    await message.delete()
+
+    await message.answer("Проверьте данные")
 
 
 @form_router.callback_query(RoleCallback.filter(F.text == "courier"))

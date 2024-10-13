@@ -101,8 +101,8 @@ class Request(Base):
     date_to: Mapped[date] = mapped_column(Date)
     baggage_kind: Mapped[str] = mapped_column(Enum(BaggageKind))
     volume_kind: Mapped[str] = mapped_column(Enum(VolumeKind))
-    volume: Mapped[int]
     status: Mapped[str] = mapped_column(Enum(Status))
+    comment: Mapped[str]
 
 
 class Country(Base):
