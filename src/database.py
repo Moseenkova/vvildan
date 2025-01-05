@@ -95,14 +95,14 @@ class Request(Base):
     __tablename__ = "requests"
     sender_id: Mapped[int] = mapped_column(ForeignKey("senders.id"))
     sender: Mapped["Sender"] = relationship(back_populates="requests")
-    origin: Mapped[str]
-    destination: Mapped[str]
-    date_from: Mapped[date] = mapped_column(Date)
-    date_to: Mapped[date] = mapped_column(Date)
-    baggage_kind: Mapped[str] = mapped_column(Enum(BaggageKind))
-    volume_kind: Mapped[str] = mapped_column(Enum(VolumeKind))
-    status: Mapped[str] = mapped_column(Enum(Status))
+    origin_id: Mapped[int] = mapped_column(ForeignKey("user_cities.id"))
+    origin: Mapped["Sender"] = relationship(back_populates="requests")
+    dest_id: Mapped[int] = mapped_column(ForeignKey("user_cities.id"))
+    dest: Mapped["Sender"] = relationship(back_populates="requests")
+    date: Mapped[date] = mapped_column(Date)
+    baggage_types: Mapped[str]
     comment: Mapped[str]
+    status: Mapped[str] = mapped_column(Enum(Status))
 
 
 class Country(Base):

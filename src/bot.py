@@ -13,6 +13,7 @@ from aiogram.fsm.state import State, StatesGroup
 from aiogram.types import CallbackQuery, Message
 from aiogram.utils.markdown import hbold
 from dotenv import load_dotenv
+from sqlalchemy import insert
 
 import database
 from database import (
@@ -30,6 +31,7 @@ from my_keyboards import (
     RoleCallback,
     baggage_type_keyboard,
     country_keyboard,
+    final_keyboard,
     role_markup,
 )
 
@@ -53,7 +55,7 @@ class Form(StatesGroup):
     day_to = State()
     message_id = State()
     # TODO message_text
-    baggage_type = State()
+    baggage_types = State()
     extra = State()
     comment = State()
 
@@ -70,6 +72,19 @@ async def command_start_handler(message: Message, state: FSMContext) -> None:
         )
     await message.answer(
         f"Привет, {hbold(message.from_user.full_name)}!\nВыбери свою роль.",
+        reply_markup=role_markup,
+    )
+
+
+@form_router.callback_query(GeneralCallback.filter(F.text == "start_button"))
+async def start_button_handler(
+    callback_query: CallbackQuery, callback_data: GeneralCallback, state: FSMContext
+) -> None:
+    print("ghcghh")
+    await state.set_data({"name": callback_query.from_user.full_name})
+
+    await callback_query.message.answer(
+        text=f"Привет, {hbold(callback_query.from_user.full_name)}!\nВыбери свою роль.",
         reply_markup=role_markup,
     )
 
@@ -183,7 +198,7 @@ async def process_date(message: Message, state: FSMContext) -> None:
     await bot.edit_message_text(
         text=text, chat_id=message.chat.id, message_id=data["message_id"]
     )
-    await state.set_state(Form.baggage_type)
+    await state.set_state(Form.baggage_types)
 
     await message.answer(
         text="Выберите багаж", reply_markup=await baggage_type_keyboard()
@@ -241,7 +256,7 @@ async def baggage_kind_button_handler(
     await state.set_state(Form.extra)
 
 
-@form_router.message(Form.baggage_type)
+@form_router.message(Form.baggage_types)
 async def process_baggage_type(message: Message, state: FSMContext) -> None:
     await message.answer("Пожалуйста, добавьте описания багажа:")
     await state.set_state(Form.comment)  # Переход к состоянию ожидания комментария.
@@ -251,11 +266,12 @@ async def process_baggage_type(message: Message, state: FSMContext) -> None:
 async def process_comment(message: Message, state: FSMContext) -> None:
     await state.update_data(comment=message.text)
     data = await state.get_data()
+    chosen_types = " ".join([i.value for i in data["baggage_types"]])
     text = (
         f"Отправить\nИз: {data['city_from_name']}"
         f"\nВ: {data['city_to_name']}"
         f"\nдата: {data['date']}"
-        f"\nтип: {data['baggage_type']}"
+        f"\nтип: {chosen_types}"
         f"\nкомментарий: {message.text}"
     )
     await bot.edit_message_text(
@@ -264,7 +280,7 @@ async def process_comment(message: Message, state: FSMContext) -> None:
     await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id - 1)
     await message.delete()
 
-    await message.answer("Проверьте данные")
+    await message.answer("Проверьте данные", reply_markup=await final_keyboard())
 
 
 @form_router.callback_query(RoleCallback.filter(F.text == "courier"))
@@ -358,6 +374,40 @@ async def text_input_handler(message: Message, state: FSMContext) -> None:
     await message.delete()
 
 
+@form_router.callback_query(GeneralCallback.filter(F.text == "finish_button"))
+async def command_finish_handler(
+    callback_query: CallbackQuery, callback_data: GeneralCallback, state: FSMContext
+) -> None:
+    # __tablename__ = "requests"
+    #    sender_id: Mapped[int] = mapped_column(ForeignKey("senders.id"))
+    #    sender: Mapped["Sender"] = relationship(back_populates="requests")
+    #    origin: Mapped[str]
+    #    destination: Mapped[str]
+    #    date_from: Mapped[date] = mapped_column(Date)
+    #    date_to: Mapped[date] = mapped_column(Date)
+    #    baggage_kind: Mapped[str] = mapped_column(Enum(BaggageKind))
+    #    volume_kind: Mapped[str] = mapped_column(Enum(VolumeKind))
+    #    status: Mapped[str] = mapped_column(Enum(Status))
+    #    comment: Mapped[str]
+    data = await state.get_data()
+    date_str = data["date"]
+    date_obj = datetime.strptime(date_str, "%d.%m.%Y").date()
+    async with async_session_maker() as session:
+        params = {
+            "sender_id": callback_query.from_user.id,
+            "origin_id": data["city_from_id"],
+            "dest_id": data["city_to_id"],
+            "date": date_obj,
+            "baggage_types": str([i.name for i in data["baggage_types"]]),
+            "status": database.Status.new,
+            "comment": data["comment"],
+        }
+        query = insert(database.Request).values(**params).returning(database.Request)
+        await session.execute(query)
+        await session.commit()
+    pass
+
+
 async def main() -> None:
     dp = Dispatcher()
     dp.include_router(form_router)
@@ -367,3 +417,6 @@ async def main() -> None:
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     asyncio.run(main())
+
+# создать миграции (revision)
+# прменить миграции (upgrade head)

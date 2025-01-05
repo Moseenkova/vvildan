@@ -117,3 +117,18 @@ async def baggage_type_keyboard():
     builder.adjust(3, 4)
 
     return builder.as_markup()
+
+
+async def final_keyboard():
+    builder = InlineKeyboardBuilder()
+
+    builder.button(
+        text="Изменить", callback_data=GeneralCallback(text="start_button").pack()
+    )
+    builder.button(
+        text="Готово", callback_data=GeneralCallback(text="finish_button").pack()
+    )
+
+    builder.adjust(3, 4)
+
+    return builder.as_markup()
