@@ -378,17 +378,6 @@ async def text_input_handler(message: Message, state: FSMContext) -> None:
 async def command_finish_handler(
     callback_query: CallbackQuery, callback_data: GeneralCallback, state: FSMContext
 ) -> None:
-    # __tablename__ = "requests"
-    #    sender_id: Mapped[int] = mapped_column(ForeignKey("senders.id"))
-    #    sender: Mapped["Sender"] = relationship(back_populates="requests")
-    #    origin: Mapped[str]
-    #    destination: Mapped[str]
-    #    date_from: Mapped[date] = mapped_column(Date)
-    #    date_to: Mapped[date] = mapped_column(Date)
-    #    baggage_kind: Mapped[str] = mapped_column(Enum(BaggageKind))
-    #    volume_kind: Mapped[str] = mapped_column(Enum(VolumeKind))
-    #    status: Mapped[str] = mapped_column(Enum(Status))
-    #    comment: Mapped[str]
     data = await state.get_data()
     date_str = data["date"]
     date_obj = datetime.strptime(date_str, "%d.%m.%Y").date()
