@@ -54,6 +54,7 @@ class Courier(Base):
     __tablename__ = "couriers"
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     user: Mapped["User"] = relationship(back_populates="courier")
+    requests = relationship("Request", back_populates="courier")
 
     __table_args__ = (UniqueConstraint("user_id"),)
 
@@ -63,6 +64,7 @@ class Sender(Base):
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     user: Mapped["User"] = relationship(back_populates="sender")
     requests: Mapped["Request"] = relationship(back_populates="sender")
+    requests = relationship("Request", back_populates="sender")
 
     __table_args__ = (UniqueConstraint("user_id"),)
 
@@ -93,12 +95,19 @@ class Status(enum.Enum):
 
 class Request(Base):
     __tablename__ = "requests"
-    sender_id: Mapped[int] = mapped_column(ForeignKey("senders.id"))
+    sender_id: Mapped[int] = mapped_column(ForeignKey("senders.id"), nullable=True)
     sender: Mapped["Sender"] = relationship(back_populates="requests")
+    courier_id: Mapped[int] = mapped_column(ForeignKey("couriers.id"), nullable=True)
+    courier: Mapped["Courier"] = relationship(back_populates="requests")
     origin_id: Mapped[int] = mapped_column(ForeignKey("user_cities.id"))
-    origin: Mapped["Sender"] = relationship(back_populates="requests")
-    dest_id: Mapped[int] = mapped_column(ForeignKey("user_cities.id"))
-    dest: Mapped["Sender"] = relationship(back_populates="requests")
+    destination_id: Mapped[int] = mapped_column(ForeignKey("user_cities.id"))
+
+    origin: Mapped["UserCity"] = relationship(
+        foreign_keys=[origin_id], backref="requests_from"
+    )
+    destination: Mapped["UserCity"] = relationship(
+        foreign_keys=[destination_id], backref="requests_to"
+    )
     date: Mapped[date] = mapped_column(Date)
     baggage_types: Mapped[str]
     comment: Mapped[str]

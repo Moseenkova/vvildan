@@ -394,18 +394,22 @@ async def command_finish_handler(
     date_obj = datetime.strptime(date_str, "%d.%m.%Y").date()
     async with async_session_maker() as session:
         params = {
-            "sender_id": callback_query.from_user.id,
             "origin_id": data["city_from_id"],
-            "dest_id": data["city_to_id"],
+            "destination_id": data["city_to_id"],
             "date": date_obj,
             "baggage_types": str([i.name for i in data["baggage_types"]]),
             "status": database.Status.new,
             "comment": data["comment"],
         }
+        role = data.get("role")
+        if role == "courier":
+            params["courier_id"] = callback_query.from_user.id
+        elif role == "sender":
+            params["sender_id"] = callback_query.from_user.id
         query = insert(database.Request).values(**params).returning(database.Request)
         await session.execute(query)
         await session.commit()
-    pass
+    await callback_query.answer()
 
 
 async def main() -> None:
