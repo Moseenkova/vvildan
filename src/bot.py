@@ -400,6 +400,15 @@ async def command_finish_handler(
         await session.commit()
     await callback_query.answer()
 
+    await callback_query.message.answer(
+        "Ваш заказ принят. Если нужно, вы можете изменить данные.",
+        reply_markup=role_markup,  # Можно добавить клавиатуру для изменения данных
+    )
+    # Удаляем предыдущие сообщения
+    await bot.delete_message(
+        callback_query.message.chat.id, callback_query.message.message_id
+    )
+
 
 async def main() -> None:
     dp = Dispatcher()
