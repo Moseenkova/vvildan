@@ -7,18 +7,19 @@ from os import getenv
 from aiogram import Bot, Dispatcher, F, Router
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
-from aiogram.filters import CommandStart
+from aiogram.filters import Command, CommandStart
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.types import CallbackQuery, Message
 from aiogram.utils.markdown import hbold
 from dotenv import load_dotenv
-from sqlalchemy import insert
+from sqlalchemy import insert, select
 
 import database
 from database import (
     Country,
     Courier,
+    Request,
     User,
     UserCity,
     async_session_maker,
@@ -29,6 +30,7 @@ from my_keyboards import (
     BaggageKinds,
     GeneralCallback,
     RoleCallback,
+    RoleModelEnum,
     baggage_type_keyboard,
     country_keyboard,
     final_keyboard,
@@ -74,6 +76,36 @@ async def command_start_handler(message: Message, state: FSMContext) -> None:
         f"Привет, {hbold(message.from_user.full_name)}!\nВыбери свою роль.",
         reply_markup=role_markup,
     )
+
+
+@form_router.message(Command("reqs"))
+async def command_reqs_handler(message: Message, state: FSMContext) -> None:
+    async with async_session_maker() as session:
+        # Выполняем запрос, чтобы найти все заявки для отправителя
+        query = select(Request).filter_by(sender_id=message.message_id)
+        result = await session.execute(query)
+        sender_reqs = result.scalars().all()
+        query = select(Request).filter_by(courier_id=message.message_id)
+        result = await session.execute(query)
+        courier_reqs = result.scalars().all()
+
+        if sender_reqs:
+            # Если заявки найдены, отправляем их в виде сообщения
+            req_list = "\n".join(
+                [f"Request ID: {req.id}, Status: {req.status}" for req in sender_reqs]
+            )
+            await message.answer(f"Вот ваши заявки:\n{req_list}")
+
+        if courier_reqs:
+            # Если заявки найдены, отправляем их в виде сообщения
+            req_list = "\n".join(
+                [f"Request ID: {req.id}, Status: {req.status}" for req in courier_reqs]
+            )
+            await message.answer(f"Вот ваши заявки:\n{req_list}")
+
+        else:
+            # Если заявок нет
+            await message.answer("У вас нет заявок.")
 
 
 @form_router.callback_query(GeneralCallback.filter(F.text == "start_button"))
@@ -291,6 +323,7 @@ async def courier_button_handler(
         "Отправить из:", reply_markup=await country_keyboard(direction="from")
     )
     await callback_query.message.delete()
+    # создать курьера здесь создать пользователя при команде start
     async with async_session_maker() as session:
         user, _ = await get_or_create(
             session,
@@ -298,7 +331,12 @@ async def courier_button_handler(
             defaults={"name": callback_query.message.chat.full_name},
             tg_id=callback_query.message.chat.id,
         )
-        await get_or_create(session, Courier, user_id=user.id)
+        # Проверяем, существует ли уже курьер для данного пользователя, если нет - создаем
+        courier, created = await get_or_create(session, Courier, user_id=user.id)
+
+        if created:
+            # Здесь можно добавить логику, если курьер был создан (например, отправить сообщение)
+            await callback_query.message.answer("Вы успешно стали курьером!")
 
 
 @form_router.callback_query(GeneralCallback.filter(F.text == "absent_country_from"))
@@ -391,10 +429,16 @@ async def command_finish_handler(
             "comment": data["comment"],
         }
         role = data.get("role")
-        if role == "courier":
-            params["courier_id"] = callback_query.from_user.id
-        elif role == "sender":
-            params["sender_id"] = callback_query.from_user.id
+        if role == RoleModelEnum.courier:
+            query = select(Courier).filter(
+                Courier.user.has(tg_id=callback_query.from_user.id)
+            )
+            result = await session.execute(query)
+            courier = result.scalars().one_or_none()
+            if courier:
+                params["courier_id"] = courier.id
+        elif role == RoleModelEnum.sender:
+            params["sender.user_id"] = callback_query.from_user.id
         query = insert(database.Request).values(**params).returning(database.Request)
         await session.execute(query)
         await session.commit()
