@@ -14,12 +14,14 @@ from aiogram.types import CallbackQuery, Message
 from aiogram.utils.markdown import hbold
 from dotenv import load_dotenv
 from sqlalchemy import insert, select
+from sqlalchemy.orm import joinedload
 
 import database
 from database import (
     Country,
     Courier,
     Request,
+    Sender,
     User,
     UserCity,
     async_session_maker,
@@ -56,7 +58,6 @@ class Form(StatesGroup):
     day_from = State()
     day_to = State()
     message_id = State()
-    # TODO message_text
     baggage_types = State()
     extra = State()
     comment = State()
@@ -82,29 +83,55 @@ async def command_start_handler(message: Message, state: FSMContext) -> None:
 async def command_reqs_handler(message: Message, state: FSMContext) -> None:
     async with async_session_maker() as session:
         # Выполняем запрос, чтобы найти все заявки для отправителя
-        query = select(Request).filter_by(sender_id=message.message_id)
-        result = await session.execute(query)
-        sender_reqs = result.scalars().all()
-        query = select(Request).filter_by(courier_id=message.message_id)
-        result = await session.execute(query)
-        courier_reqs = result.scalars().all()
+
+        user = await session.execute(
+            select(User).filter(User.tg_id == message.from_user.id)
+        )
+        user = user.scalars().one_or_none()
+
+        # todo если будут ошибки то смотреть 93 (добавить число и багаж в сообщении 102)
+        sender_reqs = await session.execute(
+            select(Request)
+            .options(joinedload(Request.origin))
+            .options(joinedload(Request.destination))
+            .join(Sender, Sender.id == Request.sender_id)
+            .filter(Sender.user_id == user.id)
+        )
+        sender_reqs = sender_reqs.scalars().all()
+
+        # Get requests where the user is the courier
 
         if sender_reqs:
             # Если заявки найдены, отправляем их в виде сообщения
             req_list = "\n".join(
-                [f"Request ID: {req.id}, Status: {req.status}" for req in sender_reqs]
+                [
+                    f"From: {req.origin.name}, to: {req.destination.name}, "
+                    f"Date: {req.created_at.strftime('%Y-%m-%d')}, "
+                    f"baggage_types: {req.baggage_types}, "
+                    for req in sender_reqs
+                ]
             )
             await message.answer(f"Вот ваши заявки:\n{req_list}")
 
+        courier_reqs = await session.execute(
+            select(Request)
+            .join(Courier, Courier.id == Request.courier_id)
+            .filter(Courier.user_id == user.id)
+        )
+        courier_reqs = courier_reqs.scalars().all()
         if courier_reqs:
             # Если заявки найдены, отправляем их в виде сообщения
             req_list = "\n".join(
-                [f"Request ID: {req.id}, Status: {req.status}" for req in courier_reqs]
+                [
+                    f"Request ID: {req.id}, Status: {req.status}, "
+                    f"Date: {req.created_at.strftime('%Y-%m-%d')}, "
+                    f"baggage_types: {req.baggage_types}"
+                    for req in courier_reqs
+                ]
             )
             await message.answer(f"Вот ваши заявки:\n{req_list}")
 
-        else:
-            # Если заявок нет
+        if not sender_reqs and not courier_reqs:
             await message.answer("У вас нет заявок.")
 
 
