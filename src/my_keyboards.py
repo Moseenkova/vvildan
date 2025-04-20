@@ -126,7 +126,7 @@ async def final_keyboard():
         text="Изменить", callback_data=GeneralCallback(text="start_button").pack()
     )
     builder.button(
-        text="Готово", callback_data=GeneralCallback(text="finish_button").pack()
+        text="Подтвердить", callback_data=GeneralCallback(text="finish_button").pack()
     )
 
     builder.adjust(3, 4)

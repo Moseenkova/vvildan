@@ -7,18 +7,21 @@ from os import getenv
 from aiogram import Bot, Dispatcher, F, Router
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
-from aiogram.filters import CommandStart
+from aiogram.filters import Command, CommandStart
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.types import CallbackQuery, Message
 from aiogram.utils.markdown import hbold
 from dotenv import load_dotenv
-from sqlalchemy import insert
+from sqlalchemy import insert, select
+from sqlalchemy.orm import joinedload
 
 import database
 from database import (
     Country,
     Courier,
+    Request,
+    Sender,
     User,
     UserCity,
     async_session_maker,
@@ -29,6 +32,7 @@ from my_keyboards import (
     BaggageKinds,
     GeneralCallback,
     RoleCallback,
+    RoleModelEnum,
     baggage_type_keyboard,
     country_keyboard,
     final_keyboard,
@@ -54,7 +58,6 @@ class Form(StatesGroup):
     day_from = State()
     day_to = State()
     message_id = State()
-    # TODO message_text
     baggage_types = State()
     extra = State()
     comment = State()
@@ -74,6 +77,62 @@ async def command_start_handler(message: Message, state: FSMContext) -> None:
         f"Привет, {hbold(message.from_user.full_name)}!\nВыбери свою роль.",
         reply_markup=role_markup,
     )
+
+
+@form_router.message(Command("reqs"))
+async def command_reqs_handler(message: Message, state: FSMContext) -> None:
+    async with async_session_maker() as session:
+        # Выполняем запрос, чтобы найти все заявки для отправителя
+
+        user = await session.execute(
+            select(User).filter(User.tg_id == message.from_user.id)
+        )
+        user = user.scalars().one_or_none()
+
+        # todo если будут ошибки то смотреть 93 (добавить число и багаж в сообщении 102)
+        sender_reqs = await session.execute(
+            select(Request)
+            .options(joinedload(Request.origin))
+            .options(joinedload(Request.destination))
+            .join(Sender, Sender.id == Request.sender_id)
+            .filter(Sender.user_id == user.id)
+        )
+        sender_reqs = sender_reqs.scalars().all()
+
+        # Get requests where the user is the courier
+
+        if sender_reqs:
+            # Если заявки найдены, отправляем их в виде сообщения
+            req_list = "\n".join(
+                [
+                    f"From: {req.origin.name}, to: {req.destination.name}, "
+                    f"Date: {req.date.strftime('%Y-%m-%d')}, "
+                    f"baggage_types: {req.baggage_types}, "
+                    for req in sender_reqs
+                ]
+            )
+            await message.answer(f"Вот ваши заявки:\n{req_list}")
+
+        courier_reqs = await session.execute(
+            select(Request)
+            .join(Courier, Courier.id == Request.courier_id)
+            .filter(Courier.user_id == user.id)
+        )
+        courier_reqs = courier_reqs.scalars().all()
+        if courier_reqs:
+            # Если заявки найдены, отправляем их в виде сообщения
+            req_list = "\n".join(
+                [
+                    f"Request ID: {req.id}, Status: {req.status}, "
+                    f"Date: {req.date.strftime('%Y-%m-%d')}, "
+                    f"baggage_types: {req.baggage_types}"
+                    for req in courier_reqs
+                ]
+            )
+            await message.answer(f"Вот ваши заявки:\n{req_list}")
+
+        if not sender_reqs and not courier_reqs:
+            await message.answer("У вас нет заявок.")
 
 
 @form_router.callback_query(GeneralCallback.filter(F.text == "start_button"))
@@ -166,7 +225,7 @@ async def process_city_to(message: Message, state: FSMContext) -> None:
     await message.answer("Пожалуйста, введите дату в формате ДД.ММ.ГГГГ.")
 
 
-# TODO добавить данные о дате в форму
+# TODO добавить данные о дате в форм
 @form_router.message(Form.date)
 async def process_date(message: Message, state: FSMContext) -> None:
     await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id - 1)
@@ -291,6 +350,7 @@ async def courier_button_handler(
         "Отправить из:", reply_markup=await country_keyboard(direction="from")
     )
     await callback_query.message.delete()
+    # создать курьера здесь создать пользователя при команде start
     async with async_session_maker() as session:
         user, _ = await get_or_create(
             session,
@@ -298,7 +358,12 @@ async def courier_button_handler(
             defaults={"name": callback_query.message.chat.full_name},
             tg_id=callback_query.message.chat.id,
         )
-        await get_or_create(session, Courier, user_id=user.id)
+        # Проверяем, существует ли уже курьер для данного пользователя, если нет - создаем
+        courier, created = await get_or_create(session, Courier, user_id=user.id)
+
+        if created:
+            # Здесь можно добавить логику, если курьер был создан (например, отправить сообщение)
+            await callback_query.message.answer("Вы успешно стали курьером!")
 
 
 @form_router.callback_query(GeneralCallback.filter(F.text == "absent_country_from"))
@@ -391,14 +456,33 @@ async def command_finish_handler(
             "comment": data["comment"],
         }
         role = data.get("role")
-        if role == "courier":
-            params["courier_id"] = callback_query.from_user.id
-        elif role == "sender":
-            params["sender_id"] = callback_query.from_user.id
+        if role == RoleModelEnum.courier:
+            query = select(Courier).filter(
+                Courier.user.has(tg_id=callback_query.from_user.id)
+            )
+            result = await session.execute(query)
+            courier = result.scalars().one_or_none()
+            params["courier_id"] = courier.id
+        elif role == RoleModelEnum.sender:
+            query = select(Sender).filter(
+                Sender.user.has(tg_id=callback_query.from_user.id)
+            )
+            result = await session.execute(query)
+            sender = result.scalars().one_or_none()
+            params["sender_id"] = sender.id
         query = insert(database.Request).values(**params).returning(database.Request)
         await session.execute(query)
         await session.commit()
     await callback_query.answer()
+
+    await callback_query.message.answer(
+        "Ваш заказ принят. Если нужно, вы можете изменить данные.",
+        reply_markup=role_markup,  # Можно добавить клавиатуру для изменения данных
+    )
+    # Удаляем предыдущие сообщения
+    await bot.delete_message(
+        callback_query.message.chat.id, callback_query.message.message_id
+    )
 
 
 async def main() -> None:
