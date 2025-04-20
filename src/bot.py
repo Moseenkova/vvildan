@@ -462,10 +462,14 @@ async def command_finish_handler(
             )
             result = await session.execute(query)
             courier = result.scalars().one_or_none()
-            if courier:
-                params["courier_id"] = courier.id
+            params["courier_id"] = courier.id
         elif role == RoleModelEnum.sender:
-            params["sender.user_id"] = callback_query.from_user.id
+            query = select(Sender).filter(
+                Sender.user.has(tg_id=callback_query.from_user.id)
+            )
+            result = await session.execute(query)
+            sender = result.scalars().one_or_none()
+            params["sender_id"] = sender.id
         query = insert(database.Request).values(**params).returning(database.Request)
         await session.execute(query)
         await session.commit()
