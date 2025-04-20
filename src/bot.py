@@ -106,7 +106,7 @@ async def command_reqs_handler(message: Message, state: FSMContext) -> None:
             req_list = "\n".join(
                 [
                     f"From: {req.origin.name}, to: {req.destination.name}, "
-                    f"Date: {req.created_at.strftime('%Y-%m-%d')}, "
+                    f"Date: {req.date.strftime('%Y-%m-%d')}, "
                     f"baggage_types: {req.baggage_types}, "
                     for req in sender_reqs
                 ]
@@ -124,7 +124,7 @@ async def command_reqs_handler(message: Message, state: FSMContext) -> None:
             req_list = "\n".join(
                 [
                     f"Request ID: {req.id}, Status: {req.status}, "
-                    f"Date: {req.created_at.strftime('%Y-%m-%d')}, "
+                    f"Date: {req.date.strftime('%Y-%m-%d')}, "
                     f"baggage_types: {req.baggage_types}"
                     for req in courier_reqs
                 ]
@@ -225,7 +225,7 @@ async def process_city_to(message: Message, state: FSMContext) -> None:
     await message.answer("Пожалуйста, введите дату в формате ДД.ММ.ГГГГ.")
 
 
-# TODO добавить данные о дате в форму
+# TODO добавить данные о дате в форм
 @form_router.message(Form.date)
 async def process_date(message: Message, state: FSMContext) -> None:
     await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id - 1)
