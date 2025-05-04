@@ -27,6 +27,10 @@ class GeneralCallback(CallbackData, prefix="general"):
     text: str
 
 
+class CancelReqCallback(CallbackData, prefix="cancel_req"):
+    id: int
+
+
 sender_button = InlineKeyboardButton(
     text="Отправитель", callback_data=RoleCallback(model="Sender").pack()
 )
@@ -128,7 +132,21 @@ async def final_keyboard():
     builder.button(
         text="Подтвердить", callback_data=GeneralCallback(text="finish_button").pack()
     )
-
     builder.adjust(3, 4)
-
     return builder.as_markup()
+
+
+def cancel_req_inline_kb(id):
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
+                    text=f"Отменить {id}",
+                    callback_data=CancelReqCallback(
+                        id=id
+                    ).pack(),  # Убедитесь, что метод pack() корректно работает
+                )
+            ]
+        ]
+    )
+    return keyboard

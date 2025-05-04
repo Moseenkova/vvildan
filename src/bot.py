@@ -4,7 +4,7 @@ import sys
 from datetime import datetime, timedelta
 from os import getenv
 
-from aiogram import Bot, Dispatcher, F, Router
+from aiogram import Bot, Dispatcher, F, Router, types
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.filters import Command, CommandStart
@@ -16,6 +16,7 @@ from dotenv import load_dotenv
 from sqlalchemy import insert, select
 from sqlalchemy.orm import joinedload
 
+# Ваш код здесь
 import database
 from database import (
     Country,
@@ -30,10 +31,12 @@ from database import (
 from my_keyboards import (
     BaggageKindCallback,
     BaggageKinds,
+    CancelReqCallback,
     GeneralCallback,
     RoleCallback,
     RoleModelEnum,
     baggage_type_keyboard,
+    cancel_req_inline_kb,
     country_keyboard,
     final_keyboard,
     role_markup,
@@ -111,8 +114,17 @@ async def command_reqs_handler(message: Message, state: FSMContext) -> None:
                     for req in sender_reqs
                 ]
             )
-            await message.answer(f"Вот ваши заявки:\n{req_list}")
-
+            req_dict = {
+                req.id: f"From: {req.origin.name}, to: {req.destination.name}, "
+                f"Date: {req.date.strftime('%Y-%m-%d')}, "
+                f"baggage_types: {req.baggage_types}, "
+                for req in sender_reqs
+            }
+            for id in req_dict:
+                await message.answer(
+                    req_dict[id], reply_markup=cancel_req_inline_kb(id)
+                )
+        # await message.answer(f"Вот ваши заявки:\n{req_list}", reply_markup=create_req_inline_kb())
         courier_reqs = await session.execute(
             select(Request)
             .join(Courier, Courier.id == Request.courier_id)
@@ -470,19 +482,44 @@ async def command_finish_handler(
             result = await session.execute(query)
             sender = result.scalars().one_or_none()
             params["sender_id"] = sender.id
-        query = insert(database.Request).values(**params).returning(database.Request)
-        await session.execute(query)
+        query = insert(database.Request).values(**params).returning(database.Request.id)
+        result = await session.execute(query)
+        request_id = result.scalar()
         await session.commit()
+
+        await state.update_data(request_id=request_id)
+
     await callback_query.answer()
 
-    await callback_query.message.answer(
-        "Ваш заказ принят. Если нужно, вы можете изменить данные.",
-        reply_markup=role_markup,  # Можно добавить клавиатуру для изменения данных
-    )
+    #   await callback_query.message.answer(
+    #       "Ваш заказ принят. Если нужно, вы можете изменить данные.",
+    #       reply_markup=await cancel_request_keyboard(),
+    #  )
     # Удаляем предыдущие сообщения
     await bot.delete_message(
         callback_query.message.chat.id, callback_query.message.message_id
     )
+
+
+@form_router.callback_query(CancelReqCallback.filter())
+# из кол бак получить ай ди реквеста и удалить из базы данных.
+#  ---------------------------------------------------------------
+@form_router.callback_query(F.data == "cancel_request")
+async def cancel_request_handler(callback: CallbackQuery, state: FSMContext):
+    await callback.answer("Запрос отменен.")
+    # Здесь Вы можете добавить логику для удаления запроса из базы данных.
+
+
+@form_router.callback_query(lambda c: c.data.startswith("delete_request:"))
+async def delete_request_handler(callback_query: types.CallbackQuery):
+    req_id = int(callback_query.data.split(":")[1])  # Получаем ID из callback_data
+    async with async_session_maker() as session:
+        # Удаляем запрос из базы данных
+        await session.execute(select(Request).filter(Request.id == req_id).delete())
+        await session.commit()
+
+    await callback_query.answer("Запрос успешно удален.")
+    await callback_query.message.edit_text("Запрос удален.")
 
 
 async def main() -> None:
@@ -495,5 +532,5 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     asyncio.run(main())
 
-# создать миграции (revision)
-# прменить миграции (upgrade head)
+# /reqs каждый реквест отправить отдельным сообщением и добавить кнопку отменить
+# для этого создать отдельную ветку(cancel request)
