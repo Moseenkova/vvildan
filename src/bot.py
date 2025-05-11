@@ -92,7 +92,6 @@ async def command_reqs_handler(message: Message, state: FSMContext) -> None:
         )
         user = user.scalars().one_or_none()
 
-        # todo если будут ошибки то смотреть 93 (добавить число и багаж в сообщении 102)
         sender_reqs = await session.execute(
             select(Request)
             .options(joinedload(Request.origin))
@@ -106,7 +105,7 @@ async def command_reqs_handler(message: Message, state: FSMContext) -> None:
 
         if sender_reqs:
             # Если заявки найдены, отправляем их в виде сообщения
-            req_list = "\n".join(
+            "\n".join(
                 [
                     f"From: {req.origin.name}, to: {req.destination.name}, "
                     f"Date: {req.date.strftime('%Y-%m-%d')}, "
@@ -124,27 +123,37 @@ async def command_reqs_handler(message: Message, state: FSMContext) -> None:
                 await message.answer(
                     req_dict[id], reply_markup=cancel_req_inline_kb(id)
                 )
-        # await message.answer(f"Вот ваши заявки:\n{req_list}", reply_markup=create_req_inline_kb())
+        #
+
         courier_reqs = await session.execute(
             select(Request)
+            .options(joinedload(Request.origin))
+            .options(joinedload(Request.destination))
             .join(Courier, Courier.id == Request.courier_id)
             .filter(Courier.user_id == user.id)
         )
         courier_reqs = courier_reqs.scalars().all()
+
         if courier_reqs:
             # Если заявки найдены, отправляем их в виде сообщения
-            req_list = "\n".join(
+            "\n".join(
                 [
-                    f"Request ID: {req.id}, Status: {req.status}, "
+                    f"From: {req.origin.name}, to: {req.destination.name}, "
                     f"Date: {req.date.strftime('%Y-%m-%d')}, "
-                    f"baggage_types: {req.baggage_types}"
+                    f"baggage_types: {req.baggage_types}, "
                     for req in courier_reqs
                 ]
             )
-            await message.answer(f"Вот ваши заявки:\n{req_list}")
-
-        if not sender_reqs and not courier_reqs:
-            await message.answer("У вас нет заявок.")
+            req_dict = {
+                req.id: f"From: {req.origin.name}, to: {req.destination.name}, "
+                f"Date: {req.date.strftime('%Y-%m-%d')}, "
+                f"baggage_types: {req.baggage_types}, "
+                for req in courier_reqs
+            }
+            for id in req_dict:
+                await message.answer(
+                    req_dict[id], reply_markup=cancel_req_inline_kb(id)
+                )
 
 
 @form_router.callback_query(GeneralCallback.filter(F.text == "start_button"))
@@ -237,7 +246,6 @@ async def process_city_to(message: Message, state: FSMContext) -> None:
     await message.answer("Пожалуйста, введите дату в формате ДД.ММ.ГГГГ.")
 
 
-# TODO добавить данные о дате в форм
 @form_router.message(Form.date)
 async def process_date(message: Message, state: FSMContext) -> None:
     await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id - 1)
@@ -276,7 +284,6 @@ async def process_date(message: Message, state: FSMContext) -> None:
     )
 
 
-# TODO aiogram test
 @form_router.callback_query(BaggageKindCallback.filter())
 async def baggage_kind_button_handler(
     callback_query: CallbackQuery, callback_data: BaggageKindCallback, state: FSMContext
@@ -532,5 +539,5 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     asyncio.run(main())
 
-# /reqs каждый реквест отправить отдельным сообщением и добавить кнопку отменить
+# /reqs каждый реквест отправить отдельным сообщением и добавить кнопку отменить теперь для курьера
 # для этого создать отдельную ветку(cancel request)
