@@ -156,6 +156,28 @@ async def command_reqs_handler(message: Message, state: FSMContext) -> None:
                 )
 
 
+@form_router.callback_query(CancelReqCallback.filter())
+async def cancel_request_button_handler(
+    callback_query: CallbackQuery,
+    callback_data: CancelReqCallback,
+) -> None:
+    async with async_session_maker() as session:
+        # Выполняем запрос для получения объекта Request
+        result = await session.execute(
+            select(Request).filter(Request.id == callback_data.id)
+        )
+
+        # Получаем объект Request из результата
+        request = (
+            result.scalars().first()
+        )  # Используем scalars() для получения первого объекта
+
+        if request:  # Проверяем, существует ли объект
+            await session.delete(request)  # Удаляем объект
+            await session.commit()  # Подтверждаем изменения в базе данных
+    await callback_query.message.delete()
+
+
 @form_router.callback_query(GeneralCallback.filter(F.text == "start_button"))
 async def start_button_handler(
     callback_query: CallbackQuery, callback_data: GeneralCallback, state: FSMContext
