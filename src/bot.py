@@ -531,8 +531,6 @@ async def command_finish_handler(
 
 
 @form_router.callback_query(CancelReqCallback.filter())
-# из кол бак получить ай ди реквеста и удалить из базы данных.
-#  ---------------------------------------------------------------
 @form_router.callback_query(F.data == "cancel_request")
 async def cancel_request_handler(callback: CallbackQuery, state: FSMContext):
     await callback.answer("Запрос отменен.")
@@ -560,6 +558,9 @@ async def main() -> None:
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     asyncio.run(main())
-
-# /reqs каждый реквест отправить отдельным сообщением и добавить кнопку отменить теперь для курьера
-# для этого создать отдельную ветку(cancel request)
+# 0.сохранить замержить создать ветку назвать ее
+# 1.период для отправителя максимум месяц с ... по ...
+# 2.у курьера должна быть конкретная дата
+# 3.после того как отправитель заполнил заявку ему предоставлять список подходящих курьеров
+# 4.для курьера же предоставляется список отправителей
+# 5.добпавить кнопку под заявкой связаться
