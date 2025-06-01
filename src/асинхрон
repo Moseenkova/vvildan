@@ -1,0 +1,27 @@
+import aiofiles.os as aos
+from aiocsv import AsyncDictReader
+import asyncio
+import aiofiles
+
+async def f(n, s):
+    total = 0  # Локальный счетчик для каждой задачи
+    async with s:  # Ограничение одновременной обработки
+        async with aiofiles.open(n, mode="r", encoding="utf-8") as afp:
+            async for row in AsyncDictReader(afp):
+                # Замените 'value' на название вашего столбца
+                total += int(row['value'])
+    return total
+
+async def main():
+    semaphore = asyncio.Semaphore(5)
+    files_dir = 'C:/Users/Honor/OneDrive/Рабочий стол/5000csv'
+    filenames = await aos.listdir(files_dir)
+
+    tasks = [asyncio.create_task(f(f'{files_dir}/{filename}', semaphore)) for filename in filenames]
+
+    results = await asyncio.gather(*tasks)
+
+    total_sum = sum(results)
+    print(total_sum)
+
+asyncio.run(main())
