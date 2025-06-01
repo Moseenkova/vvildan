@@ -538,13 +538,15 @@ async def command_finish_handler(
     callback_query: CallbackQuery, callback_data: GeneralCallback, state: FSMContext
 ) -> None:
     data = await state.get_data()
+    date_obj = None
+    date_to_obj = None
+    date_from_obj = None
     if data.get("date"):
         date_obj = datetime.strptime(data["date"], "%d.%m.%Y").date()
     else:
         date_from_obj = datetime.strptime(data["date_from"], "%d.%m.%Y").date()
         date_to_obj = datetime.strptime(data["date_to"], "%d.%m.%Y").date()
     async with async_session_maker() as session:
-        data = await state.get_data()
         params = {
             "origin_id": data["city_from_id"],
             "destination_id": data["city_to_id"],
