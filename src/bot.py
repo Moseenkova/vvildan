@@ -101,11 +101,10 @@ async def command_reqs_handler(message: Message, state: FSMContext) -> None:
         # Get requests where the user is the courier
 
         if sender_reqs:
-            # Если заявки найдены, отправляем их в виде сообщения
             "\n".join(
                 [
                     f"From: {req.origin.name}, to: {req.destination.name}, "
-                    f"Date: {req.date.strftime('%Y-%m-%d')}, "
+                    f"period: {req.date.strftime('%Y-%m-%d')} - {req.date.strftime('%Y-%m-%d')}, "
                     f"baggage_types: {req.baggage_types}, "
                     for req in sender_reqs
                 ]
@@ -308,6 +307,7 @@ async def process_date(message: Message, state: FSMContext) -> None:
     )
 
 
+# todo 26.06.2025 - 26.07.2025
 @form_router.message(Form.period)
 async def prosses_period(message: Message, state: FSMContext) -> None:
     await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id - 1)
@@ -546,18 +546,19 @@ async def command_finish_handler(
     else:
         date_from_obj = datetime.strptime(data["date_from"], "%d.%m.%Y").date()
         date_to_obj = datetime.strptime(data["date_to"], "%d.%m.%Y").date()
+    params = {
+        "origin_id": data["city_from_id"],
+        "destination_id": data["city_to_id"],
+        "date": date_obj,
+        "date_from": date_from_obj,
+        "date_to": date_to_obj,
+        "baggage_types": str([i.name for i in data["baggage_types"]]),
+        "status": database.Status.new,
+        "comment": data["comment"],
+    }
+    role = data.get("role")
+
     async with async_session_maker() as session:
-        params = {
-            "origin_id": data["city_from_id"],
-            "destination_id": data["city_to_id"],
-            "date": date_obj,
-            "data_from": date_from_obj,
-            "data_to": date_to_obj,
-            "baggage_types": str([i.name for i in data["baggage_types"]]),
-            "status": database.Status.new,
-            "comment": data["comment"],
-        }
-        role = data.get("role")
         if role == RoleModelEnum.courier:
             query = select(Courier).filter(
                 Courier.user.has(tg_id=callback_query.from_user.id)
@@ -572,25 +573,35 @@ async def command_finish_handler(
             result = await session.execute(query)
             sender = result.scalars().one_or_none()
             params["sender_id"] = sender.id
-        query = insert(database.Request).values(**params).returning(database.Request.id)
+        query = insert(Request).values(**params).returning(Request.id)
         result = await session.execute(query)
         request_id = result.scalar()
         await session.commit()
-
         await state.update_data(request_id=request_id)
 
-    await callback_query.answer()
-
+    requests = None
+    async with async_session_maker() as session:
+        if role == RoleModelEnum.courier:
+            query = select(Request).filter(
+                Request.date_from >= params["date"], Request.date_to <= params["date"]
+            )
+            result = await session.execute(query)
+            requests = result.scalars().all()
+    if requests:
+        await callback_query.answer(str(requests))
     await bot.delete_message(
         callback_query.message.chat.id, callback_query.message.message_id
     )
+
+
+# достать из бд список заявок курьеров соответствующих периоду отправителя
+# отправить сообщение: контакт курьера. дату. коментарии
 
 
 @form_router.callback_query(CancelReqCallback.filter())
 @form_router.callback_query(F.data == "cancel_request")
 async def cancel_request_handler(callback: CallbackQuery, state: FSMContext):
     await callback.answer("Запрос отменен.")
-    # Здесь Вы можете добавить логику для удаления запроса из базы данных.
 
 
 @form_router.callback_query(lambda c: c.data.startswith("delete_request:"))
@@ -614,9 +625,11 @@ async def main() -> None:
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     asyncio.run(main())
-# 0.сохранить замержить создать ветку назвать ее
-# 1.период для отправителя максимум месяц с ... по ...
-# 2.у курьера должна быть конкретная дата
+
+
+# закомитеть что  ./
+# убедиться что курьеру приходят заявка отправителя после подтверждения своей заявки 583 блок
 # 3.после того как отправитель заполнил заявку ему предоставлять список подходящих курьеров
+
 # 4.для курьера же предоставляется список отправителей
 # 5.добпавить кнопку под заявкой связаться

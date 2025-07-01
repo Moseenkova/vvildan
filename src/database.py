@@ -108,7 +108,9 @@ class Request(Base):
     destination: Mapped["UserCity"] = relationship(
         foreign_keys=[destination_id], backref="requests_to"
     )
-    date: Mapped[date] = mapped_column(Date)
+    date: Mapped[date] = mapped_column(Date, nullable=True)
+    date_to: Mapped[date] = mapped_column(Date, nullable=True)
+    date_from: Mapped[date] = mapped_column(Date, nullable=True)
     baggage_types: Mapped[str]
     comment: Mapped[str]
     status: Mapped[str] = mapped_column(Enum(Status))
