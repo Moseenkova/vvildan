@@ -101,18 +101,17 @@ async def command_reqs_handler(message: Message, state: FSMContext) -> None:
         # Get requests where the user is the courier
 
         if sender_reqs:
-            # Если заявки найдены, отправляем их в виде сообщения
             "\n".join(
                 [
                     f"From: {req.origin.name}, to: {req.destination.name}, "
-                    f"Date: {req.date.strftime('%Y-%m-%d')}, "
+                    #    f"period: {req.date.strftime('%Y-%m-%d')} - {req.date.strftime('%Y-%m-%d')}, "
                     f"baggage_types: {req.baggage_types}, "
                     for req in sender_reqs
                 ]
             )
             req_dict = {
                 req.id: f"From: {req.origin.name}, to: {req.destination.name}, "
-                f"Date: {req.date.strftime('%Y-%m-%d')}, "
+                # f"Date: {req.date.strftime('%Y-%m-%d')}, "  исправить на date from и date to
                 f"baggage_types: {req.baggage_types}, "
                 for req in sender_reqs
             }
@@ -306,7 +305,6 @@ async def process_date(message: Message, state: FSMContext) -> None:
     await message.answer(
         text="Выберите багаж", reply_markup=await baggage_type_keyboard()
     )
-
 
 @form_router.message(Form.period)
 async def prosses_period(message: Message, state: FSMContext) -> None:
@@ -546,18 +544,19 @@ async def command_finish_handler(
     else:
         date_from_obj = datetime.strptime(data["date_from"], "%d.%m.%Y").date()
         date_to_obj = datetime.strptime(data["date_to"], "%d.%m.%Y").date()
+    params = {
+        "origin_id": data["city_from_id"],
+        "destination_id": data["city_to_id"],
+        "date": date_obj,
+        "date_from": date_from_obj,
+        "date_to": date_to_obj,
+        "baggage_types": str([i.name for i in data["baggage_types"]]),
+        "status": database.Status.new,
+        "comment": data["comment"],
+    }
+    role = data.get("role")
+
     async with async_session_maker() as session:
-        params = {
-            "origin_id": data["city_from_id"],
-            "destination_id": data["city_to_id"],
-            "date": date_obj,
-            "data_from": date_from_obj,
-            "data_to": date_to_obj,
-            "baggage_types": str([i.name for i in data["baggage_types"]]),
-            "status": database.Status.new,
-            "comment": data["comment"],
-        }
-        role = data.get("role")
         if role == RoleModelEnum.courier:
             query = select(Courier).filter(
                 Courier.user.has(tg_id=callback_query.from_user.id)
@@ -572,25 +571,69 @@ async def command_finish_handler(
             result = await session.execute(query)
             sender = result.scalars().one_or_none()
             params["sender_id"] = sender.id
-        query = insert(database.Request).values(**params).returning(database.Request.id)
+        query = insert(Request).values(**params).returning(Request.id)
         result = await session.execute(query)
         request_id = result.scalar()
         await session.commit()
-
         await state.update_data(request_id=request_id)
 
-    await callback_query.answer()
+    requests = []
+    async with async_session_maker() as session:
+        query = (
+            select(Request)
+            .options(
+                joinedload(Request.origin),
+                joinedload(Request.destination),
+                joinedload(Request.sender).joinedload(Sender.user),
+            )
+            .filter(
+                Request.origin_id == params["origin_id"],
+                Request.destination_id == params["destination_id"],
+                Request.date_from <= params["date"],
+                Request.date_to >= params["date"],
+            )
+        )
+
+        result = await session.execute(query)
+        requests = result.scalars().all()
+
+    logging.info(str(requests))
+    for r in requests:
+        sender_login = r.sender.user.name
+        date_from_str = (
+            r.date_from.strftime("%d.%m.%Y") if r.date_from else "Не указано"
+        )
+        date_to_str = r.date_to.strftime("%d.%m.%Y") if r.date_to else "Не указано"
+        origin_city = getattr(r.origin, "name", "Неизвестно")
+        destination_city = getattr(r.destination, "name", "Неизвестно")
+
+        msg = (
+            f"Отправитель: {sender_login}\n"
+            f"Даты: с {date_from_str} по {date_to_str}\n"
+            f"Город отправления: {origin_city}\n"
+            f"Город прибытия: {destination_city}\n"
+            f"Типы багажа: {r.baggage_types}\n"
+            f"Комментарий: {r.comment}"
+        )
+        await callback_query.message.answer(msg)
 
     await bot.delete_message(
         callback_query.message.chat.id, callback_query.message.message_id
     )
 
 
+# закомитеться, мердж мэйн- залить на главную ветку,
+# создать новую ветку(чтоб отправителю вдавало список курьеров на его даты на его города)
+# убедиться что фильтры по датам и городам
+
+# тип багажа на русский
+# разьить по папкам
+
+
 @form_router.callback_query(CancelReqCallback.filter())
 @form_router.callback_query(F.data == "cancel_request")
 async def cancel_request_handler(callback: CallbackQuery, state: FSMContext):
     await callback.answer("Запрос отменен.")
-    # Здесь Вы можете добавить логику для удаления запроса из базы данных.
 
 
 @form_router.callback_query(lambda c: c.data.startswith("delete_request:"))
@@ -614,9 +657,3 @@ async def main() -> None:
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     asyncio.run(main())
-# 0.сохранить замержить создать ветку назвать ее
-# 1.период для отправителя максимум месяц с ... по ...
-# 2.у курьера должна быть конкретная дата
-# 3.после того как отправитель заполнил заявку ему предоставлять список подходящих курьеров
-# 4.для курьера же предоставляется список отправителей
-# 5.добпавить кнопку под заявкой связаться
