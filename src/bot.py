@@ -104,14 +104,14 @@ async def command_reqs_handler(message: Message, state: FSMContext) -> None:
             "\n".join(
                 [
                     f"From: {req.origin.name}, to: {req.destination.name}, "
-                    f"period: {req.date.strftime('%Y-%m-%d')} - {req.date.strftime('%Y-%m-%d')}, "
+                    #    f"period: {req.date.strftime('%Y-%m-%d')} - {req.date.strftime('%Y-%m-%d')}, "
                     f"baggage_types: {req.baggage_types}, "
                     for req in sender_reqs
                 ]
             )
             req_dict = {
                 req.id: f"From: {req.origin.name}, to: {req.destination.name}, "
-                f"Date: {req.date.strftime('%Y-%m-%d')}, "
+                # f"Date: {req.date.strftime('%Y-%m-%d')}, "  исправить на date from и date to
                 f"baggage_types: {req.baggage_types}, "
                 for req in sender_reqs
             }
@@ -579,23 +579,57 @@ async def command_finish_handler(
         await session.commit()
         await state.update_data(request_id=request_id)
 
-    requests = None
+    requests = []
     async with async_session_maker() as session:
-        if role == RoleModelEnum.courier:
-            query = select(Request).filter(
-                Request.date_from >= params["date"], Request.date_to <= params["date"]
+        query = (
+            select(Request)
+            .options(
+                joinedload(Request.origin),
+                joinedload(Request.destination),
+                joinedload(Request.sender).joinedload(Sender.user),
             )
-            result = await session.execute(query)
-            requests = result.scalars().all()
-    if requests:
-        await callback_query.answer(str(requests))
+            .filter(
+                Request.origin_id == params["origin_id"],
+                Request.destination_id == params["destination_id"],
+                Request.date_from <= params["date"],
+                Request.date_to >= params["date"],
+            )
+        )
+
+        result = await session.execute(query)
+        requests = result.scalars().all()
+
+    logging.info(str(requests))
+    for r in requests:
+        sender_login = r.sender.user.name
+        date_from_str = (
+            r.date_from.strftime("%d.%m.%Y") if r.date_from else "Не указано"
+        )
+        date_to_str = r.date_to.strftime("%d.%m.%Y") if r.date_to else "Не указано"
+        origin_city = getattr(r.origin, "name", "Неизвестно")
+        destination_city = getattr(r.destination, "name", "Неизвестно")
+
+        msg = (
+            f"Отправитель: {sender_login}\n"
+            f"Даты: с {date_from_str} по {date_to_str}\n"
+            f"Город отправления: {origin_city}\n"
+            f"Город прибытия: {destination_city}\n"
+            f"Типы багажа: {r.baggage_types}\n"
+            f"Комментарий: {r.comment}"
+        )
+        await callback_query.message.answer(msg)
+
     await bot.delete_message(
         callback_query.message.chat.id, callback_query.message.message_id
     )
 
 
-# достать из бд список заявок курьеров соответствующих периоду отправителя
-# отправить сообщение: контакт курьера. дату. коментарии
+# закомитеться, мердж мэйн- залить на главную ветку,
+# создать новую ветку(чтоб отправителю вдавало список курьеров на его даты на его города)
+# убедиться что фильтры по датам и городам
+
+# тип багажа на русский
+# разьить по папкам
 
 
 @form_router.callback_query(CancelReqCallback.filter())
@@ -625,11 +659,3 @@ async def main() -> None:
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     asyncio.run(main())
-
-
-# закомитеть что  ./
-# убедиться что курьеру приходят заявка отправителя после подтверждения своей заявки 583 блок
-# 3.после того как отправитель заполнил заявку ему предоставлять список подходящих курьеров
-
-# 4.для курьера же предоставляется список отправителей
-# 5.добпавить кнопку под заявкой связаться
