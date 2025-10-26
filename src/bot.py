@@ -306,8 +306,6 @@ async def process_date(message: Message, state: FSMContext) -> None:
         text="Выберите багаж", reply_markup=await baggage_type_keyboard()
     )
 
-
-# todo 26.06.2025 - 26.07.2025
 @form_router.message(Form.period)
 async def prosses_period(message: Message, state: FSMContext) -> None:
     await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id - 1)
