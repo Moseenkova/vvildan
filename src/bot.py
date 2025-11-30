@@ -306,6 +306,7 @@ async def process_date(message: Message, state: FSMContext) -> None:
         text="Выберите багаж", reply_markup=await baggage_type_keyboard()
     )
 
+
 @form_router.message(Form.period)
 async def prosses_period(message: Message, state: FSMContext) -> None:
     await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id - 1)
@@ -555,7 +556,7 @@ async def command_finish_handler(
         "comment": data["comment"],
     }
     role = data.get("role")
-
+    # заполняем таблицы реквест (done)
     async with async_session_maker() as session:
         if role == RoleModelEnum.courier:
             query = select(Courier).filter(
@@ -577,54 +578,83 @@ async def command_finish_handler(
         await session.commit()
         await state.update_data(request_id=request_id)
 
-    requests = []
     async with async_session_maker() as session:
-        query = (
-            select(Request)
-            .options(
-                joinedload(Request.origin),
-                joinedload(Request.destination),
-                joinedload(Request.sender).joinedload(Sender.user),
+        if role == RoleModelEnum.sender:
+            query = (
+                select(Request)
+                .options(
+                    joinedload(Request.origin),
+                    joinedload(Request.destination),
+                    joinedload(Request.courier).joinedload(Courier.user),
+                )
+                .filter(
+                    Request.origin_id == params["origin_id"],
+                    Request.destination_id == params["destination_id"],
+                    Request.date >= params["date_from"],
+                    Request.date <= params["date_to"],
+                )
             )
-            .filter(
-                Request.origin_id == params["origin_id"],
-                Request.destination_id == params["destination_id"],
-                Request.date_from <= params["date"],
-                Request.date_to >= params["date"],
+        elif role == RoleModelEnum.courier:
+            query = (
+                select(Request)
+                .options(
+                    joinedload(Request.origin),
+                    joinedload(Request.destination),
+                    joinedload(Request.sender).joinedload(Sender.user),
+                )
+                .filter(
+                    Request.origin_id == params["origin_id"],
+                    Request.destination_id == params["destination_id"],
+                    Request.date_from <= params["date"],
+                    Request.date_to >= params["date"],
+                )
             )
-        )
 
-        result = await session.execute(query)
-        requests = result.scalars().all()
+    result = await session.execute(query)
+    requests = result.scalars().all()
 
     logging.info(str(requests))
-    for r in requests:
-        sender_login = r.sender.user.name
-        date_from_str = (
-            r.date_from.strftime("%d.%m.%Y") if r.date_from else "Не указано"
-        )
-        date_to_str = r.date_to.strftime("%d.%m.%Y") if r.date_to else "Не указано"
-        origin_city = getattr(r.origin, "name", "Неизвестно")
-        destination_city = getattr(r.destination, "name", "Неизвестно")
+    if role == RoleModelEnum.sender:
+        for r in requests:
+            courier_name = r.courier.user.name
+            date_str = r.date.strftime("%d.%m.%Y")
+            origin_city = r.origin.name
+            destination_city = r.destination.name
+            msg = (
+                f"Курьер: {courier_name}\n"
+                f"Даты: {date_str}\n"
+                f"Город отправления: {origin_city}\n"
+                f"Город прибытия: {destination_city}\n"
+                f"Типы багажа: {r.baggage_types}\n"
+                f"Комментарий: {r.comment}"
+            )
+            await callback_query.message.answer(msg)
 
-        msg = (
-            f"Отправитель: {sender_login}\n"
-            f"Даты: с {date_from_str} по {date_to_str}\n"
-            f"Город отправления: {origin_city}\n"
-            f"Город прибытия: {destination_city}\n"
-            f"Типы багажа: {r.baggage_types}\n"
-            f"Комментарий: {r.comment}"
-        )
-        await callback_query.message.answer(msg)
+    elif role == RoleModelEnum.courier:
+        for r in requests:
+            sender_name = r.sender.user.name
+            date_from_str = r.date_from.strftime("%d.%m.%Y")
+            date_to_str = r.date_to.strftime("%d.%m.%Y")
+            origin_city = r.origin.name
+            destination_city = r.destination.name
+
+            msg = (
+                f"Отправитель: {sender_name}\n"
+                f"Даты: с {date_from_str} по {date_to_str}\n"
+                f"Город отправления: {origin_city}\n"
+                f"Город прибытия: {destination_city}\n"
+                f"Типы багажа: {r.baggage_types}\n"
+                f"Комментарий: {r.comment}"
+            )
+            await callback_query.message.answer(msg)
 
     await bot.delete_message(
         callback_query.message.chat.id, callback_query.message.message_id
     )
 
 
-# закомитеться, мердж мэйн- залить на главную ветку,
-# создать новую ветку(чтоб отправителю вдавало список курьеров на его даты на его города)
-# убедиться что фильтры по датам и городам
+# после заполнения анкеты для отправителя должен видеть курьер и наооборот
+
 
 # тип багажа на русский
 # разьить по папкам

@@ -13,15 +13,12 @@ sqlalchemy = "^2.0.29"
 asyncpg = "^0.29.0"
 alembic = "^1.13.1"
 
-
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-
 [tool.black]
-target-version = ["py311"]
-
+target-version = ["py39"]
 
 [tool.ruff]
 select = ["E", "F"]
