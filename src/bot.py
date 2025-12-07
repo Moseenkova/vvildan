@@ -610,8 +610,8 @@ async def command_finish_handler(
                 )
             )
 
-    result = await session.execute(query)
-    requests = result.scalars().all()
+        result = await session.execute(query)
+        requests = result.scalars().all()
 
     logging.info(str(requests))
     if role == RoleModelEnum.sender:
@@ -658,6 +658,7 @@ async def command_finish_handler(
 
 # тип багажа на русский
 # разьить по папкам
+# оброботка если юзер нажимает кнопки не по сценарию
 
 
 @form_router.callback_query(CancelReqCallback.filter())
