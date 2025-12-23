@@ -620,7 +620,7 @@ async def command_finish_handler(
             date_str = r.date.strftime("%d.%m.%Y")
             origin_city = r.origin.name
             destination_city = r.destination.name
-            msg = (
+            msg_to_sender = (
                 f"Курьер: {courier_name}\n"
                 f"Даты: {date_str}\n"
                 f"Город отправления: {origin_city}\n"
@@ -628,7 +628,19 @@ async def command_finish_handler(
                 f"Типы багажа: {r.baggage_types}\n"
                 f"Комментарий: {r.comment}"
             )
-            await callback_query.message.answer(msg)
+            msg_to_courier = (
+                f"Отправитель: {sender.user.name}\n"
+                f"Даты: с {data['date_from']} по {data['date_to']}\n"
+                f"Город отправления: {origin_city}\n"
+                f"Город прибытия: {destination_city}\n"
+                f"Типы багажа: {data['baggage_types']}\n"
+                f"Комментарий: {data['comment']}"
+            )
+            await callback_query.message.answer(msg_to_sender)
+            await bot.send_message(r.courier.user.tg_id, msg_to_courier)
+
+        # как назвать
+        # проверить как все работает и сделать тоде самое для курьера
 
     elif role == RoleModelEnum.courier:
         for r in requests:
@@ -653,12 +665,11 @@ async def command_finish_handler(
     )
 
 
-# после заполнения анкеты для отправителя должен видеть курьер и наооборот
-
-
-# тип багажа на русский
+# тип багажа на русски
 # разьить по папкам
 # оброботка если юзер нажимает кнопки не по сценарию
+# уведомлять отправителя о появлении нового курьер и наооборот
+#
 
 
 @form_router.callback_query(CancelReqCallback.filter())
