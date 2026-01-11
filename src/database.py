@@ -15,6 +15,7 @@ from sqlalchemy import (
     insert,
     select,
 )
+from sqlalchemy.dialects.postgresql import JSON
 from sqlalchemy.exc import NoResultFound
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import (
@@ -70,13 +71,22 @@ class Sender(Base):
 
 
 # TODO может быть наоброт порядок
-class BaggageKind(enum.Enum):
-    usual = "Обычный"
-    liquid = "Жидкость"
-    expensive = "Ценный"
-    document = "Документ"
-    troublesome = "Проблемный"
-    other = "Другое"
+class BaggageKind(enum.StrEnum):
+    usual = "usual"
+    liquid = "liquid"
+    expensive = "expensive"
+    document = "document"
+    troublesome = "troublesome"
+    other = "other"
+
+
+RU_LABELS = {
+    BaggageKind.usual: "Обычный",
+    BaggageKind.liquid: "Жидкость",
+    BaggageKind.document: "Документ",
+    BaggageKind.troublesome: "Проблемный",
+    BaggageKind.usual: "Обычный",
+}
 
 
 class VolumeKind(enum.Enum):
@@ -111,8 +121,8 @@ class Request(Base):
     date: Mapped[date] = mapped_column(Date, nullable=True)
     date_to: Mapped[date] = mapped_column(Date, nullable=True)
     date_from: Mapped[date] = mapped_column(Date, nullable=True)
-    baggage_types: Mapped[str]
-    comment: Mapped[str]
+    baggage_types: Mapped[list] = mapped_column(JSON, nullable=False)
+    comment: Mapped[str] = mapped_column()
     status: Mapped[str] = mapped_column(Enum(Status))
 
 
