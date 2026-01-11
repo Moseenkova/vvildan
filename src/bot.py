@@ -1,4 +1,5 @@
 import asyncio
+import json
 import logging
 import sys
 from datetime import datetime, timedelta
@@ -19,6 +20,7 @@ from sqlalchemy.orm import joinedload
 # Ваш код здесь
 import database
 from database import (
+    RU_LABELS,
     Country,
     Courier,
     Request,
@@ -537,6 +539,7 @@ async def command_finish_handler(
     callback_query: CallbackQuery, callback_data: GeneralCallback, state: FSMContext
 ) -> None:
     data = await state.get_data()
+    baggage_types = [bt.value for bt in data["baggage_types"]]
     date_obj = None
     date_to_obj = None
     date_from_obj = None
@@ -551,7 +554,7 @@ async def command_finish_handler(
         "date": date_obj,
         "date_from": date_from_obj,
         "date_to": date_to_obj,
-        "baggage_types": str([i.name for i in data["baggage_types"]]),
+        "baggage_types": baggage_types,
         "status": database.Status.new,
         "comment": data["comment"],
     }
@@ -559,15 +562,19 @@ async def command_finish_handler(
     # заполняем таблицы реквест (done)
     async with async_session_maker() as session:
         if role == RoleModelEnum.courier:
-            query = select(Courier).filter(
-                Courier.user.has(tg_id=callback_query.from_user.id)
+            query = (
+                select(Courier)
+                .options(joinedload(Courier.user))
+                .filter(Courier.user.has(tg_id=callback_query.from_user.id))
             )
             result = await session.execute(query)
             courier = result.scalars().one_or_none()
             params["courier_id"] = courier.id
         elif role == RoleModelEnum.sender:
-            query = select(Sender).filter(
-                Sender.user.has(tg_id=callback_query.from_user.id)
+            query = (
+                select(Sender)
+                .options(joinedload(Sender.user))
+                .filter(Sender.user.has(tg_id=callback_query.from_user.id))
             )
             result = await session.execute(query)
             sender = result.scalars().one_or_none()
@@ -620,15 +627,30 @@ async def command_finish_handler(
             date_str = r.date.strftime("%d.%m.%Y")
             origin_city = r.origin.name
             destination_city = r.destination.name
-            msg = (
+            r_baggage_types = [
+                RU_LABELS.get(kind, kind) for kind in json.loads(r.baggage_types)
+            ]
+
+            msg_to_sender = (
                 f"Курьер: {courier_name}\n"
-                f"Даты: {date_str}\n"
+                f"Дата: {date_str}\n"
                 f"Город отправления: {origin_city}\n"
                 f"Город прибытия: {destination_city}\n"
-                f"Типы багажа: {r.baggage_types}\n"
+                f"Типы багажа: {r_baggage_types}\n"
                 f"Комментарий: {r.comment}"
             )
-            await callback_query.message.answer(msg)
+
+            msg_to_courier = (
+                f"Отправитель: {sender.user.name}\n"
+                f"Даты: с {data['date_from']} по {data['date_to']}\n"
+                f"Город отправления: {origin_city}\n"
+                f"Город прибытия: {destination_city}\n"
+                f"Типы багажа: {baggage_types}\n"
+                f"Комментарий: {data['comment']}"
+            )
+
+            await callback_query.message.answer(msg_to_sender)
+            await bot.send_message(r.courier.user.tg_id, msg_to_courier)
 
     elif role == RoleModelEnum.courier:
         for r in requests:
@@ -637,28 +659,41 @@ async def command_finish_handler(
             date_to_str = r.date_to.strftime("%d.%m.%Y")
             origin_city = r.origin.name
             destination_city = r.destination.name
+            r_baggage_types = [
+                RU_LABELS.get(kind, kind) for kind in json.loads(r.baggage_types)
+            ]
 
-            msg = (
+            msg_to_courier = (
                 f"Отправитель: {sender_name}\n"
                 f"Даты: с {date_from_str} по {date_to_str}\n"
                 f"Город отправления: {origin_city}\n"
                 f"Город прибытия: {destination_city}\n"
-                f"Типы багажа: {r.baggage_types}\n"
+                f"Типы багажа: {r_baggage_types}\n"
                 f"Комментарий: {r.comment}"
             )
-            await callback_query.message.answer(msg)
+            baggage_types = [bt.value for bt in data["baggage_types"]]
+            msg_to_sender = (
+                f"Курьер: {courier.user.name}\n"
+                f"Дата: {data['date']}\n"
+                f"Город отправления: {origin_city}\n"
+                f"Город прибытия: {destination_city}\n"
+                f"Типы багажа: {baggage_types}\n"
+                f"Комментарий: {data['comment']}"
+            )
+
+            await callback_query.message.answer(msg_to_courier)
+            await bot.send_message(r.sender.user.tg_id, msg_to_sender)
 
     await bot.delete_message(
         callback_query.message.chat.id, callback_query.message.message_id
     )
 
 
-# после заполнения анкеты для отправителя должен видеть курьер и наооборот
-
-
-# тип багажа на русский
+# тип багажа на русски
 # разьить по папкам
 # оброботка если юзер нажимает кнопки не по сценарию
+# уведомлять отправителя о появлении нового курьер и наооборот
+#
 
 
 @form_router.callback_query(CancelReqCallback.filter())
