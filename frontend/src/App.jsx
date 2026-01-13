@@ -1,75 +1,34 @@
 import { useState } from 'react'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 import './App.css'
 
 function App() {
   const [role, setRole] = useState("sender");
   const [form, setForm] = useState({
-    dateFrom: "",
-    dateTo: "",
-    courierDate: "",
+    dateFrom: null,
+    dateTo: null,
+    courierDate: null,
     countryFrom: "",
     cityFrom: "",
     countryTo: "",
     cityTo: "",
-    baggageTypes: "",
-    comments: "",
+    baggageComments: "",
   });
 
-  // Format date to dd.mm.yyyy
-  const formatDate = (value) => {
-    // Remove all non-digit characters
-    const digits = value.replace(/\D/g, '');
-    
-    // Limit to 8 digits (ddmmyyyy)
-    const limited = digits.slice(0, 8);
-    
-    // Add dots
-    if (limited.length <= 2) {
-      return limited;
-    } else if (limited.length <= 4) {
-      return `${limited.slice(0, 2)}.${limited.slice(2)}`;
-    } else {
-      return `${limited.slice(0, 2)}.${limited.slice(2, 4)}.${limited.slice(4)}`;
-    }
+  // Format Date object to dd.mm.yyyy string
+  const formatDateToString = (date) => {
+    if (!date) return "";
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}.${month}.${year}`;
   };
 
-  // Parse dd.mm.yyyy to Date object for validation
-  const parseDate = (dateString) => {
-    if (!dateString || dateString.length !== 10) return null; // dd.mm.yyyy = 10 chars
-    
-    const parts = dateString.split('.');
-    if (parts.length !== 3) return null;
-    
-    const day = parseInt(parts[0], 10);
-    const month = parseInt(parts[1], 10) - 1; // Month is 0-indexed
-    const year = parseInt(parts[2], 10); // Full year
-    
-    const date = new Date(year, month, day);
-    
-    // Validate the date
-    if (
-      date.getDate() === day &&
-      date.getMonth() === month &&
-      date.getFullYear() === year
-    ) {
-      return date;
-    }
-    return null;
-  };
-
-  // Validate date format (dd.mm.yyyy)
-  const isValidDate = (dateString) => {
-    if (!dateString || dateString.length !== 10) return false;
-    return parseDate(dateString) !== null;
-  };
-
-  const handleDateChange = (e) => {
-    const { name, value } = e.target;
-    const formatted = formatDate(value);
-    
+  const handleDateChange = (date, fieldName) => {
     setForm((prev) => ({
       ...prev,
-      [name]: formatted,
+      [fieldName]: date,
     }));
   };
 
@@ -84,44 +43,43 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Validate date formats
+    // Validate dates
     if (role === "sender") {
-      if (!isValidDate(form.dateFrom)) {
-        alert("Please enter a valid date in dd.mm.yyyy format for Date From");
+      if (!form.dateFrom) {
+        alert("Please select a date for Date From");
         return;
       }
-      if (!isValidDate(form.dateTo)) {
-        alert("Please enter a valid date in dd.mm.yyyy format for Date To");
+      if (!form.dateTo) {
+        alert("Please select a date for Date To");
         return;
       }
       
-      const dateFrom = parseDate(form.dateFrom);
-      const dateTo = parseDate(form.dateTo);
-      
-      if (dateFrom && dateTo && dateFrom > dateTo) {
+      if (form.dateFrom > form.dateTo) {
         alert("Date from cannot be after date to");
         return;
       }
     } else if (role === "courier") {
-      if (!isValidDate(form.courierDate)) {
-        alert("Please enter a valid date in dd.mm.yyyy format");
+      if (!form.courierDate) {
+        alert("Please select a date");
         return;
       }
     }
 
-    // Prepare submission data
+    // Prepare submission data with formatted dates
     const submissionData = {
       role,
       ...(role === "sender" 
-        ? { dateFrom: form.dateFrom, dateTo: form.dateTo }
-        : { date: form.courierDate }
+        ? { 
+            dateFrom: formatDateToString(form.dateFrom), 
+            dateTo: formatDateToString(form.dateTo) 
+          }
+        : { date: formatDateToString(form.courierDate) }
       ),
       countryFrom: form.countryFrom,
       cityFrom: form.cityFrom,
       countryTo: form.countryTo,
       cityTo: form.cityTo,
-      baggageTypes: form.baggageTypes,
-      comments: form.comments,
+      baggageComments: form.baggageComments,
     };
 
     console.log("Form submitted:", submissionData);
@@ -155,30 +113,28 @@ function App() {
           <>
             <div className="form-group">
               <label htmlFor="dateFrom">Date From</label>
-              <input
-                type="text"
+              <DatePicker
                 id="dateFrom"
-                name="dateFrom"
-                value={form.dateFrom}
-                onChange={handleDateChange}
-                placeholder="dd.mm.yyyy"
-                pattern="\d{2}\.\d{2}\.\d{4}"
-                maxLength={10}
+                selected={form.dateFrom}
+                onChange={(date) => handleDateChange(date, 'dateFrom')}
+                dateFormat="dd.MM.yyyy"
+                placeholderText="dd.mm.yyyy"
+                className="date-picker-input"
                 required
+                minDate={new Date()}
               />
             </div>
             <div className="form-group">
               <label htmlFor="dateTo">Date To</label>
-              <input
-                type="text"
+              <DatePicker
                 id="dateTo"
-                name="dateTo"
-                value={form.dateTo}
-                onChange={handleDateChange}
-                placeholder="dd.mm.yyyy"
-                pattern="\d{2}\.\d{2}\.\d{4}"
-                maxLength={10}
+                selected={form.dateTo}
+                onChange={(date) => handleDateChange(date, 'dateTo')}
+                dateFormat="dd.MM.yyyy"
+                placeholderText="dd.mm.yyyy"
+                className="date-picker-input"
                 required
+                minDate={form.dateFrom || new Date()}
               />
             </div>
           </>
@@ -187,16 +143,15 @@ function App() {
         {role === "courier" && (
           <div className="form-group">
             <label htmlFor="courierDate">Date</label>
-            <input
-              type="text"
+            <DatePicker
               id="courierDate"
-              name="courierDate"
-              value={form.courierDate}
-              onChange={handleDateChange}
-              placeholder="dd.mm.yyyy"
-              pattern="\d{2}\.\d{2}\.\d{4}"
-              maxLength={10}
+              selected={form.courierDate}
+              onChange={(date) => handleDateChange(date, 'courierDate')}
+              dateFormat="dd.MM.yyyy"
+              placeholderText="dd.mm.yyyy"
+              className="date-picker-input"
               required
+              minDate={new Date()}
             />
           </div>
         )}
@@ -255,26 +210,14 @@ function App() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="baggageTypes">Baggage Types</label>
+          <label htmlFor="baggageComments">Baggage Comments</label>
           <input
             type="text"
-            id="baggageTypes"
-            name="baggageTypes"
-            value={form.baggageTypes}
+            id="baggageComments"
+            name="baggageComments"
+            value={form.baggageComments}
             onChange={handleChange}
-            placeholder="e.g. Small bag, Box, Fragile"
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="comments">Comments</label>
-          <textarea
-            id="comments"
-            name="comments"
-            value={form.comments}
-            onChange={handleChange}
-            rows={4}
-            placeholder="Additional comments or special instructions"
+            placeholder="e.g. Clothes, Documents, Electronics"
           />
         </div>
 
