@@ -90,20 +90,18 @@ function App() {
 
   return (
     <div className="app-container">
-      <h1 className="app-title">Choose Your Role</h1>
-      
       <div className="role-selector">
         <button
           onClick={() => setRole("sender")}
           className={`role-button ${role === "sender" ? "active" : ""}`}
         >
-          Sender
+          Отправитель
         </button>
         <button
           onClick={() => setRole("courier")}
           className={`role-button ${role === "courier" ? "active" : ""}`}
         >
-          Courier
+          Курьер
         </button>
       </div>
 
@@ -112,26 +110,26 @@ function App() {
         {role === "sender" && (
           <>
             <div className="form-group">
-              <label htmlFor="dateFrom">Date From</label>
+              <label htmlFor="dateFrom">В период с даты</label>
               <DatePicker
                 id="dateFrom"
                 selected={form.dateFrom}
                 onChange={(date) => handleDateChange(date, 'dateFrom')}
                 dateFormat="dd.MM.yyyy"
-                placeholderText="dd.mm.yyyy"
+                placeholderText="дд.мм.гггг"
                 className="date-picker-input"
                 required
                 minDate={new Date()}
               />
             </div>
             <div className="form-group">
-              <label htmlFor="dateTo">Date To</label>
+              <label htmlFor="dateTo">До даты</label>
               <DatePicker
                 id="dateTo"
                 selected={form.dateTo}
                 onChange={(date) => handleDateChange(date, 'dateTo')}
                 dateFormat="dd.MM.yyyy"
-                placeholderText="dd.mm.yyyy"
+                placeholderText="дд.мм.гггг"
                 className="date-picker-input"
                 required
                 minDate={form.dateFrom || new Date()}
@@ -142,13 +140,13 @@ function App() {
 
         {role === "courier" && (
           <div className="form-group">
-            <label htmlFor="courierDate">Date</label>
+            <label htmlFor="courierDate">Дата</label>
             <DatePicker
               id="courierDate"
               selected={form.courierDate}
               onChange={(date) => handleDateChange(date, 'courierDate')}
               dateFormat="dd.MM.yyyy"
-              placeholderText="dd.mm.yyyy"
+              placeholderText="дд.мм.гггг"
               className="date-picker-input"
               required
               minDate={new Date()}
@@ -158,7 +156,7 @@ function App() {
 
         {/* Common fields */}
         <div className="form-group">
-          <label htmlFor="countryFrom">Country From</label>
+          <label htmlFor="countryFrom">Страна отправления</label>
           <input
             type="text"
             id="countryFrom"
@@ -166,12 +164,12 @@ function App() {
             value={form.countryFrom}
             onChange={handleChange}
             required
-            placeholder="Enter country"
+            placeholder="Введите страну"
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="cityFrom">City From</label>
+          <label htmlFor="cityFrom">Город отправления</label>
           <input
             type="text"
             id="cityFrom"
@@ -179,12 +177,12 @@ function App() {
             value={form.cityFrom}
             onChange={handleChange}
             required
-            placeholder="Enter city"
+            placeholder="Введите город"
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="countryTo">Country To</label>
+          <label htmlFor="countryTo">Страна прибытия</label>
           <input
             type="text"
             id="countryTo"
@@ -192,12 +190,12 @@ function App() {
             value={form.countryTo}
             onChange={handleChange}
             required
-            placeholder="Enter country"
+            placeholder="Введите страну"
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="cityTo">City To</label>
+          <label htmlFor="cityTo">Город прибытия</label>
           <input
             type="text"
             id="cityTo"
@@ -205,24 +203,24 @@ function App() {
             value={form.cityTo}
             onChange={handleChange}
             required
-            placeholder="Enter city"
+            placeholder="Введите город"
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="baggageComments">Baggage Comments</label>
+          <label htmlFor="baggageComments">Комментарий к багажу</label>
           <input
             type="text"
             id="baggageComments"
             name="baggageComments"
             value={form.baggageComments}
             onChange={handleChange}
-            placeholder="e.g. Clothes, Documents, Electronics"
+            placeholder="Например: Одежда 5 кг, Документы, Электроника"
           />
         </div>
 
         <button type="submit" className="submit-button">
-          Submit
+          Отправить заявку
         </button>
       </form>
     </div>
