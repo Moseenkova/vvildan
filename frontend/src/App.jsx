@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import './App.css'
@@ -15,6 +15,13 @@ function App() {
     cityTo: "",
     baggageComments: "",
   });
+  const [countries, setCountries] = useState([]);
+  const [showCountryFromDropdown, setShowCountryFromDropdown] = useState(false);
+  const [showCountryToDropdown, setShowCountryToDropdown] = useState(false);
+  const [loadingCountries, setLoadingCountries] = useState(false);
+  const countryFromDropdownRef = useRef(null);
+  const countryToDropdownRef = useRef(null);
+  const countrySearchTimeoutRef = useRef(null);
 
   // Format Date object to dd.mm.yyyy string
   const formatDateToString = (date) => {
@@ -39,6 +46,62 @@ function App() {
       [name]: value,
     }));
   };
+
+  const fetchCountries = async (searchQuery = '', field = 'from') => {
+    setLoadingCountries(true);
+    if (field === 'from') {
+      setShowCountryFromDropdown(true);
+      setShowCountryToDropdown(false);
+    } else {
+      setShowCountryToDropdown(true);
+      setShowCountryFromDropdown(false);
+    }
+    try {
+      const q = encodeURIComponent(searchQuery);
+      const response = await fetch(`http://localhost:8000/api/countries?q=${q}`);
+      if (response.ok) {
+        const data = await response.json();
+        setCountries(Array.isArray(data) ? data : []);
+      } else {
+        setCountries([]);
+        console.error('Failed to fetch countries');
+      }
+    } catch (error) {
+      setCountries([]);
+      console.error('Error fetching countries:', error);
+    } finally {
+      setLoadingCountries(false);
+    }
+  };
+
+  const handleCountrySelect = (countryName, field) => {
+    setForm((prev) => ({
+      ...prev,
+      [field]: countryName,
+    }));
+    if (field === 'countryFrom') setShowCountryFromDropdown(false);
+    else setShowCountryToDropdown(false);
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (countryFromDropdownRef.current && !countryFromDropdownRef.current.contains(event.target)) {
+        setShowCountryFromDropdown(false);
+      }
+      if (countryToDropdownRef.current && !countryToDropdownRef.current.contains(event.target)) {
+        setShowCountryToDropdown(false);
+      }
+    };
+
+    if (showCountryFromDropdown || showCountryToDropdown) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showCountryFromDropdown, showCountryToDropdown]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -157,15 +220,44 @@ function App() {
         {/* Common fields */}
         <div className="form-group">
           <label htmlFor="countryFrom">Страна отправления</label>
-          <input
-            type="text"
-            id="countryFrom"
-            name="countryFrom"
-            value={form.countryFrom}
-            onChange={handleChange}
-            required
-            placeholder="Введите страну"
-          />
+          <div className="dropdown-container" ref={countryFromDropdownRef}>
+            <input
+              type="text"
+              id="countryFrom"
+              name="countryFrom"
+              value={form.countryFrom}
+              onChange={(e) => {
+                handleChange(e);
+                if (countrySearchTimeoutRef.current) clearTimeout(countrySearchTimeoutRef.current);
+                countrySearchTimeoutRef.current = setTimeout(() => {
+                  if (showCountryFromDropdown) fetchCountries(e.target.value, 'from');
+                }, 300);
+              }}
+              onFocus={() => fetchCountries(form.countryFrom, 'from')}
+              onClick={() => fetchCountries(form.countryFrom, 'from')}
+              required
+              placeholder="Введите страну"
+            />
+            {showCountryFromDropdown && (
+              <div className="dropdown-list">
+                {loadingCountries ? (
+                  <div className="dropdown-item">Загрузка...</div>
+                ) : countries.length > 0 ? (
+                  countries.map((country) => (
+                    <div
+                      key={country.id}
+                      className="dropdown-item"
+                      onClick={() => handleCountrySelect(country.name, 'countryFrom')}
+                    >
+                      {country.name}
+                    </div>
+                  ))
+                ) : (
+                  <div className="dropdown-item">Не найдено, введите вручную</div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="form-group">
@@ -183,15 +275,44 @@ function App() {
 
         <div className="form-group">
           <label htmlFor="countryTo">Страна прибытия</label>
-          <input
-            type="text"
-            id="countryTo"
-            name="countryTo"
-            value={form.countryTo}
-            onChange={handleChange}
-            required
-            placeholder="Введите страну"
-          />
+          <div className="dropdown-container" ref={countryToDropdownRef}>
+            <input
+              type="text"
+              id="countryTo"
+              name="countryTo"
+              value={form.countryTo}
+              onChange={(e) => {
+                handleChange(e);
+                if (countrySearchTimeoutRef.current) clearTimeout(countrySearchTimeoutRef.current);
+                countrySearchTimeoutRef.current = setTimeout(() => {
+                  if (showCountryToDropdown) fetchCountries(e.target.value, 'to');
+                }, 300);
+              }}
+              onFocus={() => fetchCountries(form.countryTo, 'to')}
+              onClick={() => fetchCountries(form.countryTo, 'to')}
+              required
+              placeholder="Введите страну"
+            />
+            {showCountryToDropdown && (
+              <div className="dropdown-list">
+                {loadingCountries ? (
+                  <div className="dropdown-item">Загрузка...</div>
+                ) : countries.length > 0 ? (
+                  countries.map((country) => (
+                    <div
+                      key={country.id}
+                      className="dropdown-item"
+                      onClick={() => handleCountrySelect(country.name, 'countryTo')}
+                    >
+                      {country.name}
+                    </div>
+                  ))
+                ) : (
+                  <div className="dropdown-item">Не найдено, введите вручную</div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="form-group">

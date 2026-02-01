@@ -6,6 +6,7 @@ from typing import List, Optional
 from dotenv import load_dotenv
 from sqlalchemy import (
     BigInteger,
+    Boolean,
     Date,
     DateTime,
     Enum,
@@ -130,6 +131,7 @@ class Country(Base):
     __tablename__ = "countries"
     name: Mapped[str]
     cities: Mapped["City"] = relationship(back_populates="country")
+    is_viewed: Mapped[bool] = mapped_column(Boolean, default=False)
 
     __table_args__ = (UniqueConstraint("name"),)
 
@@ -140,6 +142,7 @@ class City(Base):
     country_id: Mapped[int] = mapped_column(ForeignKey("countries.id"))
     country: Mapped["Country"] = relationship(back_populates="cities")
     user_cities: Mapped[List["UserCity"]] = relationship(back_populates="city")
+    is_viewed: Mapped[bool] = mapped_column(Boolean, default=False)
 
     __table_args__ = (UniqueConstraint("name"),)
 

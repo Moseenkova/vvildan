@@ -75,6 +75,7 @@ async def command_start_handler(message: Message, state: FSMContext) -> None:
             defaults={"name": message.chat.full_name},
             tg_id=message.chat.id,
         )
+
     await message.answer(
         f"Привет, {hbold(message.from_user.full_name)}!\nВыбери свою роль.",
         reply_markup=role_markup,

@@ -9,3 +9,7 @@ alembic revision --autogenerate -m "YOUR_COMMENT_HERE"
 
 Running Migration
 alembic upgrade head
+
+
+
+PGPASSWORD='postgres' psql -U postgres -d courier -h localhost
