@@ -16,9 +16,11 @@ function App() {
     baggageComments: "",
   });
   const [countries, setCountries] = useState([]);
-  const [showCountryDropdown, setShowCountryDropdown] = useState(false);
+  const [showCountryFromDropdown, setShowCountryFromDropdown] = useState(false);
+  const [showCountryToDropdown, setShowCountryToDropdown] = useState(false);
   const [loadingCountries, setLoadingCountries] = useState(false);
-  const countryDropdownRef = useRef(null);
+  const countryFromDropdownRef = useRef(null);
+  const countryToDropdownRef = useRef(null);
   const countrySearchTimeoutRef = useRef(null);
 
   // Format Date object to dd.mm.yyyy string
@@ -45,9 +47,15 @@ function App() {
     }));
   };
 
-  const fetchCountries = async (searchQuery = '') => {
+  const fetchCountries = async (searchQuery = '', field = 'from') => {
     setLoadingCountries(true);
-    setShowCountryDropdown(true);
+    if (field === 'from') {
+      setShowCountryFromDropdown(true);
+      setShowCountryToDropdown(false);
+    } else {
+      setShowCountryToDropdown(true);
+      setShowCountryFromDropdown(false);
+    }
     try {
       const q = encodeURIComponent(searchQuery);
       const response = await fetch(`http://localhost:8000/api/countries?q=${q}`);
@@ -66,30 +74,34 @@ function App() {
     }
   };
 
-  const handleCountrySelect = (countryName) => {
+  const handleCountrySelect = (countryName, field) => {
     setForm((prev) => ({
       ...prev,
-      countryFrom: countryName,
+      [field]: countryName,
     }));
-    setShowCountryDropdown(false);
+    if (field === 'countryFrom') setShowCountryFromDropdown(false);
+    else setShowCountryToDropdown(false);
   };
 
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (countryDropdownRef.current && !countryDropdownRef.current.contains(event.target)) {
-        setShowCountryDropdown(false);
+      if (countryFromDropdownRef.current && !countryFromDropdownRef.current.contains(event.target)) {
+        setShowCountryFromDropdown(false);
+      }
+      if (countryToDropdownRef.current && !countryToDropdownRef.current.contains(event.target)) {
+        setShowCountryToDropdown(false);
       }
     };
 
-    if (showCountryDropdown) {
+    if (showCountryFromDropdown || showCountryToDropdown) {
       document.addEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [showCountryDropdown]);
+  }, [showCountryFromDropdown, showCountryToDropdown]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -208,7 +220,7 @@ function App() {
         {/* Common fields */}
         <div className="form-group">
           <label htmlFor="countryFrom">Страна отправления</label>
-          <div className="dropdown-container" ref={countryDropdownRef}>
+          <div className="dropdown-container" ref={countryFromDropdownRef}>
             <input
               type="text"
               id="countryFrom"
@@ -218,15 +230,15 @@ function App() {
                 handleChange(e);
                 if (countrySearchTimeoutRef.current) clearTimeout(countrySearchTimeoutRef.current);
                 countrySearchTimeoutRef.current = setTimeout(() => {
-                  if (showCountryDropdown) fetchCountries(e.target.value);
+                  if (showCountryFromDropdown) fetchCountries(e.target.value, 'from');
                 }, 300);
               }}
-              onFocus={() => fetchCountries(form.countryFrom)}
-              onClick={() => fetchCountries(form.countryFrom)}
+              onFocus={() => fetchCountries(form.countryFrom, 'from')}
+              onClick={() => fetchCountries(form.countryFrom, 'from')}
               required
               placeholder="Введите страну"
             />
-            {showCountryDropdown && (
+            {showCountryFromDropdown && (
               <div className="dropdown-list">
                 {loadingCountries ? (
                   <div className="dropdown-item">Загрузка...</div>
@@ -235,7 +247,7 @@ function App() {
                     <div
                       key={country.id}
                       className="dropdown-item"
-                      onClick={() => handleCountrySelect(country.name)}
+                      onClick={() => handleCountrySelect(country.name, 'countryFrom')}
                     >
                       {country.name}
                     </div>
@@ -263,15 +275,44 @@ function App() {
 
         <div className="form-group">
           <label htmlFor="countryTo">Страна прибытия</label>
-          <input
-            type="text"
-            id="countryTo"
-            name="countryTo"
-            value={form.countryTo}
-            onChange={handleChange}
-            required
-            placeholder="Введите страну"
-          />
+          <div className="dropdown-container" ref={countryToDropdownRef}>
+            <input
+              type="text"
+              id="countryTo"
+              name="countryTo"
+              value={form.countryTo}
+              onChange={(e) => {
+                handleChange(e);
+                if (countrySearchTimeoutRef.current) clearTimeout(countrySearchTimeoutRef.current);
+                countrySearchTimeoutRef.current = setTimeout(() => {
+                  if (showCountryToDropdown) fetchCountries(e.target.value, 'to');
+                }, 300);
+              }}
+              onFocus={() => fetchCountries(form.countryTo, 'to')}
+              onClick={() => fetchCountries(form.countryTo, 'to')}
+              required
+              placeholder="Введите страну"
+            />
+            {showCountryToDropdown && (
+              <div className="dropdown-list">
+                {loadingCountries ? (
+                  <div className="dropdown-item">Загрузка...</div>
+                ) : countries.length > 0 ? (
+                  countries.map((country) => (
+                    <div
+                      key={country.id}
+                      className="dropdown-item"
+                      onClick={() => handleCountrySelect(country.name, 'countryTo')}
+                    >
+                      {country.name}
+                    </div>
+                  ))
+                ) : (
+                  <div className="dropdown-item">Нет стран</div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="form-group">
