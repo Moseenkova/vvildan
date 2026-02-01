@@ -253,7 +253,7 @@ function App() {
                     </div>
                   ))
                 ) : (
-                  <div className="dropdown-item">Нет стран</div>
+                  <div className="dropdown-item">Не найдено, введите вручную</div>
                 )}
               </div>
             )}
@@ -308,7 +308,7 @@ function App() {
                     </div>
                   ))
                 ) : (
-                  <div className="dropdown-item">Нет стран</div>
+                  <div className="dropdown-item">Не найдено, введите вручную</div>
                 )}
               </div>
             )}
