@@ -1,8 +1,9 @@
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import select
-from database import async_session_maker, Country
-from schemas import CountrySchema
+
+from .database import async_session_maker, Country
+from .schemas import CountrySchema
 
 app = FastAPI()
 
