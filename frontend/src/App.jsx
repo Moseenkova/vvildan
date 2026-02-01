@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import './App.css'
@@ -15,6 +15,11 @@ function App() {
     cityTo: "",
     baggageComments: "",
   });
+  const [countries, setCountries] = useState([]);
+  const [showCountryDropdown, setShowCountryDropdown] = useState(false);
+  const [loadingCountries, setLoadingCountries] = useState(false);
+  const countryDropdownRef = useRef(null);
+  const countrySearchTimeoutRef = useRef(null);
 
   // Format Date object to dd.mm.yyyy string
   const formatDateToString = (date) => {
@@ -39,6 +44,52 @@ function App() {
       [name]: value,
     }));
   };
+
+  const fetchCountries = async (searchQuery = '') => {
+    setLoadingCountries(true);
+    setShowCountryDropdown(true);
+    try {
+      const q = encodeURIComponent(searchQuery);
+      const response = await fetch(`http://localhost:8000/api/countries?q=${q}`);
+      if (response.ok) {
+        const data = await response.json();
+        setCountries(Array.isArray(data) ? data : []);
+      } else {
+        setCountries([]);
+        console.error('Failed to fetch countries');
+      }
+    } catch (error) {
+      setCountries([]);
+      console.error('Error fetching countries:', error);
+    } finally {
+      setLoadingCountries(false);
+    }
+  };
+
+  const handleCountrySelect = (countryName) => {
+    setForm((prev) => ({
+      ...prev,
+      countryFrom: countryName,
+    }));
+    setShowCountryDropdown(false);
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (countryDropdownRef.current && !countryDropdownRef.current.contains(event.target)) {
+        setShowCountryDropdown(false);
+      }
+    };
+
+    if (showCountryDropdown) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showCountryDropdown]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -157,15 +208,44 @@ function App() {
         {/* Common fields */}
         <div className="form-group">
           <label htmlFor="countryFrom">Страна отправления</label>
-          <input
-            type="text"
-            id="countryFrom"
-            name="countryFrom"
-            value={form.countryFrom}
-            onChange={handleChange}
-            required
-            placeholder="Введите страну"
-          />
+          <div className="dropdown-container" ref={countryDropdownRef}>
+            <input
+              type="text"
+              id="countryFrom"
+              name="countryFrom"
+              value={form.countryFrom}
+              onChange={(e) => {
+                handleChange(e);
+                if (countrySearchTimeoutRef.current) clearTimeout(countrySearchTimeoutRef.current);
+                countrySearchTimeoutRef.current = setTimeout(() => {
+                  if (showCountryDropdown) fetchCountries(e.target.value);
+                }, 300);
+              }}
+              onFocus={() => fetchCountries(form.countryFrom)}
+              onClick={() => fetchCountries(form.countryFrom)}
+              required
+              placeholder="Введите страну"
+            />
+            {showCountryDropdown && (
+              <div className="dropdown-list">
+                {loadingCountries ? (
+                  <div className="dropdown-item">Загрузка...</div>
+                ) : countries.length > 0 ? (
+                  countries.map((country) => (
+                    <div
+                      key={country.id}
+                      className="dropdown-item"
+                      onClick={() => handleCountrySelect(country.name)}
+                    >
+                      {country.name}
+                    </div>
+                  ))
+                ) : (
+                  <div className="dropdown-item">Нет стран</div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="form-group">
