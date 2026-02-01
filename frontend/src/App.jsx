@@ -23,6 +23,19 @@ function App() {
   const countryToDropdownRef = useRef(null);
   const countrySearchTimeoutRef = useRef(null);
 
+  // Country IDs when selected from dropdown (null if typed manually)
+  const [countryFromId, setCountryFromId] = useState(null);
+  const [countryToId, setCountryToId] = useState(null);
+
+  // City dropdown state
+  const [cities, setCities] = useState([]);
+  const [showCityFromDropdown, setShowCityFromDropdown] = useState(false);
+  const [showCityToDropdown, setShowCityToDropdown] = useState(false);
+  const [loadingCities, setLoadingCities] = useState(false);
+  const cityFromDropdownRef = useRef(null);
+  const cityToDropdownRef = useRef(null);
+  const citySearchTimeoutRef = useRef(null);
+
   // Format Date object to dd.mm.yyyy string
   const formatDateToString = (date) => {
     if (!date) return "";
@@ -74,13 +87,64 @@ function App() {
     }
   };
 
-  const handleCountrySelect = (countryName, field) => {
+  const handleCountrySelect = (country, field) => {
+    const countryName = typeof country === 'string' ? country : country.name;
+    const countryId = typeof country === 'object' ? country.id : null;
     setForm((prev) => ({
       ...prev,
       [field]: countryName,
+      [field === 'countryFrom' ? 'cityFrom' : 'cityTo']: '',
     }));
-    if (field === 'countryFrom') setShowCountryFromDropdown(false);
-    else setShowCountryToDropdown(false);
+    if (field === 'countryFrom') {
+      setCountryFromId(countryId);
+      setShowCountryFromDropdown(false);
+    } else {
+      setCountryToId(countryId);
+      setShowCountryToDropdown(false);
+    }
+  };
+
+  const fetchCities = async (countryId, searchQuery = '', field = 'from') => {
+    if (!countryId) return;
+    setLoadingCities(true);
+    if (field === 'from') {
+      setShowCityFromDropdown(true);
+      setShowCityToDropdown(false);
+    } else {
+      setShowCityToDropdown(true);
+      setShowCityFromDropdown(false);
+    }
+    try {
+      const q = encodeURIComponent(searchQuery);
+      const response = await fetch(`http://localhost:8000/api/cities?country_id=${countryId}&q=${q}`);
+      if (response.ok) {
+        const data = await response.json();
+        setCities(Array.isArray(data) ? data : []);
+      } else {
+        setCities([]);
+      }
+    } catch (error) {
+      setCities([]);
+      console.error('Error fetching cities:', error);
+    } finally {
+      setLoadingCities(false);
+    }
+  };
+
+  const handleCitySelect = (cityName, field) => {
+    setForm((prev) => ({
+      ...prev,
+      [field]: cityName,
+    }));
+    if (field === 'cityFrom') setShowCityFromDropdown(false);
+    else setShowCityToDropdown(false);
+  };
+
+  // Clear countryId when user types in country field (manual input)
+  const handleCountryChange = (e, field) => {
+    handleChange(e);
+    if (field === 'countryFrom') setCountryFromId(null);
+    else setCountryToId(null);
   };
 
   // Close dropdown when clicking outside
@@ -92,16 +156,22 @@ function App() {
       if (countryToDropdownRef.current && !countryToDropdownRef.current.contains(event.target)) {
         setShowCountryToDropdown(false);
       }
+      if (cityFromDropdownRef.current && !cityFromDropdownRef.current.contains(event.target)) {
+        setShowCityFromDropdown(false);
+      }
+      if (cityToDropdownRef.current && !cityToDropdownRef.current.contains(event.target)) {
+        setShowCityToDropdown(false);
+      }
     };
 
-    if (showCountryFromDropdown || showCountryToDropdown) {
+    if (showCountryFromDropdown || showCountryToDropdown || showCityFromDropdown || showCityToDropdown) {
       document.addEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [showCountryFromDropdown, showCountryToDropdown]);
+  }, [showCountryFromDropdown, showCountryToDropdown, showCityFromDropdown, showCityToDropdown]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -227,7 +297,7 @@ function App() {
               name="countryFrom"
               value={form.countryFrom}
               onChange={(e) => {
-                handleChange(e);
+                handleCountryChange(e, 'countryFrom');
                 if (countrySearchTimeoutRef.current) clearTimeout(countrySearchTimeoutRef.current);
                 countrySearchTimeoutRef.current = setTimeout(() => {
                   if (showCountryFromDropdown) fetchCountries(e.target.value, 'from');
@@ -247,14 +317,12 @@ function App() {
                     <div
                       key={country.id}
                       className="dropdown-item"
-                      onClick={() => handleCountrySelect(country.name, 'countryFrom')}
+                      onClick={() => handleCountrySelect(country, 'countryFrom')}
                     >
                       {country.name}
                     </div>
                   ))
-                ) : (
-                  <div className="dropdown-item">Не найдено, введите вручную</div>
-                )}
+                ) : null}
               </div>
             )}
           </div>
@@ -262,15 +330,64 @@ function App() {
 
         <div className="form-group">
           <label htmlFor="cityFrom">Город отправления</label>
-          <input
-            type="text"
-            id="cityFrom"
-            name="cityFrom"
-            value={form.cityFrom}
-            onChange={handleChange}
-            required
-            placeholder="Введите город"
-          />
+          {!form.countryFrom ? (
+            <input
+              type="text"
+              id="cityFrom"
+              readOnly
+              value=""
+              placeholder="Сначала выберите страну"
+              className="city-disabled"
+              onFocus={(e) => e.target.blur()}
+            />
+          ) : countryFromId ? (
+            <div className="dropdown-container" ref={cityFromDropdownRef}>
+              <input
+                type="text"
+                id="cityFrom"
+                name="cityFrom"
+                value={form.cityFrom}
+                onChange={(e) => {
+                  handleChange(e);
+                  if (citySearchTimeoutRef.current) clearTimeout(citySearchTimeoutRef.current);
+                  citySearchTimeoutRef.current = setTimeout(() => {
+                    if (showCityFromDropdown) fetchCities(countryFromId, e.target.value, 'from');
+                  }, 300);
+                }}
+                onFocus={() => fetchCities(countryFromId, form.cityFrom, 'from')}
+                onClick={() => fetchCities(countryFromId, form.cityFrom, 'from')}
+                required
+                placeholder="Введите или выберите город"
+              />
+              {showCityFromDropdown && (
+                <div className="dropdown-list">
+                  {loadingCities ? (
+                    <div className="dropdown-item">Загрузка...</div>
+                  ) : cities.length > 0 ? (
+                    cities.map((city) => (
+                      <div
+                        key={city.id}
+                        className="dropdown-item"
+                        onClick={() => handleCitySelect(city.name, 'cityFrom')}
+                      >
+                        {city.name}
+                      </div>
+                    ))
+                  ) : null}
+                </div>
+              )}
+            </div>
+          ) : (
+            <input
+              type="text"
+              id="cityFrom"
+              name="cityFrom"
+              value={form.cityFrom}
+              onChange={handleChange}
+              required
+              placeholder="Введите город"
+            />
+          )}
         </div>
 
         <div className="form-group">
@@ -282,7 +399,7 @@ function App() {
               name="countryTo"
               value={form.countryTo}
               onChange={(e) => {
-                handleChange(e);
+                handleCountryChange(e, 'countryTo');
                 if (countrySearchTimeoutRef.current) clearTimeout(countrySearchTimeoutRef.current);
                 countrySearchTimeoutRef.current = setTimeout(() => {
                   if (showCountryToDropdown) fetchCountries(e.target.value, 'to');
@@ -302,14 +419,12 @@ function App() {
                     <div
                       key={country.id}
                       className="dropdown-item"
-                      onClick={() => handleCountrySelect(country.name, 'countryTo')}
+                      onClick={() => handleCountrySelect(country, 'countryTo')}
                     >
                       {country.name}
                     </div>
                   ))
-                ) : (
-                  <div className="dropdown-item">Не найдено, введите вручную</div>
-                )}
+                ) : null}
               </div>
             )}
           </div>
@@ -317,15 +432,64 @@ function App() {
 
         <div className="form-group">
           <label htmlFor="cityTo">Город прибытия</label>
-          <input
-            type="text"
-            id="cityTo"
-            name="cityTo"
-            value={form.cityTo}
-            onChange={handleChange}
-            required
-            placeholder="Введите город"
-          />
+          {!form.countryTo ? (
+            <input
+              type="text"
+              id="cityTo"
+              readOnly
+              value=""
+              placeholder="Сначала выберите страну"
+              className="city-disabled"
+              onFocus={(e) => e.target.blur()}
+            />
+          ) : countryToId ? (
+            <div className="dropdown-container" ref={cityToDropdownRef}>
+              <input
+                type="text"
+                id="cityTo"
+                name="cityTo"
+                value={form.cityTo}
+                onChange={(e) => {
+                  handleChange(e);
+                  if (citySearchTimeoutRef.current) clearTimeout(citySearchTimeoutRef.current);
+                  citySearchTimeoutRef.current = setTimeout(() => {
+                    if (showCityToDropdown) fetchCities(countryToId, e.target.value, 'to');
+                  }, 300);
+                }}
+                onFocus={() => fetchCities(countryToId, form.cityTo, 'to')}
+                onClick={() => fetchCities(countryToId, form.cityTo, 'to')}
+                required
+                placeholder="Введите или выберите город"
+              />
+              {showCityToDropdown && (
+                <div className="dropdown-list">
+                  {loadingCities ? (
+                    <div className="dropdown-item">Загрузка...</div>
+                  ) : cities.length > 0 ? (
+                    cities.map((city) => (
+                      <div
+                        key={city.id}
+                        className="dropdown-item"
+                        onClick={() => handleCitySelect(city.name, 'cityTo')}
+                      >
+                        {city.name}
+                      </div>
+                    ))
+                  ) : null}
+                </div>
+              )}
+            </div>
+          ) : (
+            <input
+              type="text"
+              id="cityTo"
+              name="cityTo"
+              value={form.cityTo}
+              onChange={handleChange}
+              required
+              placeholder="Введите город"
+            />
+          )}
         </div>
 
         <div className="form-group">

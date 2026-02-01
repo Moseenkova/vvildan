@@ -21,6 +21,7 @@ from sqlalchemy.orm import joinedload
 import database
 from database import (
     RU_LABELS,
+    City,
     Country,
     Courier,
     Request,

@@ -2,8 +2,8 @@ from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import select
 
-from .database import async_session_maker, Country
-from .schemas import CountrySchema
+from .database import async_session_maker, City, Country
+from .schemas import CitySchema, CountrySchema
 
 app = FastAPI()
 
@@ -25,3 +25,21 @@ async def get_countries(q: str = Query("", description="Search countries by name
         result = await session.execute(query)
         countries = result.scalars().all()
         return countries
+
+
+@app.get("/api/cities", response_model=list[CitySchema])
+async def get_cities(
+    country_id: int = Query(..., description="Country ID"),
+    q: str = Query("", description="Search cities by name"),
+):
+    async with async_session_maker() as session:
+        query = (
+            select(City)
+            .where(City.country_id == country_id)
+            .order_by(City.name.asc())
+        )
+        if q.strip():
+            query = query.where(City.name.ilike(f"%{q.strip()}%"))
+        result = await session.execute(query)
+        cities = result.scalars().all()
+        return cities
