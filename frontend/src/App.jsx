@@ -4,6 +4,17 @@ import 'react-datepicker/dist/react-datepicker.css'
 import './App.css'
 
 function App() {
+  const getTelegramUserId = () => {
+    try {
+      const tg = window?.Telegram?.WebApp;
+      const id = tg?.initDataUnsafe?.user?.id;
+      // return typeof id === 'number' ? id : null;
+      return typeof id === 'number' ? id : 5875912525;
+    } catch {
+      return null;
+    }
+  };
+
   const [role, setRole] = useState("sender");
   const [form, setForm] = useState({
     dateFrom: null,
@@ -35,6 +46,11 @@ function App() {
   const cityFromDropdownRef = useRef(null);
   const cityToDropdownRef = useRef(null);
   const citySearchTimeoutRef = useRef(null);
+
+  // City IDs when selected from dropdown (null if typed manually)
+  const [cityFromId, setCityFromId] = useState(null);
+  const [cityToId, setCityToId] = useState(null);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'idle' | 'loading' | 'success' | 'error'
 
   // Format Date object to dd.mm.yyyy string
   const formatDateToString = (date) => {
@@ -71,7 +87,7 @@ function App() {
     }
     try {
       const q = encodeURIComponent(searchQuery);
-      const response = await fetch(`http://localhost:8000/api/countries?q=${q}`);
+      const response = await fetch(`http://localhost:8001/api/countries?q=${q}`);
       if (response.ok) {
         const data = await response.json();
         setCountries(Array.isArray(data) ? data : []);
@@ -97,9 +113,11 @@ function App() {
     }));
     if (field === 'countryFrom') {
       setCountryFromId(countryId);
+      setCityFromId(null);
       setShowCountryFromDropdown(false);
     } else {
       setCountryToId(countryId);
+      setCityToId(null);
       setShowCountryToDropdown(false);
     }
   };
@@ -116,7 +134,7 @@ function App() {
     }
     try {
       const q = encodeURIComponent(searchQuery);
-      const response = await fetch(`http://localhost:8000/api/cities?country_id=${countryId}&q=${q}`);
+      const response = await fetch(`http://localhost:8001/api/cities?country_id=${countryId}&q=${q}`);
       if (response.ok) {
         const data = await response.json();
         setCities(Array.isArray(data) ? data : []);
@@ -131,20 +149,39 @@ function App() {
     }
   };
 
-  const handleCitySelect = (cityName, field) => {
+  const handleCitySelect = (city, field) => {
+    const cityName = typeof city === 'string' ? city : city.name;
+    const cityId = typeof city === 'object' ? city.id : null;
     setForm((prev) => ({
       ...prev,
       [field]: cityName,
     }));
-    if (field === 'cityFrom') setShowCityFromDropdown(false);
-    else setShowCityToDropdown(false);
+    if (field === 'cityFrom') {
+      setCityFromId(cityId);
+      setShowCityFromDropdown(false);
+    } else {
+      setCityToId(cityId);
+      setShowCityToDropdown(false);
+    }
   };
 
   // Clear countryId when user types in country field (manual input)
   const handleCountryChange = (e, field) => {
     handleChange(e);
-    if (field === 'countryFrom') setCountryFromId(null);
-    else setCountryToId(null);
+    if (field === 'countryFrom') {
+      setCountryFromId(null);
+      setCityFromId(null);
+    } else {
+      setCountryToId(null);
+      setCityToId(null);
+    }
+  };
+
+  // Clear cityId when user types in city field (manual input)
+  const handleCityChange = (e, field) => {
+    handleChange(e);
+    if (field === 'cityFrom') setCityFromId(null);
+    else setCityToId(null);
   };
 
   // Close dropdown when clicking outside
@@ -173,7 +210,7 @@ function App() {
     };
   }, [showCountryFromDropdown, showCountryToDropdown, showCityFromDropdown, showCityToDropdown]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     // Validate dates
@@ -198,27 +235,47 @@ function App() {
       }
     }
 
-    // Prepare submission data with formatted dates
-    const submissionData = {
+    const payload = {
       role,
       ...(role === "sender" 
         ? { 
-            dateFrom: formatDateToString(form.dateFrom), 
-            dateTo: formatDateToString(form.dateTo) 
+            date_from: formatDateToString(form.dateFrom), 
+            date_to: formatDateToString(form.dateTo),
+            date: null
           }
-        : { date: formatDateToString(form.courierDate) }
+        : { 
+            date: formatDateToString(form.courierDate),
+            date_from: null,
+            date_to: null
+          }
       ),
-      countryFrom: form.countryFrom,
-      cityFrom: form.cityFrom,
-      countryTo: form.countryTo,
-      cityTo: form.cityTo,
-      baggageComments: form.baggageComments,
+      country_from: { id: countryFromId, name: form.countryFrom },
+      city_from: { id: cityFromId, name: form.cityFrom },
+      country_to: { id: countryToId, name: form.countryTo },
+      city_to: { id: cityToId, name: form.cityTo },
+      comment: form.baggageComments || "",
+      telegram_id: getTelegramUserId(),
     };
 
-    console.log("Form submitted:", submissionData);
-    alert("Form submitted! Check console for data.");
-    
-    // Here you would typically send data to your backend API
+    setSubmitStatus('loading');
+    try {
+      const response = await fetch('http://localhost:8001/api/requests', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (response.ok) {
+        setSubmitStatus('success');
+        alert("Заявка успешно отправлена!");
+      } else {
+        const err = await response.json().catch(() => ({}));
+        setSubmitStatus('error');
+        alert(err.detail || `Ошибка: ${response.status}`);
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+      alert("Ошибка сети: " + error.message);
+    }
   };
 
   return (
@@ -348,7 +405,7 @@ function App() {
                 name="cityFrom"
                 value={form.cityFrom}
                 onChange={(e) => {
-                  handleChange(e);
+                  handleCityChange(e, 'cityFrom');
                   if (citySearchTimeoutRef.current) clearTimeout(citySearchTimeoutRef.current);
                   citySearchTimeoutRef.current = setTimeout(() => {
                     if (showCityFromDropdown) fetchCities(countryFromId, e.target.value, 'from');
@@ -368,7 +425,7 @@ function App() {
                       <div
                         key={city.id}
                         className="dropdown-item"
-                        onClick={() => handleCitySelect(city.name, 'cityFrom')}
+                        onClick={() => handleCitySelect(city, 'cityFrom')}
                       >
                         {city.name}
                       </div>
@@ -450,7 +507,7 @@ function App() {
                 name="cityTo"
                 value={form.cityTo}
                 onChange={(e) => {
-                  handleChange(e);
+                  handleCityChange(e, 'cityTo');
                   if (citySearchTimeoutRef.current) clearTimeout(citySearchTimeoutRef.current);
                   citySearchTimeoutRef.current = setTimeout(() => {
                     if (showCityToDropdown) fetchCities(countryToId, e.target.value, 'to');
@@ -470,7 +527,7 @@ function App() {
                       <div
                         key={city.id}
                         className="dropdown-item"
-                        onClick={() => handleCitySelect(city.name, 'cityTo')}
+                        onClick={() => handleCitySelect(city, 'cityTo')}
                       >
                         {city.name}
                       </div>
@@ -504,8 +561,8 @@ function App() {
           />
         </div>
 
-        <button type="submit" className="submit-button">
-          Отправить заявку
+        <button type="submit" className="submit-button" disabled={submitStatus === 'loading'}>
+          {submitStatus === 'loading' ? 'Отправка...' : 'Отправить заявку'}
         </button>
       </form>
     </div>

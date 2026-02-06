@@ -2,8 +2,8 @@ from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import select
 
-from .database import async_session_maker, City, Country
-from .schemas import CitySchema, CountrySchema
+from src.database import async_session_maker, City, Country
+from src.schemas import CitySchema, CountrySchema, RequestCreateSchema
 
 app = FastAPI()
 
@@ -43,3 +43,11 @@ async def get_cities(
         result = await session.execute(query)
         cities = result.scalars().all()
         return cities
+
+
+@app.post("/api/requests")
+async def create_request(body: RequestCreateSchema):
+    print(body)
+    """Accept request creation from the web form."""
+    # For now, return the validated payload. Wire to DB (Request, UserCity, etc.) as needed.
+    return {"ok": True, "data": body.model_dump()}
