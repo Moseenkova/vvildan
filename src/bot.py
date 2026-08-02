@@ -13,6 +13,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.types import CallbackQuery, Message
 from aiogram.utils.markdown import hbold
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from dotenv import load_dotenv
 from sqlalchemy import insert, select
 from sqlalchemy.orm import joinedload
@@ -43,6 +44,7 @@ from my_keyboards import (
     final_keyboard,
     role_markup,
 )
+from utils import get_user_link
 
 load_dotenv()
 TOKEN = getenv("BOT_TOKEN")
@@ -273,7 +275,12 @@ async def process_city_to(message: Message, state: FSMContext) -> None:
 
 @form_router.message(Form.date)
 async def process_date(message: Message, state: FSMContext) -> None:
-    await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id - 1)
+    try:
+        await bot.delete_message(
+            chat_id=message.chat.id, message_id=message.message_id - 1
+        )
+    except Exception:
+        pass
     await message.delete()
     date_string = message.text
     try:
@@ -311,7 +318,12 @@ async def process_date(message: Message, state: FSMContext) -> None:
 
 @form_router.message(Form.period)
 async def prosses_period(message: Message, state: FSMContext) -> None:
-    await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id - 1)
+    try:
+        await bot.delete_message(
+            chat_id=message.chat.id, message_id=message.message_id - 1
+        )
+    except Exception:
+        pass
     await message.delete()
     date_string = message.text.split("-")
     try:
@@ -377,10 +389,14 @@ async def baggage_kind_button_handler(
             )
             + f"тип: {chosen_types}"
         )
-        await bot.delete_message(
-            chat_id=callback_query.message.chat.id,
-            message_id=callback_query.message.message_id,
-        )
+        try:
+            await bot.delete_message(
+                chat_id=callback_query.message.chat.id,
+                message_id=callback_query.message.message_id,
+            )
+        except Exception:
+            pass
+
         await bot.edit_message_text(
             text=text,
             chat_id=callback_query.message.chat.id,
@@ -434,7 +450,12 @@ async def process_comment(message: Message, state: FSMContext) -> None:
     await bot.edit_message_text(
         text=text, chat_id=message.chat.id, message_id=data["message_id"]
     )
-    await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id - 1)
+    try:
+        await bot.delete_message(
+            chat_id=message.chat.id, message_id=message.message_id - 1
+        )
+    except Exception:
+        pass
     await message.delete()
 
     await message.answer("Проверьте данные", reply_markup=await final_keyboard())
@@ -623,7 +644,6 @@ async def command_finish_handler(
     logging.info(str(requests))
     if role == RoleModelEnum.sender:
         for r in requests:
-            courier_name = r.courier.user.name
             date_str = r.date.strftime("%d.%m.%Y")
             origin_city = r.origin.name
             destination_city = r.destination.name
@@ -632,7 +652,7 @@ async def command_finish_handler(
             ]
 
             msg_to_sender = (
-                f"Курьер: {courier_name}\n"
+                f"Курьер: {get_user_link(r.courier.user)}\n"
                 f"Дата: {date_str}\n"
                 f"Город отправления: {origin_city}\n"
                 f"Город прибытия: {destination_city}\n"
@@ -641,7 +661,7 @@ async def command_finish_handler(
             )
 
             msg_to_courier = (
-                f"Отправитель: {sender.user.name}\n"
+                f"Отправитель: {get_user_link(sender.user)}\n"
                 f"Даты: с {data['date_from']} по {data['date_to']}\n"
                 f"Город отправления: {origin_city}\n"
                 f"Город прибытия: {destination_city}\n"
@@ -654,7 +674,6 @@ async def command_finish_handler(
 
     elif role == RoleModelEnum.courier:
         for r in requests:
-            sender_name = r.sender.user.name
             date_from_str = r.date_from.strftime("%d.%m.%Y")
             date_to_str = r.date_to.strftime("%d.%m.%Y")
             origin_city = r.origin.name
@@ -664,7 +683,7 @@ async def command_finish_handler(
             ]
 
             msg_to_courier = (
-                f"Отправитель: {sender_name}\n"
+                f"Отправитель: {get_user_link(r.sender.user)}\n"
                 f"Даты: с {date_from_str} по {date_to_str}\n"
                 f"Город отправления: {origin_city}\n"
                 f"Город прибытия: {destination_city}\n"
@@ -673,7 +692,7 @@ async def command_finish_handler(
             )
             baggage_types = [bt.value for bt in data["baggage_types"]]
             msg_to_sender = (
-                f"Курьер: {courier.user.name}\n"
+                f"Курьер: {get_user_link(courier.user)}\n"
                 f"Дата: {data['date']}\n"
                 f"Город отправления: {origin_city}\n"
                 f"Город прибытия: {destination_city}\n"
@@ -683,17 +702,15 @@ async def command_finish_handler(
 
             await callback_query.message.answer(msg_to_courier)
             await bot.send_message(r.sender.user.tg_id, msg_to_sender)
+    try:
+        await bot.delete_message(
+            callback_query.message.chat.id, callback_query.message.message_id
+        )
+    except Exception:
+        pass
 
-    await bot.delete_message(
-        callback_query.message.chat.id, callback_query.message.message_id
-    )
 
-
-# тип багажа на русски
-# разьить по папкам
 # оброботка если юзер нажимает кнопки не по сценарию
-# уведомлять отправителя о появлении нового курьер и наооборот
-#
 
 
 @form_router.callback_query(CancelReqCallback.filter())
@@ -714,7 +731,14 @@ async def delete_request_handler(callback_query: types.CallbackQuery):
     await callback_query.message.edit_text("Запрос удален.")
 
 
+async def sched():
+    await bot.send_message(chat_id=5875912525, text="some text")
+
+
 async def main() -> None:
+    scheduler = AsyncIOScheduler()
+    scheduler.add_job(sched, "interval", minutes=1)
+    scheduler.start()
     dp = Dispatcher()
     dp.include_router(form_router)
     await dp.start_polling(bot)
@@ -723,3 +747,5 @@ async def main() -> None:
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     asyncio.run(main())
+
+# сделать фри касса аккаунт
