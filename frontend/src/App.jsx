@@ -6,6 +6,7 @@ import './App.css'
 
 function App() {
   const [role, setRole] = useState("sender");
+  const [userNotFound, setUserNotFound] = useState(false);
   const [form, setForm] = useState({
     dateFrom: null,
     dateTo: null,
@@ -60,6 +61,9 @@ function App() {
         console.log("Authenticated successfully!");
       } catch (error) {
         console.error("Authentication failed:", error);
+        if (error.response?.status === 404) {
+          setUserNotFound(true);
+        }
       }
     };
 
@@ -241,6 +245,18 @@ function App() {
 
     // Here you would typically send data to your backend API
   };
+
+  if (userNotFound) {
+    return (
+      <div className="app-container" style={{ textAlign: "center", padding: "50px 20px" }}>
+        <h1 style={{ fontSize: "3rem", marginBottom: "1rem" }}>404</h1>
+        <h2>User Not Found</h2>
+        <p style={{ marginTop: "1rem", color: "#666" }}>
+          You are not registered in the system. Please register through the Telegram bot first.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="app-container">

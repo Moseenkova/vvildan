@@ -30,3 +30,5 @@ Based on recent estimates for 2026, here is the list of the top 20 most spoken l
 *Note: These figures are approximate and can vary depending on the source and criteria used (such as how fluency is defined for non-native speakers or whether different varieties/dialects are grouped together or counted separately).*
 
 
+limit to 5 requests in the future
+get user language from tg sdk

@@ -1,5 +1,5 @@
 import uuid
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 from typing import Dict, Any
 
 from jose import jwt
@@ -10,7 +10,7 @@ cfg: Settings = get_settings()
 
 def create_jwt_token(payload: Dict[str, Any], kind: str = "access") -> dict:
     to_encode = payload.copy()
-    now = datetime.utcnow()
+    now = datetime.now(UTC)
     
     if kind == "access":
         expire = now + timedelta(minutes=cfg.ACCESS_TOKEN_EXPIRE_MINUTES)

@@ -1,4 +1,4 @@
-# from functools import lru_cache
+from functools import lru_cache
 from pathlib import Path
 from typing import Literal, Optional, final
 
@@ -43,6 +43,6 @@ class Settings(BaseSettings):
     DEV_CHAT_ID: str = "5875912525"
 
 
-# @lru_cache()
+@lru_cache()
 def get_settings() -> Settings:
     return Settings()

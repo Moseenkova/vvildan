@@ -10,6 +10,7 @@ from sqlalchemy import (
     Date,
     DateTime,
     Enum,
+    Float,
     ForeignKey,
     UniqueConstraint,
     func,
@@ -111,14 +112,14 @@ class Request(Base):
     sender: Mapped["Sender"] = relationship(back_populates="requests")
     courier_id: Mapped[int] = mapped_column(ForeignKey("couriers.id"), nullable=True)
     courier: Mapped["Courier"] = relationship(back_populates="requests")
-    origin_id: Mapped[int] = mapped_column(ForeignKey("user_cities.id"))
-    destination_id: Mapped[int] = mapped_column(ForeignKey("user_cities.id"))
+    origin_id: Mapped[int] = mapped_column(ForeignKey("airports.id"))
+    destination_id: Mapped[int] = mapped_column(ForeignKey("airports.id"))
 
-    origin: Mapped["UserCity"] = relationship(
-        foreign_keys=[origin_id], backref="requests_from"
+    origin: Mapped["Airport"] = relationship(
+        foreign_keys=[origin_id], back_populates="requests_from"
     )
-    destination: Mapped["UserCity"] = relationship(
-        foreign_keys=[destination_id], backref="requests_to"
+    destination: Mapped["Airport"] = relationship(
+        foreign_keys=[destination_id], back_populates="requests_to"
     )
     date: Mapped[date] = mapped_column(Date, nullable=True)
     date_to: Mapped[date] = mapped_column(Date, nullable=True)
@@ -131,8 +132,9 @@ class Request(Base):
 class Country(Base):
     __tablename__ = "countries"
     name: Mapped[str]
-    cities: Mapped["City"] = relationship(back_populates="country")
+    iso_code: Mapped[Optional[str]] = mapped_column(unique=True)
     is_viewed: Mapped[bool] = mapped_column(Boolean, default=False)
+    cities: Mapped[List["City"]] = relationship(back_populates="country")
 
     __table_args__ = (UniqueConstraint("name"),)
 
@@ -142,20 +144,30 @@ class City(Base):
     name: Mapped[str]
     country_id: Mapped[int] = mapped_column(ForeignKey("countries.id"))
     country: Mapped["Country"] = relationship(back_populates="cities")
-    user_cities: Mapped[List["UserCity"]] = relationship(back_populates="city")
     is_viewed: Mapped[bool] = mapped_column(Boolean, default=False)
+    airports: Mapped[List["Airport"]] = relationship(back_populates="city")
 
-    __table_args__ = (UniqueConstraint("name"),)
+    __table_args__ = (UniqueConstraint("country_id", "name"),)
 
 
-class UserCity(Base):
-    __tablename__ = "user_cities"
+class Airport(Base):
+    __tablename__ = "airports"
+    ident: Mapped[str] = mapped_column(unique=True, index=True)
     name: Mapped[str]
-    created_by_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
-    city_id: Mapped[Optional[int]] = mapped_column(ForeignKey("cities.id"))
-    city: Mapped[Optional["City"]] = relationship(back_populates="user_cities")
-
-    __table_args__ = (UniqueConstraint("name"),)
+    airport_type: Mapped[str]
+    iata_code: Mapped[Optional[str]] = mapped_column(index=True)
+    icao_code: Mapped[Optional[str]] = mapped_column(index=True)
+    latitude: Mapped[float] = mapped_column(Float)
+    longitude: Mapped[float] = mapped_column(Float)
+    scheduled_service: Mapped[bool] = mapped_column(Boolean, default=False)
+    city_id: Mapped[int] = mapped_column(ForeignKey("cities.id"), index=True)
+    city: Mapped["City"] = relationship(back_populates="airports")
+    requests_from: Mapped[List["Request"]] = relationship(
+        foreign_keys="Request.origin_id", back_populates="origin"
+    )
+    requests_to: Mapped[List["Request"]] = relationship(
+        foreign_keys="Request.destination_id", back_populates="destination"
+    )
 
 
 class RefreshToken(Base):
