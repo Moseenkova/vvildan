@@ -1,10 +1,19 @@
 import { useState, useEffect, useRef } from 'react'
-import DatePicker from 'react-datepicker'
+import DatePicker, { registerLocale } from 'react-datepicker'
+import { enUS, ru } from 'date-fns/locale'
+import { useLingui } from '@lingui/react/macro'
 import 'react-datepicker/dist/react-datepicker.css'
 import api from './api'
+import { getMessages, locale } from './i18n'
 import './App.css'
 
+registerLocale('en', enUS)
+registerLocale('ru', ru)
+
 function App() {
+  const { _ } = useLingui()
+  const language = locale
+  const t = getMessages(_)
   const [role, setRole] = useState("sender");
   const [userNotFound, setUserNotFound] = useState(false);
   const [form, setForm] = useState({
@@ -40,6 +49,9 @@ function App() {
 
   // Authentication effect for Telegram Web App
   useEffect(() => {
+    document.documentElement.lang = language;
+    window.Telegram?.WebApp?.ready();
+
     const initAuth = async () => {
       // Get tg_id from Telegram Web App or use a fallback for local testing
       let tg_id = null;
@@ -68,7 +80,7 @@ function App() {
     };
 
     initAuth();
-  }, []);
+  }, [language]);
 
   // Format Date object to dd.mm.yyyy string
   const formatDateToString = (date) => {
@@ -204,21 +216,21 @@ function App() {
     // Validate dates
     if (role === "sender") {
       if (!form.dateFrom) {
-        alert("Please select a date for Date From");
+        alert(t.selectDateFrom);
         return;
       }
       if (!form.dateTo) {
-        alert("Please select a date for Date To");
+        alert(t.selectDateTo);
         return;
       }
 
       if (form.dateFrom > form.dateTo) {
-        alert("Date from cannot be after date to");
+        alert(t.invalidDateRange);
         return;
       }
     } else if (role === "courier") {
       if (!form.courierDate) {
-        alert("Please select a date");
+        alert(t.selectDate);
         return;
       }
     }
@@ -241,7 +253,7 @@ function App() {
     };
 
     console.log("Form submitted:", submissionData);
-    alert("Form submitted! Check console for data.");
+    alert(t.submitted);
 
     // Here you would typically send data to your backend API
   };
@@ -250,9 +262,9 @@ function App() {
     return (
       <div className="app-container" style={{ textAlign: "center", padding: "50px 20px" }}>
         <h1 style={{ fontSize: "3rem", marginBottom: "1rem" }}>404</h1>
-        <h2>User Not Found</h2>
+        <h2>{t.userNotFound}</h2>
         <p style={{ marginTop: "1rem", color: "#666" }}>
-          You are not registered in the system. Please register through the Telegram bot first.
+          {t.registrationRequired}
         </p>
       </div>
     );
@@ -265,13 +277,13 @@ function App() {
           onClick={() => setRole("sender")}
           className={`role-button ${role === "sender" ? "active" : ""}`}
         >
-          Отправитель
+          {t.sender}
         </button>
         <button
           onClick={() => setRole("courier")}
           className={`role-button ${role === "courier" ? "active" : ""}`}
         >
-          Курьер
+          {t.courier}
         </button>
       </div>
 
@@ -280,26 +292,28 @@ function App() {
         {role === "sender" && (
           <>
             <div className="form-group">
-              <label htmlFor="dateFrom">В период с даты</label>
+              <label htmlFor="dateFrom">{t.dateFrom}</label>
               <DatePicker
                 id="dateFrom"
                 selected={form.dateFrom}
                 onChange={(date) => handleDateChange(date, 'dateFrom')}
-                dateFormat="dd.MM.yyyy"
-                placeholderText="дд.мм.гггг"
+                dateFormat={t.dateFormat}
+                placeholderText={t.datePlaceholder}
+                locale={language}
                 className="date-picker-input"
                 required
                 minDate={new Date()}
               />
             </div>
             <div className="form-group">
-              <label htmlFor="dateTo">До даты</label>
+              <label htmlFor="dateTo">{t.dateTo}</label>
               <DatePicker
                 id="dateTo"
                 selected={form.dateTo}
                 onChange={(date) => handleDateChange(date, 'dateTo')}
-                dateFormat="dd.MM.yyyy"
-                placeholderText="дд.мм.гггг"
+                dateFormat={t.dateFormat}
+                placeholderText={t.datePlaceholder}
+                locale={language}
                 className="date-picker-input"
                 required
                 minDate={form.dateFrom || new Date()}
@@ -310,13 +324,14 @@ function App() {
 
         {role === "courier" && (
           <div className="form-group">
-            <label htmlFor="courierDate">Дата</label>
+            <label htmlFor="courierDate">{t.date}</label>
             <DatePicker
               id="courierDate"
               selected={form.courierDate}
               onChange={(date) => handleDateChange(date, 'courierDate')}
-              dateFormat="dd.MM.yyyy"
-              placeholderText="дд.мм.гггг"
+              dateFormat={t.dateFormat}
+              placeholderText={t.datePlaceholder}
+              locale={language}
               className="date-picker-input"
               required
               minDate={new Date()}
@@ -326,7 +341,7 @@ function App() {
 
         {/* Common fields */}
         <div className="form-group">
-          <label htmlFor="countryFrom">Страна отправления</label>
+          <label htmlFor="countryFrom">{t.countryFrom}</label>
           <div className="dropdown-container" ref={countryFromDropdownRef}>
             <input
               type="text"
@@ -343,12 +358,12 @@ function App() {
               onFocus={() => fetchCountries(form.countryFrom, 'from')}
               onClick={() => fetchCountries(form.countryFrom, 'from')}
               required
-              placeholder="Введите страну"
+              placeholder={t.enterCountry}
             />
             {showCountryFromDropdown && (
               <div className="dropdown-list">
                 {loadingCountries ? (
-                  <div className="dropdown-item">Загрузка...</div>
+                  <div className="dropdown-item">{t.loading}</div>
                 ) : countries.length > 0 ? (
                   countries.map((country) => (
                     <div
@@ -366,14 +381,14 @@ function App() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="cityFrom">Город отправления</label>
+          <label htmlFor="cityFrom">{t.cityFrom}</label>
           {!form.countryFrom ? (
             <input
               type="text"
               id="cityFrom"
               readOnly
               value=""
-              placeholder="Сначала выберите страну"
+              placeholder={t.chooseCountryFirst}
               className="city-disabled"
               onFocus={(e) => e.target.blur()}
             />
@@ -394,12 +409,12 @@ function App() {
                 onFocus={() => fetchCities(countryFromId, form.cityFrom, 'from')}
                 onClick={() => fetchCities(countryFromId, form.cityFrom, 'from')}
                 required
-                placeholder="Введите или выберите город"
+                placeholder={t.enterOrChooseCity}
               />
               {showCityFromDropdown && (
                 <div className="dropdown-list">
                   {loadingCities ? (
-                    <div className="dropdown-item">Загрузка...</div>
+                    <div className="dropdown-item">{t.loading}</div>
                   ) : cities.length > 0 ? (
                     cities.map((city) => (
                       <div
@@ -422,13 +437,13 @@ function App() {
               value={form.cityFrom}
               onChange={handleChange}
               required
-              placeholder="Введите город"
+              placeholder={t.enterCity}
             />
           )}
         </div>
 
         <div className="form-group">
-          <label htmlFor="countryTo">Страна прибытия</label>
+          <label htmlFor="countryTo">{t.countryTo}</label>
           <div className="dropdown-container" ref={countryToDropdownRef}>
             <input
               type="text"
@@ -445,12 +460,12 @@ function App() {
               onFocus={() => fetchCountries(form.countryTo, 'to')}
               onClick={() => fetchCountries(form.countryTo, 'to')}
               required
-              placeholder="Введите страну"
+              placeholder={t.enterCountry}
             />
             {showCountryToDropdown && (
               <div className="dropdown-list">
                 {loadingCountries ? (
-                  <div className="dropdown-item">Загрузка...</div>
+                  <div className="dropdown-item">{t.loading}</div>
                 ) : countries.length > 0 ? (
                   countries.map((country) => (
                     <div
@@ -468,14 +483,14 @@ function App() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="cityTo">Город прибытия</label>
+          <label htmlFor="cityTo">{t.cityTo}</label>
           {!form.countryTo ? (
             <input
               type="text"
               id="cityTo"
               readOnly
               value=""
-              placeholder="Сначала выберите страну"
+              placeholder={t.chooseCountryFirst}
               className="city-disabled"
               onFocus={(e) => e.target.blur()}
             />
@@ -496,12 +511,12 @@ function App() {
                 onFocus={() => fetchCities(countryToId, form.cityTo, 'to')}
                 onClick={() => fetchCities(countryToId, form.cityTo, 'to')}
                 required
-                placeholder="Введите или выберите город"
+                placeholder={t.enterOrChooseCity}
               />
               {showCityToDropdown && (
                 <div className="dropdown-list">
                   {loadingCities ? (
-                    <div className="dropdown-item">Загрузка...</div>
+                    <div className="dropdown-item">{t.loading}</div>
                   ) : cities.length > 0 ? (
                     cities.map((city) => (
                       <div
@@ -524,25 +539,25 @@ function App() {
               value={form.cityTo}
               onChange={handleChange}
               required
-              placeholder="Введите город"
+              placeholder={t.enterCity}
             />
           )}
         </div>
 
         <div className="form-group">
-          <label htmlFor="baggageComments">Комментарий к багажу</label>
+          <label htmlFor="baggageComments">{t.baggageComments}</label>
           <input
             type="text"
             id="baggageComments"
             name="baggageComments"
             value={form.baggageComments}
             onChange={handleChange}
-            placeholder="Например: Одежда 5 кг, Документы, Электроника"
+            placeholder={t.baggageExample}
           />
         </div>
 
         <button type="submit" className="submit-button">
-          Отправить заявку
+          {t.submit}
         </button>
       </form>
     </div>
