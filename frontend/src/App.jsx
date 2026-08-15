@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import api from './api'
 import './App.css'
 
 function App() {
@@ -35,6 +36,35 @@ function App() {
   const cityFromDropdownRef = useRef(null);
   const cityToDropdownRef = useRef(null);
   const citySearchTimeoutRef = useRef(null);
+
+  // Authentication effect for Telegram Web App
+  useEffect(() => {
+    const initAuth = async () => {
+      // Get tg_id from Telegram Web App or use a fallback for local testing
+      let tg_id = null;
+      if (window.Telegram?.WebApp?.initDataUnsafe?.user?.id) {
+        tg_id = window.Telegram.WebApp.initDataUnsafe.user.id;
+      } else if (import.meta.env.VITE_DEV_ENV === 'true') {
+        // Fallback for development if not in Telegram and dev env is specified
+        tg_id = import.meta.env.VITE_DUMMY_TG_ID;
+      }
+
+      if (!tg_id) {
+        console.warn("No Telegram user ID found and dev fallback is disabled.");
+        return;
+      }
+
+      try {
+        const { data } = await api.post('/auth/login', { tg_id });
+        localStorage.setItem("access_token", data.access_token);
+        console.log("Authenticated successfully!");
+      } catch (error) {
+        console.error("Authentication failed:", error);
+      }
+    };
+
+    initAuth();
+  }, []);
 
   // Format Date object to dd.mm.yyyy string
   const formatDateToString = (date) => {
@@ -71,14 +101,9 @@ function App() {
     }
     try {
       const q = encodeURIComponent(searchQuery);
-      const response = await fetch(`http://localhost:8000/api/countries?q=${q}`);
-      if (response.ok) {
-        const data = await response.json();
-        setCountries(Array.isArray(data) ? data : []);
-      } else {
-        setCountries([]);
-        console.error('Failed to fetch countries');
-      }
+      const response = await api.get(`/api/countries?q=${q}`);
+      const data = response.data;
+      setCountries(Array.isArray(data) ? data : []);
     } catch (error) {
       setCountries([]);
       console.error('Error fetching countries:', error);
@@ -116,13 +141,9 @@ function App() {
     }
     try {
       const q = encodeURIComponent(searchQuery);
-      const response = await fetch(`http://localhost:8000/api/cities?country_id=${countryId}&q=${q}`);
-      if (response.ok) {
-        const data = await response.json();
-        setCities(Array.isArray(data) ? data : []);
-      } else {
-        setCities([]);
-      }
+      const response = await api.get(`/api/cities?country_id=${countryId}&q=${q}`);
+      const data = response.data;
+      setCities(Array.isArray(data) ? data : []);
     } catch (error) {
       setCities([]);
       console.error('Error fetching cities:', error);
@@ -175,7 +196,7 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     // Validate dates
     if (role === "sender") {
       if (!form.dateFrom) {
@@ -186,7 +207,7 @@ function App() {
         alert("Please select a date for Date To");
         return;
       }
-      
+
       if (form.dateFrom > form.dateTo) {
         alert("Date from cannot be after date to");
         return;
@@ -201,11 +222,11 @@ function App() {
     // Prepare submission data with formatted dates
     const submissionData = {
       role,
-      ...(role === "sender" 
-        ? { 
-            dateFrom: formatDateToString(form.dateFrom), 
-            dateTo: formatDateToString(form.dateTo) 
-          }
+      ...(role === "sender"
+        ? {
+          dateFrom: formatDateToString(form.dateFrom),
+          dateTo: formatDateToString(form.dateTo)
+        }
         : { date: formatDateToString(form.courierDate) }
       ),
       countryFrom: form.countryFrom,
@@ -217,7 +238,7 @@ function App() {
 
     console.log("Form submitted:", submissionData);
     alert("Form submitted! Check console for data.");
-    
+
     // Here you would typically send data to your backend API
   };
 

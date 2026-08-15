@@ -48,6 +48,7 @@ class User(Base):
     phone: Mapped[Optional[int]]
     courier: Mapped["Courier"] = relationship(back_populates="user")
     sender: Mapped["Sender"] = relationship(back_populates="user")
+    refresh_tokens: Mapped[List["RefreshToken"]] = relationship(back_populates="user")
 
     __table_args__ = (UniqueConstraint("tg_id"),)
 
@@ -155,6 +156,14 @@ class UserCity(Base):
     city: Mapped[Optional["City"]] = relationship(back_populates="user_cities")
 
     __table_args__ = (UniqueConstraint("name"),)
+
+
+class RefreshToken(Base):
+    __tablename__ = "refresh_tokens"
+    token_id: Mapped[str] = mapped_column(unique=True, index=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
+    user: Mapped["User"] = relationship(back_populates="refresh_tokens")
+    expire: Mapped[datetime] = mapped_column(DateTime)
 
 
 async def get_or_create(session, model, defaults=None, **kwargs):
