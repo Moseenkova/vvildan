@@ -1,0 +1,132 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\\n"
+"Content-Transfer-Encoding: 8bit\\n"
+"Language: ru\\n"
+"Plural-Forms: nplurals=2; plural=(n%10==1 && n%100!=11 ? 0 : 1);\\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+
+#: src/i18n.js:47
+msgid "Arrival airport"
+msgstr "Аэропорт прибытия"
+
+#: src/i18n.js:45
+msgid "Arrival city"
+msgstr "Город прибытия"
+
+#: src/i18n.js:44
+msgid "Arrival country"
+msgstr "Страна прибытия"
+
+#: src/i18n.js:55
+msgid "Baggage comments"
+msgstr "Комментарий к багажу"
+
+#: src/i18n.js:53
+msgid "Choose a city first"
+msgstr "Сначала выберите город"
+
+#: src/i18n.js:49
+msgid "Choose a country first"
+msgstr "Сначала выберите страну"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "Курьер"
+
+#: src/i18n.js:39
+msgid "Date"
+msgstr "Дата"
+
+#: src/i18n.js:46
+msgid "Departure airport"
+msgstr "Аэропорт вылета"
+
+#: src/i18n.js:43
+msgid "Departure city"
+msgstr "Город отправления"
+
+#: src/i18n.js:42
+msgid "Departure country"
+msgstr "Страна отправления"
+
+#: src/i18n.js:51
+msgid "Enter a city"
+msgstr "Введите город"
+
+#: src/i18n.js:48
+msgid "Enter a country"
+msgstr "Введите страну"
+
+#: src/i18n.js:50
+msgid "Enter or choose a city"
+msgstr "Введите или выберите город"
+
+#: src/i18n.js:52
+msgid "Enter or choose an airport"
+msgstr "Введите или выберите аэропорт"
+
+#: src/i18n.js:56
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "Например: Одежда 5 кг, документы, электроника"
+
+#: src/i18n.js:62
+msgid "Form submitted! Check the console for data."
+msgstr "Форма отправлена! Данные доступны в консоли."
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "В период с даты"
+
+#: src/i18n.js:54
+msgid "Loading..."
+msgstr "Загрузка..."
+
+#: src/i18n.js:41
+msgid "mm/dd/yyyy"
+msgstr "дд.мм.гггг"
+
+#: src/i18n.js:40
+msgid "MM/dd/yyyy"
+msgstr "dd.MM.yyyy"
+
+#: src/i18n.js:61
+msgid "Please select a date"
+msgstr "Пожалуйста, выберите дату"
+
+#: src/i18n.js:58
+msgid "Please select a start date"
+msgstr "Пожалуйста, выберите начальную дату"
+
+#: src/i18n.js:59
+msgid "Please select an end date"
+msgstr "Пожалуйста, выберите конечную дату"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "Отправитель"
+
+#: src/i18n.js:57
+msgid "Submit request"
+msgstr "Отправить заявку"
+
+#: src/i18n.js:60
+msgid "The start date cannot be after the end date"
+msgstr "Начальная дата не может быть позже конечной"
+
+#: src/i18n.js:38
+msgid "To date"
+msgstr "До даты"
+
+#: src/i18n.js:63
+msgid "User Not Found"
+msgstr "Пользователь не найден"
+
+#: src/i18n.js:64
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "Вы не зарегистрированы в системе. Сначала зарегистрируйтесь через Telegram-бота."

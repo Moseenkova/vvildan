@@ -1,0 +1,132 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:47
+msgid "Arrival airport"
+msgstr "Aeroporto de chegada"
+
+#: src/i18n.js:45
+msgid "Arrival city"
+msgstr "Cidade de chegada"
+
+#: src/i18n.js:44
+msgid "Arrival country"
+msgstr "País de chegada"
+
+#: src/i18n.js:55
+msgid "Baggage comments"
+msgstr "Comentários sobre bagagem"
+
+#: src/i18n.js:53
+msgid "Choose a city first"
+msgstr "Escolha uma cidade primeiro"
+
+#: src/i18n.js:49
+msgid "Choose a country first"
+msgstr "Escolha um país primeiro"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "Correio"
+
+#: src/i18n.js:39
+msgid "Date"
+msgstr "Data"
+
+#: src/i18n.js:46
+msgid "Departure airport"
+msgstr "Aeroporto de partida"
+
+#: src/i18n.js:43
+msgid "Departure city"
+msgstr "Cidade de partida"
+
+#: src/i18n.js:42
+msgid "Departure country"
+msgstr "País de partida"
+
+#: src/i18n.js:51
+msgid "Enter a city"
+msgstr "Insira uma cidade"
+
+#: src/i18n.js:48
+msgid "Enter a country"
+msgstr "Insira um país"
+
+#: src/i18n.js:50
+msgid "Enter or choose a city"
+msgstr "Insira ou escolha uma cidade"
+
+#: src/i18n.js:52
+msgid "Enter or choose an airport"
+msgstr "Insira ou escolha um aeroporto"
+
+#: src/i18n.js:56
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "Por exemplo: Roupas 5kg, documentos, eletrônicos"
+
+#: src/i18n.js:62
+msgid "Form submitted! Check the console for data."
+msgstr "Formulário enviado! Verifique os dados do console."
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "A partir da data"
+
+#: src/i18n.js:54
+msgid "Loading..."
+msgstr "Carregando..."
+
+#: src/i18n.js:41
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:40
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:61
+msgid "Please select a date"
+msgstr "Selecione uma data"
+
+#: src/i18n.js:58
+msgid "Please select a start date"
+msgstr "Selecione uma data de início"
+
+#: src/i18n.js:59
+msgid "Please select an end date"
+msgstr "Selecione uma data de término"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "Remetente"
+
+#: src/i18n.js:57
+msgid "Submit request"
+msgstr "Enviar solicitação"
+
+#: src/i18n.js:60
+msgid "The start date cannot be after the end date"
+msgstr "A data de início não pode ser posterior à data de término"
+
+#: src/i18n.js:38
+msgid "To date"
+msgstr "A data"
+
+#: src/i18n.js:63
+msgid "User Not Found"
+msgstr "Usuário não encontrado"
+
+#: src/i18n.js:64
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "Você não está cadastrado no sistema. Por favor, registre-se primeiro através do bot do Telegram."

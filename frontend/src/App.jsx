@@ -1,10 +1,19 @@
 import { useState, useEffect, useRef } from 'react'
-import DatePicker from 'react-datepicker'
+import DatePicker, { registerLocale } from 'react-datepicker'
+import { enUS, ru } from 'date-fns/locale'
+import { useLingui } from '@lingui/react/macro'
 import 'react-datepicker/dist/react-datepicker.css'
 import api from './api'
+import { getMessages, locale } from './i18n'
 import './App.css'
 
+registerLocale('en', enUS)
+registerLocale('ru', ru)
+
 function App() {
+  const { _ } = useLingui()
+  const language = locale
+  const t = getMessages(_)
   const [role, setRole] = useState("sender");
   const [userNotFound, setUserNotFound] = useState(false);
   const [form, setForm] = useState({
@@ -15,6 +24,8 @@ function App() {
     cityFrom: "",
     countryTo: "",
     cityTo: "",
+    airportFrom: "",
+    airportTo: "",
     baggageComments: "",
   });
   const [countries, setCountries] = useState([]);
@@ -28,6 +39,10 @@ function App() {
   // Country IDs when selected from dropdown (null if typed manually)
   const [countryFromId, setCountryFromId] = useState(null);
   const [countryToId, setCountryToId] = useState(null);
+  const [cityFromId, setCityFromId] = useState(null);
+  const [cityToId, setCityToId] = useState(null);
+  const [airportFromId, setAirportFromId] = useState(null);
+  const [airportToId, setAirportToId] = useState(null);
 
   // City dropdown state
   const [cities, setCities] = useState([]);
@@ -38,8 +53,20 @@ function App() {
   const cityToDropdownRef = useRef(null);
   const citySearchTimeoutRef = useRef(null);
 
+  const [airports, setAirports] = useState([]);
+  const [showAirportFromDropdown, setShowAirportFromDropdown] = useState(false);
+  const [showAirportToDropdown, setShowAirportToDropdown] = useState(false);
+  const [loadingAirports, setLoadingAirports] = useState(false);
+  const airportFromDropdownRef = useRef(null);
+  const airportToDropdownRef = useRef(null);
+  const airportSearchTimeoutRef = useRef(null);
+
   // Authentication effect for Telegram Web App
   useEffect(() => {
+    document.documentElement.lang = language;
+    document.documentElement.dir = ['ar', 'fa', 'ps', 'sd', 'ur'].includes(language) ? 'rtl' : 'ltr';
+    window.Telegram?.WebApp?.ready();
+
     const initAuth = async () => {
       // Get tg_id from Telegram Web App or use a fallback for local testing
       let tg_id = null;
@@ -68,7 +95,7 @@ function App() {
     };
 
     initAuth();
-  }, []);
+  }, [language]);
 
   // Format Date object to dd.mm.yyyy string
   const formatDateToString = (date) => {
@@ -123,12 +150,17 @@ function App() {
       ...prev,
       [field]: countryName,
       [field === 'countryFrom' ? 'cityFrom' : 'cityTo']: '',
+      [field === 'countryFrom' ? 'airportFrom' : 'airportTo']: '',
     }));
     if (field === 'countryFrom') {
       setCountryFromId(countryId);
+      setCityFromId(null);
+      setAirportFromId(null);
       setShowCountryFromDropdown(false);
     } else {
       setCountryToId(countryId);
+      setCityToId(null);
+      setAirportToId(null);
       setShowCountryToDropdown(false);
     }
   };
@@ -156,20 +188,92 @@ function App() {
     }
   };
 
-  const handleCitySelect = (cityName, field) => {
+  const handleCitySelect = (city, field) => {
     setForm((prev) => ({
       ...prev,
-      [field]: cityName,
+      [field]: city.name,
+      [field === 'cityFrom' ? 'airportFrom' : 'airportTo']: '',
     }));
-    if (field === 'cityFrom') setShowCityFromDropdown(false);
-    else setShowCityToDropdown(false);
+    if (field === 'cityFrom') {
+      setCityFromId(city.id);
+      setAirportFromId(null);
+      setShowCityFromDropdown(false);
+    } else {
+      setCityToId(city.id);
+      setAirportToId(null);
+      setShowCityToDropdown(false);
+    }
+  };
+
+  const fetchAirports = async (cityId, searchQuery = '', field = 'from') => {
+    if (!cityId) return;
+    setLoadingAirports(true);
+    setShowAirportFromDropdown(field === 'from');
+    setShowAirportToDropdown(field === 'to');
+    try {
+      const q = encodeURIComponent(searchQuery);
+      const response = await api.get(`/api/airports?city_id=${cityId}&q=${q}`);
+      setAirports(Array.isArray(response.data) ? response.data : []);
+    } catch (error) {
+      setAirports([]);
+      console.error('Error fetching airports:', error);
+    } finally {
+      setLoadingAirports(false);
+    }
+  };
+
+  const handleAirportSelect = (airport, field) => {
+    setForm((prev) => ({ ...prev, [field]: airport.name }));
+    if (field === 'airportFrom') {
+      setAirportFromId(airport.id);
+      setShowAirportFromDropdown(false);
+    } else {
+      setAirportToId(airport.id);
+      setShowAirportToDropdown(false);
+    }
+  };
+
+  const handleAirportChange = (e, field) => {
+    handleChange(e);
+    if (field === 'airportFrom') setAirportFromId(null);
+    else setAirportToId(null);
   };
 
   // Clear countryId when user types in country field (manual input)
   const handleCountryChange = (e, field) => {
-    handleChange(e);
-    if (field === 'countryFrom') setCountryFromId(null);
-    else setCountryToId(null);
+    const cityField = field === 'countryFrom' ? 'cityFrom' : 'cityTo';
+    const airportField = field === 'countryFrom' ? 'airportFrom' : 'airportTo';
+    setForm((prev) => ({
+      ...prev,
+      [field]: e.target.value,
+      [cityField]: '',
+      [airportField]: '',
+    }));
+    if (field === 'countryFrom') {
+      setCountryFromId(null);
+      setCityFromId(null);
+      setAirportFromId(null);
+    } else {
+      setCountryToId(null);
+      setCityToId(null);
+      setAirportToId(null);
+    }
+  };
+
+  const handleCityChange = (e, field) => {
+    const airportField = field === 'cityFrom' ? 'airportFrom' : 'airportTo';
+    setForm((prev) => ({
+      ...prev,
+      [field]: e.target.value,
+      [airportField]: '',
+    }));
+    if (field === 'cityFrom') {
+      setCityFromId(null);
+      setAirportFromId(null);
+    } else {
+      setCityToId(null);
+      setAirportToId(null);
+    }
   };
 
   // Close dropdown when clicking outside
@@ -187,16 +291,22 @@ function App() {
       if (cityToDropdownRef.current && !cityToDropdownRef.current.contains(event.target)) {
         setShowCityToDropdown(false);
       }
+      if (airportFromDropdownRef.current && !airportFromDropdownRef.current.contains(event.target)) {
+        setShowAirportFromDropdown(false);
+      }
+      if (airportToDropdownRef.current && !airportToDropdownRef.current.contains(event.target)) {
+        setShowAirportToDropdown(false);
+      }
     };
 
-    if (showCountryFromDropdown || showCountryToDropdown || showCityFromDropdown || showCityToDropdown) {
+    if (showCountryFromDropdown || showCountryToDropdown || showCityFromDropdown || showCityToDropdown || showAirportFromDropdown || showAirportToDropdown) {
       document.addEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [showCountryFromDropdown, showCountryToDropdown, showCityFromDropdown, showCityToDropdown]);
+  }, [showCountryFromDropdown, showCountryToDropdown, showCityFromDropdown, showCityToDropdown, showAirportFromDropdown, showAirportToDropdown]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -204,21 +314,21 @@ function App() {
     // Validate dates
     if (role === "sender") {
       if (!form.dateFrom) {
-        alert("Please select a date for Date From");
+        alert(t.selectDateFrom);
         return;
       }
       if (!form.dateTo) {
-        alert("Please select a date for Date To");
+        alert(t.selectDateTo);
         return;
       }
 
       if (form.dateFrom > form.dateTo) {
-        alert("Date from cannot be after date to");
+        alert(t.invalidDateRange);
         return;
       }
     } else if (role === "courier") {
       if (!form.courierDate) {
-        alert("Please select a date");
+        alert(t.selectDate);
         return;
       }
     }
@@ -235,13 +345,17 @@ function App() {
       ),
       countryFrom: form.countryFrom,
       cityFrom: form.cityFrom,
+      airportFrom: form.airportFrom,
+      airportFromId,
       countryTo: form.countryTo,
       cityTo: form.cityTo,
+      airportTo: form.airportTo,
+      airportToId,
       baggageComments: form.baggageComments,
     };
 
     console.log("Form submitted:", submissionData);
-    alert("Form submitted! Check console for data.");
+    alert(t.submitted);
 
     // Here you would typically send data to your backend API
   };
@@ -250,9 +364,9 @@ function App() {
     return (
       <div className="app-container" style={{ textAlign: "center", padding: "50px 20px" }}>
         <h1 style={{ fontSize: "3rem", marginBottom: "1rem" }}>404</h1>
-        <h2>User Not Found</h2>
+        <h2>{t.userNotFound}</h2>
         <p style={{ marginTop: "1rem", color: "#666" }}>
-          You are not registered in the system. Please register through the Telegram bot first.
+          {t.registrationRequired}
         </p>
       </div>
     );
@@ -265,13 +379,13 @@ function App() {
           onClick={() => setRole("sender")}
           className={`role-button ${role === "sender" ? "active" : ""}`}
         >
-          Отправитель
+          {t.sender}
         </button>
         <button
           onClick={() => setRole("courier")}
           className={`role-button ${role === "courier" ? "active" : ""}`}
         >
-          Курьер
+          {t.courier}
         </button>
       </div>
 
@@ -280,26 +394,28 @@ function App() {
         {role === "sender" && (
           <>
             <div className="form-group">
-              <label htmlFor="dateFrom">В период с даты</label>
+              <label htmlFor="dateFrom">{t.dateFrom}</label>
               <DatePicker
                 id="dateFrom"
                 selected={form.dateFrom}
                 onChange={(date) => handleDateChange(date, 'dateFrom')}
-                dateFormat="dd.MM.yyyy"
-                placeholderText="дд.мм.гггг"
+                dateFormat={t.dateFormat}
+                placeholderText={t.datePlaceholder}
+                locale={language === 'ru' ? 'ru' : 'en'}
                 className="date-picker-input"
                 required
                 minDate={new Date()}
               />
             </div>
             <div className="form-group">
-              <label htmlFor="dateTo">До даты</label>
+              <label htmlFor="dateTo">{t.dateTo}</label>
               <DatePicker
                 id="dateTo"
                 selected={form.dateTo}
                 onChange={(date) => handleDateChange(date, 'dateTo')}
-                dateFormat="dd.MM.yyyy"
-                placeholderText="дд.мм.гггг"
+                dateFormat={t.dateFormat}
+                placeholderText={t.datePlaceholder}
+                locale={language === 'ru' ? 'ru' : 'en'}
                 className="date-picker-input"
                 required
                 minDate={form.dateFrom || new Date()}
@@ -310,13 +426,14 @@ function App() {
 
         {role === "courier" && (
           <div className="form-group">
-            <label htmlFor="courierDate">Дата</label>
+            <label htmlFor="courierDate">{t.date}</label>
             <DatePicker
               id="courierDate"
               selected={form.courierDate}
               onChange={(date) => handleDateChange(date, 'courierDate')}
-              dateFormat="dd.MM.yyyy"
-              placeholderText="дд.мм.гггг"
+              dateFormat={t.dateFormat}
+              placeholderText={t.datePlaceholder}
+              locale={language === 'ru' ? 'ru' : 'en'}
               className="date-picker-input"
               required
               minDate={new Date()}
@@ -326,7 +443,7 @@ function App() {
 
         {/* Common fields */}
         <div className="form-group">
-          <label htmlFor="countryFrom">Страна отправления</label>
+          <label htmlFor="countryFrom">{t.countryFrom}</label>
           <div className="dropdown-container" ref={countryFromDropdownRef}>
             <input
               type="text"
@@ -343,12 +460,12 @@ function App() {
               onFocus={() => fetchCountries(form.countryFrom, 'from')}
               onClick={() => fetchCountries(form.countryFrom, 'from')}
               required
-              placeholder="Введите страну"
+              placeholder={t.enterCountry}
             />
             {showCountryFromDropdown && (
               <div className="dropdown-list">
                 {loadingCountries ? (
-                  <div className="dropdown-item">Загрузка...</div>
+                  <div className="dropdown-item">{t.loading}</div>
                 ) : countries.length > 0 ? (
                   countries.map((country) => (
                     <div
@@ -366,14 +483,14 @@ function App() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="cityFrom">Город отправления</label>
+          <label htmlFor="cityFrom">{t.cityFrom}</label>
           {!form.countryFrom ? (
             <input
               type="text"
               id="cityFrom"
               readOnly
               value=""
-              placeholder="Сначала выберите страну"
+              placeholder={t.chooseCountryFirst}
               className="city-disabled"
               onFocus={(e) => e.target.blur()}
             />
@@ -385,7 +502,7 @@ function App() {
                 name="cityFrom"
                 value={form.cityFrom}
                 onChange={(e) => {
-                  handleChange(e);
+                  handleCityChange(e, 'cityFrom');
                   if (citySearchTimeoutRef.current) clearTimeout(citySearchTimeoutRef.current);
                   citySearchTimeoutRef.current = setTimeout(() => {
                     if (showCityFromDropdown) fetchCities(countryFromId, e.target.value, 'from');
@@ -394,18 +511,18 @@ function App() {
                 onFocus={() => fetchCities(countryFromId, form.cityFrom, 'from')}
                 onClick={() => fetchCities(countryFromId, form.cityFrom, 'from')}
                 required
-                placeholder="Введите или выберите город"
+                placeholder={t.enterOrChooseCity}
               />
               {showCityFromDropdown && (
                 <div className="dropdown-list">
                   {loadingCities ? (
-                    <div className="dropdown-item">Загрузка...</div>
+                    <div className="dropdown-item">{t.loading}</div>
                   ) : cities.length > 0 ? (
                     cities.map((city) => (
                       <div
                         key={city.id}
                         className="dropdown-item"
-                        onClick={() => handleCitySelect(city.name, 'cityFrom')}
+                        onClick={() => handleCitySelect(city, 'cityFrom')}
                       >
                         {city.name}
                       </div>
@@ -420,15 +537,74 @@ function App() {
               id="cityFrom"
               name="cityFrom"
               value={form.cityFrom}
-              onChange={handleChange}
+              onChange={(e) => handleCityChange(e, 'cityFrom')}
               required
-              placeholder="Введите город"
+              placeholder={t.enterCity}
             />
           )}
         </div>
 
         <div className="form-group">
-          <label htmlFor="countryTo">Страна прибытия</label>
+          <label htmlFor="airportFrom">{t.airportFrom}</label>
+          {!form.cityFrom ? (
+            <input
+              type="text"
+              id="airportFrom"
+              readOnly
+              value=""
+              placeholder={t.chooseCityFirst}
+              className="city-disabled"
+              onFocus={(e) => e.target.blur()}
+            />
+          ) : cityFromId ? (
+            <div className="dropdown-container" ref={airportFromDropdownRef}>
+              <input
+                type="text"
+                id="airportFrom"
+                name="airportFrom"
+                value={form.airportFrom}
+                onChange={(e) => {
+                  handleAirportChange(e, 'airportFrom');
+                  if (airportSearchTimeoutRef.current) clearTimeout(airportSearchTimeoutRef.current);
+                  airportSearchTimeoutRef.current = setTimeout(() => {
+                    fetchAirports(cityFromId, e.target.value, 'from');
+                  }, 300);
+                }}
+                onFocus={() => fetchAirports(cityFromId, form.airportFrom, 'from')}
+                required
+                placeholder={t.enterOrChooseAirport}
+              />
+              {showAirportFromDropdown && (
+                <div className="dropdown-list">
+                  {loadingAirports ? (
+                    <div className="dropdown-item">{t.loading}</div>
+                  ) : airports.map((airport) => (
+                    <div
+                      key={airport.id}
+                      className="dropdown-item"
+                      onClick={() => handleAirportSelect(airport, 'airportFrom')}
+                    >
+                      {airport.name}{airport.iata_code ? ` (${airport.iata_code})` : ''}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : (
+            <input
+              type="text"
+              id="airportFrom"
+              name="airportFrom"
+              value={form.airportFrom}
+              onChange={(e) => handleAirportChange(e, 'airportFrom')}
+              required
+              placeholder={t.enterOrChooseAirport}
+            />
+          )}
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="countryTo">{t.countryTo}</label>
           <div className="dropdown-container" ref={countryToDropdownRef}>
             <input
               type="text"
@@ -445,12 +621,12 @@ function App() {
               onFocus={() => fetchCountries(form.countryTo, 'to')}
               onClick={() => fetchCountries(form.countryTo, 'to')}
               required
-              placeholder="Введите страну"
+              placeholder={t.enterCountry}
             />
             {showCountryToDropdown && (
               <div className="dropdown-list">
                 {loadingCountries ? (
-                  <div className="dropdown-item">Загрузка...</div>
+                  <div className="dropdown-item">{t.loading}</div>
                 ) : countries.length > 0 ? (
                   countries.map((country) => (
                     <div
@@ -468,14 +644,14 @@ function App() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="cityTo">Город прибытия</label>
+          <label htmlFor="cityTo">{t.cityTo}</label>
           {!form.countryTo ? (
             <input
               type="text"
               id="cityTo"
               readOnly
               value=""
-              placeholder="Сначала выберите страну"
+              placeholder={t.chooseCountryFirst}
               className="city-disabled"
               onFocus={(e) => e.target.blur()}
             />
@@ -487,7 +663,7 @@ function App() {
                 name="cityTo"
                 value={form.cityTo}
                 onChange={(e) => {
-                  handleChange(e);
+                  handleCityChange(e, 'cityTo');
                   if (citySearchTimeoutRef.current) clearTimeout(citySearchTimeoutRef.current);
                   citySearchTimeoutRef.current = setTimeout(() => {
                     if (showCityToDropdown) fetchCities(countryToId, e.target.value, 'to');
@@ -496,18 +672,18 @@ function App() {
                 onFocus={() => fetchCities(countryToId, form.cityTo, 'to')}
                 onClick={() => fetchCities(countryToId, form.cityTo, 'to')}
                 required
-                placeholder="Введите или выберите город"
+                placeholder={t.enterOrChooseCity}
               />
               {showCityToDropdown && (
                 <div className="dropdown-list">
                   {loadingCities ? (
-                    <div className="dropdown-item">Загрузка...</div>
+                    <div className="dropdown-item">{t.loading}</div>
                   ) : cities.length > 0 ? (
                     cities.map((city) => (
                       <div
                         key={city.id}
                         className="dropdown-item"
-                        onClick={() => handleCitySelect(city.name, 'cityTo')}
+                        onClick={() => handleCitySelect(city, 'cityTo')}
                       >
                         {city.name}
                       </div>
@@ -522,27 +698,86 @@ function App() {
               id="cityTo"
               name="cityTo"
               value={form.cityTo}
-              onChange={handleChange}
+              onChange={(e) => handleCityChange(e, 'cityTo')}
               required
-              placeholder="Введите город"
+              placeholder={t.enterCity}
             />
           )}
         </div>
 
         <div className="form-group">
-          <label htmlFor="baggageComments">Комментарий к багажу</label>
+          <label htmlFor="airportTo">{t.airportTo}</label>
+          {!form.cityTo ? (
+            <input
+              type="text"
+              id="airportTo"
+              readOnly
+              value=""
+              placeholder={t.chooseCityFirst}
+              className="city-disabled"
+              onFocus={(e) => e.target.blur()}
+            />
+          ) : cityToId ? (
+            <div className="dropdown-container" ref={airportToDropdownRef}>
+              <input
+                type="text"
+                id="airportTo"
+                name="airportTo"
+                value={form.airportTo}
+                onChange={(e) => {
+                  handleAirportChange(e, 'airportTo');
+                  if (airportSearchTimeoutRef.current) clearTimeout(airportSearchTimeoutRef.current);
+                  airportSearchTimeoutRef.current = setTimeout(() => {
+                    fetchAirports(cityToId, e.target.value, 'to');
+                  }, 300);
+                }}
+                onFocus={() => fetchAirports(cityToId, form.airportTo, 'to')}
+                required
+                placeholder={t.enterOrChooseAirport}
+              />
+              {showAirportToDropdown && (
+                <div className="dropdown-list">
+                  {loadingAirports ? (
+                    <div className="dropdown-item">{t.loading}</div>
+                  ) : airports.map((airport) => (
+                    <div
+                      key={airport.id}
+                      className="dropdown-item"
+                      onClick={() => handleAirportSelect(airport, 'airportTo')}
+                    >
+                      {airport.name}{airport.iata_code ? ` (${airport.iata_code})` : ''}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : (
+            <input
+              type="text"
+              id="airportTo"
+              name="airportTo"
+              value={form.airportTo}
+              onChange={(e) => handleAirportChange(e, 'airportTo')}
+              required
+              placeholder={t.enterOrChooseAirport}
+            />
+          )}
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="baggageComments">{t.baggageComments}</label>
           <input
             type="text"
             id="baggageComments"
             name="baggageComments"
             value={form.baggageComments}
             onChange={handleChange}
-            placeholder="Например: Одежда 5 кг, Документы, Электроника"
+            placeholder={t.baggageExample}
           />
         </div>
 
         <button type="submit" className="submit-button">
-          Отправить заявку
+          {t.submit}
         </button>
       </form>
     </div>

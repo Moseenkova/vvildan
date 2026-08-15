@@ -1,0 +1,132 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:47
+msgid "Arrival airport"
+msgstr "Aankomst luchthaven"
+
+#: src/i18n.js:45
+msgid "Arrival city"
+msgstr "Aankomst stad"
+
+#: src/i18n.js:44
+msgid "Arrival country"
+msgstr "Land van aankomst"
+
+#: src/i18n.js:55
+msgid "Baggage comments"
+msgstr "Opmerkingen over bagage"
+
+#: src/i18n.js:53
+msgid "Choose a city first"
+msgstr "Kies eerst een stad"
+
+#: src/i18n.js:49
+msgid "Choose a country first"
+msgstr "Kies eerst een land"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "Koerier"
+
+#: src/i18n.js:39
+msgid "Date"
+msgstr "Datum"
+
+#: src/i18n.js:46
+msgid "Departure airport"
+msgstr "Luchthaven van vertrek"
+
+#: src/i18n.js:43
+msgid "Departure city"
+msgstr "Vertrek stad"
+
+#: src/i18n.js:42
+msgid "Departure country"
+msgstr "Land van vertrek"
+
+#: src/i18n.js:51
+msgid "Enter a city"
+msgstr "Voer een stad in"
+
+#: src/i18n.js:48
+msgid "Enter a country"
+msgstr "Voer een land in"
+
+#: src/i18n.js:50
+msgid "Enter or choose a city"
+msgstr "Voer een stad in of kies een stad"
+
+#: src/i18n.js:52
+msgid "Enter or choose an airport"
+msgstr "Voer een luchthaven in of kies deze"
+
+#: src/i18n.js:56
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "Bijvoorbeeld: Kleding 5 kg, documenten, elektronica"
+
+#: src/i18n.js:62
+msgid "Form submitted! Check the console for data."
+msgstr "Formulier ingediend! Controleer de console op gegevens."
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "Vanaf datum"
+
+#: src/i18n.js:54
+msgid "Loading..."
+msgstr "Laden..."
+
+#: src/i18n.js:41
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:40
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:61
+msgid "Please select a date"
+msgstr "Selecteer een datum"
+
+#: src/i18n.js:58
+msgid "Please select a start date"
+msgstr "Selecteer een startdatum"
+
+#: src/i18n.js:59
+msgid "Please select an end date"
+msgstr "Selecteer een einddatum"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "Afzender"
+
+#: src/i18n.js:57
+msgid "Submit request"
+msgstr "Verzoek indienen"
+
+#: src/i18n.js:60
+msgid "The start date cannot be after the end date"
+msgstr "De startdatum mag niet na de einddatum liggen"
+
+#: src/i18n.js:38
+msgid "To date"
+msgstr "Tot op heden"
+
+#: src/i18n.js:63
+msgid "User Not Found"
+msgstr "Gebruiker niet gevonden"
+
+#: src/i18n.js:64
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "U bent niet geregistreerd in het systeem. Registreer u eerst via de Telegram-bot."

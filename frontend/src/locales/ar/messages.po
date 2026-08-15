@@ -1,0 +1,132 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:47
+msgid "Arrival airport"
+msgstr "مطار الوصول"
+
+#: src/i18n.js:45
+msgid "Arrival city"
+msgstr "مدينة الوصول"
+
+#: src/i18n.js:44
+msgid "Arrival country"
+msgstr "بلد الوصول"
+
+#: src/i18n.js:55
+msgid "Baggage comments"
+msgstr "تعليقات الأمتعة"
+
+#: src/i18n.js:53
+msgid "Choose a city first"
+msgstr "اختر المدينة أولاً"
+
+#: src/i18n.js:49
+msgid "Choose a country first"
+msgstr "اختر بلدًا أولاً"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "ساعي"
+
+#: src/i18n.js:39
+msgid "Date"
+msgstr "تاريخ"
+
+#: src/i18n.js:46
+msgid "Departure airport"
+msgstr "مطار المغادرة"
+
+#: src/i18n.js:43
+msgid "Departure city"
+msgstr "مدينة المغادرة"
+
+#: src/i18n.js:42
+msgid "Departure country"
+msgstr "بلد المغادرة"
+
+#: src/i18n.js:51
+msgid "Enter a city"
+msgstr "أدخل مدينة"
+
+#: src/i18n.js:48
+msgid "Enter a country"
+msgstr "أدخل بلدا"
+
+#: src/i18n.js:50
+msgid "Enter or choose a city"
+msgstr "أدخل أو اختر مدينة"
+
+#: src/i18n.js:52
+msgid "Enter or choose an airport"
+msgstr "أدخل أو اختر المطار"
+
+#: src/i18n.js:56
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "على سبيل المثال: ملابس 5 كجم، مستندات، إلكترونيات"
+
+#: src/i18n.js:62
+msgid "Form submitted! Check the console for data."
+msgstr "تم إرسال النموذج! تحقق من وحدة التحكم للبيانات."
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "من تاريخ"
+
+#: src/i18n.js:54
+msgid "Loading..."
+msgstr "تحميل..."
+
+#: src/i18n.js:41
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:40
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:61
+msgid "Please select a date"
+msgstr "الرجاء تحديد التاريخ"
+
+#: src/i18n.js:58
+msgid "Please select a start date"
+msgstr "الرجاء تحديد تاريخ البدء"
+
+#: src/i18n.js:59
+msgid "Please select an end date"
+msgstr "الرجاء تحديد تاريخ الانتهاء"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "مرسل"
+
+#: src/i18n.js:57
+msgid "Submit request"
+msgstr "إرسال الطلب"
+
+#: src/i18n.js:60
+msgid "The start date cannot be after the end date"
+msgstr "لا يمكن أن يكون تاريخ البدء بعد تاريخ الانتهاء"
+
+#: src/i18n.js:38
+msgid "To date"
+msgstr "حتى الآن"
+
+#: src/i18n.js:63
+msgid "User Not Found"
+msgstr "لم يتم العثور على المستخدم"
+
+#: src/i18n.js:64
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "أنت غير مسجل في النظام. برجاء التسجيل من خلال بوت التليجرام أولا."

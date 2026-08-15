@@ -1,0 +1,132 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: jv\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:47
+msgid "Arrival airport"
+msgstr "Bandara rawuh"
+
+#: src/i18n.js:45
+msgid "Arrival city"
+msgstr "Kutha rawuh"
+
+#: src/i18n.js:44
+msgid "Arrival country"
+msgstr "Negara rawuh"
+
+#: src/i18n.js:55
+msgid "Baggage comments"
+msgstr "Komentar bagasi"
+
+#: src/i18n.js:53
+msgid "Choose a city first"
+msgstr "Pilih kutha dhisik"
+
+#: src/i18n.js:49
+msgid "Choose a country first"
+msgstr "Pilih negara dhisik"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "Kurir"
+
+#: src/i18n.js:39
+msgid "Date"
+msgstr "Tanggal"
+
+#: src/i18n.js:46
+msgid "Departure airport"
+msgstr "Bandara budhal"
+
+#: src/i18n.js:43
+msgid "Departure city"
+msgstr "Kutha budhal"
+
+#: src/i18n.js:42
+msgid "Departure country"
+msgstr "negara budhal"
+
+#: src/i18n.js:51
+msgid "Enter a city"
+msgstr "Mlebu kutha"
+
+#: src/i18n.js:48
+msgid "Enter a country"
+msgstr "Ketik negara"
+
+#: src/i18n.js:50
+msgid "Enter or choose a city"
+msgstr "Ketik utawa pilih kutha"
+
+#: src/i18n.js:52
+msgid "Enter or choose an airport"
+msgstr "Ketik utawa pilih bandara"
+
+#: src/i18n.js:56
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "Contone: Sandhangan 5 kg, dokumen, elektronik"
+
+#: src/i18n.js:62
+msgid "Form submitted! Check the console for data."
+msgstr "Formulir dikirim! Priksa console kanggo data."
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "Saka tanggal"
+
+#: src/i18n.js:54
+msgid "Loading..."
+msgstr "Loading..."
+
+#: src/i18n.js:41
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:40
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:61
+msgid "Please select a date"
+msgstr "Mangga pilih tanggal"
+
+#: src/i18n.js:58
+msgid "Please select a start date"
+msgstr "Mangga pilih tanggal wiwitan"
+
+#: src/i18n.js:59
+msgid "Please select an end date"
+msgstr "Mangga pilih tanggal pungkasan"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "Pangirim"
+
+#: src/i18n.js:57
+msgid "Submit request"
+msgstr "Kirim panjalukan"
+
+#: src/i18n.js:60
+msgid "The start date cannot be after the end date"
+msgstr "Tanggal wiwitan ora bisa sawise tanggal pungkasan"
+
+#: src/i18n.js:38
+msgid "To date"
+msgstr "Nganti saiki"
+
+#: src/i18n.js:63
+msgid "User Not Found"
+msgstr "Pangguna Ora Ditemokake"
+
+#: src/i18n.js:64
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "Sampeyan ora kadhaptar ing sistem. Mangga ndhaftar liwat bot Telegram dhisik."
