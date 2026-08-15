@@ -1,13 +1,11 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2026-08-16 02:28+0700\n"
-"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: @lingui/cli\n"
-"Language: en\n"
+"Language: pt\n"
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -15,120 +13,120 @@ msgstr ""
 
 #: src/i18n.js:47
 msgid "Arrival airport"
-msgstr "Arrival airport"
+msgstr "Aeroporto de chegada"
 
 #: src/i18n.js:45
 msgid "Arrival city"
-msgstr "Arrival city"
+msgstr "Cidade de chegada"
 
 #: src/i18n.js:44
 msgid "Arrival country"
-msgstr "Arrival country"
+msgstr "País de chegada"
 
 #: src/i18n.js:55
 msgid "Baggage comments"
-msgstr "Baggage comments"
+msgstr "Comentários sobre bagagem"
 
 #: src/i18n.js:53
 msgid "Choose a city first"
-msgstr "Choose a city first"
+msgstr "Escolha uma cidade primeiro"
 
 #: src/i18n.js:49
 msgid "Choose a country first"
-msgstr "Choose a country first"
+msgstr "Escolha um país primeiro"
 
 #: src/i18n.js:36
 msgid "Courier"
-msgstr "Courier"
+msgstr "Correio"
 
 #: src/i18n.js:39
 msgid "Date"
-msgstr "Date"
+msgstr "Data"
 
 #: src/i18n.js:46
 msgid "Departure airport"
-msgstr "Departure airport"
+msgstr "Aeroporto de partida"
 
 #: src/i18n.js:43
 msgid "Departure city"
-msgstr "Departure city"
+msgstr "Cidade de partida"
 
 #: src/i18n.js:42
 msgid "Departure country"
-msgstr "Departure country"
+msgstr "País de partida"
 
 #: src/i18n.js:51
 msgid "Enter a city"
-msgstr "Enter a city"
+msgstr "Insira uma cidade"
 
 #: src/i18n.js:48
 msgid "Enter a country"
-msgstr "Enter a country"
+msgstr "Insira um país"
 
 #: src/i18n.js:50
 msgid "Enter or choose a city"
-msgstr "Enter or choose a city"
+msgstr "Insira ou escolha uma cidade"
 
 #: src/i18n.js:52
 msgid "Enter or choose an airport"
-msgstr "Enter or choose an airport"
+msgstr "Insira ou escolha um aeroporto"
 
 #: src/i18n.js:56
 msgid "For example: Clothes 5 kg, documents, electronics"
-msgstr "For example: Clothes 5 kg, documents, electronics"
+msgstr "Por exemplo: Roupas 5kg, documentos, eletrônicos"
 
 #: src/i18n.js:62
 msgid "Form submitted! Check the console for data."
-msgstr "Form submitted! Check the console for data."
+msgstr "Formulário enviado! Verifique os dados do console."
 
 #: src/i18n.js:37
 msgid "From date"
-msgstr "From date"
+msgstr "A partir da data"
 
 #: src/i18n.js:54
 msgid "Loading..."
-msgstr "Loading..."
+msgstr "Carregando..."
 
 #: src/i18n.js:41
 msgid "mm/dd/yyyy"
-msgstr "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
 
 #: src/i18n.js:40
 msgid "MM/dd/yyyy"
-msgstr "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:61
 msgid "Please select a date"
-msgstr "Please select a date"
+msgstr "Selecione uma data"
 
 #: src/i18n.js:58
 msgid "Please select a start date"
-msgstr "Please select a start date"
+msgstr "Selecione uma data de início"
 
 #: src/i18n.js:59
 msgid "Please select an end date"
-msgstr "Please select an end date"
+msgstr "Selecione uma data de término"
 
 #: src/i18n.js:35
 msgid "Sender"
-msgstr "Sender"
+msgstr "Remetente"
 
 #: src/i18n.js:57
 msgid "Submit request"
-msgstr "Submit request"
+msgstr "Enviar solicitação"
 
 #: src/i18n.js:60
 msgid "The start date cannot be after the end date"
-msgstr "The start date cannot be after the end date"
+msgstr "A data de início não pode ser posterior à data de término"
 
 #: src/i18n.js:38
 msgid "To date"
-msgstr "To date"
+msgstr "A data"
 
 #: src/i18n.js:63
 msgid "User Not Found"
-msgstr "User Not Found"
+msgstr "Usuário não encontrado"
 
 #: src/i18n.js:64
 msgid "You are not registered in the system. Please register through the Telegram bot first."
-msgstr "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "Você não está cadastrado no sistema. Por favor, registre-se primeiro através do bot do Telegram."

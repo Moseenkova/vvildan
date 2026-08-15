@@ -1,13 +1,11 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2026-08-16 02:28+0700\n"
-"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: @lingui/cli\n"
-"Language: en\n"
+"Language: ko\n"
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -15,120 +13,120 @@ msgstr ""
 
 #: src/i18n.js:47
 msgid "Arrival airport"
-msgstr "Arrival airport"
+msgstr "도착 공항"
 
 #: src/i18n.js:45
 msgid "Arrival city"
-msgstr "Arrival city"
+msgstr "도착 도시"
 
 #: src/i18n.js:44
 msgid "Arrival country"
-msgstr "Arrival country"
+msgstr "도착 국가"
 
 #: src/i18n.js:55
 msgid "Baggage comments"
-msgstr "Baggage comments"
+msgstr "수하물 관련 사항"
 
 #: src/i18n.js:53
 msgid "Choose a city first"
-msgstr "Choose a city first"
+msgstr "먼저 도시를 선택하세요"
 
 #: src/i18n.js:49
 msgid "Choose a country first"
-msgstr "Choose a country first"
+msgstr "먼저 국가를 선택하세요"
 
 #: src/i18n.js:36
 msgid "Courier"
-msgstr "Courier"
+msgstr "급사"
 
 #: src/i18n.js:39
 msgid "Date"
-msgstr "Date"
+msgstr "날짜"
 
 #: src/i18n.js:46
 msgid "Departure airport"
-msgstr "Departure airport"
+msgstr "출발 공항"
 
 #: src/i18n.js:43
 msgid "Departure city"
-msgstr "Departure city"
+msgstr "출발 도시"
 
 #: src/i18n.js:42
 msgid "Departure country"
-msgstr "Departure country"
+msgstr "출발 국가"
 
 #: src/i18n.js:51
 msgid "Enter a city"
-msgstr "Enter a city"
+msgstr "도시를 입력하세요"
 
 #: src/i18n.js:48
 msgid "Enter a country"
-msgstr "Enter a country"
+msgstr "국가를 입력하세요"
 
 #: src/i18n.js:50
 msgid "Enter or choose a city"
-msgstr "Enter or choose a city"
+msgstr "도시를 입력하거나 선택하세요."
 
 #: src/i18n.js:52
 msgid "Enter or choose an airport"
-msgstr "Enter or choose an airport"
+msgstr "공항을 입력하거나 선택하세요"
 
 #: src/i18n.js:56
 msgid "For example: Clothes 5 kg, documents, electronics"
-msgstr "For example: Clothes 5 kg, documents, electronics"
+msgstr "예: 옷 5kg, 서류, 전자제품"
 
 #: src/i18n.js:62
 msgid "Form submitted! Check the console for data."
-msgstr "Form submitted! Check the console for data."
+msgstr "양식이 제출되었습니다! 콘솔에서 데이터를 확인하세요."
 
 #: src/i18n.js:37
 msgid "From date"
-msgstr "From date"
+msgstr "날짜부터"
 
 #: src/i18n.js:54
 msgid "Loading..."
-msgstr "Loading..."
+msgstr "로드 중..."
 
 #: src/i18n.js:41
 msgid "mm/dd/yyyy"
-msgstr "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
 
 #: src/i18n.js:40
 msgid "MM/dd/yyyy"
-msgstr "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:61
 msgid "Please select a date"
-msgstr "Please select a date"
+msgstr "날짜를 선택하세요."
 
 #: src/i18n.js:58
 msgid "Please select a start date"
-msgstr "Please select a start date"
+msgstr "시작일을 선택하세요."
 
 #: src/i18n.js:59
 msgid "Please select an end date"
-msgstr "Please select an end date"
+msgstr "종료일을 선택하세요."
 
 #: src/i18n.js:35
 msgid "Sender"
-msgstr "Sender"
+msgstr "보내는 사람"
 
 #: src/i18n.js:57
 msgid "Submit request"
-msgstr "Submit request"
+msgstr "요청 제출"
 
 #: src/i18n.js:60
 msgid "The start date cannot be after the end date"
-msgstr "The start date cannot be after the end date"
+msgstr "시작일은 종료일 이후일 수 없습니다."
 
 #: src/i18n.js:38
 msgid "To date"
-msgstr "To date"
+msgstr "현재까지"
 
 #: src/i18n.js:63
 msgid "User Not Found"
-msgstr "User Not Found"
+msgstr "사용자를 찾을 수 없음"
 
 #: src/i18n.js:64
 msgid "You are not registered in the system. Please register through the Telegram bot first."
-msgstr "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "귀하는 시스템에 등록되어 있지 않습니다. 먼저 텔레그램 봇을 통해 회원가입을 해주세요."

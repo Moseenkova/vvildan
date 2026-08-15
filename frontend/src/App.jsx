@@ -24,6 +24,8 @@ function App() {
     cityFrom: "",
     countryTo: "",
     cityTo: "",
+    airportFrom: "",
+    airportTo: "",
     baggageComments: "",
   });
   const [countries, setCountries] = useState([]);
@@ -37,6 +39,10 @@ function App() {
   // Country IDs when selected from dropdown (null if typed manually)
   const [countryFromId, setCountryFromId] = useState(null);
   const [countryToId, setCountryToId] = useState(null);
+  const [cityFromId, setCityFromId] = useState(null);
+  const [cityToId, setCityToId] = useState(null);
+  const [airportFromId, setAirportFromId] = useState(null);
+  const [airportToId, setAirportToId] = useState(null);
 
   // City dropdown state
   const [cities, setCities] = useState([]);
@@ -47,9 +53,18 @@ function App() {
   const cityToDropdownRef = useRef(null);
   const citySearchTimeoutRef = useRef(null);
 
+  const [airports, setAirports] = useState([]);
+  const [showAirportFromDropdown, setShowAirportFromDropdown] = useState(false);
+  const [showAirportToDropdown, setShowAirportToDropdown] = useState(false);
+  const [loadingAirports, setLoadingAirports] = useState(false);
+  const airportFromDropdownRef = useRef(null);
+  const airportToDropdownRef = useRef(null);
+  const airportSearchTimeoutRef = useRef(null);
+
   // Authentication effect for Telegram Web App
   useEffect(() => {
     document.documentElement.lang = language;
+    document.documentElement.dir = ['ar', 'fa', 'ps', 'sd', 'ur'].includes(language) ? 'rtl' : 'ltr';
     window.Telegram?.WebApp?.ready();
 
     const initAuth = async () => {
@@ -135,12 +150,17 @@ function App() {
       ...prev,
       [field]: countryName,
       [field === 'countryFrom' ? 'cityFrom' : 'cityTo']: '',
+      [field === 'countryFrom' ? 'airportFrom' : 'airportTo']: '',
     }));
     if (field === 'countryFrom') {
       setCountryFromId(countryId);
+      setCityFromId(null);
+      setAirportFromId(null);
       setShowCountryFromDropdown(false);
     } else {
       setCountryToId(countryId);
+      setCityToId(null);
+      setAirportToId(null);
       setShowCountryToDropdown(false);
     }
   };
@@ -168,20 +188,92 @@ function App() {
     }
   };
 
-  const handleCitySelect = (cityName, field) => {
+  const handleCitySelect = (city, field) => {
     setForm((prev) => ({
       ...prev,
-      [field]: cityName,
+      [field]: city.name,
+      [field === 'cityFrom' ? 'airportFrom' : 'airportTo']: '',
     }));
-    if (field === 'cityFrom') setShowCityFromDropdown(false);
-    else setShowCityToDropdown(false);
+    if (field === 'cityFrom') {
+      setCityFromId(city.id);
+      setAirportFromId(null);
+      setShowCityFromDropdown(false);
+    } else {
+      setCityToId(city.id);
+      setAirportToId(null);
+      setShowCityToDropdown(false);
+    }
+  };
+
+  const fetchAirports = async (cityId, searchQuery = '', field = 'from') => {
+    if (!cityId) return;
+    setLoadingAirports(true);
+    setShowAirportFromDropdown(field === 'from');
+    setShowAirportToDropdown(field === 'to');
+    try {
+      const q = encodeURIComponent(searchQuery);
+      const response = await api.get(`/api/airports?city_id=${cityId}&q=${q}`);
+      setAirports(Array.isArray(response.data) ? response.data : []);
+    } catch (error) {
+      setAirports([]);
+      console.error('Error fetching airports:', error);
+    } finally {
+      setLoadingAirports(false);
+    }
+  };
+
+  const handleAirportSelect = (airport, field) => {
+    setForm((prev) => ({ ...prev, [field]: airport.name }));
+    if (field === 'airportFrom') {
+      setAirportFromId(airport.id);
+      setShowAirportFromDropdown(false);
+    } else {
+      setAirportToId(airport.id);
+      setShowAirportToDropdown(false);
+    }
+  };
+
+  const handleAirportChange = (e, field) => {
+    handleChange(e);
+    if (field === 'airportFrom') setAirportFromId(null);
+    else setAirportToId(null);
   };
 
   // Clear countryId when user types in country field (manual input)
   const handleCountryChange = (e, field) => {
-    handleChange(e);
-    if (field === 'countryFrom') setCountryFromId(null);
-    else setCountryToId(null);
+    const cityField = field === 'countryFrom' ? 'cityFrom' : 'cityTo';
+    const airportField = field === 'countryFrom' ? 'airportFrom' : 'airportTo';
+    setForm((prev) => ({
+      ...prev,
+      [field]: e.target.value,
+      [cityField]: '',
+      [airportField]: '',
+    }));
+    if (field === 'countryFrom') {
+      setCountryFromId(null);
+      setCityFromId(null);
+      setAirportFromId(null);
+    } else {
+      setCountryToId(null);
+      setCityToId(null);
+      setAirportToId(null);
+    }
+  };
+
+  const handleCityChange = (e, field) => {
+    const airportField = field === 'cityFrom' ? 'airportFrom' : 'airportTo';
+    setForm((prev) => ({
+      ...prev,
+      [field]: e.target.value,
+      [airportField]: '',
+    }));
+    if (field === 'cityFrom') {
+      setCityFromId(null);
+      setAirportFromId(null);
+    } else {
+      setCityToId(null);
+      setAirportToId(null);
+    }
   };
 
   // Close dropdown when clicking outside
@@ -199,16 +291,22 @@ function App() {
       if (cityToDropdownRef.current && !cityToDropdownRef.current.contains(event.target)) {
         setShowCityToDropdown(false);
       }
+      if (airportFromDropdownRef.current && !airportFromDropdownRef.current.contains(event.target)) {
+        setShowAirportFromDropdown(false);
+      }
+      if (airportToDropdownRef.current && !airportToDropdownRef.current.contains(event.target)) {
+        setShowAirportToDropdown(false);
+      }
     };
 
-    if (showCountryFromDropdown || showCountryToDropdown || showCityFromDropdown || showCityToDropdown) {
+    if (showCountryFromDropdown || showCountryToDropdown || showCityFromDropdown || showCityToDropdown || showAirportFromDropdown || showAirportToDropdown) {
       document.addEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [showCountryFromDropdown, showCountryToDropdown, showCityFromDropdown, showCityToDropdown]);
+  }, [showCountryFromDropdown, showCountryToDropdown, showCityFromDropdown, showCityToDropdown, showAirportFromDropdown, showAirportToDropdown]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -247,8 +345,12 @@ function App() {
       ),
       countryFrom: form.countryFrom,
       cityFrom: form.cityFrom,
+      airportFrom: form.airportFrom,
+      airportFromId,
       countryTo: form.countryTo,
       cityTo: form.cityTo,
+      airportTo: form.airportTo,
+      airportToId,
       baggageComments: form.baggageComments,
     };
 
@@ -299,7 +401,7 @@ function App() {
                 onChange={(date) => handleDateChange(date, 'dateFrom')}
                 dateFormat={t.dateFormat}
                 placeholderText={t.datePlaceholder}
-                locale={language}
+                locale={language === 'ru' ? 'ru' : 'en'}
                 className="date-picker-input"
                 required
                 minDate={new Date()}
@@ -313,7 +415,7 @@ function App() {
                 onChange={(date) => handleDateChange(date, 'dateTo')}
                 dateFormat={t.dateFormat}
                 placeholderText={t.datePlaceholder}
-                locale={language}
+                locale={language === 'ru' ? 'ru' : 'en'}
                 className="date-picker-input"
                 required
                 minDate={form.dateFrom || new Date()}
@@ -331,7 +433,7 @@ function App() {
               onChange={(date) => handleDateChange(date, 'courierDate')}
               dateFormat={t.dateFormat}
               placeholderText={t.datePlaceholder}
-              locale={language}
+              locale={language === 'ru' ? 'ru' : 'en'}
               className="date-picker-input"
               required
               minDate={new Date()}
@@ -400,7 +502,7 @@ function App() {
                 name="cityFrom"
                 value={form.cityFrom}
                 onChange={(e) => {
-                  handleChange(e);
+                  handleCityChange(e, 'cityFrom');
                   if (citySearchTimeoutRef.current) clearTimeout(citySearchTimeoutRef.current);
                   citySearchTimeoutRef.current = setTimeout(() => {
                     if (showCityFromDropdown) fetchCities(countryFromId, e.target.value, 'from');
@@ -420,7 +522,7 @@ function App() {
                       <div
                         key={city.id}
                         className="dropdown-item"
-                        onClick={() => handleCitySelect(city.name, 'cityFrom')}
+                        onClick={() => handleCitySelect(city, 'cityFrom')}
                       >
                         {city.name}
                       </div>
@@ -435,9 +537,68 @@ function App() {
               id="cityFrom"
               name="cityFrom"
               value={form.cityFrom}
-              onChange={handleChange}
+              onChange={(e) => handleCityChange(e, 'cityFrom')}
               required
               placeholder={t.enterCity}
+            />
+          )}
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="airportFrom">{t.airportFrom}</label>
+          {!form.cityFrom ? (
+            <input
+              type="text"
+              id="airportFrom"
+              readOnly
+              value=""
+              placeholder={t.chooseCityFirst}
+              className="city-disabled"
+              onFocus={(e) => e.target.blur()}
+            />
+          ) : cityFromId ? (
+            <div className="dropdown-container" ref={airportFromDropdownRef}>
+              <input
+                type="text"
+                id="airportFrom"
+                name="airportFrom"
+                value={form.airportFrom}
+                onChange={(e) => {
+                  handleAirportChange(e, 'airportFrom');
+                  if (airportSearchTimeoutRef.current) clearTimeout(airportSearchTimeoutRef.current);
+                  airportSearchTimeoutRef.current = setTimeout(() => {
+                    fetchAirports(cityFromId, e.target.value, 'from');
+                  }, 300);
+                }}
+                onFocus={() => fetchAirports(cityFromId, form.airportFrom, 'from')}
+                required
+                placeholder={t.enterOrChooseAirport}
+              />
+              {showAirportFromDropdown && (
+                <div className="dropdown-list">
+                  {loadingAirports ? (
+                    <div className="dropdown-item">{t.loading}</div>
+                  ) : airports.map((airport) => (
+                    <div
+                      key={airport.id}
+                      className="dropdown-item"
+                      onClick={() => handleAirportSelect(airport, 'airportFrom')}
+                    >
+                      {airport.name}{airport.iata_code ? ` (${airport.iata_code})` : ''}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : (
+            <input
+              type="text"
+              id="airportFrom"
+              name="airportFrom"
+              value={form.airportFrom}
+              onChange={(e) => handleAirportChange(e, 'airportFrom')}
+              required
+              placeholder={t.enterOrChooseAirport}
             />
           )}
         </div>
@@ -502,7 +663,7 @@ function App() {
                 name="cityTo"
                 value={form.cityTo}
                 onChange={(e) => {
-                  handleChange(e);
+                  handleCityChange(e, 'cityTo');
                   if (citySearchTimeoutRef.current) clearTimeout(citySearchTimeoutRef.current);
                   citySearchTimeoutRef.current = setTimeout(() => {
                     if (showCityToDropdown) fetchCities(countryToId, e.target.value, 'to');
@@ -522,7 +683,7 @@ function App() {
                       <div
                         key={city.id}
                         className="dropdown-item"
-                        onClick={() => handleCitySelect(city.name, 'cityTo')}
+                        onClick={() => handleCitySelect(city, 'cityTo')}
                       >
                         {city.name}
                       </div>
@@ -537,9 +698,68 @@ function App() {
               id="cityTo"
               name="cityTo"
               value={form.cityTo}
-              onChange={handleChange}
+              onChange={(e) => handleCityChange(e, 'cityTo')}
               required
               placeholder={t.enterCity}
+            />
+          )}
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="airportTo">{t.airportTo}</label>
+          {!form.cityTo ? (
+            <input
+              type="text"
+              id="airportTo"
+              readOnly
+              value=""
+              placeholder={t.chooseCityFirst}
+              className="city-disabled"
+              onFocus={(e) => e.target.blur()}
+            />
+          ) : cityToId ? (
+            <div className="dropdown-container" ref={airportToDropdownRef}>
+              <input
+                type="text"
+                id="airportTo"
+                name="airportTo"
+                value={form.airportTo}
+                onChange={(e) => {
+                  handleAirportChange(e, 'airportTo');
+                  if (airportSearchTimeoutRef.current) clearTimeout(airportSearchTimeoutRef.current);
+                  airportSearchTimeoutRef.current = setTimeout(() => {
+                    fetchAirports(cityToId, e.target.value, 'to');
+                  }, 300);
+                }}
+                onFocus={() => fetchAirports(cityToId, form.airportTo, 'to')}
+                required
+                placeholder={t.enterOrChooseAirport}
+              />
+              {showAirportToDropdown && (
+                <div className="dropdown-list">
+                  {loadingAirports ? (
+                    <div className="dropdown-item">{t.loading}</div>
+                  ) : airports.map((airport) => (
+                    <div
+                      key={airport.id}
+                      className="dropdown-item"
+                      onClick={() => handleAirportSelect(airport, 'airportTo')}
+                    >
+                      {airport.name}{airport.iata_code ? ` (${airport.iata_code})` : ''}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : (
+            <input
+              type="text"
+              id="airportTo"
+              name="airportTo"
+              value={form.airportTo}
+              onChange={(e) => handleAirportChange(e, 'airportTo')}
+              required
+              placeholder={t.enterOrChooseAirport}
             />
           )}
         </div>

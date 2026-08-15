@@ -1,0 +1,132 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: or\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:47
+msgid "Arrival airport"
+msgstr "ବିମାନ ବନ୍ଦର"
+
+#: src/i18n.js:45
+msgid "Arrival city"
+msgstr "ଆଗମନ ସହର"
+
+#: src/i18n.js:44
+msgid "Arrival country"
+msgstr "ଆଗମନ ଦେଶ |"
+
+#: src/i18n.js:55
+msgid "Baggage comments"
+msgstr "ବ୍ୟାଗେଜ୍ ମନ୍ତବ୍ୟଗୁଡିକ |"
+
+#: src/i18n.js:53
+msgid "Choose a city first"
+msgstr "ପ୍ରଥମେ ଏକ ସହର ବାଛନ୍ତୁ |"
+
+#: src/i18n.js:49
+msgid "Choose a country first"
+msgstr "ପ୍ରଥମେ ଏକ ଦେଶ ବାଛନ୍ତୁ |"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "କ୍ୟୁରିଅର୍ |"
+
+#: src/i18n.js:39
+msgid "Date"
+msgstr "ତାରିଖ"
+
+#: src/i18n.js:46
+msgid "Departure airport"
+msgstr "ବିମାନ ବନ୍ଦର"
+
+#: src/i18n.js:43
+msgid "Departure city"
+msgstr "ପ୍ରସ୍ଥାନ ସହର"
+
+#: src/i18n.js:42
+msgid "Departure country"
+msgstr "ପ୍ରସ୍ଥାନ ଦେଶ"
+
+#: src/i18n.js:51
+msgid "Enter a city"
+msgstr "ଏକ ସହରରେ ପ୍ରବେଶ କର |"
+
+#: src/i18n.js:48
+msgid "Enter a country"
+msgstr "ଏକ ଦେଶ ପ୍ରବେଶ କରନ୍ତୁ |"
+
+#: src/i18n.js:50
+msgid "Enter or choose a city"
+msgstr "ଏକ ସହର ପ୍ରବେଶ କିମ୍ବା ବାଛନ୍ତୁ |"
+
+#: src/i18n.js:52
+msgid "Enter or choose an airport"
+msgstr "ଏକ ବିମାନବନ୍ଦର ପ୍ରବେଶ କିମ୍ବା ବାଛନ୍ତୁ |"
+
+#: src/i18n.js:56
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "ଉଦାହରଣ ସ୍ୱରୂପ: 5 କିଲୋଗ୍ରାମ, ଡକ୍ୟୁମେଣ୍ଟ୍, ଇଲେକ୍ଟ୍ରୋନିକ୍ସ |"
+
+#: src/i18n.js:62
+msgid "Form submitted! Check the console for data."
+msgstr "ଫର୍ମ ଦାଖଲ! ଡାଟା ପାଇଁ କନସୋଲ୍ ଯାଞ୍ଚ କରନ୍ତୁ |"
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "ତାରିଖ ଠାରୁ"
+
+#: src/i18n.js:54
+msgid "Loading..."
+msgstr "ଲୋଡିଂ ..."
+
+#: src/i18n.js:41
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:40
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:61
+msgid "Please select a date"
+msgstr "ଦୟାକରି ଏକ ତାରିଖ ବାଛନ୍ତୁ |"
+
+#: src/i18n.js:58
+msgid "Please select a start date"
+msgstr "ଦୟାକରି ଏକ ଆରମ୍ଭ ତାରିଖ ଚୟନ କରନ୍ତୁ |"
+
+#: src/i18n.js:59
+msgid "Please select an end date"
+msgstr "ଦୟାକରି ଏକ ଶେଷ ତାରିଖ ଚୟନ କରନ୍ତୁ |"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "ପ୍ରେରକ"
+
+#: src/i18n.js:57
+msgid "Submit request"
+msgstr "ଅନୁରୋଧ ଦାଖଲ କରନ୍ତୁ |"
+
+#: src/i18n.js:60
+msgid "The start date cannot be after the end date"
+msgstr "ଆରମ୍ଭ ତାରିଖ ଶେଷ ତାରିଖ ପରେ ହୋଇପାରିବ ନାହିଁ |"
+
+#: src/i18n.js:38
+msgid "To date"
+msgstr "ଆଜି ପର୍ଯ୍ୟନ୍ତ"
+
+#: src/i18n.js:63
+msgid "User Not Found"
+msgstr "ଉପଯୋଗକର୍ତ୍ତା ମିଳିଲା ନାହିଁ |"
+
+#: src/i18n.js:64
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "ଆପଣ ସିଷ୍ଟମରେ ପଞ୍ଜିକୃତ ନୁହଁନ୍ତି | ଦୟାକରି ପ୍ରଥମେ ଟେଲିଗ୍ରାମ ବଟ୍ ମାଧ୍ୟମରେ ପଞ୍ଜିକରଣ କର |"

@@ -32,3 +32,8 @@ Based on recent estimates for 2026, here is the list of the top 20 most spoken l
 
 limit to 5 requests in the future
 get user language from tg sdk
+
+on the main page departure and arrival only, remove country city and airport, search by all 3 fields and shouw in search result aiport, city, country
+
+
+port request only airport id, dates, comment, role

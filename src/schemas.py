@@ -15,3 +15,13 @@ class CitySchema(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+class AirportSchema(BaseModel):
+    id: int
+    name: str
+    iata_code: str | None
+    icao_code: str | None
+
+    class Config:
+        from_attributes = True
