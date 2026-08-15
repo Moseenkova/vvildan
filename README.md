@@ -13,3 +13,7 @@ alembic upgrade head
 
 
 PGPASSWORD='postgres' psql -U postgres -d courier -h localhost
+
+
+refresh airports
+poetry run python scripts/import_airports.py

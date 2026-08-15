@@ -4,6 +4,9 @@ from sqlalchemy import select
 
 from .database import async_session_maker, City, Country
 from .schemas import CitySchema, CountrySchema
+from .auth.routers import auth_router
+from .deps import get_current_user
+from fastapi import Depends
 
 app = FastAPI()
 
@@ -15,9 +18,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(auth_router)
+
 
 @app.get("/api/countries", response_model=list[CountrySchema])
-async def get_countries(q: str = Query("", description="Search countries by name")):
+async def get_countries(
+    q: str = Query("", description="Search countries by name"),
+    user=Depends(get_current_user)
+):
     async with async_session_maker() as session:
         query = select(Country).order_by(Country.name.asc())
         if q.strip():
@@ -31,6 +39,7 @@ async def get_countries(q: str = Query("", description="Search countries by name
 async def get_cities(
     country_id: int = Query(..., description="Country ID"),
     q: str = Query("", description="Search cities by name"),
+    user=Depends(get_current_user)
 ):
     async with async_session_maker() as session:
         query = (
