@@ -202,12 +202,39 @@
 }
 
 .dropdown-item {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: #ffffff;
+  text-align: start;
+  font-family: inherit;
   padding: 12px;
   font-size: 16px;
   color: #333;
   cursor: pointer;
   transition: background-color 0.2s ease;
   border-bottom: 1px solid #f0f0f0;
+}
+
+.dropdown-message {
+  padding: 12px;
+  font-size: 15px;
+  color: #777;
+}
+
+.not-found {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.not-found h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.not-found p {
+  margin-top: 1rem;
+  color: #666;
 }
 
 .dropdown-item:last-child {

@@ -11,27 +11,31 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:47
+#: src/i18n.js:43
+msgid "Arrival"
+msgstr ""
+
+#: src/i18n.js:52
 msgid "Arrival airport"
 msgstr "Paliparan ng pagdating"
 
-#: src/i18n.js:45
+#: src/i18n.js:50
 msgid "Arrival city"
 msgstr "Lungsod ng pagdating"
 
-#: src/i18n.js:44
+#: src/i18n.js:49
 msgid "Arrival country"
 msgstr "Bansa ng pagdating"
 
-#: src/i18n.js:55
+#: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "Mga komento sa bagahe"
 
-#: src/i18n.js:53
+#: src/i18n.js:58
 msgid "Choose a city first"
 msgstr "Pumili muna ng lungsod"
 
-#: src/i18n.js:49
+#: src/i18n.js:54
 msgid "Choose a country first"
 msgstr "Pumili muna ng bansa"
 
@@ -43,39 +47,43 @@ msgstr "Courier"
 msgid "Date"
 msgstr "Petsa"
 
-#: src/i18n.js:46
+#: src/i18n.js:42
+msgid "Departure"
+msgstr ""
+
+#: src/i18n.js:51
 msgid "Departure airport"
 msgstr "Pag-alis ng paliparan"
 
-#: src/i18n.js:43
+#: src/i18n.js:48
 msgid "Departure city"
 msgstr "Lungsod ng pag-alis"
 
-#: src/i18n.js:42
+#: src/i18n.js:47
 msgid "Departure country"
 msgstr "Bansa ng pag-alis"
 
-#: src/i18n.js:51
+#: src/i18n.js:56
 msgid "Enter a city"
 msgstr "Pumasok sa isang lungsod"
 
-#: src/i18n.js:48
+#: src/i18n.js:53
 msgid "Enter a country"
 msgstr "Pumasok sa isang bansa"
 
-#: src/i18n.js:50
+#: src/i18n.js:55
 msgid "Enter or choose a city"
 msgstr "Pumasok o pumili ng lungsod"
 
-#: src/i18n.js:52
+#: src/i18n.js:57
 msgid "Enter or choose an airport"
 msgstr "Pumasok o pumili ng airport"
 
-#: src/i18n.js:56
+#: src/i18n.js:61
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "Halimbawa: Damit 5 kg, mga dokumento, electronics"
 
-#: src/i18n.js:62
+#: src/i18n.js:67
 msgid "Form submitted! Check the console for data."
 msgstr "Naisumite ang form! Suriin ang console para sa data."
 
@@ -83,7 +91,7 @@ msgstr "Naisumite ang form! Suriin ang console para sa data."
 msgid "From date"
 msgstr "Mula sa petsa"
 
-#: src/i18n.js:54
+#: src/i18n.js:59
 msgid "Loading..."
 msgstr "Naglo-load..."
 
@@ -95,27 +103,39 @@ msgstr "dd/mm/yyyy"
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
-#: src/i18n.js:61
+#: src/i18n.js:45
+msgid "No matching airports found"
+msgstr ""
+
+#: src/i18n.js:66
 msgid "Please select a date"
 msgstr "Mangyaring pumili ng petsa"
 
-#: src/i18n.js:58
+#: src/i18n.js:63
 msgid "Please select a start date"
 msgstr "Mangyaring pumili ng petsa ng pagsisimula"
 
-#: src/i18n.js:59
+#: src/i18n.js:64
 msgid "Please select an end date"
 msgstr "Mangyaring pumili ng petsa ng pagtatapos"
+
+#: src/i18n.js:46
+msgid "Please select departure and arrival airports from the list"
+msgstr ""
+
+#: src/i18n.js:44
+msgid "Search by airport, city, or country"
+msgstr ""
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "Nagpadala"
 
-#: src/i18n.js:57
+#: src/i18n.js:62
 msgid "Submit request"
 msgstr "Magsumite ng kahilingan"
 
-#: src/i18n.js:60
+#: src/i18n.js:65
 msgid "The start date cannot be after the end date"
 msgstr "Ang petsa ng pagsisimula ay hindi maaaring pagkatapos ng petsa ng pagtatapos"
 
@@ -123,10 +143,10 @@ msgstr "Ang petsa ng pagsisimula ay hindi maaaring pagkatapos ng petsa ng pagtat
 msgid "To date"
 msgstr "Hanggang ngayon"
 
-#: src/i18n.js:63
+#: src/i18n.js:68
 msgid "User Not Found"
 msgstr "Hindi Nahanap ang User"
 
-#: src/i18n.js:64
+#: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "Hindi ka nakarehistro sa system. Mangyaring magparehistro muna sa pamamagitan ng Telegram bot."

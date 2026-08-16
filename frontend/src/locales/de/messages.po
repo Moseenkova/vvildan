@@ -11,27 +11,31 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:47
+#: src/i18n.js:43
+msgid "Arrival"
+msgstr ""
+
+#: src/i18n.js:52
 msgid "Arrival airport"
 msgstr "Ankunftsflughafen"
 
-#: src/i18n.js:45
+#: src/i18n.js:50
 msgid "Arrival city"
 msgstr "Ankunftsort"
 
-#: src/i18n.js:44
+#: src/i18n.js:49
 msgid "Arrival country"
 msgstr "Ankunftsland"
 
-#: src/i18n.js:55
+#: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "Kommentare zum Gepäck"
 
-#: src/i18n.js:53
+#: src/i18n.js:58
 msgid "Choose a city first"
 msgstr "Wählen Sie zunächst eine Stadt"
 
-#: src/i18n.js:49
+#: src/i18n.js:54
 msgid "Choose a country first"
 msgstr "Wählen Sie zunächst ein Land aus"
 
@@ -43,39 +47,43 @@ msgstr "Kurier"
 msgid "Date"
 msgstr "Datum"
 
-#: src/i18n.js:46
+#: src/i18n.js:42
+msgid "Departure"
+msgstr ""
+
+#: src/i18n.js:51
 msgid "Departure airport"
 msgstr "Abflughafen"
 
-#: src/i18n.js:43
+#: src/i18n.js:48
 msgid "Departure city"
 msgstr "Abflugort"
 
-#: src/i18n.js:42
+#: src/i18n.js:47
 msgid "Departure country"
 msgstr "Abflugland"
 
-#: src/i18n.js:51
+#: src/i18n.js:56
 msgid "Enter a city"
 msgstr "Geben Sie eine Stadt ein"
 
-#: src/i18n.js:48
+#: src/i18n.js:53
 msgid "Enter a country"
 msgstr "Geben Sie ein Land ein"
 
-#: src/i18n.js:50
+#: src/i18n.js:55
 msgid "Enter or choose a city"
 msgstr "Geben Sie eine Stadt ein oder wählen Sie sie aus"
 
-#: src/i18n.js:52
+#: src/i18n.js:57
 msgid "Enter or choose an airport"
 msgstr "Geben Sie einen Flughafen ein oder wählen Sie ihn aus"
 
-#: src/i18n.js:56
+#: src/i18n.js:61
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "Zum Beispiel: Kleidung 5 kg, Dokumente, Elektronik"
 
-#: src/i18n.js:62
+#: src/i18n.js:67
 msgid "Form submitted! Check the console for data."
 msgstr "Formular eingereicht! Überprüfen Sie die Konsole auf Daten."
 
@@ -83,7 +91,7 @@ msgstr "Formular eingereicht! Überprüfen Sie die Konsole auf Daten."
 msgid "From date"
 msgstr "Ab Datum"
 
-#: src/i18n.js:54
+#: src/i18n.js:59
 msgid "Loading..."
 msgstr "Laden..."
 
@@ -95,27 +103,39 @@ msgstr "dd/mm/yyyy"
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
-#: src/i18n.js:61
+#: src/i18n.js:45
+msgid "No matching airports found"
+msgstr ""
+
+#: src/i18n.js:66
 msgid "Please select a date"
 msgstr "Bitte wählen Sie ein Datum aus"
 
-#: src/i18n.js:58
+#: src/i18n.js:63
 msgid "Please select a start date"
 msgstr "Bitte wählen Sie ein Startdatum aus"
 
-#: src/i18n.js:59
+#: src/i18n.js:64
 msgid "Please select an end date"
 msgstr "Bitte wählen Sie ein Enddatum aus"
+
+#: src/i18n.js:46
+msgid "Please select departure and arrival airports from the list"
+msgstr ""
+
+#: src/i18n.js:44
+msgid "Search by airport, city, or country"
+msgstr ""
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "Absender"
 
-#: src/i18n.js:57
+#: src/i18n.js:62
 msgid "Submit request"
 msgstr "Anfrage abschicken"
 
-#: src/i18n.js:60
+#: src/i18n.js:65
 msgid "The start date cannot be after the end date"
 msgstr "Das Startdatum darf nicht nach dem Enddatum liegen"
 
@@ -123,10 +143,10 @@ msgstr "Das Startdatum darf nicht nach dem Enddatum liegen"
 msgid "To date"
 msgstr "Miteinander ausgehen"
 
-#: src/i18n.js:63
+#: src/i18n.js:68
 msgid "User Not Found"
 msgstr "Benutzer nicht gefunden"
 
-#: src/i18n.js:64
+#: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "Sie sind nicht im System registriert. Bitte registrieren Sie sich zunächst über den Telegram-Bot."

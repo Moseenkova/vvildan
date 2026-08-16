@@ -11,27 +11,31 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:47
+#: src/i18n.js:43
+msgid "Arrival"
+msgstr ""
+
+#: src/i18n.js:52
 msgid "Arrival airport"
 msgstr "到达机场"
 
-#: src/i18n.js:45
+#: src/i18n.js:50
 msgid "Arrival city"
 msgstr "到达城市"
 
-#: src/i18n.js:44
+#: src/i18n.js:49
 msgid "Arrival country"
 msgstr "到达国家"
 
-#: src/i18n.js:55
+#: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "行李备注"
 
-#: src/i18n.js:53
+#: src/i18n.js:58
 msgid "Choose a city first"
 msgstr "首先选择城市"
 
-#: src/i18n.js:49
+#: src/i18n.js:54
 msgid "Choose a country first"
 msgstr "首先选择一个国家"
 
@@ -43,39 +47,43 @@ msgstr "导游"
 msgid "Date"
 msgstr "日期"
 
-#: src/i18n.js:46
+#: src/i18n.js:42
+msgid "Departure"
+msgstr ""
+
+#: src/i18n.js:51
 msgid "Departure airport"
 msgstr "出发机场"
 
-#: src/i18n.js:43
+#: src/i18n.js:48
 msgid "Departure city"
 msgstr "出发城市"
 
-#: src/i18n.js:42
+#: src/i18n.js:47
 msgid "Departure country"
 msgstr "出发国家"
 
-#: src/i18n.js:51
+#: src/i18n.js:56
 msgid "Enter a city"
 msgstr "输入城市"
 
-#: src/i18n.js:48
+#: src/i18n.js:53
 msgid "Enter a country"
 msgstr "入境"
 
-#: src/i18n.js:50
+#: src/i18n.js:55
 msgid "Enter or choose a city"
 msgstr "输入或选择城市"
 
-#: src/i18n.js:52
+#: src/i18n.js:57
 msgid "Enter or choose an airport"
 msgstr "输入或选择机场"
 
-#: src/i18n.js:56
+#: src/i18n.js:61
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "例如：5公斤的衣服、文件、电子产品"
 
-#: src/i18n.js:62
+#: src/i18n.js:67
 msgid "Form submitted! Check the console for data."
 msgstr "表格已提交！检查控制台的数据。"
 
@@ -83,7 +91,7 @@ msgstr "表格已提交！检查控制台的数据。"
 msgid "From date"
 msgstr "开始日期"
 
-#: src/i18n.js:54
+#: src/i18n.js:59
 msgid "Loading..."
 msgstr "加载中..."
 
@@ -95,27 +103,39 @@ msgstr "dd/mm/yyyy"
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
-#: src/i18n.js:61
+#: src/i18n.js:45
+msgid "No matching airports found"
+msgstr ""
+
+#: src/i18n.js:66
 msgid "Please select a date"
 msgstr "请选择日期"
 
-#: src/i18n.js:58
+#: src/i18n.js:63
 msgid "Please select a start date"
 msgstr "请选择开始日期"
 
-#: src/i18n.js:59
+#: src/i18n.js:64
 msgid "Please select an end date"
 msgstr "请选择结束日期"
+
+#: src/i18n.js:46
+msgid "Please select departure and arrival airports from the list"
+msgstr ""
+
+#: src/i18n.js:44
+msgid "Search by airport, city, or country"
+msgstr ""
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "发件人"
 
-#: src/i18n.js:57
+#: src/i18n.js:62
 msgid "Submit request"
 msgstr "提交请求"
 
-#: src/i18n.js:60
+#: src/i18n.js:65
 msgid "The start date cannot be after the end date"
 msgstr "开始日期不能晚于结束日期"
 
@@ -123,10 +143,10 @@ msgstr "开始日期不能晚于结束日期"
 msgid "To date"
 msgstr "迄今为止"
 
-#: src/i18n.js:63
+#: src/i18n.js:68
 msgid "User Not Found"
 msgstr "未找到用户"
 
-#: src/i18n.js:64
+#: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "您尚未在系统中注册。请先通过 Telegram 机器人注册。"
