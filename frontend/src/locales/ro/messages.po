@@ -15,27 +15,27 @@ msgstr ""
 msgid "Arrival"
 msgstr ""
 
-#: src/i18n.js:52
+#: src/i18n.js:53
 msgid "Arrival airport"
 msgstr "Aeroportul de sosire"
 
-#: src/i18n.js:50
+#: src/i18n.js:51
 msgid "Arrival city"
 msgstr "Orașul de sosire"
 
-#: src/i18n.js:49
+#: src/i18n.js:50
 msgid "Arrival country"
 msgstr "Țara de sosire"
 
-#: src/i18n.js:60
+#: src/i18n.js:61
 msgid "Baggage comments"
 msgstr "Comentarii la bagaje"
 
-#: src/i18n.js:58
+#: src/i18n.js:59
 msgid "Choose a city first"
 msgstr "Alege mai întâi un oraș"
 
-#: src/i18n.js:54
+#: src/i18n.js:55
 msgid "Choose a country first"
 msgstr "Alegeți mai întâi o țară"
 
@@ -51,39 +51,39 @@ msgstr "Data"
 msgid "Departure"
 msgstr ""
 
-#: src/i18n.js:51
+#: src/i18n.js:52
 msgid "Departure airport"
 msgstr "Aeroportul de plecare"
 
-#: src/i18n.js:48
+#: src/i18n.js:49
 msgid "Departure city"
 msgstr "Orașul de plecare"
 
-#: src/i18n.js:47
+#: src/i18n.js:48
 msgid "Departure country"
 msgstr "Țara de plecare"
 
-#: src/i18n.js:56
+#: src/i18n.js:57
 msgid "Enter a city"
 msgstr "Intrați într-un oraș"
 
-#: src/i18n.js:53
+#: src/i18n.js:54
 msgid "Enter a country"
 msgstr "Intrați într-o țară"
 
-#: src/i18n.js:55
+#: src/i18n.js:56
 msgid "Enter or choose a city"
 msgstr "Introduceți sau alegeți un oraș"
 
-#: src/i18n.js:57
+#: src/i18n.js:58
 msgid "Enter or choose an airport"
 msgstr "Intrați sau alegeți un aeroport"
 
-#: src/i18n.js:61
+#: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "De exemplu: Haine 5 kg, documente, electronice"
 
-#: src/i18n.js:67
+#: src/i18n.js:68
 msgid "Form submitted! Check the console for data."
 msgstr "Formular trimis! Verificați consola pentru date."
 
@@ -91,9 +91,13 @@ msgstr "Formular trimis! Verificați consola pentru date."
 msgid "From date"
 msgstr "De la data"
 
-#: src/i18n.js:59
+#: src/i18n.js:60
 msgid "Loading..."
 msgstr "Încărcare..."
+
+#: src/i18n.js:47
+#~ msgid "Maximum number of airports selected"
+#~ msgstr ""
 
 #: src/i18n.js:41
 msgid "mm/dd/yyyy"
@@ -107,20 +111,24 @@ msgstr "dd/MM/yyyy"
 msgid "No matching airports found"
 msgstr ""
 
-#: src/i18n.js:66
+#: src/i18n.js:67
 msgid "Please select a date"
 msgstr "Vă rugăm să selectați o dată"
 
-#: src/i18n.js:63
+#: src/i18n.js:64
 msgid "Please select a start date"
 msgstr "Vă rugăm să selectați o dată de începere"
 
-#: src/i18n.js:64
+#: src/i18n.js:65
 msgid "Please select an end date"
 msgstr "Vă rugăm să selectați o dată de încheiere"
 
 #: src/i18n.js:46
 msgid "Please select departure and arrival airports from the list"
+msgstr ""
+
+#: src/i18n.js:47
+msgid "Remove"
 msgstr ""
 
 #: src/i18n.js:44
@@ -131,11 +139,11 @@ msgstr ""
 msgid "Sender"
 msgstr "Expeditor"
 
-#: src/i18n.js:62
+#: src/i18n.js:63
 msgid "Submit request"
 msgstr "Trimiteți cererea"
 
-#: src/i18n.js:65
+#: src/i18n.js:66
 msgid "The start date cannot be after the end date"
 msgstr "Data de început nu poate fi după data de încheiere"
 
@@ -143,10 +151,10 @@ msgstr "Data de început nu poate fi după data de încheiere"
 msgid "To date"
 msgstr "Până în prezent"
 
-#: src/i18n.js:68
+#: src/i18n.js:69
 msgid "User Not Found"
 msgstr "Utilizatorul nu a fost găsit"
 
-#: src/i18n.js:69
+#: src/i18n.js:70
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "Nu sunteți înregistrat în sistem. Vă rugăm să vă înregistrați mai întâi prin botul Telegram."

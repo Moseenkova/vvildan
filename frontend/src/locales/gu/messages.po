@@ -15,27 +15,27 @@ msgstr ""
 msgid "Arrival"
 msgstr ""
 
-#: src/i18n.js:52
+#: src/i18n.js:53
 msgid "Arrival airport"
 msgstr "આગમન એરપોર્ટ"
 
-#: src/i18n.js:50
+#: src/i18n.js:51
 msgid "Arrival city"
 msgstr "આગમન શહેર"
 
-#: src/i18n.js:49
+#: src/i18n.js:50
 msgid "Arrival country"
 msgstr "આગમન દેશ"
 
-#: src/i18n.js:60
+#: src/i18n.js:61
 msgid "Baggage comments"
 msgstr "સામાન ટિપ્પણીઓ"
 
-#: src/i18n.js:58
+#: src/i18n.js:59
 msgid "Choose a city first"
 msgstr "પ્રથમ શહેર પસંદ કરો"
 
-#: src/i18n.js:54
+#: src/i18n.js:55
 msgid "Choose a country first"
 msgstr "પ્રથમ દેશ પસંદ કરો"
 
@@ -51,39 +51,39 @@ msgstr "તારીખ"
 msgid "Departure"
 msgstr ""
 
-#: src/i18n.js:51
+#: src/i18n.js:52
 msgid "Departure airport"
 msgstr "પ્રસ્થાન એરપોર્ટ"
 
-#: src/i18n.js:48
+#: src/i18n.js:49
 msgid "Departure city"
 msgstr "પ્રસ્થાન શહેર"
 
-#: src/i18n.js:47
+#: src/i18n.js:48
 msgid "Departure country"
 msgstr "પ્રસ્થાન દેશ"
 
-#: src/i18n.js:56
+#: src/i18n.js:57
 msgid "Enter a city"
 msgstr "એક શહેર દાખલ કરો"
 
-#: src/i18n.js:53
+#: src/i18n.js:54
 msgid "Enter a country"
 msgstr "એક દેશ દાખલ કરો"
 
-#: src/i18n.js:55
+#: src/i18n.js:56
 msgid "Enter or choose a city"
 msgstr "શહેર દાખલ કરો અથવા પસંદ કરો"
 
-#: src/i18n.js:57
+#: src/i18n.js:58
 msgid "Enter or choose an airport"
 msgstr "દાખલ કરો અથવા એરપોર્ટ પસંદ કરો"
 
-#: src/i18n.js:61
+#: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "ઉદાહરણ તરીકે: કપડાં 5 કિલો, દસ્તાવેજો, ઇલેક્ટ્રોનિક્સ"
 
-#: src/i18n.js:67
+#: src/i18n.js:68
 msgid "Form submitted! Check the console for data."
 msgstr "ફોર્મ સબમિટ કર્યું! ડેટા માટે કન્સોલ તપાસો."
 
@@ -91,9 +91,13 @@ msgstr "ફોર્મ સબમિટ કર્યું! ડેટા મા�
 msgid "From date"
 msgstr "તારીખથી"
 
-#: src/i18n.js:59
+#: src/i18n.js:60
 msgid "Loading..."
 msgstr "લોડ કરી રહ્યું છે..."
+
+#: src/i18n.js:47
+#~ msgid "Maximum number of airports selected"
+#~ msgstr ""
 
 #: src/i18n.js:41
 msgid "mm/dd/yyyy"
@@ -107,20 +111,24 @@ msgstr "dd/MM/yyyy"
 msgid "No matching airports found"
 msgstr ""
 
-#: src/i18n.js:66
+#: src/i18n.js:67
 msgid "Please select a date"
 msgstr "કૃપા કરીને તારીખ પસંદ કરો"
 
-#: src/i18n.js:63
+#: src/i18n.js:64
 msgid "Please select a start date"
 msgstr "કૃપા કરીને પ્રારંભ તારીખ પસંદ કરો"
 
-#: src/i18n.js:64
+#: src/i18n.js:65
 msgid "Please select an end date"
 msgstr "કૃપા કરીને સમાપ્તિ તારીખ પસંદ કરો"
 
 #: src/i18n.js:46
 msgid "Please select departure and arrival airports from the list"
+msgstr ""
+
+#: src/i18n.js:47
+msgid "Remove"
 msgstr ""
 
 #: src/i18n.js:44
@@ -131,11 +139,11 @@ msgstr ""
 msgid "Sender"
 msgstr "મોકલનાર"
 
-#: src/i18n.js:62
+#: src/i18n.js:63
 msgid "Submit request"
 msgstr "વિનંતી સબમિટ કરો"
 
-#: src/i18n.js:65
+#: src/i18n.js:66
 msgid "The start date cannot be after the end date"
 msgstr "પ્રારંભ તારીખ સમાપ્તિ તારીખ પછીની ન હોઈ શકે"
 
@@ -143,10 +151,10 @@ msgstr "પ્રારંભ તારીખ સમાપ્તિ તારી
 msgid "To date"
 msgstr "આજની તારીખે"
 
-#: src/i18n.js:68
+#: src/i18n.js:69
 msgid "User Not Found"
 msgstr "વપરાશકર્તા મળ્યો નથી"
 
-#: src/i18n.js:69
+#: src/i18n.js:70
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "તમે સિસ્ટમમાં નોંધાયેલા નથી. કૃપા કરીને પહેલા ટેલિગ્રામ બોટ દ્વારા નોંધણી કરો."

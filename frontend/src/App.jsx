@@ -10,7 +10,8 @@ import './App.css'
 registerLocale('en', enUS)
 registerLocale('ru', ru)
 
-function AirportSearch({ id, label, placeholder, value, onChange, onSelect, t }) {
+function AirportSearch({ id, label, placeholder, selected, maxSelections, onSelect, onRemove, t }) {
+  const [query, setQuery] = useState('')
   const [results, setResults] = useState([])
   const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -53,56 +54,81 @@ function AirportSearch({ id, label, placeholder, value, onChange, onSelect, t })
   }
 
   const handleInput = (event) => {
-    const query = event.target.value
-    onChange(query)
-    setOpen(Boolean(query.trim()))
+    const nextQuery = event.target.value
+    setQuery(nextQuery)
+    setOpen(Boolean(nextQuery.trim()))
     clearTimeout(timeoutRef.current)
-    timeoutRef.current = setTimeout(() => search(query), 300)
+    timeoutRef.current = setTimeout(() => search(nextQuery), 300)
   }
+
+  const atLimit = selected.length >= maxSelections
+  const isMultiple = maxSelections > 1
 
   return (
     <div className="form-group">
       <label htmlFor={id}>{label}</label>
-      <div className="dropdown-container" ref={containerRef}>
-        <input
-          id={id}
-          type="text"
-          value={value}
-          onChange={handleInput}
-          onFocus={() => value.trim() && search(value)}
-          placeholder={placeholder}
-          autoComplete="off"
-          role="combobox"
-          aria-autocomplete="list"
-          aria-expanded={open}
-          aria-controls={`${id}-results`}
-          required
-        />
-        {open && (
+      {selected.length > 0 && (
+        <div className="airport-selections">
+          {selected.map((airport) => (
+            <div className="airport-selection" key={airport.id}>
+              <span>{airport.name}, {airport.city_name}, {airport.country_name}</span>
+              <button type="button" onClick={() => onRemove(airport.id)} aria-label={`${t.remove} ${airport.name}`}>×</button>
+            </div>
+          ))}
+        </div>
+      )}
+      {!atLimit && (
+        <div className="dropdown-container" ref={containerRef}>
+          <input
+            id={id}
+            type="text"
+            value={query}
+            onChange={handleInput}
+            onFocus={() => query.trim() && search(query)}
+            placeholder={placeholder}
+            autoComplete="off"
+            role="combobox"
+            aria-autocomplete="list"
+            aria-expanded={open}
+            aria-controls={`${id}-results`}
+            required={selected.length === 0}
+          />
+          {open && (
           <div id={`${id}-results`} className="dropdown-list" role="listbox">
             {loading ? (
               <div className="dropdown-message">{t.loading}</div>
-            ) : results.length ? (
-              results.map((airport) => (
+            ) : results.some((airport) => isMultiple || !selected.some((item) => item.id === airport.id)) ? (
+              results.filter((airport) => isMultiple || !selected.some((item) => item.id === airport.id)).map((airport) => {
+                const isSelected = selected.some((item) => item.id === airport.id)
+                return (
                 <button
                   type="button"
                   role="option"
-                  className="dropdown-item"
+                  aria-selected={isSelected}
+                  className={`dropdown-item ${isMultiple ? 'dropdown-item-checkbox' : ''}`}
                   key={airport.id}
                   onClick={() => {
-                    onSelect(airport)
-                    setOpen(false)
+                    if (isSelected) onRemove(airport.id)
+                    else onSelect(airport)
+                    if (!isMultiple) {
+                      setQuery('')
+                      setResults([])
+                      setOpen(false)
+                    }
                   }}
                 >
-                  {airport.name}, {airport.city_name}, {airport.country_name}
+                  {isMultiple && <input type="checkbox" checked={isSelected} readOnly tabIndex={-1} />}
+                  <span>{airport.name}, {airport.city_name}, {airport.country_name}</span>
                 </button>
-              ))
+                )
+              })
             ) : (
               <div className="dropdown-message">{t.noAirportsFound}</div>
             )}
           </div>
-        )}
-      </div>
+          )}
+        </div>
+      )}
     </div>
   )
 }
@@ -117,12 +143,10 @@ function App() {
     dateFrom: null,
     dateTo: null,
     courierDate: null,
-    departure: '',
-    arrival: '',
     baggageComments: '',
   })
-  const [departureAirport, setDepartureAirport] = useState(null)
-  const [arrivalAirport, setArrivalAirport] = useState(null)
+  const [departureAirports, setDepartureAirports] = useState([])
+  const [arrivalAirports, setArrivalAirports] = useState([])
 
   useEffect(() => {
     document.documentElement.lang = language
@@ -157,16 +181,25 @@ function App() {
     return `${day}.${month}.${date.getFullYear()}`
   }
 
-  const selectLocation = (field, airport) => {
-    setField(field, `${airport.name}, ${airport.city_name}, ${airport.country_name}`)
-    if (field === 'departure') setDepartureAirport(airport)
-    else setArrivalAirport(airport)
+  const selectAirport = (field, airport) => {
+    const update = field === 'departure' ? setDepartureAirports : setArrivalAirports
+    const limit = role === 'sender' ? 5 : 1
+    update((current) => current.length < limit && !current.some((item) => item.id === airport.id)
+      ? [...current, airport]
+      : current)
   }
 
-  const changeLocation = (field, value) => {
-    setField(field, value)
-    if (field === 'departure') setDepartureAirport(null)
-    else setArrivalAirport(null)
+  const removeAirport = (field, airportId) => {
+    const update = field === 'departure' ? setDepartureAirports : setArrivalAirports
+    update((current) => current.filter((airport) => airport.id !== airportId))
+  }
+
+  const changeRole = (nextRole) => {
+    setRole(nextRole)
+    if (nextRole === 'courier') {
+      setDepartureAirports((current) => current.slice(0, 1))
+      setArrivalAirports((current) => current.slice(0, 1))
+    }
   }
 
   const handleSubmit = (event) => {
@@ -183,7 +216,7 @@ function App() {
       alert(t.selectDate)
       return
     }
-    if (!departureAirport || !arrivalAirport) {
+    if (!departureAirports.length || !arrivalAirports.length) {
       alert(t.selectAirportFromList)
       return
     }
@@ -193,14 +226,8 @@ function App() {
       ...(role === 'sender'
         ? { dateFrom: formatDateToString(form.dateFrom), dateTo: formatDateToString(form.dateTo) }
         : { date: formatDateToString(form.courierDate) }),
-      countryFrom: departureAirport.country_name,
-      cityFrom: departureAirport.city_name,
-      airportFrom: departureAirport.name,
-      airportFromId: departureAirport.id,
-      countryTo: arrivalAirport.country_name,
-      cityTo: arrivalAirport.city_name,
-      airportTo: arrivalAirport.name,
-      airportToId: arrivalAirport.id,
+      departureAirportIds: departureAirports.map((airport) => airport.id),
+      arrivalAirportIds: arrivalAirports.map((airport) => airport.id),
       baggageComments: form.baggageComments,
     }
     console.log('Form submitted:', submissionData)
@@ -220,8 +247,8 @@ function App() {
   return (
     <div className="app-container">
       <div className="role-selector">
-        <button type="button" onClick={() => setRole('sender')} className={`role-button ${role === 'sender' ? 'active' : ''}`}>{t.sender}</button>
-        <button type="button" onClick={() => setRole('courier')} className={`role-button ${role === 'courier' ? 'active' : ''}`}>{t.courier}</button>
+        <button type="button" onClick={() => changeRole('sender')} className={`role-button ${role === 'sender' ? 'active' : ''}`}>{t.sender}</button>
+        <button type="button" onClick={() => changeRole('courier')} className={`role-button ${role === 'courier' ? 'active' : ''}`}>{t.courier}</button>
       </div>
 
       <form onSubmit={handleSubmit} className="order-form">
@@ -243,8 +270,8 @@ function App() {
           </div>
         )}
 
-        <AirportSearch id="departure" label={t.departure} placeholder={t.searchAirportCityCountry} value={form.departure} onChange={(value) => changeLocation('departure', value)} onSelect={(airport) => selectLocation('departure', airport)} t={t} />
-        <AirportSearch id="arrival" label={t.arrival} placeholder={t.searchAirportCityCountry} value={form.arrival} onChange={(value) => changeLocation('arrival', value)} onSelect={(airport) => selectLocation('arrival', airport)} t={t} />
+        <AirportSearch id="departure" label={t.departure} placeholder={t.searchAirportCityCountry} selected={departureAirports} maxSelections={role === 'sender' ? 5 : 1} onSelect={(airport) => selectAirport('departure', airport)} onRemove={(airportId) => removeAirport('departure', airportId)} t={t} />
+        <AirportSearch id="arrival" label={t.arrival} placeholder={t.searchAirportCityCountry} selected={arrivalAirports} maxSelections={role === 'sender' ? 5 : 1} onSelect={(airport) => selectAirport('arrival', airport)} onRemove={(airportId) => removeAirport('arrival', airportId)} t={t} />
 
         <div className="form-group">
           <label htmlFor="baggageComments">{t.baggageComments}</label>

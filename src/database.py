@@ -7,11 +7,13 @@ from dotenv import load_dotenv
 from sqlalchemy import (
     BigInteger,
     Boolean,
+    Column,
     Date,
     DateTime,
     Enum,
     Float,
     ForeignKey,
+    Table,
     UniqueConstraint,
     func,
     insert,
@@ -58,7 +60,7 @@ class Courier(Base):
     __tablename__ = "couriers"
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     user: Mapped["User"] = relationship(back_populates="courier")
-    requests = relationship("Request", back_populates="courier")
+    requests: Mapped[list["Request"]] = relationship("Request", back_populates="courier")
 
     __table_args__ = (UniqueConstraint("user_id"),)
 
@@ -67,35 +69,9 @@ class Sender(Base):
     __tablename__ = "senders"
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     user: Mapped["User"] = relationship(back_populates="sender")
-    requests: Mapped["Request"] = relationship(back_populates="sender")
-    requests = relationship("Request", back_populates="sender")
+    requests: Mapped[list["Request"]] = relationship("Request", back_populates="sender")
 
     __table_args__ = (UniqueConstraint("user_id"),)
-
-
-# TODO может быть наоброт порядок
-class BaggageKind(enum.StrEnum):
-    usual = "usual"
-    liquid = "liquid"
-    expensive = "expensive"
-    document = "document"
-    troublesome = "troublesome"
-    other = "other"
-
-
-RU_LABELS = {
-    BaggageKind.usual: "Обычный",
-    BaggageKind.liquid: "Жидкость",
-    BaggageKind.document: "Документ",
-    BaggageKind.troublesome: "Проблемный",
-    BaggageKind.usual: "Обычный",
-}
-
-
-class VolumeKind(enum.Enum):
-    kilo = 1
-    liter = 2
-    piece = 3
 
 
 class Status(enum.Enum):
@@ -106,20 +82,35 @@ class Status(enum.Enum):
     fulfilled = 5
 
 
+request_departure_airports = Table(
+    "request_departure_airports",
+    Base.metadata,
+    Column("request_id", ForeignKey("requests.id", ondelete="CASCADE"), primary_key=True),
+    Column("airport_id", ForeignKey("airports.id", ondelete="CASCADE"), primary_key=True),
+)
+
+
+request_arrival_airports = Table(
+    "request_arrival_airports",
+    Base.metadata,
+    Column("request_id", ForeignKey("requests.id", ondelete="CASCADE"), primary_key=True),
+    Column("airport_id", ForeignKey("airports.id", ondelete="CASCADE"), primary_key=True),
+)
+
+
 class Request(Base):
     __tablename__ = "requests"
     sender_id: Mapped[int] = mapped_column(ForeignKey("senders.id"), nullable=True)
     sender: Mapped["Sender"] = relationship(back_populates="requests")
     courier_id: Mapped[int] = mapped_column(ForeignKey("couriers.id"), nullable=True)
     courier: Mapped["Courier"] = relationship(back_populates="requests")
-    origin_id: Mapped[int] = mapped_column(ForeignKey("airports.id"))
-    destination_id: Mapped[int] = mapped_column(ForeignKey("airports.id"))
-
-    origin: Mapped["Airport"] = relationship(
-        foreign_keys=[origin_id], back_populates="requests_from"
+    departure_airports: Mapped[List["Airport"]] = relationship(
+        secondary=request_departure_airports,
+        back_populates="departure_requests",
     )
-    destination: Mapped["Airport"] = relationship(
-        foreign_keys=[destination_id], back_populates="requests_to"
+    arrival_airports: Mapped[List["Airport"]] = relationship(
+        secondary=request_arrival_airports,
+        back_populates="arrival_requests",
     )
     date: Mapped[date] = mapped_column(Date, nullable=True)
     date_to: Mapped[date] = mapped_column(Date, nullable=True)
@@ -133,7 +124,6 @@ class Country(Base):
     __tablename__ = "countries"
     name: Mapped[str]
     iso_code: Mapped[Optional[str]] = mapped_column(unique=True)
-    is_viewed: Mapped[bool] = mapped_column(Boolean, default=False)
     cities: Mapped[List["City"]] = relationship(back_populates="country")
 
     __table_args__ = (UniqueConstraint("name"),)
@@ -144,7 +134,6 @@ class City(Base):
     name: Mapped[str]
     country_id: Mapped[int] = mapped_column(ForeignKey("countries.id"))
     country: Mapped["Country"] = relationship(back_populates="cities")
-    is_viewed: Mapped[bool] = mapped_column(Boolean, default=False)
     airports: Mapped[List["Airport"]] = relationship(back_populates="city")
 
     __table_args__ = (UniqueConstraint("country_id", "name"),)
@@ -162,11 +151,13 @@ class Airport(Base):
     scheduled_service: Mapped[bool] = mapped_column(Boolean, default=False)
     city_id: Mapped[int] = mapped_column(ForeignKey("cities.id"), index=True)
     city: Mapped["City"] = relationship(back_populates="airports")
-    requests_from: Mapped[List["Request"]] = relationship(
-        foreign_keys="Request.origin_id", back_populates="origin"
+    departure_requests: Mapped[List["Request"]] = relationship(
+        secondary=request_departure_airports,
+        back_populates="departure_airports",
     )
-    requests_to: Mapped[List["Request"]] = relationship(
-        foreign_keys="Request.destination_id", back_populates="destination"
+    arrival_requests: Mapped[List["Request"]] = relationship(
+        secondary=request_arrival_airports,
+        back_populates="arrival_airports",
     )
 
 

@@ -44,6 +44,7 @@ export const getMessages = (_) => ({
   searchAirportCityCountry: _(msg`Search by airport, city, or country`),
   noAirportsFound: _(msg`No matching airports found`),
   selectAirportFromList: _(msg`Please select departure and arrival airports from the list`),
+  remove: _(msg`Remove`),
   countryFrom: _(msg`Departure country`),
   cityFrom: _(msg`Departure city`),
   countryTo: _(msg`Arrival country`),
