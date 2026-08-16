@@ -11,27 +11,31 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:47
+#: src/i18n.js:43
+msgid "Arrival"
+msgstr ""
+
+#: src/i18n.js:52
 msgid "Arrival airport"
 msgstr "আগমন বিমানবন্দর"
 
-#: src/i18n.js:45
+#: src/i18n.js:50
 msgid "Arrival city"
 msgstr "আগমন শহর"
 
-#: src/i18n.js:44
+#: src/i18n.js:49
 msgid "Arrival country"
 msgstr "আগমনের দেশ"
 
-#: src/i18n.js:55
+#: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "লাগেজ মন্তব্য"
 
-#: src/i18n.js:53
+#: src/i18n.js:58
 msgid "Choose a city first"
 msgstr "প্রথমে একটি শহর বেছে নিন"
 
-#: src/i18n.js:49
+#: src/i18n.js:54
 msgid "Choose a country first"
 msgstr "প্রথমে একটি দেশ বেছে নিন"
 
@@ -43,39 +47,43 @@ msgstr "কুরিয়ার"
 msgid "Date"
 msgstr "তারিখ"
 
-#: src/i18n.js:46
+#: src/i18n.js:42
+msgid "Departure"
+msgstr ""
+
+#: src/i18n.js:51
 msgid "Departure airport"
 msgstr "প্রস্থান বিমানবন্দর"
 
-#: src/i18n.js:43
+#: src/i18n.js:48
 msgid "Departure city"
 msgstr "প্রস্থান শহর"
 
-#: src/i18n.js:42
+#: src/i18n.js:47
 msgid "Departure country"
 msgstr "প্রস্থান দেশ"
 
-#: src/i18n.js:51
+#: src/i18n.js:56
 msgid "Enter a city"
 msgstr "একটি শহরে প্রবেশ করুন"
 
-#: src/i18n.js:48
+#: src/i18n.js:53
 msgid "Enter a country"
 msgstr "একটি দেশ লিখুন"
 
-#: src/i18n.js:50
+#: src/i18n.js:55
 msgid "Enter or choose a city"
 msgstr "প্রবেশ করুন বা একটি শহর চয়ন করুন"
 
-#: src/i18n.js:52
+#: src/i18n.js:57
 msgid "Enter or choose an airport"
 msgstr "প্রবেশ করুন বা একটি বিমানবন্দর চয়ন করুন"
 
-#: src/i18n.js:56
+#: src/i18n.js:61
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "যেমন: জামাকাপড় ৫ কেজি, নথিপত্র, ইলেকট্রনিক্স"
 
-#: src/i18n.js:62
+#: src/i18n.js:67
 msgid "Form submitted! Check the console for data."
 msgstr "ফর্ম জমা! ডেটার জন্য কনসোলটি পরীক্ষা করুন।"
 
@@ -83,7 +91,7 @@ msgstr "ফর্ম জমা! ডেটার জন্য কনসোলট�
 msgid "From date"
 msgstr "তারিখ থেকে"
 
-#: src/i18n.js:54
+#: src/i18n.js:59
 msgid "Loading..."
 msgstr "লোড হচ্ছে..."
 
@@ -95,27 +103,39 @@ msgstr "dd/mm/yyyy"
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
-#: src/i18n.js:61
+#: src/i18n.js:45
+msgid "No matching airports found"
+msgstr ""
+
+#: src/i18n.js:66
 msgid "Please select a date"
 msgstr "একটি তারিখ নির্বাচন করুন"
 
-#: src/i18n.js:58
+#: src/i18n.js:63
 msgid "Please select a start date"
 msgstr "একটি শুরু তারিখ নির্বাচন করুন"
 
-#: src/i18n.js:59
+#: src/i18n.js:64
 msgid "Please select an end date"
 msgstr "একটি শেষ তারিখ নির্বাচন করুন"
+
+#: src/i18n.js:46
+msgid "Please select departure and arrival airports from the list"
+msgstr ""
+
+#: src/i18n.js:44
+msgid "Search by airport, city, or country"
+msgstr ""
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "প্রেরক"
 
-#: src/i18n.js:57
+#: src/i18n.js:62
 msgid "Submit request"
 msgstr "অনুরোধ জমা দিন"
 
-#: src/i18n.js:60
+#: src/i18n.js:65
 msgid "The start date cannot be after the end date"
 msgstr "শুরুর তারিখ শেষ তারিখের পরে হতে পারে না"
 
@@ -123,10 +143,10 @@ msgstr "শুরুর তারিখ শেষ তারিখের পর�
 msgid "To date"
 msgstr "আজ পর্যন্ত"
 
-#: src/i18n.js:63
+#: src/i18n.js:68
 msgid "User Not Found"
 msgstr "ব্যবহারকারী পাওয়া যায়নি"
 
-#: src/i18n.js:64
+#: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "আপনি সিস্টেমে নিবন্ধিত নন। প্রথমে টেলিগ্রাম বটের মাধ্যমে নিবন্ধন করুন।"

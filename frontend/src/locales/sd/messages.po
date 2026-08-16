@@ -11,27 +11,31 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:47
+#: src/i18n.js:43
+msgid "Arrival"
+msgstr ""
+
+#: src/i18n.js:52
 msgid "Arrival airport"
 msgstr "آمد ايئرپورٽ"
 
-#: src/i18n.js:45
+#: src/i18n.js:50
 msgid "Arrival city"
 msgstr "آمد شهر"
 
-#: src/i18n.js:44
+#: src/i18n.js:49
 msgid "Arrival country"
 msgstr "آمد ملڪ"
 
-#: src/i18n.js:55
+#: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "سامان جا رايا"
 
-#: src/i18n.js:53
+#: src/i18n.js:58
 msgid "Choose a city first"
 msgstr "پهريون شهر چونڊيو"
 
-#: src/i18n.js:49
+#: src/i18n.js:54
 msgid "Choose a country first"
 msgstr "پهرين ملڪ چونڊيو"
 
@@ -43,39 +47,43 @@ msgstr "ڪوريئر"
 msgid "Date"
 msgstr "تاريخ"
 
-#: src/i18n.js:46
+#: src/i18n.js:42
+msgid "Departure"
+msgstr ""
+
+#: src/i18n.js:51
 msgid "Departure airport"
 msgstr "روانگي ايئرپورٽ"
 
-#: src/i18n.js:43
+#: src/i18n.js:48
 msgid "Departure city"
 msgstr "روانگي شهر"
 
-#: src/i18n.js:42
+#: src/i18n.js:47
 msgid "Departure country"
 msgstr "روانگي ملڪ"
 
-#: src/i18n.js:51
+#: src/i18n.js:56
 msgid "Enter a city"
 msgstr "شهر ۾ داخل ٿيو"
 
-#: src/i18n.js:48
+#: src/i18n.js:53
 msgid "Enter a country"
 msgstr "ملڪ داخل ڪريو"
 
-#: src/i18n.js:50
+#: src/i18n.js:55
 msgid "Enter or choose a city"
 msgstr "شهر داخل ڪريو يا چونڊيو"
 
-#: src/i18n.js:52
+#: src/i18n.js:57
 msgid "Enter or choose an airport"
 msgstr "داخل ڪريو يا ايئرپورٽ چونڊيو"
 
-#: src/i18n.js:56
+#: src/i18n.js:61
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "مثال طور: ڪپڙا 5 ڪلو، دستاويز، اليڪٽرانڪس"
 
-#: src/i18n.js:62
+#: src/i18n.js:67
 msgid "Form submitted! Check the console for data."
 msgstr "فارم جمع ڪرايو! ڊيٽا لاء ڪنسول چيڪ ڪريو."
 
@@ -83,7 +91,7 @@ msgstr "فارم جمع ڪرايو! ڊيٽا لاء ڪنسول چيڪ ڪريو."
 msgid "From date"
 msgstr "تاريخ کان"
 
-#: src/i18n.js:54
+#: src/i18n.js:59
 msgid "Loading..."
 msgstr "لوڊ ٿي رهيو آهي..."
 
@@ -95,27 +103,39 @@ msgstr "dd/mm/yyyy"
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
-#: src/i18n.js:61
+#: src/i18n.js:45
+msgid "No matching airports found"
+msgstr ""
+
+#: src/i18n.js:66
 msgid "Please select a date"
 msgstr "مھرباني ڪري ھڪڙي تاريخ چونڊيو"
 
-#: src/i18n.js:58
+#: src/i18n.js:63
 msgid "Please select a start date"
 msgstr "مھرباني ڪري شروعاتي تاريخ چونڊيو"
 
-#: src/i18n.js:59
+#: src/i18n.js:64
 msgid "Please select an end date"
 msgstr "مھرباني ڪري ختم ٿيڻ جي تاريخ چونڊيو"
+
+#: src/i18n.js:46
+msgid "Please select departure and arrival airports from the list"
+msgstr ""
+
+#: src/i18n.js:44
+msgid "Search by airport, city, or country"
+msgstr ""
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "موڪليندڙ"
 
-#: src/i18n.js:57
+#: src/i18n.js:62
 msgid "Submit request"
 msgstr "درخواست داخل ڪريو"
 
-#: src/i18n.js:60
+#: src/i18n.js:65
 msgid "The start date cannot be after the end date"
 msgstr "شروعاتي تاريخ آخري تاريخ کان پوءِ نه ٿي سگھي"
 
@@ -123,10 +143,10 @@ msgstr "شروعاتي تاريخ آخري تاريخ کان پوءِ نه ٿي 
 msgid "To date"
 msgstr "تاريخ تائين"
 
-#: src/i18n.js:63
+#: src/i18n.js:68
 msgid "User Not Found"
 msgstr "استعمال ڪندڙ نه مليو"
 
-#: src/i18n.js:64
+#: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "توهان سسٽم ۾ رجسٽر ٿيل نه آهيو. مھرباني ڪري رجسٽر ٿيو ٽيليگرام بوٽ ذريعي."
