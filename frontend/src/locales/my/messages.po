@@ -15,27 +15,27 @@ msgstr ""
 msgid "Arrival"
 msgstr ""
 
-#: src/i18n.js:52
+#: src/i18n.js:53
 msgid "Arrival airport"
 msgstr "လေဆိပ်ရောက်သည်။"
 
-#: src/i18n.js:50
+#: src/i18n.js:51
 msgid "Arrival city"
 msgstr "ရောက်ရောက်ချင်းမြို့"
 
-#: src/i18n.js:49
+#: src/i18n.js:50
 msgid "Arrival country"
 msgstr "ဆိုက်ရောက်ဗီဇာ"
 
-#: src/i18n.js:60
+#: src/i18n.js:61
 msgid "Baggage comments"
 msgstr "ခရီးဆောင်အိတ်မှတ်ချက်"
 
-#: src/i18n.js:58
+#: src/i18n.js:59
 msgid "Choose a city first"
 msgstr "မြို့ကို အရင်ရွေးပါ။"
 
-#: src/i18n.js:54
+#: src/i18n.js:55
 msgid "Choose a country first"
 msgstr "နိုင်ငံကို အရင်ရွေးပါ။"
 
@@ -51,39 +51,39 @@ msgstr "ရက်စွဲ"
 msgid "Departure"
 msgstr ""
 
-#: src/i18n.js:51
+#: src/i18n.js:52
 msgid "Departure airport"
 msgstr "ထွက်ခွာမည့်လေဆိပ်"
 
-#: src/i18n.js:48
+#: src/i18n.js:49
 msgid "Departure city"
 msgstr "ထွက်ခွာမည့်မြို့"
 
-#: src/i18n.js:47
+#: src/i18n.js:48
 msgid "Departure country"
 msgstr "နိုင်ငံသို့ထွက်ခွာ"
 
-#: src/i18n.js:56
+#: src/i18n.js:57
 msgid "Enter a city"
 msgstr "မြို့ကိုဝင်ပါ။"
 
-#: src/i18n.js:53
+#: src/i18n.js:54
 msgid "Enter a country"
 msgstr "နိုင်ငံတစ်ခုဝင်ပါ။"
 
-#: src/i18n.js:55
+#: src/i18n.js:56
 msgid "Enter or choose a city"
 msgstr "ဝင်ပါ သို့မဟုတ် မြို့ကို ရွေးပါ။"
 
-#: src/i18n.js:57
+#: src/i18n.js:58
 msgid "Enter or choose an airport"
 msgstr "ဝင်ပါ သို့မဟုတ် လေဆိပ်တစ်ခုကို ရွေးချယ်ပါ။"
 
-#: src/i18n.js:61
+#: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "ဥပမာ- အဝတ်အစား 5 ကီလိုဂရမ်၊ စာရွက်စာတမ်းများ၊ လျှပ်စစ်ပစ္စည်းများ"
 
-#: src/i18n.js:67
+#: src/i18n.js:68
 msgid "Form submitted! Check the console for data."
 msgstr "ဖောင်တင်ပြီးပါပြီ။ ဒေတာအတွက် ကွန်ဆိုးလ်ကို စစ်ဆေးပါ။"
 
@@ -91,9 +91,13 @@ msgstr "ဖောင်တင်ပြီးပါပြီ။ ဒေတာအ�
 msgid "From date"
 msgstr "ရက်စွဲမှ"
 
-#: src/i18n.js:59
+#: src/i18n.js:60
 msgid "Loading..."
 msgstr "ဖွင့်နေသည်..."
+
+#: src/i18n.js:47
+#~ msgid "Maximum number of airports selected"
+#~ msgstr ""
 
 #: src/i18n.js:41
 msgid "mm/dd/yyyy"
@@ -107,20 +111,24 @@ msgstr "dd/MM/yyyy"
 msgid "No matching airports found"
 msgstr ""
 
-#: src/i18n.js:66
+#: src/i18n.js:67
 msgid "Please select a date"
 msgstr "ရက်စွဲတစ်ခုကို ရွေးပါ။"
 
-#: src/i18n.js:63
+#: src/i18n.js:64
 msgid "Please select a start date"
 msgstr "ကျေးဇူးပြု၍ စတင်မည့်ရက်စွဲကို ရွေးပါ။"
 
-#: src/i18n.js:64
+#: src/i18n.js:65
 msgid "Please select an end date"
 msgstr "ကျေးဇူးပြု၍ ကုန်ဆုံးရက်ကို ရွေးပါ။"
 
 #: src/i18n.js:46
 msgid "Please select departure and arrival airports from the list"
+msgstr ""
+
+#: src/i18n.js:47
+msgid "Remove"
 msgstr ""
 
 #: src/i18n.js:44
@@ -131,11 +139,11 @@ msgstr ""
 msgid "Sender"
 msgstr "ပေးပို့သူ"
 
-#: src/i18n.js:62
+#: src/i18n.js:63
 msgid "Submit request"
 msgstr "တောင်းဆိုချက်ကို တင်ပြပါ။"
 
-#: src/i18n.js:65
+#: src/i18n.js:66
 msgid "The start date cannot be after the end date"
 msgstr "စတင်သည့်ရက်စွဲသည် ပြီးဆုံးသည့်ရက်စွဲပြီးနောက် မဖြစ်ရပါ။"
 
@@ -143,10 +151,10 @@ msgstr "စတင်သည့်ရက်စွဲသည် ပြီးဆု�
 msgid "To date"
 msgstr "ယနေ့အထိ"
 
-#: src/i18n.js:68
+#: src/i18n.js:69
 msgid "User Not Found"
 msgstr "အသုံးပြုသူ ရှာမတွေ့ပါ။"
 
-#: src/i18n.js:69
+#: src/i18n.js:70
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "သင်သည် စနစ်တွင် စာရင်းသွင်းမထားပါ။ ကျေးဇူးပြု၍ Telegram bot မှတဆင့် စာရင်းသွင်းပါ။"
