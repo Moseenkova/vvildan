@@ -1,4 +1,5 @@
 import os
+from collections.abc import AsyncIterator
 from dataclasses import dataclass
 
 os.environ["DATABASE_URL"] = "sqlite+aiosqlite:///:memory:"
@@ -22,7 +23,7 @@ class AuthenticatedClient:
 
 
 @pytest_asyncio.fixture(scope="function", autouse=True)
-async def database():
+async def database() -> AsyncIterator[None]:
     async with engine.begin() as connection:
         await connection.run_sync(Base.metadata.create_all)
     yield
@@ -32,13 +33,13 @@ async def database():
 
 
 @pytest_asyncio.fixture(scope="function")
-async def factory(database) -> FactoryNamespace:
+async def factory(database) -> AsyncIterator[FactoryNamespace]:
     async with async_session_maker() as session:
         yield build_factory_namespace(session)
 
 
 @pytest_asyncio.fixture(scope="function")
-async def client(database) -> AsyncClient:
+async def client(database) -> AsyncIterator[AsyncClient]:
     async with AsyncClient(
         transport=ASGITransport(app=app),
         base_url="http://test",
@@ -47,7 +48,9 @@ async def client(database) -> AsyncClient:
 
 
 @pytest_asyncio.fixture(scope="function")
-async def auth_ac(factory: FactoryNamespace) -> AuthenticatedClient:
+async def auth_ac(
+    factory: FactoryNamespace,
+) -> AsyncIterator[AuthenticatedClient]:
     current_user = await factory.User()
     transport = ASGITransport(app=app)
 

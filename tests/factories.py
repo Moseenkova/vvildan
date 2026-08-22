@@ -1,9 +1,11 @@
-from collections.abc import Awaitable, Callable
+from collections.abc import Awaitable, Callable, Iterable
 from dataclasses import dataclass
 from datetime import date
 from typing import Any, Generic, TypeVar
 
-import factory
+from factory.base import Factory
+from factory.declarations import PostGeneration, Sequence, SubFactory
+from factory.faker import Faker
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.database import (
@@ -19,77 +21,88 @@ from src.database import (
 Model = TypeVar("Model")
 
 
-class BaseFactory(factory.Factory):
-    class Meta:
-        abstract = True
+class BaseFactory(Factory):
+    pass
 
 
 class UserFactory(BaseFactory):
-    class Meta:
+    class Meta:  # pyright: ignore[reportIncompatibleVariableOverride]
         model = User
 
     id = None
-    tg_id = factory.Sequence(lambda sequence: 9_000_000_000 + sequence)
-    name = factory.Faker("name")
-    phone = factory.Faker("phone_number")
+    tg_id = Sequence(lambda sequence: 9_000_000_000 + sequence)
+    name = Faker("name")
+    phone = Faker("phone_number")
 
 
 class CountryFactory(BaseFactory):
-    class Meta:
+    class Meta:  # pyright: ignore[reportIncompatibleVariableOverride]
         model = Country
 
     id = None
-    name = factory.Sequence(lambda sequence: f"Country {sequence}")
-    iso_code = factory.Sequence(lambda sequence: f"T{sequence}")
+    name = Sequence(lambda sequence: f"Country {sequence}")
+    iso_code = Sequence(lambda sequence: f"T{sequence}")
 
 
 class CityFactory(BaseFactory):
-    class Meta:
+    class Meta:  # pyright: ignore[reportIncompatibleVariableOverride]
         model = City
 
     id = None
-    name = factory.Sequence(lambda sequence: f"City {sequence}")
-    population = factory.Faker("random_int", min=1, max=20_000_000)
-    country = factory.SubFactory(CountryFactory)
+    name = Sequence(lambda sequence: f"City {sequence}")
+    population = Faker("random_int", min=1, max=20_000_000)
+    country = SubFactory(CountryFactory)
 
 
 class AirportFactory(BaseFactory):
-    class Meta:
+    class Meta:  # pyright: ignore[reportIncompatibleVariableOverride]
         model = Airport
 
     id = None
-    ident = factory.Sequence(lambda sequence: f"TEST-{sequence}")
-    name = factory.Sequence(lambda sequence: f"Airport {sequence}")
+    ident = Sequence(lambda sequence: f"TEST-{sequence}")
+    name = Sequence(lambda sequence: f"Airport {sequence}")
     airport_type = "large_airport"
-    iata_code = factory.Sequence(lambda sequence: f"T{sequence:02d}"[-3:])
-    icao_code = factory.Sequence(lambda sequence: f"TT{sequence:02d}"[-4:])
-    latitude = factory.Faker("latitude")
-    longitude = factory.Faker("longitude")
+    iata_code = Sequence(lambda sequence: f"T{sequence:02d}"[-3:])
+    icao_code = Sequence(lambda sequence: f"TT{sequence:02d}"[-4:])
+    latitude = Faker("latitude")
+    longitude = Faker("longitude")
     scheduled_service = True
-    city = factory.SubFactory(CityFactory)
+    city = SubFactory(CityFactory)
+
+
+def _set_departure_airports(
+    request: Request,
+    create: bool,
+    extracted: Iterable[Airport] | None,
+    **kwargs: Any,
+) -> None:
+    if extracted:
+        request.departure_airports.extend(extracted)
+
+
+def _set_arrival_airports(
+    request: Request,
+    create: bool,
+    extracted: Iterable[Airport] | None,
+    **kwargs: Any,
+) -> None:
+    if extracted:
+        request.arrival_airports.extend(extracted)
 
 
 class RequestFactory(BaseFactory):
-    class Meta:
+    class Meta:  # pyright: ignore[reportIncompatibleVariableOverride]
         model = Request
 
     id = None
-    user = factory.SubFactory(UserFactory)
+    user = SubFactory(UserFactory)
     role = RequestRole.sender
     date_from = date(2026, 9, 1)
     date_to = date(2026, 9, 2)
-    comment = factory.Faker("sentence")
+    comment = Faker("sentence")
     status = RequestStatus.active
-
-    @factory.post_generation
-    def departure_airports(self, create, extracted, **kwargs):
-        if extracted:
-            self.departure_airports.extend(extracted)
-
-    @factory.post_generation
-    def arrival_airports(self, create, extracted, **kwargs):
-        if extracted:
-            self.arrival_airports.extend(extracted)
+    departure_airports = PostGeneration(_set_departure_airports)
+    arrival_airports = PostGeneration(_set_arrival_airports)
 
 
 class AsyncModelFactory(Generic[Model]):
