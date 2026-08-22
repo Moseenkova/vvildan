@@ -86,7 +86,7 @@ RU_LABELS = {
     BaggageKind.liquid: "Жидкость",
     BaggageKind.document: "Документ",
     BaggageKind.troublesome: "Проблемный",
-    BaggageKind.usual: "Обычный",
+    BaggageKind.expensive: "Ценное",
 }
 
 

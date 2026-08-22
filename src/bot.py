@@ -21,7 +21,6 @@ from sqlalchemy.orm import joinedload
 import database
 from database import (
     RU_LABELS,
-    City,
     Country,
     Courier,
     Request,
@@ -689,13 +688,6 @@ async def command_finish_handler(
     await bot.delete_message(
         callback_query.message.chat.id, callback_query.message.message_id
     )
-
-
-# тип багажа на русски
-# разьить по папкам
-# оброботка если юзер нажимает кнопки не по сценарию
-# уведомлять отправителя о появлении нового курьер и наооборот
-#
 
 
 @form_router.callback_query(CancelReqCallback.filter())
