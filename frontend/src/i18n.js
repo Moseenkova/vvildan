@@ -68,6 +68,21 @@ export const getMessages = (_) => ({
   submitted: _(msg`Form submitted! Check the console for data.`),
   userNotFound: _(msg`User Not Found`),
   registrationRequired: _(msg`You are not registered in the system. Please register through the Telegram bot first.`),
+  myRequests: _(msg`My Requests`),
+  allStatuses: _(msg`All statuses`),
+  active: _(msg`Active`),
+  cancelled: _(msg`Cancelled`),
+  completed: _(msg`Completed`),
+  expired: _(msg`Expired`),
+  requestDetails: _(msg`Request details`),
+  noRequests: _(msg`No requests with this status.`),
+  failedToLoadRequests: _(msg`Could not load your requests.`),
+  close: _(msg`Close`),
+  comment: _(msg`Comment`),
+  created: _(msg`Created`),
+  status: _(msg`Status`),
+  newRequest: _(msg`New`),
+  role: _(msg`Role`),
 })
 
 export { i18n }

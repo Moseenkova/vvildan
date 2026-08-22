@@ -15,3 +15,4 @@ limit to 5 requests in the future
 notify abount new matching requests
 add rating to all users based on registration date and reviews
 comment safe text max 512
+add red dot on my-requests if new match

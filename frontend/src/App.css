@@ -1,10 +1,184 @@
-.app-container {
-  max-width: 480px;
+.page-shell {
+  max-width: 520px;
+  min-height: 100vh;
   margin: 0 auto;
+  padding: 20px;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 480px;
   padding: 20px;
   background: #ffffff;
   min-height: 100vh;
+  border-radius: 12px;
 }
+
+.requests-sidebar {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.requests-heading,
+.request-card-topline,
+.details-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.requests-heading h2 {
+  margin: 0;
+  color: #222;
+  font-size: 20px;
+}
+
+.requests-heading > span {
+  min-width: 28px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #eef5ff;
+  color: #0066d6;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.status-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #555;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status-filter select {
+  width: 100%;
+  padding: 10px 34px 10px 11px;
+  border: 1px solid #d8dce2;
+  border-radius: 7px;
+  background: #fff;
+  color: #333;
+  font: inherit;
+  font-size: 15px;
+}
+
+.form-select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  color: #333;
+  font: inherit;
+  font-size: 16px;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, .1);
+}
+
+.request-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+}
+
+.request-card {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e3e6ea;
+  border-radius: 8px;
+  background: #fff;
+  color: #333;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.request-card:hover,
+.request-card:focus-visible {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 2px 9px rgba(0, 123, 255, .12);
+}
+
+.request-route {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.request-date,
+.request-message {
+  color: #737b85;
+  font-size: 13px;
+}
+
+.request-message {
+  margin: 4px 0;
+}
+
+.request-error { color: #b42318; }
+
+.status-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #eef1f4;
+  color: #56616c;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.status-active { background: #e8f7ee; color: #18794e; }
+.status-completed { background: #eaf2ff; color: #175cd3; }
+.status-cancelled { background: #fff0ef; color: #b42318; }
+.status-expired { background: #f2f0f7; color: #6941c6; }
+
+.details-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  justify-content: flex-end;
+  background: rgba(24, 32, 42, .4);
+}
+
+.request-details {
+  width: min(440px, 100%);
+  height: 100%;
+  padding: 24px;
+  overflow-y: auto;
+  background: #fff;
+  box-shadow: -8px 0 30px rgba(0, 0, 0, .15);
+}
+
+.details-header p { margin: 0 0 3px; color: #777; font-size: 13px; }
+.details-header h2 { margin: 0; font-size: 22px; }
+.details-header button {
+  border: 0;
+  background: transparent;
+  color: #555;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.request-details dl { margin: 28px 0 0; }
+.request-details dl > div { padding: 14px 0; border-bottom: 1px solid #eee; }
+.request-details dt { margin-bottom: 5px; color: #717780; font-size: 13px; font-weight: 600; }
+.request-details dd { margin: 0; color: #272b30; }
+.request-details .multiline { white-space: pre-line; }
 
 .app-title {
   font-size: 24px;
@@ -326,10 +500,27 @@
 }
 
 /* Mobile-specific optimizations */
-@media (max-width: 480px) {
-  .app-container {
-    padding: 16px;
+@media (max-width: 760px) {
+  .page-shell {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0;
   }
+
+  .request-list {
+    max-height: none;
+  }
+
+  .app-container {
+    max-width: none;
+    padding: 16px;
+    border-radius: 0;
+  }
+
+}
+
+@media (max-width: 480px) {
 
   .app-title {
     font-size: 22px;

@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import func, or_, select
+from sqlalchemy.orm import selectinload
 
 from .database import (
     Airport,
@@ -10,9 +11,11 @@ from .database import (
     CityName,
     Country,
     CountryName,
+    Request as TravelRequest,
 )
 from .schemas import (
     AirportSearchResultSchema,
+    RequestSchema,
 )
 from .auth.routers import auth_router
 from .deps import get_current_user
@@ -29,6 +32,43 @@ app.add_middleware(
 )
 
 app.include_router(auth_router)
+
+
+def request_to_schema(request: TravelRequest) -> RequestSchema:
+    def airport_data(airport: Airport) -> dict:
+        return {
+            "id": airport.id,
+            "name": airport.name,
+            "iata_code": airport.iata_code,
+            "city_name": airport.city.name,
+            "country_name": airport.city.country.name,
+        }
+
+    return RequestSchema(
+        id=request.id,
+        role=request.role.value,
+        date_from=request.date_from,
+        date_to=request.date_to,
+        departure_airports=[airport_data(item) for item in request.departure_airports],
+        arrival_airports=[airport_data(item) for item in request.arrival_airports],
+        comment=request.comment,
+        status=request.status.value,
+        created_at=request.created_at,
+    )
+
+
+@app.get("/api/requests", response_model=list[RequestSchema])
+async def get_my_requests(user=Depends(get_current_user)):
+    airport_load = selectinload(TravelRequest.departure_airports).selectinload(Airport.city).selectinload(City.country)
+    arrival_load = selectinload(TravelRequest.arrival_airports).selectinload(Airport.city).selectinload(City.country)
+    async with async_session_maker() as session:
+        result = await session.execute(
+            select(TravelRequest)
+            .where(TravelRequest.user_id == user.id)
+            .options(airport_load, arrival_load)
+            .order_by(TravelRequest.created_at.desc())
+        )
+        return [request_to_schema(request) for request in result.scalars().all()]
 
 
 @app.get("/api/airport-search", response_model=list[AirportSearchResultSchema])
