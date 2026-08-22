@@ -13,11 +13,11 @@ msgstr ""
 
 #: src/i18n.js:73
 msgid "Active"
-msgstr ""
+msgstr "فعاله"
 
 #: src/i18n.js:72
 msgid "All statuses"
-msgstr ""
+msgstr "ټول حالتونه"
 
 #: src/i18n.js:43
 msgid "Arrival"
@@ -41,7 +41,7 @@ msgstr "د سامان تبصرې"
 
 #: src/i18n.js:74
 msgid "Cancelled"
-msgstr ""
+msgstr "لغوه شو"
 
 #: src/i18n.js:59
 msgid "Choose a city first"
@@ -53,19 +53,19 @@ msgstr "لومړی یو هیواد غوره کړئ"
 
 #: src/i18n.js:80
 msgid "Close"
-msgstr ""
+msgstr "تړل"
 
 #: src/i18n.js:81
 msgid "Comment"
-msgstr ""
+msgstr "تبصره"
 
 #: src/i18n.js:75
 msgid "Completed"
-msgstr ""
+msgstr "بشپړ شو"
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
-msgstr ""
+msgstr "ستاسو غوښتنې نشي پورته کولی."
 
 #: src/i18n.js:44
 msgid "country, city or airport"
@@ -77,7 +77,7 @@ msgstr "کوریر"
 
 #: src/i18n.js:82
 msgid "Created"
-msgstr ""
+msgstr "جوړ کړی"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -117,7 +117,7 @@ msgstr "هوایی ډګر ته ننوځئ یا غوره کړئ"
 
 #: src/i18n.js:76
 msgid "Expired"
-msgstr ""
+msgstr "تېر شو"
 
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
@@ -149,15 +149,15 @@ msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:71
 msgid "My Requests"
-msgstr ""
+msgstr "زما غوښتنې"
 
 #: src/i18n.js:88
 msgid "New"
-msgstr ""
+msgstr "نوی"
 
 #: src/i18n.js:86
 msgid "Next"
-msgstr ""
+msgstr "بل"
 
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
@@ -165,11 +165,11 @@ msgstr "هېڅ سمون خوړونکی هوايي ډګر ونه موندل شو�
 
 #: src/i18n.js:78
 msgid "No requests with this status."
-msgstr ""
+msgstr "د دې حالت سره هیڅ غوښتنه نشته."
 
 #: src/i18n.js:87
 msgid "Page"
-msgstr ""
+msgstr "پاڼه"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -189,7 +189,7 @@ msgstr "مهرباني وکړئ د روانېدو او رسېدو هوايي ډ�
 
 #: src/i18n.js:85
 msgid "Previous"
-msgstr ""
+msgstr "مخکینی"
 
 #: src/i18n.js:47
 msgid "Remove"
@@ -197,15 +197,15 @@ msgstr "لرې کول"
 
 #: src/i18n.js:77
 msgid "Request details"
-msgstr ""
+msgstr "د توضیحاتو غوښتنه وکړئ"
 
 #: src/i18n.js:84
 msgid "Request pagination"
-msgstr ""
+msgstr "د صفحې غوښتنه وکړئ"
 
 #: src/i18n.js:89
 msgid "Role"
-msgstr ""
+msgstr "رول"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -213,7 +213,7 @@ msgstr "لیږونکی"
 
 #: src/i18n.js:83
 msgid "Status"
-msgstr ""
+msgstr "حالت"
 
 #: src/i18n.js:63
 msgid "Submit request"

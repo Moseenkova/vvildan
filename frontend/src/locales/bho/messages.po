@@ -13,11 +13,11 @@ msgstr ""
 
 #: src/i18n.js:73
 msgid "Active"
-msgstr ""
+msgstr "सक्रिय बा"
 
 #: src/i18n.js:72
 msgid "All statuses"
-msgstr ""
+msgstr "सब स्टेटस के बा"
 
 #: src/i18n.js:43
 msgid "Arrival"
@@ -41,7 +41,7 @@ msgstr "सामान के टिप्पणी बा"
 
 #: src/i18n.js:74
 msgid "Cancelled"
-msgstr ""
+msgstr "रद्द कर दिहल गइल"
 
 #: src/i18n.js:59
 msgid "Choose a city first"
@@ -53,19 +53,19 @@ msgstr "पहिले कवनो देश चुनीं"
 
 #: src/i18n.js:80
 msgid "Close"
-msgstr ""
+msgstr "बंद कर दीं"
 
 #: src/i18n.js:81
 msgid "Comment"
-msgstr ""
+msgstr "टिप्पणी करीं"
 
 #: src/i18n.js:75
 msgid "Completed"
-msgstr ""
+msgstr "पूरा हो गइल बा"
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
-msgstr ""
+msgstr "राउर निहोरा लोड ना हो सकल."
 
 #: src/i18n.js:44
 msgid "country, city or airport"
@@ -77,7 +77,7 @@ msgstr "कुरियर के बा"
 
 #: src/i18n.js:82
 msgid "Created"
-msgstr ""
+msgstr "बनावल गइल बा"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -117,7 +117,7 @@ msgstr "हवाई अड्डा में प्रवेश करीं �
 
 #: src/i18n.js:76
 msgid "Expired"
-msgstr ""
+msgstr "एक्सपायर हो गइल बा"
 
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
@@ -149,15 +149,15 @@ msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:71
 msgid "My Requests"
-msgstr ""
+msgstr "हमार निहोरा बा"
 
 #: src/i18n.js:88
 msgid "New"
-msgstr ""
+msgstr "नया बा"
 
 #: src/i18n.js:86
 msgid "Next"
-msgstr ""
+msgstr "आगे के बात बा"
 
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
@@ -165,11 +165,11 @@ msgstr "कवनो मिलत-जुलत हवाई अड्डा न�
 
 #: src/i18n.js:78
 msgid "No requests with this status."
-msgstr ""
+msgstr "एह स्टेटस वाला कवनो निहोरा ना."
 
 #: src/i18n.js:87
 msgid "Page"
-msgstr ""
+msgstr "पन्ना के बा"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -189,7 +189,7 @@ msgstr "कृपया सूची में से प्रस्थान �
 
 #: src/i18n.js:85
 msgid "Previous"
-msgstr ""
+msgstr "पिछला बा"
 
 #: src/i18n.js:47
 msgid "Remove"
@@ -197,15 +197,15 @@ msgstr "हटाईं"
 
 #: src/i18n.js:77
 msgid "Request details"
-msgstr ""
+msgstr "विवरण के निहोरा कइल जाव"
 
 #: src/i18n.js:84
 msgid "Request pagination"
-msgstr ""
+msgstr "पृष्ठांकन के निहोरा कइल जाव"
 
 #: src/i18n.js:89
 msgid "Role"
-msgstr ""
+msgstr "भूमिका के बा"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -213,7 +213,7 @@ msgstr "प्रेषक के बा"
 
 #: src/i18n.js:83
 msgid "Status"
-msgstr ""
+msgstr "स्टेटस के बा"
 
 #: src/i18n.js:63
 msgid "Submit request"

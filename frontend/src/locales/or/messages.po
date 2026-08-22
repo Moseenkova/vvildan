@@ -13,11 +13,11 @@ msgstr ""
 
 #: src/i18n.js:73
 msgid "Active"
-msgstr ""
+msgstr "ସକ୍ରିୟ |"
 
 #: src/i18n.js:72
 msgid "All statuses"
-msgstr ""
+msgstr "ସମସ୍ତ ସ୍ଥିତି"
 
 #: src/i18n.js:43
 msgid "Arrival"
@@ -41,7 +41,7 @@ msgstr "ବ୍ୟାଗେଜ୍ ମନ୍ତବ୍ୟଗୁଡିକ |"
 
 #: src/i18n.js:74
 msgid "Cancelled"
-msgstr ""
+msgstr "ବାତିଲ"
 
 #: src/i18n.js:59
 msgid "Choose a city first"
@@ -53,19 +53,19 @@ msgstr "ପ୍ରଥମେ ଏକ ଦେଶ ବାଛନ୍ତୁ |"
 
 #: src/i18n.js:80
 msgid "Close"
-msgstr ""
+msgstr "ବନ୍ଦ"
 
 #: src/i18n.js:81
 msgid "Comment"
-msgstr ""
+msgstr "ମନ୍ତବ୍ୟ ଦିଅନ୍ତୁ |"
 
 #: src/i18n.js:75
 msgid "Completed"
-msgstr ""
+msgstr "ସମାପ୍ତ"
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
-msgstr ""
+msgstr "ତୁମର ଅନୁରୋଧ ଲୋଡ୍ କରିପାରିଲା ନାହିଁ |"
 
 #: src/i18n.js:44
 msgid "country, city or airport"
@@ -77,7 +77,7 @@ msgstr "କ୍ୟୁରିଅର୍ |"
 
 #: src/i18n.js:82
 msgid "Created"
-msgstr ""
+msgstr "ସୃଷ୍ଟି ହୋଇଛି |"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -117,7 +117,7 @@ msgstr "ଏକ ବିମାନବନ୍ଦର ପ୍ରବେଶ କିମ୍ବ
 
 #: src/i18n.js:76
 msgid "Expired"
-msgstr ""
+msgstr "ମିଆଦ ପୂର୍ଣ୍ଣ ହୋଇଛି"
 
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
@@ -149,15 +149,15 @@ msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:71
 msgid "My Requests"
-msgstr ""
+msgstr "ମୋର ଅନୁରୋଧ"
 
 #: src/i18n.js:88
 msgid "New"
-msgstr ""
+msgstr "ନୂତନ"
 
 #: src/i18n.js:86
 msgid "Next"
-msgstr ""
+msgstr "ପରବର୍ତ୍ତୀ"
 
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
@@ -165,11 +165,11 @@ msgstr "କୌଣସି ମେଳ ଖାଉଥିବା ବିମାନବନ୍
 
 #: src/i18n.js:78
 msgid "No requests with this status."
-msgstr ""
+msgstr "ଏହି ସ୍ଥିତି ସହିତ କ No ଣସି ଅନୁରୋଧ ନାହିଁ |"
 
 #: src/i18n.js:87
 msgid "Page"
-msgstr ""
+msgstr "ପୃଷ୍ଠା"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -189,7 +189,7 @@ msgstr "ଦୟାକରି ତାଲିକାରୁ ପ୍ରସ୍ଥାନ ଏ
 
 #: src/i18n.js:85
 msgid "Previous"
-msgstr ""
+msgstr "ପୂର୍ବ"
 
 #: src/i18n.js:47
 msgid "Remove"
@@ -197,15 +197,15 @@ msgstr "ହଟାନ୍ତୁ"
 
 #: src/i18n.js:77
 msgid "Request details"
-msgstr ""
+msgstr "ସବିଶେଷ ବିବରଣୀ ଅନୁରୋଧ |"
 
 #: src/i18n.js:84
 msgid "Request pagination"
-msgstr ""
+msgstr "ପୃଷ୍ଠା ଅନୁରୋଧ |"
 
 #: src/i18n.js:89
 msgid "Role"
-msgstr ""
+msgstr "ଭୂମିକା"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -213,7 +213,7 @@ msgstr "ପ୍ରେରକ"
 
 #: src/i18n.js:83
 msgid "Status"
-msgstr ""
+msgstr "ସ୍ଥିତି"
 
 #: src/i18n.js:63
 msgid "Submit request"

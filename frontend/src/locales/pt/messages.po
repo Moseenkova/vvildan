@@ -13,11 +13,11 @@ msgstr ""
 
 #: src/i18n.js:73
 msgid "Active"
-msgstr ""
+msgstr "Ativo"
 
 #: src/i18n.js:72
 msgid "All statuses"
-msgstr ""
+msgstr "Todos os status"
 
 #: src/i18n.js:43
 msgid "Arrival"
@@ -41,7 +41,7 @@ msgstr "Comentários sobre bagagem"
 
 #: src/i18n.js:74
 msgid "Cancelled"
-msgstr ""
+msgstr "Cancelado"
 
 #: src/i18n.js:59
 msgid "Choose a city first"
@@ -53,19 +53,19 @@ msgstr "Escolha um país primeiro"
 
 #: src/i18n.js:80
 msgid "Close"
-msgstr ""
+msgstr "Fechar"
 
 #: src/i18n.js:81
 msgid "Comment"
-msgstr ""
+msgstr "Comentário"
 
 #: src/i18n.js:75
 msgid "Completed"
-msgstr ""
+msgstr "Concluído"
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
-msgstr ""
+msgstr "Não foi possível carregar suas solicitações."
 
 #: src/i18n.js:44
 msgid "country, city or airport"
@@ -77,7 +77,7 @@ msgstr "Correio"
 
 #: src/i18n.js:82
 msgid "Created"
-msgstr ""
+msgstr "Criado"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -117,7 +117,7 @@ msgstr "Insira ou escolha um aeroporto"
 
 #: src/i18n.js:76
 msgid "Expired"
-msgstr ""
+msgstr "Expirado"
 
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
@@ -149,15 +149,15 @@ msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:71
 msgid "My Requests"
-msgstr ""
+msgstr "Meus pedidos"
 
 #: src/i18n.js:88
 msgid "New"
-msgstr ""
+msgstr "Novo"
 
 #: src/i18n.js:86
 msgid "Next"
-msgstr ""
+msgstr "Próximo"
 
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
@@ -165,11 +165,11 @@ msgstr "Nenhum aeroporto correspondente foi encontrado, tente escrever em inglê
 
 #: src/i18n.js:78
 msgid "No requests with this status."
-msgstr ""
+msgstr "Nenhuma solicitação com esse status."
 
 #: src/i18n.js:87
 msgid "Page"
-msgstr ""
+msgstr "Página"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -189,7 +189,7 @@ msgstr "Selecione os aeroportos de partida e chegada na lista"
 
 #: src/i18n.js:85
 msgid "Previous"
-msgstr ""
+msgstr "Anterior"
 
 #: src/i18n.js:47
 msgid "Remove"
@@ -197,15 +197,15 @@ msgstr "Remover"
 
 #: src/i18n.js:77
 msgid "Request details"
-msgstr ""
+msgstr "Solicitar detalhes"
 
 #: src/i18n.js:84
 msgid "Request pagination"
-msgstr ""
+msgstr "Solicitar paginação"
 
 #: src/i18n.js:89
 msgid "Role"
-msgstr ""
+msgstr "Função"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -213,7 +213,7 @@ msgstr "Remetente"
 
 #: src/i18n.js:83
 msgid "Status"
-msgstr ""
+msgstr "Estado"
 
 #: src/i18n.js:63
 msgid "Submit request"

@@ -13,11 +13,11 @@ msgstr ""
 
 #: src/i18n.js:73
 msgid "Active"
-msgstr ""
+msgstr "Aktivní"
 
 #: src/i18n.js:72
 msgid "All statuses"
-msgstr ""
+msgstr "Všechny stavy"
 
 #: src/i18n.js:43
 msgid "Arrival"
@@ -41,7 +41,7 @@ msgstr "Komentáře k zavazadlům"
 
 #: src/i18n.js:74
 msgid "Cancelled"
-msgstr ""
+msgstr "Zrušeno"
 
 #: src/i18n.js:59
 msgid "Choose a city first"
@@ -53,19 +53,19 @@ msgstr "Nejprve vyberte zemi"
 
 #: src/i18n.js:80
 msgid "Close"
-msgstr ""
+msgstr "Zavřít"
 
 #: src/i18n.js:81
 msgid "Comment"
-msgstr ""
+msgstr "Komentář"
 
 #: src/i18n.js:75
 msgid "Completed"
-msgstr ""
+msgstr "Dokončeno"
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
-msgstr ""
+msgstr "Vaše požadavky se nepodařilo načíst."
 
 #: src/i18n.js:44
 msgid "country, city or airport"
@@ -77,7 +77,7 @@ msgstr "Kurýr"
 
 #: src/i18n.js:82
 msgid "Created"
-msgstr ""
+msgstr "Vytvořeno"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -117,7 +117,7 @@ msgstr "Zadejte nebo vyberte letiště"
 
 #: src/i18n.js:76
 msgid "Expired"
-msgstr ""
+msgstr "Platnost vypršela"
 
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
@@ -149,15 +149,15 @@ msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:71
 msgid "My Requests"
-msgstr ""
+msgstr "Moje požadavky"
 
 #: src/i18n.js:88
 msgid "New"
-msgstr ""
+msgstr "Nové"
 
 #: src/i18n.js:86
 msgid "Next"
-msgstr ""
+msgstr "Další"
 
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
@@ -165,11 +165,11 @@ msgstr "Nebylo nalezeno žádné odpovídající letiště, zkuste psát anglick
 
 #: src/i18n.js:78
 msgid "No requests with this status."
-msgstr ""
+msgstr "Žádné žádosti s tímto stavem."
 
 #: src/i18n.js:87
 msgid "Page"
-msgstr ""
+msgstr "stránku"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -189,7 +189,7 @@ msgstr "Vyberte prosím ze seznamu letiště odletu a příletu"
 
 #: src/i18n.js:85
 msgid "Previous"
-msgstr ""
+msgstr "Předchozí"
 
 #: src/i18n.js:47
 msgid "Remove"
@@ -197,15 +197,15 @@ msgstr "Odebrat"
 
 #: src/i18n.js:77
 msgid "Request details"
-msgstr ""
+msgstr "Vyžádejte si podrobnosti"
 
 #: src/i18n.js:84
 msgid "Request pagination"
-msgstr ""
+msgstr "Vyžádejte si stránkování"
 
 #: src/i18n.js:89
 msgid "Role"
-msgstr ""
+msgstr "Role"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -213,7 +213,7 @@ msgstr "Odesílatel"
 
 #: src/i18n.js:83
 msgid "Status"
-msgstr ""
+msgstr "Stav"
 
 #: src/i18n.js:63
 msgid "Submit request"

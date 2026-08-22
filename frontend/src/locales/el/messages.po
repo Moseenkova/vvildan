@@ -13,11 +13,11 @@ msgstr ""
 
 #: src/i18n.js:73
 msgid "Active"
-msgstr ""
+msgstr "Ενεργός"
 
 #: src/i18n.js:72
 msgid "All statuses"
-msgstr ""
+msgstr "Όλες οι καταστάσεις"
 
 #: src/i18n.js:43
 msgid "Arrival"
@@ -41,7 +41,7 @@ msgstr "Σχόλια για τις αποσκευές"
 
 #: src/i18n.js:74
 msgid "Cancelled"
-msgstr ""
+msgstr "Ακυρώθηκε"
 
 #: src/i18n.js:59
 msgid "Choose a city first"
@@ -53,19 +53,19 @@ msgstr "Επιλέξτε μια χώρα πρώτα"
 
 #: src/i18n.js:80
 msgid "Close"
-msgstr ""
+msgstr "Κλείσιμο"
 
 #: src/i18n.js:81
 msgid "Comment"
-msgstr ""
+msgstr "Σχόλιο"
 
 #: src/i18n.js:75
 msgid "Completed"
-msgstr ""
+msgstr "Ολοκληρώθηκε"
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
-msgstr ""
+msgstr "Δεν ήταν δυνατή η φόρτωση των αιτημάτων σας."
 
 #: src/i18n.js:44
 msgid "country, city or airport"
@@ -77,7 +77,7 @@ msgstr "Μεταφορέας"
 
 #: src/i18n.js:82
 msgid "Created"
-msgstr ""
+msgstr "Δημιουργήθηκε"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -117,7 +117,7 @@ msgstr "Μπείτε ή επιλέξτε ένα αεροδρόμιο"
 
 #: src/i18n.js:76
 msgid "Expired"
-msgstr ""
+msgstr "Λήξη"
 
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
@@ -149,15 +149,15 @@ msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:71
 msgid "My Requests"
-msgstr ""
+msgstr "Τα αιτήματά μου"
 
 #: src/i18n.js:88
 msgid "New"
-msgstr ""
+msgstr "Νέο"
 
 #: src/i18n.js:86
 msgid "Next"
-msgstr ""
+msgstr "Επόμενο"
 
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
@@ -165,11 +165,11 @@ msgstr "Δεν βρέθηκαν αεροδρόμια που να ταιριάζ�
 
 #: src/i18n.js:78
 msgid "No requests with this status."
-msgstr ""
+msgstr "Δεν υπάρχουν αιτήματα με αυτήν την κατάσταση."
 
 #: src/i18n.js:87
 msgid "Page"
-msgstr ""
+msgstr "Σελίδα"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -189,7 +189,7 @@ msgstr "Επιλέξτε τα αεροδρόμια αναχώρησης και �
 
 #: src/i18n.js:85
 msgid "Previous"
-msgstr ""
+msgstr "Προηγούμενο"
 
 #: src/i18n.js:47
 msgid "Remove"
@@ -197,15 +197,15 @@ msgstr "Αφαίρεση"
 
 #: src/i18n.js:77
 msgid "Request details"
-msgstr ""
+msgstr "Ζητήστε λεπτομέρειες"
 
 #: src/i18n.js:84
 msgid "Request pagination"
-msgstr ""
+msgstr "Ζητήστε σελιδοποίηση"
 
 #: src/i18n.js:89
 msgid "Role"
-msgstr ""
+msgstr "Ρόλος"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -213,7 +213,7 @@ msgstr "Αποστολέας"
 
 #: src/i18n.js:83
 msgid "Status"
-msgstr ""
+msgstr "Κατάσταση"
 
 #: src/i18n.js:63
 msgid "Submit request"

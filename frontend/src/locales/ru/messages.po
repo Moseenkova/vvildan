@@ -13,11 +13,11 @@ msgstr ""
 
 #: src/i18n.js:73
 msgid "Active"
-msgstr ""
+msgstr "Активный"
 
 #: src/i18n.js:72
 msgid "All statuses"
-msgstr ""
+msgstr "Все статусы"
 
 #: src/i18n.js:43
 msgid "Arrival"
@@ -41,7 +41,7 @@ msgstr "Комментарий к багажу"
 
 #: src/i18n.js:74
 msgid "Cancelled"
-msgstr ""
+msgstr "Отменено"
 
 #: src/i18n.js:59
 msgid "Choose a city first"
@@ -53,19 +53,19 @@ msgstr "Сначала выберите страну"
 
 #: src/i18n.js:80
 msgid "Close"
-msgstr ""
+msgstr "Закрыть"
 
 #: src/i18n.js:81
 msgid "Comment"
-msgstr ""
+msgstr "Комментарий"
 
 #: src/i18n.js:75
 msgid "Completed"
-msgstr ""
+msgstr "Завершено"
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
-msgstr ""
+msgstr "Не удалось загрузить ваши запросы."
 
 #: src/i18n.js:44
 msgid "country, city or airport"
@@ -77,7 +77,7 @@ msgstr "Курьер"
 
 #: src/i18n.js:82
 msgid "Created"
-msgstr ""
+msgstr "Создано"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -117,7 +117,7 @@ msgstr "Введите или выберите аэропорт"
 
 #: src/i18n.js:76
 msgid "Expired"
-msgstr ""
+msgstr "Срок действия истек"
 
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
@@ -149,15 +149,15 @@ msgstr "dd.MM.yyyy"
 
 #: src/i18n.js:71
 msgid "My Requests"
-msgstr ""
+msgstr "Мои запросы"
 
 #: src/i18n.js:88
 msgid "New"
-msgstr ""
+msgstr "Новый"
 
 #: src/i18n.js:86
 msgid "Next"
-msgstr ""
+msgstr "Далее"
 
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
@@ -165,11 +165,11 @@ msgstr "Подходящие аэропорты не найдены, попро�
 
 #: src/i18n.js:78
 msgid "No requests with this status."
-msgstr ""
+msgstr "Нет запросов с таким статусом."
 
 #: src/i18n.js:87
 msgid "Page"
-msgstr ""
+msgstr "Страница"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -189,7 +189,7 @@ msgstr "Выберите аэропорты отправления и прибы
 
 #: src/i18n.js:85
 msgid "Previous"
-msgstr ""
+msgstr "Предыдущий"
 
 #: src/i18n.js:47
 msgid "Remove"
@@ -197,15 +197,15 @@ msgstr "Удалить"
 
 #: src/i18n.js:77
 msgid "Request details"
-msgstr ""
+msgstr "Запросить подробности"
 
 #: src/i18n.js:84
 msgid "Request pagination"
-msgstr ""
+msgstr "Запросить нумерацию страниц"
 
 #: src/i18n.js:89
 msgid "Role"
-msgstr ""
+msgstr "Роль"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -213,7 +213,7 @@ msgstr "Отправитель"
 
 #: src/i18n.js:83
 msgid "Status"
-msgstr ""
+msgstr "Статус"
 
 #: src/i18n.js:63
 msgid "Submit request"

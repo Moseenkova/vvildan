@@ -13,11 +13,11 @@ msgstr ""
 
 #: src/i18n.js:73
 msgid "Active"
-msgstr ""
+msgstr "활성"
 
 #: src/i18n.js:72
 msgid "All statuses"
-msgstr ""
+msgstr "모든 상태"
 
 #: src/i18n.js:43
 msgid "Arrival"
@@ -41,7 +41,7 @@ msgstr "수하물 관련 사항"
 
 #: src/i18n.js:74
 msgid "Cancelled"
-msgstr ""
+msgstr "취소됨"
 
 #: src/i18n.js:59
 msgid "Choose a city first"
@@ -53,19 +53,19 @@ msgstr "먼저 국가를 선택하세요"
 
 #: src/i18n.js:80
 msgid "Close"
-msgstr ""
+msgstr "닫기"
 
 #: src/i18n.js:81
 msgid "Comment"
-msgstr ""
+msgstr "댓글"
 
 #: src/i18n.js:75
 msgid "Completed"
-msgstr ""
+msgstr "완료됨"
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
-msgstr ""
+msgstr "요청을 로드할 수 없습니다."
 
 #: src/i18n.js:44
 msgid "country, city or airport"
@@ -77,7 +77,7 @@ msgstr "급사"
 
 #: src/i18n.js:82
 msgid "Created"
-msgstr ""
+msgstr "생성됨"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -117,7 +117,7 @@ msgstr "공항을 입력하거나 선택하세요"
 
 #: src/i18n.js:76
 msgid "Expired"
-msgstr ""
+msgstr "만료됨"
 
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
@@ -149,15 +149,15 @@ msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:71
 msgid "My Requests"
-msgstr ""
+msgstr "내 요청"
 
 #: src/i18n.js:88
 msgid "New"
-msgstr ""
+msgstr "새로운"
 
 #: src/i18n.js:86
 msgid "Next"
-msgstr ""
+msgstr "다음"
 
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
@@ -165,11 +165,11 @@ msgstr "일치하는 공항을 찾을 수 없습니다. 영어로 입력해 보�
 
 #: src/i18n.js:78
 msgid "No requests with this status."
-msgstr ""
+msgstr "이 상태의 요청이 없습니다."
 
 #: src/i18n.js:87
 msgid "Page"
-msgstr ""
+msgstr "페이지"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -189,7 +189,7 @@ msgstr "목록에서 출발 공항과 도착 공항을 선택해 주세요"
 
 #: src/i18n.js:85
 msgid "Previous"
-msgstr ""
+msgstr "이전"
 
 #: src/i18n.js:47
 msgid "Remove"
@@ -197,15 +197,15 @@ msgstr "삭제"
 
 #: src/i18n.js:77
 msgid "Request details"
-msgstr ""
+msgstr "요청 세부정보"
 
 #: src/i18n.js:84
 msgid "Request pagination"
-msgstr ""
+msgstr "페이지 매김 요청"
 
 #: src/i18n.js:89
 msgid "Role"
-msgstr ""
+msgstr "역할"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -213,7 +213,7 @@ msgstr "보내는 사람"
 
 #: src/i18n.js:83
 msgid "Status"
-msgstr ""
+msgstr "상태"
 
 #: src/i18n.js:63
 msgid "Submit request"

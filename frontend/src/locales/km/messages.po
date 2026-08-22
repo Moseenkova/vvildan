@@ -13,11 +13,11 @@ msgstr ""
 
 #: src/i18n.js:73
 msgid "Active"
-msgstr ""
+msgstr "សកម្ម"
 
 #: src/i18n.js:72
 msgid "All statuses"
-msgstr ""
+msgstr "ស្ថានភាពទាំងអស់។"
 
 #: src/i18n.js:43
 msgid "Arrival"
@@ -41,7 +41,7 @@ msgstr "មតិយោបល់លើឥវ៉ាន់"
 
 #: src/i18n.js:74
 msgid "Cancelled"
-msgstr ""
+msgstr "បានលុបចោល"
 
 #: src/i18n.js:59
 msgid "Choose a city first"
@@ -53,19 +53,19 @@ msgstr "ជ្រើសរើសប្រទេសជាមុនសិន"
 
 #: src/i18n.js:80
 msgid "Close"
-msgstr ""
+msgstr "បិទ"
 
 #: src/i18n.js:81
 msgid "Comment"
-msgstr ""
+msgstr "មតិយោបល់"
 
 #: src/i18n.js:75
 msgid "Completed"
-msgstr ""
+msgstr "បានបញ្ចប់"
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
-msgstr ""
+msgstr "មិនអាចផ្ទុកសំណើរបស់អ្នកបានទេ។"
 
 #: src/i18n.js:44
 msgid "country, city or airport"
@@ -77,7 +77,7 @@ msgstr "អ្នកនាំសំបុត្រ"
 
 #: src/i18n.js:82
 msgid "Created"
-msgstr ""
+msgstr "បានបង្កើត"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -117,7 +117,7 @@ msgstr "ចូល ឬជ្រើសរើសព្រលានយន្តហ�
 
 #: src/i18n.js:76
 msgid "Expired"
-msgstr ""
+msgstr "ផុតកំណត់"
 
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
@@ -149,15 +149,15 @@ msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:71
 msgid "My Requests"
-msgstr ""
+msgstr "សំណើរបស់ខ្ញុំ"
 
 #: src/i18n.js:88
 msgid "New"
-msgstr ""
+msgstr "ថ្មី។"
 
 #: src/i18n.js:86
 msgid "Next"
-msgstr ""
+msgstr "បន្ទាប់"
 
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
@@ -165,11 +165,11 @@ msgstr "រកមិនឃើញអាកាសយានដ្ឋានដែល
 
 #: src/i18n.js:78
 msgid "No requests with this status."
-msgstr ""
+msgstr "មិនមានសំណើជាមួយស្ថានភាពនេះទេ។"
 
 #: src/i18n.js:87
 msgid "Page"
-msgstr ""
+msgstr "ទំព័រ"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -189,7 +189,7 @@ msgstr "សូមជ្រើសរើសអាកាសយានដ្ឋាន
 
 #: src/i18n.js:85
 msgid "Previous"
-msgstr ""
+msgstr "មុន"
 
 #: src/i18n.js:47
 msgid "Remove"
@@ -197,15 +197,15 @@ msgstr "លុបចេញ"
 
 #: src/i18n.js:77
 msgid "Request details"
-msgstr ""
+msgstr "ស្នើសុំព័ត៌មានលម្អិត"
 
 #: src/i18n.js:84
 msgid "Request pagination"
-msgstr ""
+msgstr "ស្នើសុំ​ការ​ដាក់​ទំព័រ"
 
 #: src/i18n.js:89
 msgid "Role"
-msgstr ""
+msgstr "តួនាទី"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -213,7 +213,7 @@ msgstr "អ្នកផ្ញើ"
 
 #: src/i18n.js:83
 msgid "Status"
-msgstr ""
+msgstr "ស្ថានភាព"
 
 #: src/i18n.js:63
 msgid "Submit request"

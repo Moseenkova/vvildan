@@ -13,11 +13,11 @@ msgstr ""
 
 #: src/i18n.js:73
 msgid "Active"
-msgstr ""
+msgstr "সক্রিয়"
 
 #: src/i18n.js:72
 msgid "All statuses"
-msgstr ""
+msgstr "সব স্ট্যাটাস"
 
 #: src/i18n.js:43
 msgid "Arrival"
@@ -41,7 +41,7 @@ msgstr "লাগেজ মন্তব্য"
 
 #: src/i18n.js:74
 msgid "Cancelled"
-msgstr ""
+msgstr "বাতিল"
 
 #: src/i18n.js:59
 msgid "Choose a city first"
@@ -53,19 +53,19 @@ msgstr "প্রথমে একটি দেশ বেছে নিন"
 
 #: src/i18n.js:80
 msgid "Close"
-msgstr ""
+msgstr "বন্ধ"
 
 #: src/i18n.js:81
 msgid "Comment"
-msgstr ""
+msgstr "মন্তব্য করুন"
 
 #: src/i18n.js:75
 msgid "Completed"
-msgstr ""
+msgstr "সম্পন্ন"
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
-msgstr ""
+msgstr "আপনার অনুরোধ লোড করা যায়নি."
 
 #: src/i18n.js:44
 msgid "country, city or airport"
@@ -77,7 +77,7 @@ msgstr "কুরিয়ার"
 
 #: src/i18n.js:82
 msgid "Created"
-msgstr ""
+msgstr "তৈরি হয়েছে"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -117,7 +117,7 @@ msgstr "প্রবেশ করুন বা একটি বিমানব�
 
 #: src/i18n.js:76
 msgid "Expired"
-msgstr ""
+msgstr "মেয়াদ শেষ"
 
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
@@ -149,15 +149,15 @@ msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:71
 msgid "My Requests"
-msgstr ""
+msgstr "আমার অনুরোধ"
 
 #: src/i18n.js:88
 msgid "New"
-msgstr ""
+msgstr "নতুন"
 
 #: src/i18n.js:86
 msgid "Next"
-msgstr ""
+msgstr "পরবর্তী"
 
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
@@ -165,11 +165,11 @@ msgstr "মিল আছে এমন কোনো বিমানবন্দ�
 
 #: src/i18n.js:78
 msgid "No requests with this status."
-msgstr ""
+msgstr "এই অবস্থার সাথে কোন অনুরোধ নেই."
 
 #: src/i18n.js:87
 msgid "Page"
-msgstr ""
+msgstr "পাতা"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -189,7 +189,7 @@ msgstr "তালিকা থেকে প্রস্থান ও গন্�
 
 #: src/i18n.js:85
 msgid "Previous"
-msgstr ""
+msgstr "আগের"
 
 #: src/i18n.js:47
 msgid "Remove"
@@ -197,15 +197,15 @@ msgstr "সরান"
 
 #: src/i18n.js:77
 msgid "Request details"
-msgstr ""
+msgstr "বিস্তারিত অনুরোধ করুন"
 
 #: src/i18n.js:84
 msgid "Request pagination"
-msgstr ""
+msgstr "পেজিনেশনের জন্য অনুরোধ করুন"
 
 #: src/i18n.js:89
 msgid "Role"
-msgstr ""
+msgstr "ভূমিকা"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -213,7 +213,7 @@ msgstr "প্রেরক"
 
 #: src/i18n.js:83
 msgid "Status"
-msgstr ""
+msgstr "স্ট্যাটাস"
 
 #: src/i18n.js:63
 msgid "Submit request"

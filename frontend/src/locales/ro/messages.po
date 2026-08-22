@@ -13,11 +13,11 @@ msgstr ""
 
 #: src/i18n.js:73
 msgid "Active"
-msgstr ""
+msgstr "Activ"
 
 #: src/i18n.js:72
 msgid "All statuses"
-msgstr ""
+msgstr "Toate stările"
 
 #: src/i18n.js:43
 msgid "Arrival"
@@ -41,7 +41,7 @@ msgstr "Comentarii la bagaje"
 
 #: src/i18n.js:74
 msgid "Cancelled"
-msgstr ""
+msgstr "Anulat"
 
 #: src/i18n.js:59
 msgid "Choose a city first"
@@ -53,19 +53,19 @@ msgstr "Alegeți mai întâi o țară"
 
 #: src/i18n.js:80
 msgid "Close"
-msgstr ""
+msgstr "Închide"
 
 #: src/i18n.js:81
 msgid "Comment"
-msgstr ""
+msgstr "Comentariu"
 
 #: src/i18n.js:75
 msgid "Completed"
-msgstr ""
+msgstr "Terminat"
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
-msgstr ""
+msgstr "Nu s-au putut încărca solicitările dvs."
 
 #: src/i18n.js:44
 msgid "country, city or airport"
@@ -77,7 +77,7 @@ msgstr "Curier"
 
 #: src/i18n.js:82
 msgid "Created"
-msgstr ""
+msgstr "Creat"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -117,7 +117,7 @@ msgstr "Intrați sau alegeți un aeroport"
 
 #: src/i18n.js:76
 msgid "Expired"
-msgstr ""
+msgstr "A expirat"
 
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
@@ -149,15 +149,15 @@ msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:71
 msgid "My Requests"
-msgstr ""
+msgstr "Cererile mele"
 
 #: src/i18n.js:88
 msgid "New"
-msgstr ""
+msgstr "Nou"
 
 #: src/i18n.js:86
 msgid "Next"
-msgstr ""
+msgstr "În continuare"
 
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
@@ -165,11 +165,11 @@ msgstr "Nu s-au găsit aeroporturi corespunzătoare, încercați să scrieți î
 
 #: src/i18n.js:78
 msgid "No requests with this status."
-msgstr ""
+msgstr "Nu există solicitări cu acest statut."
 
 #: src/i18n.js:87
 msgid "Page"
-msgstr ""
+msgstr "Pagina"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -189,7 +189,7 @@ msgstr "Selectați aeroporturile de plecare și sosire din listă"
 
 #: src/i18n.js:85
 msgid "Previous"
-msgstr ""
+msgstr "Anterior"
 
 #: src/i18n.js:47
 msgid "Remove"
@@ -197,15 +197,15 @@ msgstr "Elimină"
 
 #: src/i18n.js:77
 msgid "Request details"
-msgstr ""
+msgstr "Solicitați detalii"
 
 #: src/i18n.js:84
 msgid "Request pagination"
-msgstr ""
+msgstr "Solicitați paginarea"
 
 #: src/i18n.js:89
 msgid "Role"
-msgstr ""
+msgstr "Rol"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -213,7 +213,7 @@ msgstr "Expeditor"
 
 #: src/i18n.js:83
 msgid "Status"
-msgstr ""
+msgstr "Stare"
 
 #: src/i18n.js:63
 msgid "Submit request"

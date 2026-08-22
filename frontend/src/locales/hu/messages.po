@@ -13,11 +13,11 @@ msgstr ""
 
 #: src/i18n.js:73
 msgid "Active"
-msgstr ""
+msgstr "Aktív"
 
 #: src/i18n.js:72
 msgid "All statuses"
-msgstr ""
+msgstr "Minden állapot"
 
 #: src/i18n.js:43
 msgid "Arrival"
@@ -41,7 +41,7 @@ msgstr "Poggyász megjegyzések"
 
 #: src/i18n.js:74
 msgid "Cancelled"
-msgstr ""
+msgstr "Törölve"
 
 #: src/i18n.js:59
 msgid "Choose a city first"
@@ -53,19 +53,19 @@ msgstr "Először válasszon országot"
 
 #: src/i18n.js:80
 msgid "Close"
-msgstr ""
+msgstr "Bezárás"
 
 #: src/i18n.js:81
 msgid "Comment"
-msgstr ""
+msgstr "Megjegyzés"
 
 #: src/i18n.js:75
 msgid "Completed"
-msgstr ""
+msgstr "Befejezve"
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
-msgstr ""
+msgstr "Nem sikerült betölteni a kéréseket."
 
 #: src/i18n.js:44
 msgid "country, city or airport"
@@ -77,7 +77,7 @@ msgstr "Futár"
 
 #: src/i18n.js:82
 msgid "Created"
-msgstr ""
+msgstr "Létrehozva"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -117,7 +117,7 @@ msgstr "Lépjen be vagy válasszon egy repülőteret"
 
 #: src/i18n.js:76
 msgid "Expired"
-msgstr ""
+msgstr "Lejárt"
 
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
@@ -149,15 +149,15 @@ msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:71
 msgid "My Requests"
-msgstr ""
+msgstr "Saját kéréseim"
 
 #: src/i18n.js:88
 msgid "New"
-msgstr ""
+msgstr "Új"
 
 #: src/i18n.js:86
 msgid "Next"
-msgstr ""
+msgstr "Következő"
 
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
@@ -165,11 +165,11 @@ msgstr "Nem található megfelelő repülőtér, próbáljon angolul írni"
 
 #: src/i18n.js:78
 msgid "No requests with this status."
-msgstr ""
+msgstr "Nincsenek ilyen állapotú kérések."
 
 #: src/i18n.js:87
 msgid "Page"
-msgstr ""
+msgstr "oldal"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -189,7 +189,7 @@ msgstr "Kérjük, válassza ki az indulási és érkezési repülőteret a list�
 
 #: src/i18n.js:85
 msgid "Previous"
-msgstr ""
+msgstr "Előző"
 
 #: src/i18n.js:47
 msgid "Remove"
@@ -197,15 +197,15 @@ msgstr "Eltávolítás"
 
 #: src/i18n.js:77
 msgid "Request details"
-msgstr ""
+msgstr "Kérjen részleteket"
 
 #: src/i18n.js:84
 msgid "Request pagination"
-msgstr ""
+msgstr "Lapozás kérése"
 
 #: src/i18n.js:89
 msgid "Role"
-msgstr ""
+msgstr "Szerep"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -213,7 +213,7 @@ msgstr "Feladó"
 
 #: src/i18n.js:83
 msgid "Status"
-msgstr ""
+msgstr "Állapot"
 
 #: src/i18n.js:63
 msgid "Submit request"

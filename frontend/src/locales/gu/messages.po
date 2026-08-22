@@ -13,11 +13,11 @@ msgstr ""
 
 #: src/i18n.js:73
 msgid "Active"
-msgstr ""
+msgstr "સક્રિય"
 
 #: src/i18n.js:72
 msgid "All statuses"
-msgstr ""
+msgstr "બધી સ્થિતિઓ"
 
 #: src/i18n.js:43
 msgid "Arrival"
@@ -41,7 +41,7 @@ msgstr "સામાન ટિપ્પણીઓ"
 
 #: src/i18n.js:74
 msgid "Cancelled"
-msgstr ""
+msgstr "રદ કરેલ"
 
 #: src/i18n.js:59
 msgid "Choose a city first"
@@ -53,19 +53,19 @@ msgstr "પ્રથમ દેશ પસંદ કરો"
 
 #: src/i18n.js:80
 msgid "Close"
-msgstr ""
+msgstr "બંધ કરો"
 
 #: src/i18n.js:81
 msgid "Comment"
-msgstr ""
+msgstr "ટિપ્પણી"
 
 #: src/i18n.js:75
 msgid "Completed"
-msgstr ""
+msgstr "પૂર્ણ થયું"
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
-msgstr ""
+msgstr "તમારી વિનંતીઓ લોડ કરી શકાઈ નથી."
 
 #: src/i18n.js:44
 msgid "country, city or airport"
@@ -77,7 +77,7 @@ msgstr "કુરિયર"
 
 #: src/i18n.js:82
 msgid "Created"
-msgstr ""
+msgstr "બનાવ્યું"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -117,7 +117,7 @@ msgstr "દાખલ કરો અથવા એરપોર્ટ પસંદ �
 
 #: src/i18n.js:76
 msgid "Expired"
-msgstr ""
+msgstr "સમાપ્ત"
 
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
@@ -149,15 +149,15 @@ msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:71
 msgid "My Requests"
-msgstr ""
+msgstr "મારી વિનંતીઓ"
 
 #: src/i18n.js:88
 msgid "New"
-msgstr ""
+msgstr "નવી"
 
 #: src/i18n.js:86
 msgid "Next"
-msgstr ""
+msgstr "આગળ"
 
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
@@ -165,11 +165,11 @@ msgstr "મેળ ખાતું કોઈ હવાઈમથક મળ્ય�
 
 #: src/i18n.js:78
 msgid "No requests with this status."
-msgstr ""
+msgstr "આ સ્થિતિ સાથે કોઈ વિનંતીઓ નથી."
 
 #: src/i18n.js:87
 msgid "Page"
-msgstr ""
+msgstr "પૃષ્ઠ"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -189,7 +189,7 @@ msgstr "કૃપા કરીને સૂચિમાંથી પ્રસ્
 
 #: src/i18n.js:85
 msgid "Previous"
-msgstr ""
+msgstr "ગત"
 
 #: src/i18n.js:47
 msgid "Remove"
@@ -197,15 +197,15 @@ msgstr "દૂર કરો"
 
 #: src/i18n.js:77
 msgid "Request details"
-msgstr ""
+msgstr "વિગતોની વિનંતી કરો"
 
 #: src/i18n.js:84
 msgid "Request pagination"
-msgstr ""
+msgstr "પૃષ્ઠ ક્રમાંકન માટે વિનંતી કરો"
 
 #: src/i18n.js:89
 msgid "Role"
-msgstr ""
+msgstr "ભૂમિકા"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -213,7 +213,7 @@ msgstr "મોકલનાર"
 
 #: src/i18n.js:83
 msgid "Status"
-msgstr ""
+msgstr "સ્થિતિ"
 
 #: src/i18n.js:63
 msgid "Submit request"

@@ -13,11 +13,11 @@ msgstr ""
 
 #: src/i18n.js:73
 msgid "Active"
-msgstr ""
+msgstr "نشط"
 
 #: src/i18n.js:72
 msgid "All statuses"
-msgstr ""
+msgstr "جميع الحالات"
 
 #: src/i18n.js:43
 msgid "Arrival"
@@ -41,7 +41,7 @@ msgstr "تعليقات الأمتعة"
 
 #: src/i18n.js:74
 msgid "Cancelled"
-msgstr ""
+msgstr "تم الإلغاء"
 
 #: src/i18n.js:59
 msgid "Choose a city first"
@@ -53,19 +53,19 @@ msgstr "اختر بلدًا أولاً"
 
 #: src/i18n.js:80
 msgid "Close"
-msgstr ""
+msgstr "إغلاق"
 
 #: src/i18n.js:81
 msgid "Comment"
-msgstr ""
+msgstr "التعليق"
 
 #: src/i18n.js:75
 msgid "Completed"
-msgstr ""
+msgstr "مكتمل"
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
-msgstr ""
+msgstr "تعذر تحميل طلباتك."
 
 #: src/i18n.js:44
 msgid "country, city or airport"
@@ -77,7 +77,7 @@ msgstr "ساعي"
 
 #: src/i18n.js:82
 msgid "Created"
-msgstr ""
+msgstr "تم إنشاؤها"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -117,7 +117,7 @@ msgstr "أدخل أو اختر المطار"
 
 #: src/i18n.js:76
 msgid "Expired"
-msgstr ""
+msgstr "انتهت صلاحيتها"
 
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
@@ -149,15 +149,15 @@ msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:71
 msgid "My Requests"
-msgstr ""
+msgstr "طلباتي"
 
 #: src/i18n.js:88
 msgid "New"
-msgstr ""
+msgstr "جديد"
 
 #: src/i18n.js:86
 msgid "Next"
-msgstr ""
+msgstr "التالي"
 
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
@@ -165,11 +165,11 @@ msgstr "لم يتم العثور على مطارات مطابقة، حاول ا�
 
 #: src/i18n.js:78
 msgid "No requests with this status."
-msgstr ""
+msgstr "لا توجد طلبات بهذه الحالة."
 
 #: src/i18n.js:87
 msgid "Page"
-msgstr ""
+msgstr "الصفحة"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -189,7 +189,7 @@ msgstr "يرجى اختيار مطاري المغادرة والوصول من ا
 
 #: src/i18n.js:85
 msgid "Previous"
-msgstr ""
+msgstr "السابق"
 
 #: src/i18n.js:47
 msgid "Remove"
@@ -197,15 +197,15 @@ msgstr "إزالة"
 
 #: src/i18n.js:77
 msgid "Request details"
-msgstr ""
+msgstr "تفاصيل الطلب"
 
 #: src/i18n.js:84
 msgid "Request pagination"
-msgstr ""
+msgstr "طلب ترقيم الصفحات"
 
 #: src/i18n.js:89
 msgid "Role"
-msgstr ""
+msgstr "الدور"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -213,7 +213,7 @@ msgstr "مرسل"
 
 #: src/i18n.js:83
 msgid "Status"
-msgstr ""
+msgstr "الحالة"
 
 #: src/i18n.js:63
 msgid "Submit request"

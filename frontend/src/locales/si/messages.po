@@ -13,11 +13,11 @@ msgstr ""
 
 #: src/i18n.js:73
 msgid "Active"
-msgstr ""
+msgstr "ක්රියාකාරී"
 
 #: src/i18n.js:72
 msgid "All statuses"
-msgstr ""
+msgstr "සියලුම තත්ව"
 
 #: src/i18n.js:43
 msgid "Arrival"
@@ -41,7 +41,7 @@ msgstr "ගමන් මලු අදහස්"
 
 #: src/i18n.js:74
 msgid "Cancelled"
-msgstr ""
+msgstr "අවලංගු කළා"
 
 #: src/i18n.js:59
 msgid "Choose a city first"
@@ -53,19 +53,19 @@ msgstr "මුලින්ම රටක් තෝරන්න"
 
 #: src/i18n.js:80
 msgid "Close"
-msgstr ""
+msgstr "වසන්න"
 
 #: src/i18n.js:81
 msgid "Comment"
-msgstr ""
+msgstr "අදහස් දක්වන්න"
 
 #: src/i18n.js:75
 msgid "Completed"
-msgstr ""
+msgstr "සම්පූර්ණ කළා"
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
-msgstr ""
+msgstr "ඔබගේ ඉල්ලීම් පූරණය කළ නොහැකි විය."
 
 #: src/i18n.js:44
 msgid "country, city or airport"
@@ -77,7 +77,7 @@ msgstr "කුරියර්"
 
 #: src/i18n.js:82
 msgid "Created"
-msgstr ""
+msgstr "නිර්මාණය කළා"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -117,7 +117,7 @@ msgstr "ගුවන් තොටුපළක් ඇතුළු කරන්න
 
 #: src/i18n.js:76
 msgid "Expired"
-msgstr ""
+msgstr "කල් ඉකුත් වී ඇත"
 
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
@@ -149,15 +149,15 @@ msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:71
 msgid "My Requests"
-msgstr ""
+msgstr "මගේ ඉල්ලීම්"
 
 #: src/i18n.js:88
 msgid "New"
-msgstr ""
+msgstr "අලුත්"
 
 #: src/i18n.js:86
 msgid "Next"
-msgstr ""
+msgstr "ඊළඟට"
 
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
@@ -165,11 +165,11 @@ msgstr "ගැළපෙන ගුවන් තොටුපළක් හමු �
 
 #: src/i18n.js:78
 msgid "No requests with this status."
-msgstr ""
+msgstr "මෙම තත්ත්වය සමඟ ඉල්ලීම් නැත."
 
 #: src/i18n.js:87
 msgid "Page"
-msgstr ""
+msgstr "පිටුව"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -189,7 +189,7 @@ msgstr "කරුණාකර ලැයිස්තුවෙන් පිටත�
 
 #: src/i18n.js:85
 msgid "Previous"
-msgstr ""
+msgstr "පෙර"
 
 #: src/i18n.js:47
 msgid "Remove"
@@ -197,15 +197,15 @@ msgstr "ඉවත් කරන්න"
 
 #: src/i18n.js:77
 msgid "Request details"
-msgstr ""
+msgstr "විස්තර ඉල්ලන්න"
 
 #: src/i18n.js:84
 msgid "Request pagination"
-msgstr ""
+msgstr "පේජිනේෂන් ඉල්ලන්න"
 
 #: src/i18n.js:89
 msgid "Role"
-msgstr ""
+msgstr "භූමිකාව"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -213,7 +213,7 @@ msgstr "යවන්නා"
 
 #: src/i18n.js:83
 msgid "Status"
-msgstr ""
+msgstr "තත්ත්වය"
 
 #: src/i18n.js:63
 msgid "Submit request"

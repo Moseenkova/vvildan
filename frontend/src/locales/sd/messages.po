@@ -13,11 +13,11 @@ msgstr ""
 
 #: src/i18n.js:73
 msgid "Active"
-msgstr ""
+msgstr "چالو"
 
 #: src/i18n.js:72
 msgid "All statuses"
-msgstr ""
+msgstr "سڀ حالتون"
 
 #: src/i18n.js:43
 msgid "Arrival"
@@ -41,7 +41,7 @@ msgstr "سامان جا رايا"
 
 #: src/i18n.js:74
 msgid "Cancelled"
-msgstr ""
+msgstr "منسوخ ٿيل"
 
 #: src/i18n.js:59
 msgid "Choose a city first"
@@ -53,19 +53,19 @@ msgstr "پهرين ملڪ چونڊيو"
 
 #: src/i18n.js:80
 msgid "Close"
-msgstr ""
+msgstr "بند"
 
 #: src/i18n.js:81
 msgid "Comment"
-msgstr ""
+msgstr "تبصرو"
 
 #: src/i18n.js:75
 msgid "Completed"
-msgstr ""
+msgstr "مڪمل ٿيو"
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
-msgstr ""
+msgstr "توھان جون درخواستون لوڊ نه ٿي سگھيون."
 
 #: src/i18n.js:44
 msgid "country, city or airport"
@@ -77,7 +77,7 @@ msgstr "ڪوريئر"
 
 #: src/i18n.js:82
 msgid "Created"
-msgstr ""
+msgstr "ٺاهيل"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -117,7 +117,7 @@ msgstr "داخل ڪريو يا ايئرپورٽ چونڊيو"
 
 #: src/i18n.js:76
 msgid "Expired"
-msgstr ""
+msgstr "ختم ٿيل"
 
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
@@ -149,15 +149,15 @@ msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:71
 msgid "My Requests"
-msgstr ""
+msgstr "منهنجون درخواستون"
 
 #: src/i18n.js:88
 msgid "New"
-msgstr ""
+msgstr "نئون"
 
 #: src/i18n.js:86
 msgid "Next"
-msgstr ""
+msgstr "اڳيان"
 
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
@@ -165,11 +165,11 @@ msgstr "ڪوبه ملندڙ هوائي اڏو نه مليو، انگريزي ۾ 
 
 #: src/i18n.js:78
 msgid "No requests with this status."
-msgstr ""
+msgstr "هن اسٽيٽس سان ڪا به درخواست ناهي."
 
 #: src/i18n.js:87
 msgid "Page"
-msgstr ""
+msgstr "صفحو"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -189,7 +189,7 @@ msgstr "مهرباني ڪري فهرست مان روانگي ۽ آمد جا هو
 
 #: src/i18n.js:85
 msgid "Previous"
-msgstr ""
+msgstr "پويون"
 
 #: src/i18n.js:47
 msgid "Remove"
@@ -197,15 +197,15 @@ msgstr "هٽايو"
 
 #: src/i18n.js:77
 msgid "Request details"
-msgstr ""
+msgstr "تفصيل جي درخواست ڪريو"
 
 #: src/i18n.js:84
 msgid "Request pagination"
-msgstr ""
+msgstr "صفحو جي درخواست ڪريو"
 
 #: src/i18n.js:89
 msgid "Role"
-msgstr ""
+msgstr "ڪردار"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -213,7 +213,7 @@ msgstr "موڪليندڙ"
 
 #: src/i18n.js:83
 msgid "Status"
-msgstr ""
+msgstr "حيثيت"
 
 #: src/i18n.js:63
 msgid "Submit request"

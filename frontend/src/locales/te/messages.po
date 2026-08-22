@@ -13,11 +13,11 @@ msgstr ""
 
 #: src/i18n.js:73
 msgid "Active"
-msgstr ""
+msgstr "చురుకుగా"
 
 #: src/i18n.js:72
 msgid "All statuses"
-msgstr ""
+msgstr "అన్ని హోదాలు"
 
 #: src/i18n.js:43
 msgid "Arrival"
@@ -41,7 +41,7 @@ msgstr "బ్యాగేజీ వ్యాఖ్యలు"
 
 #: src/i18n.js:74
 msgid "Cancelled"
-msgstr ""
+msgstr "రద్దు చేయబడింది"
 
 #: src/i18n.js:59
 msgid "Choose a city first"
@@ -53,19 +53,19 @@ msgstr "ముందుగా దేశాన్ని ఎంచుకోండ�
 
 #: src/i18n.js:80
 msgid "Close"
-msgstr ""
+msgstr "మూసివేయి"
 
 #: src/i18n.js:81
 msgid "Comment"
-msgstr ""
+msgstr "వ్యాఖ్యానించండి"
 
 #: src/i18n.js:75
 msgid "Completed"
-msgstr ""
+msgstr "పూర్తయింది"
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
-msgstr ""
+msgstr "మీ అభ్యర్థనలను లోడ్ చేయడం సాధ్యపడలేదు."
 
 #: src/i18n.js:44
 msgid "country, city or airport"
@@ -77,7 +77,7 @@ msgstr "కొరియర్"
 
 #: src/i18n.js:82
 msgid "Created"
-msgstr ""
+msgstr "సృష్టించబడింది"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -117,7 +117,7 @@ msgstr "విమానాశ్రయాన్ని నమోదు చేయ�
 
 #: src/i18n.js:76
 msgid "Expired"
-msgstr ""
+msgstr "గడువు ముగిసింది"
 
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
@@ -149,15 +149,15 @@ msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:71
 msgid "My Requests"
-msgstr ""
+msgstr "నా అభ్యర్థనలు"
 
 #: src/i18n.js:88
 msgid "New"
-msgstr ""
+msgstr "కొత్తది"
 
 #: src/i18n.js:86
 msgid "Next"
-msgstr ""
+msgstr "తదుపరి"
 
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
@@ -165,11 +165,11 @@ msgstr "సరిపోలే విమానాశ్రయాలు ఏవీ 
 
 #: src/i18n.js:78
 msgid "No requests with this status."
-msgstr ""
+msgstr "ఈ స్థితితో అభ్యర్థనలు లేవు."
 
 #: src/i18n.js:87
 msgid "Page"
-msgstr ""
+msgstr "పేజీ"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -189,7 +189,7 @@ msgstr "దయచేసి జాబితా నుండి బయలుదే
 
 #: src/i18n.js:85
 msgid "Previous"
-msgstr ""
+msgstr "మునుపటి"
 
 #: src/i18n.js:47
 msgid "Remove"
@@ -197,15 +197,15 @@ msgstr "తొలగించు"
 
 #: src/i18n.js:77
 msgid "Request details"
-msgstr ""
+msgstr "వివరాలను అభ్యర్థించండి"
 
 #: src/i18n.js:84
 msgid "Request pagination"
-msgstr ""
+msgstr "పేజీని అభ్యర్థించండి"
 
 #: src/i18n.js:89
 msgid "Role"
-msgstr ""
+msgstr "పాత్ర"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -213,7 +213,7 @@ msgstr "పంపినవారు"
 
 #: src/i18n.js:83
 msgid "Status"
-msgstr ""
+msgstr "స్థితి"
 
 #: src/i18n.js:63
 msgid "Submit request"

@@ -13,11 +13,11 @@ msgstr ""
 
 #: src/i18n.js:73
 msgid "Active"
-msgstr ""
+msgstr "လှုပ်လှုပ်ရှားရှား"
 
 #: src/i18n.js:72
 msgid "All statuses"
-msgstr ""
+msgstr "အခြေအနေအားလုံး"
 
 #: src/i18n.js:43
 msgid "Arrival"
@@ -41,7 +41,7 @@ msgstr "ခရီးဆောင်အိတ်မှတ်ချက်"
 
 #: src/i18n.js:74
 msgid "Cancelled"
-msgstr ""
+msgstr "ဖျက်သိမ်းလိုက်သည်။"
 
 #: src/i18n.js:59
 msgid "Choose a city first"
@@ -53,19 +53,19 @@ msgstr "နိုင်ငံကို အရင်ရွေးပါ။"
 
 #: src/i18n.js:80
 msgid "Close"
-msgstr ""
+msgstr "ပိတ်လိုက်"
 
 #: src/i18n.js:81
 msgid "Comment"
-msgstr ""
+msgstr "မှတ်ချက်"
 
 #: src/i18n.js:75
 msgid "Completed"
-msgstr ""
+msgstr "ပြီးသွားပြီ"
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
-msgstr ""
+msgstr "သင့်တောင်းဆိုချက်များကို တင်၍မရပါ။"
 
 #: src/i18n.js:44
 msgid "country, city or airport"
@@ -77,7 +77,7 @@ msgstr "ချော"
 
 #: src/i18n.js:82
 msgid "Created"
-msgstr ""
+msgstr "ဖန်တီးခဲ့သည်။"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -117,7 +117,7 @@ msgstr "ဝင်ပါ သို့မဟုတ် လေဆိပ်တစ်�
 
 #: src/i18n.js:76
 msgid "Expired"
-msgstr ""
+msgstr "သက်တမ်းကုန်သွားပြီ"
 
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
@@ -149,15 +149,15 @@ msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:71
 msgid "My Requests"
-msgstr ""
+msgstr "ကျွန်ုပ်၏တောင်းဆိုမှုများ"
 
 #: src/i18n.js:88
 msgid "New"
-msgstr ""
+msgstr "အသစ်"
 
 #: src/i18n.js:86
 msgid "Next"
-msgstr ""
+msgstr "နောက်တစ်ခု"
 
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
@@ -165,11 +165,11 @@ msgstr "ကိုက်ညီသော လေဆိပ်များ မတွ�
 
 #: src/i18n.js:78
 msgid "No requests with this status."
-msgstr ""
+msgstr "ဤအခြေအနေအတွက် တောင်းဆိုချက်မရှိပါ။"
 
 #: src/i18n.js:87
 msgid "Page"
-msgstr ""
+msgstr "စာမျက်နှာ"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -189,7 +189,7 @@ msgstr "စာရင်းမှ ထွက်ခွာမည့်နှင့�
 
 #: src/i18n.js:85
 msgid "Previous"
-msgstr ""
+msgstr "အရင်"
 
 #: src/i18n.js:47
 msgid "Remove"
@@ -197,15 +197,15 @@ msgstr "ဖယ်ရှားရန်"
 
 #: src/i18n.js:77
 msgid "Request details"
-msgstr ""
+msgstr "အသေးစိတ်ကို တောင်းဆိုပါ။"
 
 #: src/i18n.js:84
 msgid "Request pagination"
-msgstr ""
+msgstr "အမည်စာရင်းတောင်းဆိုပါ။"
 
 #: src/i18n.js:89
 msgid "Role"
-msgstr ""
+msgstr "အခန်းကဏ္ဍ"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -213,7 +213,7 @@ msgstr "ပေးပို့သူ"
 
 #: src/i18n.js:83
 msgid "Status"
-msgstr ""
+msgstr "အဆင့်အတန်း"
 
 #: src/i18n.js:63
 msgid "Submit request"

@@ -13,11 +13,11 @@ msgstr ""
 
 #: src/i18n.js:73
 msgid "Active"
-msgstr ""
+msgstr "Inayotumika"
 
 #: src/i18n.js:72
 msgid "All statuses"
-msgstr ""
+msgstr "Hali zote"
 
 #: src/i18n.js:43
 msgid "Arrival"
@@ -41,7 +41,7 @@ msgstr "Maoni ya mizigo"
 
 #: src/i18n.js:74
 msgid "Cancelled"
-msgstr ""
+msgstr "Imeghairiwa"
 
 #: src/i18n.js:59
 msgid "Choose a city first"
@@ -53,19 +53,19 @@ msgstr "Chagua nchi kwanza"
 
 #: src/i18n.js:80
 msgid "Close"
-msgstr ""
+msgstr "Funga"
 
 #: src/i18n.js:81
 msgid "Comment"
-msgstr ""
+msgstr "Maoni"
 
 #: src/i18n.js:75
 msgid "Completed"
-msgstr ""
+msgstr "Imekamilika"
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
-msgstr ""
+msgstr "Haikuweza kupakia maombi yako."
 
 #: src/i18n.js:44
 msgid "country, city or airport"
@@ -77,7 +77,7 @@ msgstr "Courier"
 
 #: src/i18n.js:82
 msgid "Created"
-msgstr ""
+msgstr "Imeundwa"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -117,7 +117,7 @@ msgstr "Ingiza au chagua uwanja wa ndege"
 
 #: src/i18n.js:76
 msgid "Expired"
-msgstr ""
+msgstr "Muda wake umeisha"
 
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
@@ -149,15 +149,15 @@ msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:71
 msgid "My Requests"
-msgstr ""
+msgstr "Maombi Yangu"
 
 #: src/i18n.js:88
 msgid "New"
-msgstr ""
+msgstr "Mpya"
 
 #: src/i18n.js:86
 msgid "Next"
-msgstr ""
+msgstr "Inayofuata"
 
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
@@ -165,11 +165,11 @@ msgstr "Hakuna viwanja vya ndege vinavyolingana vilivyopatikana, jaribu kuandika
 
 #: src/i18n.js:78
 msgid "No requests with this status."
-msgstr ""
+msgstr "Hakuna maombi yenye hali hii."
 
 #: src/i18n.js:87
 msgid "Page"
-msgstr ""
+msgstr "Ukurasa"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -189,7 +189,7 @@ msgstr "Tafadhali chagua viwanja vya ndege vya kuondoka na kuwasili kutoka kweny
 
 #: src/i18n.js:85
 msgid "Previous"
-msgstr ""
+msgstr "Iliyotangulia"
 
 #: src/i18n.js:47
 msgid "Remove"
@@ -197,15 +197,15 @@ msgstr "Ondoa"
 
 #: src/i18n.js:77
 msgid "Request details"
-msgstr ""
+msgstr "Omba maelezo"
 
 #: src/i18n.js:84
 msgid "Request pagination"
-msgstr ""
+msgstr "Omba pagination"
 
 #: src/i18n.js:89
 msgid "Role"
-msgstr ""
+msgstr "Jukumu"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -213,7 +213,7 @@ msgstr "Mtumaji"
 
 #: src/i18n.js:83
 msgid "Status"
-msgstr ""
+msgstr "Hali"
 
 #: src/i18n.js:63
 msgid "Submit request"
