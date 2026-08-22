@@ -13,7 +13,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
 
-async def report(language_code: str) -> None:
+async def report(language_code: str, summary_only: bool = False) -> None:
     from src.database import (
         Airport,
         AirportName,
@@ -44,35 +44,42 @@ async def report(language_code: str) -> None:
             or 0
         )
 
-        missing_rows = (
-            await session.execute(
-                select(
-                    Airport.ident,
-                    Airport.name,
-                    Airport.iata_code,
-                    Airport.icao_code,
-                    City.name.label("city_name"),
-                    Country.name.label("country_name"),
+        missing_rows = []
+        if not summary_only:
+            missing_rows = (
+                await session.execute(
+                    select(
+                        Airport.ident,
+                        Airport.name,
+                        Airport.iata_code,
+                        Airport.icao_code,
+                        City.name.label("city_name"),
+                        Country.name.label("country_name"),
+                    )
+                    .join(City, Airport.city_id == City.id)
+                    .join(Country, City.country_id == Country.id)
+                    .outerjoin(
+                        AirportName,
+                        and_(
+                            AirportName.airport_id == Airport.id,
+                            AirportName.language_code == language_code,
+                        ),
+                    )
+                    .where(AirportName.id.is_(None), localized_name.is_(None))
+                    .order_by(Country.name, City.name, Airport.name)
                 )
-                .join(City, Airport.city_id == City.id)
-                .join(Country, City.country_id == Country.id)
-                .outerjoin(
-                    AirportName,
-                    and_(
-                        AirportName.airport_id == Airport.id,
-                        AirportName.language_code == language_code,
-                    ),
-                )
-                .where(AirportName.id.is_(None), localized_name.is_(None))
-                .order_by(Country.name, City.name, Airport.name)
-            )
-        ).all()
+            ).all()
 
     missing = total - localized
-    print(f"Language: {language_code}")
-    print(f"Total airports: {total}")
-    print(f"With localization: {localized}")
-    print(f"Without localization: {missing}")
+    print(f"Язык: {language_code}")
+    print(f"Всего аэропортов: {total}")
+    print(f"С локализацией: {localized}")
+    print(f"Без локализации: {missing}")
+
+    if summary_only:
+        await engine.dispose()
+        return
+
     print()
 
     if not missing_rows:
@@ -97,10 +104,15 @@ async def main() -> None:
         type=lambda value: value.strip().lower().replace("_", "-").split("-", 1)[0],
         help="Language code to check (default: ru)",
     )
+    parser.add_argument(
+        "--summary-only",
+        action="store_true",
+        help="Print counts only, without listing missing airports",
+    )
     args = parser.parse_args()
     if not args.language:
         parser.error("--language cannot be empty")
-    await report(args.language)
+    await report(args.language, summary_only=args.summary_only)
 
 
 if __name__ == "__main__":

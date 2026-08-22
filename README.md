@@ -17,3 +17,11 @@ PGPASSWORD='postgres' psql -U postgres -d courier -h localhost
 
 refresh airports
 poetry run python scripts/import_airports.py
+
+
+has no localization
+no matching airports found, try to write in english 
+search by airport, city, or country
+
+
+comment safe text max 512
