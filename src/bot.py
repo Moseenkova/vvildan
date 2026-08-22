@@ -28,7 +28,6 @@ from database import (
     Request,
     Sender,
     User,
-    UserCity,
     async_session_maker,
     get_or_create,
 )
@@ -709,13 +708,6 @@ async def command_finish_handler(
     await bot.delete_message(
         callback_query.message.chat.id, callback_query.message.message_id
     )
-
-
-# тип багажа на русски
-# разьить по папкам
-# оброботка если юзер нажимает кнопки не по сценарию
-# уведомлять отправителя о появлении нового курьер и наооборот
-#
 
 
 @form_router.callback_query(CancelReqCallback.filter())
