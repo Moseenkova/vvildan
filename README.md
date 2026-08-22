@@ -6,7 +6,7 @@ PGPASSWORD='postgres' pg_restore \
   --clean --if-exists \
   --no-owner --no-acl \
   --exit-on-error \
-  backups/vvildan_20260822_174536.dump
+  backups/vvildan_20260822_184104.dump
 
 
 

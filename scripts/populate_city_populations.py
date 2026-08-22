@@ -16,12 +16,11 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 
 def candidate_names(name: str) -> list[str]:
-    """Return conservative alternatives for composite municipality names."""
+    """Return city-name parts without treating districts as separate entities."""
     values = [name]
-    parenthetical = re.findall(r"\(([^)]+)\)", name)
-    values.extend(parenthetical)
     values.append(re.sub(r"\s*\([^)]*\)\s*", " ", name))
-    values.extend(part.strip() for part in name.split(","))
+    values.extend(re.findall(r"\(([^)]+)\)", name))
+    values.extend(part.strip() for part in re.split(r"[,/]|\s*-\s*", name))
 
     result = []
     for value in values:
@@ -31,75 +30,49 @@ def candidate_names(name: str) -> list[str]:
     return result
 
 
-def load_population_index(code: str, wanted_names: set[str]) -> dict[str, list]:
-    """Find maximum populations only for names used by application cities."""
+def resolve_population(name: str, populations_by_name: dict[str, int]) -> int | None:
+    """Resolve a city by its name, preferring the main name before qualifiers."""
+    from scripts.populate_location_names import normalize
+
+    exact = populations_by_name.get(normalize(name), 0)
+    if exact > 0:
+        return exact
+
+    if "(" in name:
+        main_name = re.sub(r"\s*\([^)]*\)\s*", " ", name).strip()
+        main_population = populations_by_name.get(normalize(main_name), 0)
+        if main_population > 0:
+            return main_population
+
+    component_populations = [
+        populations_by_name.get(normalize(part), 0)
+        for part in re.split(r"[,/]|\s*-\s*|[()]", name)
+        if part.strip()
+    ]
+    known_populations = [value for value in component_populations if value > 0]
+    return max(known_populations) if known_populations else None
+
+
+def load_population_index(code: str, wanted_names: set[str]) -> dict[str, int]:
+    """Find populations of named cities, excluding administrative regions."""
     from scripts.populate_location_names import CACHE_DIR, normalize, zip_rows
 
-    index = defaultdict(list)
+    index = {}
     for columns in zip_rows(CACHE_DIR / f"{code}.zip"):
-        if len(columns) < 15 or columns[6] not in {"P", "A"}:
+        if len(columns) < 15 or columns[6] != "P":
             continue
         population = int(columns[14] or 0)
         names = {columns[1], columns[2], *columns[3].split(",")}
         for name in names:
             normalized = normalize(name) if name else ""
             if normalized in wanted_names:
-                index[normalized].append(
-                    (
-                        population,
-                        float(columns[4]),
-                        float(columns[5]),
-                        columns[6],
-                    )
-                )
+                index[normalized] = max(index.get(normalized, 0), population)
     return index
-
-
-def choose_population(entries: list, airport_coordinates: list[tuple]) -> int:
-    from scripts.populate_location_names import distance_km
-
-    if not entries:
-        return 0
-    if airport_coordinates:
-        ranked = [
-            (
-                min(
-                    distance_km(latitude, longitude, airport_lat, airport_lon)
-                    for airport_lat, airport_lon in airport_coordinates
-                ),
-                population,
-                feature_class,
-            )
-            for population, latitude, longitude, feature_class in entries
-        ]
-        nearby = [entry for entry in ranked if entry[0] <= 100]
-        if nearby:
-            closest_distance = min(entry[0] for entry in nearby)
-            nearby = [
-                entry for entry in nearby if entry[0] <= closest_distance + 3
-            ]
-    else:
-        nearby = []
-
-    candidates = nearby or [
-        (float("inf"), population, feature_class)
-        for population, _, _, feature_class in entries
-    ]
-    populated_places = [
-        entry for entry in candidates if entry[2] == "P" and entry[1] > 0
-    ]
-    populated_admins = [
-        entry for entry in candidates if entry[2] == "A" and entry[1] > 0
-    ]
-    preferred = populated_places or populated_admins or candidates
-    if airport_coordinates and nearby:
-        return min(preferred, key=lambda entry: entry[0])[1]
-    return max(entry[1] for entry in preferred)
 
 
 async def populate(country_code: str | None, dry_run: bool) -> None:
     from scripts.populate_location_names import normalize
-    from src.database import Airport, async_session_maker, City, Country, engine
+    from src.database import async_session_maker, City, Country, engine
 
     async with async_session_maker() as session:
         rows = (
@@ -110,12 +83,6 @@ async def populate(country_code: str | None, dry_run: bool) -> None:
             )
         ).all()
         cities_by_country = defaultdict(list)
-        airport_coordinates_by_city = defaultdict(list)
-        airport_rows = await session.execute(
-            select(Airport.city_id, Airport.latitude, Airport.longitude)
-        )
-        for city_id, latitude, longitude in airport_rows:
-            airport_coordinates_by_city[city_id].append((latitude, longitude))
         skipped_without_iso = []
         for city, raw_code in rows:
             code = (raw_code or "").upper()
@@ -140,18 +107,13 @@ async def populate(country_code: str | None, dry_run: bool) -> None:
                 load_population_index, code, wanted_names
             )
             for city in cities:
-                entries = []
-                for name in candidate_names(city.name):
-                    entries.extend(
-                        populations_by_name.get(normalize(name), [])
-                    )
-                if entries:
-                    population = choose_population(
-                        entries, airport_coordinates_by_city[city.id]
-                    )
+                population = resolve_population(city.name, populations_by_name)
+                if population is not None:
                     matched += 1
                 else:
-                    population = 0
+                    # Preserve a value supplied later by another trusted source,
+                    # such as Wikidata, when GeoNames has no city population.
+                    population = city.population
                     unmatched.append(f"{code}|{city.name}")
                 if city.population != population:
                     city.population = population
