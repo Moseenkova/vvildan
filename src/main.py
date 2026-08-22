@@ -1,7 +1,7 @@
 from fastapi import Depends, FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi_pagination import Page, add_pagination
-from fastapi_pagination.ext.sqlalchemy import paginate
+from fastapi_pagination.ext.sqlalchemy import apaginate
 from sqlalchemy import func, or_, select
 from sqlalchemy.orm import selectinload
 
@@ -53,7 +53,7 @@ async def get_my_requests(
             .options(airport_load, arrival_load)
             .order_by(TravelRequest.created_at.desc())
         )
-        return await paginate(session, query)
+        return await apaginate(session, query)
 
 
 @app.get("/api/airport-search", response_model=list[AirportSearchResultSchema])
