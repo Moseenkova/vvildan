@@ -56,4 +56,5 @@ class Settings(BaseSettings):
 
 @lru_cache()
 def get_settings() -> Settings:
-    return Settings()
+    # BaseSettings resolves required values from environment sources at runtime.
+    return Settings()  # pyright: ignore[reportCallIssue]
