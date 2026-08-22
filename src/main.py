@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Query
+from fastapi import Depends, FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import func, or_, select
 from sqlalchemy.orm import selectinload
@@ -19,7 +19,7 @@ from .schemas import (
 )
 from .auth.routers import auth_router
 from .deps import get_current_user
-from fastapi import Depends
+from .mappers import request_to_schema
 
 app = FastAPI()
 
@@ -32,29 +32,6 @@ app.add_middleware(
 )
 
 app.include_router(auth_router)
-
-
-def request_to_schema(request: TravelRequest) -> RequestSchema:
-    def airport_data(airport: Airport) -> dict:
-        return {
-            "id": airport.id,
-            "name": airport.name,
-            "iata_code": airport.iata_code,
-            "city_name": airport.city.name,
-            "country_name": airport.city.country.name,
-        }
-
-    return RequestSchema(
-        id=request.id,
-        role=request.role.value,
-        date_from=request.date_from,
-        date_to=request.date_to,
-        departure_airports=[airport_data(item) for item in request.departure_airports],
-        arrival_airports=[airport_data(item) for item in request.arrival_airports],
-        comment=request.comment,
-        status=request.status.value,
-        created_at=request.created_at,
-    )
 
 
 @app.get("/api/requests", response_model=list[RequestSchema])
