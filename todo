@@ -1,55 +1,14 @@
-add command for scripts with disctription
-
-add languages
-
-Ran command: ` cd /home/bikmetle/projects/vvildan ; /usr/bin/env /home/bikmetle/projects/vvildan/.venv/bin/python /home/bikmetle/.antigravity/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/libs/debugpy/adapter/../../debugpy/launcher 37431 -- -m uvicorn src.main:app --reload `
-Ran command: `alembic upgrade head`
-Searched web: "most spoken languages top 20"
-
-Based on recent estimates for 2026, here is the list of the top 20 most spoken languages in the world by total number of speakers (which includes both native and non-native speakers):
-
-1. **English** - 1.49 Billion
-2. **Mandarin Chinese** - 1.18 Billion
-3. **Hindi** - 611 Million
-4. **Spanish** - 561 Million
-5. **French** - 334 Million
-6. **Standard Arabic** - 335 Million
-7. **Bengali** - 274 Million
-8. **Portuguese** - 269 Million
-9. **Indonesian** - 255 Million
-10. **Urdu** - 246 Million
-11. **Russian** - 210 Million
-12. **German** - 133 Million
-13. **Japanese** - 126 Million
-14. **Nigerian Pidgin** - 121 Million
-15. **Egyptian Arabic** - 118 Million
-16. **Marathi** - 99 Million
-17. **Telugu** - 96 Million
-18. **Turkish** - 88 Million
-19. **Tamil** - 86 Million
-20. **Vietnamese** - 85 Million
-
-*Note: These figures are approximate and can vary depending on the source and criteria used (such as how fluency is defined for non-native speakers or whether different varieties/dialects are grouped together or counted separately).*
-
+add command for scripts in /stripts with disctription
 
 limit to 5 requests in the future
-get user language from tg sdk
 
 
 if user /start to bot expalain this bot and ask to click menu button.
 if user write message - resend it to admin
 add rating to all users based on registration date and reviews
-add one more button in sidebar "requests"
-
-search in tg user language, internationalization
-
 comment safe text max 512
 
-
-maybe make 2 table, one for courier requests one for sender
-maybe add one more table for matches, or make o2m in courier and sender tables
-
-
+add one more button in sidebar "requests"
 На странице «Мои заявки» можно сделать вкладки:
 - Активные
 - Завершённые
