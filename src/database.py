@@ -18,12 +18,10 @@ from sqlalchemy import (
     Table,
     UniqueConstraint,
     func,
-    insert,
     select,
     text,
 )
-from sqlalchemy.dialects.postgresql import JSON
-from sqlalchemy.exc import NoResultFound
+from sqlalchemy.dialects.postgresql import JSON, insert
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import (
     DeclarativeBase,
@@ -279,19 +277,19 @@ class RefreshToken(Base):
 
 
 async def get_or_create(session, model, defaults=None, **kwargs):
-    if defaults is None:
-        defaults = {}
+    params = {**kwargs, **(defaults or {})}
+    query = (
+        insert(model)
+        .values(**params)
+        .on_conflict_do_nothing()
+        .returning(model)
+    )
+    result = await session.execute(query)
+    instance = result.scalars().one_or_none()
 
-    try:
-        query = select(model).filter_by(**kwargs)
-        result = await session.execute(query)
-        instance = result.scalars().one()
-        return instance, False
-
-    except NoResultFound:
-        params = {**kwargs, **defaults}
-        query = insert(model).values(**params).returning(model)
-        result = await session.execute(query)
+    if instance is not None:
         await session.commit()
-        instance = result.scalars().one()
         return instance, True
+
+    result = await session.execute(select(model).filter_by(**kwargs))
+    return result.scalars().one(), False
