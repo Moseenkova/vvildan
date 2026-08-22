@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/i18n.js:43
 msgid "Arrival"
-msgstr ""
+msgstr "రాక"
 
 #: src/i18n.js:53
 msgid "Arrival airport"
@@ -49,7 +49,7 @@ msgstr "తేదీ"
 
 #: src/i18n.js:42
 msgid "Departure"
-msgstr ""
+msgstr "బయలుదేరు"
 
 #: src/i18n.js:52
 msgid "Departure airport"
@@ -108,8 +108,8 @@ msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:45
-msgid "No matching airports found"
-msgstr ""
+msgid "no matching airports found, try to write in english"
+msgstr "సరిపోలే విమానాశ్రయాలు ఏవీ కనుగొనబడలేదు, ఆంగ్లంలో రాయడానికి ప్రయత్నించండి"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -125,15 +125,15 @@ msgstr "దయచేసి ముగింపు తేదీని ఎంచు
 
 #: src/i18n.js:46
 msgid "Please select departure and arrival airports from the list"
-msgstr ""
+msgstr "దయచేసి జాబితా నుండి బయలుదేరే మరియు చేరుకునే విమానాశ్రయాలను ఎంచుకోండి"
 
 #: src/i18n.js:47
 msgid "Remove"
-msgstr ""
+msgstr "తొలగించు"
 
 #: src/i18n.js:44
-msgid "Search by airport, city, or country"
-msgstr ""
+msgid "country, city or airport"
+msgstr "దేశం, నగరం లేదా విమానాశ్రయం"
 
 #: src/i18n.js:35
 msgid "Sender"

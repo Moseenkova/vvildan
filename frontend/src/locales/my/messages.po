@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/i18n.js:43
 msgid "Arrival"
-msgstr ""
+msgstr "ဆိုက်ရောက်"
 
 #: src/i18n.js:53
 msgid "Arrival airport"
@@ -49,7 +49,7 @@ msgstr "ရက်စွဲ"
 
 #: src/i18n.js:42
 msgid "Departure"
-msgstr ""
+msgstr "ထွက်ခွာ"
 
 #: src/i18n.js:52
 msgid "Departure airport"
@@ -108,8 +108,8 @@ msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:45
-msgid "No matching airports found"
-msgstr ""
+msgid "no matching airports found, try to write in english"
+msgstr "ကိုက်ညီသော လေဆိပ်များ မတွေ့ပါ၊ အင်္ဂလိပ်လို ရေးကြည့်ပါ"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -125,15 +125,15 @@ msgstr "ကျေးဇူးပြု၍ ကုန်ဆုံးရက်က�
 
 #: src/i18n.js:46
 msgid "Please select departure and arrival airports from the list"
-msgstr ""
+msgstr "စာရင်းမှ ထွက်ခွာမည့်နှင့် ဆိုက်ရောက်မည့် လေဆိပ်များကို ရွေးချယ်ပါ"
 
 #: src/i18n.js:47
 msgid "Remove"
-msgstr ""
+msgstr "ဖယ်ရှားရန်"
 
 #: src/i18n.js:44
-msgid "Search by airport, city, or country"
-msgstr ""
+msgid "country, city or airport"
+msgstr "နိုင်ငံ၊ မြို့ သို့မဟုတ် လေဆိပ်"
 
 #: src/i18n.js:35
 msgid "Sender"

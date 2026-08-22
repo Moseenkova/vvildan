@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/i18n.js:43
 msgid "Arrival"
-msgstr ""
+msgstr "ಆಗಮನ"
 
 #: src/i18n.js:53
 msgid "Arrival airport"
@@ -49,7 +49,7 @@ msgstr "ದಿನಾಂಕ"
 
 #: src/i18n.js:42
 msgid "Departure"
-msgstr ""
+msgstr "ನಿರ್ಗಮನ"
 
 #: src/i18n.js:52
 msgid "Departure airport"
@@ -108,8 +108,8 @@ msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:45
-msgid "No matching airports found"
-msgstr ""
+msgid "no matching airports found, try to write in english"
+msgstr "ಹೊಂದಿಕೆಯಾಗುವ ಯಾವುದೇ ವಿಮಾನ ನಿಲ್ದಾಣ ಕಂಡುಬಂದಿಲ್ಲ, ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಬರೆಯಲು ಪ್ರಯತ್ನಿಸಿ"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -125,15 +125,15 @@ msgstr "ದಯವಿಟ್ಟು ಅಂತಿಮ ದಿನಾಂಕವನ್ನ�
 
 #: src/i18n.js:46
 msgid "Please select departure and arrival airports from the list"
-msgstr ""
+msgstr "ದಯವಿಟ್ಟು ಪಟ್ಟಿಯಿಂದ ನಿರ್ಗಮನ ಮತ್ತು ಆಗಮನದ ವಿಮಾನ ನಿಲ್ದಾಣಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ"
 
 #: src/i18n.js:47
 msgid "Remove"
-msgstr ""
+msgstr "ತೆಗೆದುಹಾಕಿ"
 
 #: src/i18n.js:44
-msgid "Search by airport, city, or country"
-msgstr ""
+msgid "country, city or airport"
+msgstr "ದೇಶ, ನಗರ ಅಥವಾ ವಿಮಾನ ನಿಲ್ದಾಣ"
 
 #: src/i18n.js:35
 msgid "Sender"

@@ -1,3 +1,5 @@
+add command for scripts with disctription
+
 add languages
 
 Ran command: ` cd /home/bikmetle/projects/vvildan ; /usr/bin/env /home/bikmetle/projects/vvildan/.venv/bin/python /home/bikmetle/.antigravity/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/libs/debugpy/adapter/../../debugpy/launcher 37431 -- -m uvicorn src.main:app --reload `
@@ -40,3 +42,9 @@ add rating to all users based on registration date and reviews
 add one more button in sidebar "requests"
 
 search in tg user language, internationalization
+
+comment safe text max 512
+
+
+maybe make 2 table, one for courier requests one for sender
+maybe add one more table for matches, or make o2m in courier and sender tables

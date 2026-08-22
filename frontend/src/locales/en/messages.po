@@ -110,8 +110,8 @@ msgid "MM/dd/yyyy"
 msgstr "MM/dd/yyyy"
 
 #: src/i18n.js:45
-msgid "No matching airports found"
-msgstr "No matching airports found"
+msgid "no matching airports found, try to write in english"
+msgstr "no matching airports found, try to write in english"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -134,8 +134,8 @@ msgid "Remove"
 msgstr "Remove"
 
 #: src/i18n.js:44
-msgid "Search by airport, city, or country"
-msgstr "Search by airport, city, or country"
+msgid "country, city or airport"
+msgstr "country, city or airport"
 
 #: src/i18n.js:35
 msgid "Sender"

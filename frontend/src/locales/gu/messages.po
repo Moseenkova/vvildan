@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/i18n.js:43
 msgid "Arrival"
-msgstr ""
+msgstr "આગમન"
 
 #: src/i18n.js:53
 msgid "Arrival airport"
@@ -49,7 +49,7 @@ msgstr "તારીખ"
 
 #: src/i18n.js:42
 msgid "Departure"
-msgstr ""
+msgstr "પ્રસ્થાન"
 
 #: src/i18n.js:52
 msgid "Departure airport"
@@ -108,8 +108,8 @@ msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:45
-msgid "No matching airports found"
-msgstr ""
+msgid "no matching airports found, try to write in english"
+msgstr "મેળ ખાતું કોઈ હવાઈમથક મળ્યું નથી, અંગ્રેજીમાં લખવાનો પ્રયાસ કરો"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -125,15 +125,15 @@ msgstr "કૃપા કરીને સમાપ્તિ તારીખ પ�
 
 #: src/i18n.js:46
 msgid "Please select departure and arrival airports from the list"
-msgstr ""
+msgstr "કૃપા કરીને સૂચિમાંથી પ્રસ્થાન અને આગમન હવાઈમથકો પસંદ કરો"
 
 #: src/i18n.js:47
 msgid "Remove"
-msgstr ""
+msgstr "દૂર કરો"
 
 #: src/i18n.js:44
-msgid "Search by airport, city, or country"
-msgstr ""
+msgid "country, city or airport"
+msgstr "દેશ, શહેર અથવા હવાઈમથક"
 
 #: src/i18n.js:35
 msgid "Sender"

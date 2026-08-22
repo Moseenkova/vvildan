@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/i18n.js:43
 msgid "Arrival"
-msgstr ""
+msgstr "Aankomst"
 
 #: src/i18n.js:53
 msgid "Arrival airport"
@@ -49,7 +49,7 @@ msgstr "Datum"
 
 #: src/i18n.js:42
 msgid "Departure"
-msgstr ""
+msgstr "Vertrek"
 
 #: src/i18n.js:52
 msgid "Departure airport"
@@ -108,8 +108,8 @@ msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:45
-msgid "No matching airports found"
-msgstr ""
+msgid "no matching airports found, try to write in english"
+msgstr "Geen overeenkomende luchthavens gevonden, probeer in het Engels te schrijven"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -125,15 +125,15 @@ msgstr "Selecteer een einddatum"
 
 #: src/i18n.js:46
 msgid "Please select departure and arrival airports from the list"
-msgstr ""
+msgstr "Selecteer de vertrek- en aankomstluchthaven in de lijst"
 
 #: src/i18n.js:47
 msgid "Remove"
-msgstr ""
+msgstr "Verwijderen"
 
 #: src/i18n.js:44
-msgid "Search by airport, city, or country"
-msgstr ""
+msgid "country, city or airport"
+msgstr "land, stad of luchthaven"
 
 #: src/i18n.js:35
 msgid "Sender"
