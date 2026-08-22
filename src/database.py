@@ -277,6 +277,13 @@ class RefreshToken(Base):
     expire: Mapped[datetime] = mapped_column(DateTime(timezone=True))
 
 
+class CustomerTgTopic(Base):
+    __tablename__ = "customer_tg_topics"
+
+    customer_chat_id: Mapped[int] = mapped_column(BigInteger, unique=True, index=True)
+    topic_id: Mapped[int] = mapped_column(BigInteger, unique=True, index=True)
+
+
 async def get_or_create(session, model, defaults=None, **kwargs):
     params = {**kwargs, **(defaults or {})}
     query = (

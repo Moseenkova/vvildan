@@ -14,17 +14,26 @@ cfg: Settings = get_settings()
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
 
-async def decode_access_token(token: str) -> dict:
+async def decode_access_token(token: str) -> dict[str, object]:
     try:
         payload = jwt.decode(token, cfg.SECRET_KEY, algorithms=[cfg.ALGORITHM])
-    except JWTError:
-        raise TokenNotFoundException
+    except JWTError as exc:
+        raise TokenNotFoundException() from exc
 
     return payload
 
+
 async def get_current_user(token: str = Depends(oauth2_scheme)) -> User:
     payload = await decode_access_token(token=token)
-    user_id = int(payload.get(cfg.SUB))
+    subject = payload.get(cfg.SUB)
+    if not isinstance(subject, (str, int)) or isinstance(subject, bool):
+        raise TokenNotFoundException()
+
+    try:
+        user_id = int(subject)
+    except ValueError as exc:
+        raise TokenNotFoundException() from exc
+
     user = await UserDAO.get_by_user_id(user_id)
     if not user:
         raise UserNotFoundException

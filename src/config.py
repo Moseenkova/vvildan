@@ -1,8 +1,9 @@
 from functools import lru_cache
 from pathlib import Path
-from typing import Literal, Optional, final
+from typing import Annotated, Literal, Optional, final
 
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic import SecretStr, field_validator
+from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
 
 
 @final
@@ -37,12 +38,23 @@ class Settings(BaseSettings):
     IAT: str = "iat"
     JTI: str = "jti"
 
-    BOT_TOKEN: str
+    BOT_TOKEN: SecretStr
+    SUPPORT_GROUP_ID: int
+    SUPPORT_GROUP_ADMIN_IDS: Annotated[tuple[int, ...], NoDecode]
     TELEGRAM_SECRET_TOKEN: str = "abcdefghijklmnopqrstuvwxyz"
 
     DEV_CHAT_ID: str = "5875912525"
 
+    @field_validator("SUPPORT_GROUP_ADMIN_IDS", mode="before")
+    @classmethod
+    def parse_admin_ids(cls, value: object) -> object:
+        """Accept a comma-separated list in environment files."""
+        if isinstance(value, str):
+            return tuple(int(item.strip()) for item in value.split(",") if item.strip())
+        return value
+
 
 @lru_cache()
 def get_settings() -> Settings:
-    return Settings()
+    # BaseSettings resolves required values from environment sources at runtime.
+    return Settings()  # pyright: ignore[reportCallIssue]
