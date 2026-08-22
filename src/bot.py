@@ -29,18 +29,22 @@ form_router = Router()
 
 @form_router.message(CommandStart(), F.chat.type == ChatType.PRIVATE)
 async def command_start_handler(message: Message) -> None:
+    user = message.from_user
+    language_code = user.language_code if user else None
+    full_name = user.full_name if user else message.chat.full_name
+
     async with async_session_maker() as session:
         await get_or_create(
             session,
             User,
-            defaults={"name": message.chat.full_name},
+            defaults={"name": full_name},
             tg_id=message.chat.id,
         )
 
     await message.answer(
         get_welcome_message(
-            message.from_user.language_code,
-            hbold(message.from_user.full_name),
+            language_code,
+            hbold(full_name),
         )
     )
 
