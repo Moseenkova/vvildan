@@ -559,7 +559,7 @@ async def command_finish_handler(
         "date_from": date_from_obj,
         "date_to": date_to_obj,
         "baggage_types": baggage_types,
-        "status": database.Status.new,
+        "status": database.RequestStatus.new,
         "comment": data["comment"],
     }
     role = data.get("role")
