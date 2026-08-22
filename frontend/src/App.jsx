@@ -135,11 +135,7 @@ function AirportSearch({ id, label, placeholder, selected, maxSelections, onSele
   )
 }
 
-function RequestSidebar({ requests, loading, error, status, onStatusChange, onSelect, t }) {
-  const filteredRequests = status === 'all'
-    ? requests
-    : requests.filter((request) => request.status === status)
-
+function RequestSidebar({ requests, pagination, loading, error, status, onStatusChange, onPageChange, onSelect, t }) {
   const route = (request) => {
     const from = request.departure_airports.map((airport) => airport.iata_code || airport.city_name).join(', ')
     const to = request.arrival_airports.map((airport) => airport.iata_code || airport.city_name).join(', ')
@@ -150,7 +146,7 @@ function RequestSidebar({ requests, loading, error, status, onStatusChange, onSe
     <aside className="requests-sidebar">
       <div className="requests-heading">
         <h2>{t.myRequests}</h2>
-        <span>{filteredRequests.length}</span>
+        <span>{pagination.total}</span>
       </div>
       <label className="status-filter" htmlFor="request-status">
         <span>{t.status}</span>
@@ -165,8 +161,8 @@ function RequestSidebar({ requests, loading, error, status, onStatusChange, onSe
       <div className="request-list">
         {loading && <p className="request-message">{t.loading}</p>}
         {!loading && error && <p className="request-message request-error">{t.failedToLoadRequests}</p>}
-        {!loading && !error && filteredRequests.length === 0 && <p className="request-message">{t.noRequests}</p>}
-        {!loading && !error && filteredRequests.map((request) => (
+        {!loading && !error && requests.length === 0 && <p className="request-message">{t.noRequests}</p>}
+        {!loading && !error && requests.map((request) => (
           <button className="request-card" type="button" key={request.id} onClick={() => onSelect(request)}>
             <span className="request-card-topline">
               <strong>#{request.id}</strong>
@@ -177,6 +173,25 @@ function RequestSidebar({ requests, loading, error, status, onStatusChange, onSe
           </button>
         ))}
       </div>
+      {!error && pagination.pages > 1 && (
+        <nav className="request-pagination" aria-label={t.pagination}>
+          <button
+            type="button"
+            onClick={() => onPageChange(pagination.page - 1)}
+            disabled={loading || pagination.page <= 1}
+          >
+            {t.previous}
+          </button>
+          <span>{t.page} {pagination.page} / {pagination.pages}</span>
+          <button
+            type="button"
+            onClick={() => onPageChange(pagination.page + 1)}
+            disabled={loading || pagination.page >= pagination.pages}
+          >
+            {t.next}
+          </button>
+        </nav>
+      )}
     </aside>
   )
 }
@@ -227,29 +242,47 @@ function App() {
   const [departureAirports, setDepartureAirports] = useState([])
   const [arrivalAirports, setArrivalAirports] = useState([])
   const [requests, setRequests] = useState([])
+  const [requestsPagination, setRequestsPagination] = useState({
+    page: 1,
+    size: 10,
+    total: 0,
+    pages: 0,
+  })
   const [requestsLoading, setRequestsLoading] = useState(true)
   const [requestsError, setRequestsError] = useState(false)
   const [requestStatus, setRequestStatus] = useState('all')
   const [selectedRequest, setSelectedRequest] = useState(null)
 
+  const loadRequests = async (page = 1, status = requestStatus) => {
+    setRequestsLoading(true)
+    setRequestsError(false)
+    try {
+      const { data } = await api.get('/api/requests', {
+        params: {
+          page,
+          size: requestsPagination.size,
+          ...(status !== 'all' && { status }),
+        },
+      })
+      setRequests(Array.isArray(data.items) ? data.items : [])
+      setRequestsPagination((current) => ({
+        page: data.page ?? page,
+        size: data.size ?? current.size,
+        total: data.total ?? 0,
+        pages: data.pages ?? 0,
+      }))
+    } catch (error) {
+      console.error('Failed to load requests:', error)
+      setRequestsError(true)
+    } finally {
+      setRequestsLoading(false)
+    }
+  }
+
   useEffect(() => {
     document.documentElement.lang = language
     document.documentElement.dir = ['ar', 'fa', 'ps', 'sd', 'ur'].includes(language) ? 'rtl' : 'ltr'
     window.Telegram?.WebApp?.ready()
-
-    const loadRequests = async () => {
-      setRequestsLoading(true)
-      setRequestsError(false)
-      try {
-        const { data } = await api.get('/api/requests')
-        setRequests(Array.isArray(data) ? data : [])
-      } catch (error) {
-        console.error('Failed to load requests:', error)
-        setRequestsError(true)
-      } finally {
-        setRequestsLoading(false)
-      }
-    }
 
     const initAuth = async () => {
       let tgId = null
@@ -259,21 +292,35 @@ function App() {
         tgId = import.meta.env.VITE_DUMMY_TG_ID
       }
       if (!tgId) {
-        if (localStorage.getItem('access_token')) await loadRequests()
+        if (localStorage.getItem('access_token')) await loadRequests(1)
         else setRequestsLoading(false)
         return
       }
       try {
         const { data } = await api.post('/auth/login', { tg_id: tgId })
         localStorage.setItem('access_token', data.access_token)
-        await loadRequests()
+        await loadRequests(1)
       } catch (error) {
         console.error('Authentication failed:', error)
         if (error.response?.status === 404) setUserNotFound(true)
       }
     }
     initAuth()
+    // Authentication and the first page are initialized when the locale changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [language])
+
+  const changeRequestsPage = async (page) => {
+    if (page < 1 || page > requestsPagination.pages || page === requestsPagination.page) return
+    setSelectedRequest(null)
+    await loadRequests(page)
+  }
+
+  const changeRequestStatus = async (status) => {
+    setRequestStatus(status)
+    setSelectedRequest(null)
+    await loadRequests(1, status)
+  }
 
   const setField = (field, value) => setForm((previous) => ({ ...previous, [field]: value }))
 
@@ -392,7 +439,7 @@ function App() {
         <button type="submit" className="submit-button">{t.submit}</button>
       </form>
       ) : (
-        <RequestSidebar requests={requests} loading={requestsLoading} error={requestsError} status={requestStatus} onStatusChange={setRequestStatus} onSelect={setSelectedRequest} t={t} />
+        <RequestSidebar requests={requests} pagination={requestsPagination} loading={requestsLoading} error={requestsError} status={requestStatus} onStatusChange={changeRequestStatus} onPageChange={changeRequestsPage} onSelect={setSelectedRequest} t={t} />
       )}
       </main>
       <RequestDetails request={selectedRequest} onClose={() => setSelectedRequest(null)} t={t} />

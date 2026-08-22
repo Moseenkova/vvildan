@@ -11,6 +11,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:73
+msgid "Active"
+msgstr ""
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr ""
+
 #: src/i18n.js:43
 msgid "Arrival"
 msgstr "आगमन"
@@ -31,6 +39,10 @@ msgstr "आगमन देश"
 msgid "Baggage comments"
 msgstr "सामान टिप्पण्या"
 
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr ""
+
 #: src/i18n.js:59
 msgid "Choose a city first"
 msgstr "प्रथम शहर निवडा"
@@ -39,9 +51,33 @@ msgstr "प्रथम शहर निवडा"
 msgid "Choose a country first"
 msgstr "प्रथम एक देश निवडा"
 
+#: src/i18n.js:80
+msgid "Close"
+msgstr ""
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr ""
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr ""
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr ""
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "देश, शहर किंवा विमानतळ"
+
 #: src/i18n.js:36
 msgid "Courier"
 msgstr "कुरिअर"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr ""
 
 #: src/i18n.js:39
 msgid "Date"
@@ -79,6 +115,10 @@ msgstr "शहर प्रविष्ट करा किंवा निव�
 msgid "Enter or choose an airport"
 msgstr "प्रवेश करा किंवा विमानतळ निवडा"
 
+#: src/i18n.js:76
+msgid "Expired"
+msgstr ""
+
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "उदाहरणार्थ: कपडे 5 किलो, कागदपत्रे, इलेक्ट्रॉनिक्स"
@@ -107,9 +147,29 @@ msgstr "dd/mm/yyyy"
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr ""
+
+#: src/i18n.js:88
+msgid "New"
+msgstr ""
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr ""
+
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
 msgstr "जुळणारे कोणतेही विमानतळ सापडले नाही, इंग्रजीमध्ये लिहिण्याचा प्रयत्न करा"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr ""
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr ""
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -127,17 +187,33 @@ msgstr "कृपया समाप्ती तारीख निवडा"
 msgid "Please select departure and arrival airports from the list"
 msgstr "कृपया सूचीमधून प्रस्थान आणि आगमन विमानतळ निवडा"
 
+#: src/i18n.js:85
+msgid "Previous"
+msgstr ""
+
 #: src/i18n.js:47
 msgid "Remove"
 msgstr "काढून टाका"
 
-#: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "देश, शहर किंवा विमानतळ"
+#: src/i18n.js:77
+msgid "Request details"
+msgstr ""
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr ""
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr ""
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "पाठवणारा"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr ""
 
 #: src/i18n.js:63
 msgid "Submit request"

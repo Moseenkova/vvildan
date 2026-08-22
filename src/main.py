@@ -14,6 +14,7 @@ from .database import (
     Country,
     CountryName,
     Request as TravelRequest,
+    RequestStatus,
 )
 from .schemas import (
     AirportSearchResultSchema,
@@ -36,17 +37,23 @@ app.include_router(auth_router)
 
 
 @app.get("/api/requests", response_model=Page[RequestSchema])
-async def get_my_requests(user=Depends(get_current_user)):
+async def get_my_requests(
+    status: RequestStatus | None = Query(None),
+    user=Depends(get_current_user),
+):
     airport_load = selectinload(TravelRequest.departure_airports).selectinload(Airport.city).selectinload(City.country)
     arrival_load = selectinload(TravelRequest.arrival_airports).selectinload(Airport.city).selectinload(City.country)
     async with async_session_maker() as session:
-        return await paginate(
-            session,
+        query = (
             select(TravelRequest)
-            .where(TravelRequest.user_id == user.id)
+            .where(
+                TravelRequest.user_id == user.id,
+                *([TravelRequest.status == status] if status else []),
+            )
             .options(airport_load, arrival_load)
-            .order_by(TravelRequest.created_at.desc()),
+            .order_by(TravelRequest.created_at.desc())
         )
+        return await paginate(session, query)
 
 
 @app.get("/api/airport-search", response_model=list[AirportSearchResultSchema])

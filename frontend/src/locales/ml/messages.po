@@ -11,6 +11,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:73
+msgid "Active"
+msgstr ""
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr ""
+
 #: src/i18n.js:43
 msgid "Arrival"
 msgstr "എത്തിച്ചേരൽ"
@@ -31,6 +39,10 @@ msgstr "വരവ് രാജ്യം"
 msgid "Baggage comments"
 msgstr "ബാഗേജ് കമൻ്റുകൾ"
 
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr ""
+
 #: src/i18n.js:59
 msgid "Choose a city first"
 msgstr "ആദ്യം ഒരു നഗരം തിരഞ്ഞെടുക്കുക"
@@ -39,9 +51,33 @@ msgstr "ആദ്യം ഒരു നഗരം തിരഞ്ഞെടുക്
 msgid "Choose a country first"
 msgstr "ആദ്യം ഒരു രാജ്യം തിരഞ്ഞെടുക്കുക"
 
+#: src/i18n.js:80
+msgid "Close"
+msgstr ""
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr ""
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr ""
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr ""
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "രാജ്യം, നഗരം അല്ലെങ്കിൽ വിമാനത്താവളം"
+
 #: src/i18n.js:36
 msgid "Courier"
 msgstr "കൊറിയർ"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr ""
 
 #: src/i18n.js:39
 msgid "Date"
@@ -79,6 +115,10 @@ msgstr "ഒരു നഗരം നൽകുക അല്ലെങ്കിൽ �
 msgid "Enter or choose an airport"
 msgstr "ഒരു വിമാനത്താവളം നൽകുക അല്ലെങ്കിൽ തിരഞ്ഞെടുക്കുക"
 
+#: src/i18n.js:76
+msgid "Expired"
+msgstr ""
+
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "ഉദാഹരണത്തിന്: വസ്ത്രങ്ങൾ 5 കിലോ, പ്രമാണങ്ങൾ, ഇലക്ട്രോണിക്സ്"
@@ -107,9 +147,29 @@ msgstr "dd/mm/yyyy"
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr ""
+
+#: src/i18n.js:88
+msgid "New"
+msgstr ""
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr ""
+
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
 msgstr "പൊരുത്തപ്പെടുന്ന വിമാനത്താവളങ്ങളൊന്നും കണ്ടെത്തിയില്ല, ഇംഗ്ലീഷിൽ എഴുതാൻ ശ്രമിക്കുക"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr ""
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr ""
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -127,17 +187,33 @@ msgstr "ദയവായി ഒരു അവസാന തീയതി തിര�
 msgid "Please select departure and arrival airports from the list"
 msgstr "പട്ടികയിൽ നിന്ന് പുറപ്പെടൽ, എത്തിച്ചേരൽ വിമാനത്താവളങ്ങൾ തിരഞ്ഞെടുക്കുക"
 
+#: src/i18n.js:85
+msgid "Previous"
+msgstr ""
+
 #: src/i18n.js:47
 msgid "Remove"
 msgstr "നീക്കം ചെയ്യുക"
 
-#: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "രാജ്യം, നഗരം അല്ലെങ്കിൽ വിമാനത്താവളം"
+#: src/i18n.js:77
+msgid "Request details"
+msgstr ""
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr ""
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr ""
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "അയച്ചയാൾ"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr ""
 
 #: src/i18n.js:63
 msgid "Submit request"

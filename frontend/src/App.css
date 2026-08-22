@@ -131,6 +131,35 @@
 
 .request-error { color: #b42318; }
 
+.request-pagination {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 10px;
+}
+
+.request-pagination span {
+  color: #56616c;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.request-pagination button {
+  padding: 9px 12px;
+  border: 1px solid #d8dce2;
+  border-radius: 7px;
+  background: #fff;
+  color: #0066d6;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.request-pagination button:last-child { justify-self: end; }
+.request-pagination button:disabled { color: #9aa1aa; cursor: default; }
+
 .status-badge {
   display: inline-block;
   padding: 3px 8px;

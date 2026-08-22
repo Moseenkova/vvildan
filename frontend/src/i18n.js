@@ -81,6 +81,10 @@ export const getMessages = (_) => ({
   comment: _(msg`Comment`),
   created: _(msg`Created`),
   status: _(msg`Status`),
+  pagination: _(msg`Request pagination`),
+  previous: _(msg`Previous`),
+  next: _(msg`Next`),
+  page: _(msg`Page`),
   newRequest: _(msg`New`),
   role: _(msg`Role`),
 })

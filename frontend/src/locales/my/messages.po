@@ -11,6 +11,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:73
+msgid "Active"
+msgstr ""
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr ""
+
 #: src/i18n.js:43
 msgid "Arrival"
 msgstr "ဆိုက်ရောက်"
@@ -31,6 +39,10 @@ msgstr "ဆိုက်ရောက်ဗီဇာ"
 msgid "Baggage comments"
 msgstr "ခရီးဆောင်အိတ်မှတ်ချက်"
 
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr ""
+
 #: src/i18n.js:59
 msgid "Choose a city first"
 msgstr "မြို့ကို အရင်ရွေးပါ။"
@@ -39,9 +51,33 @@ msgstr "မြို့ကို အရင်ရွေးပါ။"
 msgid "Choose a country first"
 msgstr "နိုင်ငံကို အရင်ရွေးပါ။"
 
+#: src/i18n.js:80
+msgid "Close"
+msgstr ""
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr ""
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr ""
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr ""
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "နိုင်ငံ၊ မြို့ သို့မဟုတ် လေဆိပ်"
+
 #: src/i18n.js:36
 msgid "Courier"
 msgstr "ချော"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr ""
 
 #: src/i18n.js:39
 msgid "Date"
@@ -79,6 +115,10 @@ msgstr "ဝင်ပါ သို့မဟုတ် မြို့ကို ရ
 msgid "Enter or choose an airport"
 msgstr "ဝင်ပါ သို့မဟုတ် လေဆိပ်တစ်ခုကို ရွေးချယ်ပါ။"
 
+#: src/i18n.js:76
+msgid "Expired"
+msgstr ""
+
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "ဥပမာ- အဝတ်အစား 5 ကီလိုဂရမ်၊ စာရွက်စာတမ်းများ၊ လျှပ်စစ်ပစ္စည်းများ"
@@ -107,9 +147,29 @@ msgstr "dd/mm/yyyy"
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr ""
+
+#: src/i18n.js:88
+msgid "New"
+msgstr ""
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr ""
+
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
 msgstr "ကိုက်ညီသော လေဆိပ်များ မတွေ့ပါ၊ အင်္ဂလိပ်လို ရေးကြည့်ပါ"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr ""
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr ""
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -127,17 +187,33 @@ msgstr "ကျေးဇူးပြု၍ ကုန်ဆုံးရက်က�
 msgid "Please select departure and arrival airports from the list"
 msgstr "စာရင်းမှ ထွက်ခွာမည့်နှင့် ဆိုက်ရောက်မည့် လေဆိပ်များကို ရွေးချယ်ပါ"
 
+#: src/i18n.js:85
+msgid "Previous"
+msgstr ""
+
 #: src/i18n.js:47
 msgid "Remove"
 msgstr "ဖယ်ရှားရန်"
 
-#: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "နိုင်ငံ၊ မြို့ သို့မဟုတ် လေဆိပ်"
+#: src/i18n.js:77
+msgid "Request details"
+msgstr ""
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr ""
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr ""
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "ပေးပို့သူ"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr ""
 
 #: src/i18n.js:63
 msgid "Submit request"

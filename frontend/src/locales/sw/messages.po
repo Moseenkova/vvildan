@@ -11,6 +11,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:73
+msgid "Active"
+msgstr ""
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr ""
+
 #: src/i18n.js:43
 msgid "Arrival"
 msgstr "Kuwasili"
@@ -31,6 +39,10 @@ msgstr "Nchi ya kuwasili"
 msgid "Baggage comments"
 msgstr "Maoni ya mizigo"
 
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr ""
+
 #: src/i18n.js:59
 msgid "Choose a city first"
 msgstr "Chagua jiji kwanza"
@@ -39,9 +51,33 @@ msgstr "Chagua jiji kwanza"
 msgid "Choose a country first"
 msgstr "Chagua nchi kwanza"
 
+#: src/i18n.js:80
+msgid "Close"
+msgstr ""
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr ""
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr ""
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr ""
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "nchi, jiji au uwanja wa ndege"
+
 #: src/i18n.js:36
 msgid "Courier"
 msgstr "Courier"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr ""
 
 #: src/i18n.js:39
 msgid "Date"
@@ -79,6 +115,10 @@ msgstr "Ingiza au uchague jiji"
 msgid "Enter or choose an airport"
 msgstr "Ingiza au chagua uwanja wa ndege"
 
+#: src/i18n.js:76
+msgid "Expired"
+msgstr ""
+
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "Kwa mfano: Nguo za kilo 5, nyaraka, umeme"
@@ -107,9 +147,29 @@ msgstr "dd/mm/yyyy"
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr ""
+
+#: src/i18n.js:88
+msgid "New"
+msgstr ""
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr ""
+
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
 msgstr "Hakuna viwanja vya ndege vinavyolingana vilivyopatikana, jaribu kuandika kwa Kiingereza"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr ""
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr ""
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -127,17 +187,33 @@ msgstr "Tafadhali chagua tarehe ya mwisho"
 msgid "Please select departure and arrival airports from the list"
 msgstr "Tafadhali chagua viwanja vya ndege vya kuondoka na kuwasili kutoka kwenye orodha"
 
+#: src/i18n.js:85
+msgid "Previous"
+msgstr ""
+
 #: src/i18n.js:47
 msgid "Remove"
 msgstr "Ondoa"
 
-#: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "nchi, jiji au uwanja wa ndege"
+#: src/i18n.js:77
+msgid "Request details"
+msgstr ""
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr ""
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr ""
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "Mtumaji"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr ""
 
 #: src/i18n.js:63
 msgid "Submit request"

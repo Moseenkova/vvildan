@@ -11,6 +11,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:73
+msgid "Active"
+msgstr ""
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr ""
+
 #: src/i18n.js:43
 msgid "Arrival"
 msgstr "到着"
@@ -31,6 +39,10 @@ msgstr "到着国"
 msgid "Baggage comments"
 msgstr "手荷物に関するコメント"
 
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr ""
+
 #: src/i18n.js:59
 msgid "Choose a city first"
 msgstr "最初に都市を選択してください"
@@ -39,9 +51,33 @@ msgstr "最初に都市を選択してください"
 msgid "Choose a country first"
 msgstr "最初に国を選択してください"
 
+#: src/i18n.js:80
+msgid "Close"
+msgstr ""
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr ""
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr ""
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr ""
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "国、都市、または空港"
+
 #: src/i18n.js:36
 msgid "Courier"
 msgstr "宅配便"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr ""
 
 #: src/i18n.js:39
 msgid "Date"
@@ -79,6 +115,10 @@ msgstr "都市を入力または選択します"
 msgid "Enter or choose an airport"
 msgstr "空港を入力または選択してください"
 
+#: src/i18n.js:76
+msgid "Expired"
+msgstr ""
+
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "例: 衣類 5 kg、書類、電子機器"
@@ -107,9 +147,29 @@ msgstr "dd/mm/yyyy"
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr ""
+
+#: src/i18n.js:88
+msgid "New"
+msgstr ""
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr ""
+
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
 msgstr "一致する空港が見つかりません。英語で入力してみてください"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr ""
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr ""
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -127,17 +187,33 @@ msgstr "終了日を選択してください"
 msgid "Please select departure and arrival airports from the list"
 msgstr "リストから出発空港と到着空港を選択してください"
 
+#: src/i18n.js:85
+msgid "Previous"
+msgstr ""
+
 #: src/i18n.js:47
 msgid "Remove"
 msgstr "削除"
 
-#: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "国、都市、または空港"
+#: src/i18n.js:77
+msgid "Request details"
+msgstr ""
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr ""
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr ""
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "送信者"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr ""
 
 #: src/i18n.js:63
 msgid "Submit request"

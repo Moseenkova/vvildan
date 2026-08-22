@@ -11,6 +11,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:73
+msgid "Active"
+msgstr ""
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr ""
+
 #: src/i18n.js:43
 msgid "Arrival"
 msgstr "வருகை"
@@ -31,6 +39,10 @@ msgstr "வருகை நாடு"
 msgid "Baggage comments"
 msgstr "பேக்கேஜ் கருத்துகள்"
 
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr ""
+
 #: src/i18n.js:59
 msgid "Choose a city first"
 msgstr "முதலில் ஒரு நகரத்தைத் தேர்ந்தெடுங்கள்"
@@ -39,9 +51,33 @@ msgstr "முதலில் ஒரு நகரத்தைத் தேர்
 msgid "Choose a country first"
 msgstr "முதலில் ஒரு நாட்டை தேர்ந்தெடுங்கள்"
 
+#: src/i18n.js:80
+msgid "Close"
+msgstr ""
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr ""
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr ""
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr ""
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "நாடு, நகரம் அல்லது விமான நிலையம்"
+
 #: src/i18n.js:36
 msgid "Courier"
 msgstr "கூரியர்"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr ""
 
 #: src/i18n.js:39
 msgid "Date"
@@ -79,6 +115,10 @@ msgstr "நகரத்தை உள்ளிடவும் அல்லது 
 msgid "Enter or choose an airport"
 msgstr "விமான நிலையத்தை உள்ளிடவும் அல்லது தேர்வு செய்யவும்"
 
+#: src/i18n.js:76
+msgid "Expired"
+msgstr ""
+
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "உதாரணமாக: ஆடைகள் 5 கிலோ, ஆவணங்கள், மின்னணுவியல்"
@@ -107,9 +147,29 @@ msgstr "dd/mm/yyyy"
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr ""
+
+#: src/i18n.js:88
+msgid "New"
+msgstr ""
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr ""
+
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
 msgstr "பொருந்தும் விமான நிலையங்கள் எதுவும் கிடைக்கவில்லை, ஆங்கிலத்தில் எழுத முயற்சிக்கவும்"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr ""
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr ""
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -127,17 +187,33 @@ msgstr "இறுதித் தேதியைத் தேர்ந்தெ�
 msgid "Please select departure and arrival airports from the list"
 msgstr "பட்டியலிலிருந்து புறப்படும் மற்றும் வந்தடையும் விமான நிலையங்களைத் தேர்ந்தெடுக்கவும்"
 
+#: src/i18n.js:85
+msgid "Previous"
+msgstr ""
+
 #: src/i18n.js:47
 msgid "Remove"
 msgstr "அகற்று"
 
-#: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "நாடு, நகரம் அல்லது விமான நிலையம்"
+#: src/i18n.js:77
+msgid "Request details"
+msgstr ""
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr ""
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr ""
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "அனுப்புபவர்"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr ""
 
 #: src/i18n.js:63
 msgid "Submit request"
