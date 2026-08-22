@@ -79,3 +79,33 @@ def add_refresh_token_cookie(response: Response, token: str):
         max_age=cfg.REFRESH_TOKEN_EXPIRES_MINUTES * 60,
         path="/",
     )
+
+
+async def get_topic_id_by_customer_chat_id(customer_chat_id: int) -> int | None:
+    with Session() as session:
+        return (
+            session.query(CustomerTgTopic.c.topic_id)
+            .filter(CustomerTgTopic.c.customer_chat_id == customer_chat_id)
+            .scalar()
+        )
+
+
+async def create_customer_tg_topic(customer_chat_id: int, topic_id: int) -> int:
+    with Session.begin() as session:
+        session.execute(
+            CustomerTgTopic.insert().values(
+                customer_chat_id=customer_chat_id,
+                topic_id=topic_id,
+            )
+        )
+
+    return topic_id
+
+
+async def get_customer_chat_id_by_topic_id(topic_id: int) -> int | None:
+    with Session() as session:
+        return (
+            session.query(CustomerTgTopic.c.customer_chat_id)
+            .filter(CustomerTgTopic.c.topic_id == topic_id)
+            .scalar()
+        )
