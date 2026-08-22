@@ -41,7 +41,9 @@ function AirportSearch({ id, label, placeholder, selected, maxSelections, onSele
     setLoading(true)
     setOpen(true)
     try {
-      const response = await api.get('/api/airport-search', { params: { q: trimmedQuery } })
+      const response = await api.get('/api/airport-search', {
+        params: { q: trimmedQuery, language: locale },
+      })
       if (requestId === requestRef.current) {
         setResults(Array.isArray(response.data) ? response.data : [])
       }

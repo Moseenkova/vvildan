@@ -1,8 +1,16 @@
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy import or_, select
+from sqlalchemy import func, or_, select
 
-from .database import Airport, async_session_maker, City, Country
+from .database import (
+    Airport,
+    AirportName,
+    async_session_maker,
+    City,
+    CityName,
+    Country,
+    CountryName,
+)
 from .schemas import (
     AirportSearchResultSchema,
 )
@@ -26,23 +34,53 @@ app.include_router(auth_router)
 @app.get("/api/airport-search", response_model=list[AirportSearchResultSchema])
 async def search_airports(
     q: str = Query(..., min_length=1, description="Airport, city, or country name"),
+    language: str = Query("en", min_length=2, max_length=16),
     user=Depends(get_current_user),
 ):
-    search = f"%{q.strip()}%"
-    if not q.strip():
+    language = 'ru'
+    term = q.strip()
+    if not term:
         return []
+    search = f"%{term}%"
+    language = language.lower().replace("_", "-").split("-", 1)[0]
+    search_languages = {language, "en"}
+
+    localized_airport_name = (
+        select(func.min(AirportName.name))
+        .where(
+            AirportName.airport_id == Airport.id,
+            AirportName.language_code == language,
+        )
+        .correlate(Airport)
+        .scalar_subquery()
+    )
+    localized_city_name = (
+        select(func.min(CityName.name))
+        .where(CityName.city_id == City.id, CityName.language_code == language)
+        .correlate(City)
+        .scalar_subquery()
+    )
+    localized_country_name = (
+        select(func.min(CountryName.name))
+        .where(
+            CountryName.country_id == Country.id,
+            CountryName.language_code == language,
+        )
+        .correlate(Country)
+        .scalar_subquery()
+    )
 
     async with async_session_maker() as session:
         query = (
             select(
                 Airport.id,
-                Airport.name,
+                func.coalesce(localized_airport_name, Airport.name).label("name"),
                 Airport.iata_code,
                 Airport.icao_code,
                 City.id.label("city_id"),
-                City.name.label("city_name"),
+                func.coalesce(localized_city_name, City.name).label("city_name"),
                 Country.id.label("country_id"),
-                Country.name.label("country_name"),
+                func.coalesce(localized_country_name, Country.name).label("country_name"),
             )
             .join(City, Airport.city_id == City.id)
             .join(Country, City.country_id == Country.id)
@@ -53,9 +91,22 @@ async def search_airports(
                     Airport.icao_code.ilike(search),
                     City.name.ilike(search),
                     Country.name.ilike(search),
+                    Airport.localized_names.any(
+                        AirportName.language_code.in_(search_languages)
+                        & AirportName.name.ilike(search)
+                    ),
+                    City.localized_names.any(
+                        CityName.language_code.in_(search_languages)
+                        & CityName.name.ilike(search)
+                    ),
+                    Country.localized_names.any(
+                        CountryName.language_code.in_(search_languages)
+                        & CountryName.name.ilike(search)
+                    ),
                 )
             )
-            .order_by(Country.name.asc(), City.name.asc(), Airport.name.asc())
+            .order_by("country_name", "city_name", "name")
+            .limit(50)
         )
         result = await session.execute(query)
         return result.mappings().all()
