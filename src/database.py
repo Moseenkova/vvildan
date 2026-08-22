@@ -136,6 +136,7 @@ class Country(Base):
 class City(Base):
     __tablename__ = "cities"
     name: Mapped[str]
+    population: Mapped[int] = mapped_column(BigInteger, default=0, index=True)
     country_id: Mapped[int] = mapped_column(ForeignKey("countries.id"))
     country: Mapped["Country"] = relationship(back_populates="cities")
     airports: Mapped[List["Airport"]] = relationship(back_populates="city")

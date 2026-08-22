@@ -105,7 +105,12 @@ async def search_airports(
                     ),
                 )
             )
-            .order_by("country_name", "city_name", "name")
+            .order_by(
+                City.population.desc(),
+                "country_name",
+                "city_name",
+                "name",
+            )
             .limit(50)
         )
         result = await session.execute(query)
