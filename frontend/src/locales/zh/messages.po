@@ -11,6 +11,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:73
+msgid "Active"
+msgstr "活跃"
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr "所有状态"
+
 #: src/i18n.js:43
 msgid "Arrival"
 msgstr "到达"
@@ -31,6 +39,10 @@ msgstr "到达国家"
 msgid "Baggage comments"
 msgstr "行李备注"
 
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr "取消"
+
 #: src/i18n.js:59
 msgid "Choose a city first"
 msgstr "首先选择城市"
@@ -39,9 +51,33 @@ msgstr "首先选择城市"
 msgid "Choose a country first"
 msgstr "首先选择一个国家"
 
+#: src/i18n.js:80
+msgid "Close"
+msgstr "关闭"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "评论"
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr "已完成"
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "无法加载您的请求。"
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "国家、城市或机场"
+
 #: src/i18n.js:36
 msgid "Courier"
 msgstr "导游"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "已创建"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -79,6 +115,10 @@ msgstr "输入或选择城市"
 msgid "Enter or choose an airport"
 msgstr "输入或选择机场"
 
+#: src/i18n.js:76
+msgid "Expired"
+msgstr "已过期"
+
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "例如：5公斤的衣服、文件、电子产品"
@@ -107,9 +147,29 @@ msgstr "dd/mm/yyyy"
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr "我的要求"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "新"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "下一步"
+
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
 msgstr "未找到匹配的机场，请尝试用英语输入"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "没有此状态的请求。"
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "页面"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -127,17 +187,33 @@ msgstr "请选择结束日期"
 msgid "Please select departure and arrival airports from the list"
 msgstr "请从列表中选择出发和到达机场"
 
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "上一页"
+
 #: src/i18n.js:47
 msgid "Remove"
 msgstr "移除"
 
-#: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "国家、城市或机场"
+#: src/i18n.js:77
+msgid "Request details"
+msgstr "索取详情"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "请求分页"
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr "角色"
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "发件人"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "状态"
 
 #: src/i18n.js:63
 msgid "Submit request"

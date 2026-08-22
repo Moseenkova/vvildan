@@ -11,6 +11,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:73
+msgid "Active"
+msgstr "نشط"
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr "جميع الحالات"
+
 #: src/i18n.js:43
 msgid "Arrival"
 msgstr "الوصول"
@@ -31,6 +39,10 @@ msgstr "بلد الوصول"
 msgid "Baggage comments"
 msgstr "تعليقات الأمتعة"
 
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr "تم الإلغاء"
+
 #: src/i18n.js:59
 msgid "Choose a city first"
 msgstr "اختر المدينة أولاً"
@@ -39,9 +51,33 @@ msgstr "اختر المدينة أولاً"
 msgid "Choose a country first"
 msgstr "اختر بلدًا أولاً"
 
+#: src/i18n.js:80
+msgid "Close"
+msgstr "إغلاق"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "التعليق"
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr "مكتمل"
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "تعذر تحميل طلباتك."
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "البلد أو المدينة أو المطار"
+
 #: src/i18n.js:36
 msgid "Courier"
 msgstr "ساعي"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "تم إنشاؤها"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -79,6 +115,10 @@ msgstr "أدخل أو اختر مدينة"
 msgid "Enter or choose an airport"
 msgstr "أدخل أو اختر المطار"
 
+#: src/i18n.js:76
+msgid "Expired"
+msgstr "انتهت صلاحيتها"
+
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "على سبيل المثال: ملابس 5 كجم، مستندات، إلكترونيات"
@@ -107,9 +147,29 @@ msgstr "dd/mm/yyyy"
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr "طلباتي"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "جديد"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "التالي"
+
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
 msgstr "لم يتم العثور على مطارات مطابقة، حاول الكتابة باللغة الإنجليزية"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "لا توجد طلبات بهذه الحالة."
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "الصفحة"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -127,17 +187,33 @@ msgstr "الرجاء تحديد تاريخ الانتهاء"
 msgid "Please select departure and arrival airports from the list"
 msgstr "يرجى اختيار مطاري المغادرة والوصول من القائمة"
 
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "السابق"
+
 #: src/i18n.js:47
 msgid "Remove"
 msgstr "إزالة"
 
-#: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "البلد أو المدينة أو المطار"
+#: src/i18n.js:77
+msgid "Request details"
+msgstr "تفاصيل الطلب"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "طلب ترقيم الصفحات"
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr "الدور"
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "مرسل"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "الحالة"
 
 #: src/i18n.js:63
 msgid "Submit request"

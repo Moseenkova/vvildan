@@ -11,6 +11,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:73
+msgid "Active"
+msgstr "ਕਿਰਿਆਸ਼ੀਲ"
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr "ਸਾਰੀਆਂ ਸਥਿਤੀਆਂ"
+
 #: src/i18n.js:43
 msgid "Arrival"
 msgstr "ਆਗਮਨ"
@@ -31,6 +39,10 @@ msgstr "ਆਗਮਨ ਦੇਸ਼"
 msgid "Baggage comments"
 msgstr "ਸਮਾਨ ਦੀਆਂ ਟਿੱਪਣੀਆਂ"
 
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr "ਰੱਦ ਕਰ ਦਿੱਤਾ"
+
 #: src/i18n.js:59
 msgid "Choose a city first"
 msgstr "ਪਹਿਲਾਂ ਇੱਕ ਸ਼ਹਿਰ ਚੁਣੋ"
@@ -39,9 +51,33 @@ msgstr "ਪਹਿਲਾਂ ਇੱਕ ਸ਼ਹਿਰ ਚੁਣੋ"
 msgid "Choose a country first"
 msgstr "ਪਹਿਲਾਂ ਇੱਕ ਦੇਸ਼ ਚੁਣੋ"
 
+#: src/i18n.js:80
+msgid "Close"
+msgstr "ਬੰਦ ਕਰੋ"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "ਟਿੱਪਣੀ"
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr "ਪੂਰਾ ਹੋਇਆ"
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "ਤੁਹਾਡੀਆਂ ਬੇਨਤੀਆਂ ਨੂੰ ਲੋਡ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।"
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "ਦੇਸ਼, ਸ਼ਹਿਰ ਜਾਂ ਹਵਾਈ ਅੱਡਾ"
+
 #: src/i18n.js:36
 msgid "Courier"
 msgstr "ਕੋਰੀਅਰ"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "ਬਣਾਇਆ"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -79,6 +115,10 @@ msgstr "ਇੱਕ ਸ਼ਹਿਰ ਦਾਖਲ ਕਰੋ ਜਾਂ ਚੁਣੋ"
 msgid "Enter or choose an airport"
 msgstr "ਦਾਖਲ ਹੋਵੋ ਜਾਂ ਹਵਾਈ ਅੱਡਾ ਚੁਣੋ"
 
+#: src/i18n.js:76
+msgid "Expired"
+msgstr "ਮਿਆਦ ਪੁੱਗ ਗਈ"
+
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "ਉਦਾਹਰਨ ਲਈ: ਕੱਪੜੇ 5 ਕਿਲੋ, ਦਸਤਾਵੇਜ਼, ਇਲੈਕਟ੍ਰੋਨਿਕਸ"
@@ -107,9 +147,29 @@ msgstr "dd/mm/yyyy"
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr "ਮੇਰੀਆਂ ਬੇਨਤੀਆਂ"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "ਨਵਾਂ"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "ਅੱਗੇ"
+
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
 msgstr "ਕੋਈ ਮੇਲ ਖਾਂਦਾ ਹਵਾਈ ਅੱਡਾ ਨਹੀਂ ਮਿਲਿਆ, ਅੰਗਰੇਜ਼ੀ ਵਿੱਚ ਲਿਖਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "ਇਸ ਸਥਿਤੀ ਨਾਲ ਕੋਈ ਬੇਨਤੀ ਨਹੀਂ।"
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "ਪੰਨਾ"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -127,17 +187,33 @@ msgstr "ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਸਮਾਪਤੀ ਮਿਤੀ �
 msgid "Please select departure and arrival airports from the list"
 msgstr "ਕਿਰਪਾ ਕਰਕੇ ਸੂਚੀ ਵਿੱਚੋਂ ਰਵਾਨਗੀ ਅਤੇ ਆਗਮਨ ਹਵਾਈ ਅੱਡੇ ਚੁਣੋ"
 
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "ਪਿਛਲਾ"
+
 #: src/i18n.js:47
 msgid "Remove"
 msgstr "ਹਟਾਓ"
 
-#: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "ਦੇਸ਼, ਸ਼ਹਿਰ ਜਾਂ ਹਵਾਈ ਅੱਡਾ"
+#: src/i18n.js:77
+msgid "Request details"
+msgstr "ਵੇਰਵਿਆਂ ਦੀ ਬੇਨਤੀ ਕਰੋ"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "ਪੰਨਾ ਨੰਬਰ ਲਗਾਉਣ ਲਈ ਬੇਨਤੀ ਕਰੋ"
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr "ਭੂਮਿਕਾ"
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "ਭੇਜਣ ਵਾਲਾ"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "ਸਥਿਤੀ"
 
 #: src/i18n.js:63
 msgid "Submit request"

@@ -11,6 +11,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:73
+msgid "Active"
+msgstr "सक्रिय"
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr "सबै स्थितिहरू"
+
 #: src/i18n.js:43
 msgid "Arrival"
 msgstr "आगमन"
@@ -31,6 +39,10 @@ msgstr "आगमन देश"
 msgid "Baggage comments"
 msgstr "सामान टिप्पणीहरू"
 
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr "रद्द गरियो"
+
 #: src/i18n.js:59
 msgid "Choose a city first"
 msgstr "पहिले शहर छान्नुहोस्"
@@ -39,9 +51,33 @@ msgstr "पहिले शहर छान्नुहोस्"
 msgid "Choose a country first"
 msgstr "पहिले देश छान्नुहोस्"
 
+#: src/i18n.js:80
+msgid "Close"
+msgstr "बन्द गर्नुहोस्"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "टिप्पणी गर्नुहोस्"
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr "पूरा भयो"
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "तपाईंका अनुरोधहरू लोड गर्न सकिएन।"
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "देश, सहर वा विमानस्थल"
+
 #: src/i18n.js:36
 msgid "Courier"
 msgstr "कुरियर"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "सिर्जना गरियो"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -79,6 +115,10 @@ msgstr "प्रविष्ट गर्नुहोस् वा शहर �
 msgid "Enter or choose an airport"
 msgstr "प्रवेश गर्नुहोस् वा एयरपोर्ट छान्नुहोस्"
 
+#: src/i18n.js:76
+msgid "Expired"
+msgstr "म्याद सकियो"
+
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "उदाहरणका लागि: कपडा ५ किलो, कागजात, इलेक्ट्रोनिक्स"
@@ -107,9 +147,29 @@ msgstr "dd/mm/yyyy"
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr "मेरा अनुरोधहरू"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "नयाँ"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "अर्को"
+
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
 msgstr "मिल्दोजुल्दो विमानस्थल फेला परेन, अंग्रेजीमा लेख्ने प्रयास गर्नुहोस्"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "यो स्थिति संग कुनै अनुरोध छैन।"
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "पृष्ठ"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -127,17 +187,33 @@ msgstr "कृपया अन्त्य मिति चयन गर्न�
 msgid "Please select departure and arrival airports from the list"
 msgstr "कृपया सूचीबाट प्रस्थान र आगमन विमानस्थल छान्नुहोस्"
 
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "अघिल्लो"
+
 #: src/i18n.js:47
 msgid "Remove"
 msgstr "हटाउनुहोस्"
 
-#: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "देश, सहर वा विमानस्थल"
+#: src/i18n.js:77
+msgid "Request details"
+msgstr "विवरणहरू अनुरोध गर्नुहोस्"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "पृष्ठांकन अनुरोध गर्नुहोस्"
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr "भूमिका"
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "प्रेषक"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "स्थिति"
 
 #: src/i18n.js:63
 msgid "Submit request"

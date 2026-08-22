@@ -11,6 +11,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:73
+msgid "Active"
+msgstr "Aktif"
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr "Tüm durumlar"
+
 #: src/i18n.js:43
 msgid "Arrival"
 msgstr "Varış"
@@ -31,6 +39,10 @@ msgstr "Varış ülkesi"
 msgid "Baggage comments"
 msgstr "Bagaj yorumları"
 
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr "İptal edildi"
+
 #: src/i18n.js:59
 msgid "Choose a city first"
 msgstr "Önce bir şehir seçin"
@@ -39,9 +51,33 @@ msgstr "Önce bir şehir seçin"
 msgid "Choose a country first"
 msgstr "Önce bir ülke seçin"
 
+#: src/i18n.js:80
+msgid "Close"
+msgstr "Kapat"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "Yorum"
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr "Tamamlandı"
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "İstekleriniz yüklenemedi."
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "ülke, şehir veya havaalanı"
+
 #: src/i18n.js:36
 msgid "Courier"
 msgstr "Kurye"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "Oluşturuldu"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -79,6 +115,10 @@ msgstr "Bir şehir girin veya seçin"
 msgid "Enter or choose an airport"
 msgstr "Bir havaalanı girin veya seçin"
 
+#: src/i18n.js:76
+msgid "Expired"
+msgstr "Süresi dolmuş"
+
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "Örneğin: 5 kg'lık giysiler, belgeler, elektronik eşyalar"
@@ -107,9 +147,29 @@ msgstr "dd/mm/yyyy"
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr "İsteklerim"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "Yeni"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "Sonraki"
+
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
 msgstr "Eşleşen havaalanı bulunamadı, İngilizce yazmayı deneyin"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "Bu durumdaki istek yok."
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "Sayfa"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -127,17 +187,33 @@ msgstr "Lütfen bir bitiş tarihi seçin"
 msgid "Please select departure and arrival airports from the list"
 msgstr "Lütfen listeden kalkış ve varış havaalanlarını seçin"
 
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "Önceki"
+
 #: src/i18n.js:47
 msgid "Remove"
 msgstr "Kaldır"
 
-#: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "ülke, şehir veya havaalanı"
+#: src/i18n.js:77
+msgid "Request details"
+msgstr "Ayrıntıları talep et"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "Sayfalandırma isteği"
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr "Rol"
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "Gönderen"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "Durum"
 
 #: src/i18n.js:63
 msgid "Submit request"

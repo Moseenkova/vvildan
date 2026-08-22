@@ -11,6 +11,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:73
+msgid "Active"
+msgstr "Aktywny"
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr "Wszystkie statusy"
+
 #: src/i18n.js:43
 msgid "Arrival"
 msgstr "Przylot"
@@ -31,6 +39,10 @@ msgstr "Kraj przyjazdu"
 msgid "Baggage comments"
 msgstr "Komentarze dotyczące bagażu"
 
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr "Anulowano"
+
 #: src/i18n.js:59
 msgid "Choose a city first"
 msgstr "Najpierw wybierz miasto"
@@ -39,9 +51,33 @@ msgstr "Najpierw wybierz miasto"
 msgid "Choose a country first"
 msgstr "Najpierw wybierz kraj"
 
+#: src/i18n.js:80
+msgid "Close"
+msgstr "Zamknij"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "Komentarz"
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr "Ukończono"
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "Nie udało się wczytać Twoich żądań."
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "kraj, miasto lub lotnisko"
+
 #: src/i18n.js:36
 msgid "Courier"
 msgstr "Kurier"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "Utworzono"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -79,6 +115,10 @@ msgstr "Wpisz lub wybierz miasto"
 msgid "Enter or choose an airport"
 msgstr "Wpisz lub wybierz lotnisko"
 
+#: src/i18n.js:76
+msgid "Expired"
+msgstr "Wygasło"
+
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "Np.: Ubrania 5 kg, dokumenty, elektronika"
@@ -107,9 +147,29 @@ msgstr "dd/mm/yyyy"
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr "Moje prośby"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "Nowy"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "Następny"
+
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
 msgstr "Nie znaleziono pasujących lotnisk, spróbuj wpisać nazwę po angielsku"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "Brak żądań o tym statusie."
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "Strona"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -127,17 +187,33 @@ msgstr "Wybierz datę zakończenia"
 msgid "Please select departure and arrival airports from the list"
 msgstr "Wybierz z listy lotniska wylotu i przylotu"
 
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "Poprzedni"
+
 #: src/i18n.js:47
 msgid "Remove"
 msgstr "Usuń"
 
-#: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "kraj, miasto lub lotnisko"
+#: src/i18n.js:77
+msgid "Request details"
+msgstr "Zapytaj o szczegóły"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "Poproś o paginację"
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr "Rola"
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "Nadawca"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "Stan"
 
 #: src/i18n.js:63
 msgid "Submit request"

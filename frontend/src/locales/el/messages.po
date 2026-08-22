@@ -11,6 +11,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:73
+msgid "Active"
+msgstr "Ενεργός"
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr "Όλες οι καταστάσεις"
+
 #: src/i18n.js:43
 msgid "Arrival"
 msgstr "Άφιξη"
@@ -31,6 +39,10 @@ msgstr "Χώρα άφιξης"
 msgid "Baggage comments"
 msgstr "Σχόλια για τις αποσκευές"
 
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr "Ακυρώθηκε"
+
 #: src/i18n.js:59
 msgid "Choose a city first"
 msgstr "Επιλέξτε πρώτα μια πόλη"
@@ -39,9 +51,33 @@ msgstr "Επιλέξτε πρώτα μια πόλη"
 msgid "Choose a country first"
 msgstr "Επιλέξτε μια χώρα πρώτα"
 
+#: src/i18n.js:80
+msgid "Close"
+msgstr "Κλείσιμο"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "Σχόλιο"
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr "Ολοκληρώθηκε"
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "Δεν ήταν δυνατή η φόρτωση των αιτημάτων σας."
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "χώρα, πόλη ή αεροδρόμιο"
+
 #: src/i18n.js:36
 msgid "Courier"
 msgstr "Μεταφορέας"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "Δημιουργήθηκε"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -79,6 +115,10 @@ msgstr "Εισαγάγετε ή επιλέξτε μια πόλη"
 msgid "Enter or choose an airport"
 msgstr "Μπείτε ή επιλέξτε ένα αεροδρόμιο"
 
+#: src/i18n.js:76
+msgid "Expired"
+msgstr "Λήξη"
+
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "Για παράδειγμα: Ρούχα 5 κιλών, έγγραφα, ηλεκτρονικά"
@@ -107,9 +147,29 @@ msgstr "dd/mm/yyyy"
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr "Τα αιτήματά μου"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "Νέο"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "Επόμενο"
+
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
 msgstr "Δεν βρέθηκαν αεροδρόμια που να ταιριάζουν, δοκιμάστε να γράψετε στα αγγλικά"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "Δεν υπάρχουν αιτήματα με αυτήν την κατάσταση."
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "Σελίδα"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -127,17 +187,33 @@ msgstr "Επιλέξτε μια ημερομηνία λήξης"
 msgid "Please select departure and arrival airports from the list"
 msgstr "Επιλέξτε τα αεροδρόμια αναχώρησης και άφιξης από τη λίστα"
 
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "Προηγούμενο"
+
 #: src/i18n.js:47
 msgid "Remove"
 msgstr "Αφαίρεση"
 
-#: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "χώρα, πόλη ή αεροδρόμιο"
+#: src/i18n.js:77
+msgid "Request details"
+msgstr "Ζητήστε λεπτομέρειες"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "Ζητήστε σελιδοποίηση"
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr "Ρόλος"
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "Αποστολέας"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "Κατάσταση"
 
 #: src/i18n.js:63
 msgid "Submit request"
