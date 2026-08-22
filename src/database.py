@@ -278,19 +278,10 @@ class RefreshToken(Base):
 
 
 class CustomerTgTopic(Base):
-    customer_chat_id = models.BigIntegerField(
-        _("Customer chat ID"),
-        unique=True,
-    )
-    topic_id = models.BigIntegerField(
-        _("Message thread ID"),
-        unique=True,
-    )
+    __tablename__ = "customer_tg_topics"
 
-    class Meta:
-        db_table = "customer_tg_topics"
-        verbose_name = _("Customer TG topic")
-        verbose_name_plural = _("Customer TG topics")
+    customer_chat_id: Mapped[int] = mapped_column(BigInteger, unique=True, index=True)
+    topic_id: Mapped[int] = mapped_column(BigInteger, unique=True, index=True)
 
 
 async def get_or_create(session, model, defaults=None, **kwargs):
