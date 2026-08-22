@@ -13,6 +13,7 @@ from sqlalchemy import (
     Enum,
     Float,
     ForeignKey,
+    Index,
     Table,
     UniqueConstraint,
     func,
@@ -125,6 +126,9 @@ class Country(Base):
     name: Mapped[str]
     iso_code: Mapped[Optional[str]] = mapped_column(unique=True)
     cities: Mapped[List["City"]] = relationship(back_populates="country")
+    localized_names: Mapped[List["CountryName"]] = relationship(
+        back_populates="country", cascade="all, delete-orphan"
+    )
 
     __table_args__ = (UniqueConstraint("name"),)
 
@@ -132,9 +136,13 @@ class Country(Base):
 class City(Base):
     __tablename__ = "cities"
     name: Mapped[str]
+    population: Mapped[int] = mapped_column(BigInteger, default=0, index=True)
     country_id: Mapped[int] = mapped_column(ForeignKey("countries.id"))
     country: Mapped["Country"] = relationship(back_populates="cities")
     airports: Mapped[List["Airport"]] = relationship(back_populates="city")
+    localized_names: Mapped[List["CityName"]] = relationship(
+        back_populates="city", cascade="all, delete-orphan"
+    )
 
     __table_args__ = (UniqueConstraint("country_id", "name"),)
 
@@ -151,6 +159,9 @@ class Airport(Base):
     scheduled_service: Mapped[bool] = mapped_column(Boolean, default=False)
     city_id: Mapped[int] = mapped_column(ForeignKey("cities.id"), index=True)
     city: Mapped["City"] = relationship(back_populates="airports")
+    localized_names: Mapped[List["AirportName"]] = relationship(
+        back_populates="airport", cascade="all, delete-orphan"
+    )
     departure_requests: Mapped[List["Request"]] = relationship(
         secondary=request_departure_airports,
         back_populates="departure_airports",
@@ -158,6 +169,51 @@ class Airport(Base):
     arrival_requests: Mapped[List["Request"]] = relationship(
         secondary=request_arrival_airports,
         back_populates="arrival_airports",
+    )
+
+
+class CountryName(Base):
+    __tablename__ = "country_names"
+    country_id: Mapped[int] = mapped_column(
+        ForeignKey("countries.id", ondelete="CASCADE"), index=True
+    )
+    language_code: Mapped[str] = mapped_column(index=True)
+    name: Mapped[str]
+    country: Mapped["Country"] = relationship(back_populates="localized_names")
+
+    __table_args__ = (
+        UniqueConstraint("country_id", "language_code", "name"),
+        Index("ix_country_names_language_name", "language_code", "name"),
+    )
+
+
+class CityName(Base):
+    __tablename__ = "city_names"
+    city_id: Mapped[int] = mapped_column(
+        ForeignKey("cities.id", ondelete="CASCADE"), index=True
+    )
+    language_code: Mapped[str] = mapped_column(index=True)
+    name: Mapped[str]
+    city: Mapped["City"] = relationship(back_populates="localized_names")
+
+    __table_args__ = (
+        UniqueConstraint("city_id", "language_code", "name"),
+        Index("ix_city_names_language_name", "language_code", "name"),
+    )
+
+
+class AirportName(Base):
+    __tablename__ = "airport_names"
+    airport_id: Mapped[int] = mapped_column(
+        ForeignKey("airports.id", ondelete="CASCADE"), index=True
+    )
+    language_code: Mapped[str] = mapped_column(index=True)
+    name: Mapped[str]
+    airport: Mapped["Airport"] = relationship(back_populates="localized_names")
+
+    __table_args__ = (
+        UniqueConstraint("airport_id", "language_code", "name"),
+        Index("ix_airport_names_language_name", "language_code", "name"),
     )
 
 
