@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/i18n.js:43
 msgid "Arrival"
-msgstr ""
+msgstr "Đến"
 
 #: src/i18n.js:53
 msgid "Arrival airport"
@@ -49,7 +49,7 @@ msgstr "Ngày"
 
 #: src/i18n.js:42
 msgid "Departure"
-msgstr ""
+msgstr "Khởi hành"
 
 #: src/i18n.js:52
 msgid "Departure airport"
@@ -108,8 +108,8 @@ msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:45
-msgid "No matching airports found"
-msgstr ""
+msgid "no matching airports found, try to write in english"
+msgstr "Không tìm thấy sân bay phù hợp, hãy thử viết bằng tiếng Anh"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -125,15 +125,15 @@ msgstr "Vui lòng chọn ngày kết thúc"
 
 #: src/i18n.js:46
 msgid "Please select departure and arrival airports from the list"
-msgstr ""
+msgstr "Vui lòng chọn sân bay khởi hành và sân bay đến từ danh sách"
 
 #: src/i18n.js:47
 msgid "Remove"
-msgstr ""
+msgstr "Xóa"
 
 #: src/i18n.js:44
-msgid "Search by airport, city, or country"
-msgstr ""
+msgid "country, city or airport"
+msgstr "quốc gia, thành phố hoặc sân bay"
 
 #: src/i18n.js:35
 msgid "Sender"

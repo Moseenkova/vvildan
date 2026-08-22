@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/i18n.js:43
 msgid "Arrival"
-msgstr ""
+msgstr "Imaansho"
 
 #: src/i18n.js:53
 msgid "Arrival airport"
@@ -49,7 +49,7 @@ msgstr "Taariikhda"
 
 #: src/i18n.js:42
 msgid "Departure"
-msgstr ""
+msgstr "Bixitaan"
 
 #: src/i18n.js:52
 msgid "Departure airport"
@@ -108,8 +108,8 @@ msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
 #: src/i18n.js:45
-msgid "No matching airports found"
-msgstr ""
+msgid "no matching airports found, try to write in english"
+msgstr "Lama helin garoomo diyaaradeed oo ku habboon, isku day inaad Ingiriisi ku qorto"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -125,15 +125,15 @@ msgstr "Fadlan door taariikhda dhamaadka"
 
 #: src/i18n.js:46
 msgid "Please select departure and arrival airports from the list"
-msgstr ""
+msgstr "Fadlan liiska ka dooro garoomada bixitaanka iyo imaanshaha"
 
 #: src/i18n.js:47
 msgid "Remove"
-msgstr ""
+msgstr "Ka saar"
 
 #: src/i18n.js:44
-msgid "Search by airport, city, or country"
-msgstr ""
+msgid "country, city or airport"
+msgstr "dal, magaalo ama garoon diyaaradeed"
 
 #: src/i18n.js:35
 msgid "Sender"
