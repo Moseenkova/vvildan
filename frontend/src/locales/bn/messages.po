@@ -1,0 +1,160 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bn\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:43
+msgid "Arrival"
+msgstr "আগমন"
+
+#: src/i18n.js:53
+msgid "Arrival airport"
+msgstr "আগমন বিমানবন্দর"
+
+#: src/i18n.js:51
+msgid "Arrival city"
+msgstr "আগমন শহর"
+
+#: src/i18n.js:50
+msgid "Arrival country"
+msgstr "আগমনের দেশ"
+
+#: src/i18n.js:61
+msgid "Baggage comments"
+msgstr "লাগেজ মন্তব্য"
+
+#: src/i18n.js:59
+msgid "Choose a city first"
+msgstr "প্রথমে একটি শহর বেছে নিন"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "প্রথমে একটি দেশ বেছে নিন"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "কুরিয়ার"
+
+#: src/i18n.js:39
+msgid "Date"
+msgstr "তারিখ"
+
+#: src/i18n.js:42
+msgid "Departure"
+msgstr "প্রস্থান"
+
+#: src/i18n.js:52
+msgid "Departure airport"
+msgstr "প্রস্থান বিমানবন্দর"
+
+#: src/i18n.js:49
+msgid "Departure city"
+msgstr "প্রস্থান শহর"
+
+#: src/i18n.js:48
+msgid "Departure country"
+msgstr "প্রস্থান দেশ"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "একটি শহরে প্রবেশ করুন"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "একটি দেশ লিখুন"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "প্রবেশ করুন বা একটি শহর চয়ন করুন"
+
+#: src/i18n.js:58
+msgid "Enter or choose an airport"
+msgstr "প্রবেশ করুন বা একটি বিমানবন্দর চয়ন করুন"
+
+#: src/i18n.js:62
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "যেমন: জামাকাপড় ৫ কেজি, নথিপত্র, ইলেকট্রনিক্স"
+
+#: src/i18n.js:68
+msgid "Form submitted! Check the console for data."
+msgstr "ফর্ম জমা! ডেটার জন্য কনসোলটি পরীক্ষা করুন।"
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "তারিখ থেকে"
+
+#: src/i18n.js:60
+msgid "Loading..."
+msgstr "লোড হচ্ছে..."
+
+#: src/i18n.js:47
+#~ msgid "Maximum number of airports selected"
+#~ msgstr ""
+
+#: src/i18n.js:41
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:40
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:45
+msgid "no matching airports found, try to write in english"
+msgstr "মিল আছে এমন কোনো বিমানবন্দর পাওয়া যায়নি, ইংরেজিতে লেখার চেষ্টা করুন"
+
+#: src/i18n.js:67
+msgid "Please select a date"
+msgstr "একটি তারিখ নির্বাচন করুন"
+
+#: src/i18n.js:64
+msgid "Please select a start date"
+msgstr "একটি শুরু তারিখ নির্বাচন করুন"
+
+#: src/i18n.js:65
+msgid "Please select an end date"
+msgstr "একটি শেষ তারিখ নির্বাচন করুন"
+
+#: src/i18n.js:46
+msgid "Please select departure and arrival airports from the list"
+msgstr "তালিকা থেকে প্রস্থান ও গন্তব্য বিমানবন্দর নির্বাচন করুন"
+
+#: src/i18n.js:47
+msgid "Remove"
+msgstr "সরান"
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "দেশ, শহর বা বিমানবন্দর"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "প্রেরক"
+
+#: src/i18n.js:63
+msgid "Submit request"
+msgstr "অনুরোধ জমা দিন"
+
+#: src/i18n.js:66
+msgid "The start date cannot be after the end date"
+msgstr "শুরুর তারিখ শেষ তারিখের পরে হতে পারে না"
+
+#: src/i18n.js:38
+msgid "To date"
+msgstr "আজ পর্যন্ত"
+
+#: src/i18n.js:69
+msgid "User Not Found"
+msgstr "ব্যবহারকারী পাওয়া যায়নি"
+
+#: src/i18n.js:70
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "আপনি সিস্টেমে নিবন্ধিত নন। প্রথমে টেলিগ্রাম বটের মাধ্যমে নিবন্ধন করুন।"

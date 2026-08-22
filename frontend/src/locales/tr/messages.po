@@ -1,0 +1,160 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: tr\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:43
+msgid "Arrival"
+msgstr "Varış"
+
+#: src/i18n.js:53
+msgid "Arrival airport"
+msgstr "Varış havaalanı"
+
+#: src/i18n.js:51
+msgid "Arrival city"
+msgstr "Varış şehri"
+
+#: src/i18n.js:50
+msgid "Arrival country"
+msgstr "Varış ülkesi"
+
+#: src/i18n.js:61
+msgid "Baggage comments"
+msgstr "Bagaj yorumları"
+
+#: src/i18n.js:59
+msgid "Choose a city first"
+msgstr "Önce bir şehir seçin"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "Önce bir ülke seçin"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "Kurye"
+
+#: src/i18n.js:39
+msgid "Date"
+msgstr "Tarih"
+
+#: src/i18n.js:42
+msgid "Departure"
+msgstr "Kalkış"
+
+#: src/i18n.js:52
+msgid "Departure airport"
+msgstr "Kalkış havaalanı"
+
+#: src/i18n.js:49
+msgid "Departure city"
+msgstr "Kalkış şehri"
+
+#: src/i18n.js:48
+msgid "Departure country"
+msgstr "Kalkış ülkesi"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "Bir şehir girin"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "Bir ülke girin"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "Bir şehir girin veya seçin"
+
+#: src/i18n.js:58
+msgid "Enter or choose an airport"
+msgstr "Bir havaalanı girin veya seçin"
+
+#: src/i18n.js:62
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "Örneğin: 5 kg'lık giysiler, belgeler, elektronik eşyalar"
+
+#: src/i18n.js:68
+msgid "Form submitted! Check the console for data."
+msgstr "Form gönderildi! Veriler için konsolu kontrol edin."
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "Tarihten itibaren"
+
+#: src/i18n.js:60
+msgid "Loading..."
+msgstr "Yükleniyor..."
+
+#: src/i18n.js:47
+#~ msgid "Maximum number of airports selected"
+#~ msgstr ""
+
+#: src/i18n.js:41
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:40
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:45
+msgid "no matching airports found, try to write in english"
+msgstr "Eşleşen havaalanı bulunamadı, İngilizce yazmayı deneyin"
+
+#: src/i18n.js:67
+msgid "Please select a date"
+msgstr "Lütfen bir tarih seçin"
+
+#: src/i18n.js:64
+msgid "Please select a start date"
+msgstr "Lütfen bir başlangıç ​​tarihi seçin"
+
+#: src/i18n.js:65
+msgid "Please select an end date"
+msgstr "Lütfen bir bitiş tarihi seçin"
+
+#: src/i18n.js:46
+msgid "Please select departure and arrival airports from the list"
+msgstr "Lütfen listeden kalkış ve varış havaalanlarını seçin"
+
+#: src/i18n.js:47
+msgid "Remove"
+msgstr "Kaldır"
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "ülke, şehir veya havaalanı"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "Gönderen"
+
+#: src/i18n.js:63
+msgid "Submit request"
+msgstr "İsteği gönder"
+
+#: src/i18n.js:66
+msgid "The start date cannot be after the end date"
+msgstr "Başlangıç ​​tarihi bitiş tarihinden sonra olamaz"
+
+#: src/i18n.js:38
+msgid "To date"
+msgstr "Bugüne kadar"
+
+#: src/i18n.js:69
+msgid "User Not Found"
+msgstr "Kullanıcı Bulunamadı"
+
+#: src/i18n.js:70
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "Sisteme kayıtlı değilsiniz. Lütfen önce Telegram botu aracılığıyla kaydolun."

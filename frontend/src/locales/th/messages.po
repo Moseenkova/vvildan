@@ -1,0 +1,160 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: th\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:43
+msgid "Arrival"
+msgstr "ขาเข้า"
+
+#: src/i18n.js:53
+msgid "Arrival airport"
+msgstr "สนามบินขาเข้า"
+
+#: src/i18n.js:51
+msgid "Arrival city"
+msgstr "เมืองที่มาถึง"
+
+#: src/i18n.js:50
+msgid "Arrival country"
+msgstr "ประเทศที่มาถึง"
+
+#: src/i18n.js:61
+msgid "Baggage comments"
+msgstr "ความคิดเห็นเกี่ยวกับสัมภาระ"
+
+#: src/i18n.js:59
+msgid "Choose a city first"
+msgstr "เลือกเมืองก่อน"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "เลือกประเทศก่อน"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "จัดส่ง"
+
+#: src/i18n.js:39
+msgid "Date"
+msgstr "วันที่"
+
+#: src/i18n.js:42
+msgid "Departure"
+msgstr "ขาออก"
+
+#: src/i18n.js:52
+msgid "Departure airport"
+msgstr "สนามบินขาออก"
+
+#: src/i18n.js:49
+msgid "Departure city"
+msgstr "เมืองต้นทาง"
+
+#: src/i18n.js:48
+msgid "Departure country"
+msgstr "ประเทศต้นทาง"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "ป้อนเมือง"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "ป้อนประเทศ"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "ป้อนหรือเลือกเมือง"
+
+#: src/i18n.js:58
+msgid "Enter or choose an airport"
+msgstr "เข้าหรือเลือกสนามบิน"
+
+#: src/i18n.js:62
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "เช่น เสื้อผ้า 5 กก. เอกสาร เครื่องใช้ไฟฟ้า"
+
+#: src/i18n.js:68
+msgid "Form submitted! Check the console for data."
+msgstr "ส่งแบบฟอร์มแล้ว! ตรวจสอบคอนโซลเพื่อดูข้อมูล"
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "จากวันที่"
+
+#: src/i18n.js:60
+msgid "Loading..."
+msgstr "กำลังโหลด..."
+
+#: src/i18n.js:47
+#~ msgid "Maximum number of airports selected"
+#~ msgstr ""
+
+#: src/i18n.js:41
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:40
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:45
+msgid "no matching airports found, try to write in english"
+msgstr "ไม่พบสนามบินที่ตรงกัน ลองเขียนเป็นภาษาอังกฤษ"
+
+#: src/i18n.js:67
+msgid "Please select a date"
+msgstr "โปรดเลือกวันที่"
+
+#: src/i18n.js:64
+msgid "Please select a start date"
+msgstr "โปรดเลือกวันที่เริ่มต้น"
+
+#: src/i18n.js:65
+msgid "Please select an end date"
+msgstr "โปรดเลือกวันที่สิ้นสุด"
+
+#: src/i18n.js:46
+msgid "Please select departure and arrival airports from the list"
+msgstr "โปรดเลือกสนามบินต้นทางและปลายทางจากรายการ"
+
+#: src/i18n.js:47
+msgid "Remove"
+msgstr "ลบ"
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "ประเทศ เมือง หรือสนามบิน"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "ผู้ส่ง"
+
+#: src/i18n.js:63
+msgid "Submit request"
+msgstr "ส่งคำขอ"
+
+#: src/i18n.js:66
+msgid "The start date cannot be after the end date"
+msgstr "วันที่เริ่มต้นต้องไม่อยู่หลังวันที่สิ้นสุด"
+
+#: src/i18n.js:38
+msgid "To date"
+msgstr "จนถึงปัจจุบัน"
+
+#: src/i18n.js:69
+msgid "User Not Found"
+msgstr "ไม่พบผู้ใช้"
+
+#: src/i18n.js:70
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "คุณไม่ได้ลงทะเบียนในระบบ กรุณาลงทะเบียนผ่านบอท Telegram ก่อน"

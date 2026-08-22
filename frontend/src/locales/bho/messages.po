@@ -1,0 +1,160 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bho\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:43
+msgid "Arrival"
+msgstr "आगमन"
+
+#: src/i18n.js:53
+msgid "Arrival airport"
+msgstr "आगमन हवाई अड्डा पर बा"
+
+#: src/i18n.js:51
+msgid "Arrival city"
+msgstr "आगमन शहर के बा"
+
+#: src/i18n.js:50
+msgid "Arrival country"
+msgstr "आगमन देश के बा"
+
+#: src/i18n.js:61
+msgid "Baggage comments"
+msgstr "सामान के टिप्पणी बा"
+
+#: src/i18n.js:59
+msgid "Choose a city first"
+msgstr "पहिले कवनो शहर चुनीं"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "पहिले कवनो देश चुनीं"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "कुरियर के बा"
+
+#: src/i18n.js:39
+msgid "Date"
+msgstr "तारीख"
+
+#: src/i18n.js:42
+msgid "Departure"
+msgstr "प्रस्थान"
+
+#: src/i18n.js:52
+msgid "Departure airport"
+msgstr "प्रस्थान हवाई अड्डा के बा"
+
+#: src/i18n.js:49
+msgid "Departure city"
+msgstr "प्रस्थान शहर के बा"
+
+#: src/i18n.js:48
+msgid "Departure country"
+msgstr "प्रस्थान देश के बा"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "कवनो शहर में प्रवेश करीं"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "कवनो देश में प्रवेश करीं"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "कवनो शहर में प्रवेश करीं भा चुनीं"
+
+#: src/i18n.js:58
+msgid "Enter or choose an airport"
+msgstr "हवाई अड्डा में प्रवेश करीं भा चुनीं"
+
+#: src/i18n.js:62
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "जइसे कि : कपड़ा 5 किलो, दस्तावेज, इलेक्ट्रॉनिक्स"
+
+#: src/i18n.js:68
+msgid "Form submitted! Check the console for data."
+msgstr "फार्म जमा हो गइल बा! डेटा खातिर कंसोल के जांच करीं।"
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "आज से लेके अब तक के बा"
+
+#: src/i18n.js:60
+msgid "Loading..."
+msgstr "लोड हो रहल बा..."
+
+#: src/i18n.js:47
+#~ msgid "Maximum number of airports selected"
+#~ msgstr ""
+
+#: src/i18n.js:41
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:40
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:45
+msgid "no matching airports found, try to write in english"
+msgstr "कवनो मिलत-जुलत हवाई अड्डा ना मिलल, अंग्रेजी में लिखे के कोशिश करीं"
+
+#: src/i18n.js:67
+msgid "Please select a date"
+msgstr "कृपया कवनो तारीख चुनीं"
+
+#: src/i18n.js:64
+msgid "Please select a start date"
+msgstr "कृपया कवनो शुरुआत के तारीख चुनीं"
+
+#: src/i18n.js:65
+msgid "Please select an end date"
+msgstr "कृपया एगो अंतिम तिथि चुनीं"
+
+#: src/i18n.js:46
+msgid "Please select departure and arrival airports from the list"
+msgstr "कृपया सूची में से प्रस्थान आ आगमन हवाई अड्डा चुनीं"
+
+#: src/i18n.js:47
+msgid "Remove"
+msgstr "हटाईं"
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "देश, शहर भा हवाई अड्डा"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "प्रेषक के बा"
+
+#: src/i18n.js:63
+msgid "Submit request"
+msgstr "निहोरा जमा करे के बा"
+
+#: src/i18n.js:66
+msgid "The start date cannot be after the end date"
+msgstr "शुरुआत के तारीख अंत के तारीख के बाद ना हो सकेला"
+
+#: src/i18n.js:38
+msgid "To date"
+msgstr "आज तक के बा"
+
+#: src/i18n.js:69
+msgid "User Not Found"
+msgstr "प्रयोगकर्ता ना मिलल"
+
+#: src/i18n.js:70
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "रउरा सिस्टम में रजिस्टर नइखीं भइल. पहिले टेलीग्राम बॉट के माध्यम से रजिस्टर करीं।"

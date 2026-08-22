@@ -1,0 +1,160 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: am\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:43
+msgid "Arrival"
+msgstr "መድረሻ"
+
+#: src/i18n.js:53
+msgid "Arrival airport"
+msgstr "መድረሻ አውሮፕላን ማረፊያ"
+
+#: src/i18n.js:51
+msgid "Arrival city"
+msgstr "መድረሻ ከተማ"
+
+#: src/i18n.js:50
+msgid "Arrival country"
+msgstr "መድረሻ ሀገር"
+
+#: src/i18n.js:61
+msgid "Baggage comments"
+msgstr "የሻንጣ አስተያየቶች"
+
+#: src/i18n.js:59
+msgid "Choose a city first"
+msgstr "መጀመሪያ ከተማ ይምረጡ"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "መጀመሪያ አገር ይምረጡ"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "መልእክተኛ"
+
+#: src/i18n.js:39
+msgid "Date"
+msgstr "ቀን"
+
+#: src/i18n.js:42
+msgid "Departure"
+msgstr "መነሻ"
+
+#: src/i18n.js:52
+msgid "Departure airport"
+msgstr "የመነሻ አየር ማረፊያ"
+
+#: src/i18n.js:49
+msgid "Departure city"
+msgstr "የመነሻ ከተማ"
+
+#: src/i18n.js:48
+msgid "Departure country"
+msgstr "የመነሻ ሀገር"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "ከተማ ግባ"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "አገር ግባ"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "ከተማ ይግቡ ወይም ይምረጡ"
+
+#: src/i18n.js:58
+msgid "Enter or choose an airport"
+msgstr "አውሮፕላን ማረፊያ ያስገቡ ወይም ይምረጡ"
+
+#: src/i18n.js:62
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "ለምሳሌ: አልባሳት 5 ኪ.ግ, ሰነዶች, ኤሌክትሮኒክስ"
+
+#: src/i18n.js:68
+msgid "Form submitted! Check the console for data."
+msgstr "ቅጽ ገብቷል! መረጃ ለማግኘት ኮንሶሉን ያረጋግጡ።"
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "ከቀን"
+
+#: src/i18n.js:60
+msgid "Loading..."
+msgstr "በመጫን ላይ..."
+
+#: src/i18n.js:47
+#~ msgid "Maximum number of airports selected"
+#~ msgstr ""
+
+#: src/i18n.js:41
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:40
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:45
+msgid "no matching airports found, try to write in english"
+msgstr "ተዛማጅ አየር ማረፊያዎች አልተገኙም፣ በእንግሊዝኛ ለመጻፍ ይሞክሩ"
+
+#: src/i18n.js:67
+msgid "Please select a date"
+msgstr "እባክዎ ቀን ይምረጡ"
+
+#: src/i18n.js:64
+msgid "Please select a start date"
+msgstr "እባክዎ የመጀመሪያ ቀን ይምረጡ"
+
+#: src/i18n.js:65
+msgid "Please select an end date"
+msgstr "እባክዎ የማለቂያ ቀን ይምረጡ"
+
+#: src/i18n.js:46
+msgid "Please select departure and arrival airports from the list"
+msgstr "እባክዎ የመነሻ እና የመድረሻ አየር ማረፊያዎችን ከዝርዝሩ ይምረጡ"
+
+#: src/i18n.js:47
+msgid "Remove"
+msgstr "አስወግድ"
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "አገር፣ ከተማ ወይም አየር ማረፊያ"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "ላኪ"
+
+#: src/i18n.js:63
+msgid "Submit request"
+msgstr "ጥያቄ አስገባ"
+
+#: src/i18n.js:66
+msgid "The start date cannot be after the end date"
+msgstr "የመጀመርያው ቀን ከመጨረሻው ቀን በኋላ ሊሆን አይችልም።"
+
+#: src/i18n.js:38
+msgid "To date"
+msgstr "እስከ ዛሬ ድረስ"
+
+#: src/i18n.js:69
+msgid "User Not Found"
+msgstr "ተጠቃሚ አልተገኘም።"
+
+#: src/i18n.js:70
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "በስርዓቱ ውስጥ አልተመዘገቡም። እባክዎ በቅድሚያ በቴሌግራም ቦት ይመዝገቡ።"

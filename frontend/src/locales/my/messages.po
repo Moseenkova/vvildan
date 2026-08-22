@@ -1,0 +1,160 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: my\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:43
+msgid "Arrival"
+msgstr "ဆိုက်ရောက်"
+
+#: src/i18n.js:53
+msgid "Arrival airport"
+msgstr "လေဆိပ်ရောက်သည်။"
+
+#: src/i18n.js:51
+msgid "Arrival city"
+msgstr "ရောက်ရောက်ချင်းမြို့"
+
+#: src/i18n.js:50
+msgid "Arrival country"
+msgstr "ဆိုက်ရောက်ဗီဇာ"
+
+#: src/i18n.js:61
+msgid "Baggage comments"
+msgstr "ခရီးဆောင်အိတ်မှတ်ချက်"
+
+#: src/i18n.js:59
+msgid "Choose a city first"
+msgstr "မြို့ကို အရင်ရွေးပါ။"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "နိုင်ငံကို အရင်ရွေးပါ။"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "ချော"
+
+#: src/i18n.js:39
+msgid "Date"
+msgstr "ရက်စွဲ"
+
+#: src/i18n.js:42
+msgid "Departure"
+msgstr "ထွက်ခွာ"
+
+#: src/i18n.js:52
+msgid "Departure airport"
+msgstr "ထွက်ခွာမည့်လေဆိပ်"
+
+#: src/i18n.js:49
+msgid "Departure city"
+msgstr "ထွက်ခွာမည့်မြို့"
+
+#: src/i18n.js:48
+msgid "Departure country"
+msgstr "နိုင်ငံသို့ထွက်ခွာ"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "မြို့ကိုဝင်ပါ။"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "နိုင်ငံတစ်ခုဝင်ပါ။"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "ဝင်ပါ သို့မဟုတ် မြို့ကို ရွေးပါ။"
+
+#: src/i18n.js:58
+msgid "Enter or choose an airport"
+msgstr "ဝင်ပါ သို့မဟုတ် လေဆိပ်တစ်ခုကို ရွေးချယ်ပါ။"
+
+#: src/i18n.js:62
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "ဥပမာ- အဝတ်အစား 5 ကီလိုဂရမ်၊ စာရွက်စာတမ်းများ၊ လျှပ်စစ်ပစ္စည်းများ"
+
+#: src/i18n.js:68
+msgid "Form submitted! Check the console for data."
+msgstr "ဖောင်တင်ပြီးပါပြီ။ ဒေတာအတွက် ကွန်ဆိုးလ်ကို စစ်ဆေးပါ။"
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "ရက်စွဲမှ"
+
+#: src/i18n.js:60
+msgid "Loading..."
+msgstr "ဖွင့်နေသည်..."
+
+#: src/i18n.js:47
+#~ msgid "Maximum number of airports selected"
+#~ msgstr ""
+
+#: src/i18n.js:41
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:40
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:45
+msgid "no matching airports found, try to write in english"
+msgstr "ကိုက်ညီသော လေဆိပ်များ မတွေ့ပါ၊ အင်္ဂလိပ်လို ရေးကြည့်ပါ"
+
+#: src/i18n.js:67
+msgid "Please select a date"
+msgstr "ရက်စွဲတစ်ခုကို ရွေးပါ။"
+
+#: src/i18n.js:64
+msgid "Please select a start date"
+msgstr "ကျေးဇူးပြု၍ စတင်မည့်ရက်စွဲကို ရွေးပါ။"
+
+#: src/i18n.js:65
+msgid "Please select an end date"
+msgstr "ကျေးဇူးပြု၍ ကုန်ဆုံးရက်ကို ရွေးပါ။"
+
+#: src/i18n.js:46
+msgid "Please select departure and arrival airports from the list"
+msgstr "စာရင်းမှ ထွက်ခွာမည့်နှင့် ဆိုက်ရောက်မည့် လေဆိပ်များကို ရွေးချယ်ပါ"
+
+#: src/i18n.js:47
+msgid "Remove"
+msgstr "ဖယ်ရှားရန်"
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "နိုင်ငံ၊ မြို့ သို့မဟုတ် လေဆိပ်"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "ပေးပို့သူ"
+
+#: src/i18n.js:63
+msgid "Submit request"
+msgstr "တောင်းဆိုချက်ကို တင်ပြပါ။"
+
+#: src/i18n.js:66
+msgid "The start date cannot be after the end date"
+msgstr "စတင်သည့်ရက်စွဲသည် ပြီးဆုံးသည့်ရက်စွဲပြီးနောက် မဖြစ်ရပါ။"
+
+#: src/i18n.js:38
+msgid "To date"
+msgstr "ယနေ့အထိ"
+
+#: src/i18n.js:69
+msgid "User Not Found"
+msgstr "အသုံးပြုသူ ရှာမတွေ့ပါ။"
+
+#: src/i18n.js:70
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "သင်သည် စနစ်တွင် စာရင်းသွင်းမထားပါ။ ကျေးဇူးပြု၍ Telegram bot မှတဆင့် စာရင်းသွင်းပါ။"

@@ -2,10 +2,23 @@
 
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy import select
+from sqlalchemy import func, or_, select
 
-from src.database import async_session_maker, City, Country
-from src.schemas import CitySchema, CountrySchema, RequestCreateSchema
+from .database import (
+    Airport,
+    AirportName,
+    async_session_maker,
+    City,
+    CityName,
+    Country,
+    CountryName,
+)
+from .schemas import (
+    AirportSearchResultSchema,
+)
+from .auth.routers import auth_router
+from .deps import get_current_user
+from fastapi import Depends
 
 app = FastAPI()
 
@@ -17,34 +30,92 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-@app.get("/api/countries", response_model=list[CountrySchema])
-async def get_countries(q: str = Query("", description="Search countries by name")):
-    async with async_session_maker() as session:
-        query = select(Country).order_by(Country.name.asc())
-        if q.strip():
-            query = query.where(Country.name.ilike(f"%{q.strip()}%"))
-        result = await session.execute(query)
-        countries = result.scalars().all()
-        return countries
+app.include_router(auth_router)
 
 
-@app.get("/api/cities", response_model=list[CitySchema])
-async def get_cities(
-    country_id: int = Query(..., description="Country ID"),
-    q: str = Query("", description="Search cities by name"),
+@app.get("/api/airport-search", response_model=list[AirportSearchResultSchema])
+async def search_airports(
+    q: str = Query(..., min_length=1, description="Airport, city, or country name"),
+    language: str = Query("en", min_length=2, max_length=16),
+    user=Depends(get_current_user),
 ):
+    term = q.strip()
+    if not term:
+        return []
+    search = f"%{term}%"
+    language = language.lower().replace("_", "-").split("-", 1)[0]
+    search_languages = {language, "en"}
+
+    localized_airport_name = (
+        select(func.min(AirportName.name))
+        .where(
+            AirportName.airport_id == Airport.id,
+            AirportName.language_code == language,
+        )
+        .correlate(Airport)
+        .scalar_subquery()
+    )
+    localized_city_name = (
+        select(func.min(CityName.name))
+        .where(CityName.city_id == City.id, CityName.language_code == language)
+        .correlate(City)
+        .scalar_subquery()
+    )
+    localized_country_name = (
+        select(func.min(CountryName.name))
+        .where(
+            CountryName.country_id == Country.id,
+            CountryName.language_code == language,
+        )
+        .correlate(Country)
+        .scalar_subquery()
+    )
+
     async with async_session_maker() as session:
         query = (
-            select(City)
-            .where(City.country_id == country_id)
-            .order_by(City.name.asc())
+            select(
+                Airport.id,
+                func.coalesce(localized_airport_name, Airport.name).label("name"),
+                Airport.iata_code,
+                Airport.icao_code,
+                City.id.label("city_id"),
+                func.coalesce(localized_city_name, City.name).label("city_name"),
+                Country.id.label("country_id"),
+                func.coalesce(localized_country_name, Country.name).label("country_name"),
+            )
+            .join(City, Airport.city_id == City.id)
+            .join(Country, City.country_id == Country.id)
+            .where(
+                or_(
+                    Airport.name.ilike(search),
+                    Airport.iata_code.ilike(search),
+                    Airport.icao_code.ilike(search),
+                    City.name.ilike(search),
+                    Country.name.ilike(search),
+                    Airport.localized_names.any(
+                        AirportName.language_code.in_(search_languages)
+                        & AirportName.name.ilike(search)
+                    ),
+                    City.localized_names.any(
+                        CityName.language_code.in_(search_languages)
+                        & CityName.name.ilike(search)
+                    ),
+                    Country.localized_names.any(
+                        CountryName.language_code.in_(search_languages)
+                        & CountryName.name.ilike(search)
+                    ),
+                )
+            )
+            .order_by(
+                City.population.desc(),
+                "country_name",
+                "city_name",
+                "name",
+            )
+            .limit(50)
         )
-        if q.strip():
-            query = query.where(City.name.ilike(f"%{q.strip()}%"))
         result = await session.execute(query)
-        cities = result.scalars().all()
-        return cities
+        return result.mappings().all()
 
 
 @app.post("/api/requests")

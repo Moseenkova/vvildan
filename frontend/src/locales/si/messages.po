@@ -1,0 +1,160 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: si\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:43
+msgid "Arrival"
+msgstr "පැමිණීම"
+
+#: src/i18n.js:53
+msgid "Arrival airport"
+msgstr "පැමිණීමේ ගුවන් තොටුපළ"
+
+#: src/i18n.js:51
+msgid "Arrival city"
+msgstr "පැමිණීමේ නගරය"
+
+#: src/i18n.js:50
+msgid "Arrival country"
+msgstr "පැමිණීමේ රට"
+
+#: src/i18n.js:61
+msgid "Baggage comments"
+msgstr "ගමන් මලු අදහස්"
+
+#: src/i18n.js:59
+msgid "Choose a city first"
+msgstr "මුලින්ම නගරයක් තෝරන්න"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "මුලින්ම රටක් තෝරන්න"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "කුරියර්"
+
+#: src/i18n.js:39
+msgid "Date"
+msgstr "දිනය"
+
+#: src/i18n.js:42
+msgid "Departure"
+msgstr "පිටත්වීම"
+
+#: src/i18n.js:52
+msgid "Departure airport"
+msgstr "පිටත්වීමේ ගුවන් තොටුපළ"
+
+#: src/i18n.js:49
+msgid "Departure city"
+msgstr "පිටත්වීමේ නගරය"
+
+#: src/i18n.js:48
+msgid "Departure country"
+msgstr "පිටවන රට"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "නගරයක් ඇතුළු කරන්න"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "රටක් ඇතුළු කරන්න"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "නගරයක් ඇතුළු කරන්න හෝ තෝරන්න"
+
+#: src/i18n.js:58
+msgid "Enter or choose an airport"
+msgstr "ගුවන් තොටුපළක් ඇතුළු කරන්න හෝ තෝරන්න"
+
+#: src/i18n.js:62
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "උදාහරණයක් ලෙස: ඇඳුම් 5 kg, ලේඛන, ඉලෙක්ට්රොනික උපකරණ"
+
+#: src/i18n.js:68
+msgid "Form submitted! Check the console for data."
+msgstr "පෝරමය ඉදිරිපත් කළා! දත්ත සඳහා කොන්සෝලය පරීක්ෂා කරන්න."
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "දින සිට"
+
+#: src/i18n.js:60
+msgid "Loading..."
+msgstr "පූරණය වෙමින්..."
+
+#: src/i18n.js:47
+#~ msgid "Maximum number of airports selected"
+#~ msgstr ""
+
+#: src/i18n.js:41
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:40
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:45
+msgid "no matching airports found, try to write in english"
+msgstr "ගැළපෙන ගුවන් තොටුපළක් හමු නොවීය, ඉංග්‍රීසියෙන් ලිවීමට උත්සාහ කරන්න"
+
+#: src/i18n.js:67
+msgid "Please select a date"
+msgstr "කරුණාකර දිනයක් තෝරන්න"
+
+#: src/i18n.js:64
+msgid "Please select a start date"
+msgstr "කරුණාකර ආරම්භක දිනයක් තෝරන්න"
+
+#: src/i18n.js:65
+msgid "Please select an end date"
+msgstr "කරුණාකර අවසන් දිනයක් තෝරන්න"
+
+#: src/i18n.js:46
+msgid "Please select departure and arrival airports from the list"
+msgstr "කරුණාකර ලැයිස්තුවෙන් පිටත්වීමේ සහ පැමිණීමේ ගුවන් තොටුපළ තෝරන්න"
+
+#: src/i18n.js:47
+msgid "Remove"
+msgstr "ඉවත් කරන්න"
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "රට, නගරය හෝ ගුවන් තොටුපළ"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "යවන්නා"
+
+#: src/i18n.js:63
+msgid "Submit request"
+msgstr "ඉල්ලීම ඉදිරිපත් කරන්න"
+
+#: src/i18n.js:66
+msgid "The start date cannot be after the end date"
+msgstr "ආරම්භක දිනය අවසන් දිනයට පසුව විය නොහැක"
+
+#: src/i18n.js:38
+msgid "To date"
+msgstr "අදට"
+
+#: src/i18n.js:69
+msgid "User Not Found"
+msgstr "පරිශීලක හමු නොවීය"
+
+#: src/i18n.js:70
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "ඔබ පද්ධතියේ ලියාපදිංචි වී නොමැත. කරුණාකර පළමුව Telegram bot හරහා ලියාපදිංචි වන්න."

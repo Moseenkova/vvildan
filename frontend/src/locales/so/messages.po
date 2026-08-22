@@ -1,0 +1,160 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: so\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:43
+msgid "Arrival"
+msgstr "Imaansho"
+
+#: src/i18n.js:53
+msgid "Arrival airport"
+msgstr "Gegida dayuuradaha"
+
+#: src/i18n.js:51
+msgid "Arrival city"
+msgstr "Magaalada imaatinka"
+
+#: src/i18n.js:50
+msgid "Arrival country"
+msgstr "Dalka iman"
+
+#: src/i18n.js:61
+msgid "Baggage comments"
+msgstr "Faallooyin shandadaha"
+
+#: src/i18n.js:59
+msgid "Choose a city first"
+msgstr "Marka hore dooro magaalo"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "Marka hore dal dooro"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "Gaadhi-qaade"
+
+#: src/i18n.js:39
+msgid "Date"
+msgstr "Taariikhda"
+
+#: src/i18n.js:42
+msgid "Departure"
+msgstr "Bixitaan"
+
+#: src/i18n.js:52
+msgid "Departure airport"
+msgstr "Gegida dayuuradaha"
+
+#: src/i18n.js:49
+msgid "Departure city"
+msgstr "Magaalada bixitaan"
+
+#: src/i18n.js:48
+msgid "Departure country"
+msgstr "Dalka ka baxa"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "Magaalada gal"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "Dal gal"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "Gali ama door magaalo"
+
+#: src/i18n.js:58
+msgid "Enter or choose an airport"
+msgstr "Geli ama door garoonka diyaaradaha"
+
+#: src/i18n.js:62
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "Tusaale ahaan: Dharka 5 kg, dukumentiyada, qalabka elektarooniga ah"
+
+#: src/i18n.js:68
+msgid "Form submitted! Check the console for data."
+msgstr "Foomka waa la gudbiyay! Ka hubi console-ka xogta"
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "Laga bilaabo taariikhda"
+
+#: src/i18n.js:60
+msgid "Loading..."
+msgstr "Soodejinaya..."
+
+#: src/i18n.js:47
+#~ msgid "Maximum number of airports selected"
+#~ msgstr ""
+
+#: src/i18n.js:41
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:40
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:45
+msgid "no matching airports found, try to write in english"
+msgstr "Lama helin garoomo diyaaradeed oo ku habboon, isku day inaad Ingiriisi ku qorto"
+
+#: src/i18n.js:67
+msgid "Please select a date"
+msgstr "Fadlan door taariikh"
+
+#: src/i18n.js:64
+msgid "Please select a start date"
+msgstr "Fadlan door taariikhda bilowga"
+
+#: src/i18n.js:65
+msgid "Please select an end date"
+msgstr "Fadlan door taariikhda dhamaadka"
+
+#: src/i18n.js:46
+msgid "Please select departure and arrival airports from the list"
+msgstr "Fadlan liiska ka dooro garoomada bixitaanka iyo imaanshaha"
+
+#: src/i18n.js:47
+msgid "Remove"
+msgstr "Ka saar"
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "dal, magaalo ama garoon diyaaradeed"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "Soodiraha"
+
+#: src/i18n.js:63
+msgid "Submit request"
+msgstr "Gudbi codsi"
+
+#: src/i18n.js:66
+msgid "The start date cannot be after the end date"
+msgstr "Taariikhda bilawga ah ma noqon karto taariikhda dhamaadka ka dib"
+
+#: src/i18n.js:38
+msgid "To date"
+msgstr "Ilaa hadda"
+
+#: src/i18n.js:69
+msgid "User Not Found"
+msgstr "Isticmaalaha Lama Helin"
+
+#: src/i18n.js:70
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "Kuma diiwaan gashanayn nidaamka. Fadlan marka hore iska diiwaan geli botka Telegramka."

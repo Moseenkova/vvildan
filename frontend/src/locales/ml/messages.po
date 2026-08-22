@@ -1,0 +1,160 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ml\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:43
+msgid "Arrival"
+msgstr "എത്തിച്ചേരൽ"
+
+#: src/i18n.js:53
+msgid "Arrival airport"
+msgstr "എത്തിച്ചേരൽ വിമാനത്താവളം"
+
+#: src/i18n.js:51
+msgid "Arrival city"
+msgstr "എത്തിച്ചേരുന്ന നഗരം"
+
+#: src/i18n.js:50
+msgid "Arrival country"
+msgstr "വരവ് രാജ്യം"
+
+#: src/i18n.js:61
+msgid "Baggage comments"
+msgstr "ബാഗേജ് കമൻ്റുകൾ"
+
+#: src/i18n.js:59
+msgid "Choose a city first"
+msgstr "ആദ്യം ഒരു നഗരം തിരഞ്ഞെടുക്കുക"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "ആദ്യം ഒരു രാജ്യം തിരഞ്ഞെടുക്കുക"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "കൊറിയർ"
+
+#: src/i18n.js:39
+msgid "Date"
+msgstr "തീയതി"
+
+#: src/i18n.js:42
+msgid "Departure"
+msgstr "പുറപ്പെടൽ"
+
+#: src/i18n.js:52
+msgid "Departure airport"
+msgstr "പുറപ്പെടുന്ന വിമാനത്താവളം"
+
+#: src/i18n.js:49
+msgid "Departure city"
+msgstr "പുറപ്പെടുന്ന നഗരം"
+
+#: src/i18n.js:48
+msgid "Departure country"
+msgstr "പുറപ്പെടുന്ന രാജ്യം"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "ഒരു നഗരത്തിൽ പ്രവേശിക്കുക"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "ഒരു രാജ്യം നൽകുക"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "ഒരു നഗരം നൽകുക അല്ലെങ്കിൽ തിരഞ്ഞെടുക്കുക"
+
+#: src/i18n.js:58
+msgid "Enter or choose an airport"
+msgstr "ഒരു വിമാനത്താവളം നൽകുക അല്ലെങ്കിൽ തിരഞ്ഞെടുക്കുക"
+
+#: src/i18n.js:62
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "ഉദാഹരണത്തിന്: വസ്ത്രങ്ങൾ 5 കിലോ, പ്രമാണങ്ങൾ, ഇലക്ട്രോണിക്സ്"
+
+#: src/i18n.js:68
+msgid "Form submitted! Check the console for data."
+msgstr "ഫോം സമർപ്പിച്ചു! ഡാറ്റയ്ക്കായി കൺസോൾ പരിശോധിക്കുക."
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "തീയതി മുതൽ"
+
+#: src/i18n.js:60
+msgid "Loading..."
+msgstr "ലോഡ് ചെയ്യുന്നു..."
+
+#: src/i18n.js:47
+#~ msgid "Maximum number of airports selected"
+#~ msgstr ""
+
+#: src/i18n.js:41
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:40
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:45
+msgid "no matching airports found, try to write in english"
+msgstr "പൊരുത്തപ്പെടുന്ന വിമാനത്താവളങ്ങളൊന്നും കണ്ടെത്തിയില്ല, ഇംഗ്ലീഷിൽ എഴുതാൻ ശ്രമിക്കുക"
+
+#: src/i18n.js:67
+msgid "Please select a date"
+msgstr "ദയവായി ഒരു തീയതി തിരഞ്ഞെടുക്കുക"
+
+#: src/i18n.js:64
+msgid "Please select a start date"
+msgstr "ദയവായി ഒരു ആരംഭ തീയതി തിരഞ്ഞെടുക്കുക"
+
+#: src/i18n.js:65
+msgid "Please select an end date"
+msgstr "ദയവായി ഒരു അവസാന തീയതി തിരഞ്ഞെടുക്കുക"
+
+#: src/i18n.js:46
+msgid "Please select departure and arrival airports from the list"
+msgstr "പട്ടികയിൽ നിന്ന് പുറപ്പെടൽ, എത്തിച്ചേരൽ വിമാനത്താവളങ്ങൾ തിരഞ്ഞെടുക്കുക"
+
+#: src/i18n.js:47
+msgid "Remove"
+msgstr "നീക്കം ചെയ്യുക"
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "രാജ്യം, നഗരം അല്ലെങ്കിൽ വിമാനത്താവളം"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "അയച്ചയാൾ"
+
+#: src/i18n.js:63
+msgid "Submit request"
+msgstr "അപേക്ഷ സമർപ്പിക്കുക"
+
+#: src/i18n.js:66
+msgid "The start date cannot be after the end date"
+msgstr "ആരംഭ തീയതി അവസാന തീയതിക്ക് ശേഷമായിരിക്കരുത്"
+
+#: src/i18n.js:38
+msgid "To date"
+msgstr "തീയതി"
+
+#: src/i18n.js:69
+msgid "User Not Found"
+msgstr "ഉപയോക്താവിനെ കണ്ടെത്തിയില്ല"
+
+#: src/i18n.js:70
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "നിങ്ങൾ സിസ്റ്റത്തിൽ രജിസ്റ്റർ ചെയ്തിട്ടില്ല. ദയവായി ആദ്യം ടെലിഗ്രാം ബോട്ട് വഴി രജിസ്റ്റർ ചെയ്യുക."

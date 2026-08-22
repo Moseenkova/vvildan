@@ -7,10 +7,14 @@ from dotenv import load_dotenv
 from sqlalchemy import (
     BigInteger,
     Boolean,
+    Column,
     Date,
     DateTime,
     Enum,
+    Float,
     ForeignKey,
+    Index,
+    Table,
     UniqueConstraint,
     func,
     insert,
@@ -48,6 +52,7 @@ class User(Base):
     phone: Mapped[Optional[int]]
     courier: Mapped["Courier"] = relationship(back_populates="user")
     sender: Mapped["Sender"] = relationship(back_populates="user")
+    refresh_tokens: Mapped[List["RefreshToken"]] = relationship(back_populates="user")
 
     __table_args__ = (UniqueConstraint("tg_id"),)
 
@@ -56,7 +61,7 @@ class Courier(Base):
     __tablename__ = "couriers"
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     user: Mapped["User"] = relationship(back_populates="courier")
-    requests = relationship("Request", back_populates="courier")
+    requests: Mapped[list["Request"]] = relationship("Request", back_populates="courier")
 
     __table_args__ = (UniqueConstraint("user_id"),)
 
@@ -65,35 +70,9 @@ class Sender(Base):
     __tablename__ = "senders"
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     user: Mapped["User"] = relationship(back_populates="sender")
-    requests: Mapped["Request"] = relationship(back_populates="sender")
-    requests = relationship("Request", back_populates="sender")
+    requests: Mapped[list["Request"]] = relationship("Request", back_populates="sender")
 
     __table_args__ = (UniqueConstraint("user_id"),)
-
-
-# TODO может быть наоброт порядок
-class BaggageKind(enum.StrEnum):
-    usual = "usual"
-    liquid = "liquid"
-    expensive = "expensive"
-    document = "document"
-    troublesome = "troublesome"
-    other = "other"
-
-
-RU_LABELS = {
-    BaggageKind.usual: "Обычный",
-    BaggageKind.liquid: "Жидкость",
-    BaggageKind.document: "Документ",
-    BaggageKind.troublesome: "Проблемный",
-    BaggageKind.usual: "Обычный",
-}
-
-
-class VolumeKind(enum.Enum):
-    kilo = 1
-    liter = 2
-    piece = 3
 
 
 class Status(enum.Enum):
@@ -104,20 +83,35 @@ class Status(enum.Enum):
     fulfilled = 5
 
 
+request_departure_airports = Table(
+    "request_departure_airports",
+    Base.metadata,
+    Column("request_id", ForeignKey("requests.id", ondelete="CASCADE"), primary_key=True),
+    Column("airport_id", ForeignKey("airports.id", ondelete="CASCADE"), primary_key=True),
+)
+
+
+request_arrival_airports = Table(
+    "request_arrival_airports",
+    Base.metadata,
+    Column("request_id", ForeignKey("requests.id", ondelete="CASCADE"), primary_key=True),
+    Column("airport_id", ForeignKey("airports.id", ondelete="CASCADE"), primary_key=True),
+)
+
+
 class Request(Base):
     __tablename__ = "requests"
     sender_id: Mapped[int] = mapped_column(ForeignKey("senders.id"), nullable=True)
     sender: Mapped["Sender"] = relationship(back_populates="requests")
     courier_id: Mapped[int] = mapped_column(ForeignKey("couriers.id"), nullable=True)
     courier: Mapped["Courier"] = relationship(back_populates="requests")
-    origin_id: Mapped[int] = mapped_column(ForeignKey("user_cities.id"))
-    destination_id: Mapped[int] = mapped_column(ForeignKey("user_cities.id"))
-
-    origin: Mapped["UserCity"] = relationship(
-        foreign_keys=[origin_id], backref="requests_from"
+    departure_airports: Mapped[List["Airport"]] = relationship(
+        secondary=request_departure_airports,
+        back_populates="departure_requests",
     )
-    destination: Mapped["UserCity"] = relationship(
-        foreign_keys=[destination_id], backref="requests_to"
+    arrival_airports: Mapped[List["Airport"]] = relationship(
+        secondary=request_arrival_airports,
+        back_populates="arrival_requests",
     )
     date: Mapped[date] = mapped_column(Date, nullable=True)
     date_to: Mapped[date] = mapped_column(Date, nullable=True)
@@ -130,8 +124,11 @@ class Request(Base):
 class Country(Base):
     __tablename__ = "countries"
     name: Mapped[str]
-    cities: Mapped["City"] = relationship(back_populates="country")
-    is_viewed: Mapped[bool] = mapped_column(Boolean, default=False)
+    iso_code: Mapped[Optional[str]] = mapped_column(unique=True)
+    cities: Mapped[List["City"]] = relationship(back_populates="country")
+    localized_names: Mapped[List["CountryName"]] = relationship(
+        back_populates="country", cascade="all, delete-orphan"
+    )
 
     __table_args__ = (UniqueConstraint("name"),)
 
@@ -139,22 +136,93 @@ class Country(Base):
 class City(Base):
     __tablename__ = "cities"
     name: Mapped[str]
+    population: Mapped[int] = mapped_column(BigInteger, default=0, index=True)
     country_id: Mapped[int] = mapped_column(ForeignKey("countries.id"))
     country: Mapped["Country"] = relationship(back_populates="cities")
-    user_cities: Mapped[List["UserCity"]] = relationship(back_populates="city")
-    is_viewed: Mapped[bool] = mapped_column(Boolean, default=False)
+    airports: Mapped[List["Airport"]] = relationship(back_populates="city")
+    localized_names: Mapped[List["CityName"]] = relationship(
+        back_populates="city", cascade="all, delete-orphan"
+    )
 
-    __table_args__ = (UniqueConstraint("name"),)
+    __table_args__ = (UniqueConstraint("country_id", "name"),)
 
 
-class UserCity(Base):
-    __tablename__ = "user_cities"
+class Airport(Base):
+    __tablename__ = "airports"
+    ident: Mapped[str] = mapped_column(unique=True, index=True)
     name: Mapped[str]
-    created_by_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
-    city_id: Mapped[Optional[int]] = mapped_column(ForeignKey("cities.id"))
-    city: Mapped[Optional["City"]] = relationship(back_populates="user_cities")
+    airport_type: Mapped[str]
+    iata_code: Mapped[Optional[str]] = mapped_column(index=True)
+    icao_code: Mapped[Optional[str]] = mapped_column(index=True)
+    latitude: Mapped[float] = mapped_column(Float)
+    longitude: Mapped[float] = mapped_column(Float)
+    scheduled_service: Mapped[bool] = mapped_column(Boolean, default=False)
+    city_id: Mapped[int] = mapped_column(ForeignKey("cities.id"), index=True)
+    city: Mapped["City"] = relationship(back_populates="airports")
+    localized_names: Mapped[List["AirportName"]] = relationship(
+        back_populates="airport", cascade="all, delete-orphan"
+    )
+    departure_requests: Mapped[List["Request"]] = relationship(
+        secondary=request_departure_airports,
+        back_populates="departure_airports",
+    )
+    arrival_requests: Mapped[List["Request"]] = relationship(
+        secondary=request_arrival_airports,
+        back_populates="arrival_airports",
+    )
 
-    __table_args__ = (UniqueConstraint("name"),)
+
+class CountryName(Base):
+    __tablename__ = "country_names"
+    country_id: Mapped[int] = mapped_column(
+        ForeignKey("countries.id", ondelete="CASCADE"), index=True
+    )
+    language_code: Mapped[str] = mapped_column(index=True)
+    name: Mapped[str]
+    country: Mapped["Country"] = relationship(back_populates="localized_names")
+
+    __table_args__ = (
+        UniqueConstraint("country_id", "language_code", "name"),
+        Index("ix_country_names_language_name", "language_code", "name"),
+    )
+
+
+class CityName(Base):
+    __tablename__ = "city_names"
+    city_id: Mapped[int] = mapped_column(
+        ForeignKey("cities.id", ondelete="CASCADE"), index=True
+    )
+    language_code: Mapped[str] = mapped_column(index=True)
+    name: Mapped[str]
+    city: Mapped["City"] = relationship(back_populates="localized_names")
+
+    __table_args__ = (
+        UniqueConstraint("city_id", "language_code", "name"),
+        Index("ix_city_names_language_name", "language_code", "name"),
+    )
+
+
+class AirportName(Base):
+    __tablename__ = "airport_names"
+    airport_id: Mapped[int] = mapped_column(
+        ForeignKey("airports.id", ondelete="CASCADE"), index=True
+    )
+    language_code: Mapped[str] = mapped_column(index=True)
+    name: Mapped[str]
+    airport: Mapped["Airport"] = relationship(back_populates="localized_names")
+
+    __table_args__ = (
+        UniqueConstraint("airport_id", "language_code", "name"),
+        Index("ix_airport_names_language_name", "language_code", "name"),
+    )
+
+
+class RefreshToken(Base):
+    __tablename__ = "refresh_tokens"
+    token_id: Mapped[str] = mapped_column(unique=True, index=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
+    user: Mapped["User"] = relationship(back_populates="refresh_tokens")
+    expire: Mapped[datetime] = mapped_column(DateTime(timezone=True))
 
 
 async def get_or_create(session, model, defaults=None, **kwargs):
