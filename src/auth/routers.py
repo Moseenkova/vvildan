@@ -20,6 +20,18 @@ auth_router = APIRouter(
     tags=["Auth"],
 )
 
+
+def _get_user_id(payload: dict[str, object]) -> int:
+    subject = payload.get(cfg.SUB)
+    if not isinstance(subject, (str, int)) or isinstance(subject, bool):
+        raise AuthFailedException
+
+    try:
+        return int(subject)
+    except ValueError as exc:
+        raise AuthFailedException from exc
+
+
 class TelegramLoginSchema(BaseModel):
     tg_id: int
 
@@ -64,7 +76,7 @@ async def refresh(refresh: Annotated[str | None, Cookie()] = None):
         raise AuthFailedException
         
     token_id = payload.get(cfg.JTI)
-    user_id = int(payload.get(cfg.SUB))
+    user_id = _get_user_id(payload)
     
     token_in_db = await RefreshTokenDAO.find_one_or_none(RefreshToken.token_id == token_id)
     if not token_in_db:
@@ -101,7 +113,7 @@ async def logout(
         payload = await decode_access_token(token=token)
         # We delete ALL refresh tokens for simplicity, or we could pass the refresh token specifically.
         # It's better to delete all refresh tokens to effectively log out from all devices, or just rely on cookie deletion.
-        user_id = int(payload.get(cfg.SUB))
+        user_id = _get_user_id(payload)
         await RefreshTokenDAO.delete(RefreshToken.user_id == user_id)
     except:
         pass
