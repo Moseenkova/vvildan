@@ -1,9 +1,3 @@
-add one more button in sidebar "requests"
-На странице «Мои заявки» можно сделать вкладки:
-- Активные
-- Завершённые
-- Отменённые
-
 cache latest reqeusts search in my_requests
 
 move to legacy request creating in tg-bot
