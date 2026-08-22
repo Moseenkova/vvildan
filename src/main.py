@@ -37,7 +37,6 @@ async def search_airports(
     language: str = Query("en", min_length=2, max_length=16),
     user=Depends(get_current_user),
 ):
-    language = 'ru'
     term = q.strip()
     if not term:
         return []
