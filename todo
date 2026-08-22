@@ -56,3 +56,5 @@ maybe add one more table for matches, or make o2m in courier and sender tables
 - Отменённые
 
 cache latest reqeusts search in my_requests
+
+move to legacy request creating in tg-bot
