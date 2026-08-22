@@ -1,5 +1,7 @@
 from fastapi import Depends, FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi_pagination import Page, add_pagination
+from fastapi_pagination.ext.sqlalchemy import paginate
 from sqlalchemy import func, or_, select
 from sqlalchemy.orm import selectinload
 
@@ -19,7 +21,6 @@ from .schemas import (
 )
 from .auth.routers import auth_router
 from .deps import get_current_user
-from .mappers import request_to_schema
 
 app = FastAPI()
 
@@ -34,18 +35,18 @@ app.add_middleware(
 app.include_router(auth_router)
 
 
-@app.get("/api/requests", response_model=list[RequestSchema])
+@app.get("/api/requests", response_model=Page[RequestSchema])
 async def get_my_requests(user=Depends(get_current_user)):
     airport_load = selectinload(TravelRequest.departure_airports).selectinload(Airport.city).selectinload(City.country)
     arrival_load = selectinload(TravelRequest.arrival_airports).selectinload(Airport.city).selectinload(City.country)
     async with async_session_maker() as session:
-        result = await session.execute(
+        return await paginate(
+            session,
             select(TravelRequest)
             .where(TravelRequest.user_id == user.id)
             .options(airport_load, arrival_load)
-            .order_by(TravelRequest.created_at.desc())
+            .order_by(TravelRequest.created_at.desc()),
         )
-        return [request_to_schema(request) for request in result.scalars().all()]
 
 
 @app.get("/api/airport-search", response_model=list[AirportSearchResultSchema])
@@ -131,3 +132,6 @@ async def search_airports(
         )
         result = await session.execute(query)
         return result.mappings().all()
+
+
+add_pagination(app)
