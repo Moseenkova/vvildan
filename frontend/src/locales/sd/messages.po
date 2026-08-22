@@ -11,6 +11,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:73
+msgid "Active"
+msgstr "چالو"
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr "سڀ حالتون"
+
 #: src/i18n.js:43
 msgid "Arrival"
 msgstr "آمد"
@@ -31,6 +39,10 @@ msgstr "آمد ملڪ"
 msgid "Baggage comments"
 msgstr "سامان جا رايا"
 
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr "منسوخ ٿيل"
+
 #: src/i18n.js:59
 msgid "Choose a city first"
 msgstr "پهريون شهر چونڊيو"
@@ -39,9 +51,33 @@ msgstr "پهريون شهر چونڊيو"
 msgid "Choose a country first"
 msgstr "پهرين ملڪ چونڊيو"
 
+#: src/i18n.js:80
+msgid "Close"
+msgstr "بند"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "تبصرو"
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr "مڪمل ٿيو"
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "توھان جون درخواستون لوڊ نه ٿي سگھيون."
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "ملڪ، شهر يا هوائي اڏو"
+
 #: src/i18n.js:36
 msgid "Courier"
 msgstr "ڪوريئر"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "ٺاهيل"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -79,6 +115,10 @@ msgstr "شهر داخل ڪريو يا چونڊيو"
 msgid "Enter or choose an airport"
 msgstr "داخل ڪريو يا ايئرپورٽ چونڊيو"
 
+#: src/i18n.js:76
+msgid "Expired"
+msgstr "ختم ٿيل"
+
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "مثال طور: ڪپڙا 5 ڪلو، دستاويز، اليڪٽرانڪس"
@@ -107,9 +147,29 @@ msgstr "dd/mm/yyyy"
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr "منهنجون درخواستون"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "نئون"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "اڳيان"
+
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
 msgstr "ڪوبه ملندڙ هوائي اڏو نه مليو، انگريزي ۾ لکڻ جي ڪوشش ڪريو"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "هن اسٽيٽس سان ڪا به درخواست ناهي."
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "صفحو"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -127,17 +187,33 @@ msgstr "مھرباني ڪري ختم ٿيڻ جي تاريخ چونڊيو"
 msgid "Please select departure and arrival airports from the list"
 msgstr "مهرباني ڪري فهرست مان روانگي ۽ آمد جا هوائي اڏا چونڊيو"
 
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "پويون"
+
 #: src/i18n.js:47
 msgid "Remove"
 msgstr "هٽايو"
 
-#: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "ملڪ، شهر يا هوائي اڏو"
+#: src/i18n.js:77
+msgid "Request details"
+msgstr "تفصيل جي درخواست ڪريو"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "صفحو جي درخواست ڪريو"
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr "ڪردار"
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "موڪليندڙ"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "حيثيت"
 
 #: src/i18n.js:63
 msgid "Submit request"

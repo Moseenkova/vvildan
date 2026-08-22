@@ -11,6 +11,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:73
+msgid "Active"
+msgstr "Firfircoon"
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr "Dhammaan heerarka"
+
 #: src/i18n.js:43
 msgid "Arrival"
 msgstr "Imaansho"
@@ -31,6 +39,10 @@ msgstr "Dalka iman"
 msgid "Baggage comments"
 msgstr "Faallooyin shandadaha"
 
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr "La joojiyay"
+
 #: src/i18n.js:59
 msgid "Choose a city first"
 msgstr "Marka hore dooro magaalo"
@@ -39,9 +51,33 @@ msgstr "Marka hore dooro magaalo"
 msgid "Choose a country first"
 msgstr "Marka hore dal dooro"
 
+#: src/i18n.js:80
+msgid "Close"
+msgstr "Xir"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "Faallo"
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr "Dhammaystiran"
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "Waa la shubi waayay codsiyadaada"
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "dal, magaalo ama garoon diyaaradeed"
+
 #: src/i18n.js:36
 msgid "Courier"
 msgstr "Gaadhi-qaade"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "Abuuray"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -79,6 +115,10 @@ msgstr "Gali ama door magaalo"
 msgid "Enter or choose an airport"
 msgstr "Geli ama door garoonka diyaaradaha"
 
+#: src/i18n.js:76
+msgid "Expired"
+msgstr "dhacay"
+
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "Tusaale ahaan: Dharka 5 kg, dukumentiyada, qalabka elektarooniga ah"
@@ -107,9 +147,29 @@ msgstr "dd/mm/yyyy"
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr "Codsiyadayda"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "Cusub"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "Xiga"
+
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
 msgstr "Lama helin garoomo diyaaradeed oo ku habboon, isku day inaad Ingiriisi ku qorto"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "Ma jiro codsiyo leh heerkan"
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "Bogga"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -127,17 +187,33 @@ msgstr "Fadlan door taariikhda dhamaadka"
 msgid "Please select departure and arrival airports from the list"
 msgstr "Fadlan liiska ka dooro garoomada bixitaanka iyo imaanshaha"
 
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "Hore"
+
 #: src/i18n.js:47
 msgid "Remove"
 msgstr "Ka saar"
 
-#: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "dal, magaalo ama garoon diyaaradeed"
+#: src/i18n.js:77
+msgid "Request details"
+msgstr "Codso faahfaahin"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "Codso bogga"
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr "Doorka"
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "Soodiraha"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "Xaalada"
 
 #: src/i18n.js:63
 msgid "Submit request"

@@ -11,6 +11,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:73
+msgid "Active"
+msgstr "Actief"
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr "Alle statussen"
+
 #: src/i18n.js:43
 msgid "Arrival"
 msgstr "Aankomst"
@@ -31,6 +39,10 @@ msgstr "Land van aankomst"
 msgid "Baggage comments"
 msgstr "Opmerkingen over bagage"
 
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr "Geannuleerd"
+
 #: src/i18n.js:59
 msgid "Choose a city first"
 msgstr "Kies eerst een stad"
@@ -39,9 +51,33 @@ msgstr "Kies eerst een stad"
 msgid "Choose a country first"
 msgstr "Kies eerst een land"
 
+#: src/i18n.js:80
+msgid "Close"
+msgstr "Sluiten"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "Commentaar"
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr "Voltooid"
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "Kan uw verzoeken niet laden."
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "land, stad of luchthaven"
+
 #: src/i18n.js:36
 msgid "Courier"
 msgstr "Koerier"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "Gemaakt"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -79,6 +115,10 @@ msgstr "Voer een stad in of kies een stad"
 msgid "Enter or choose an airport"
 msgstr "Voer een luchthaven in of kies deze"
 
+#: src/i18n.js:76
+msgid "Expired"
+msgstr "Verlopen"
+
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "Bijvoorbeeld: Kleding 5 kg, documenten, elektronica"
@@ -107,9 +147,29 @@ msgstr "dd/mm/yyyy"
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr "Mijn verzoeken"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "Nieuw"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "Volgende"
+
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
 msgstr "Geen overeenkomende luchthavens gevonden, probeer in het Engels te schrijven"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "Geen verzoeken met deze status."
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "Pagina"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -127,17 +187,33 @@ msgstr "Selecteer een einddatum"
 msgid "Please select departure and arrival airports from the list"
 msgstr "Selecteer de vertrek- en aankomstluchthaven in de lijst"
 
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "Vorige"
+
 #: src/i18n.js:47
 msgid "Remove"
 msgstr "Verwijderen"
 
-#: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "land, stad of luchthaven"
+#: src/i18n.js:77
+msgid "Request details"
+msgstr "Vraag details aan"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "Vraag paginering aan"
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr "Rol"
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "Afzender"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "Status"
 
 #: src/i18n.js:63
 msgid "Submit request"

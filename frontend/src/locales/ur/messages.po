@@ -11,6 +11,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:73
+msgid "Active"
+msgstr "فعال"
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr "تمام سٹیٹس"
+
 #: src/i18n.js:43
 msgid "Arrival"
 msgstr "آمد"
@@ -31,6 +39,10 @@ msgstr "آمد کا ملک"
 msgid "Baggage comments"
 msgstr "سامان کے تبصرے"
 
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr "منسوخ"
+
 #: src/i18n.js:59
 msgid "Choose a city first"
 msgstr "پہلے شہر کا انتخاب کریں۔"
@@ -39,9 +51,33 @@ msgstr "پہلے شہر کا انتخاب کریں۔"
 msgid "Choose a country first"
 msgstr "پہلے ملک کا انتخاب کریں۔"
 
+#: src/i18n.js:80
+msgid "Close"
+msgstr "بند"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "تبصرہ"
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr "مکمل"
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "آپ کی درخواستوں کو لوڈ نہیں کیا جا سکا۔"
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "ملک، شہر یا ہوائی اڈہ"
+
 #: src/i18n.js:36
 msgid "Courier"
 msgstr "کورئیر"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "بنایا"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -79,6 +115,10 @@ msgstr "شہر درج کریں یا منتخب کریں۔"
 msgid "Enter or choose an airport"
 msgstr "داخل ہوں یا ہوائی اڈے کا انتخاب کریں۔"
 
+#: src/i18n.js:76
+msgid "Expired"
+msgstr "میعاد ختم"
+
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "مثال کے طور پر: کپڑے 5 کلو، دستاویزات، الیکٹرانکس"
@@ -107,9 +147,29 @@ msgstr "dd/mm/yyyy"
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr "میری درخواستیں"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "نیا"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "اگلا"
+
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
 msgstr "کوئی مماثل ہوائی اڈہ نہیں ملا، انگریزی میں لکھنے کی کوشش کریں"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "اس حیثیت کے ساتھ کوئی درخواستیں نہیں ہیں۔"
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "صفحہ"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -127,17 +187,33 @@ msgstr "براہ کرم ایک اختتامی تاریخ منتخب کریں۔"
 msgid "Please select departure and arrival airports from the list"
 msgstr "براہ کرم فہرست سے روانگی اور آمد کے ہوائی اڈے منتخب کریں"
 
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "پچھلا"
+
 #: src/i18n.js:47
 msgid "Remove"
 msgstr "ہٹائیں"
 
-#: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "ملک، شہر یا ہوائی اڈہ"
+#: src/i18n.js:77
+msgid "Request details"
+msgstr "تفصیلات طلب کریں۔"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "صفحہ بندی کی درخواست کریں۔"
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr "کردار"
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "بھیجنے والا"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "حیثیت"
 
 #: src/i18n.js:63
 msgid "Submit request"

@@ -135,11 +135,103 @@ function AirportSearch({ id, label, placeholder, selected, maxSelections, onSele
   )
 }
 
+function RequestSidebar({ requests, pagination, loading, error, status, onStatusChange, onPageChange, onSelect, t }) {
+  const route = (request) => {
+    const from = request.departure_airports.map((airport) => airport.iata_code || airport.city_name).join(', ')
+    const to = request.arrival_airports.map((airport) => airport.iata_code || airport.city_name).join(', ')
+    return `${from} → ${to}`
+  }
+
+  return (
+    <aside className="requests-sidebar">
+      <div className="requests-heading">
+        <h2>{t.myRequests}</h2>
+        <span>{pagination.total}</span>
+      </div>
+      <label className="status-filter" htmlFor="request-status">
+        <span>{t.status}</span>
+        <select id="request-status" value={status} onChange={(event) => onStatusChange(event.target.value)}>
+          <option value="all">{t.allStatuses}</option>
+          <option value="active">{t.active}</option>
+          <option value="completed">{t.completed}</option>
+          <option value="cancelled">{t.cancelled}</option>
+          <option value="expired">{t.expired}</option>
+        </select>
+      </label>
+      <div className="request-list">
+        {loading && <p className="request-message">{t.loading}</p>}
+        {!loading && error && <p className="request-message request-error">{t.failedToLoadRequests}</p>}
+        {!loading && !error && requests.length === 0 && <p className="request-message">{t.noRequests}</p>}
+        {!loading && !error && requests.map((request) => (
+          <button className="request-card" type="button" key={request.id} onClick={() => onSelect(request)}>
+            <span className="request-card-topline">
+              <strong>#{request.id}</strong>
+              <span className={`status-badge status-${request.status}`}>{t[request.status] || request.status}</span>
+            </span>
+            <span className="request-route">{route(request)}</span>
+            <span className="request-date">{request.date_from}{request.date_to !== request.date_from ? ` – ${request.date_to}` : ''}</span>
+          </button>
+        ))}
+      </div>
+      {!error && pagination.pages > 1 && (
+        <nav className="request-pagination" aria-label={t.pagination}>
+          <button
+            type="button"
+            onClick={() => onPageChange(pagination.page - 1)}
+            disabled={loading || pagination.page <= 1}
+          >
+            {t.previous}
+          </button>
+          <span>{t.page} {pagination.page} / {pagination.pages}</span>
+          <button
+            type="button"
+            onClick={() => onPageChange(pagination.page + 1)}
+            disabled={loading || pagination.page >= pagination.pages}
+          >
+            {t.next}
+          </button>
+        </nav>
+      )}
+    </aside>
+  )
+}
+
+function RequestDetails({ request, onClose, t }) {
+  if (!request) return null
+  const airports = (items) => items.map((airport) => (
+    `${airport.name}${airport.iata_code ? ` (${airport.iata_code})` : ''}, ${airport.city_name}, ${airport.country_name}`
+  )).join('\n')
+
+  return (
+    <div className="details-backdrop" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && onClose()}>
+      <section className="request-details" role="dialog" aria-modal="true" aria-labelledby="request-details-title">
+        <div className="details-header">
+          <div>
+            <p>#{request.id}</p>
+            <h2 id="request-details-title">{t.requestDetails}</h2>
+          </div>
+          <button type="button" onClick={onClose} aria-label={t.close}>×</button>
+        </div>
+        <dl>
+          <div><dt>{t.status}</dt><dd><span className={`status-badge status-${request.status}`}>{t[request.status] || request.status}</span></dd></div>
+          <div><dt>{request.role === 'sender' ? t.dateFrom : t.date}</dt><dd>{request.date_from}</dd></div>
+          {request.date_to !== request.date_from && <div><dt>{t.dateTo}</dt><dd>{request.date_to}</dd></div>}
+          <div><dt>{t.departure}</dt><dd className="multiline">{airports(request.departure_airports)}</dd></div>
+          <div><dt>{t.arrival}</dt><dd className="multiline">{airports(request.arrival_airports)}</dd></div>
+          {request.comment && <div><dt>{t.comment}</dt><dd>{request.comment}</dd></div>}
+          <div><dt>{t.created}</dt><dd>{new Date(request.created_at).toLocaleString()}</dd></div>
+        </dl>
+      </section>
+    </div>
+  )
+}
+
 function App() {
   const { _ } = useLingui()
   const language = locale
   const t = getMessages(_)
   const [role, setRole] = useState('sender')
+  const [activePage, setActivePage] = useState('new')
   const [userNotFound, setUserNotFound] = useState(false)
   const [form, setForm] = useState({
     dateFrom: null,
@@ -149,6 +241,43 @@ function App() {
   })
   const [departureAirports, setDepartureAirports] = useState([])
   const [arrivalAirports, setArrivalAirports] = useState([])
+  const [requests, setRequests] = useState([])
+  const [requestsPagination, setRequestsPagination] = useState({
+    page: 1,
+    size: 10,
+    total: 0,
+    pages: 0,
+  })
+  const [requestsLoading, setRequestsLoading] = useState(true)
+  const [requestsError, setRequestsError] = useState(false)
+  const [requestStatus, setRequestStatus] = useState('all')
+  const [selectedRequest, setSelectedRequest] = useState(null)
+
+  const loadRequests = async (page = 1, status = requestStatus) => {
+    setRequestsLoading(true)
+    setRequestsError(false)
+    try {
+      const { data } = await api.get('/api/requests', {
+        params: {
+          page,
+          size: requestsPagination.size,
+          ...(status !== 'all' && { status }),
+        },
+      })
+      setRequests(Array.isArray(data.items) ? data.items : [])
+      setRequestsPagination((current) => ({
+        page: data.page ?? page,
+        size: data.size ?? current.size,
+        total: data.total ?? 0,
+        pages: data.pages ?? 0,
+      }))
+    } catch (error) {
+      console.error('Failed to load requests:', error)
+      setRequestsError(true)
+    } finally {
+      setRequestsLoading(false)
+    }
+  }
 
   useEffect(() => {
     document.documentElement.lang = language
@@ -162,17 +291,36 @@ function App() {
       } else if (import.meta.env.VITE_DEV_ENV === 'true') {
         tgId = import.meta.env.VITE_DUMMY_TG_ID
       }
-      if (!tgId) return
+      if (!tgId) {
+        if (localStorage.getItem('access_token')) await loadRequests(1)
+        else setRequestsLoading(false)
+        return
+      }
       try {
         const { data } = await api.post('/auth/login', { tg_id: tgId })
         localStorage.setItem('access_token', data.access_token)
+        await loadRequests(1)
       } catch (error) {
         console.error('Authentication failed:', error)
         if (error.response?.status === 404) setUserNotFound(true)
       }
     }
     initAuth()
+    // Authentication and the first page are initialized when the locale changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [language])
+
+  const changeRequestsPage = async (page) => {
+    if (page < 1 || page > requestsPagination.pages || page === requestsPagination.page) return
+    setSelectedRequest(null)
+    await loadRequests(page)
+  }
+
+  const changeRequestStatus = async (status) => {
+    setRequestStatus(status)
+    setSelectedRequest(null)
+    await loadRequests(1, status)
+  }
 
   const setField = (field, value) => setForm((previous) => ({ ...previous, [field]: value }))
 
@@ -247,13 +395,22 @@ function App() {
   }
 
   return (
-    <div className="app-container">
-      <div className="role-selector">
-        <button type="button" onClick={() => changeRole('sender')} className={`role-button ${role === 'sender' ? 'active' : ''}`}>{t.sender}</button>
-        <button type="button" onClick={() => changeRole('courier')} className={`role-button ${role === 'courier' ? 'active' : ''}`}>{t.courier}</button>
+    <div className="page-shell">
+      <main className="app-container">
+      <div className="role-selector page-navigation">
+        <button type="button" onClick={() => setActivePage('new')} className={`role-button ${activePage === 'new' ? 'active' : ''}`}>{t.newRequest}</button>
+        <button type="button" onClick={() => setActivePage('requests')} className={`role-button ${activePage === 'requests' ? 'active' : ''}`}>{t.myRequests}</button>
       </div>
 
+      {activePage === 'new' ? (
       <form onSubmit={handleSubmit} className="order-form">
+        <div className="form-group">
+          <label htmlFor="requestRole">{t.role}</label>
+          <select id="requestRole" className="form-select" value={role} onChange={(event) => changeRole(event.target.value)}>
+            <option value="sender">{t.sender}</option>
+            <option value="courier">{t.courier}</option>
+          </select>
+        </div>
         {role === 'sender' ? (
           <>
             <div className="form-group">
@@ -281,6 +438,11 @@ function App() {
         </div>
         <button type="submit" className="submit-button">{t.submit}</button>
       </form>
+      ) : (
+        <RequestSidebar requests={requests} pagination={requestsPagination} loading={requestsLoading} error={requestsError} status={requestStatus} onStatusChange={changeRequestStatus} onPageChange={changeRequestsPage} onSelect={setSelectedRequest} t={t} />
+      )}
+      </main>
+      <RequestDetails request={selectedRequest} onClose={() => setSelectedRequest(null)} t={t} />
     </div>
   )
 }

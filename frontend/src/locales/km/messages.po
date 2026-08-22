@@ -11,6 +11,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:73
+msgid "Active"
+msgstr "សកម្ម"
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr "ស្ថានភាពទាំងអស់។"
+
 #: src/i18n.js:43
 msgid "Arrival"
 msgstr "ការមកដល់"
@@ -31,6 +39,10 @@ msgstr "ប្រទេសមកដល់"
 msgid "Baggage comments"
 msgstr "មតិយោបល់លើឥវ៉ាន់"
 
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr "បានលុបចោល"
+
 #: src/i18n.js:59
 msgid "Choose a city first"
 msgstr "ជ្រើសរើសទីក្រុងជាមុនសិន"
@@ -39,9 +51,33 @@ msgstr "ជ្រើសរើសទីក្រុងជាមុនសិន"
 msgid "Choose a country first"
 msgstr "ជ្រើសរើសប្រទេសជាមុនសិន"
 
+#: src/i18n.js:80
+msgid "Close"
+msgstr "បិទ"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "មតិយោបល់"
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr "បានបញ្ចប់"
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "មិនអាចផ្ទុកសំណើរបស់អ្នកបានទេ។"
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "ប្រទេស ទីក្រុង ឬអាកាសយានដ្ឋាន"
+
 #: src/i18n.js:36
 msgid "Courier"
 msgstr "អ្នកនាំសំបុត្រ"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "បានបង្កើត"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -79,6 +115,10 @@ msgstr "បញ្ចូល ឬជ្រើសរើសទីក្រុង"
 msgid "Enter or choose an airport"
 msgstr "ចូល ឬជ្រើសរើសព្រលានយន្តហោះ"
 
+#: src/i18n.js:76
+msgid "Expired"
+msgstr "ផុតកំណត់"
+
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "ឧទាហរណ៍ៈ សំលៀកបំពាក់ 5 គីឡូក្រាម ឯកសារ គ្រឿងអេឡិចត្រូនិច"
@@ -107,9 +147,29 @@ msgstr "dd/mm/yyyy"
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr "សំណើរបស់ខ្ញុំ"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "ថ្មី។"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "បន្ទាប់"
+
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
 msgstr "រកមិនឃើញអាកាសយានដ្ឋានដែលត្រូវគ្នាទេ សូមព្យាយាមសរសេរជាភាសាអង់គ្លេស"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "មិនមានសំណើជាមួយស្ថានភាពនេះទេ។"
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "ទំព័រ"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -127,17 +187,33 @@ msgstr "សូមជ្រើសរើសកាលបរិច្ឆេទបញ
 msgid "Please select departure and arrival airports from the list"
 msgstr "សូមជ្រើសរើសអាកាសយានដ្ឋានចេញដំណើរ និងមកដល់ពីបញ្ជី"
 
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "មុន"
+
 #: src/i18n.js:47
 msgid "Remove"
 msgstr "លុបចេញ"
 
-#: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "ប្រទេស ទីក្រុង ឬអាកាសយានដ្ឋាន"
+#: src/i18n.js:77
+msgid "Request details"
+msgstr "ស្នើសុំព័ត៌មានលម្អិត"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "ស្នើសុំ​ការ​ដាក់​ទំព័រ"
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr "តួនាទី"
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "អ្នកផ្ញើ"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "ស្ថានភាព"
 
 #: src/i18n.js:63
 msgid "Submit request"

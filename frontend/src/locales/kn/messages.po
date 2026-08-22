@@ -11,6 +11,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:73
+msgid "Active"
+msgstr "ಸಕ್ರಿಯ"
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr "ಎಲ್ಲಾ ಸ್ಥಿತಿಗಳು"
+
 #: src/i18n.js:43
 msgid "Arrival"
 msgstr "ಆಗಮನ"
@@ -31,6 +39,10 @@ msgstr "ಆಗಮನದ ದೇಶ"
 msgid "Baggage comments"
 msgstr "ಬ್ಯಾಗೇಜ್ ಕಾಮೆಂಟ್‌ಗಳು"
 
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr "ರದ್ದುಗೊಳಿಸಲಾಗಿದೆ"
+
 #: src/i18n.js:59
 msgid "Choose a city first"
 msgstr "ಮೊದಲು ನಗರವನ್ನು ಆರಿಸಿ"
@@ -39,9 +51,33 @@ msgstr "ಮೊದಲು ನಗರವನ್ನು ಆರಿಸಿ"
 msgid "Choose a country first"
 msgstr "ಮೊದಲು ದೇಶವನ್ನು ಆರಿಸಿ"
 
+#: src/i18n.js:80
+msgid "Close"
+msgstr "ಮುಚ್ಚಿ"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "ಕಾಮೆಂಟ್ ಮಾಡಿ"
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr "ಪೂರ್ಣಗೊಂಡಿದೆ"
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "ನಿಮ್ಮ ವಿನಂತಿಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ."
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "ದೇಶ, ನಗರ ಅಥವಾ ವಿಮಾನ ನಿಲ್ದಾಣ"
+
 #: src/i18n.js:36
 msgid "Courier"
 msgstr "ಕೊರಿಯರ್"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "ರಚಿಸಲಾಗಿದೆ"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -79,6 +115,10 @@ msgstr "ನಗರವನ್ನು ನಮೂದಿಸಿ ಅಥವಾ ಆಯ್ಕ
 msgid "Enter or choose an airport"
 msgstr "ವಿಮಾನ ನಿಲ್ದಾಣವನ್ನು ನಮೂದಿಸಿ ಅಥವಾ ಆಯ್ಕೆಮಾಡಿ"
 
+#: src/i18n.js:76
+msgid "Expired"
+msgstr "ಅವಧಿ ಮೀರಿದೆ"
+
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "ಉದಾಹರಣೆಗೆ: ಬಟ್ಟೆ 5 ಕೆಜಿ, ದಾಖಲೆಗಳು, ಎಲೆಕ್ಟ್ರಾನಿಕ್ಸ್"
@@ -107,9 +147,29 @@ msgstr "dd/mm/yyyy"
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr "ನನ್ನ ವಿನಂತಿಗಳು"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "ಹೊಸದು"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "ಮುಂದೆ"
+
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
 msgstr "ಹೊಂದಿಕೆಯಾಗುವ ಯಾವುದೇ ವಿಮಾನ ನಿಲ್ದಾಣ ಕಂಡುಬಂದಿಲ್ಲ, ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಬರೆಯಲು ಪ್ರಯತ್ನಿಸಿ"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "ಈ ಸ್ಥಿತಿಯೊಂದಿಗೆ ಯಾವುದೇ ವಿನಂತಿಗಳಿಲ್ಲ."
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "ಪುಟ"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -127,17 +187,33 @@ msgstr "ದಯವಿಟ್ಟು ಅಂತಿಮ ದಿನಾಂಕವನ್ನ�
 msgid "Please select departure and arrival airports from the list"
 msgstr "ದಯವಿಟ್ಟು ಪಟ್ಟಿಯಿಂದ ನಿರ್ಗಮನ ಮತ್ತು ಆಗಮನದ ವಿಮಾನ ನಿಲ್ದಾಣಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ"
 
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "ಹಿಂದಿನ"
+
 #: src/i18n.js:47
 msgid "Remove"
 msgstr "ತೆಗೆದುಹಾಕಿ"
 
-#: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "ದೇಶ, ನಗರ ಅಥವಾ ವಿಮಾನ ನಿಲ್ದಾಣ"
+#: src/i18n.js:77
+msgid "Request details"
+msgstr "ವಿವರಗಳನ್ನು ವಿನಂತಿಸಿ"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "ಪುಟ ವಿನ್ಯಾಸವನ್ನು ವಿನಂತಿಸಿ"
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr "ಪಾತ್ರ"
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "ಕಳುಹಿಸುವವರು"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "ಸ್ಥಿತಿ"
 
 #: src/i18n.js:63
 msgid "Submit request"

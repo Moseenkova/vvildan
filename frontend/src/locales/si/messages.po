@@ -11,6 +11,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:73
+msgid "Active"
+msgstr "ක්රියාකාරී"
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr "සියලුම තත්ව"
+
 #: src/i18n.js:43
 msgid "Arrival"
 msgstr "පැමිණීම"
@@ -31,6 +39,10 @@ msgstr "පැමිණීමේ රට"
 msgid "Baggage comments"
 msgstr "ගමන් මලු අදහස්"
 
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr "අවලංගු කළා"
+
 #: src/i18n.js:59
 msgid "Choose a city first"
 msgstr "මුලින්ම නගරයක් තෝරන්න"
@@ -39,9 +51,33 @@ msgstr "මුලින්ම නගරයක් තෝරන්න"
 msgid "Choose a country first"
 msgstr "මුලින්ම රටක් තෝරන්න"
 
+#: src/i18n.js:80
+msgid "Close"
+msgstr "වසන්න"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "අදහස් දක්වන්න"
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr "සම්පූර්ණ කළා"
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "ඔබගේ ඉල්ලීම් පූරණය කළ නොහැකි විය."
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "රට, නගරය හෝ ගුවන් තොටුපළ"
+
 #: src/i18n.js:36
 msgid "Courier"
 msgstr "කුරියර්"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "නිර්මාණය කළා"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -79,6 +115,10 @@ msgstr "නගරයක් ඇතුළු කරන්න හෝ තෝරන�
 msgid "Enter or choose an airport"
 msgstr "ගුවන් තොටුපළක් ඇතුළු කරන්න හෝ තෝරන්න"
 
+#: src/i18n.js:76
+msgid "Expired"
+msgstr "කල් ඉකුත් වී ඇත"
+
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "උදාහරණයක් ලෙස: ඇඳුම් 5 kg, ලේඛන, ඉලෙක්ට්රොනික උපකරණ"
@@ -107,9 +147,29 @@ msgstr "dd/mm/yyyy"
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr "මගේ ඉල්ලීම්"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "අලුත්"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "ඊළඟට"
+
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
 msgstr "ගැළපෙන ගුවන් තොටුපළක් හමු නොවීය, ඉංග්‍රීසියෙන් ලිවීමට උත්සාහ කරන්න"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "මෙම තත්ත්වය සමඟ ඉල්ලීම් නැත."
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "පිටුව"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -127,17 +187,33 @@ msgstr "කරුණාකර අවසන් දිනයක් තෝරන්
 msgid "Please select departure and arrival airports from the list"
 msgstr "කරුණාකර ලැයිස්තුවෙන් පිටත්වීමේ සහ පැමිණීමේ ගුවන් තොටුපළ තෝරන්න"
 
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "පෙර"
+
 #: src/i18n.js:47
 msgid "Remove"
 msgstr "ඉවත් කරන්න"
 
-#: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "රට, නගරය හෝ ගුවන් තොටුපළ"
+#: src/i18n.js:77
+msgid "Request details"
+msgstr "විස්තර ඉල්ලන්න"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "පේජිනේෂන් ඉල්ලන්න"
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr "භූමිකාව"
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "යවන්නා"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "තත්ත්වය"
 
 #: src/i18n.js:63
 msgid "Submit request"

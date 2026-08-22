@@ -11,6 +11,14 @@ msgstr ""
 "Last-Translator: \n"
 "Language-Team: \n"
 
+#: src/i18n.js:73
+msgid "Active"
+msgstr "Активный"
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr "Все статусы"
+
 #: src/i18n.js:43
 msgid "Arrival"
 msgstr "Прибытие"
@@ -31,6 +39,10 @@ msgstr "Страна прибытия"
 msgid "Baggage comments"
 msgstr "Комментарий к багажу"
 
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr "Отменено"
+
 #: src/i18n.js:59
 msgid "Choose a city first"
 msgstr "Сначала выберите город"
@@ -39,9 +51,33 @@ msgstr "Сначала выберите город"
 msgid "Choose a country first"
 msgstr "Сначала выберите страну"
 
+#: src/i18n.js:80
+msgid "Close"
+msgstr "Закрыть"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "Комментарий"
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr "Завершено"
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "Не удалось загрузить ваши запросы."
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "страна, город или аэропорт"
+
 #: src/i18n.js:36
 msgid "Courier"
 msgstr "Курьер"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "Создано"
 
 #: src/i18n.js:39
 msgid "Date"
@@ -79,6 +115,10 @@ msgstr "Введите или выберите город"
 msgid "Enter or choose an airport"
 msgstr "Введите или выберите аэропорт"
 
+#: src/i18n.js:76
+msgid "Expired"
+msgstr "Срок действия истек"
+
 #: src/i18n.js:62
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "Например: Одежда 5 кг, документы, электроника"
@@ -107,9 +147,29 @@ msgstr "дд.мм.гггг"
 msgid "MM/dd/yyyy"
 msgstr "dd.MM.yyyy"
 
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr "Мои запросы"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "Новый"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "Далее"
+
 #: src/i18n.js:45
 msgid "no matching airports found, try to write in english"
 msgstr "Подходящие аэропорты не найдены, попробуйте написать на английском"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "Нет запросов с таким статусом."
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "Страница"
 
 #: src/i18n.js:67
 msgid "Please select a date"
@@ -127,17 +187,33 @@ msgstr "Пожалуйста, выберите конечную дату"
 msgid "Please select departure and arrival airports from the list"
 msgstr "Выберите аэропорты отправления и прибытия из списка"
 
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "Предыдущий"
+
 #: src/i18n.js:47
 msgid "Remove"
 msgstr "Удалить"
 
-#: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "страна, город или аэропорт"
+#: src/i18n.js:77
+msgid "Request details"
+msgstr "Запросить подробности"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "Запросить нумерацию страниц"
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr "Роль"
 
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "Отправитель"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "Статус"
 
 #: src/i18n.js:63
 msgid "Submit request"

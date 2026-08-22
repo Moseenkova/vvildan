@@ -6,7 +6,7 @@ authors = [
     { name = "bikmetle", email = "hamid-nv@vivaldi.net" }
 ]
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 dependencies = [
     "aiogram>=3.4.1",
     "python-dotenv>=1.0.1",
@@ -17,6 +17,7 @@ dependencies = [
     "uvicorn[standard]>=0.32.0",
     "python-jose[cryptography]>=3.5.0",
     "pydantic-settings>=2.11.0",
+    "fastapi-pagination (==0.15.16)",
 ]
 
 [build-system]
@@ -32,3 +33,12 @@ ignore = ["E501", "E741"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src"]
+
+[dependency-groups]
+dev = [
+    "pytest (>=9.1.1,<10.0.0)",
+    "pytest-asyncio (>=1.4.0,<2.0.0)",
+    "httpx (>=0.28.1,<0.29.0)",
+    "aiosqlite (>=0.22.1,<0.23.0)",
+    "factory-boy (>=3.3.3,<4.0.0)"
+]
