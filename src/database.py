@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 from sqlalchemy import (
     BigInteger,
     Boolean,
+    CheckConstraint,
     Column,
     Date,
     DateTime,
@@ -19,6 +20,7 @@ from sqlalchemy import (
     func,
     insert,
     select,
+    text,
 )
 from sqlalchemy.dialects.postgresql import JSON
 from sqlalchemy.exc import NoResultFound
@@ -49,38 +51,20 @@ class User(Base):
     __tablename__ = "users"
     tg_id: Mapped[int] = mapped_column(BigInteger)
     name: Mapped[str]
-    phone: Mapped[Optional[int]]
-    courier: Mapped["Courier"] = relationship(back_populates="user")
-    sender: Mapped["Sender"] = relationship(back_populates="user")
+    phone: Mapped[Optional[str]]
     refresh_tokens: Mapped[List["RefreshToken"]] = relationship(back_populates="user")
+    requests: Mapped[list["Request"]] = relationship(
+        back_populates="user", cascade="all, delete-orphan"
+    )
 
     __table_args__ = (UniqueConstraint("tg_id"),)
 
 
-class Courier(Base):
-    __tablename__ = "couriers"
-    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
-    user: Mapped["User"] = relationship(back_populates="courier")
-    requests: Mapped[list["Request"]] = relationship("Request", back_populates="courier")
-
-    __table_args__ = (UniqueConstraint("user_id"),)
-
-
-class Sender(Base):
-    __tablename__ = "senders"
-    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
-    user: Mapped["User"] = relationship(back_populates="sender")
-    requests: Mapped[list["Request"]] = relationship("Request", back_populates="sender")
-
-    __table_args__ = (UniqueConstraint("user_id"),)
-
-
-class Status(enum.Enum):
-    new = 1
-    pending = 2
-    accepted = 3
-    rejected = 4
-    fulfilled = 5
+class RequestStatus(enum.Enum):
+    active = "active"
+    cancelled = "cancelled"
+    completed = "completed"
+    expired = "expired"
 
 
 request_departure_airports = Table(
@@ -99,26 +83,95 @@ request_arrival_airports = Table(
 )
 
 
+class RequestRole(enum.Enum):
+    sender = "sender"
+    courier = "courier"
+
+
 class Request(Base):
     __tablename__ = "requests"
-    sender_id: Mapped[int] = mapped_column(ForeignKey("senders.id"), nullable=True)
-    sender: Mapped["Sender"] = relationship(back_populates="requests")
-    courier_id: Mapped[int] = mapped_column(ForeignKey("couriers.id"), nullable=True)
-    courier: Mapped["Courier"] = relationship(back_populates="requests")
-    departure_airports: Mapped[List["Airport"]] = relationship(
+
+    user_id: Mapped[int] = mapped_column(
+        ForeignKey("users.id", ondelete="CASCADE"),
+        index=True,
+    )
+    user: Mapped["User"] = relationship(back_populates="requests")
+    role: Mapped[RequestRole] = mapped_column(Enum(RequestRole), index=True)
+
+    date_from: Mapped[date] = mapped_column(Date)
+    date_to: Mapped[date] = mapped_column(Date)
+
+    departure_airports: Mapped[list["Airport"]] = relationship(
         secondary=request_departure_airports,
         back_populates="departure_requests",
     )
-    arrival_airports: Mapped[List["Airport"]] = relationship(
+    arrival_airports: Mapped[list["Airport"]] = relationship(
         secondary=request_arrival_airports,
         back_populates="arrival_requests",
     )
-    date: Mapped[date] = mapped_column(Date, nullable=True)
-    date_to: Mapped[date] = mapped_column(Date, nullable=True)
-    date_from: Mapped[date] = mapped_column(Date, nullable=True)
-    baggage_types: Mapped[list] = mapped_column(JSON, nullable=False)
-    comment: Mapped[str] = mapped_column()
-    status: Mapped[str] = mapped_column(Enum(Status))
+
+    comment: Mapped[str] = mapped_column(default="", server_default="")
+    status: Mapped[RequestStatus] = mapped_column(
+        Enum(RequestStatus),
+        default=RequestStatus.active,
+        server_default=RequestStatus.active.value,
+        index=True,
+    )
+    sender_matches: Mapped[list["Match"]] = relationship(
+        back_populates="sender_request",
+        foreign_keys="Match.sender_request_id",
+        cascade="all, delete-orphan",
+    )
+    courier_matches: Mapped[list["Match"]] = relationship(
+        back_populates="courier_request",
+        foreign_keys="Match.courier_request_id",
+        cascade="all, delete-orphan",
+    )
+
+    __table_args__ = (
+        CheckConstraint("date_from <= date_to", name="ck_requests_date_range"),
+    )
+
+
+class MatchStatus(enum.Enum):
+    proposed = "proposed"
+    contacted = "contacted"
+    accepted = "accepted"
+    rejected = "rejected"
+    completed = "completed"
+
+
+class Match(Base):
+    __tablename__ = "matches"
+
+    sender_request_id: Mapped[int] = mapped_column(
+        ForeignKey("requests.id", ondelete="CASCADE"),
+    )
+    sender_request: Mapped["Request"] = relationship(
+        back_populates="sender_matches", foreign_keys=[sender_request_id]
+    )
+    courier_request_id: Mapped[int] = mapped_column(
+        ForeignKey("requests.id", ondelete="CASCADE"),
+    )
+    courier_request: Mapped["Request"] = relationship(
+        back_populates="courier_matches", foreign_keys=[courier_request_id]
+    )
+    status: Mapped[MatchStatus] = mapped_column(
+        Enum(MatchStatus),
+        default=MatchStatus.proposed,
+        server_default=MatchStatus.proposed.value,
+    )
+
+    __table_args__ = (
+        UniqueConstraint(
+            "sender_request_id",
+            "courier_request_id",
+        ),
+        CheckConstraint(
+            "sender_request_id <> courier_request_id",
+            name="ck_matches_different_requests",
+        ),
+    )
 
 
 class Country(Base):

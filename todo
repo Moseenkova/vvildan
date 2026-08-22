@@ -48,3 +48,11 @@ comment safe text max 512
 
 maybe make 2 table, one for courier requests one for sender
 maybe add one more table for matches, or make o2m in courier and sender tables
+
+
+На странице «Мои заявки» можно сделать вкладки:
+- Активные
+- Завершённые
+- Отменённые
+
+cache latest reqeusts search in my_requests
