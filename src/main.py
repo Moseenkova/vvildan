@@ -5,7 +5,7 @@ from fastapi_pagination.ext.sqlalchemy import apaginate
 from sqlalchemy import func, or_, select
 from sqlalchemy.orm import selectinload
 
-from .database import (
+from src.database import (
     Airport,
     AirportName,
     async_session_maker,
@@ -16,12 +16,12 @@ from .database import (
     Request as TravelRequest,
     RequestStatus,
 )
-from .schemas import (
+from src.schemas import (
     AirportSearchResultSchema,
     RequestSchema,
 )
-from .auth.routers import auth_router
-from .deps import get_current_user
+from src.auth.routers import auth_router
+from src.deps import get_current_user
 
 app = FastAPI()
 
@@ -34,6 +34,11 @@ app.add_middleware(
 )
 
 app.include_router(auth_router)
+
+
+@app.get("/health", include_in_schema=False)
+async def health() -> dict[str, str]:
+    return {"status": "ok"}
 
 
 @app.get("/api/requests", response_model=Page[RequestSchema])

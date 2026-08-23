@@ -32,7 +32,7 @@ api.interceptors.response.use(
 
       try {
         // Attempt to refresh token using the refresh cookie
-        const { data } = await axios.post(`${API_URL}/auth/refresh`, {}, { withCredentials: true });
+        const { data } = await axios.post(`${API_URL}/api/auth/refresh`, {}, { withCredentials: true });
 
         // Save new access token
         localStorage.setItem("access_token", data.access_token);

@@ -297,7 +297,7 @@ function App() {
         return
       }
       try {
-        const { data } = await api.post('/auth/login', { tg_id: tgId })
+        const { data } = await api.post('/api/auth/login', { tg_id: tgId })
         localStorage.setItem('access_token', data.access_token)
         await loadRequests(1)
       } catch (error) {

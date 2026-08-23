@@ -12,7 +12,7 @@ from src.exceptions import (
 
 cfg: Settings = get_settings()
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/auth/login")
 
 async def decode_access_token(token: str) -> dict[str, object]:
     try:
