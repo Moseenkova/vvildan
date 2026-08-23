@@ -1,4 +1,4 @@
-FROM python:3.12-slim AS runtime
+FROM python:3.12-slim AS base
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
@@ -14,6 +14,17 @@ RUN uv sync --frozen --no-dev --no-install-project
 COPY src ./src
 COPY alembic ./alembic
 COPY alembic.ini README.md ./
+RUN uv sync --frozen --no-dev
+
+FROM base AS test
+
+RUN uv sync --frozen --dev
+COPY tests ./tests
+
+CMD ["pytest", "-q"]
+
+FROM base AS runtime
+
 RUN uv sync --frozen --no-dev
 
 RUN useradd --create-home --uid 10001 appuser && chown -R appuser:appuser /app

@@ -1,0 +1,149 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend-tests:
+    name: Backend tests (container)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build test image
+        run: docker build --target test --tag courier-backend-test:${{ github.sha }} .
+
+      - name: Run tests
+        run: >-
+          docker run --rm
+          --env MODE=TEST
+          --env BOT_TOKEN=test-token
+          --env SUPPORT_GROUP_ID=-1001234567890
+          --env SUPPORT_GROUP_ADMIN_IDS=123456789
+          --env SECRET_KEY=ci-only-secret
+          courier-backend-test:${{ github.sha }}
+
+  frontend-checks:
+    name: Frontend lint and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+  docker-builds:
+    name: Production Docker builds
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build backend image
+        run: docker build --target runtime --tag courier-backend:${{ github.sha }} .
+
+      - name: Build frontend image
+        run: docker build --tag courier-frontend:${{ github.sha }} frontend
+
+  deploy:
+    name: Deploy production
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: [backend-tests, frontend-checks, docker-builds]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: production
+    concurrency:
+      group: production
+      cancel-in-progress: false
+    steps:
+      - name: Configure SSH
+        env:
+          VPS_SSH_PRIVATE_KEY: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
+          VPS_KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$VPS_SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          printf '%s\n' "$VPS_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: Deploy tested commit
+        env:
+          DEPLOY_SHA: ${{ github.sha }}
+        run: |
+          ssh -o BatchMode=yes bikmetle@151.245.139.36 \
+            "DEPLOY_SHA=$DEPLOY_SHA bash -s" <<'REMOTE'
+          set -euo pipefail
+
+          app_dir=/home/bikmetle/vvildan
+
+          if [ ! -d "$app_dir/.git" ]; then
+            git clone https://github.com/Moseenkova/vvildan.git "$app_dir"
+          fi
+
+          cd "$app_dir"
+
+          if [ ! -f .env ]; then
+            echo "Missing $app_dir/.env; refusing to deploy." >&2
+            exit 1
+          fi
+
+          if ! git diff --quiet || ! git diff --cached --quiet; then
+            echo "Tracked files on the VPS have local changes; refusing to overwrite them." >&2
+            exit 1
+          fi
+
+          git fetch --prune origin main
+          git checkout --detach "$DEPLOY_SHA"
+          docker compose build --pull
+          docker compose up -d --remove-orphans
+
+          app_port=$(awk -F= '$1 == "APP_PORT" { print $2 }' .env | tail -n 1)
+          app_port=${app_port:-8080}
+
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent --show-error \
+              "http://127.0.0.1:${app_port}/health" >/dev/null; then
+              echo "Deployment $DEPLOY_SHA is healthy."
+              exit 0
+            fi
+            sleep 2
+          done
+
+          docker compose ps
+          docker compose logs --tail=100 api frontend
+          echo "Deployment health check failed." >&2
+          exit 1
+          REMOTE
