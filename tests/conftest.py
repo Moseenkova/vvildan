@@ -11,7 +11,7 @@ from src.config import get_settings
 from src.database import Base, User, async_session_maker, engine
 from src.main import app
 
-from .factories import FactoryNamespace, build_factory_namespace
+from tests.factories import FactoryNamespace, build_factory_namespace
 
 cfg = get_settings()
 

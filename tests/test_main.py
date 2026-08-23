@@ -5,8 +5,8 @@ from httpx import AsyncClient
 
 from src.database import RequestStatus
 
-from .conftest import AuthenticatedClient
-from .factories import FactoryNamespace
+from tests.conftest import AuthenticatedClient
+from tests.factories import FactoryNamespace
 
 
 @pytest.mark.asyncio
