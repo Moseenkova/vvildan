@@ -21,24 +21,18 @@ docker compose down --volumes  # also deletes the local PostgreSQL data
 
 ## Database restore
 
+Start PostgreSQL, then run the restore helper. It asks for confirmation before
+replacing existing database objects:
+
 ```sh
-PGPASSWORD='postgres' pg_restore \
-  --host=localhost \
-  --username=postgres \
-  --dbname=courier \
-  --clean --if-exists \
-  --no-owner --no-acl \
-  --exit-on-error \
-  backups/vvildan_20260822_184104.dump
+docker compose up -d db
+./scripts/restore_backup.sh
 ```
 
-
+You can also provide a different custom-format dump:
 
 ```sh
-sudo -i -u postgres
-
-psql --username=postgres -c "drop database if exists courier;"
-psql --username=postgres -c "create database courier;"
+./scripts/restore_backup.sh backups/another.dump
 ```
 
 

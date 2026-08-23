@@ -1,3 +1,4 @@
+fabfile
 cache latest reqeusts search in my_requests
 
 move to legacy request creating in tg-bot
@@ -10,3 +11,4 @@ notify abount new matching requests
 add rating to all users based on registration date and reviews
 comment safe text max 512
 add red dot on my-requests if new match
+celery task to daily backup db 14 copies max

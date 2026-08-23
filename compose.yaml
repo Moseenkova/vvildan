@@ -1,4 +1,4 @@
-name: vvildan
+name: courier
 
 x-backend: &backend
   build:
