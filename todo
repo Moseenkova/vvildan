@@ -1,4 +1,22 @@
-ci-cd
+Choose Fabfile or GitHub CI/CD
+codex://threads/01a02ce3-7f04-7631-9061-d2c1f27b421b
+01a02ce3-7f04-7631-9061-d2c1f27b421b
+https://chatgpt.com/s/cx_6a8aa0d09d288191947a177e02b35820
+
+After CI appears, configure a main branch ruleset under Settings → Rules → Rulesets:
+   - Require a pull request before merging
+   - Require status checks to pass
+   - Require branches to be up to date
+   - Select:
+     - Backend tests (container)
+     - Frontend lint and build
+     - Production Docker builds
+   - Block force pushes and branch deletion
+Do not select Deploy production as a required PR check—it intentionally runs only after merging to main.
+After the PR is merged, GitHub Actions will deploy the tested commit to the VPS and verify its /health endpoint. Keep ~/.ssh/vvildan_github_actions private and never commit it.
+
+
+
 ensure pytest use test db and test environment
 dirs for requests, auth, airport
 fabfile
