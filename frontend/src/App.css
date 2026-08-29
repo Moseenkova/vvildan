@@ -1,0 +1,584 @@
+.page-shell {
+  max-width: 520px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 480px;
+  padding: 20px;
+  background: #ffffff;
+  min-height: 100vh;
+  border-radius: 12px;
+}
+
+.requests-sidebar {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.requests-heading,
+.request-card-topline,
+.details-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.requests-heading h2 {
+  margin: 0;
+  color: #222;
+  font-size: 20px;
+}
+
+.requests-heading > span {
+  min-width: 28px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #eef5ff;
+  color: #0066d6;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.status-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #555;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status-filter select {
+  width: 100%;
+  padding: 10px 34px 10px 11px;
+  border: 1px solid #d8dce2;
+  border-radius: 7px;
+  background: #fff;
+  color: #333;
+  font: inherit;
+  font-size: 15px;
+}
+
+.form-select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  color: #333;
+  font: inherit;
+  font-size: 16px;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, .1);
+}
+
+.request-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+}
+
+.request-card {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e3e6ea;
+  border-radius: 8px;
+  background: #fff;
+  color: #333;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.request-card:hover,
+.request-card:focus-visible {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 2px 9px rgba(0, 123, 255, .12);
+}
+
+.request-route {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.request-date,
+.request-message {
+  color: #737b85;
+  font-size: 13px;
+}
+
+.request-message {
+  margin: 4px 0;
+}
+
+.request-error { color: #b42318; }
+
+.request-pagination {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 10px;
+}
+
+.request-pagination span {
+  color: #56616c;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.request-pagination button {
+  padding: 9px 12px;
+  border: 1px solid #d8dce2;
+  border-radius: 7px;
+  background: #fff;
+  color: #0066d6;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.request-pagination button:last-child { justify-self: end; }
+.request-pagination button:disabled { color: #9aa1aa; cursor: default; }
+
+.status-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #eef1f4;
+  color: #56616c;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.status-active { background: #e8f7ee; color: #18794e; }
+.status-completed { background: #eaf2ff; color: #175cd3; }
+.status-cancelled { background: #fff0ef; color: #b42318; }
+.status-expired { background: #f2f0f7; color: #6941c6; }
+
+.details-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  justify-content: flex-end;
+  background: rgba(24, 32, 42, .4);
+}
+
+.request-details {
+  width: min(440px, 100%);
+  height: 100%;
+  padding: 24px;
+  overflow-y: auto;
+  background: #fff;
+  box-shadow: -8px 0 30px rgba(0, 0, 0, .15);
+}
+
+.details-header p { margin: 0 0 3px; color: #777; font-size: 13px; }
+.details-header h2 { margin: 0; font-size: 22px; }
+.details-header button {
+  border: 0;
+  background: transparent;
+  color: #555;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.request-details dl { margin: 28px 0 0; }
+.request-details dl > div { padding: 14px 0; border-bottom: 1px solid #eee; }
+.request-details dt { margin-bottom: 5px; color: #717780; font-size: 13px; font-weight: 600; }
+.request-details dd { margin: 0; color: #272b30; }
+.request-details .multiline { white-space: pre-line; }
+
+.app-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  text-align: center;
+  color: #333;
+}
+
+.role-selector {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.role-button {
+  flex: 1;
+  padding: 14px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.role-button.active {
+  background: #007bff;
+  color: #ffffff;
+  border-color: #007bff;
+}
+
+.role-button:active {
+  transform: scale(0.98);
+}
+
+.order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #333;
+  font-family: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input.city-disabled {
+  background: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+/* Date picker input styling */
+.date-picker-input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #333;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.date-picker-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+/* React DatePicker calendar styling */
+.react-datepicker {
+  font-family: inherit;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.react-datepicker__header {
+  background-color: #007bff;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  padding-top: 12px;
+}
+
+.react-datepicker__current-month {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.react-datepicker__day-name {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.react-datepicker__day {
+  border-radius: 6px;
+  margin: 2px;
+  transition: all 0.2s ease;
+}
+
+.react-datepicker__day:hover {
+  background-color: #e0e0e0;
+  border-radius: 6px;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: #007bff;
+  color: #ffffff;
+  border-radius: 6px;
+}
+
+.react-datepicker__day--selected:hover,
+.react-datepicker__day--keyboard-selected:hover {
+  background-color: #0056b3;
+}
+
+.react-datepicker__day--disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.react-datepicker__navigation {
+  top: 12px;
+}
+
+.react-datepicker__navigation-icon::before {
+  border-color: #ffffff;
+}
+
+.react-datepicker__navigation:hover *::before {
+  border-color: #e0e0e0;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Dropdown styles */
+.dropdown-container {
+  position: relative;
+  width: 100%;
+}
+
+.dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  margin-top: 4px;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: #ffffff;
+  text-align: start;
+  font-family: inherit;
+  padding: 12px;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.dropdown-message {
+  padding: 12px;
+  font-size: 15px;
+  color: #777;
+}
+
+.airport-selections {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.airport-selection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: #eef5ff;
+  color: #24415f;
+  font-size: 14px;
+}
+
+.airport-selection button {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #456;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.airport-selection button:hover {
+  background: #dbe9fa;
+}
+
+.not-found {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.not-found h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.not-found p {
+  margin-top: 1rem;
+  color: #666;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item:hover {
+  background-color: #f5f5f5;
+}
+
+.dropdown-item:active {
+  background-color: #e0e0e0;
+}
+
+.dropdown-item-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.dropdown-item-checkbox input[type="checkbox"] {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  margin: 1px 0 0;
+  padding: 0;
+  appearance: auto;
+  accent-color: #007bff;
+  pointer-events: none;
+}
+
+.submit-button {
+  margin-top: 8px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  background: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.submit-button:hover {
+  background: #0056b3;
+}
+
+.submit-button:active {
+  background: #004085;
+  transform: scale(0.98);
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 760px) {
+  .page-shell {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0;
+  }
+
+  .request-list {
+    max-height: none;
+  }
+
+  .app-container {
+    max-width: none;
+    padding: 16px;
+    border-radius: 0;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .app-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .role-selector {
+    margin-bottom: 24px;
+  }
+
+  .role-button {
+    padding: 12px 16px;
+    font-size: 15px;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .date-picker-input {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  .react-datepicker {
+    font-size: 14px;
+  }
+
+  .react-datepicker__day {
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    margin: 1px;
+  }
+}

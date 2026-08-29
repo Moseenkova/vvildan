@@ -1,0 +1,236 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: gu\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:73
+msgid "Active"
+msgstr "સક્રિય"
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr "બધી સ્થિતિઓ"
+
+#: src/i18n.js:43
+msgid "Arrival"
+msgstr "આગમન"
+
+#: src/i18n.js:53
+msgid "Arrival airport"
+msgstr "આગમન એરપોર્ટ"
+
+#: src/i18n.js:51
+msgid "Arrival city"
+msgstr "આગમન શહેર"
+
+#: src/i18n.js:50
+msgid "Arrival country"
+msgstr "આગમન દેશ"
+
+#: src/i18n.js:61
+msgid "Baggage comments"
+msgstr "સામાન ટિપ્પણીઓ"
+
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr "રદ કરેલ"
+
+#: src/i18n.js:59
+msgid "Choose a city first"
+msgstr "પ્રથમ શહેર પસંદ કરો"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "પ્રથમ દેશ પસંદ કરો"
+
+#: src/i18n.js:80
+msgid "Close"
+msgstr "બંધ કરો"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "ટિપ્પણી"
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr "પૂર્ણ થયું"
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "તમારી વિનંતીઓ લોડ કરી શકાઈ નથી."
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "દેશ, શહેર અથવા હવાઈમથક"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "કુરિયર"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "બનાવ્યું"
+
+#: src/i18n.js:39
+msgid "Date"
+msgstr "તારીખ"
+
+#: src/i18n.js:42
+msgid "Departure"
+msgstr "પ્રસ્થાન"
+
+#: src/i18n.js:52
+msgid "Departure airport"
+msgstr "પ્રસ્થાન એરપોર્ટ"
+
+#: src/i18n.js:49
+msgid "Departure city"
+msgstr "પ્રસ્થાન શહેર"
+
+#: src/i18n.js:48
+msgid "Departure country"
+msgstr "પ્રસ્થાન દેશ"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "એક શહેર દાખલ કરો"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "એક દેશ દાખલ કરો"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "શહેર દાખલ કરો અથવા પસંદ કરો"
+
+#: src/i18n.js:58
+msgid "Enter or choose an airport"
+msgstr "દાખલ કરો અથવા એરપોર્ટ પસંદ કરો"
+
+#: src/i18n.js:76
+msgid "Expired"
+msgstr "સમાપ્ત"
+
+#: src/i18n.js:62
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "ઉદાહરણ તરીકે: કપડાં 5 કિલો, દસ્તાવેજો, ઇલેક્ટ્રોનિક્સ"
+
+#: src/i18n.js:68
+msgid "Form submitted! Check the console for data."
+msgstr "ફોર્મ સબમિટ કર્યું! ડેટા માટે કન્સોલ તપાસો."
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "તારીખથી"
+
+#: src/i18n.js:60
+msgid "Loading..."
+msgstr "લોડ કરી રહ્યું છે..."
+
+#: src/i18n.js:47
+#~ msgid "Maximum number of airports selected"
+#~ msgstr ""
+
+#: src/i18n.js:41
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:40
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr "મારી વિનંતીઓ"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "નવી"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "આગળ"
+
+#: src/i18n.js:45
+msgid "no matching airports found, try to write in english"
+msgstr "મેળ ખાતું કોઈ હવાઈમથક મળ્યું નથી, અંગ્રેજીમાં લખવાનો પ્રયાસ કરો"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "આ સ્થિતિ સાથે કોઈ વિનંતીઓ નથી."
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "પૃષ્ઠ"
+
+#: src/i18n.js:67
+msgid "Please select a date"
+msgstr "કૃપા કરીને તારીખ પસંદ કરો"
+
+#: src/i18n.js:64
+msgid "Please select a start date"
+msgstr "કૃપા કરીને પ્રારંભ તારીખ પસંદ કરો"
+
+#: src/i18n.js:65
+msgid "Please select an end date"
+msgstr "કૃપા કરીને સમાપ્તિ તારીખ પસંદ કરો"
+
+#: src/i18n.js:46
+msgid "Please select departure and arrival airports from the list"
+msgstr "કૃપા કરીને સૂચિમાંથી પ્રસ્થાન અને આગમન હવાઈમથકો પસંદ કરો"
+
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "ગત"
+
+#: src/i18n.js:47
+msgid "Remove"
+msgstr "દૂર કરો"
+
+#: src/i18n.js:77
+msgid "Request details"
+msgstr "વિગતોની વિનંતી કરો"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "પૃષ્ઠ ક્રમાંકન માટે વિનંતી કરો"
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr "ભૂમિકા"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "મોકલનાર"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "સ્થિતિ"
+
+#: src/i18n.js:63
+msgid "Submit request"
+msgstr "વિનંતી સબમિટ કરો"
+
+#: src/i18n.js:66
+msgid "The start date cannot be after the end date"
+msgstr "પ્રારંભ તારીખ સમાપ્તિ તારીખ પછીની ન હોઈ શકે"
+
+#: src/i18n.js:38
+msgid "To date"
+msgstr "આજની તારીખે"
+
+#: src/i18n.js:69
+msgid "User Not Found"
+msgstr "વપરાશકર્તા મળ્યો નથી"
+
+#: src/i18n.js:70
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "તમે સિસ્ટમમાં નોંધાયેલા નથી. કૃપા કરીને પહેલા ટેલિગ્રામ બોટ દ્વારા નોંધણી કરો."

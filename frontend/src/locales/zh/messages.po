@@ -1,0 +1,236 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:73
+msgid "Active"
+msgstr "活跃"
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr "所有状态"
+
+#: src/i18n.js:43
+msgid "Arrival"
+msgstr "到达"
+
+#: src/i18n.js:53
+msgid "Arrival airport"
+msgstr "到达机场"
+
+#: src/i18n.js:51
+msgid "Arrival city"
+msgstr "到达城市"
+
+#: src/i18n.js:50
+msgid "Arrival country"
+msgstr "到达国家"
+
+#: src/i18n.js:61
+msgid "Baggage comments"
+msgstr "行李备注"
+
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr "取消"
+
+#: src/i18n.js:59
+msgid "Choose a city first"
+msgstr "首先选择城市"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "首先选择一个国家"
+
+#: src/i18n.js:80
+msgid "Close"
+msgstr "关闭"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "评论"
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr "已完成"
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "无法加载您的请求。"
+
+#: src/i18n.js:44
+msgid "country, city or airport"
+msgstr "国家、城市或机场"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "导游"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "已创建"
+
+#: src/i18n.js:39
+msgid "Date"
+msgstr "日期"
+
+#: src/i18n.js:42
+msgid "Departure"
+msgstr "出发"
+
+#: src/i18n.js:52
+msgid "Departure airport"
+msgstr "出发机场"
+
+#: src/i18n.js:49
+msgid "Departure city"
+msgstr "出发城市"
+
+#: src/i18n.js:48
+msgid "Departure country"
+msgstr "出发国家"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "输入城市"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "入境"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "输入或选择城市"
+
+#: src/i18n.js:58
+msgid "Enter or choose an airport"
+msgstr "输入或选择机场"
+
+#: src/i18n.js:76
+msgid "Expired"
+msgstr "已过期"
+
+#: src/i18n.js:62
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "例如：5公斤的衣服、文件、电子产品"
+
+#: src/i18n.js:68
+msgid "Form submitted! Check the console for data."
+msgstr "表格已提交！检查控制台的数据。"
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "开始日期"
+
+#: src/i18n.js:60
+msgid "Loading..."
+msgstr "加载中..."
+
+#: src/i18n.js:47
+#~ msgid "Maximum number of airports selected"
+#~ msgstr ""
+
+#: src/i18n.js:41
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:40
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr "我的要求"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "新"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "下一步"
+
+#: src/i18n.js:45
+msgid "no matching airports found, try to write in english"
+msgstr "未找到匹配的机场，请尝试用英语输入"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "没有此状态的请求。"
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "页面"
+
+#: src/i18n.js:67
+msgid "Please select a date"
+msgstr "请选择日期"
+
+#: src/i18n.js:64
+msgid "Please select a start date"
+msgstr "请选择开始日期"
+
+#: src/i18n.js:65
+msgid "Please select an end date"
+msgstr "请选择结束日期"
+
+#: src/i18n.js:46
+msgid "Please select departure and arrival airports from the list"
+msgstr "请从列表中选择出发和到达机场"
+
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "上一页"
+
+#: src/i18n.js:47
+msgid "Remove"
+msgstr "移除"
+
+#: src/i18n.js:77
+msgid "Request details"
+msgstr "索取详情"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "请求分页"
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr "角色"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "发件人"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "状态"
+
+#: src/i18n.js:63
+msgid "Submit request"
+msgstr "提交请求"
+
+#: src/i18n.js:66
+msgid "The start date cannot be after the end date"
+msgstr "开始日期不能晚于结束日期"
+
+#: src/i18n.js:38
+msgid "To date"
+msgstr "迄今为止"
+
+#: src/i18n.js:69
+msgid "User Not Found"
+msgstr "未找到用户"
+
+#: src/i18n.js:70
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "您尚未在系统中注册。请先通过 Telegram 机器人注册。"
