@@ -16,31 +16,31 @@ async def test_get_my_requests_returns_real_paginated_rows(
 ) -> None:
     user = auth_ac.current_user
     other_user = await factory.User()
-    airport = await factory.Airport()
+    city = await factory.City()
     now = datetime(2026, 8, 22, 12, 0)
 
     oldest = await factory.Request(
         user=user,
-        departure_airports=[airport],
-        arrival_airports=[airport],
+        departure_cities=[city],
+        arrival_cities=[city],
         created_at=now - timedelta(days=2),
     )
     middle = await factory.Request(
         user=user,
-        departure_airports=[airport],
-        arrival_airports=[airport],
+        departure_cities=[city],
+        arrival_cities=[city],
         created_at=now - timedelta(days=1),
     )
     newest = await factory.Request(
         user=user,
-        departure_airports=[airport],
-        arrival_airports=[airport],
+        departure_cities=[city],
+        arrival_cities=[city],
         created_at=now,
     )
     await factory.Request(
         user=other_user,
-        departure_airports=[airport],
-        arrival_airports=[airport],
+        departure_cities=[city],
+        arrival_cities=[city],
         created_at=now + timedelta(days=1),
     )
 
@@ -56,13 +56,11 @@ async def test_get_my_requests_returns_real_paginated_rows(
     assert body["size"] == 2
     assert body["pages"] == 2
     assert [item["id"] for item in body["items"]] == [newest.id, middle.id]
-    assert body["items"][0]["departure_airports"] == [
+    assert body["items"][0]["departure_cities"] == [
         {
-            "id": airport.id,
-            "name": airport.name,
-            "iata_code": airport.iata_code,
-            "city_name": airport.city.name,
-            "country_name": airport.city.country.name,
+            "id": city.id,
+            "name": city.name,
+            "country_name": city.country.name,
         }
     ]
 
@@ -81,19 +79,19 @@ async def test_get_my_requests_filters_real_rows_by_status(
     factory: FactoryNamespace,
 ) -> None:
     user = auth_ac.current_user
-    airport = await factory.Airport()
+    city = await factory.City()
     now = datetime(2026, 8, 22, 12, 0)
     active = await factory.Request(
         user=user,
-        departure_airports=[airport],
-        arrival_airports=[airport],
+        departure_cities=[city],
+        arrival_cities=[city],
         status=RequestStatus.active,
         created_at=now,
     )
     completed = await factory.Request(
         user=user,
-        departure_airports=[airport],
-        arrival_airports=[airport],
+        departure_cities=[city],
+        arrival_cities=[city],
         status=RequestStatus.completed,
         created_at=now + timedelta(minutes=1),
     )
@@ -115,3 +113,29 @@ async def test_get_my_requests_requires_authentication(client: AsyncClient) -> N
     response = await client.get("/api/requests")
 
     assert response.status_code == 401
+
+
+@pytest.mark.asyncio
+async def test_city_search_matches_city_and_country(
+    auth_ac: AuthenticatedClient,
+    factory: FactoryNamespace,
+) -> None:
+    city = await factory.City(name="Jakarta", country__name="Indonesia")
+
+    city_response = await auth_ac.client.get(
+        "/api/city-search", params={"q": "Jakar"}
+    )
+    country_response = await auth_ac.client.get(
+        "/api/city-search", params={"q": "Indones"}
+    )
+
+    expected = {
+        "id": city.id,
+        "name": city.name,
+        "country_id": city.country.id,
+        "country_name": city.country.name,
+    }
+    assert city_response.status_code == 200
+    assert city_response.json() == [expected]
+    assert country_response.status_code == 200
+    assert country_response.json() == [expected]

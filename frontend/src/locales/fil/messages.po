@@ -68,8 +68,8 @@ msgid "Could not load your requests."
 msgstr "Hindi ma-load ang iyong mga kahilingan."
 
 #: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "bansa, lungsod o paliparan"
+msgid "Country or city"
+msgstr "Bansa o lungsod"
 
 #: src/i18n.js:36
 msgid "Courier"

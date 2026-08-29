@@ -68,8 +68,8 @@ msgid "Could not load your requests."
 msgstr "リクエストを読み込めませんでした。"
 
 #: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "国、都市、または空港"
+msgid "Country or city"
+msgstr "国または都市"
 
 #: src/i18n.js:36
 msgid "Courier"

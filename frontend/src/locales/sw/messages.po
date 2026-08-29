@@ -68,8 +68,8 @@ msgid "Could not load your requests."
 msgstr "Haikuweza kupakia maombi yako."
 
 #: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "nchi, jiji au uwanja wa ndege"
+msgid "Country or city"
+msgstr "Nchi au jiji"
 
 #: src/i18n.js:36
 msgid "Courier"

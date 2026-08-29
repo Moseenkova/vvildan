@@ -68,8 +68,8 @@ msgid "Could not load your requests."
 msgstr "Nem sikerült betölteni a kéréseket."
 
 #: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "ország, város vagy repülőtér"
+msgid "Country or city"
+msgstr "Ország vagy város"
 
 #: src/i18n.js:36
 msgid "Courier"

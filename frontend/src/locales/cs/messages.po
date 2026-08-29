@@ -68,8 +68,8 @@ msgid "Could not load your requests."
 msgstr "Vaše požadavky se nepodařilo načíst."
 
 #: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "země, město nebo letiště"
+msgid "Country or city"
+msgstr "Země nebo město"
 
 #: src/i18n.js:36
 msgid "Courier"

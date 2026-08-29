@@ -68,8 +68,8 @@ msgid "Could not load your requests."
 msgstr "无法加载您的请求。"
 
 #: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "国家、城市或机场"
+msgid "Country or city"
+msgstr "国家或城市"
 
 #: src/i18n.js:36
 msgid "Courier"

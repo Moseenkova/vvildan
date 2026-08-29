@@ -19,6 +19,33 @@ AIRPORTS_URL = "https://davidmegginson.github.io/ourairports-data/airports.csv"
 COUNTRIES_URL = "https://davidmegginson.github.io/ourairports-data/countries.csv"
 DEFAULT_OUTPUT = PROJECT_ROOT / "data" / "international_and_large_airports.csv"
 
+# OurAirports uses district-level municipalities for these airports, but the
+# application searches and groups locations at city level.
+CITY_BY_AIRPORT_IDENT = {
+    "CN-0154": "Hangzhou",
+    "EDFH": "Frankfurt am Main",
+    "EGSS": "London",
+    "ESOW": "Stockholm",
+    "FNBJ": "Luanda",
+    "KCVG": "Cincinnati",
+    "KDFW": "Dallas",
+    "KRFD": "Chicago",
+    "LFPG": "Paris",
+    "LFPO": "Paris",
+    "LTBA": "Istanbul",
+    "LTFJ": "Istanbul",
+    "MSLP": "San Salvador",
+    "NWWW": "Nouméa",
+    "OMDW": "Dubai",
+    "SAEZ": "Buenos Aires",
+    "SBGL": "Rio de Janeiro",
+    "VN-0018": "Ho Chi Minh City",
+    "YMAV": "Melbourne",
+    "YSSY": "Sydney",
+    "ZMCK": "Ulaanbaatar",
+    "ZPCW": "Lincang",
+}
+
 OUTPUT_FIELDS = [
     "ident",
     "name",
@@ -75,6 +102,10 @@ def save_csv(rows: list[dict[str, str]], output: Path) -> None:
         writer.writerows(rows)
 
 
+def city_name_for_airport(row: dict[str, str]) -> str:
+    return CITY_BY_AIRPORT_IDENT.get(row["ident"], row["municipality"])
+
+
 async def import_rows(rows: list[dict[str, str]]) -> tuple[int, int, int]:
     from src.database import Airport, City, Country, async_session_maker
 
@@ -105,9 +136,9 @@ async def import_rows(rows: list[dict[str, str]]) -> tuple[int, int, int]:
         cities_by_key = {(city.country_id, city.name): city for city in cities}
         for row in rows:
             country = countries_by_code[row["iso_country"]]
-            key = (country.id, row["municipality"])
+            key = (country.id, city_name_for_airport(row))
             if key not in cities_by_key:
-                city = City(name=row["municipality"], country=country)
+                city = City(name=key[1], country=country)
                 session.add(city)
                 cities_by_key[key] = city
 
@@ -117,7 +148,7 @@ async def import_rows(rows: list[dict[str, str]]) -> tuple[int, int, int]:
         airports_by_ident = {airport.ident: airport for airport in airports}
         for row in rows:
             country = countries_by_code[row["iso_country"]]
-            city = cities_by_key[(country.id, row["municipality"])]
+            city = cities_by_key[(country.id, city_name_for_airport(row))]
             values = {
                 "name": row["name"],
                 "airport_type": row["type"],

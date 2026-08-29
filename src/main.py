@@ -6,8 +6,6 @@ from sqlalchemy import func, or_, select
 from sqlalchemy.orm import selectinload
 
 from src.database import (
-    Airport,
-    AirportName,
     async_session_maker,
     City,
     CityName,
@@ -17,7 +15,7 @@ from src.database import (
     RequestStatus,
 )
 from src.schemas import (
-    AirportSearchResultSchema,
+    CitySearchResultSchema,
     RequestSchema,
 )
 from src.auth.routers import auth_router
@@ -46,8 +44,8 @@ async def get_my_requests(
     status: RequestStatus | None = Query(None),
     user=Depends(get_current_user),
 ):
-    airport_load = selectinload(TravelRequest.departure_airports).selectinload(Airport.city).selectinload(City.country)
-    arrival_load = selectinload(TravelRequest.arrival_airports).selectinload(Airport.city).selectinload(City.country)
+    departure_load = selectinload(TravelRequest.departure_cities).selectinload(City.country)
+    arrival_load = selectinload(TravelRequest.arrival_cities).selectinload(City.country)
     async with async_session_maker() as session:
         query = (
             select(TravelRequest)
@@ -55,15 +53,15 @@ async def get_my_requests(
                 TravelRequest.user_id == user.id,
                 *([TravelRequest.status == status] if status else []),
             )
-            .options(airport_load, arrival_load)
+            .options(departure_load, arrival_load)
             .order_by(TravelRequest.created_at.desc())
         )
         return await apaginate(session, query)
 
 
-@app.get("/api/airport-search", response_model=list[AirportSearchResultSchema])
-async def search_airports(
-    q: str = Query(..., min_length=1, description="Airport, city, or country name"),
+@app.get("/api/city-search", response_model=list[CitySearchResultSchema])
+async def search_cities(
+    q: str = Query(..., min_length=1, description="City or country name"),
     language: str = Query("en", min_length=2, max_length=16),
     user=Depends(get_current_user),
 ):
@@ -74,15 +72,6 @@ async def search_airports(
     language = language.lower().replace("_", "-").split("-", 1)[0]
     search_languages = {language, "en"}
 
-    localized_airport_name = (
-        select(func.min(AirportName.name))
-        .where(
-            AirportName.airport_id == Airport.id,
-            AirportName.language_code == language,
-        )
-        .correlate(Airport)
-        .scalar_subquery()
-    )
     localized_city_name = (
         select(func.min(CityName.name))
         .where(CityName.city_id == City.id, CityName.language_code == language)
@@ -102,28 +91,16 @@ async def search_airports(
     async with async_session_maker() as session:
         query = (
             select(
-                Airport.id,
-                func.coalesce(localized_airport_name, Airport.name).label("name"),
-                Airport.iata_code,
-                Airport.icao_code,
-                City.id.label("city_id"),
-                func.coalesce(localized_city_name, City.name).label("city_name"),
+                City.id,
+                func.coalesce(localized_city_name, City.name).label("name"),
                 Country.id.label("country_id"),
                 func.coalesce(localized_country_name, Country.name).label("country_name"),
             )
-            .join(City, Airport.city_id == City.id)
             .join(Country, City.country_id == Country.id)
             .where(
                 or_(
-                    Airport.name.ilike(search),
-                    Airport.iata_code.ilike(search),
-                    Airport.icao_code.ilike(search),
                     City.name.ilike(search),
                     Country.name.ilike(search),
-                    Airport.localized_names.any(
-                        AirportName.language_code.in_(search_languages)
-                        & AirportName.name.ilike(search)
-                    ),
                     City.localized_names.any(
                         CityName.language_code.in_(search_languages)
                         & CityName.name.ilike(search)
@@ -137,7 +114,6 @@ async def search_airports(
             .order_by(
                 City.population.desc(),
                 "country_name",
-                "city_name",
                 "name",
             )
             .limit(50)
