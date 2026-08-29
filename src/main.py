@@ -70,12 +70,26 @@ async def search_cities(
         return []
     search = f"%{term}%"
     language = language.lower().replace("_", "-").split("-", 1)[0]
-    search_languages = {language, "en"}
 
     localized_city_name = (
         select(func.min(CityName.name))
         .where(CityName.city_id == City.id, CityName.language_code == language)
         .correlate(City)
+        .scalar_subquery()
+    )
+    english_city_name = (
+        select(func.min(CityName.name))
+        .where(CityName.city_id == City.id, CityName.language_code == "en")
+        .correlate(City)
+        .scalar_subquery()
+    )
+    english_country_name = (
+        select(func.min(CountryName.name))
+        .where(
+            CountryName.country_id == Country.id,
+            CountryName.language_code == "en",
+        )
+        .correlate(Country)
         .scalar_subquery()
     )
     localized_country_name = (
@@ -92,23 +106,23 @@ async def search_cities(
         query = (
             select(
                 City.id,
-                func.coalesce(localized_city_name, City.name).label("name"),
+                func.coalesce(localized_city_name, english_city_name, City.name).label(
+                    "name"
+                ),
                 Country.id.label("country_id"),
-                func.coalesce(localized_country_name, Country.name).label("country_name"),
+                func.coalesce(
+                    localized_country_name,
+                    english_country_name,
+                    Country.name,
+                ).label("country_name"),
             )
             .join(Country, City.country_id == Country.id)
             .where(
                 or_(
                     City.name.ilike(search),
                     Country.name.ilike(search),
-                    City.localized_names.any(
-                        CityName.language_code.in_(search_languages)
-                        & CityName.name.ilike(search)
-                    ),
-                    Country.localized_names.any(
-                        CountryName.language_code.in_(search_languages)
-                        & CountryName.name.ilike(search)
-                    ),
+                    City.localized_names.any(CityName.name.ilike(search)),
+                    Country.localized_names.any(CountryName.name.ilike(search)),
                 )
             )
             .order_by(
