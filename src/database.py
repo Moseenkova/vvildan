@@ -66,19 +66,19 @@ class RequestStatus(enum.Enum):
     expired = "expired"
 
 
-request_departure_airports = Table(
-    "request_departure_airports",
+request_departure_cities = Table(
+    "request_departure_cities",
     Base.metadata,
     Column("request_id", ForeignKey("requests.id", ondelete="CASCADE"), primary_key=True),
-    Column("airport_id", ForeignKey("airports.id", ondelete="CASCADE"), primary_key=True),
+    Column("city_id", ForeignKey("cities.id", ondelete="CASCADE"), primary_key=True),
 )
 
 
-request_arrival_airports = Table(
-    "request_arrival_airports",
+request_arrival_cities = Table(
+    "request_arrival_cities",
     Base.metadata,
     Column("request_id", ForeignKey("requests.id", ondelete="CASCADE"), primary_key=True),
-    Column("airport_id", ForeignKey("airports.id", ondelete="CASCADE"), primary_key=True),
+    Column("city_id", ForeignKey("cities.id", ondelete="CASCADE"), primary_key=True),
 )
 
 
@@ -100,12 +100,12 @@ class Request(Base):
     date_from: Mapped[date] = mapped_column(Date)
     date_to: Mapped[date] = mapped_column(Date)
 
-    departure_airports: Mapped[list["Airport"]] = relationship(
-        secondary=request_departure_airports,
+    departure_cities: Mapped[list["City"]] = relationship(
+        secondary=request_departure_cities,
         back_populates="departure_requests",
     )
-    arrival_airports: Mapped[list["Airport"]] = relationship(
-        secondary=request_arrival_airports,
+    arrival_cities: Mapped[list["City"]] = relationship(
+        secondary=request_arrival_cities,
         back_populates="arrival_requests",
     )
 
@@ -195,6 +195,14 @@ class City(Base):
     localized_names: Mapped[List["CityName"]] = relationship(
         back_populates="city", cascade="all, delete-orphan"
     )
+    departure_requests: Mapped[List["Request"]] = relationship(
+        secondary=request_departure_cities,
+        back_populates="departure_cities",
+    )
+    arrival_requests: Mapped[List["Request"]] = relationship(
+        secondary=request_arrival_cities,
+        back_populates="arrival_cities",
+    )
 
     __table_args__ = (UniqueConstraint("country_id", "name"),)
 
@@ -213,14 +221,6 @@ class Airport(Base):
     city: Mapped["City"] = relationship(back_populates="airports")
     localized_names: Mapped[List["AirportName"]] = relationship(
         back_populates="airport", cascade="all, delete-orphan"
-    )
-    departure_requests: Mapped[List["Request"]] = relationship(
-        secondary=request_departure_airports,
-        back_populates="departure_airports",
-    )
-    arrival_requests: Mapped[List["Request"]] = relationship(
-        secondary=request_arrival_airports,
-        back_populates="arrival_airports",
     )
 
 

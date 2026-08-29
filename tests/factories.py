@@ -70,24 +70,24 @@ class AirportFactory(BaseFactory):
     city = SubFactory(CityFactory)
 
 
-def _set_departure_airports(
+def _set_departure_cities(
     request: Request,
     create: bool,
-    extracted: Iterable[Airport] | None,
+    extracted: Iterable[City] | None,
     **kwargs: Any,
 ) -> None:
     if extracted:
-        request.departure_airports.extend(extracted)
+        request.departure_cities.extend(extracted)
 
 
-def _set_arrival_airports(
+def _set_arrival_cities(
     request: Request,
     create: bool,
-    extracted: Iterable[Airport] | None,
+    extracted: Iterable[City] | None,
     **kwargs: Any,
 ) -> None:
     if extracted:
-        request.arrival_airports.extend(extracted)
+        request.arrival_cities.extend(extracted)
 
 
 class RequestFactory(BaseFactory):
@@ -101,8 +101,8 @@ class RequestFactory(BaseFactory):
     date_to = date(2026, 9, 2)
     comment = Faker("sentence")
     status = RequestStatus.active
-    departure_airports = PostGeneration(_set_departure_airports)
-    arrival_airports = PostGeneration(_set_arrival_airports)
+    departure_cities = PostGeneration(_set_departure_cities)
+    arrival_cities = PostGeneration(_set_arrival_cities)
 
 
 class AsyncModelFactory(Generic[Model]):
