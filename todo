@@ -35,4 +35,4 @@ add red dot on my-requests if new match
 celery task to daily backup db 14 copies max
 
 
-choose from cities and search through all languages and show result in user or default lang
+add open requests with no closed date
