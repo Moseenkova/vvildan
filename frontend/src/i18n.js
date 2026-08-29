@@ -41,7 +41,7 @@ export const getMessages = (_) => ({
   datePlaceholder: _(msg`mm/dd/yyyy`),
   departure: _(msg`Departure`),
   arrival: _(msg`Arrival`),
-  searchCityCountry: _(msg`country or city`),
+  searchCityCountry: _(msg`Country or city`),
   noCitiesFound: _(msg`no matching cities found, try to write in english`),
   selectCityFromList: _(msg`Please select departure and arrival cities from the list`),
   remove: _(msg`Remove`),

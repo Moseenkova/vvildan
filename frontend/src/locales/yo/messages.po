@@ -68,8 +68,8 @@ msgid "Could not load your requests."
 msgstr "Ko le gbe awọn ibeere rẹ silẹ."
 
 #: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "orílẹ̀-èdè, ìlú tàbí pápákọ̀ òfurufú"
+msgid "Country or city"
+msgstr "Orílẹ̀-èdè tàbí ìlú"
 
 #: src/i18n.js:36
 msgid "Courier"

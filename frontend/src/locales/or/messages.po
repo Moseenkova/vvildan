@@ -68,8 +68,8 @@ msgid "Could not load your requests."
 msgstr "ତୁମର ଅନୁରୋଧ ଲୋଡ୍ କରିପାରିଲା ନାହିଁ |"
 
 #: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "ଦେଶ, ସହର କିମ୍ବା ବିମାନବନ୍ଦର"
+msgid "Country or city"
+msgstr "ଦେଶ କିମ୍ବା ସହର"
 
 #: src/i18n.js:36
 msgid "Courier"

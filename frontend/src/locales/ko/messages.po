@@ -68,8 +68,8 @@ msgid "Could not load your requests."
 msgstr "요청을 로드할 수 없습니다."
 
 #: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "국가, 도시 또는 공항"
+msgid "Country or city"
+msgstr "국가 또는 도시"
 
 #: src/i18n.js:36
 msgid "Courier"

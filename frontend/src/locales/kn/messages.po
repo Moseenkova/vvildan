@@ -68,8 +68,8 @@ msgid "Could not load your requests."
 msgstr "ನಿಮ್ಮ ವಿನಂತಿಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ."
 
 #: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "ದೇಶ, ನಗರ ಅಥವಾ ವಿಮಾನ ನಿಲ್ದಾಣ"
+msgid "Country or city"
+msgstr "ದೇಶ ಅಥವಾ ನಗರ"
 
 #: src/i18n.js:36
 msgid "Courier"

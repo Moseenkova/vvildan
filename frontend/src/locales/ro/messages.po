@@ -68,8 +68,8 @@ msgid "Could not load your requests."
 msgstr "Nu s-au putut încărca solicitările dvs."
 
 #: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "țară, oraș sau aeroport"
+msgid "Country or city"
+msgstr "Țară sau oraș"
 
 #: src/i18n.js:36
 msgid "Courier"
