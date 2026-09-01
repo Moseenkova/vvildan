@@ -118,7 +118,7 @@ async def test_get_my_requests_requires_authentication(client: AsyncClient) -> N
 
 
 @pytest.mark.asyncio
-async def test_create_request_persists_frontend_submission(
+async def test_create_sender_request(
     auth_ac: AuthenticatedClient,
     factory: FactoryNamespace,
 ) -> None:
@@ -140,9 +140,12 @@ async def test_create_request_persists_frontend_submission(
     assert response.status_code == 201
     body = response.json()
     assert body["role"] == "sender"
-    assert body["departure_cities"][0]["id"] == departure.id
-    assert body["arrival_cities"][0]["id"] == arrival.id
+    assert body["date_from"] == "2026-09-10"
+    assert body["date_to"] == "2026-09-12"
+    assert [city["id"] for city in body["departure_cities"]] == [departure.id]
+    assert [city["id"] for city in body["arrival_cities"]] == [arrival.id]
     assert body["comment"] == "One small parcel"
+    assert body["status"] == "active"
 
     async with async_session_maker() as session:
         created = (await session.scalars(select(TravelRequest))).one()
@@ -153,7 +156,7 @@ async def test_create_request_persists_frontend_submission(
 
 
 @pytest.mark.asyncio
-async def test_create_request_escapes_html_in_comment(
+async def test_create_courier_request(
     auth_ac: AuthenticatedClient,
     factory: FactoryNamespace,
 ) -> None:
@@ -173,9 +176,23 @@ async def test_create_request_escapes_html_in_comment(
     )
 
     assert response.status_code == 201
-    assert response.json()["comment"] == (
+    body = response.json()
+    assert body["role"] == "courier"
+    assert body["date_from"] == "2026-09-10"
+    assert body["date_to"] == "2026-09-10"
+    assert [city["id"] for city in body["departure_cities"]] == [departure.id]
+    assert [city["id"] for city in body["arrival_cities"]] == [arrival.id]
+    assert body["comment"] == (
         "&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;"
     )
+    assert body["status"] == "active"
+
+    async with async_session_maker() as session:
+        created = (await session.scalars(select(TravelRequest))).one()
+        assert created.user_id == auth_ac.current_user.id
+        assert created.role == RequestRole.courier
+        assert created.date_from.isoformat() == "2026-09-10"
+        assert created.date_to.isoformat() == "2026-09-10"
 
 
 @pytest.mark.asyncio
