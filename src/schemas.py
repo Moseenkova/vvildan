@@ -7,13 +7,9 @@ from datetime import date, datetime
 from pydantic import AliasPath, BaseModel, ConfigDict, Field, field_validator
 
 
-class AirportSearchResultSchema(BaseModel):
+class CitySearchResultSchema(BaseModel):
     id: int
     name: str
-    iata_code: str | None
-    icao_code: str | None
-    city_id: int
-    city_name: str
     country_id: int
     country_name: str
 
@@ -40,16 +36,13 @@ class RequestCreateSchema(BaseModel):
                 raise ValueError("date is required for courier")
         return self
 
-class RequestAirportSchema(BaseModel):
+
+class RequestCitySchema(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
     id: int
     name: str
-    iata_code: str | None
-    city_name: str = Field(validation_alias=AliasPath("city", "name"))
-    country_name: str = Field(
-        validation_alias=AliasPath("city", "country", "name")
-    )
+    country_name: str = Field(validation_alias=AliasPath("country", "name"))
 
 
 class RequestSchema(BaseModel):
@@ -59,8 +52,8 @@ class RequestSchema(BaseModel):
     role: str
     date_from: date
     date_to: date
-    departure_airports: list[RequestAirportSchema]
-    arrival_airports: list[RequestAirportSchema]
+    departure_cities: list[RequestCitySchema]
+    arrival_cities: list[RequestCitySchema]
     comment: str
     status: str
     created_at: datetime

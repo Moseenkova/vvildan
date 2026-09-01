@@ -68,8 +68,8 @@ msgid "Could not load your requests."
 msgstr "So‘rovlaringizni yuklab bo‘lmadi."
 
 #: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "mamlakat, shahar yoki aeroport"
+msgid "Country or city"
+msgstr "Mamlakat yoki shahar"
 
 #: src/i18n.js:36
 msgid "Courier"

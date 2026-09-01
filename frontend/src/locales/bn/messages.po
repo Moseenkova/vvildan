@@ -68,8 +68,8 @@ msgid "Could not load your requests."
 msgstr "আপনার অনুরোধ লোড করা যায়নি."
 
 #: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "দেশ, শহর বা বিমানবন্দর"
+msgid "Country or city"
+msgstr "দেশ বা শহর"
 
 #: src/i18n.js:36
 msgid "Courier"

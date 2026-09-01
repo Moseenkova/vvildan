@@ -66,19 +66,19 @@ class RequestStatus(enum.Enum):
     expired = "expired"
 
 
-request_departure_airports = Table(
-    "request_departure_airports",
+request_departure_cities = Table(
+    "request_departure_cities",
     Base.metadata,
     Column("request_id", ForeignKey("requests.id", ondelete="CASCADE"), primary_key=True),
-    Column("airport_id", ForeignKey("airports.id", ondelete="CASCADE"), primary_key=True),
+    Column("city_id", ForeignKey("cities.id", ondelete="CASCADE"), primary_key=True),
 )
 
 
-request_arrival_airports = Table(
-    "request_arrival_airports",
+request_arrival_cities = Table(
+    "request_arrival_cities",
     Base.metadata,
     Column("request_id", ForeignKey("requests.id", ondelete="CASCADE"), primary_key=True),
-    Column("airport_id", ForeignKey("airports.id", ondelete="CASCADE"), primary_key=True),
+    Column("city_id", ForeignKey("cities.id", ondelete="CASCADE"), primary_key=True),
 )
 
 
@@ -100,12 +100,12 @@ class Request(Base):
     date_from: Mapped[date] = mapped_column(Date)
     date_to: Mapped[date] = mapped_column(Date)
 
-    departure_airports: Mapped[list["Airport"]] = relationship(
-        secondary=request_departure_airports,
+    departure_cities: Mapped[list["City"]] = relationship(
+        secondary=request_departure_cities,
         back_populates="departure_requests",
     )
-    arrival_airports: Mapped[list["Airport"]] = relationship(
-        secondary=request_arrival_airports,
+    arrival_cities: Mapped[list["City"]] = relationship(
+        secondary=request_arrival_cities,
         back_populates="arrival_requests",
     )
 
@@ -191,37 +191,19 @@ class City(Base):
     population: Mapped[int] = mapped_column(BigInteger, default=0, index=True)
     country_id: Mapped[int] = mapped_column(ForeignKey("countries.id"))
     country: Mapped["Country"] = relationship(back_populates="cities")
-    airports: Mapped[List["Airport"]] = relationship(back_populates="city")
     localized_names: Mapped[List["CityName"]] = relationship(
         back_populates="city", cascade="all, delete-orphan"
     )
-
-    __table_args__ = (UniqueConstraint("country_id", "name"),)
-
-
-class Airport(Base):
-    __tablename__ = "airports"
-    ident: Mapped[str] = mapped_column(unique=True, index=True)
-    name: Mapped[str]
-    airport_type: Mapped[str]
-    iata_code: Mapped[Optional[str]] = mapped_column(index=True)
-    icao_code: Mapped[Optional[str]] = mapped_column(index=True)
-    latitude: Mapped[float] = mapped_column(Float)
-    longitude: Mapped[float] = mapped_column(Float)
-    scheduled_service: Mapped[bool] = mapped_column(Boolean, default=False)
-    city_id: Mapped[int] = mapped_column(ForeignKey("cities.id"), index=True)
-    city: Mapped["City"] = relationship(back_populates="airports")
-    localized_names: Mapped[List["AirportName"]] = relationship(
-        back_populates="airport", cascade="all, delete-orphan"
-    )
     departure_requests: Mapped[List["Request"]] = relationship(
-        secondary=request_departure_airports,
-        back_populates="departure_airports",
+        secondary=request_departure_cities,
+        back_populates="departure_cities",
     )
     arrival_requests: Mapped[List["Request"]] = relationship(
-        secondary=request_arrival_airports,
-        back_populates="arrival_airports",
+        secondary=request_arrival_cities,
+        back_populates="arrival_cities",
     )
+
+    __table_args__ = (UniqueConstraint("country_id", "name"),)
 
 
 class CountryName(Base):
@@ -251,21 +233,6 @@ class CityName(Base):
     __table_args__ = (
         UniqueConstraint("city_id", "language_code", "name"),
         Index("ix_city_names_language_name", "language_code", "name"),
-    )
-
-
-class AirportName(Base):
-    __tablename__ = "airport_names"
-    airport_id: Mapped[int] = mapped_column(
-        ForeignKey("airports.id", ondelete="CASCADE"), index=True
-    )
-    language_code: Mapped[str] = mapped_column(index=True)
-    name: Mapped[str]
-    airport: Mapped["Airport"] = relationship(back_populates="localized_names")
-
-    __table_args__ = (
-        UniqueConstraint("airport_id", "language_code", "name"),
-        Index("ix_airport_names_language_name", "language_code", "name"),
     )
 
 

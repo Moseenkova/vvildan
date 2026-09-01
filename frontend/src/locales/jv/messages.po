@@ -68,8 +68,8 @@ msgid "Could not load your requests."
 msgstr "Ora bisa mbukak panjalukan sampeyan."
 
 #: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "negara, kutha utawa bandara"
+msgid "Country or city"
+msgstr "Negara utawa kutha"
 
 #: src/i18n.js:36
 msgid "Courier"

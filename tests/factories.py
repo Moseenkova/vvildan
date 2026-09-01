@@ -9,7 +9,6 @@ from factory.faker import Faker
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.database import (
-    Airport,
     City,
     Country,
     Request,
@@ -54,40 +53,24 @@ class CityFactory(BaseFactory):
     country = SubFactory(CountryFactory)
 
 
-class AirportFactory(BaseFactory):
-    class Meta:  # pyright: ignore[reportIncompatibleVariableOverride]
-        model = Airport
-
-    id = None
-    ident = Sequence(lambda sequence: f"TEST-{sequence}")
-    name = Sequence(lambda sequence: f"Airport {sequence}")
-    airport_type = "large_airport"
-    iata_code = Sequence(lambda sequence: f"T{sequence:02d}"[-3:])
-    icao_code = Sequence(lambda sequence: f"TT{sequence:02d}"[-4:])
-    latitude = Faker("latitude")
-    longitude = Faker("longitude")
-    scheduled_service = True
-    city = SubFactory(CityFactory)
-
-
-def _set_departure_airports(
+def _set_departure_cities(
     request: Request,
     create: bool,
-    extracted: Iterable[Airport] | None,
+    extracted: Iterable[City] | None,
     **kwargs: Any,
 ) -> None:
     if extracted:
-        request.departure_airports.extend(extracted)
+        request.departure_cities.extend(extracted)
 
 
-def _set_arrival_airports(
+def _set_arrival_cities(
     request: Request,
     create: bool,
-    extracted: Iterable[Airport] | None,
+    extracted: Iterable[City] | None,
     **kwargs: Any,
 ) -> None:
     if extracted:
-        request.arrival_airports.extend(extracted)
+        request.arrival_cities.extend(extracted)
 
 
 class RequestFactory(BaseFactory):
@@ -101,8 +84,8 @@ class RequestFactory(BaseFactory):
     date_to = date(2026, 9, 2)
     comment = Faker("sentence")
     status = RequestStatus.active
-    departure_airports = PostGeneration(_set_departure_airports)
-    arrival_airports = PostGeneration(_set_arrival_airports)
+    departure_cities = PostGeneration(_set_departure_cities)
+    arrival_cities = PostGeneration(_set_arrival_cities)
 
 
 class AsyncModelFactory(Generic[Model]):
@@ -125,7 +108,6 @@ class FactoryNamespace:
     User: AsyncFactoryCall
     Country: AsyncFactoryCall
     City: AsyncFactoryCall
-    Airport: AsyncFactoryCall
     Request: AsyncFactoryCall
 
 
@@ -134,6 +116,5 @@ def build_factory_namespace(session: AsyncSession) -> FactoryNamespace:
         User=AsyncModelFactory[User](session, UserFactory),
         Country=AsyncModelFactory[Country](session, CountryFactory),
         City=AsyncModelFactory[City](session, CityFactory),
-        Airport=AsyncModelFactory[Airport](session, AirportFactory),
         Request=AsyncModelFactory[Request](session, RequestFactory),
     )

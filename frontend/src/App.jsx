@@ -10,7 +10,7 @@ import './App.css'
 registerLocale('en', enUS)
 registerLocale('ru', ru)
 
-function AirportSearch({ id, label, placeholder, selected, maxSelections, onSelect, onRemove, t }) {
+function CitySearch({ id, label, placeholder, selected, maxSelections, onSelect, onRemove, t }) {
   const [query, setQuery] = useState('')
   const [results, setResults] = useState([])
   const [open, setOpen] = useState(false)
@@ -41,7 +41,7 @@ function AirportSearch({ id, label, placeholder, selected, maxSelections, onSele
     setLoading(true)
     setOpen(true)
     try {
-      const response = await api.get('/api/airport-search', {
+      const response = await api.get('/api/city-search', {
         params: { q: trimmedQuery, language: locale },
       })
       if (requestId === requestRef.current) {
@@ -49,7 +49,7 @@ function AirportSearch({ id, label, placeholder, selected, maxSelections, onSele
       }
     } catch (error) {
       if (requestId === requestRef.current) setResults([])
-      console.error('Error searching airports:', error)
+      console.error('Error searching cities:', error)
     } finally {
       if (requestId === requestRef.current) setLoading(false)
     }
@@ -70,11 +70,11 @@ function AirportSearch({ id, label, placeholder, selected, maxSelections, onSele
     <div className="form-group">
       <label htmlFor={id}>{label}</label>
       {selected.length > 0 && (
-        <div className="airport-selections">
-          {selected.map((airport) => (
-            <div className="airport-selection" key={airport.id}>
-              <span>{airport.name}, {airport.city_name}, {airport.country_name}</span>
-              <button type="button" onClick={() => onRemove(airport.id)} aria-label={`${t.remove} ${airport.name}`}>×</button>
+        <div className="city-selections">
+          {selected.map((city) => (
+            <div className="city-selection" key={city.id}>
+              <span>{city.name}, {city.country_name}</span>
+              <button type="button" onClick={() => onRemove(city.id)} aria-label={`${t.remove} ${city.name}`}>×</button>
             </div>
           ))}
         </div>
@@ -99,19 +99,19 @@ function AirportSearch({ id, label, placeholder, selected, maxSelections, onSele
           <div id={`${id}-results`} className="dropdown-list" role="listbox">
             {loading ? (
               <div className="dropdown-message">{t.loading}</div>
-            ) : results.some((airport) => isMultiple || !selected.some((item) => item.id === airport.id)) ? (
-              results.filter((airport) => isMultiple || !selected.some((item) => item.id === airport.id)).map((airport) => {
-                const isSelected = selected.some((item) => item.id === airport.id)
+            ) : results.some((city) => isMultiple || !selected.some((item) => item.id === city.id)) ? (
+              results.filter((city) => isMultiple || !selected.some((item) => item.id === city.id)).map((city) => {
+                const isSelected = selected.some((item) => item.id === city.id)
                 return (
                 <button
                   type="button"
                   role="option"
                   aria-selected={isSelected}
                   className={`dropdown-item ${isMultiple ? 'dropdown-item-checkbox' : ''}`}
-                  key={airport.id}
+                  key={city.id}
                   onClick={() => {
-                    if (isSelected) onRemove(airport.id)
-                    else onSelect(airport)
+                    if (isSelected) onRemove(city.id)
+                    else onSelect(city)
                     if (!isMultiple) {
                       setQuery('')
                       setResults([])
@@ -120,12 +120,12 @@ function AirportSearch({ id, label, placeholder, selected, maxSelections, onSele
                   }}
                 >
                   {isMultiple && <input type="checkbox" checked={isSelected} readOnly tabIndex={-1} />}
-                  <span>{airport.name}, {airport.city_name}, {airport.country_name}</span>
+                  <span>{city.name}, {city.country_name}</span>
                 </button>
                 )
               })
             ) : (
-              <div className="dropdown-message">{t.noAirportsFound}</div>
+              <div className="dropdown-message">{t.noCitiesFound}</div>
             )}
           </div>
           )}
@@ -137,8 +137,8 @@ function AirportSearch({ id, label, placeholder, selected, maxSelections, onSele
 
 function RequestSidebar({ requests, pagination, loading, error, status, onStatusChange, onPageChange, onSelect, t }) {
   const route = (request) => {
-    const from = request.departure_airports.map((airport) => airport.iata_code || airport.city_name).join(', ')
-    const to = request.arrival_airports.map((airport) => airport.iata_code || airport.city_name).join(', ')
+    const from = request.departure_cities.map((city) => city.name).join(', ')
+    const to = request.arrival_cities.map((city) => city.name).join(', ')
     return `${from} → ${to}`
   }
 
@@ -198,8 +198,8 @@ function RequestSidebar({ requests, pagination, loading, error, status, onStatus
 
 function RequestDetails({ request, onClose, t }) {
   if (!request) return null
-  const airports = (items) => items.map((airport) => (
-    `${airport.name}${airport.iata_code ? ` (${airport.iata_code})` : ''}, ${airport.city_name}, ${airport.country_name}`
+  const cities = (items) => items.map((city) => (
+    `${city.name}, ${city.country_name}`
   )).join('\n')
 
   return (
@@ -216,8 +216,8 @@ function RequestDetails({ request, onClose, t }) {
           <div><dt>{t.status}</dt><dd><span className={`status-badge status-${request.status}`}>{t[request.status] || request.status}</span></dd></div>
           <div><dt>{request.role === 'sender' ? t.dateFrom : t.date}</dt><dd>{request.date_from}</dd></div>
           {request.date_to !== request.date_from && <div><dt>{t.dateTo}</dt><dd>{request.date_to}</dd></div>}
-          <div><dt>{t.departure}</dt><dd className="multiline">{airports(request.departure_airports)}</dd></div>
-          <div><dt>{t.arrival}</dt><dd className="multiline">{airports(request.arrival_airports)}</dd></div>
+          <div><dt>{t.departure}</dt><dd className="multiline">{cities(request.departure_cities)}</dd></div>
+          <div><dt>{t.arrival}</dt><dd className="multiline">{cities(request.arrival_cities)}</dd></div>
           {request.comment && <div><dt>{t.comment}</dt><dd>{request.comment}</dd></div>}
           <div><dt>{t.created}</dt><dd>{new Date(request.created_at).toLocaleString()}</dd></div>
         </dl>
@@ -239,8 +239,8 @@ function App() {
     courierDate: null,
     baggageComments: '',
   })
-  const [departureAirports, setDepartureAirports] = useState([])
-  const [arrivalAirports, setArrivalAirports] = useState([])
+  const [departureCities, setDepartureCities] = useState([])
+  const [arrivalCities, setArrivalCities] = useState([])
   const [requests, setRequests] = useState([])
   const [requestsPagination, setRequestsPagination] = useState({
     page: 1,
@@ -297,7 +297,7 @@ function App() {
         return
       }
       try {
-        const { data } = await api.post('/auth/login', { tg_id: tgId })
+        const { data } = await api.post('/api/auth/login', { tg_id: tgId })
         localStorage.setItem('access_token', data.access_token)
         await loadRequests(1)
       } catch (error) {
@@ -331,24 +331,24 @@ function App() {
     return `${day}.${month}.${date.getFullYear()}`
   }
 
-  const selectAirport = (field, airport) => {
-    const update = field === 'departure' ? setDepartureAirports : setArrivalAirports
+  const selectCity = (field, city) => {
+    const update = field === 'departure' ? setDepartureCities : setArrivalCities
     const limit = role === 'sender' ? 5 : 1
-    update((current) => current.length < limit && !current.some((item) => item.id === airport.id)
-      ? [...current, airport]
+    update((current) => current.length < limit && !current.some((item) => item.id === city.id)
+      ? [...current, city]
       : current)
   }
 
-  const removeAirport = (field, airportId) => {
-    const update = field === 'departure' ? setDepartureAirports : setArrivalAirports
-    update((current) => current.filter((airport) => airport.id !== airportId))
+  const removeCity = (field, cityId) => {
+    const update = field === 'departure' ? setDepartureCities : setArrivalCities
+    update((current) => current.filter((city) => city.id !== cityId))
   }
 
   const changeRole = (nextRole) => {
     setRole(nextRole)
     if (nextRole === 'courier') {
-      setDepartureAirports((current) => current.slice(0, 1))
-      setArrivalAirports((current) => current.slice(0, 1))
+      setDepartureCities((current) => current.slice(0, 1))
+      setArrivalCities((current) => current.slice(0, 1))
     }
   }
 
@@ -366,8 +366,8 @@ function App() {
       alert(t.selectDate)
       return
     }
-    if (!departureAirports.length || !arrivalAirports.length) {
-      alert(t.selectAirportFromList)
+    if (!departureCities.length || !arrivalCities.length) {
+      alert(t.selectCityFromList)
       return
     }
 
@@ -376,8 +376,8 @@ function App() {
       ...(role === 'sender'
         ? { dateFrom: formatDateToString(form.dateFrom), dateTo: formatDateToString(form.dateTo) }
         : { date: formatDateToString(form.courierDate) }),
-      departureAirportIds: departureAirports.map((airport) => airport.id),
-      arrivalAirportIds: arrivalAirports.map((airport) => airport.id),
+      departureCityIds: departureCities.map((city) => city.id),
+      arrivalCityIds: arrivalCities.map((city) => city.id),
       baggageComments: form.baggageComments,
     }
     console.log('Form submitted:', submissionData)
@@ -429,8 +429,8 @@ function App() {
           </div>
         )}
 
-        <AirportSearch id="departure" label={t.departure} placeholder={t.searchAirportCityCountry} selected={departureAirports} maxSelections={role === 'sender' ? 5 : 1} onSelect={(airport) => selectAirport('departure', airport)} onRemove={(airportId) => removeAirport('departure', airportId)} t={t} />
-        <AirportSearch id="arrival" label={t.arrival} placeholder={t.searchAirportCityCountry} selected={arrivalAirports} maxSelections={role === 'sender' ? 5 : 1} onSelect={(airport) => selectAirport('arrival', airport)} onRemove={(airportId) => removeAirport('arrival', airportId)} t={t} />
+        <CitySearch id="departure" label={t.departure} placeholder={t.searchCityCountry} selected={departureCities} maxSelections={role === 'sender' ? 5 : 1} onSelect={(city) => selectCity('departure', city)} onRemove={(cityId) => removeCity('departure', cityId)} t={t} />
+        <CitySearch id="arrival" label={t.arrival} placeholder={t.searchCityCountry} selected={arrivalCities} maxSelections={role === 'sender' ? 5 : 1} onSelect={(city) => selectCity('arrival', city)} onRemove={(cityId) => removeCity('arrival', cityId)} t={t} />
 
         <div className="form-group">
           <label htmlFor="baggageComments">{t.baggageComments}</label>

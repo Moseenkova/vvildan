@@ -68,8 +68,8 @@ msgid "Could not load your requests."
 msgstr "An kasa loda buƙatun ku."
 
 #: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "ƙasa, birni ko filin jirgin sama"
+msgid "Country or city"
+msgstr "Ƙasa ko birni"
 
 #: src/i18n.js:36
 msgid "Courier"

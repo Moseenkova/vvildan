@@ -68,8 +68,8 @@ msgid "Could not load your requests."
 msgstr "Δεν ήταν δυνατή η φόρτωση των αιτημάτων σας."
 
 #: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "χώρα, πόλη ή αεροδρόμιο"
+msgid "Country or city"
+msgstr "Χώρα ή πόλη"
 
 #: src/i18n.js:36
 msgid "Courier"

@@ -68,8 +68,8 @@ msgid "Could not load your requests."
 msgstr "Waa la shubi waayay codsiyadaada"
 
 #: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "dal, magaalo ama garoon diyaaradeed"
+msgid "Country or city"
+msgstr "Dal ama magaalo"
 
 #: src/i18n.js:36
 msgid "Courier"

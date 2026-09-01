@@ -11,7 +11,7 @@ from src.config import get_settings
 from src.database import Base, User, async_session_maker, engine
 from src.main import app
 
-from .factories import FactoryNamespace, build_factory_namespace
+from tests.factories import FactoryNamespace, build_factory_namespace
 
 cfg = get_settings()
 
@@ -55,7 +55,7 @@ async def auth_ac(
     transport = ASGITransport(app=app)
 
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
-        response = await ac.post("/auth/login", json={"tg_id": current_user.tg_id})
+        response = await ac.post("/api/auth/login", json={"tg_id": current_user.tg_id})
 
         assert response.status_code == 200
         assert ac.cookies[cfg.REFRESH_COOKIE_NAME]

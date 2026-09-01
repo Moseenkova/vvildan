@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fill zero city populations from Wikidata population statements (P1082)."""
+"""Update city populations from Wikidata population statements (P1082)."""
 
 import argparse
 import asyncio
@@ -38,7 +38,7 @@ def find_geoname_ids(cities_by_country: dict[str, list]) -> dict[str, str]:
 
     result = {}
     for code, cities in sorted(cities_by_country.items()):
-        print(f"Matching zero-population cities in {code}", file=sys.stderr)
+        print(f"Matching cities in {code}", file=sys.stderr)
         geonames_cities, _ = load_country_features(code)
         for city in cities:
             candidates = []
@@ -116,11 +116,10 @@ async def populate(dry_run: bool, refresh: bool) -> None:
             await session.execute(
                 select(City, Country.iso_code)
                 .join(Country, City.country_id == Country.id)
-                .where(City.population == 0)
                 .order_by(City.id)
             )
         ).all()
-        zero_cities = [city for city, _ in rows]
+        cities = [city for city, _ in rows]
         cities_by_country = defaultdict(list)
         code_by_city_id = {}
         for city, raw_code in rows:
@@ -129,8 +128,8 @@ async def populate(dry_run: bool, refresh: bool) -> None:
                 cities_by_country[code].append(city)
                 code_by_city_id[city.id] = code
 
-        if not zero_cities:
-            print("Cities with population=0: 0")
+        if not cities:
+            print("Database cities: 0")
             print("Nothing to import")
             await engine.dispose()
             return
@@ -138,7 +137,7 @@ async def populate(dry_run: bool, refresh: bool) -> None:
         qid_by_key = load_existing_city_qids()
         missing_keys = {
             city_key(code_by_city_id[city.id], city.name)
-            for city in zero_cities
+            for city in cities
             if city.id in code_by_city_id
             and city_key(code_by_city_id[city.id], city.name) not in qid_by_key
         }
@@ -155,7 +154,7 @@ async def populate(dry_run: bool, refresh: bool) -> None:
 
         required_qids = {
             qid_by_key[key]
-            for city in zero_cities
+            for city in cities
             if city.id in code_by_city_id
             for key in [city_key(code_by_city_id[city.id], city.name)]
             if key in qid_by_key
@@ -176,9 +175,9 @@ async def populate(dry_run: bool, refresh: bool) -> None:
             print(f"Using Wikidata cache from {CACHE_FILE}")
 
         changed = 0
-        matched_qids = 0
         populations = cache["populations"]
-        for city in zero_cities:
+        matched_cities = 0
+        for city in cities:
             code = code_by_city_id.get(city.id)
             if not code:
                 continue
@@ -187,19 +186,19 @@ async def populate(dry_run: bool, refresh: bool) -> None:
                 continue
             population = populations.get(qid)
             if population:
-                matched_qids += 1
-                city.population = population
-                changed += 1
+                matched_cities += 1
+                if city.population != population:
+                    city.population = population
+                    changed += 1
 
         if dry_run:
             await session.rollback()
         else:
             await session.commit()
 
-    print(f"Cities with population=0 before import: {len(zero_cities)}")
-    print(f"Matched to a Wikidata population: {matched_qids}")
+    print(f"Database cities: {len(cities)}")
+    print(f"Matched to a Wikidata population: {matched_cities}")
     print(f"Rows changed: {changed}")
-    print(f"Still without population: {len(zero_cities) - changed}")
     if dry_run:
         print("Dry run: database changes were rolled back")
     await engine.dispose()

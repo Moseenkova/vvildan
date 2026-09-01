@@ -68,8 +68,8 @@ msgid "Could not load your requests."
 msgstr "आपके अनुरोध लोड नहीं किये जा सके."
 
 #: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "देश, शहर या हवाई अड्डा"
+msgid "Country or city"
+msgstr "देश या शहर"
 
 #: src/i18n.js:36
 msgid "Courier"

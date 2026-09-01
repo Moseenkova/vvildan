@@ -16,7 +16,7 @@ from src.exceptions import (
 cfg: Settings = get_settings()
 
 auth_router = APIRouter(
-    prefix="/auth",
+    prefix="/api/auth",
     tags=["Auth"],
 )
 

@@ -425,13 +425,13 @@
   color: #777;
 }
 
-.airport-selections {
+.city-selections {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.airport-selection {
+.city-selection {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -443,7 +443,7 @@
   font-size: 14px;
 }
 
-.airport-selection button {
+.city-selection button {
   flex: 0 0 auto;
   width: 28px;
   height: 28px;
@@ -457,7 +457,7 @@
   line-height: 1;
 }
 
-.airport-selection button:hover {
+.city-selection button:hover {
   background: #dbe9fa;
 }
 

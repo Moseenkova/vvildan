@@ -68,8 +68,8 @@ msgid "Could not load your requests."
 msgstr "သင့်တောင်းဆိုချက်များကို တင်၍မရပါ။"
 
 #: src/i18n.js:44
-msgid "country, city or airport"
-msgstr "နိုင်ငံ၊ မြို့ သို့မဟုတ် လေဆိပ်"
+msgid "Country or city"
+msgstr "နိုင်ငံ သို့မဟုတ် မြို့"
 
 #: src/i18n.js:36
 msgid "Courier"
