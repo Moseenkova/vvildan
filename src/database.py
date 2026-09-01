@@ -191,7 +191,6 @@ class City(Base):
     population: Mapped[int] = mapped_column(BigInteger, default=0, index=True)
     country_id: Mapped[int] = mapped_column(ForeignKey("countries.id"))
     country: Mapped["Country"] = relationship(back_populates="cities")
-    airports: Mapped[List["Airport"]] = relationship(back_populates="city")
     localized_names: Mapped[List["CityName"]] = relationship(
         back_populates="city", cascade="all, delete-orphan"
     )
@@ -205,23 +204,6 @@ class City(Base):
     )
 
     __table_args__ = (UniqueConstraint("country_id", "name"),)
-
-
-class Airport(Base):
-    __tablename__ = "airports"
-    ident: Mapped[str] = mapped_column(unique=True, index=True)
-    name: Mapped[str]
-    airport_type: Mapped[str]
-    iata_code: Mapped[Optional[str]] = mapped_column(index=True)
-    icao_code: Mapped[Optional[str]] = mapped_column(index=True)
-    latitude: Mapped[float] = mapped_column(Float)
-    longitude: Mapped[float] = mapped_column(Float)
-    scheduled_service: Mapped[bool] = mapped_column(Boolean, default=False)
-    city_id: Mapped[int] = mapped_column(ForeignKey("cities.id"), index=True)
-    city: Mapped["City"] = relationship(back_populates="airports")
-    localized_names: Mapped[List["AirportName"]] = relationship(
-        back_populates="airport", cascade="all, delete-orphan"
-    )
 
 
 class CountryName(Base):
@@ -251,21 +233,6 @@ class CityName(Base):
     __table_args__ = (
         UniqueConstraint("city_id", "language_code", "name"),
         Index("ix_city_names_language_name", "language_code", "name"),
-    )
-
-
-class AirportName(Base):
-    __tablename__ = "airport_names"
-    airport_id: Mapped[int] = mapped_column(
-        ForeignKey("airports.id", ondelete="CASCADE"), index=True
-    )
-    language_code: Mapped[str] = mapped_column(index=True)
-    name: Mapped[str]
-    airport: Mapped["Airport"] = relationship(back_populates="localized_names")
-
-    __table_args__ = (
-        UniqueConstraint("airport_id", "language_code", "name"),
-        Index("ix_airport_names_language_name", "language_code", "name"),
     )
 
 
