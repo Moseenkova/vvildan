@@ -1,3 +1,5 @@
+translate all city names
+
 Choose Fabfile or GitHub CI/CD
 codex://threads/01a02ce3-7f04-7631-9061-d2c1f27b421b
 01a02ce3-7f04-7631-9061-d2c1f27b421b
@@ -18,8 +20,7 @@ After the PR is merged, GitHub Actions will deploy the tested commit to the VPS 
 
 
 ensure pytest use test db and test environment
-dirs for requests, auth, airport
-fabfile
+decompose dirs for requests, auth
 cache latest reqeusts search in my_requests
 
 move to legacy request creating in tg-bot
@@ -35,4 +36,4 @@ add red dot on my-requests if new match
 celery task to daily backup db 14 copies max
 
 
-add open requests with no closed date
+add open requests with no closed date/optional date-to

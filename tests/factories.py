@@ -9,7 +9,6 @@ from factory.faker import Faker
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.database import (
-    Airport,
     City,
     Country,
     Request,
@@ -52,22 +51,6 @@ class CityFactory(BaseFactory):
     name = Sequence(lambda sequence: f"City {sequence}")
     population = Faker("random_int", min=1, max=20_000_000)
     country = SubFactory(CountryFactory)
-
-
-class AirportFactory(BaseFactory):
-    class Meta:  # pyright: ignore[reportIncompatibleVariableOverride]
-        model = Airport
-
-    id = None
-    ident = Sequence(lambda sequence: f"TEST-{sequence}")
-    name = Sequence(lambda sequence: f"Airport {sequence}")
-    airport_type = "large_airport"
-    iata_code = Sequence(lambda sequence: f"T{sequence:02d}"[-3:])
-    icao_code = Sequence(lambda sequence: f"TT{sequence:02d}"[-4:])
-    latitude = Faker("latitude")
-    longitude = Faker("longitude")
-    scheduled_service = True
-    city = SubFactory(CityFactory)
 
 
 def _set_departure_cities(
@@ -125,7 +108,6 @@ class FactoryNamespace:
     User: AsyncFactoryCall
     Country: AsyncFactoryCall
     City: AsyncFactoryCall
-    Airport: AsyncFactoryCall
     Request: AsyncFactoryCall
 
 
@@ -134,6 +116,5 @@ def build_factory_namespace(session: AsyncSession) -> FactoryNamespace:
         User=AsyncModelFactory[User](session, UserFactory),
         Country=AsyncModelFactory[Country](session, CountryFactory),
         City=AsyncModelFactory[City](session, CityFactory),
-        Airport=AsyncModelFactory[Airport](session, AirportFactory),
         Request=AsyncModelFactory[Request](session, RequestFactory),
     )
