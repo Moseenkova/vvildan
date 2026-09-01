@@ -3,7 +3,9 @@ from datetime import datetime, timedelta
 import pytest
 from httpx import AsyncClient
 
-from src.database import RequestStatus
+from sqlalchemy import select
+
+from src.database import Request as TravelRequest, RequestRole, RequestStatus, async_session_maker
 
 from tests.conftest import AuthenticatedClient
 from tests.factories import FactoryNamespace
@@ -113,6 +115,67 @@ async def test_get_my_requests_requires_authentication(client: AsyncClient) -> N
     response = await client.get("/api/requests")
 
     assert response.status_code == 401
+
+
+@pytest.mark.asyncio
+async def test_create_request_persists_frontend_submission(
+    auth_ac: AuthenticatedClient,
+    factory: FactoryNamespace,
+) -> None:
+    departure = await factory.City(name="Jakarta")
+    arrival = await factory.City(name="Singapore")
+
+    response = await auth_ac.client.post(
+        "/api/requests",
+        json={
+            "role": "sender",
+            "dateFrom": "2026-09-10",
+            "dateTo": "2026-09-12",
+            "departureCityIds": [departure.id],
+            "arrivalCityIds": [arrival.id],
+            "baggageComments": "One small parcel",
+        },
+    )
+
+    assert response.status_code == 201
+    body = response.json()
+    assert body["role"] == "sender"
+    assert body["departure_cities"][0]["id"] == departure.id
+    assert body["arrival_cities"][0]["id"] == arrival.id
+    assert body["comment"] == "One small parcel"
+
+    async with async_session_maker() as session:
+        created = (await session.scalars(select(TravelRequest))).one()
+        assert created.user_id == auth_ac.current_user.id
+        assert created.role == RequestRole.sender
+        assert created.date_from.isoformat() == "2026-09-10"
+        assert created.date_to.isoformat() == "2026-09-12"
+
+
+@pytest.mark.asyncio
+async def test_create_request_escapes_html_in_comment(
+    auth_ac: AuthenticatedClient,
+    factory: FactoryNamespace,
+) -> None:
+    departure = await factory.City()
+    arrival = await factory.City()
+
+    response = await auth_ac.client.post(
+        "/api/requests",
+        json={
+            "role": "courier",
+            "dateFrom": "2026-09-10",
+            "dateTo": "2026-09-10",
+            "departureCityIds": [departure.id],
+            "arrivalCityIds": [arrival.id],
+            "baggageComments": '<script>alert("xss")</script>',
+        },
+    )
+
+    assert response.status_code == 201
+    assert response.json()["comment"] == (
+        "&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;"
+    )
 
 
 @pytest.mark.asyncio

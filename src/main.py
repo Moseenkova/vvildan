@@ -1,4 +1,4 @@
-from fastapi import Depends, FastAPI, Query
+from fastapi import Depends, FastAPI, HTTPException, Query, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi_pagination import Page, add_pagination
 from fastapi_pagination.ext.sqlalchemy import apaginate
@@ -16,6 +16,7 @@ from src.database import (
 )
 from src.schemas import (
     CitySearchResultSchema,
+    RequestCreateSchema,
     RequestSchema,
 )
 from src.auth.routers import auth_router
@@ -57,6 +58,45 @@ async def get_my_requests(
             .order_by(TravelRequest.created_at.desc())
         )
         return await apaginate(session, query)
+
+
+@app.post(
+    "/api/requests",
+    response_model=RequestSchema,
+    status_code=status.HTTP_201_CREATED,
+)
+async def create_request(
+    payload: RequestCreateSchema,
+    user=Depends(get_current_user),
+):
+    city_ids = set(payload.departure_city_ids + payload.arrival_city_ids)
+    async with async_session_maker() as session:
+        cities = (
+            await session.scalars(
+                select(City).where(City.id.in_(city_ids)).options(selectinload(City.country))
+            )
+        ).all()
+        cities_by_id = {city.id: city for city in cities}
+        missing_city_ids = sorted(city_ids - cities_by_id.keys())
+        if missing_city_ids:
+            raise HTTPException(
+                status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+                detail={"missing_city_ids": missing_city_ids},
+            )
+
+        request = TravelRequest(
+            user_id=user.id,
+            role=payload.role,
+            date_from=payload.date_from,
+            date_to=payload.date_to,
+            departure_cities=[cities_by_id[id] for id in payload.departure_city_ids],
+            arrival_cities=[cities_by_id[id] for id in payload.arrival_city_ids],
+            comment=payload.comment,
+        )
+        session.add(request)
+        await session.commit()
+        await session.refresh(request)
+        return request
 
 
 @app.get("/api/city-search", response_model=list[CitySearchResultSchema])
