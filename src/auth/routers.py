@@ -4,8 +4,8 @@ from fastapi import APIRouter, Cookie, Depends, HTTPException, Response, status
 
 from src.auth.schemas import TelegramLoginSchema
 from src.auth.services import (
-    authenticate_telegram_user,
     authenticate_telegram_init_data,
+    authenticate_telegram_user,
     logout_user,
     rotate_refresh_token,
 )
