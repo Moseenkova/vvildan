@@ -234,10 +234,10 @@ async def test_city_search_matches_city_and_country(
     city = await factory.City(name="Jakarta", country__name="Indonesia")
 
     city_response = await auth_ac.client.get(
-        "/api/city-search", params={"q": "Jakar"}
+        "/api/search", params={"q": "Jakar"}
     )
     country_response = await auth_ac.client.get(
-        "/api/city-search", params={"q": "Indones"}
+        "/api/search", params={"q": "Indones"}
     )
 
     expected = {

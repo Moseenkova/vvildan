@@ -41,7 +41,7 @@ function CitySearch({ id, label, placeholder, selected, maxSelections, onSelect,
     setLoading(true)
     setOpen(true)
     try {
-      const response = await api.get('/api/city-search', {
+      const response = await api.get('/api/search', {
         params: { q: trimmedQuery, language: locale },
       })
       if (requestId === requestRef.current) {
