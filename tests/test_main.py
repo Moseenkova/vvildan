@@ -196,6 +196,37 @@ async def test_create_courier_request(
 
 
 @pytest.mark.asyncio
+async def test_create_request_then_get_it(
+    auth_ac: AuthenticatedClient,
+    factory: FactoryNamespace,
+) -> None:
+    departure = await factory.City(name="Jakarta")
+    arrival = await factory.City(name="Singapore")
+
+    create_response = await auth_ac.client.post(
+        "/api/requests",
+        json={
+            "role": "sender",
+            "dateFrom": "2026-09-10",
+            "dateTo": "2026-09-12",
+            "departureCityIds": [departure.id],
+            "arrivalCityIds": [arrival.id],
+            "baggageComments": "One small parcel",
+        },
+    )
+
+    assert create_response.status_code == 201
+    created = create_response.json()
+
+    get_response = await auth_ac.client.get("/api/requests")
+
+    assert get_response.status_code == 200
+    body = get_response.json()
+    assert body["total"] == 1
+    assert body["items"] == [created]
+
+
+@pytest.mark.asyncio
 async def test_city_search_matches_city_and_country(
     auth_ac: AuthenticatedClient,
     factory: FactoryNamespace,

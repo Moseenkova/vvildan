@@ -1,19 +1,19 @@
-import os
 from collections.abc import AsyncIterator
 from dataclasses import dataclass
-
-os.environ["DATABASE_URL"] = "sqlite+aiosqlite:///:memory:"
 
 import pytest_asyncio
 from httpx import ASGITransport, AsyncClient
 
 from src.config import get_settings
+
+cfg = get_settings()
+if cfg.MODE != "TEST":
+    raise RuntimeError("Tests must be run with MODE=TEST")
+
 from src.database import Base, User, async_session_maker, engine
 from src.main import app
 
 from tests.factories import FactoryNamespace, build_factory_namespace
-
-cfg = get_settings()
 
 
 @dataclass

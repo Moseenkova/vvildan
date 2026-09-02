@@ -95,8 +95,21 @@ async def create_request(
         )
         session.add(request)
         await session.commit()
-        await session.refresh(request)
-        return request
+        created_request = (
+            await session.scalars(
+                select(TravelRequest)
+                .where(TravelRequest.id == request.id)
+                .options(
+                    selectinload(TravelRequest.departure_cities).selectinload(
+                        City.country
+                    ),
+                    selectinload(TravelRequest.arrival_cities).selectinload(
+                        City.country
+                    ),
+                )
+            )
+        ).one()
+        return created_request
 
 
 @app.get("/api/city-search", response_model=list[CitySearchResultSchema])

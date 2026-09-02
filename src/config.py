@@ -2,7 +2,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Annotated, Literal, Optional, final
 
-from pydantic import SecretStr, field_validator
+from pydantic import SecretStr, field_validator, model_validator
 from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
 
 
@@ -44,6 +44,12 @@ class Settings(BaseSettings):
     TELEGRAM_SECRET_TOKEN: str = "abcdefghijklmnopqrstuvwxyz"
 
     DEV_CHAT_ID: str = "5875912525"
+
+    @model_validator(mode="after")
+    def use_test_database(self) -> "Settings":
+        if self.MODE == "TEST":
+            self.DATABASE_URL = self.TEST_DATABASE_URL
+        return self
 
     @field_validator("SUPPORT_GROUP_ADMIN_IDS", mode="before")
     @classmethod

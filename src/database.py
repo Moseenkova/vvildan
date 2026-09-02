@@ -1,9 +1,7 @@
 import enum
 from datetime import date, datetime
-from os import getenv
 from typing import List, Optional
 
-from dotenv import load_dotenv
 from sqlalchemy import (
     BigInteger,
     Boolean,
@@ -30,13 +28,10 @@ from sqlalchemy.orm import (
     relationship,
 )
 
-load_dotenv()
-DATABASE_URL = getenv("DATABASE_URL")
-if not DATABASE_URL:
-    raise RuntimeError("DATABASE_URL environment variable is not set")
+from src.config import get_settings
 
 
-engine = create_async_engine(DATABASE_URL)
+engine = create_async_engine(get_settings().DATABASE_URL)
 
 async_session_maker = async_sessionmaker(engine, expire_on_commit=False)
 
