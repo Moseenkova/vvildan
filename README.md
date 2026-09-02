@@ -55,3 +55,7 @@ alembic upgrade head
 ```sh
 PGPASSWORD='postgres' psql -U postgres -d courier -h localhost
 ```
+
+
+restore db
+./scripts/restore_backup.sh backups/vvildan_20260902_cities.dump
