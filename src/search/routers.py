@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy import func, or_, select
 
+from src.auth.deps import get_current_user
 from src.database import async_session_maker, City, CityName, Country, CountryName
-from src.deps import get_current_user
 from src.search.schemas import CitySearchResultSchema
 
 search_router = APIRouter(prefix="/api/search", tags=["Search"])

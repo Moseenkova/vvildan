@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, Query, status
 from fastapi_pagination import Page
 
+from src.auth.deps import get_current_user
 from src.database import RequestStatus
-from src.deps import get_current_user
 from src.requests.service import create_user_request, get_user_requests
 from src.requests.schemas import RequestCreateSchema, RequestSchema
 

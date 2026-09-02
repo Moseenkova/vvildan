@@ -5,15 +5,15 @@ from aiogram.utils.web_app import safe_parse_webapp_init_data
 from jose import JWTError, jwt
 from sqlalchemy import delete, select
 
-from src.auth.utils import create_token_pair
-from src.config import Settings, get_settings
-from src.database import async_session_maker, RefreshToken, User
-from src.exceptions import (
+from src.auth.exceptions import (
     AuthFailedException,
     RefreshTokenRequiredException,
     TokenNotFoundException,
     UserNotFoundException,
 )
+from src.auth.utils import create_token_pair
+from src.config import Settings, get_settings
+from src.database import async_session_maker, RefreshToken, User
 
 cfg: Settings = get_settings()
 

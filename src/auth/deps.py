@@ -1,17 +1,15 @@
 from fastapi import Depends
 from fastapi.security import OAuth2PasswordBearer
 
+from src.auth.exceptions import TokenNotFoundException, UserNotFoundException
 from src.auth.services import decode_access_token, get_user_by_id
 from src.config import Settings, get_settings
 from src.database import User
-from src.exceptions import (
-    TokenNotFoundException,
-    UserNotFoundException,
-)
 
 cfg: Settings = get_settings()
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/auth/login")
+
 
 async def get_current_user(token: str = Depends(oauth2_scheme)) -> User:
     payload = await decode_access_token(token=token)

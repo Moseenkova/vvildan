@@ -2,6 +2,7 @@ from typing import Annotated
 
 from fastapi import APIRouter, Cookie, Depends, HTTPException, Response, status
 
+from src.auth.deps import oauth2_scheme
 from src.auth.schemas import TelegramLoginSchema
 from src.auth.services import (
     authenticate_telegram_init_data,
@@ -10,7 +11,6 @@ from src.auth.services import (
     rotate_refresh_token,
 )
 from src.config import Settings, get_settings
-from src.deps import oauth2_scheme
 
 cfg: Settings = get_settings()
 
