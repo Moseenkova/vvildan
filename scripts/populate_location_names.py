@@ -22,7 +22,6 @@ from urllib.request import Request, urlopen
 
 from sqlalchemy import select
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 CACHE_DIR = PROJECT_ROOT / "data" / "geonames"
@@ -55,7 +54,9 @@ def retry_delay(error: Exception, attempt: int) -> float:
                     retry_at = parsedate_to_datetime(retry_after)
                     if retry_at.tzinfo is None:
                         retry_at = retry_at.replace(tzinfo=timezone.utc)
-                    return max(0.0, (retry_at - datetime.now(timezone.utc)).total_seconds())
+                    return max(
+                        0.0, (retry_at - datetime.now(timezone.utc)).total_seconds()
+                    )
                 except (TypeError, ValueError):
                     pass
     return min(60.0, 2 ** (attempt - 1))
@@ -75,7 +76,9 @@ def download(url: str, destination: Path) -> Path:
         request = Request(url, headers={"User-Agent": USER_AGENT})
         _last_download_started = time.monotonic()
         try:
-            with urlopen(request, timeout=120) as response, temporary.open("wb") as output:
+            with urlopen(request, timeout=120) as response, temporary.open(
+                "wb"
+            ) as output:
                 while chunk := response.read(1024 * 1024):
                     output.write(chunk)
             temporary.replace(destination)
@@ -108,7 +111,9 @@ def zip_rows(path: Path):
         # The location/alternate-name dataset is the largest member.
         data_file = max(files, key=lambda entry: entry.file_size)
         with archive.open(data_file) as raw:
-            yield from csv.reader(io.TextIOWrapper(raw, encoding="utf-8"), delimiter="\t")
+            yield from csv.reader(
+                io.TextIOWrapper(raw, encoding="utf-8"), delimiter="\t"
+            )
 
 
 def normalize(value: str) -> str:
@@ -209,11 +214,11 @@ async def populate(
     from src.database import (
         Airport,
         AirportName,
-        async_session_maker,
         City,
         CityName,
         Country,
         CountryName,
+        async_session_maker,
     )
 
     languages = supported_languages()
@@ -231,7 +236,7 @@ async def populate(
         airports = (await session.scalars(select(Airport))).all()
         cities_by_country = defaultdict(list)
         airports_by_country = defaultdict(list)
-        country_by_id = {country.id: country for country in countries}
+        {country.id: country for country in countries}
         city_by_id = {city.id: city for city in cities}
         for city in cities:
             cities_by_country[city.country_id].append(city)
@@ -247,7 +252,9 @@ async def populate(
             rows = await session.execute(
                 select(getattr(model, foreign_key), model.language_code, model.name)
             )
-            existing.update((model, entity_id, lang, name) for entity_id, lang, name in rows)
+            existing.update(
+                (model, entity_id, lang, name) for entity_id, lang, name in rows
+            )
 
         added = defaultdict(int)
         unmatched_cities = 0
@@ -257,11 +264,17 @@ async def populate(
             if country_code and code != country_code:
                 continue
             if len(code) != 2 or code not in country_ids:
-                print(f"Skipping country without a GeoNames ISO mapping: {country.name}")
+                print(
+                    f"Skipping country without a GeoNames ISO mapping: {country.name}"
+                )
                 continue
             print(f"Processing {code} ({country.name})")
-            city_names, geo_airports = await asyncio.to_thread(load_country_features, code)
-            entity_by_geoname_id = {country_ids[code]: (CountryName, country, "country")}
+            city_names, geo_airports = await asyncio.to_thread(
+                load_country_features, code
+            )
+            entity_by_geoname_id = {
+                country_ids[code]: (CountryName, country, "country")
+            }
 
             for city in cities_by_country[country.id]:
                 candidates = city_names.get(normalize(city.name), [])
@@ -286,7 +299,9 @@ async def populate(
                 identity = (model, entity.id, language, name)
                 if identity in existing:
                     continue
-                session.add(model(**{relationship: entity}, language_code=language, name=name))
+                session.add(
+                    model(**{relationship: entity}, language_code=language, name=name)
+                )
                 existing.add(identity)
                 added[relationship] += 1
             if not dry_run:
@@ -324,7 +339,9 @@ async def main() -> None:
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
     if args.country and (len(args.country) != 2 or not args.country.isalpha()):
-        parser.error("--country must be a two-letter ISO country code (for example: RU)")
+        parser.error(
+            "--country must be a two-letter ISO country code (for example: RU)"
+        )
     await populate(
         args.airport_radius_km,
         args.dry_run,

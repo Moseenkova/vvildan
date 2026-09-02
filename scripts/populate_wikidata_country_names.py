@@ -15,7 +15,6 @@ from pathlib import Path
 
 from sqlalchemy import select
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 CACHE_FILE = PROJECT_ROOT / "data" / "wikidata" / "country_labels.json"
@@ -48,18 +47,11 @@ async def populate(dry_run: bool, refresh: bool) -> None:
         sparql_entities,
         supported_languages,
     )
-    from src.database import (
-        async_session_maker,
-        Country,
-        CountryName,
-        engine,
-    )
+    from src.database import Country, CountryName, async_session_maker, engine
 
     languages = supported_languages()
     async with async_session_maker() as session:
-        countries = (
-            await session.scalars(select(Country).order_by(Country.id))
-        ).all()
+        countries = (await session.scalars(select(Country).order_by(Country.id))).all()
         existing = set(
             (
                 await session.execute(
@@ -82,9 +74,7 @@ async def populate(dry_run: bool, refresh: bool) -> None:
             and country.iso_code
             and len(country.iso_code) == 2
         ]
-        required_codes = {
-            country.iso_code.upper() for country in countries_to_lookup
-        }
+        required_codes = {country.iso_code.upper() for country in countries_to_lookup}
 
         if not countries_to_lookup:
             print(f"Database countries: {len(countries)}")
@@ -154,10 +144,7 @@ async def populate(dry_run: bool, refresh: bool) -> None:
             await session.commit()
 
     print(f"Database countries: {len(countries)}")
-    print(
-        "Countries missing at least one localization: "
-        f"{len(countries_to_lookup)}"
-    )
+    print("Countries missing at least one localization: " f"{len(countries_to_lookup)}")
     print(f"Matched to Wikidata: {matched_countries}")
     print(f"Countries with new names: {len(countries_with_new_names)}")
     print(f"Localized names added: {added}")

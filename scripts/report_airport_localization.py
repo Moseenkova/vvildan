@@ -8,7 +8,6 @@ from pathlib import Path
 
 from sqlalchemy import and_, func, select
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
@@ -17,9 +16,9 @@ async def report(language_code: str, summary_only: bool = False) -> None:
     from src.database import (
         Airport,
         AirportName,
-        async_session_maker,
         City,
         Country,
+        async_session_maker,
         engine,
     )
 

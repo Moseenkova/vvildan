@@ -16,7 +16,6 @@ from pathlib import Path
 
 from sqlalchemy import select
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 CACHE_FILE = PROJECT_ROOT / "data" / "wikidata" / "city_labels.json"
@@ -54,13 +53,7 @@ async def populate(dry_run: bool, refresh: bool) -> None:
         sparql_entities,
         supported_languages,
     )
-    from src.database import (
-        async_session_maker,
-        City,
-        CityName,
-        Country,
-        engine,
-    )
+    from src.database import City, CityName, Country, async_session_maker, engine
 
     languages = supported_languages()
     async with async_session_maker() as session:
@@ -77,9 +70,7 @@ async def populate(dry_run: bool, refresh: bool) -> None:
         }
         existing = set(
             (
-                await session.execute(
-                    select(CityName.city_id, CityName.language_code)
-                )
+                await session.execute(select(CityName.city_id, CityName.language_code))
             ).all()
         )
         missing_languages_by_city = {

@@ -1,16 +1,17 @@
-from html import escape
 from datetime import date, datetime
+from html import escape
+from typing import Optional
 
-from pydantic import AliasPath, BaseModel, ConfigDict, Field, field_validator, model_validator
+from pydantic import (
+    AliasPath,
+    BaseModel,
+    ConfigDict,
+    Field,
+    field_validator,
+    model_validator,
+)
 
 from src.database import RequestRole
-
-
-class CitySearchResultSchema(BaseModel):
-    id: int
-    name: str
-    country_id: int
-    country_name: str
 
 
 class RequestCitySchema(BaseModel):
@@ -52,7 +53,7 @@ class RequestCreateSchema(BaseModel):
     arrival_city_ids: list[int] = Field(
         alias="arrivalCityIds", min_length=1, max_length=5
     )
-    comment: str = Field(default="", alias="baggageComments", max_length=512)
+    comment: Optional[str] = Field(None, alias="baggageComments", max_length=512)
 
     @field_validator("comment")
     @classmethod
@@ -70,5 +71,7 @@ class RequestCreateSchema(BaseModel):
         if self.role == RequestRole.courier and (
             len(self.departure_city_ids) != 1 or len(self.arrival_city_ids) != 1
         ):
-            raise ValueError("courier requests require one departure and one arrival city")
+            raise ValueError(
+                "courier requests require one departure and one arrival city"
+            )
         return self

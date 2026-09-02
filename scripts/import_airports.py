@@ -11,7 +11,6 @@ from urllib.request import urlopen
 
 from sqlalchemy import func, select
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
@@ -76,7 +75,9 @@ def select_airports(
         is_international = (
             airport["type"] == "medium_airport"
             and airport["scheduled_service"] == "yes"
-            and (bool(airport["iata_code"]) or "international" in airport["name"].lower())
+            and (
+                bool(airport["iata_code"]) or "international" in airport["name"].lower()
+            )
         )
         if not (is_large or is_international):
             continue

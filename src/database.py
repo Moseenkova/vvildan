@@ -4,13 +4,11 @@ from typing import List, Optional
 
 from sqlalchemy import (
     BigInteger,
-    Boolean,
     CheckConstraint,
     Column,
     Date,
     DateTime,
     Enum,
-    Float,
     ForeignKey,
     Index,
     String,
@@ -18,16 +16,10 @@ from sqlalchemy import (
     UniqueConstraint,
     func,
     select,
-    text,
 )
-from sqlalchemy.dialects.postgresql import JSON, insert
+from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
-from sqlalchemy.orm import (
-    DeclarativeBase,
-    Mapped,
-    mapped_column,
-    relationship,
-)
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
 from src.config import Settings, get_settings
 
@@ -66,7 +58,9 @@ class RequestStatus(enum.Enum):
 request_departure_cities = Table(
     "request_departure_cities",
     Base.metadata,
-    Column("request_id", ForeignKey("requests.id", ondelete="CASCADE"), primary_key=True),
+    Column(
+        "request_id", ForeignKey("requests.id", ondelete="CASCADE"), primary_key=True
+    ),
     Column("city_id", ForeignKey("cities.id", ondelete="CASCADE"), primary_key=True),
 )
 
@@ -74,7 +68,9 @@ request_departure_cities = Table(
 request_arrival_cities = Table(
     "request_arrival_cities",
     Base.metadata,
-    Column("request_id", ForeignKey("requests.id", ondelete="CASCADE"), primary_key=True),
+    Column(
+        "request_id", ForeignKey("requests.id", ondelete="CASCADE"), primary_key=True
+    ),
     Column("city_id", ForeignKey("cities.id", ondelete="CASCADE"), primary_key=True),
 )
 
@@ -106,7 +102,9 @@ class Request(Base):
         back_populates="arrival_requests",
     )
 
-    comment: Mapped[str|None] = mapped_column(String(512), nullable=True, default=None)
+    comment: Mapped[str | None] = mapped_column(
+        String(512), nullable=True, default=None
+    )
     status: Mapped[RequestStatus] = mapped_column(
         Enum(RequestStatus),
         default=RequestStatus.active,
@@ -250,12 +248,7 @@ class CustomerTgTopic(Base):
 
 async def get_or_create(session, model, defaults=None, **kwargs):
     params = {**kwargs, **(defaults or {})}
-    query = (
-        insert(model)
-        .values(**params)
-        .on_conflict_do_nothing()
-        .returning(model)
-    )
+    query = insert(model).values(**params).on_conflict_do_nothing().returning(model)
     result = await session.execute(query)
     instance = result.scalars().one_or_none()
 

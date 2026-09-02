@@ -12,7 +12,6 @@ from pathlib import Path
 
 from sqlalchemy import select
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 CACHE_FILE = PROJECT_ROOT / "data" / "wikidata" / "city_populations.json"
@@ -50,7 +49,7 @@ def find_geoname_ids(cities_by_country: dict[str, list]) -> dict[str, str]:
 
 
 def fetch_population_statements(qids: set[str]) -> dict[str, int]:
-    from scripts.populate_wikidata_airport_names import batches, fetch_json, SPARQL_URL
+    from scripts.populate_wikidata_airport_names import SPARQL_URL, batches, fetch_json
 
     statements = defaultdict(list)
     ordered_qids = sorted(qids, key=lambda value: int(value[1:]))
@@ -109,7 +108,7 @@ def save_cache(payload: dict) -> None:
 
 async def populate(dry_run: bool, refresh: bool) -> None:
     from scripts.populate_wikidata_airport_names import sparql_entities
-    from src.database import async_session_maker, City, Country, engine
+    from src.database import City, Country, async_session_maker, engine
 
     async with async_session_maker() as session:
         rows = (

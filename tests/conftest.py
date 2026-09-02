@@ -10,10 +10,9 @@ cfg = get_settings()
 if cfg.MODE != "TEST":
     raise RuntimeError("Tests must be run with MODE=TEST")
 
-from src.database import Base, User, async_session_maker, engine
-from src.main import app
-
-from tests.factories import FactoryNamespace, build_factory_namespace
+from src.database import Base, User, async_session_maker, engine  # noqa: E402
+from src.main import app  # noqa: E402
+from tests.factories import FactoryNamespace, build_factory_namespace  # noqa: E402
 
 
 @dataclass
@@ -51,11 +50,12 @@ async def client(database) -> AsyncIterator[AsyncClient]:
 async def auth_ac(
     factory: FactoryNamespace,
 ) -> AsyncIterator[AuthenticatedClient]:
-    current_user = await factory.User()
+    assert cfg.DEV_CHAT_ID is not None
+    current_user = await factory.User(tg_id=cfg.DEV_CHAT_ID)
     transport = ASGITransport(app=app)
 
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
-        response = await ac.post("/api/auth/login", json={"tg_id": current_user.tg_id})
+        response = await ac.post("/api/auth/dev-login")
 
         assert response.status_code == 200
         assert ac.cookies[cfg.REFRESH_COOKIE_NAME]

@@ -5,6 +5,8 @@ import sys
 from datetime import datetime, timedelta
 from os import getenv
 
+# Ваш код здесь
+import database
 from aiogram import Bot, Dispatcher, F, Router, types
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
@@ -13,16 +15,9 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.types import CallbackQuery, Message
 from aiogram.utils.markdown import hbold
-from dotenv import load_dotenv
-from sqlalchemy import select
-from sqlalchemy.orm import joinedload, selectinload
-
-# Ваш код здесь
-import database
 from database import (
     RU_LABELS,
     Airport,
-    City,
     Country,
     Courier,
     Request,
@@ -32,6 +27,7 @@ from database import (
     async_session_maker,
     get_or_create,
 )
+from dotenv import load_dotenv
 from my_keyboards import (
     BaggageKindCallback,
     BaggageKinds,
@@ -45,6 +41,8 @@ from my_keyboards import (
     final_keyboard,
     role_markup,
 )
+from sqlalchemy import select
+from sqlalchemy.orm import joinedload, selectinload
 
 load_dotenv()
 TOKEN = getenv("BOT_TOKEN")
@@ -584,15 +582,25 @@ async def command_finish_handler(
             result = await session.execute(query)
             sender = result.scalars().one_or_none()
             params["sender_id"] = sender.id
-        departure_airport_ids = data.get("departure_airport_ids", [data["city_from_id"]])
+        departure_airport_ids = data.get(
+            "departure_airport_ids", [data["city_from_id"]]
+        )
         arrival_airport_ids = data.get("arrival_airport_ids", [data["city_to_id"]])
         departure_airports = list(
-            (await session.execute(select(Airport).where(Airport.id.in_(departure_airport_ids))))
+            (
+                await session.execute(
+                    select(Airport).where(Airport.id.in_(departure_airport_ids))
+                )
+            )
             .scalars()
             .all()
         )
         arrival_airports = list(
-            (await session.execute(select(Airport).where(Airport.id.in_(arrival_airport_ids))))
+            (
+                await session.execute(
+                    select(Airport).where(Airport.id.in_(arrival_airport_ids))
+                )
+            )
             .scalars()
             .all()
         )
@@ -617,7 +625,9 @@ async def command_finish_handler(
                     joinedload(Request.courier).joinedload(Courier.user),
                 )
                 .filter(
-                    Request.departure_airports.any(Airport.id.in_(departure_airport_ids)),
+                    Request.departure_airports.any(
+                        Airport.id.in_(departure_airport_ids)
+                    ),
                     Request.arrival_airports.any(Airport.id.in_(arrival_airport_ids)),
                     Request.date >= params["date_from"],
                     Request.date <= params["date_to"],
@@ -632,7 +642,9 @@ async def command_finish_handler(
                     joinedload(Request.sender).joinedload(Sender.user),
                 )
                 .filter(
-                    Request.departure_airports.any(Airport.id.in_(departure_airport_ids)),
+                    Request.departure_airports.any(
+                        Airport.id.in_(departure_airport_ids)
+                    ),
                     Request.arrival_airports.any(Airport.id.in_(arrival_airport_ids)),
                     Request.date_from <= params["date"],
                     Request.date_to >= params["date"],
