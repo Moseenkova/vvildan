@@ -1,9 +1,7 @@
 import enum
 from datetime import date, datetime
-from os import getenv
 from typing import List, Optional
 
-from dotenv import load_dotenv
 from sqlalchemy import (
     BigInteger,
     Boolean,
@@ -15,6 +13,7 @@ from sqlalchemy import (
     Float,
     ForeignKey,
     Index,
+    String,
     Table,
     UniqueConstraint,
     func,
@@ -30,13 +29,11 @@ from sqlalchemy.orm import (
     relationship,
 )
 
-load_dotenv()
-DATABASE_URL = getenv("DATABASE_URL")
-if not DATABASE_URL:
-    raise RuntimeError("DATABASE_URL environment variable is not set")
+from src.config import Settings, get_settings
 
+cfg: Settings = get_settings()
 
-engine = create_async_engine(DATABASE_URL)
+engine = create_async_engine(cfg.DATABASE_URL)
 
 async_session_maker = async_sessionmaker(engine, expire_on_commit=False)
 
@@ -109,7 +106,7 @@ class Request(Base):
         back_populates="arrival_requests",
     )
 
-    comment: Mapped[str] = mapped_column(default="", server_default="")
+    comment: Mapped[str|None] = mapped_column(String(512), nullable=True, default=None)
     status: Mapped[RequestStatus] = mapped_column(
         Enum(RequestStatus),
         default=RequestStatus.active,

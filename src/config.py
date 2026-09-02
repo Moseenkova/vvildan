@@ -2,7 +2,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Annotated, Literal, Optional, final
 
-from pydantic import SecretStr, field_validator
+from pydantic import SecretStr, field_validator, model_validator
 from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
 
 
@@ -20,7 +20,6 @@ class Settings(BaseSettings):
     DATABASE_URL: str = (
         "postgresql+asyncpg://postgres:postgres@localhost:5432/courier"
     )
-    TEST_DATABASE_URL: str = "sqlite+aiosqlite:///:memory:"
 
     ALLOWED_HOSTS: str = "localhost,0.0.0.0,127.0.0.1,test"
     BASE_URL: str = "https://dev.courier.ru"
@@ -44,6 +43,12 @@ class Settings(BaseSettings):
     TELEGRAM_SECRET_TOKEN: str = "abcdefghijklmnopqrstuvwxyz"
 
     DEV_CHAT_ID: str = "5875912525"
+
+    @model_validator(mode="after")
+    def use_test_database(self) -> "Settings":
+        if self.MODE == "TEST":
+            self.DATABASE_URL = "sqlite+aiosqlite:///:memory:"
+        return self
 
     @field_validator("SUPPORT_GROUP_ADMIN_IDS", mode="before")
     @classmethod

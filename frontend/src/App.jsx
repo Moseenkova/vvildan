@@ -328,7 +328,7 @@ function App() {
     if (!date) return ''
     const day = String(date.getDate()).padStart(2, '0')
     const month = String(date.getMonth() + 1).padStart(2, '0')
-    return `${day}.${month}.${date.getFullYear()}`
+    return `${date.getFullYear()}-${month}-${day}`
   }
 
   const selectCity = (field, city) => {
@@ -352,7 +352,7 @@ function App() {
     }
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     if (role === 'sender' && (!form.dateFrom || !form.dateTo)) {
       alert(!form.dateFrom ? t.selectDateFrom : t.selectDateTo)
@@ -371,17 +371,26 @@ function App() {
       return
     }
 
+    const requestDate = role === 'sender' ? form.dateFrom : form.courierDate
     const submissionData = {
       role,
-      ...(role === 'sender'
-        ? { dateFrom: formatDateToString(form.dateFrom), dateTo: formatDateToString(form.dateTo) }
-        : { date: formatDateToString(form.courierDate) }),
+      dateFrom: formatDateToString(requestDate),
+      dateTo: formatDateToString(role === 'sender' ? form.dateTo : requestDate),
       departureCityIds: departureCities.map((city) => city.id),
       arrivalCityIds: arrivalCities.map((city) => city.id),
       baggageComments: form.baggageComments,
     }
-    console.log('Form submitted:', submissionData)
-    alert(t.submitted)
+    try {
+      await api.post('/api/requests', submissionData)
+      setForm({ dateFrom: null, dateTo: null, courierDate: null, baggageComments: '' })
+      setDepartureCities([])
+      setArrivalCities([])
+      await loadRequests(1)
+      alert(t.submitted)
+    } catch (error) {
+      console.error('Failed to submit request:', error)
+      alert(error.response?.data?.detail || 'Failed to submit request')
+    }
   }
 
   if (userNotFound) {
