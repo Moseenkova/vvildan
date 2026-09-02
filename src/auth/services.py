@@ -1,5 +1,7 @@
+from datetime import datetime, timedelta, timezone
 from typing import Any
 
+from aiogram.utils.web_app import safe_parse_webapp_init_data
 from jose import JWTError, jwt
 from sqlalchemy import delete, select
 
@@ -77,6 +79,29 @@ async def authenticate_telegram_user(telegram_id: int) -> dict[str, Any]:
     token_pair = create_token_pair(user=user)
     await _save_refresh_token(user.id, token_pair["refresh"])
     return token_pair
+
+
+async def authenticate_telegram_init_data(init_data: str) -> dict[str, Any]:
+    """Authenticate a Mini App user from Telegram-signed launch data."""
+    try:
+        telegram_data = safe_parse_webapp_init_data(
+            cfg.BOT_TOKEN.get_secret_value(), init_data
+        )
+    except ValueError as exc:
+        raise AuthFailedException from exc
+
+    if telegram_data.user is None:
+        raise AuthFailedException
+
+    now = datetime.now(timezone.utc)
+    auth_date = telegram_data.auth_date
+    if auth_date.tzinfo is None:
+        auth_date = auth_date.replace(tzinfo=timezone.utc)
+    max_age = timedelta(seconds=cfg.TELEGRAM_AUTH_MAX_AGE_SECONDS)
+    if auth_date > now + timedelta(seconds=30) or now - auth_date > max_age:
+        raise AuthFailedException
+
+    return await authenticate_telegram_user(telegram_data.user.id)
 
 
 async def rotate_refresh_token(refresh_token: str | None) -> dict[str, Any]:

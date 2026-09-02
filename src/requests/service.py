@@ -10,7 +10,7 @@ from src.database import (
     Request as TravelRequest,
     RequestStatus,
 )
-from src.schemas import RequestCreateSchema
+from src.requests.schemas import RequestCreateSchema
 
 
 def _city_relationships():

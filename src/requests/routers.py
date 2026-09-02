@@ -4,7 +4,7 @@ from fastapi_pagination import Page
 from src.database import RequestStatus
 from src.deps import get_current_user
 from src.requests.service import create_user_request, get_user_requests
-from src.schemas import RequestCreateSchema, RequestSchema
+from src.requests.schemas import RequestCreateSchema, RequestSchema
 
 requests_router = APIRouter(prefix="/api/requests", tags=["Requests"])
 

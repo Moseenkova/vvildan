@@ -42,7 +42,8 @@ class Settings(BaseSettings):
     SUPPORT_GROUP_ADMIN_IDS: Annotated[tuple[int, ...], NoDecode]
     TELEGRAM_SECRET_TOKEN: str = "abcdefghijklmnopqrstuvwxyz"
 
-    DEV_CHAT_ID: str = "5875912525"
+    DEV_CHAT_ID: int | None = None
+    TELEGRAM_AUTH_MAX_AGE_SECONDS: int = 300
 
     @model_validator(mode="after")
     def use_test_database(self) -> "Settings":

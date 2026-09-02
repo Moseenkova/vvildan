@@ -3,7 +3,7 @@ from sqlalchemy import func, or_, select
 
 from src.database import async_session_maker, City, CityName, Country, CountryName
 from src.deps import get_current_user
-from src.schemas import CitySearchResultSchema
+from src.search.schemas import CitySearchResultSchema
 
 search_router = APIRouter(prefix="/api/search", tags=["Search"])
 

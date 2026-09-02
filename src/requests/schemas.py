@@ -1,16 +1,9 @@
-from html import escape
 from datetime import date, datetime
+from html import escape
 
 from pydantic import AliasPath, BaseModel, ConfigDict, Field, field_validator, model_validator
 
 from src.database import RequestRole
-
-
-class CitySearchResultSchema(BaseModel):
-    id: int
-    name: str
-    country_id: int
-    country_name: str
 
 
 class RequestCitySchema(BaseModel):

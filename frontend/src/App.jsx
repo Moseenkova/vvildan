@@ -285,19 +285,17 @@ function App() {
     window.Telegram?.WebApp?.ready()
 
     const initAuth = async () => {
-      let tgId = null
-      if (window.Telegram?.WebApp?.initDataUnsafe?.user?.id) {
-        tgId = window.Telegram.WebApp.initDataUnsafe.user.id
-      } else if (import.meta.env.VITE_DEV_ENV === 'true') {
-        tgId = import.meta.env.VITE_DUMMY_TG_ID
-      }
-      if (!tgId) {
+      const initData = window.Telegram?.WebApp?.initData
+      const isDev = import.meta.env.VITE_DEV_ENV === 'true'
+      if (!initData && !isDev) {
         if (localStorage.getItem('access_token')) await loadRequests(1)
         else setRequestsLoading(false)
         return
       }
       try {
-        const { data } = await api.post('/api/auth/login', { tg_id: tgId })
+        const { data } = initData
+          ? await api.post('/api/auth/login', { init_data: initData })
+          : await api.post('/api/auth/dev-login')
         localStorage.setItem('access_token', data.access_token)
         await loadRequests(1)
       } catch (error) {
