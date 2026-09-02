@@ -9,14 +9,14 @@ from aiogram.filters import Command, CommandStart
 from aiogram.types import Message
 from aiogram.utils.markdown import hbold
 
-from src.config import Settings, get_settings
-from src.database import User, async_session_maker, get_or_create
-from src.translations import get_welcome_message
-from src.utils import (
+from bot.translations import get_welcome_message
+from bot.utils import (
     create_customer_tg_topic,
     get_customer_chat_id_by_topic_id,
     get_topic_id_by_customer_chat_id,
 )
+from src.config import Settings, get_settings
+from src.database import User, async_session_maker, get_or_create
 
 cfg: Settings = get_settings()
 form_router = Router()

@@ -4,9 +4,8 @@ from aiogram.filters.callback_data import CallbackData
 from aiogram.types.inline_keyboard_button import InlineKeyboardButton
 from aiogram.types.inline_keyboard_markup import InlineKeyboardMarkup
 from aiogram.utils.keyboard import InlineKeyboardBuilder
-from sqlalchemy import select
-
 from database import City, Country, async_session_maker
+from sqlalchemy import select
 
 
 class DirectionEnum(str, Enum):
