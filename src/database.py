@@ -29,10 +29,11 @@ from sqlalchemy.orm import (
     relationship,
 )
 
-from src.config import get_settings
+from src.config import Settings, get_settings
 
+cfg: Settings = get_settings()
 
-engine = create_async_engine(get_settings().DATABASE_URL)
+engine = create_async_engine(cfg.DATABASE_URL)
 
 async_session_maker = async_sessionmaker(engine, expire_on_commit=False)
 

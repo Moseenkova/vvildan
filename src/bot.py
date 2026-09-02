@@ -9,7 +9,7 @@ from aiogram.filters import Command, CommandStart
 from aiogram.types import Message
 from aiogram.utils.markdown import hbold
 
-from src.config import get_settings
+from src.config import get_settings, Settings
 from src.database import (
     User,
     async_session_maker,
@@ -22,7 +22,7 @@ from src.utils import (
     get_topic_id_by_customer_chat_id,
 )
 
-settings = get_settings()
+cfg: Settings = get_settings()
 form_router = Router()
 
 
@@ -68,7 +68,7 @@ async def get_or_create_customer_topic(message: Message, bot: Bot) -> int:
     display_name = user.full_name if user else str(customer_id)
 
     topic = await bot.create_forum_topic(
-        chat_id=settings.SUPPORT_GROUP_ID,
+        chat_id=cfg.SUPPORT_GROUP_ID,
         name=f"{display_name} — {customer_id}",
     )
 
@@ -78,7 +78,7 @@ async def get_or_create_customer_topic(message: Message, bot: Bot) -> int:
 
     username = f"@{user.username}" if user and user.username else "none"
     await bot.send_message(
-        chat_id=settings.SUPPORT_GROUP_ID,
+        chat_id=cfg.SUPPORT_GROUP_ID,
         message_thread_id=topic_id,
         text=(
             f"<b>Новое обращение</b>\n"
@@ -93,27 +93,27 @@ async def get_or_create_customer_topic(message: Message, bot: Bot) -> int:
 
 @form_router.message(F.chat.type == ChatType.PRIVATE)
 async def customer_message(message: Message, bot: Bot) -> None:
-    if message.from_user and message.from_user.id in settings.SUPPORT_GROUP_ADMIN_IDS:
+    if message.from_user and message.from_user.id in cfg.SUPPORT_GROUP_ADMIN_IDS:
         return
 
     topic_id = await get_or_create_customer_topic(message, bot)
 
     try:
         await message.send_copy(
-            chat_id=settings.SUPPORT_GROUP_ID,
+            chat_id=cfg.SUPPORT_GROUP_ID,
             message_thread_id=topic_id,
         )
     except TypeError:
         await bot.send_message(
-            chat_id=settings.SUPPORT_GROUP_ID,
+            chat_id=cfg.SUPPORT_GROUP_ID,
             message_thread_id=topic_id,
             text="[This message type cannot be copied]",
         )
 
 
-@form_router.message(F.chat.id == settings.SUPPORT_GROUP_ID)
+@form_router.message(F.chat.id == cfg.SUPPORT_GROUP_ID)
 async def admin_reply(message: Message, bot: Bot) -> None:
-    if not message.from_user or message.from_user.id not in settings.SUPPORT_GROUP_ADMIN_IDS:
+    if not message.from_user or message.from_user.id not in cfg.SUPPORT_GROUP_ADMIN_IDS:
         return
 
     topic_id = message.message_thread_id
@@ -123,7 +123,7 @@ async def admin_reply(message: Message, bot: Bot) -> None:
     customer_id = await get_customer_chat_id_by_topic_id(topic_id)
     if customer_id is None:
         await bot.send_message(
-            chat_id=settings.SUPPORT_GROUP_ID,
+            chat_id=cfg.SUPPORT_GROUP_ID,
             message_thread_id=topic_id,
             text=f"[topic id {topic_id} not found in db]",
         )
@@ -143,7 +143,7 @@ async def admin_reply(message: Message, bot: Bot) -> None:
 
 async def main() -> None:
     bot = Bot(
-        token=settings.BOT_TOKEN.get_secret_value(),
+        token=cfg.BOT_TOKEN.get_secret_value(),
         default=DefaultBotProperties(parse_mode=ParseMode.HTML),
     )
     dp = Dispatcher()
