@@ -52,7 +52,7 @@ class RequestCreateSchema(BaseModel):
     arrival_city_ids: list[int] = Field(
         alias="arrivalCityIds", min_length=1, max_length=5
     )
-    comment: str = Field(default="", alias="baggageComments", max_length=1000)
+    comment: str = Field(default="", alias="baggageComments", max_length=512)
 
     @field_validator("comment")
     @classmethod

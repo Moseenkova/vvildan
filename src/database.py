@@ -13,6 +13,7 @@ from sqlalchemy import (
     Float,
     ForeignKey,
     Index,
+    String,
     Table,
     UniqueConstraint,
     func,
@@ -104,7 +105,7 @@ class Request(Base):
         back_populates="arrival_requests",
     )
 
-    comment: Mapped[str] = mapped_column(default="", server_default="")
+    comment: Mapped[str|None] = mapped_column(String(512), nullable=True, default=None)
     status: Mapped[RequestStatus] = mapped_column(
         Enum(RequestStatus),
         default=RequestStatus.active,
