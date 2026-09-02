@@ -20,7 +20,6 @@ class Settings(BaseSettings):
     DATABASE_URL: str = (
         "postgresql+asyncpg://postgres:postgres@localhost:5432/courier"
     )
-    TEST_DATABASE_URL: str = "sqlite+aiosqlite:///:memory:"
 
     ALLOWED_HOSTS: str = "localhost,0.0.0.0,127.0.0.1,test"
     BASE_URL: str = "https://dev.courier.ru"
@@ -48,7 +47,7 @@ class Settings(BaseSettings):
     @model_validator(mode="after")
     def use_test_database(self) -> "Settings":
         if self.MODE == "TEST":
-            self.DATABASE_URL = self.TEST_DATABASE_URL
+            self.DATABASE_URL = "sqlite+aiosqlite:///:memory:"
         return self
 
     @field_validator("SUPPORT_GROUP_ADMIN_IDS", mode="before")
