@@ -1,0 +1,89 @@
+import { i18n } from '@lingui/core'
+import { msg } from '@lingui/macro'
+
+const supportedLocales = [
+  'en', 'zh', 'hi', 'es', 'ar', 'fr', 'bn', 'pt', 'ru', 'ur',
+  'id', 'de', 'ja', 'mr', 'te', 'tr', 'ta', 'vi', 'ko', 'fa',
+  'ha', 'sw', 'jv', 'it', 'pa', 'gu', 'th', 'kn', 'am', 'bho',
+  'yo', 'my', 'pl', 'ml', 'or', 'mai', 'uk', 'ps', 'uz', 'sd',
+  'ne', 'si', 'km', 'so', 'ro', 'nl', 'el', 'cs', 'hu', 'fil',
+]
+
+const catalogLoaders = import.meta.glob('./locales/*/messages.po', {
+  import: 'messages',
+})
+
+export const getTelegramLocale = () => {
+  const telegramLocale = window.Telegram?.WebApp?.initDataUnsafe?.user?.language_code
+  const browserLocale = navigator.language
+  const requestedLocale = (telegramLocale || browserLocale || 'en')
+    .toLowerCase()
+    .split(/[-_]/)[0]
+
+  return supportedLocales.includes(requestedLocale) ? requestedLocale : 'en'
+}
+
+export const locale = getTelegramLocale()
+
+export const activateLocale = async () => {
+  const loadCatalog = catalogLoaders[`./locales/${locale}/messages.po`]
+  const messages = await loadCatalog()
+  i18n.loadAndActivate({ locale, messages })
+}
+
+export const getMessages = (_) => ({
+  sender: _(msg`Sender`),
+  courier: _(msg`Courier`),
+  dateFrom: _(msg`From date`),
+  dateTo: _(msg`To date`),
+  date: _(msg`Date`),
+  dateFormat: _(msg`MM/dd/yyyy`),
+  datePlaceholder: _(msg`mm/dd/yyyy`),
+  departure: _(msg`Departure`),
+  arrival: _(msg`Arrival`),
+  searchCityCountry: _(msg`Country or city`),
+  noCitiesFound: _(msg`no matching cities found, try to write in english`),
+  selectCityFromList: _(msg`Please select departure and arrival cities from the list`),
+  remove: _(msg`Remove`),
+  countryFrom: _(msg`Departure country`),
+  cityFrom: _(msg`Departure city`),
+  countryTo: _(msg`Arrival country`),
+  cityTo: _(msg`Arrival city`),
+  enterCountry: _(msg`Enter a country`),
+  chooseCountryFirst: _(msg`Choose a country first`),
+  enterOrChooseCity: _(msg`Enter or choose a city`),
+  enterCity: _(msg`Enter a city`),
+  chooseCityFirst: _(msg`Choose a city first`),
+  loading: _(msg`Loading...`),
+  baggageComments: _(msg`Baggage comments`),
+  baggageExample: _(msg`For example: Clothes 5 kg, documents, electronics`),
+  submit: _(msg`Submit request`),
+  selectDateFrom: _(msg`Please select a start date`),
+  selectDateTo: _(msg`Please select an end date`),
+  invalidDateRange: _(msg`The start date cannot be after the end date`),
+  selectDate: _(msg`Please select a date`),
+  submitted: _(msg`Form submitted! Check the console for data.`),
+  userNotFound: _(msg`User Not Found`),
+  registrationRequired: _(msg`You are not registered in the system. Please register through the Telegram bot first.`),
+  myRequests: _(msg`My Requests`),
+  allStatuses: _(msg`All statuses`),
+  active: _(msg`Active`),
+  cancelled: _(msg`Cancelled`),
+  completed: _(msg`Completed`),
+  expired: _(msg`Expired`),
+  requestDetails: _(msg`Request details`),
+  noRequests: _(msg`No requests with this status.`),
+  failedToLoadRequests: _(msg`Could not load your requests.`),
+  close: _(msg`Close`),
+  comment: _(msg`Comment`),
+  created: _(msg`Created`),
+  status: _(msg`Status`),
+  pagination: _(msg`Request pagination`),
+  previous: _(msg`Previous`),
+  next: _(msg`Next`),
+  page: _(msg`Page`),
+  newRequest: _(msg`New`),
+  role: _(msg`Role`),
+})
+
+export { i18n }

@@ -1,0 +1,236 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: uk\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:73
+msgid "Active"
+msgstr "Активний"
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr "Всі статуси"
+
+#: src/i18n.js:43
+msgid "Arrival"
+msgstr "Прибуття"
+
+#: src/i18n.js:53
+msgid "Arrival airport"
+msgstr "Аеропорт прибуття"
+
+#: src/i18n.js:51
+msgid "Arrival city"
+msgstr "Місто прибуття"
+
+#: src/i18n.js:50
+msgid "Arrival country"
+msgstr "Країна прибуття"
+
+#: src/i18n.js:61
+msgid "Baggage comments"
+msgstr "Коментарі до багажу"
+
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr "Скасовано"
+
+#: src/i18n.js:59
+msgid "Choose a city first"
+msgstr "Спочатку виберіть місто"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "Спочатку виберіть країну"
+
+#: src/i18n.js:80
+msgid "Close"
+msgstr "Закрити"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "коментар"
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr "Виконано"
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "Не вдалося завантажити ваші запити."
+
+#: src/i18n.js:44
+msgid "Country or city"
+msgstr "Країна або місто"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "Кур'єр"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "Створено"
+
+#: src/i18n.js:39
+msgid "Date"
+msgstr "Дата"
+
+#: src/i18n.js:42
+msgid "Departure"
+msgstr "Відправлення"
+
+#: src/i18n.js:52
+msgid "Departure airport"
+msgstr "Аеропорт вильоту"
+
+#: src/i18n.js:49
+msgid "Departure city"
+msgstr "Місто відправлення"
+
+#: src/i18n.js:48
+msgid "Departure country"
+msgstr "Країна відправлення"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "Введіть місто"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "Введіть країну"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "Введіть або виберіть місто"
+
+#: src/i18n.js:58
+msgid "Enter or choose an airport"
+msgstr "Введіть або виберіть аеропорт"
+
+#: src/i18n.js:76
+msgid "Expired"
+msgstr "Термін дії минув"
+
+#: src/i18n.js:62
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "Наприклад: Одяг 5 кг, документи, електроніка"
+
+#: src/i18n.js:68
+msgid "Form submitted! Check the console for data."
+msgstr "Форма подана! Перевірте консоль на наявність даних."
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "Від дати"
+
+#: src/i18n.js:60
+msgid "Loading..."
+msgstr "Завантаження..."
+
+#: src/i18n.js:47
+#~ msgid "Maximum number of airports selected"
+#~ msgstr ""
+
+#: src/i18n.js:41
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:40
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr "Мої запити"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "новий"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "Далі"
+
+#: src/i18n.js:45
+msgid "no matching airports found, try to write in english"
+msgstr "Відповідних аеропортів не знайдено, спробуйте написати англійською"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "Немає запитів із таким статусом."
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "Сторінка"
+
+#: src/i18n.js:67
+msgid "Please select a date"
+msgstr "Будь ласка, виберіть дату"
+
+#: src/i18n.js:64
+msgid "Please select a start date"
+msgstr "Виберіть дату початку"
+
+#: src/i18n.js:65
+msgid "Please select an end date"
+msgstr "Виберіть кінцеву дату"
+
+#: src/i18n.js:46
+msgid "Please select departure and arrival airports from the list"
+msgstr "Виберіть аеропорти відправлення та прибуття зі списку"
+
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "Попередній"
+
+#: src/i18n.js:47
+msgid "Remove"
+msgstr "Видалити"
+
+#: src/i18n.js:77
+msgid "Request details"
+msgstr "Деталі запиту"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "Запит на сторінки"
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr "Роль"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "Відправник"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "Статус"
+
+#: src/i18n.js:63
+msgid "Submit request"
+msgstr "Надіслати запит"
+
+#: src/i18n.js:66
+msgid "The start date cannot be after the end date"
+msgstr "Дата початку не може бути після дати завершення"
+
+#: src/i18n.js:38
+msgid "To date"
+msgstr "На сьогоднішній день"
+
+#: src/i18n.js:69
+msgid "User Not Found"
+msgstr "Користувача не знайдено"
+
+#: src/i18n.js:70
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "Ви не зареєстровані в системі. Будь ласка, спочатку зареєструйтеся через бот Telegram."

@@ -1,0 +1,236 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: te\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:73
+msgid "Active"
+msgstr "చురుకుగా"
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr "అన్ని హోదాలు"
+
+#: src/i18n.js:43
+msgid "Arrival"
+msgstr "రాక"
+
+#: src/i18n.js:53
+msgid "Arrival airport"
+msgstr "రాక విమానాశ్రయం"
+
+#: src/i18n.js:51
+msgid "Arrival city"
+msgstr "రాక నగరం"
+
+#: src/i18n.js:50
+msgid "Arrival country"
+msgstr "రాక దేశం"
+
+#: src/i18n.js:61
+msgid "Baggage comments"
+msgstr "బ్యాగేజీ వ్యాఖ్యలు"
+
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr "రద్దు చేయబడింది"
+
+#: src/i18n.js:59
+msgid "Choose a city first"
+msgstr "ముందుగా ఒక నగరాన్ని ఎంచుకోండి"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "ముందుగా దేశాన్ని ఎంచుకోండి"
+
+#: src/i18n.js:80
+msgid "Close"
+msgstr "మూసివేయి"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "వ్యాఖ్యానించండి"
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr "పూర్తయింది"
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "మీ అభ్యర్థనలను లోడ్ చేయడం సాధ్యపడలేదు."
+
+#: src/i18n.js:44
+msgid "Country or city"
+msgstr "దేశం లేదా నగరం"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "కొరియర్"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "సృష్టించబడింది"
+
+#: src/i18n.js:39
+msgid "Date"
+msgstr "తేదీ"
+
+#: src/i18n.js:42
+msgid "Departure"
+msgstr "బయలుదేరు"
+
+#: src/i18n.js:52
+msgid "Departure airport"
+msgstr "బయలుదేరే విమానాశ్రయం"
+
+#: src/i18n.js:49
+msgid "Departure city"
+msgstr "బయలుదేరే నగరం"
+
+#: src/i18n.js:48
+msgid "Departure country"
+msgstr "బయలుదేరే దేశం"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "ఒక నగరాన్ని నమోదు చేయండి"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "ఒక దేశాన్ని నమోదు చేయండి"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "నగరాన్ని నమోదు చేయండి లేదా ఎంచుకోండి"
+
+#: src/i18n.js:58
+msgid "Enter or choose an airport"
+msgstr "విమానాశ్రయాన్ని నమోదు చేయండి లేదా ఎంచుకోండి"
+
+#: src/i18n.js:76
+msgid "Expired"
+msgstr "గడువు ముగిసింది"
+
+#: src/i18n.js:62
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "ఉదాహరణకు: బట్టలు 5 కిలోలు, పత్రాలు, ఎలక్ట్రానిక్స్"
+
+#: src/i18n.js:68
+msgid "Form submitted! Check the console for data."
+msgstr "ఫారమ్ సమర్పించబడింది! డేటా కోసం కన్సోల్‌ని తనిఖీ చేయండి."
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "తేదీ నుండి"
+
+#: src/i18n.js:60
+msgid "Loading..."
+msgstr "లోడ్ అవుతోంది..."
+
+#: src/i18n.js:47
+#~ msgid "Maximum number of airports selected"
+#~ msgstr ""
+
+#: src/i18n.js:41
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:40
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr "నా అభ్యర్థనలు"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "కొత్తది"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "తదుపరి"
+
+#: src/i18n.js:45
+msgid "no matching airports found, try to write in english"
+msgstr "సరిపోలే విమానాశ్రయాలు ఏవీ కనుగొనబడలేదు, ఆంగ్లంలో రాయడానికి ప్రయత్నించండి"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "ఈ స్థితితో అభ్యర్థనలు లేవు."
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "పేజీ"
+
+#: src/i18n.js:67
+msgid "Please select a date"
+msgstr "దయచేసి తేదీని ఎంచుకోండి"
+
+#: src/i18n.js:64
+msgid "Please select a start date"
+msgstr "దయచేసి ప్రారంభ తేదీని ఎంచుకోండి"
+
+#: src/i18n.js:65
+msgid "Please select an end date"
+msgstr "దయచేసి ముగింపు తేదీని ఎంచుకోండి"
+
+#: src/i18n.js:46
+msgid "Please select departure and arrival airports from the list"
+msgstr "దయచేసి జాబితా నుండి బయలుదేరే మరియు చేరుకునే విమానాశ్రయాలను ఎంచుకోండి"
+
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "మునుపటి"
+
+#: src/i18n.js:47
+msgid "Remove"
+msgstr "తొలగించు"
+
+#: src/i18n.js:77
+msgid "Request details"
+msgstr "వివరాలను అభ్యర్థించండి"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "పేజీని అభ్యర్థించండి"
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr "పాత్ర"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "పంపినవారు"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "స్థితి"
+
+#: src/i18n.js:63
+msgid "Submit request"
+msgstr "అభ్యర్థనను సమర్పించండి"
+
+#: src/i18n.js:66
+msgid "The start date cannot be after the end date"
+msgstr "ప్రారంభ తేదీ ముగింపు తేదీ తర్వాత ఉండకూడదు"
+
+#: src/i18n.js:38
+msgid "To date"
+msgstr "ఇప్పటి వరకు"
+
+#: src/i18n.js:69
+msgid "User Not Found"
+msgstr "వినియోగదారు కనుగొనబడలేదు"
+
+#: src/i18n.js:70
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "మీరు సిస్టమ్‌లో నమోదు చేయబడలేదు. దయచేసి ముందుగా టెలిగ్రామ్ బాట్ ద్వారా నమోదు చేసుకోండి."

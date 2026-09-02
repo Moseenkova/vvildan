@@ -5,3 +5,4 @@ venv/
 ignore/
 __pycache__/
 .ruff_cache/
+data/geonames/

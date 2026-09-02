@@ -1,0 +1,15 @@
+add sqladmin, add admin superuser
+cache latest reqeusts search in my_requests
+
+add command for scripts in /stripts with disctription
+
+if time is passed change request status from active to expired
+limit to 5 requests in the future
+notify abount new matching requests
+add rating to all users based on registration date and reviews
+add red dot on my-requests if new match
+celery task to daily backup db 14 copies max
+
+
+add open requests with no closed date/optional date-to
+test run docker compose

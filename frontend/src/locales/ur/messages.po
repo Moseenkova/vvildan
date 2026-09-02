@@ -1,0 +1,236 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ur\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:73
+msgid "Active"
+msgstr "فعال"
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr "تمام سٹیٹس"
+
+#: src/i18n.js:43
+msgid "Arrival"
+msgstr "آمد"
+
+#: src/i18n.js:53
+msgid "Arrival airport"
+msgstr "آمد ہوائی اڈے"
+
+#: src/i18n.js:51
+msgid "Arrival city"
+msgstr "آمد شہر"
+
+#: src/i18n.js:50
+msgid "Arrival country"
+msgstr "آمد کا ملک"
+
+#: src/i18n.js:61
+msgid "Baggage comments"
+msgstr "سامان کے تبصرے"
+
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr "منسوخ"
+
+#: src/i18n.js:59
+msgid "Choose a city first"
+msgstr "پہلے شہر کا انتخاب کریں۔"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "پہلے ملک کا انتخاب کریں۔"
+
+#: src/i18n.js:80
+msgid "Close"
+msgstr "بند"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "تبصرہ"
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr "مکمل"
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "آپ کی درخواستوں کو لوڈ نہیں کیا جا سکا۔"
+
+#: src/i18n.js:44
+msgid "Country or city"
+msgstr "ملک یا شہر"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "کورئیر"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "بنایا"
+
+#: src/i18n.js:39
+msgid "Date"
+msgstr "تاریخ"
+
+#: src/i18n.js:42
+msgid "Departure"
+msgstr "روانگی"
+
+#: src/i18n.js:52
+msgid "Departure airport"
+msgstr "روانگی ہوائی اڈے"
+
+#: src/i18n.js:49
+msgid "Departure city"
+msgstr "روانگی شہر"
+
+#: src/i18n.js:48
+msgid "Departure country"
+msgstr "روانگی کا ملک"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "شہر میں داخل ہوں۔"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "ایک ملک درج کریں۔"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "شہر درج کریں یا منتخب کریں۔"
+
+#: src/i18n.js:58
+msgid "Enter or choose an airport"
+msgstr "داخل ہوں یا ہوائی اڈے کا انتخاب کریں۔"
+
+#: src/i18n.js:76
+msgid "Expired"
+msgstr "میعاد ختم"
+
+#: src/i18n.js:62
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "مثال کے طور پر: کپڑے 5 کلو، دستاویزات، الیکٹرانکس"
+
+#: src/i18n.js:68
+msgid "Form submitted! Check the console for data."
+msgstr "فارم جمع کرایا! ڈیٹا کے لیے کنسول چیک کریں۔"
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "تاریخ سے"
+
+#: src/i18n.js:60
+msgid "Loading..."
+msgstr "لوڈ ہو رہا ہے..."
+
+#: src/i18n.js:47
+#~ msgid "Maximum number of airports selected"
+#~ msgstr ""
+
+#: src/i18n.js:41
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:40
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr "میری درخواستیں"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "نیا"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "اگلا"
+
+#: src/i18n.js:45
+msgid "no matching airports found, try to write in english"
+msgstr "کوئی مماثل ہوائی اڈہ نہیں ملا، انگریزی میں لکھنے کی کوشش کریں"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "اس حیثیت کے ساتھ کوئی درخواستیں نہیں ہیں۔"
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "صفحہ"
+
+#: src/i18n.js:67
+msgid "Please select a date"
+msgstr "براہ کرم ایک تاریخ منتخب کریں۔"
+
+#: src/i18n.js:64
+msgid "Please select a start date"
+msgstr "براہ کرم آغاز کی تاریخ منتخب کریں۔"
+
+#: src/i18n.js:65
+msgid "Please select an end date"
+msgstr "براہ کرم ایک اختتامی تاریخ منتخب کریں۔"
+
+#: src/i18n.js:46
+msgid "Please select departure and arrival airports from the list"
+msgstr "براہ کرم فہرست سے روانگی اور آمد کے ہوائی اڈے منتخب کریں"
+
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "پچھلا"
+
+#: src/i18n.js:47
+msgid "Remove"
+msgstr "ہٹائیں"
+
+#: src/i18n.js:77
+msgid "Request details"
+msgstr "تفصیلات طلب کریں۔"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "صفحہ بندی کی درخواست کریں۔"
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr "کردار"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "بھیجنے والا"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "حیثیت"
+
+#: src/i18n.js:63
+msgid "Submit request"
+msgstr "درخواست جمع کروائیں۔"
+
+#: src/i18n.js:66
+msgid "The start date cannot be after the end date"
+msgstr "آغاز کی تاریخ اختتامی تاریخ کے بعد نہیں ہو سکتی"
+
+#: src/i18n.js:38
+msgid "To date"
+msgstr "آج تک"
+
+#: src/i18n.js:69
+msgid "User Not Found"
+msgstr "صارف نہیں ملا"
+
+#: src/i18n.js:70
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "آپ سسٹم میں رجسٹرڈ نہیں ہیں۔ براہ کرم پہلے ٹیلیگرام بوٹ کے ذریعے رجسٹر ہوں۔"

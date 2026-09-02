@@ -5,6 +5,8 @@ import sys
 from datetime import datetime, timedelta
 from os import getenv
 
+# Ваш код здесь
+import database
 from aiogram import Bot, Dispatcher, F, Router, types
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
@@ -13,14 +15,9 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.types import CallbackQuery, Message
 from aiogram.utils.markdown import hbold
-from dotenv import load_dotenv
-from sqlalchemy import insert, select
-from sqlalchemy.orm import joinedload
-
-# Ваш код здесь
-import database
 from database import (
     RU_LABELS,
+    Airport,
     Country,
     Courier,
     Request,
@@ -30,6 +27,7 @@ from database import (
     async_session_maker,
     get_or_create,
 )
+from dotenv import load_dotenv
 from my_keyboards import (
     BaggageKindCallback,
     BaggageKinds,
@@ -43,6 +41,8 @@ from my_keyboards import (
     final_keyboard,
     role_markup,
 )
+from sqlalchemy import select
+from sqlalchemy.orm import joinedload, selectinload
 
 load_dotenv()
 TOKEN = getenv("BOT_TOKEN")
@@ -75,6 +75,7 @@ async def command_start_handler(message: Message, state: FSMContext) -> None:
             defaults={"name": message.chat.full_name},
             tg_id=message.chat.id,
         )
+
     await message.answer(
         f"Привет, {hbold(message.from_user.full_name)}!\nВыбери свою роль.",
         reply_markup=role_markup,
@@ -93,8 +94,8 @@ async def command_reqs_handler(message: Message, state: FSMContext) -> None:
 
         sender_reqs = await session.execute(
             select(Request)
-            .options(joinedload(Request.origin))
-            .options(joinedload(Request.destination))
+            .options(selectinload(Request.departure_airports))
+            .options(selectinload(Request.arrival_airports))
             .join(Sender, Sender.id == Request.sender_id)
             .filter(Sender.user_id == user.id)
         )
@@ -105,14 +106,16 @@ async def command_reqs_handler(message: Message, state: FSMContext) -> None:
         if sender_reqs:
             "\n".join(
                 [
-                    f"From: {req.origin.name}, to: {req.destination.name}, "
+                    f"From: {', '.join(a.name for a in req.departure_airports)}, "
+                    f"to: {', '.join(a.name for a in req.arrival_airports)}, "
                     #    f"period: {req.date.strftime('%Y-%m-%d')} - {req.date.strftime('%Y-%m-%d')}, "
                     f"baggage_types: {req.baggage_types}, "
                     for req in sender_reqs
                 ]
             )
             req_dict = {
-                req.id: f"From: {req.origin.name}, to: {req.destination.name}, "
+                req.id: f"From: {', '.join(a.name for a in req.departure_airports)}, "
+                f"to: {', '.join(a.name for a in req.arrival_airports)}, "
                 # f"Date: {req.date.strftime('%Y-%m-%d')}, "  исправить на date from и date to
                 f"baggage_types: {req.baggage_types}, "
                 for req in sender_reqs
@@ -125,8 +128,8 @@ async def command_reqs_handler(message: Message, state: FSMContext) -> None:
 
         courier_reqs = await session.execute(
             select(Request)
-            .options(joinedload(Request.origin))
-            .options(joinedload(Request.destination))
+            .options(selectinload(Request.departure_airports))
+            .options(selectinload(Request.arrival_airports))
             .join(Courier, Courier.id == Request.courier_id)
             .filter(Courier.user_id == user.id)
         )
@@ -136,14 +139,16 @@ async def command_reqs_handler(message: Message, state: FSMContext) -> None:
             # Если заявки найдены, отправляем их в виде сообщения
             "\n".join(
                 [
-                    f"From: {req.origin.name}, to: {req.destination.name}, "
+                    f"From: {', '.join(a.name for a in req.departure_airports)}, "
+                    f"to: {', '.join(a.name for a in req.arrival_airports)}, "
                     f"Date: {req.date.strftime('%Y-%m-%d')}, "
                     f"baggage_types: {req.baggage_types}, "
                     for req in courier_reqs
                 ]
             )
             req_dict = {
-                req.id: f"From: {req.origin.name}, to: {req.destination.name}, "
+                req.id: f"From: {', '.join(a.name for a in req.departure_airports)}, "
+                f"to: {', '.join(a.name for a in req.arrival_airports)}, "
                 f"Date: {req.date.strftime('%Y-%m-%d')}, "
                 f"baggage_types: {req.baggage_types}, "
                 for req in courier_reqs
@@ -549,13 +554,11 @@ async def command_finish_handler(
         date_from_obj = datetime.strptime(data["date_from"], "%d.%m.%Y").date()
         date_to_obj = datetime.strptime(data["date_to"], "%d.%m.%Y").date()
     params = {
-        "origin_id": data["city_from_id"],
-        "destination_id": data["city_to_id"],
         "date": date_obj,
         "date_from": date_from_obj,
         "date_to": date_to_obj,
         "baggage_types": baggage_types,
-        "status": database.Status.new,
+        "status": database.RequestStatus.new,
         "comment": data["comment"],
     }
     role = data.get("role")
@@ -579,9 +582,36 @@ async def command_finish_handler(
             result = await session.execute(query)
             sender = result.scalars().one_or_none()
             params["sender_id"] = sender.id
-        query = insert(Request).values(**params).returning(Request.id)
-        result = await session.execute(query)
-        request_id = result.scalar()
+        departure_airport_ids = data.get(
+            "departure_airport_ids", [data["city_from_id"]]
+        )
+        arrival_airport_ids = data.get("arrival_airport_ids", [data["city_to_id"]])
+        departure_airports = list(
+            (
+                await session.execute(
+                    select(Airport).where(Airport.id.in_(departure_airport_ids))
+                )
+            )
+            .scalars()
+            .all()
+        )
+        arrival_airports = list(
+            (
+                await session.execute(
+                    select(Airport).where(Airport.id.in_(arrival_airport_ids))
+                )
+            )
+            .scalars()
+            .all()
+        )
+        request = Request(
+            **params,
+            departure_airports=departure_airports,
+            arrival_airports=arrival_airports,
+        )
+        session.add(request)
+        await session.flush()
+        request_id = request.id
         await session.commit()
         await state.update_data(request_id=request_id)
 
@@ -590,13 +620,15 @@ async def command_finish_handler(
             query = (
                 select(Request)
                 .options(
-                    joinedload(Request.origin),
-                    joinedload(Request.destination),
+                    selectinload(Request.departure_airports),
+                    selectinload(Request.arrival_airports),
                     joinedload(Request.courier).joinedload(Courier.user),
                 )
                 .filter(
-                    Request.origin_id == params["origin_id"],
-                    Request.destination_id == params["destination_id"],
+                    Request.departure_airports.any(
+                        Airport.id.in_(departure_airport_ids)
+                    ),
+                    Request.arrival_airports.any(Airport.id.in_(arrival_airport_ids)),
                     Request.date >= params["date_from"],
                     Request.date <= params["date_to"],
                 )
@@ -605,13 +637,15 @@ async def command_finish_handler(
             query = (
                 select(Request)
                 .options(
-                    joinedload(Request.origin),
-                    joinedload(Request.destination),
+                    selectinload(Request.departure_airports),
+                    selectinload(Request.arrival_airports),
                     joinedload(Request.sender).joinedload(Sender.user),
                 )
                 .filter(
-                    Request.origin_id == params["origin_id"],
-                    Request.destination_id == params["destination_id"],
+                    Request.departure_airports.any(
+                        Airport.id.in_(departure_airport_ids)
+                    ),
+                    Request.arrival_airports.any(Airport.id.in_(arrival_airport_ids)),
                     Request.date_from <= params["date"],
                     Request.date_to >= params["date"],
                 )
@@ -625,8 +659,8 @@ async def command_finish_handler(
         for r in requests:
             courier_name = r.courier.user.name
             date_str = r.date.strftime("%d.%m.%Y")
-            origin_city = r.origin.name
-            destination_city = r.destination.name
+            origin_city = ", ".join(airport.name for airport in r.departure_airports)
+            destination_city = ", ".join(airport.name for airport in r.arrival_airports)
             r_baggage_types = [
                 RU_LABELS.get(kind, kind) for kind in json.loads(r.baggage_types)
             ]
@@ -657,8 +691,8 @@ async def command_finish_handler(
             sender_name = r.sender.user.name
             date_from_str = r.date_from.strftime("%d.%m.%Y")
             date_to_str = r.date_to.strftime("%d.%m.%Y")
-            origin_city = r.origin.name
-            destination_city = r.destination.name
+            origin_city = ", ".join(airport.name for airport in r.departure_airports)
+            destination_city = ", ".join(airport.name for airport in r.arrival_airports)
             r_baggage_types = [
                 RU_LABELS.get(kind, kind) for kind in json.loads(r.baggage_types)
             ]

@@ -1,0 +1,236 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ne\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:73
+msgid "Active"
+msgstr "सक्रिय"
+
+#: src/i18n.js:72
+msgid "All statuses"
+msgstr "सबै स्थितिहरू"
+
+#: src/i18n.js:43
+msgid "Arrival"
+msgstr "आगमन"
+
+#: src/i18n.js:53
+msgid "Arrival airport"
+msgstr "आगमन एयरपोर्ट"
+
+#: src/i18n.js:51
+msgid "Arrival city"
+msgstr "आगमन सहर"
+
+#: src/i18n.js:50
+msgid "Arrival country"
+msgstr "आगमन देश"
+
+#: src/i18n.js:61
+msgid "Baggage comments"
+msgstr "सामान टिप्पणीहरू"
+
+#: src/i18n.js:74
+msgid "Cancelled"
+msgstr "रद्द गरियो"
+
+#: src/i18n.js:59
+msgid "Choose a city first"
+msgstr "पहिले शहर छान्नुहोस्"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "पहिले देश छान्नुहोस्"
+
+#: src/i18n.js:80
+msgid "Close"
+msgstr "बन्द गर्नुहोस्"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "टिप्पणी गर्नुहोस्"
+
+#: src/i18n.js:75
+msgid "Completed"
+msgstr "पूरा भयो"
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "तपाईंका अनुरोधहरू लोड गर्न सकिएन।"
+
+#: src/i18n.js:44
+msgid "Country or city"
+msgstr "देश वा सहर"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "कुरियर"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "सिर्जना गरियो"
+
+#: src/i18n.js:39
+msgid "Date"
+msgstr "मिति"
+
+#: src/i18n.js:42
+msgid "Departure"
+msgstr "प्रस्थान"
+
+#: src/i18n.js:52
+msgid "Departure airport"
+msgstr "प्रस्थान एयरपोर्ट"
+
+#: src/i18n.js:49
+msgid "Departure city"
+msgstr "प्रस्थान शहर"
+
+#: src/i18n.js:48
+msgid "Departure country"
+msgstr "प्रस्थान देश"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "एक शहर प्रविष्ट गर्नुहोस्"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "एउटा देश प्रविष्ट गर्नुहोस्"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "प्रविष्ट गर्नुहोस् वा शहर छान्नुहोस्"
+
+#: src/i18n.js:58
+msgid "Enter or choose an airport"
+msgstr "प्रवेश गर्नुहोस् वा एयरपोर्ट छान्नुहोस्"
+
+#: src/i18n.js:76
+msgid "Expired"
+msgstr "म्याद सकियो"
+
+#: src/i18n.js:62
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "उदाहरणका लागि: कपडा ५ किलो, कागजात, इलेक्ट्रोनिक्स"
+
+#: src/i18n.js:68
+msgid "Form submitted! Check the console for data."
+msgstr "फारम पेश गरियो! डाटाको लागि कन्सोल जाँच गर्नुहोस्।"
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "मिति देखि"
+
+#: src/i18n.js:60
+msgid "Loading..."
+msgstr "लोड गर्दै..."
+
+#: src/i18n.js:47
+#~ msgid "Maximum number of airports selected"
+#~ msgstr ""
+
+#: src/i18n.js:41
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:40
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:71
+msgid "My Requests"
+msgstr "मेरा अनुरोधहरू"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "नयाँ"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "अर्को"
+
+#: src/i18n.js:45
+msgid "no matching airports found, try to write in english"
+msgstr "मिल्दोजुल्दो विमानस्थल फेला परेन, अंग्रेजीमा लेख्ने प्रयास गर्नुहोस्"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "यो स्थिति संग कुनै अनुरोध छैन।"
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "पृष्ठ"
+
+#: src/i18n.js:67
+msgid "Please select a date"
+msgstr "कृपया मिति चयन गर्नुहोस्"
+
+#: src/i18n.js:64
+msgid "Please select a start date"
+msgstr "कृपया सुरु हुने मिति चयन गर्नुहोस्"
+
+#: src/i18n.js:65
+msgid "Please select an end date"
+msgstr "कृपया अन्त्य मिति चयन गर्नुहोस्"
+
+#: src/i18n.js:46
+msgid "Please select departure and arrival airports from the list"
+msgstr "कृपया सूचीबाट प्रस्थान र आगमन विमानस्थल छान्नुहोस्"
+
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "अघिल्लो"
+
+#: src/i18n.js:47
+msgid "Remove"
+msgstr "हटाउनुहोस्"
+
+#: src/i18n.js:77
+msgid "Request details"
+msgstr "विवरणहरू अनुरोध गर्नुहोस्"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "पृष्ठांकन अनुरोध गर्नुहोस्"
+
+#: src/i18n.js:89
+msgid "Role"
+msgstr "भूमिका"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "प्रेषक"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "स्थिति"
+
+#: src/i18n.js:63
+msgid "Submit request"
+msgstr "अनुरोध पेश गर्नुहोस्"
+
+#: src/i18n.js:66
+msgid "The start date cannot be after the end date"
+msgstr "सुरु मिति अन्त्य मिति पछि हुन सक्दैन"
+
+#: src/i18n.js:38
+msgid "To date"
+msgstr "आज सम्म"
+
+#: src/i18n.js:69
+msgid "User Not Found"
+msgstr "प्रयोगकर्ता फेला परेन"
+
+#: src/i18n.js:70
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "तपाईं प्रणालीमा दर्ता हुनुहुन्न। कृपया पहिले टेलिग्राम बोट मार्फत दर्ता गर्नुहोस्।"
