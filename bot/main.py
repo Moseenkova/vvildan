@@ -9,12 +9,8 @@ from aiogram.filters import Command, CommandStart
 from aiogram.types import Message
 from aiogram.utils.markdown import hbold
 
-from src.config import get_settings, Settings
-from src.database import (
-    User,
-    async_session_maker,
-    get_or_create,
-)
+from src.config import Settings, get_settings
+from src.database import User, async_session_maker, get_or_create
 from src.translations import get_welcome_message
 from src.utils import (
     create_customer_tg_topic,

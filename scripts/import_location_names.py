@@ -15,7 +15,6 @@ from pathlib import Path
 
 from sqlalchemy import select
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
@@ -33,11 +32,11 @@ async def import_rows(rows: list[dict[str, str]]) -> tuple[int, int]:
     from src.database import (
         Airport,
         AirportName,
-        async_session_maker,
         City,
         CityName,
         Country,
         CountryName,
+        async_session_maker,
     )
 
     async with async_session_maker() as session:
@@ -87,25 +86,35 @@ async def import_rows(rows: list[dict[str, str]]) -> tuple[int, int]:
             entity_type = row["entity_type"].strip().lower()
             config = model_and_entities.get(entity_type)
             if config is None:
-                raise ValueError(f"Row {row_number}: unknown entity_type {entity_type!r}")
+                raise ValueError(
+                    f"Row {row_number}: unknown entity_type {entity_type!r}"
+                )
             model, entities, relationship_name = config
             raw_key = row["entity_key"].strip()
             key = raw_key.upper() if entity_type != "city" else raw_key
             entity = entities.get(key)
             if entity is None:
-                raise ValueError(f"Row {row_number}: unknown {entity_type} key {raw_key!r}")
+                raise ValueError(
+                    f"Row {row_number}: unknown {entity_type} key {raw_key!r}"
+                )
             language_code = (
                 row["language_code"].strip().lower().replace("_", "-").split("-", 1)[0]
             )
             name = row["name"].strip()
             if not language_code or not name:
-                raise ValueError(f"Row {row_number}: language_code and name are required")
+                raise ValueError(
+                    f"Row {row_number}: language_code and name are required"
+                )
             identity = (model.__tablename__, entity.id, language_code, name)
             if identity in existing:
                 skipped += 1
                 continue
             session.add(
-                model(**{relationship_name: entity}, language_code=language_code, name=name)
+                model(
+                    **{relationship_name: entity},
+                    language_code=language_code,
+                    name=name,
+                )
             )
             existing.add(identity)
             imported += 1

@@ -47,7 +47,7 @@ services:
 
   bot:
     <<: *backend
-    command: ["python", "-m", "src.bot"]
+    command: ["python", "-m", "bot.main"]
     depends_on:
       migrate:
         condition: service_completed_successfully

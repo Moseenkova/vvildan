@@ -1,6 +1,6 @@
 from functools import lru_cache
 from pathlib import Path
-from typing import Annotated, Literal, Optional, final
+from typing import Annotated, Literal, final
 
 from pydantic import SecretStr, field_validator, model_validator
 from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
@@ -17,9 +17,7 @@ class Settings(BaseSettings):
     MODE: Literal["DEV", "TEST", "PROD"] = "DEV"
     LOG_LEVEL: str = "INFO"
 
-    DATABASE_URL: str = (
-        "postgresql+asyncpg://postgres:postgres@localhost:5432/courier"
-    )
+    DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/courier"
 
     ALLOWED_HOSTS: str = "localhost,0.0.0.0,127.0.0.1,test"
     BASE_URL: str = "https://dev.courier.ru"

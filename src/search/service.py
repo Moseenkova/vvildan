@@ -1,6 +1,6 @@
 from sqlalchemy import func, or_, select
 
-from src.database import async_session_maker, City, CityName, Country, CountryName
+from src.database import City, CityName, Country, CountryName, async_session_maker
 
 
 async def find_cities(term: str, language: str):

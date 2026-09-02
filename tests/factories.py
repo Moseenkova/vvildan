@@ -8,14 +8,7 @@ from factory.declarations import PostGeneration, Sequence, SubFactory
 from factory.faker import Faker
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.database import (
-    City,
-    Country,
-    Request,
-    RequestRole,
-    RequestStatus,
-    User,
-)
+from src.database import City, Country, Request, RequestRole, RequestStatus, User
 
 Model = TypeVar("Model")
 

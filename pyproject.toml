@@ -28,11 +28,11 @@ build-backend = "hatchling.build"
 target-version = ["py39"]
 
 [tool.ruff]
-select = ["E", "F"]
+select = ["E", "F", "I"]
 ignore = ["E501", "E741"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src"]
+packages = ["src", "bot"]
 
 [dependency-groups]
 dev = [
@@ -40,5 +40,6 @@ dev = [
     "pytest-asyncio (>=1.4.0,<2.0.0)",
     "httpx (>=0.28.1,<0.29.0)",
     "aiosqlite (>=0.22.1,<0.23.0)",
-    "factory-boy (>=3.3.3,<4.0.0)"
+    "factory-boy (>=3.3.3,<4.0.0)",
+    "pre-commit>=4.6.2",
 ]

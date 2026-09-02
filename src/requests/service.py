@@ -4,12 +4,8 @@ from fastapi_pagination.ext.sqlalchemy import apaginate
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
 
-from src.database import (
-    async_session_maker,
-    City,
-    Request as TravelRequest,
-    RequestStatus,
-)
+from src.database import City, RequestStatus, async_session_maker
+from src.database import Request as TravelRequest
 from src.requests.schemas import RequestCreateSchema
 
 
@@ -29,11 +25,7 @@ async def get_user_requests(
             select(TravelRequest)
             .where(
                 TravelRequest.user_id == user_id,
-                *(
-                    [TravelRequest.status == request_status]
-                    if request_status
-                    else []
-                ),
+                *([TravelRequest.status == request_status] if request_status else []),
             )
             .options(*_city_relationships())
             .order_by(TravelRequest.created_at.desc())

@@ -13,7 +13,7 @@ from src.auth.exceptions import (
 )
 from src.auth.utils import create_token_pair
 from src.config import Settings, get_settings
-from src.database import async_session_maker, RefreshToken, User
+from src.database import RefreshToken, User, async_session_maker
 
 cfg: Settings = get_settings()
 

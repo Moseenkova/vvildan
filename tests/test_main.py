@@ -2,11 +2,10 @@ from datetime import datetime, timedelta
 
 import pytest
 from httpx import AsyncClient
-
 from sqlalchemy import select
 
-from src.database import Request as TravelRequest, RequestRole, RequestStatus, async_session_maker
-
+from src.database import Request as TravelRequest
+from src.database import RequestRole, RequestStatus, async_session_maker
 from tests.conftest import AuthenticatedClient
 from tests.factories import FactoryNamespace
 
@@ -182,9 +181,7 @@ async def test_create_courier_request(
     assert body["date_to"] == "2026-09-10"
     assert [city["id"] for city in body["departure_cities"]] == [departure.id]
     assert [city["id"] for city in body["arrival_cities"]] == [arrival.id]
-    assert body["comment"] == (
-        "&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;"
-    )
+    assert body["comment"] == ("&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;")
     assert body["status"] == "active"
 
     async with async_session_maker() as session:
@@ -233,12 +230,8 @@ async def test_city_search_matches_city_and_country(
 ) -> None:
     city = await factory.City(name="Jakarta", country__name="Indonesia")
 
-    city_response = await auth_ac.client.get(
-        "/api/search", params={"q": "Jakar"}
-    )
-    country_response = await auth_ac.client.get(
-        "/api/search", params={"q": "Indones"}
-    )
+    city_response = await auth_ac.client.get("/api/search", params={"q": "Jakar"})
+    country_response = await auth_ac.client.get("/api/search", params={"q": "Indones"})
 
     expected = {
         "id": city.id,

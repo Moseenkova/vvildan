@@ -10,7 +10,6 @@ from pathlib import Path
 
 from sqlalchemy import select
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
@@ -72,7 +71,7 @@ def load_population_index(code: str, wanted_names: set[str]) -> dict[str, int]:
 
 async def populate(country_code: str | None, dry_run: bool) -> None:
     from scripts.populate_location_names import normalize
-    from src.database import async_session_maker, City, Country, engine
+    from src.database import City, Country, async_session_maker, engine
 
     async with async_session_maker() as session:
         rows = (

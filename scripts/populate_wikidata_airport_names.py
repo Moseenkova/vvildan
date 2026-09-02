@@ -18,7 +18,6 @@ from urllib.request import Request, urlopen
 
 from sqlalchemy import select
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 CACHE_FILE = PROJECT_ROOT / "data" / "wikidata" / "airport_labels.json"
@@ -32,7 +31,9 @@ ENTITY_BATCH_SIZE = 50
 
 
 def supported_languages() -> set[str]:
-    from scripts.populate_location_names import supported_languages as geonames_languages
+    from scripts.populate_location_names import (
+        supported_languages as geonames_languages,
+    )
 
     return geonames_languages()
 
@@ -60,7 +61,11 @@ def fetch_json(url: str, params: dict[str, str]) -> dict:
                 raise
             caught_error = error
             retry_after = error.headers.get("Retry-After")
-            delay = float(retry_after) if retry_after and retry_after.isdigit() else 2**attempt
+            delay = (
+                float(retry_after)
+                if retry_after and retry_after.isdigit()
+                else 2**attempt
+            )
         except (URLError, TimeoutError, ConnectionError) as error:
             caught_error = error
             delay = 2**attempt
@@ -181,9 +186,7 @@ async def populate(dry_run: bool, refresh: bool) -> None:
             for airport in airports
         }
         airports_to_lookup = [
-            airport
-            for airport in airports
-            if missing_languages_by_airport[airport.id]
+            airport for airport in airports if missing_languages_by_airport[airport.id]
         ]
         required_idents = {airport.ident for airport in airports_to_lookup}
 
@@ -219,8 +222,12 @@ async def populate(dry_run: bool, refresh: bool) -> None:
             ambiguous = 0
             conflicts = 0
             for airport in airports_to_lookup:
-                icao_matches = icao_entities.get((airport.icao_code or "").upper(), set())
-                iata_matches = iata_entities.get((airport.iata_code or "").upper(), set())
+                icao_matches = icao_entities.get(
+                    (airport.icao_code or "").upper(), set()
+                )
+                iata_matches = iata_entities.get(
+                    (airport.iata_code or "").upper(), set()
+                )
                 qid = None
                 if len(icao_matches) == 1:
                     qid = next(iter(icao_matches))
@@ -276,10 +283,7 @@ async def populate(dry_run: bool, refresh: bool) -> None:
             await session.commit()
 
     print(f"Database airports: {len(airports)}")
-    print(
-        "Airports missing at least one localization: "
-        f"{len(airports_to_lookup)}"
-    )
+    print("Airports missing at least one localization: " f"{len(airports_to_lookup)}")
     print(f"Matched to Wikidata: {matched_airports}")
     print(f"Airports with new names: {len(airports_with_new_names)}")
     print(f"Localized names added: {added}")

@@ -10,10 +10,9 @@ cfg = get_settings()
 if cfg.MODE != "TEST":
     raise RuntimeError("Tests must be run with MODE=TEST")
 
-from src.database import Base, User, async_session_maker, engine
-from src.main import app
-
-from tests.factories import FactoryNamespace, build_factory_namespace
+from src.database import Base, User, async_session_maker, engine  # noqa: E402
+from src.main import app  # noqa: E402
+from tests.factories import FactoryNamespace, build_factory_namespace  # noqa: E402
 
 
 @dataclass

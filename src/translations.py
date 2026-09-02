@@ -1,6 +1,5 @@
 from typing import Optional
 
-
 WELCOME_MESSAGES = {
     "en": "Hello, {name}! Click the menu button or ask me any question directly.",
     "af": "Hallo, {name}! Klik die kieslysknoppie of vra my enige vraag direk.",

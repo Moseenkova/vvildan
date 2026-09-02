@@ -2,7 +2,14 @@ from datetime import date, datetime
 from html import escape
 from typing import Optional
 
-from pydantic import AliasPath, BaseModel, ConfigDict, Field, field_validator, model_validator
+from pydantic import (
+    AliasPath,
+    BaseModel,
+    ConfigDict,
+    Field,
+    field_validator,
+    model_validator,
+)
 
 from src.database import RequestRole
 
@@ -64,5 +71,7 @@ class RequestCreateSchema(BaseModel):
         if self.role == RequestRole.courier and (
             len(self.departure_city_ids) != 1 or len(self.arrival_city_ids) != 1
         ):
-            raise ValueError("courier requests require one departure and one arrival city")
+            raise ValueError(
+                "courier requests require one departure and one arrival city"
+            )
         return self
