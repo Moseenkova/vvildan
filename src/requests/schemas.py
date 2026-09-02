@@ -1,5 +1,6 @@
 from datetime import date, datetime
 from html import escape
+from typing import Optional
 
 from pydantic import AliasPath, BaseModel, ConfigDict, Field, field_validator, model_validator
 
@@ -45,7 +46,7 @@ class RequestCreateSchema(BaseModel):
     arrival_city_ids: list[int] = Field(
         alias="arrivalCityIds", min_length=1, max_length=5
     )
-    comment: str = Field(default="", alias="baggageComments", max_length=512)
+    comment: Optional[str] = Field(None, alias="baggageComments", max_length=512)
 
     @field_validator("comment")
     @classmethod
