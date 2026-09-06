@@ -52,18 +52,22 @@ alembic upgrade head
 
 ## Admin
 
-SQLAdmin is available at `/admin`. Create an initial superuser after applying
-migrations; the script prompts for a username and password without echoing it:
+Apply the migrations before creating the first superuser:
 
 ```sh
+alembic upgrade head
 python scripts/create_superuser.py
 ```
 
-With Docker Compose running, use:
+The script asks for a username, password, and password confirmation. Password
+input is hidden. With Docker Compose running, use the API container instead:
 
 ```sh
 docker compose exec api python scripts/create_superuser.py
 ```
+
+Then open <http://localhost:8080/admin> and sign in with those credentials.
+If `APP_PORT` is configured in `.env`, replace `8080` with that port.
 
 
 
