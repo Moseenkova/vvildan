@@ -59,8 +59,9 @@ alembic upgrade head
 python scripts/create_superuser.py
 ```
 
-The script asks for a username, password, and password confirmation. Password
-input is hidden. With Docker Compose running, use the API container instead:
+The script asks for the Telegram ID (`tg_id`) of an existing user, then a username,
+password, and password confirmation. It promotes that user to superuser; no new
+user is created. Telegram IDs are unique. Password input is hidden. With Docker Compose running, use the API container instead:
 
 ```sh
 docker compose exec api python scripts/create_superuser.py

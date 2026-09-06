@@ -40,7 +40,7 @@ class Base(DeclarativeBase):
 
 class User(Base):
     __tablename__ = "users"
-    tg_id: Mapped[Optional[int]] = mapped_column(BigInteger)
+    tg_id: Mapped[int] = mapped_column(BigInteger)
     name: Mapped[str]
     phone: Mapped[Optional[str]]
     username: Mapped[Optional[str]] = mapped_column(
