@@ -5,7 +5,6 @@ from starlette.requests import Request as StarletteRequest
 
 from src.config import get_settings
 from src.database import (
-    AdminUser,
     City,
     CityName,
     Country,
@@ -29,9 +28,7 @@ class AdminAuthentication(AuthenticationBackend):
             return False
 
         async with async_session_maker() as session:
-            user = await session.scalar(
-                select(AdminUser).where(AdminUser.username == username)
-            )
+            user = await session.scalar(select(User).where(User.username == username))
 
         if user is None or not user.is_superuser or not user.verify_password(password):
             return False
@@ -49,18 +46,13 @@ class AdminAuthentication(AuthenticationBackend):
             return False
 
         async with async_session_maker() as session:
-            user = await session.get(AdminUser, user_id)
+            user = await session.get(User, user_id)
         return user is not None and user.is_superuser
 
 
-class AdminUserView(ModelView, model=AdminUser):
-    column_exclude_list = [AdminUser.password_hash]
-    form_excluded_columns = [AdminUser.password_hash]
-    can_create = False
-
-
 class UserView(ModelView, model=User):
-    pass
+    column_exclude_list = [User.password_hash]
+    form_excluded_columns = [User.password_hash]
 
 
 class RequestView(ModelView, model=Request):
@@ -102,7 +94,6 @@ def setup_admin(app) -> Admin:
         authentication_backend=AdminAuthentication(get_settings().SECRET_KEY),
     )
     for view in (
-        AdminUserView,
         UserView,
         RequestView,
         MatchView,

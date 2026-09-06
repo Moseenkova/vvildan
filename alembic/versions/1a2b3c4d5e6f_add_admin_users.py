@@ -1,4 +1,4 @@
-"""add admin users
+"""add admin fields to users
 
 Revision ID: 1a2b3c4d5e6f
 Revises: 7561ac255540
@@ -18,19 +18,21 @@ depends_on: Union[str, Sequence[str], None] = None
 
 
 def upgrade() -> None:
-    op.create_table(
-        "admin_users",
-        sa.Column("username", sa.String(length=64), nullable=False),
-        sa.Column("password_hash", sa.String(length=256), nullable=False),
-        sa.Column("is_superuser", sa.Boolean(), server_default="true", nullable=False),
-        sa.Column("id", sa.Integer(), nullable=False),
-        sa.Column("created_at", sa.DateTime(), nullable=False),
-        sa.PrimaryKeyConstraint("id"),
-        sa.UniqueConstraint("username"),
+    op.alter_column("users", "tg_id", existing_type=sa.BigInteger(), nullable=True)
+    op.add_column("users", sa.Column("username", sa.String(length=64), nullable=True))
+    op.add_column(
+        "users", sa.Column("password_hash", sa.String(length=256), nullable=True)
     )
-    op.create_index("ix_admin_users_username", "admin_users", ["username"], unique=True)
+    op.add_column(
+        "users",
+        sa.Column("is_superuser", sa.Boolean(), server_default="false", nullable=False),
+    )
+    op.create_index("ix_users_username", "users", ["username"], unique=True)
 
 
 def downgrade() -> None:
-    op.drop_index("ix_admin_users_username", table_name="admin_users")
-    op.drop_table("admin_users")
+    op.drop_index("ix_users_username", table_name="users")
+    op.drop_column("users", "is_superuser")
+    op.drop_column("users", "password_hash")
+    op.drop_column("users", "username")
+    op.alter_column("users", "tg_id", existing_type=sa.BigInteger(), nullable=False)

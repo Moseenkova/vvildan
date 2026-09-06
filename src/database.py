@@ -40,25 +40,20 @@ class Base(DeclarativeBase):
 
 class User(Base):
     __tablename__ = "users"
-    tg_id: Mapped[int] = mapped_column(BigInteger)
+    tg_id: Mapped[Optional[int]] = mapped_column(BigInteger)
     name: Mapped[str]
     phone: Mapped[Optional[str]]
+    username: Mapped[Optional[str]] = mapped_column(
+        String(64), unique=True, index=True, default=None
+    )
+    password_hash: Mapped[Optional[str]] = mapped_column(String(256), default=None)
+    is_superuser: Mapped[bool] = mapped_column(default=False, server_default="false")
     refresh_tokens: Mapped[List["RefreshToken"]] = relationship(back_populates="user")
     requests: Mapped[list["Request"]] = relationship(
         back_populates="user", cascade="all, delete-orphan"
     )
 
     __table_args__ = (UniqueConstraint("tg_id"),)
-
-
-class AdminUser(Base):
-    """Credential used exclusively to access the SQLAdmin interface."""
-
-    __tablename__ = "admin_users"
-
-    username: Mapped[str] = mapped_column(String(64), unique=True, index=True)
-    password_hash: Mapped[str] = mapped_column(String(256))
-    is_superuser: Mapped[bool] = mapped_column(default=True, server_default="true")
 
     @staticmethod
     def hash_password(password: str) -> str:
@@ -68,6 +63,8 @@ class AdminUser(Base):
         return f"pbkdf2_sha256${iterations}${salt.hex()}${digest.hex()}"
 
     def verify_password(self, password: str) -> bool:
+        if self.password_hash is None:
+            return False
         try:
             algorithm, iterations, salt, expected = self.password_hash.split("$", 3)
             if algorithm != "pbkdf2_sha256":
