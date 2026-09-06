@@ -18,6 +18,8 @@ dependencies = [
     "python-jose[cryptography]>=3.5.0",
     "pydantic-settings>=2.11.0",
     "fastapi-pagination (==0.15.16)",
+    "sqladmin>=0.31.1",
+    "itsdangerous>=2.2.0",
 ]
 
 [build-system]
@@ -26,10 +28,12 @@ build-backend = "hatchling.build"
 
 [tool.black]
 target-version = ["py39"]
+line-length = 100
 
 [tool.ruff]
+line-length = 100
 select = ["E", "F", "I"]
-ignore = ["E501", "E741"]
+ignore = ["E741"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src", "bot"]

@@ -1,4 +1,7 @@
 import enum
+import hashlib
+import hmac
+import os
 from datetime import date, datetime
 from typing import List, Optional
 
@@ -40,12 +43,41 @@ class User(Base):
     tg_id: Mapped[int] = mapped_column(BigInteger)
     name: Mapped[str]
     phone: Mapped[Optional[str]]
+    username: Mapped[Optional[str]] = mapped_column(
+        String(64), unique=True, index=True, default=None
+    )
+    password_hash: Mapped[Optional[str]] = mapped_column(String(256), default=None)
+    is_superuser: Mapped[bool] = mapped_column(default=False, server_default="false")
     refresh_tokens: Mapped[List["RefreshToken"]] = relationship(back_populates="user")
     requests: Mapped[list["Request"]] = relationship(
         back_populates="user", cascade="all, delete-orphan"
     )
 
     __table_args__ = (UniqueConstraint("tg_id"),)
+
+    def __str__(self) -> str:
+        return self.username or self.name
+
+    @staticmethod
+    def hash_password(password: str) -> str:
+        salt = os.urandom(16)
+        iterations = 600_000
+        digest = hashlib.pbkdf2_hmac("sha256", password.encode(), salt, iterations)
+        return f"pbkdf2_sha256${iterations}${salt.hex()}${digest.hex()}"
+
+    def verify_password(self, password: str) -> bool:
+        if self.password_hash is None:
+            return False
+        try:
+            algorithm, iterations, salt, expected = self.password_hash.split("$", 3)
+            if algorithm != "pbkdf2_sha256":
+                return False
+            actual = hashlib.pbkdf2_hmac(
+                "sha256", password.encode(), bytes.fromhex(salt), int(iterations)
+            ).hex()
+        except (TypeError, ValueError):
+            return False
+        return hmac.compare_digest(actual, expected)
 
 
 class RequestStatus(enum.Enum):
@@ -58,9 +90,7 @@ class RequestStatus(enum.Enum):
 request_departure_cities = Table(
     "request_departure_cities",
     Base.metadata,
-    Column(
-        "request_id", ForeignKey("requests.id", ondelete="CASCADE"), primary_key=True
-    ),
+    Column("request_id", ForeignKey("requests.id", ondelete="CASCADE"), primary_key=True),
     Column("city_id", ForeignKey("cities.id", ondelete="CASCADE"), primary_key=True),
 )
 
@@ -68,9 +98,7 @@ request_departure_cities = Table(
 request_arrival_cities = Table(
     "request_arrival_cities",
     Base.metadata,
-    Column(
-        "request_id", ForeignKey("requests.id", ondelete="CASCADE"), primary_key=True
-    ),
+    Column("request_id", ForeignKey("requests.id", ondelete="CASCADE"), primary_key=True),
     Column("city_id", ForeignKey("cities.id", ondelete="CASCADE"), primary_key=True),
 )
 
@@ -102,9 +130,7 @@ class Request(Base):
         back_populates="arrival_requests",
     )
 
-    comment: Mapped[str | None] = mapped_column(
-        String(512), nullable=True, default=None
-    )
+    comment: Mapped[str | None] = mapped_column(String(512), nullable=True, default=None)
     status: Mapped[RequestStatus] = mapped_column(
         Enum(RequestStatus),
         default=RequestStatus.active,
@@ -122,9 +148,10 @@ class Request(Base):
         cascade="all, delete-orphan",
     )
 
-    __table_args__ = (
-        CheckConstraint("date_from <= date_to", name="ck_requests_date_range"),
-    )
+    __table_args__ = (CheckConstraint("date_from <= date_to", name="ck_requests_date_range"),)
+
+    def __str__(self) -> str:
+        return f"{self.role.value} #{self.id}: {self.date_from} – {self.date_to}"
 
 
 class MatchStatus(enum.Enum):
@@ -167,6 +194,9 @@ class Match(Base):
         ),
     )
 
+    def __str__(self) -> str:
+        return f"Match #{self.id} ({self.status.value})"
+
 
 class Country(Base):
     __tablename__ = "countries"
@@ -178,6 +208,9 @@ class Country(Base):
     )
 
     __table_args__ = (UniqueConstraint("name"),)
+
+    def __str__(self) -> str:
+        return self.name
 
 
 class City(Base):
@@ -200,6 +233,9 @@ class City(Base):
 
     __table_args__ = (UniqueConstraint("country_id", "name"),)
 
+    def __str__(self) -> str:
+        return self.name
+
 
 class CountryName(Base):
     __tablename__ = "country_names"
@@ -215,12 +251,13 @@ class CountryName(Base):
         Index("ix_country_names_language_name", "language_code", "name"),
     )
 
+    def __str__(self) -> str:
+        return f"{self.name} ({self.language_code})"
+
 
 class CityName(Base):
     __tablename__ = "city_names"
-    city_id: Mapped[int] = mapped_column(
-        ForeignKey("cities.id", ondelete="CASCADE"), index=True
-    )
+    city_id: Mapped[int] = mapped_column(ForeignKey("cities.id", ondelete="CASCADE"), index=True)
     language_code: Mapped[str] = mapped_column(index=True)
     name: Mapped[str]
     city: Mapped["City"] = relationship(back_populates="localized_names")
@@ -230,6 +267,9 @@ class CityName(Base):
         Index("ix_city_names_language_name", "language_code", "name"),
     )
 
+    def __str__(self) -> str:
+        return f"{self.name} ({self.language_code})"
+
 
 class RefreshToken(Base):
     __tablename__ = "refresh_tokens"
@@ -238,12 +278,18 @@ class RefreshToken(Base):
     user: Mapped["User"] = relationship(back_populates="refresh_tokens")
     expire: Mapped[datetime] = mapped_column(DateTime(timezone=True))
 
+    def __str__(self) -> str:
+        return f"Refresh token #{self.id}"
+
 
 class CustomerTgTopic(Base):
     __tablename__ = "customer_tg_topics"
 
     customer_chat_id: Mapped[int] = mapped_column(BigInteger, unique=True, index=True)
     topic_id: Mapped[int] = mapped_column(BigInteger, unique=True, index=True)
+
+    def __str__(self) -> str:
+        return f"Chat {self.customer_chat_id} / topic {self.topic_id}"
 
 
 async def get_or_create(session, model, defaults=None, **kwargs):

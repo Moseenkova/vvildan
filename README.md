@@ -50,6 +50,26 @@ Run migrations:
 alembic upgrade head
 ```
 
+## Admin
+
+Apply the migrations before creating the first superuser:
+
+```sh
+alembic upgrade head
+python scripts/create_superuser.py
+```
+
+The script asks for the Telegram ID (`tg_id`) of an existing user, then a username,
+password, and password confirmation. It promotes that user to superuser; no new
+user is created. Telegram IDs are unique. Password input is hidden. With Docker Compose running, use the API container instead:
+
+```sh
+docker compose exec api python scripts/create_superuser.py
+```
+
+Then open <http://localhost:8080/admin> and sign in with those credentials.
+If `APP_PORT` is configured in `.env`, replace `8080` with that port.
+
 
 
 ```sh
