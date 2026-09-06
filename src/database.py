@@ -1,4 +1,7 @@
 import enum
+import hashlib
+import hmac
+import os
 from datetime import date, datetime
 from typing import List, Optional
 
@@ -46,6 +49,35 @@ class User(Base):
     )
 
     __table_args__ = (UniqueConstraint("tg_id"),)
+
+
+class AdminUser(Base):
+    """Credential used exclusively to access the SQLAdmin interface."""
+
+    __tablename__ = "admin_users"
+
+    username: Mapped[str] = mapped_column(String(64), unique=True, index=True)
+    password_hash: Mapped[str] = mapped_column(String(256))
+    is_superuser: Mapped[bool] = mapped_column(default=True, server_default="true")
+
+    @staticmethod
+    def hash_password(password: str) -> str:
+        salt = os.urandom(16)
+        iterations = 600_000
+        digest = hashlib.pbkdf2_hmac("sha256", password.encode(), salt, iterations)
+        return f"pbkdf2_sha256${iterations}${salt.hex()}${digest.hex()}"
+
+    def verify_password(self, password: str) -> bool:
+        try:
+            algorithm, iterations, salt, expected = self.password_hash.split("$", 3)
+            if algorithm != "pbkdf2_sha256":
+                return False
+            actual = hashlib.pbkdf2_hmac(
+                "sha256", password.encode(), bytes.fromhex(salt), int(iterations)
+            ).hex()
+        except (TypeError, ValueError):
+            return False
+        return hmac.compare_digest(actual, expected)
 
 
 class RequestStatus(enum.Enum):

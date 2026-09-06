@@ -50,6 +50,21 @@ Run migrations:
 alembic upgrade head
 ```
 
+## Admin
+
+SQLAdmin is available at `/admin`. Create an initial superuser after applying
+migrations; the script prompts for a username and password without echoing it:
+
+```sh
+python scripts/create_superuser.py
+```
+
+With Docker Compose running, use:
+
+```sh
+docker compose exec api python scripts/create_superuser.py
+```
+
 
 
 ```sh
