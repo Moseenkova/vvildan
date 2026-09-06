@@ -1,3 +1,4 @@
+from jinja2 import PackageLoader
 from sqladmin import Admin, ModelView
 from sqladmin.authentication import AuthenticationBackend
 from sqlalchemy import select
@@ -51,7 +52,7 @@ class AdminAuthentication(AuthenticationBackend):
 
 
 class UserView(ModelView, model=User):
-    column_exclude_list = [User.password_hash]
+    column_exclude_list = [User.password_hash, User.refresh_tokens]
     form_excluded_columns = [User.password_hash]
 
 
@@ -64,11 +65,11 @@ class MatchView(ModelView, model=Match):
 
 
 class CountryView(ModelView, model=Country):
-    pass
+    form_excluded_columns = [Country.localized_names]
 
 
 class CityView(ModelView, model=City):
-    pass
+    form_excluded_columns = [City.localized_names]
 
 
 class CountryNameView(ModelView, model=CountryName):
@@ -93,6 +94,8 @@ def setup_admin(app) -> Admin:
         engine,
         authentication_backend=AdminAuthentication(get_settings().SECRET_KEY),
     )
+    # This app uses bundled templates only; skip the missing local-template fallback.
+    admin.templates.env.loader = PackageLoader("sqladmin", "templates")
     for view in (
         UserView,
         RequestView,
