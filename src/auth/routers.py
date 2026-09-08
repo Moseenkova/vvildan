@@ -6,7 +6,6 @@ from aiogram import Bot
 from fastapi import APIRouter, Cookie, Depends, HTTPException, Request, Response, status
 
 from src.auth.deps import oauth2_scheme
-from src.auth.exceptions import AuthFailedException
 from src.auth.schemas import TelegramBrowserLoginSchema, TelegramLoginSchema
 from src.auth.services import (
     authenticate_telegram_init_data,
@@ -14,7 +13,7 @@ from src.auth.services import (
     logout_user,
     rotate_refresh_token,
 )
-from src.auth.telegram_login import authenticate_telegram_id_token
+from src.auth.telegram_login import authenticate_telegram_id_token, reject_telegram_login
 from src.config import Settings, get_settings
 
 cfg: Settings = get_settings()
@@ -100,11 +99,10 @@ async def telegram_browser_login(
     payload: TelegramBrowserLoginSchema, request: Request, response: Response
 ):
     pending = request.session.pop("telegram_login", None)
-    if (
-        not pending
-        or not 0 <= time.time() - pending["created_at"] <= cfg.TELEGRAM_AUTH_MAX_AGE_SECONDS
-    ):
-        raise AuthFailedException
+    if not pending:
+        reject_telegram_login("missing_browser_session")
+    if not 0 <= time.time() - pending["created_at"] <= cfg.TELEGRAM_AUTH_MAX_AGE_SECONDS:
+        reject_telegram_login("expired_browser_session")
     token_pair = await authenticate_telegram_id_token(payload.id_token, pending["nonce"])
     response.headers["Cache-Control"] = "no-store"
     response.set_cookie(

@@ -3,17 +3,25 @@
 import asyncio
 import hmac
 import json
+import logging
 import time
-from typing import Any
+from typing import Any, NoReturn
 from urllib.error import URLError
 from urllib.request import urlopen
 
 from fastapi import HTTPException
 from jose import JWTError, jwt
 
-from src.auth.exceptions import AuthFailedException
 from src.auth.services import authenticate_telegram_user
 from src.config import get_settings
+
+logger = logging.getLogger(__name__)
+
+
+def reject_telegram_login(reason: str) -> NoReturn:
+    logger.warning("Telegram browser login rejected: %s", reason)
+    raise HTTPException(401, f"Telegram login verification failed ({reason}). Please try again.")
+
 
 ISSUER = "https://oauth.telegram.org"
 JWKS_URL = f"{ISSUER}/.well-known/jwks.json"
@@ -47,7 +55,7 @@ async def authenticate_telegram_id_token(id_token: str, nonce: str) -> dict[str,
     try:
         header = jwt.get_unverified_header(id_token)
         if header.get("alg") != "RS256":
-            raise AuthFailedException
+            reject_telegram_login("unsupported_signing_algorithm")
         keys = await get_telegram_jwks()
         claims = jwt.decode(
             id_token,
@@ -67,16 +75,22 @@ async def authenticate_telegram_id_token(id_token: str, nonce: str) -> dict[str,
         if not isinstance(signed_nonce, str) or not hmac.compare_digest(
             signed_nonce.encode(), nonce.encode()
         ):
-            raise AuthFailedException
+            reject_telegram_login("nonce_mismatch")
         issued_at = claims["iat"]
         if not isinstance(issued_at, int) or isinstance(issued_at, bool):
-            raise AuthFailedException
+            reject_telegram_login("invalid_issue_time")
         if not -30 <= time.time() - issued_at <= cfg.TELEGRAM_AUTH_MAX_AGE_SECONDS:
-            raise AuthFailedException
+            reject_telegram_login("expired_id_token")
         # The OIDC subject is not the Bot API user ID. Request profile scope and use id.
         telegram_id = claims.get("id")
         if not isinstance(telegram_id, int) or isinstance(telegram_id, bool) or telegram_id <= 0:
-            raise AuthFailedException
+            logger.warning(
+                "Telegram profile ID type: %s; claim names: %s",
+                type(telegram_id).__name__,
+                sorted(claims),
+            )
+            reject_telegram_login("invalid_profile_id")
     except (JWTError, ValueError, TypeError, KeyError) as exc:
-        raise AuthFailedException from exc
+        logger.warning("Telegram ID token validation: %s: %s", type(exc).__name__, str(exc))
+        reject_telegram_login("invalid_id_token")
     return await authenticate_telegram_user(telegram_id)
