@@ -11,9 +11,8 @@ def deploy_front(c, branch="frontend"):
     app_path = "/home/bikmetle/vvildan"
     commands = [
         f"git fetch origin && git reset --hard origin/{branch}",
-        "source .venv/bin/activate && alembic upgrade head",
-        "docker-compose down",
-        "docker-compose up -d --build",
+        "docker compose down",
+        "docker compose up -d --build",
         "docker image prune -f",
         "docker builder prune -f",
     ]
