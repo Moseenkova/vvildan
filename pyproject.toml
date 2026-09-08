@@ -46,4 +46,5 @@ dev = [
     "aiosqlite (>=0.22.1,<0.23.0)",
     "factory-boy (>=3.3.3,<4.0.0)",
     "pre-commit>=4.6.2",
+    "fabric>=3.2.3",
 ]
