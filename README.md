@@ -89,3 +89,8 @@ In @BotFather, use `/setdomain` for that bot and link `labhealth.pro` (or the
 hostname of your deployment). Rebuild/redeploy the API and frontend together.
 Users must first register through the bot. Mini App launch authentication remains
 supported. Browser login signatures and timestamps are verified by the API.
+
+The production frontend is built with `/webapp/` as its public asset base.
+The frontend Nginx supports both preserved and stripped `/webapp/` proxy prefixes;
+keep `/api/` routed to the API. After frontend changes, rebuild its image with
+`docker compose up -d --build frontend`.
