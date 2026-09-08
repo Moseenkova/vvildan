@@ -237,7 +237,7 @@ function App() {
     window.location.reload()
   }, [])
   useEffect(() => {
-    const requireLogin = () => setAuthState('login')
+    const requireLogin = () => setAuthState(window.Telegram?.WebApp?.initData ? 'telegram-error' : 'login')
     window.addEventListener('auth-required', requireLogin)
     return () => window.removeEventListener('auth-required', requireLogin)
   }, [])
@@ -316,7 +316,7 @@ function App() {
         setAuthState('authenticated')
         await loadRequests(1)
       } catch (error) {
-        setAuthState('login')
+        setAuthState(initData ? 'telegram-error' : 'login')
         console.error('Authentication failed:', error)
         if (error.response?.status === 404) setUserNotFound(true)
       }
@@ -409,6 +409,13 @@ function App() {
     }
   }
 
+  if (authState === 'telegram-error' && !userNotFound) return (
+    <main className="app-container not-found">
+      <h1>Unable to sign in through Telegram</h1>
+      <p role="alert">Please reopen this app from the bot to refresh your Telegram session, or try again.</p>
+      <button type="button" onClick={() => window.location.reload()}>Try again</button>
+    </main>
+  )
   if (authState === 'loading') return <main className="app-container"><p role="status">{t.loading}</p></main>
   if (authState === 'login' && !userNotFound) return <TelegramLogin onLogin={onBrowserLogin} registrationMessage={t.registrationRequired} />
 
