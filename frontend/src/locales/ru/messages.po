@@ -11,39 +11,39 @@ msgstr ""
 "Last-Translator: \n"
 "Language-Team: \n"
 
-#: src/i18n.js:73
+#: src/i18n.js:72
 msgid "Active"
 msgstr "Активный"
 
-#: src/i18n.js:72
+#: src/i18n.js:71
 msgid "All statuses"
 msgstr "Все статусы"
 
-#: src/i18n.js:43
+#: src/i18n.js:45
 msgid "Arrival"
 msgstr "Прибытие"
 
 #: src/i18n.js:53
-msgid "Arrival airport"
-msgstr "Аэропорт прибытия"
+#~ msgid "Arrival airport"
+#~ msgstr "Аэропорт прибытия"
 
-#: src/i18n.js:51
+#: src/i18n.js:53
 msgid "Arrival city"
 msgstr "Город прибытия"
 
-#: src/i18n.js:50
+#: src/i18n.js:52
 msgid "Arrival country"
 msgstr "Страна прибытия"
 
-#: src/i18n.js:61
+#: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "Комментарий к багажу"
 
-#: src/i18n.js:74
+#: src/i18n.js:73
 msgid "Cancelled"
 msgstr "Отменено"
 
-#: src/i18n.js:59
+#: src/i18n.js:58
 msgid "Choose a city first"
 msgstr "Сначала выберите город"
 
@@ -51,23 +51,23 @@ msgstr "Сначала выберите город"
 msgid "Choose a country first"
 msgstr "Сначала выберите страну"
 
-#: src/i18n.js:80
+#: src/i18n.js:79
 msgid "Close"
 msgstr "Закрыть"
 
-#: src/i18n.js:81
+#: src/i18n.js:80
 msgid "Comment"
 msgstr "Комментарий"
 
-#: src/i18n.js:75
+#: src/i18n.js:74
 msgid "Completed"
 msgstr "Завершено"
 
-#: src/i18n.js:79
+#: src/i18n.js:78
 msgid "Could not load your requests."
 msgstr "Не удалось загрузить ваши запросы."
 
-#: src/i18n.js:44
+#: src/i18n.js:46
 msgid "Country or city"
 msgstr "Страна или город"
 
@@ -75,27 +75,27 @@ msgstr "Страна или город"
 msgid "Courier"
 msgstr "Курьер"
 
-#: src/i18n.js:82
+#: src/i18n.js:81
 msgid "Created"
 msgstr "Создано"
 
-#: src/i18n.js:39
+#: src/i18n.js:41
 msgid "Date"
 msgstr "Дата"
 
-#: src/i18n.js:42
+#: src/i18n.js:44
 msgid "Departure"
 msgstr "Отправление"
 
 #: src/i18n.js:52
-msgid "Departure airport"
-msgstr "Аэропорт вылета"
+#~ msgid "Departure airport"
+#~ msgstr "Аэропорт вылета"
 
-#: src/i18n.js:49
+#: src/i18n.js:51
 msgid "Departure city"
 msgstr "Город отправления"
 
-#: src/i18n.js:48
+#: src/i18n.js:50
 msgid "Departure country"
 msgstr "Страна отправления"
 
@@ -112,18 +112,18 @@ msgid "Enter or choose a city"
 msgstr "Введите или выберите город"
 
 #: src/i18n.js:58
-msgid "Enter or choose an airport"
-msgstr "Введите или выберите аэропорт"
+#~ msgid "Enter or choose an airport"
+#~ msgstr "Введите или выберите аэропорт"
 
-#: src/i18n.js:76
+#: src/i18n.js:75
 msgid "Expired"
 msgstr "Срок действия истек"
 
-#: src/i18n.js:62
+#: src/i18n.js:61
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "Например: Одежда 5 кг, документы, электроника"
 
-#: src/i18n.js:68
+#: src/i18n.js:67
 msgid "Form submitted! Check the console for data."
 msgstr "Форма отправлена! Данные доступны в консоли."
 
@@ -131,7 +131,7 @@ msgstr "Форма отправлена! Данные доступны в кон
 msgid "From date"
 msgstr "В период с даты"
 
-#: src/i18n.js:60
+#: src/i18n.js:59
 msgid "Loading..."
 msgstr "Загрузка..."
 
@@ -139,71 +139,83 @@ msgstr "Загрузка..."
 #~ msgid "Maximum number of airports selected"
 #~ msgstr ""
 
-#: src/i18n.js:41
+#: src/i18n.js:43
 msgid "mm/dd/yyyy"
 msgstr "дд.мм.гггг"
 
-#: src/i18n.js:40
+#: src/i18n.js:42
 msgid "MM/dd/yyyy"
 msgstr "dd.MM.yyyy"
 
-#: src/i18n.js:71
+#: src/i18n.js:70
 msgid "My Requests"
 msgstr "Мои запросы"
 
-#: src/i18n.js:88
+#: src/i18n.js:87
 msgid "New"
 msgstr "Новый"
 
-#: src/i18n.js:86
+#: src/i18n.js:85
 msgid "Next"
 msgstr "Далее"
 
-#: src/i18n.js:45
-msgid "no matching airports found, try to write in english"
-msgstr "Подходящие аэропорты не найдены, попробуйте написать на английском"
+#: src/i18n.js:39
+msgid "No end date"
+msgstr ""
 
-#: src/i18n.js:78
+#: src/i18n.js:45
+#~ msgid "no matching airports found, try to write in english"
+#~ msgstr "Подходящие аэропорты не найдены, попробуйте написать на английском"
+
+#: src/i18n.js:47
+msgid "no matching cities found, try to write in english"
+msgstr ""
+
+#: src/i18n.js:77
 msgid "No requests with this status."
 msgstr "Нет запросов с таким статусом."
 
-#: src/i18n.js:87
+#: src/i18n.js:86
 msgid "Page"
 msgstr "Страница"
 
-#: src/i18n.js:67
+#: src/i18n.js:66
 msgid "Please select a date"
 msgstr "Пожалуйста, выберите дату"
 
-#: src/i18n.js:64
+#: src/i18n.js:63
 msgid "Please select a start date"
 msgstr "Пожалуйста, выберите начальную дату"
 
-#: src/i18n.js:65
+#: src/i18n.js:64
 msgid "Please select an end date"
 msgstr "Пожалуйста, выберите конечную дату"
 
 #: src/i18n.js:46
-msgid "Please select departure and arrival airports from the list"
-msgstr "Выберите аэропорты отправления и прибытия из списка"
+#~ msgid "Please select departure and arrival airports from the list"
+#~ msgstr "Выберите аэропорты отправления и прибытия из списка"
 
-#: src/i18n.js:85
+#: src/i18n.js:48
+msgid "Please select departure and arrival cities from the list"
+msgstr ""
+
+#: src/i18n.js:84
 msgid "Previous"
 msgstr "Предыдущий"
 
-#: src/i18n.js:47
+#: src/i18n.js:49
 msgid "Remove"
 msgstr "Удалить"
 
-#: src/i18n.js:77
+#: src/i18n.js:76
 msgid "Request details"
 msgstr "Запросить подробности"
 
-#: src/i18n.js:84
+#: src/i18n.js:83
 msgid "Request pagination"
 msgstr "Запросить нумерацию страниц"
 
-#: src/i18n.js:89
+#: src/i18n.js:88
 msgid "Role"
 msgstr "Роль"
 
@@ -211,26 +223,30 @@ msgstr "Роль"
 msgid "Sender"
 msgstr "Отправитель"
 
-#: src/i18n.js:83
+#: src/i18n.js:82
 msgid "Status"
 msgstr "Статус"
 
-#: src/i18n.js:63
+#: src/i18n.js:62
 msgid "Submit request"
 msgstr "Отправить заявку"
 
-#: src/i18n.js:66
+#: src/i18n.js:65
 msgid "The start date cannot be after the end date"
 msgstr "Начальная дата не может быть позже конечной"
 
-#: src/i18n.js:38
+#: src/i18n.js:40
 msgid "To date"
 msgstr "До даты"
 
-#: src/i18n.js:69
+#: src/i18n.js:38
+msgid "To date (optional)"
+msgstr ""
+
+#: src/i18n.js:68
 msgid "User Not Found"
 msgstr "Пользователь не найден"
 
-#: src/i18n.js:70
+#: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "Вы не зарегистрированы в системе. Сначала зарегистрируйтесь через Telegram-бота."

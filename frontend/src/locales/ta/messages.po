@@ -11,39 +11,39 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:73
+#: src/i18n.js:72
 msgid "Active"
 msgstr "செயலில்"
 
-#: src/i18n.js:72
+#: src/i18n.js:71
 msgid "All statuses"
 msgstr "அனைத்து நிலைகளும்"
 
-#: src/i18n.js:43
+#: src/i18n.js:45
 msgid "Arrival"
 msgstr "வருகை"
 
 #: src/i18n.js:53
-msgid "Arrival airport"
-msgstr "வருகை விமான நிலையம்"
+#~ msgid "Arrival airport"
+#~ msgstr "வருகை விமான நிலையம்"
 
-#: src/i18n.js:51
+#: src/i18n.js:53
 msgid "Arrival city"
 msgstr "வருகை நகரம்"
 
-#: src/i18n.js:50
+#: src/i18n.js:52
 msgid "Arrival country"
 msgstr "வருகை நாடு"
 
-#: src/i18n.js:61
+#: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "பேக்கேஜ் கருத்துகள்"
 
-#: src/i18n.js:74
+#: src/i18n.js:73
 msgid "Cancelled"
 msgstr "ரத்து செய்யப்பட்டது"
 
-#: src/i18n.js:59
+#: src/i18n.js:58
 msgid "Choose a city first"
 msgstr "முதலில் ஒரு நகரத்தைத் தேர்ந்தெடுங்கள்"
 
@@ -51,23 +51,23 @@ msgstr "முதலில் ஒரு நகரத்தைத் தேர்
 msgid "Choose a country first"
 msgstr "முதலில் ஒரு நாட்டை தேர்ந்தெடுங்கள்"
 
-#: src/i18n.js:80
+#: src/i18n.js:79
 msgid "Close"
 msgstr "மூடு"
 
-#: src/i18n.js:81
+#: src/i18n.js:80
 msgid "Comment"
 msgstr "கருத்து"
 
-#: src/i18n.js:75
+#: src/i18n.js:74
 msgid "Completed"
 msgstr "முடிக்கப்பட்டது"
 
-#: src/i18n.js:79
+#: src/i18n.js:78
 msgid "Could not load your requests."
 msgstr "உங்கள் கோரிக்கைகளை ஏற்ற முடியவில்லை."
 
-#: src/i18n.js:44
+#: src/i18n.js:46
 msgid "Country or city"
 msgstr "நாடு அல்லது நகரம்"
 
@@ -75,27 +75,27 @@ msgstr "நாடு அல்லது நகரம்"
 msgid "Courier"
 msgstr "கூரியர்"
 
-#: src/i18n.js:82
+#: src/i18n.js:81
 msgid "Created"
 msgstr "உருவாக்கப்பட்டது"
 
-#: src/i18n.js:39
+#: src/i18n.js:41
 msgid "Date"
 msgstr "தேதி"
 
-#: src/i18n.js:42
+#: src/i18n.js:44
 msgid "Departure"
 msgstr "புறப்பாடு"
 
 #: src/i18n.js:52
-msgid "Departure airport"
-msgstr "புறப்படும் விமான நிலையம்"
+#~ msgid "Departure airport"
+#~ msgstr "புறப்படும் விமான நிலையம்"
 
-#: src/i18n.js:49
+#: src/i18n.js:51
 msgid "Departure city"
 msgstr "புறப்படும் நகரம்"
 
-#: src/i18n.js:48
+#: src/i18n.js:50
 msgid "Departure country"
 msgstr "புறப்படும் நாடு"
 
@@ -112,18 +112,18 @@ msgid "Enter or choose a city"
 msgstr "நகரத்தை உள்ளிடவும் அல்லது தேர்வு செய்யவும்"
 
 #: src/i18n.js:58
-msgid "Enter or choose an airport"
-msgstr "விமான நிலையத்தை உள்ளிடவும் அல்லது தேர்வு செய்யவும்"
+#~ msgid "Enter or choose an airport"
+#~ msgstr "விமான நிலையத்தை உள்ளிடவும் அல்லது தேர்வு செய்யவும்"
 
-#: src/i18n.js:76
+#: src/i18n.js:75
 msgid "Expired"
 msgstr "காலாவதியானது"
 
-#: src/i18n.js:62
+#: src/i18n.js:61
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "உதாரணமாக: ஆடைகள் 5 கிலோ, ஆவணங்கள், மின்னணுவியல்"
 
-#: src/i18n.js:68
+#: src/i18n.js:67
 msgid "Form submitted! Check the console for data."
 msgstr "படிவம் சமர்ப்பிக்கப்பட்டது! டேட்டாவிற்கு கன்சோலைச் சரிபார்க்கவும்."
 
@@ -131,7 +131,7 @@ msgstr "படிவம் சமர்ப்பிக்கப்பட்ட�
 msgid "From date"
 msgstr "தேதியிலிருந்து"
 
-#: src/i18n.js:60
+#: src/i18n.js:59
 msgid "Loading..."
 msgstr "ஏற்றுகிறது..."
 
@@ -139,71 +139,83 @@ msgstr "ஏற்றுகிறது..."
 #~ msgid "Maximum number of airports selected"
 #~ msgstr ""
 
-#: src/i18n.js:41
+#: src/i18n.js:43
 msgid "mm/dd/yyyy"
 msgstr "dd/mm/yyyy"
 
-#: src/i18n.js:40
+#: src/i18n.js:42
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
-#: src/i18n.js:71
+#: src/i18n.js:70
 msgid "My Requests"
 msgstr "எனது கோரிக்கைகள்"
 
-#: src/i18n.js:88
+#: src/i18n.js:87
 msgid "New"
 msgstr "புதியது"
 
-#: src/i18n.js:86
+#: src/i18n.js:85
 msgid "Next"
 msgstr "அடுத்து"
 
-#: src/i18n.js:45
-msgid "no matching airports found, try to write in english"
-msgstr "பொருந்தும் விமான நிலையங்கள் எதுவும் கிடைக்கவில்லை, ஆங்கிலத்தில் எழுத முயற்சிக்கவும்"
+#: src/i18n.js:39
+msgid "No end date"
+msgstr ""
 
-#: src/i18n.js:78
+#: src/i18n.js:45
+#~ msgid "no matching airports found, try to write in english"
+#~ msgstr "பொருந்தும் விமான நிலையங்கள் எதுவும் கிடைக்கவில்லை, ஆங்கிலத்தில் எழுத முயற்சிக்கவும்"
+
+#: src/i18n.js:47
+msgid "no matching cities found, try to write in english"
+msgstr ""
+
+#: src/i18n.js:77
 msgid "No requests with this status."
 msgstr "இந்த நிலையுடன் கோரிக்கைகள் இல்லை."
 
-#: src/i18n.js:87
+#: src/i18n.js:86
 msgid "Page"
 msgstr "பக்கம்"
 
-#: src/i18n.js:67
+#: src/i18n.js:66
 msgid "Please select a date"
 msgstr "தேதியைத் தேர்ந்தெடுக்கவும்"
 
-#: src/i18n.js:64
+#: src/i18n.js:63
 msgid "Please select a start date"
 msgstr "தொடக்கத் தேதியைத் தேர்ந்தெடுக்கவும்"
 
-#: src/i18n.js:65
+#: src/i18n.js:64
 msgid "Please select an end date"
 msgstr "இறுதித் தேதியைத் தேர்ந்தெடுக்கவும்"
 
 #: src/i18n.js:46
-msgid "Please select departure and arrival airports from the list"
-msgstr "பட்டியலிலிருந்து புறப்படும் மற்றும் வந்தடையும் விமான நிலையங்களைத் தேர்ந்தெடுக்கவும்"
+#~ msgid "Please select departure and arrival airports from the list"
+#~ msgstr "பட்டியலிலிருந்து புறப்படும் மற்றும் வந்தடையும் விமான நிலையங்களைத் தேர்ந்தெடுக்கவும்"
 
-#: src/i18n.js:85
+#: src/i18n.js:48
+msgid "Please select departure and arrival cities from the list"
+msgstr ""
+
+#: src/i18n.js:84
 msgid "Previous"
 msgstr "முந்தைய"
 
-#: src/i18n.js:47
+#: src/i18n.js:49
 msgid "Remove"
 msgstr "அகற்று"
 
-#: src/i18n.js:77
+#: src/i18n.js:76
 msgid "Request details"
 msgstr "விவரங்களைக் கோருங்கள்"
 
-#: src/i18n.js:84
+#: src/i18n.js:83
 msgid "Request pagination"
 msgstr "பேஜினேஷனைக் கோருங்கள்"
 
-#: src/i18n.js:89
+#: src/i18n.js:88
 msgid "Role"
 msgstr "பங்கு"
 
@@ -211,26 +223,30 @@ msgstr "பங்கு"
 msgid "Sender"
 msgstr "அனுப்புபவர்"
 
-#: src/i18n.js:83
+#: src/i18n.js:82
 msgid "Status"
 msgstr "நிலை"
 
-#: src/i18n.js:63
+#: src/i18n.js:62
 msgid "Submit request"
 msgstr "கோரிக்கையை சமர்ப்பிக்கவும்"
 
-#: src/i18n.js:66
+#: src/i18n.js:65
 msgid "The start date cannot be after the end date"
 msgstr "தொடக்கத் தேதி முடிவுத் தேதிக்குப் பிறகு இருக்க முடியாது"
 
-#: src/i18n.js:38
+#: src/i18n.js:40
 msgid "To date"
 msgstr "இன்றுவரை"
 
-#: src/i18n.js:69
+#: src/i18n.js:38
+msgid "To date (optional)"
+msgstr ""
+
+#: src/i18n.js:68
 msgid "User Not Found"
 msgstr "பயனர் கிடைக்கவில்லை"
 
-#: src/i18n.js:70
+#: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "நீங்கள் கணினியில் பதிவு செய்யப்படவில்லை. முதலில் Telegram bot மூலம் பதிவு செய்யவும்."

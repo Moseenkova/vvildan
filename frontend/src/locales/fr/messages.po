@@ -11,39 +11,39 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:73
+#: src/i18n.js:72
 msgid "Active"
 msgstr "Actif"
 
-#: src/i18n.js:72
+#: src/i18n.js:71
 msgid "All statuses"
 msgstr "Tous les statuts"
 
-#: src/i18n.js:43
+#: src/i18n.js:45
 msgid "Arrival"
 msgstr "Arrivée"
 
 #: src/i18n.js:53
-msgid "Arrival airport"
-msgstr "Aéroport d'arrivée"
+#~ msgid "Arrival airport"
+#~ msgstr "Aéroport d'arrivée"
 
-#: src/i18n.js:51
+#: src/i18n.js:53
 msgid "Arrival city"
 msgstr "Ville d'arrivée"
 
-#: src/i18n.js:50
+#: src/i18n.js:52
 msgid "Arrival country"
 msgstr "Pays d'arrivée"
 
-#: src/i18n.js:61
+#: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "Commentaires sur les bagages"
 
-#: src/i18n.js:74
+#: src/i18n.js:73
 msgid "Cancelled"
 msgstr "Annulé"
 
-#: src/i18n.js:59
+#: src/i18n.js:58
 msgid "Choose a city first"
 msgstr "Choisissez d'abord une ville"
 
@@ -51,23 +51,23 @@ msgstr "Choisissez d'abord une ville"
 msgid "Choose a country first"
 msgstr "Choisissez d'abord un pays"
 
-#: src/i18n.js:80
+#: src/i18n.js:79
 msgid "Close"
 msgstr "Fermer"
 
-#: src/i18n.js:81
+#: src/i18n.js:80
 msgid "Comment"
 msgstr "Commentaire"
 
-#: src/i18n.js:75
+#: src/i18n.js:74
 msgid "Completed"
 msgstr "Terminé"
 
-#: src/i18n.js:79
+#: src/i18n.js:78
 msgid "Could not load your requests."
 msgstr "Impossible de charger vos demandes."
 
-#: src/i18n.js:44
+#: src/i18n.js:46
 msgid "Country or city"
 msgstr "Pays ou ville"
 
@@ -75,27 +75,27 @@ msgstr "Pays ou ville"
 msgid "Courier"
 msgstr "Courrier"
 
-#: src/i18n.js:82
+#: src/i18n.js:81
 msgid "Created"
 msgstr "Créé"
 
-#: src/i18n.js:39
+#: src/i18n.js:41
 msgid "Date"
 msgstr "Date"
 
-#: src/i18n.js:42
+#: src/i18n.js:44
 msgid "Departure"
 msgstr "Départ"
 
 #: src/i18n.js:52
-msgid "Departure airport"
-msgstr "Aéroport de départ"
+#~ msgid "Departure airport"
+#~ msgstr "Aéroport de départ"
 
-#: src/i18n.js:49
+#: src/i18n.js:51
 msgid "Departure city"
 msgstr "Ville de départ"
 
-#: src/i18n.js:48
+#: src/i18n.js:50
 msgid "Departure country"
 msgstr "Pays de départ"
 
@@ -112,18 +112,18 @@ msgid "Enter or choose a city"
 msgstr "Entrez ou choisissez une ville"
 
 #: src/i18n.js:58
-msgid "Enter or choose an airport"
-msgstr "Entrez ou choisissez un aéroport"
+#~ msgid "Enter or choose an airport"
+#~ msgstr "Entrez ou choisissez un aéroport"
 
-#: src/i18n.js:76
+#: src/i18n.js:75
 msgid "Expired"
 msgstr "Expiré"
 
-#: src/i18n.js:62
+#: src/i18n.js:61
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "Par exemple : Vêtements 5 kg, documents, appareils électroniques"
 
-#: src/i18n.js:68
+#: src/i18n.js:67
 msgid "Form submitted! Check the console for data."
 msgstr "Formulaire soumis ! Vérifiez la console pour les données."
 
@@ -131,7 +131,7 @@ msgstr "Formulaire soumis ! Vérifiez la console pour les données."
 msgid "From date"
 msgstr "À partir du jour"
 
-#: src/i18n.js:60
+#: src/i18n.js:59
 msgid "Loading..."
 msgstr "Chargement..."
 
@@ -139,71 +139,83 @@ msgstr "Chargement..."
 #~ msgid "Maximum number of airports selected"
 #~ msgstr ""
 
-#: src/i18n.js:41
+#: src/i18n.js:43
 msgid "mm/dd/yyyy"
 msgstr "dd/mm/yyyy"
 
-#: src/i18n.js:40
+#: src/i18n.js:42
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
-#: src/i18n.js:71
+#: src/i18n.js:70
 msgid "My Requests"
 msgstr "Mes demandes"
 
-#: src/i18n.js:88
+#: src/i18n.js:87
 msgid "New"
 msgstr "Nouveau"
 
-#: src/i18n.js:86
+#: src/i18n.js:85
 msgid "Next"
 msgstr "Suivant"
 
-#: src/i18n.js:45
-msgid "no matching airports found, try to write in english"
-msgstr "Aucun aéroport correspondant trouvé, essayez d’écrire en anglais"
+#: src/i18n.js:39
+msgid "No end date"
+msgstr ""
 
-#: src/i18n.js:78
+#: src/i18n.js:45
+#~ msgid "no matching airports found, try to write in english"
+#~ msgstr "Aucun aéroport correspondant trouvé, essayez d’écrire en anglais"
+
+#: src/i18n.js:47
+msgid "no matching cities found, try to write in english"
+msgstr ""
+
+#: src/i18n.js:77
 msgid "No requests with this status."
 msgstr "Aucune demande avec ce statut."
 
-#: src/i18n.js:87
+#: src/i18n.js:86
 msgid "Page"
 msgstr "Pages"
 
-#: src/i18n.js:67
+#: src/i18n.js:66
 msgid "Please select a date"
 msgstr "Veuillez sélectionner une date"
 
-#: src/i18n.js:64
+#: src/i18n.js:63
 msgid "Please select a start date"
 msgstr "Veuillez sélectionner une date de début"
 
-#: src/i18n.js:65
+#: src/i18n.js:64
 msgid "Please select an end date"
 msgstr "Veuillez sélectionner une date de fin"
 
 #: src/i18n.js:46
-msgid "Please select departure and arrival airports from the list"
-msgstr "Veuillez sélectionner les aéroports de départ et d’arrivée dans la liste"
+#~ msgid "Please select departure and arrival airports from the list"
+#~ msgstr "Veuillez sélectionner les aéroports de départ et d’arrivée dans la liste"
 
-#: src/i18n.js:85
+#: src/i18n.js:48
+msgid "Please select departure and arrival cities from the list"
+msgstr ""
+
+#: src/i18n.js:84
 msgid "Previous"
 msgstr "Précédent"
 
-#: src/i18n.js:47
+#: src/i18n.js:49
 msgid "Remove"
 msgstr "Supprimer"
 
-#: src/i18n.js:77
+#: src/i18n.js:76
 msgid "Request details"
 msgstr "Demander des détails"
 
-#: src/i18n.js:84
+#: src/i18n.js:83
 msgid "Request pagination"
 msgstr "Demander la pagination"
 
-#: src/i18n.js:89
+#: src/i18n.js:88
 msgid "Role"
 msgstr "Rôle"
 
@@ -211,26 +223,30 @@ msgstr "Rôle"
 msgid "Sender"
 msgstr "Expéditeur"
 
-#: src/i18n.js:83
+#: src/i18n.js:82
 msgid "Status"
 msgstr "Statut"
 
-#: src/i18n.js:63
+#: src/i18n.js:62
 msgid "Submit request"
 msgstr "Soumettre la demande"
 
-#: src/i18n.js:66
+#: src/i18n.js:65
 msgid "The start date cannot be after the end date"
 msgstr "La date de début ne peut pas être postérieure à la date de fin"
 
-#: src/i18n.js:38
+#: src/i18n.js:40
 msgid "To date"
 msgstr "À ce jour"
 
-#: src/i18n.js:69
+#: src/i18n.js:38
+msgid "To date (optional)"
+msgstr ""
+
+#: src/i18n.js:68
 msgid "User Not Found"
 msgstr "Utilisateur introuvable"
 
-#: src/i18n.js:70
+#: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "Vous n'êtes pas enregistré dans le système. Veuillez d'abord vous inscrire via le bot Telegram."

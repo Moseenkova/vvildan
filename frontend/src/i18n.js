@@ -35,6 +35,8 @@ export const getMessages = (_) => ({
   sender: _(msg`Sender`),
   courier: _(msg`Courier`),
   dateFrom: _(msg`From date`),
+  dateToOptional: _(msg`To date (optional)`),
+  noEndDate: _(msg`No end date`),
   dateTo: _(msg`To date`),
   date: _(msg`Date`),
   dateFormat: _(msg`MM/dd/yyyy`),

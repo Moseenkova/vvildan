@@ -11,39 +11,39 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:73
+#: src/i18n.js:72
 msgid "Active"
 msgstr "活跃"
 
-#: src/i18n.js:72
+#: src/i18n.js:71
 msgid "All statuses"
 msgstr "所有状态"
 
-#: src/i18n.js:43
+#: src/i18n.js:45
 msgid "Arrival"
 msgstr "到达"
 
 #: src/i18n.js:53
-msgid "Arrival airport"
-msgstr "到达机场"
+#~ msgid "Arrival airport"
+#~ msgstr "到达机场"
 
-#: src/i18n.js:51
+#: src/i18n.js:53
 msgid "Arrival city"
 msgstr "到达城市"
 
-#: src/i18n.js:50
+#: src/i18n.js:52
 msgid "Arrival country"
 msgstr "到达国家"
 
-#: src/i18n.js:61
+#: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "行李备注"
 
-#: src/i18n.js:74
+#: src/i18n.js:73
 msgid "Cancelled"
 msgstr "取消"
 
-#: src/i18n.js:59
+#: src/i18n.js:58
 msgid "Choose a city first"
 msgstr "首先选择城市"
 
@@ -51,23 +51,23 @@ msgstr "首先选择城市"
 msgid "Choose a country first"
 msgstr "首先选择一个国家"
 
-#: src/i18n.js:80
+#: src/i18n.js:79
 msgid "Close"
 msgstr "关闭"
 
-#: src/i18n.js:81
+#: src/i18n.js:80
 msgid "Comment"
 msgstr "评论"
 
-#: src/i18n.js:75
+#: src/i18n.js:74
 msgid "Completed"
 msgstr "已完成"
 
-#: src/i18n.js:79
+#: src/i18n.js:78
 msgid "Could not load your requests."
 msgstr "无法加载您的请求。"
 
-#: src/i18n.js:44
+#: src/i18n.js:46
 msgid "Country or city"
 msgstr "国家或城市"
 
@@ -75,27 +75,27 @@ msgstr "国家或城市"
 msgid "Courier"
 msgstr "导游"
 
-#: src/i18n.js:82
+#: src/i18n.js:81
 msgid "Created"
 msgstr "已创建"
 
-#: src/i18n.js:39
+#: src/i18n.js:41
 msgid "Date"
 msgstr "日期"
 
-#: src/i18n.js:42
+#: src/i18n.js:44
 msgid "Departure"
 msgstr "出发"
 
 #: src/i18n.js:52
-msgid "Departure airport"
-msgstr "出发机场"
+#~ msgid "Departure airport"
+#~ msgstr "出发机场"
 
-#: src/i18n.js:49
+#: src/i18n.js:51
 msgid "Departure city"
 msgstr "出发城市"
 
-#: src/i18n.js:48
+#: src/i18n.js:50
 msgid "Departure country"
 msgstr "出发国家"
 
@@ -112,18 +112,18 @@ msgid "Enter or choose a city"
 msgstr "输入或选择城市"
 
 #: src/i18n.js:58
-msgid "Enter or choose an airport"
-msgstr "输入或选择机场"
+#~ msgid "Enter or choose an airport"
+#~ msgstr "输入或选择机场"
 
-#: src/i18n.js:76
+#: src/i18n.js:75
 msgid "Expired"
 msgstr "已过期"
 
-#: src/i18n.js:62
+#: src/i18n.js:61
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "例如：5公斤的衣服、文件、电子产品"
 
-#: src/i18n.js:68
+#: src/i18n.js:67
 msgid "Form submitted! Check the console for data."
 msgstr "表格已提交！检查控制台的数据。"
 
@@ -131,7 +131,7 @@ msgstr "表格已提交！检查控制台的数据。"
 msgid "From date"
 msgstr "开始日期"
 
-#: src/i18n.js:60
+#: src/i18n.js:59
 msgid "Loading..."
 msgstr "加载中..."
 
@@ -139,71 +139,83 @@ msgstr "加载中..."
 #~ msgid "Maximum number of airports selected"
 #~ msgstr ""
 
-#: src/i18n.js:41
+#: src/i18n.js:43
 msgid "mm/dd/yyyy"
 msgstr "dd/mm/yyyy"
 
-#: src/i18n.js:40
+#: src/i18n.js:42
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
-#: src/i18n.js:71
+#: src/i18n.js:70
 msgid "My Requests"
 msgstr "我的要求"
 
-#: src/i18n.js:88
+#: src/i18n.js:87
 msgid "New"
 msgstr "新"
 
-#: src/i18n.js:86
+#: src/i18n.js:85
 msgid "Next"
 msgstr "下一步"
 
-#: src/i18n.js:45
-msgid "no matching airports found, try to write in english"
-msgstr "未找到匹配的机场，请尝试用英语输入"
+#: src/i18n.js:39
+msgid "No end date"
+msgstr ""
 
-#: src/i18n.js:78
+#: src/i18n.js:45
+#~ msgid "no matching airports found, try to write in english"
+#~ msgstr "未找到匹配的机场，请尝试用英语输入"
+
+#: src/i18n.js:47
+msgid "no matching cities found, try to write in english"
+msgstr ""
+
+#: src/i18n.js:77
 msgid "No requests with this status."
 msgstr "没有此状态的请求。"
 
-#: src/i18n.js:87
+#: src/i18n.js:86
 msgid "Page"
 msgstr "页面"
 
-#: src/i18n.js:67
+#: src/i18n.js:66
 msgid "Please select a date"
 msgstr "请选择日期"
 
-#: src/i18n.js:64
+#: src/i18n.js:63
 msgid "Please select a start date"
 msgstr "请选择开始日期"
 
-#: src/i18n.js:65
+#: src/i18n.js:64
 msgid "Please select an end date"
 msgstr "请选择结束日期"
 
 #: src/i18n.js:46
-msgid "Please select departure and arrival airports from the list"
-msgstr "请从列表中选择出发和到达机场"
+#~ msgid "Please select departure and arrival airports from the list"
+#~ msgstr "请从列表中选择出发和到达机场"
 
-#: src/i18n.js:85
+#: src/i18n.js:48
+msgid "Please select departure and arrival cities from the list"
+msgstr ""
+
+#: src/i18n.js:84
 msgid "Previous"
 msgstr "上一页"
 
-#: src/i18n.js:47
+#: src/i18n.js:49
 msgid "Remove"
 msgstr "移除"
 
-#: src/i18n.js:77
+#: src/i18n.js:76
 msgid "Request details"
 msgstr "索取详情"
 
-#: src/i18n.js:84
+#: src/i18n.js:83
 msgid "Request pagination"
 msgstr "请求分页"
 
-#: src/i18n.js:89
+#: src/i18n.js:88
 msgid "Role"
 msgstr "角色"
 
@@ -211,26 +223,30 @@ msgstr "角色"
 msgid "Sender"
 msgstr "发件人"
 
-#: src/i18n.js:83
+#: src/i18n.js:82
 msgid "Status"
 msgstr "状态"
 
-#: src/i18n.js:63
+#: src/i18n.js:62
 msgid "Submit request"
 msgstr "提交请求"
 
-#: src/i18n.js:66
+#: src/i18n.js:65
 msgid "The start date cannot be after the end date"
 msgstr "开始日期不能晚于结束日期"
 
-#: src/i18n.js:38
+#: src/i18n.js:40
 msgid "To date"
 msgstr "迄今为止"
 
-#: src/i18n.js:69
+#: src/i18n.js:38
+msgid "To date (optional)"
+msgstr ""
+
+#: src/i18n.js:68
 msgid "User Not Found"
 msgstr "未找到用户"
 
-#: src/i18n.js:70
+#: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "您尚未在系统中注册。请先通过 Telegram 机器人注册。"

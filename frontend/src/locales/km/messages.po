@@ -11,39 +11,39 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:73
+#: src/i18n.js:72
 msgid "Active"
 msgstr "សកម្ម"
 
-#: src/i18n.js:72
+#: src/i18n.js:71
 msgid "All statuses"
 msgstr "ស្ថានភាពទាំងអស់។"
 
-#: src/i18n.js:43
+#: src/i18n.js:45
 msgid "Arrival"
 msgstr "ការមកដល់"
 
 #: src/i18n.js:53
-msgid "Arrival airport"
-msgstr "អាកាសយានដ្ឋានមកដល់"
+#~ msgid "Arrival airport"
+#~ msgstr "អាកាសយានដ្ឋានមកដល់"
 
-#: src/i18n.js:51
+#: src/i18n.js:53
 msgid "Arrival city"
 msgstr "ទីក្រុងមកដល់"
 
-#: src/i18n.js:50
+#: src/i18n.js:52
 msgid "Arrival country"
 msgstr "ប្រទេសមកដល់"
 
-#: src/i18n.js:61
+#: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "មតិយោបល់លើឥវ៉ាន់"
 
-#: src/i18n.js:74
+#: src/i18n.js:73
 msgid "Cancelled"
 msgstr "បានលុបចោល"
 
-#: src/i18n.js:59
+#: src/i18n.js:58
 msgid "Choose a city first"
 msgstr "ជ្រើសរើសទីក្រុងជាមុនសិន"
 
@@ -51,23 +51,23 @@ msgstr "ជ្រើសរើសទីក្រុងជាមុនសិន"
 msgid "Choose a country first"
 msgstr "ជ្រើសរើសប្រទេសជាមុនសិន"
 
-#: src/i18n.js:80
+#: src/i18n.js:79
 msgid "Close"
 msgstr "បិទ"
 
-#: src/i18n.js:81
+#: src/i18n.js:80
 msgid "Comment"
 msgstr "មតិយោបល់"
 
-#: src/i18n.js:75
+#: src/i18n.js:74
 msgid "Completed"
 msgstr "បានបញ្ចប់"
 
-#: src/i18n.js:79
+#: src/i18n.js:78
 msgid "Could not load your requests."
 msgstr "មិនអាចផ្ទុកសំណើរបស់អ្នកបានទេ។"
 
-#: src/i18n.js:44
+#: src/i18n.js:46
 msgid "Country or city"
 msgstr "ប្រទេស ឬទីក្រុង"
 
@@ -75,27 +75,27 @@ msgstr "ប្រទេស ឬទីក្រុង"
 msgid "Courier"
 msgstr "អ្នកនាំសំបុត្រ"
 
-#: src/i18n.js:82
+#: src/i18n.js:81
 msgid "Created"
 msgstr "បានបង្កើត"
 
-#: src/i18n.js:39
+#: src/i18n.js:41
 msgid "Date"
 msgstr "កាលបរិច្ឆេទ"
 
-#: src/i18n.js:42
+#: src/i18n.js:44
 msgid "Departure"
 msgstr "ការចេញដំណើរ"
 
 #: src/i18n.js:52
-msgid "Departure airport"
-msgstr "អាកាសយានដ្ឋានចេញដំណើរ"
+#~ msgid "Departure airport"
+#~ msgstr "អាកាសយានដ្ឋានចេញដំណើរ"
 
-#: src/i18n.js:49
+#: src/i18n.js:51
 msgid "Departure city"
 msgstr "ទីក្រុងចេញដំណើរ"
 
-#: src/i18n.js:48
+#: src/i18n.js:50
 msgid "Departure country"
 msgstr "ប្រទេសចាកចេញ"
 
@@ -112,18 +112,18 @@ msgid "Enter or choose a city"
 msgstr "បញ្ចូល ឬជ្រើសរើសទីក្រុង"
 
 #: src/i18n.js:58
-msgid "Enter or choose an airport"
-msgstr "ចូល ឬជ្រើសរើសព្រលានយន្តហោះ"
+#~ msgid "Enter or choose an airport"
+#~ msgstr "ចូល ឬជ្រើសរើសព្រលានយន្តហោះ"
 
-#: src/i18n.js:76
+#: src/i18n.js:75
 msgid "Expired"
 msgstr "ផុតកំណត់"
 
-#: src/i18n.js:62
+#: src/i18n.js:61
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "ឧទាហរណ៍ៈ សំលៀកបំពាក់ 5 គីឡូក្រាម ឯកសារ គ្រឿងអេឡិចត្រូនិច"
 
-#: src/i18n.js:68
+#: src/i18n.js:67
 msgid "Form submitted! Check the console for data."
 msgstr "ទម្រង់​បាន​ដាក់​ជូន​ហើយ! ពិនិត្យកុងសូលសម្រាប់ទិន្នន័យ។"
 
@@ -131,7 +131,7 @@ msgstr "ទម្រង់​បាន​ដាក់​ជូន​ហើយ! �
 msgid "From date"
 msgstr "ពីកាលបរិច្ឆេទ"
 
-#: src/i18n.js:60
+#: src/i18n.js:59
 msgid "Loading..."
 msgstr "កំពុង​ផ្ទុក..."
 
@@ -139,71 +139,83 @@ msgstr "កំពុង​ផ្ទុក..."
 #~ msgid "Maximum number of airports selected"
 #~ msgstr ""
 
-#: src/i18n.js:41
+#: src/i18n.js:43
 msgid "mm/dd/yyyy"
 msgstr "dd/mm/yyyy"
 
-#: src/i18n.js:40
+#: src/i18n.js:42
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
-#: src/i18n.js:71
+#: src/i18n.js:70
 msgid "My Requests"
 msgstr "សំណើរបស់ខ្ញុំ"
 
-#: src/i18n.js:88
+#: src/i18n.js:87
 msgid "New"
 msgstr "ថ្មី។"
 
-#: src/i18n.js:86
+#: src/i18n.js:85
 msgid "Next"
 msgstr "បន្ទាប់"
 
-#: src/i18n.js:45
-msgid "no matching airports found, try to write in english"
-msgstr "រកមិនឃើញអាកាសយានដ្ឋានដែលត្រូវគ្នាទេ សូមព្យាយាមសរសេរជាភាសាអង់គ្លេស"
+#: src/i18n.js:39
+msgid "No end date"
+msgstr ""
 
-#: src/i18n.js:78
+#: src/i18n.js:45
+#~ msgid "no matching airports found, try to write in english"
+#~ msgstr "រកមិនឃើញអាកាសយានដ្ឋានដែលត្រូវគ្នាទេ សូមព្យាយាមសរសេរជាភាសាអង់គ្លេស"
+
+#: src/i18n.js:47
+msgid "no matching cities found, try to write in english"
+msgstr ""
+
+#: src/i18n.js:77
 msgid "No requests with this status."
 msgstr "មិនមានសំណើជាមួយស្ថានភាពនេះទេ។"
 
-#: src/i18n.js:87
+#: src/i18n.js:86
 msgid "Page"
 msgstr "ទំព័រ"
 
-#: src/i18n.js:67
+#: src/i18n.js:66
 msgid "Please select a date"
 msgstr "សូមជ្រើសរើសកាលបរិច្ឆេទ"
 
-#: src/i18n.js:64
+#: src/i18n.js:63
 msgid "Please select a start date"
 msgstr "សូមជ្រើសរើសកាលបរិច្ឆេទចាប់ផ្តើម"
 
-#: src/i18n.js:65
+#: src/i18n.js:64
 msgid "Please select an end date"
 msgstr "សូមជ្រើសរើសកាលបរិច្ឆេទបញ្ចប់"
 
 #: src/i18n.js:46
-msgid "Please select departure and arrival airports from the list"
-msgstr "សូមជ្រើសរើសអាកាសយានដ្ឋានចេញដំណើរ និងមកដល់ពីបញ្ជី"
+#~ msgid "Please select departure and arrival airports from the list"
+#~ msgstr "សូមជ្រើសរើសអាកាសយានដ្ឋានចេញដំណើរ និងមកដល់ពីបញ្ជី"
 
-#: src/i18n.js:85
+#: src/i18n.js:48
+msgid "Please select departure and arrival cities from the list"
+msgstr ""
+
+#: src/i18n.js:84
 msgid "Previous"
 msgstr "មុន"
 
-#: src/i18n.js:47
+#: src/i18n.js:49
 msgid "Remove"
 msgstr "លុបចេញ"
 
-#: src/i18n.js:77
+#: src/i18n.js:76
 msgid "Request details"
 msgstr "ស្នើសុំព័ត៌មានលម្អិត"
 
-#: src/i18n.js:84
+#: src/i18n.js:83
 msgid "Request pagination"
 msgstr "ស្នើសុំ​ការ​ដាក់​ទំព័រ"
 
-#: src/i18n.js:89
+#: src/i18n.js:88
 msgid "Role"
 msgstr "តួនាទី"
 
@@ -211,26 +223,30 @@ msgstr "តួនាទី"
 msgid "Sender"
 msgstr "អ្នកផ្ញើ"
 
-#: src/i18n.js:83
+#: src/i18n.js:82
 msgid "Status"
 msgstr "ស្ថានភាព"
 
-#: src/i18n.js:63
+#: src/i18n.js:62
 msgid "Submit request"
 msgstr "ដាក់ស្នើសំណើ"
 
-#: src/i18n.js:66
+#: src/i18n.js:65
 msgid "The start date cannot be after the end date"
 msgstr "កាលបរិច្ឆេទចាប់ផ្តើមមិនអាចបន្ទាប់ពីកាលបរិច្ឆេទបញ្ចប់បានទេ។"
 
-#: src/i18n.js:38
+#: src/i18n.js:40
 msgid "To date"
 msgstr "មកដល់បច្ចុប្បន្ន"
 
-#: src/i18n.js:69
+#: src/i18n.js:38
+msgid "To date (optional)"
+msgstr ""
+
+#: src/i18n.js:68
 msgid "User Not Found"
 msgstr "រកមិនឃើញអ្នកប្រើប្រាស់"
 
-#: src/i18n.js:70
+#: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "អ្នកមិនត្រូវបានចុះឈ្មោះនៅក្នុងប្រព័ន្ធទេ។ សូមចុះឈ្មោះតាមរយៈ Telegram bot ជាមុនសិន។"

@@ -11,39 +11,39 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:73
+#: src/i18n.js:72
 msgid "Active"
 msgstr "Aktif"
 
-#: src/i18n.js:72
+#: src/i18n.js:71
 msgid "All statuses"
 msgstr "Kabeh status"
 
-#: src/i18n.js:43
+#: src/i18n.js:45
 msgid "Arrival"
 msgstr "Tekan"
 
 #: src/i18n.js:53
-msgid "Arrival airport"
-msgstr "Bandara rawuh"
+#~ msgid "Arrival airport"
+#~ msgstr "Bandara rawuh"
 
-#: src/i18n.js:51
+#: src/i18n.js:53
 msgid "Arrival city"
 msgstr "Kutha rawuh"
 
-#: src/i18n.js:50
+#: src/i18n.js:52
 msgid "Arrival country"
 msgstr "Negara rawuh"
 
-#: src/i18n.js:61
+#: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "Komentar bagasi"
 
-#: src/i18n.js:74
+#: src/i18n.js:73
 msgid "Cancelled"
 msgstr "dibatalake"
 
-#: src/i18n.js:59
+#: src/i18n.js:58
 msgid "Choose a city first"
 msgstr "Pilih kutha dhisik"
 
@@ -51,23 +51,23 @@ msgstr "Pilih kutha dhisik"
 msgid "Choose a country first"
 msgstr "Pilih negara dhisik"
 
-#: src/i18n.js:80
+#: src/i18n.js:79
 msgid "Close"
 msgstr "Nutup"
 
-#: src/i18n.js:81
+#: src/i18n.js:80
 msgid "Comment"
 msgstr "Komentar"
 
-#: src/i18n.js:75
+#: src/i18n.js:74
 msgid "Completed"
 msgstr "Rampung"
 
-#: src/i18n.js:79
+#: src/i18n.js:78
 msgid "Could not load your requests."
 msgstr "Ora bisa mbukak panjalukan sampeyan."
 
-#: src/i18n.js:44
+#: src/i18n.js:46
 msgid "Country or city"
 msgstr "Negara utawa kutha"
 
@@ -75,27 +75,27 @@ msgstr "Negara utawa kutha"
 msgid "Courier"
 msgstr "Kurir"
 
-#: src/i18n.js:82
+#: src/i18n.js:81
 msgid "Created"
 msgstr "Digawe"
 
-#: src/i18n.js:39
+#: src/i18n.js:41
 msgid "Date"
 msgstr "Tanggal"
 
-#: src/i18n.js:42
+#: src/i18n.js:44
 msgid "Departure"
 msgstr "Mangkat"
 
 #: src/i18n.js:52
-msgid "Departure airport"
-msgstr "Bandara budhal"
+#~ msgid "Departure airport"
+#~ msgstr "Bandara budhal"
 
-#: src/i18n.js:49
+#: src/i18n.js:51
 msgid "Departure city"
 msgstr "Kutha budhal"
 
-#: src/i18n.js:48
+#: src/i18n.js:50
 msgid "Departure country"
 msgstr "negara budhal"
 
@@ -112,18 +112,18 @@ msgid "Enter or choose a city"
 msgstr "Ketik utawa pilih kutha"
 
 #: src/i18n.js:58
-msgid "Enter or choose an airport"
-msgstr "Ketik utawa pilih bandara"
+#~ msgid "Enter or choose an airport"
+#~ msgstr "Ketik utawa pilih bandara"
 
-#: src/i18n.js:76
+#: src/i18n.js:75
 msgid "Expired"
 msgstr "kadaluwarsa"
 
-#: src/i18n.js:62
+#: src/i18n.js:61
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "Contone: Sandhangan 5 kg, dokumen, elektronik"
 
-#: src/i18n.js:68
+#: src/i18n.js:67
 msgid "Form submitted! Check the console for data."
 msgstr "Formulir dikirim! Priksa console kanggo data."
 
@@ -131,7 +131,7 @@ msgstr "Formulir dikirim! Priksa console kanggo data."
 msgid "From date"
 msgstr "Saka tanggal"
 
-#: src/i18n.js:60
+#: src/i18n.js:59
 msgid "Loading..."
 msgstr "Loading..."
 
@@ -139,71 +139,83 @@ msgstr "Loading..."
 #~ msgid "Maximum number of airports selected"
 #~ msgstr ""
 
-#: src/i18n.js:41
+#: src/i18n.js:43
 msgid "mm/dd/yyyy"
 msgstr "dd/mm/yyyy"
 
-#: src/i18n.js:40
+#: src/i18n.js:42
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
-#: src/i18n.js:71
+#: src/i18n.js:70
 msgid "My Requests"
 msgstr "Panjalukku"
 
-#: src/i18n.js:88
+#: src/i18n.js:87
 msgid "New"
 msgstr "Anyar"
 
-#: src/i18n.js:86
+#: src/i18n.js:85
 msgid "Next"
 msgstr "Sabanjure"
 
-#: src/i18n.js:45
-msgid "no matching airports found, try to write in english"
-msgstr "Ora ana bandara sing cocog, coba tulis nganggo basa Inggris"
+#: src/i18n.js:39
+msgid "No end date"
+msgstr ""
 
-#: src/i18n.js:78
+#: src/i18n.js:45
+#~ msgid "no matching airports found, try to write in english"
+#~ msgstr "Ora ana bandara sing cocog, coba tulis nganggo basa Inggris"
+
+#: src/i18n.js:47
+msgid "no matching cities found, try to write in english"
+msgstr ""
+
+#: src/i18n.js:77
 msgid "No requests with this status."
 msgstr "Ora ana panjaluk karo status iki."
 
-#: src/i18n.js:87
+#: src/i18n.js:86
 msgid "Page"
 msgstr "kaca"
 
-#: src/i18n.js:67
+#: src/i18n.js:66
 msgid "Please select a date"
 msgstr "Mangga pilih tanggal"
 
-#: src/i18n.js:64
+#: src/i18n.js:63
 msgid "Please select a start date"
 msgstr "Mangga pilih tanggal wiwitan"
 
-#: src/i18n.js:65
+#: src/i18n.js:64
 msgid "Please select an end date"
 msgstr "Mangga pilih tanggal pungkasan"
 
 #: src/i18n.js:46
-msgid "Please select departure and arrival airports from the list"
-msgstr "Pilih bandara mangkat lan tekan saka dhaptar"
+#~ msgid "Please select departure and arrival airports from the list"
+#~ msgstr "Pilih bandara mangkat lan tekan saka dhaptar"
 
-#: src/i18n.js:85
+#: src/i18n.js:48
+msgid "Please select departure and arrival cities from the list"
+msgstr ""
+
+#: src/i18n.js:84
 msgid "Previous"
 msgstr "Sadurunge"
 
-#: src/i18n.js:47
+#: src/i18n.js:49
 msgid "Remove"
 msgstr "Busak"
 
-#: src/i18n.js:77
+#: src/i18n.js:76
 msgid "Request details"
 msgstr "Njaluk rincian"
 
-#: src/i18n.js:84
+#: src/i18n.js:83
 msgid "Request pagination"
 msgstr "Njaluk pagination"
 
-#: src/i18n.js:89
+#: src/i18n.js:88
 msgid "Role"
 msgstr "peran"
 
@@ -211,26 +223,30 @@ msgstr "peran"
 msgid "Sender"
 msgstr "Pangirim"
 
-#: src/i18n.js:83
+#: src/i18n.js:82
 msgid "Status"
 msgstr "Status"
 
-#: src/i18n.js:63
+#: src/i18n.js:62
 msgid "Submit request"
 msgstr "Kirim panjalukan"
 
-#: src/i18n.js:66
+#: src/i18n.js:65
 msgid "The start date cannot be after the end date"
 msgstr "Tanggal wiwitan ora bisa sawise tanggal pungkasan"
 
-#: src/i18n.js:38
+#: src/i18n.js:40
 msgid "To date"
 msgstr "Nganti saiki"
 
-#: src/i18n.js:69
+#: src/i18n.js:38
+msgid "To date (optional)"
+msgstr ""
+
+#: src/i18n.js:68
 msgid "User Not Found"
 msgstr "Pangguna Ora Ditemokake"
 
-#: src/i18n.js:70
+#: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "Sampeyan ora kadhaptar ing sistem. Mangga ndhaftar liwat bot Telegram dhisik."

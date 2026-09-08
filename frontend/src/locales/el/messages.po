@@ -11,39 +11,39 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:73
+#: src/i18n.js:72
 msgid "Active"
 msgstr "Ενεργός"
 
-#: src/i18n.js:72
+#: src/i18n.js:71
 msgid "All statuses"
 msgstr "Όλες οι καταστάσεις"
 
-#: src/i18n.js:43
+#: src/i18n.js:45
 msgid "Arrival"
 msgstr "Άφιξη"
 
 #: src/i18n.js:53
-msgid "Arrival airport"
-msgstr "Αεροδρόμιο άφιξης"
+#~ msgid "Arrival airport"
+#~ msgstr "Αεροδρόμιο άφιξης"
 
-#: src/i18n.js:51
+#: src/i18n.js:53
 msgid "Arrival city"
 msgstr "Πόλη άφιξης"
 
-#: src/i18n.js:50
+#: src/i18n.js:52
 msgid "Arrival country"
 msgstr "Χώρα άφιξης"
 
-#: src/i18n.js:61
+#: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "Σχόλια για τις αποσκευές"
 
-#: src/i18n.js:74
+#: src/i18n.js:73
 msgid "Cancelled"
 msgstr "Ακυρώθηκε"
 
-#: src/i18n.js:59
+#: src/i18n.js:58
 msgid "Choose a city first"
 msgstr "Επιλέξτε πρώτα μια πόλη"
 
@@ -51,23 +51,23 @@ msgstr "Επιλέξτε πρώτα μια πόλη"
 msgid "Choose a country first"
 msgstr "Επιλέξτε μια χώρα πρώτα"
 
-#: src/i18n.js:80
+#: src/i18n.js:79
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: src/i18n.js:81
+#: src/i18n.js:80
 msgid "Comment"
 msgstr "Σχόλιο"
 
-#: src/i18n.js:75
+#: src/i18n.js:74
 msgid "Completed"
 msgstr "Ολοκληρώθηκε"
 
-#: src/i18n.js:79
+#: src/i18n.js:78
 msgid "Could not load your requests."
 msgstr "Δεν ήταν δυνατή η φόρτωση των αιτημάτων σας."
 
-#: src/i18n.js:44
+#: src/i18n.js:46
 msgid "Country or city"
 msgstr "Χώρα ή πόλη"
 
@@ -75,27 +75,27 @@ msgstr "Χώρα ή πόλη"
 msgid "Courier"
 msgstr "Μεταφορέας"
 
-#: src/i18n.js:82
+#: src/i18n.js:81
 msgid "Created"
 msgstr "Δημιουργήθηκε"
 
-#: src/i18n.js:39
+#: src/i18n.js:41
 msgid "Date"
 msgstr "Ημερομηνία"
 
-#: src/i18n.js:42
+#: src/i18n.js:44
 msgid "Departure"
 msgstr "Αναχώρηση"
 
 #: src/i18n.js:52
-msgid "Departure airport"
-msgstr "Αεροδρόμιο αναχώρησης"
+#~ msgid "Departure airport"
+#~ msgstr "Αεροδρόμιο αναχώρησης"
 
-#: src/i18n.js:49
+#: src/i18n.js:51
 msgid "Departure city"
 msgstr "Πόλη αναχώρησης"
 
-#: src/i18n.js:48
+#: src/i18n.js:50
 msgid "Departure country"
 msgstr "Χώρα αναχώρησης"
 
@@ -112,18 +112,18 @@ msgid "Enter or choose a city"
 msgstr "Εισαγάγετε ή επιλέξτε μια πόλη"
 
 #: src/i18n.js:58
-msgid "Enter or choose an airport"
-msgstr "Μπείτε ή επιλέξτε ένα αεροδρόμιο"
+#~ msgid "Enter or choose an airport"
+#~ msgstr "Μπείτε ή επιλέξτε ένα αεροδρόμιο"
 
-#: src/i18n.js:76
+#: src/i18n.js:75
 msgid "Expired"
 msgstr "Λήξη"
 
-#: src/i18n.js:62
+#: src/i18n.js:61
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "Για παράδειγμα: Ρούχα 5 κιλών, έγγραφα, ηλεκτρονικά"
 
-#: src/i18n.js:68
+#: src/i18n.js:67
 msgid "Form submitted! Check the console for data."
 msgstr "Η φόρμα υποβλήθηκε! Ελέγξτε την κονσόλα για δεδομένα."
 
@@ -131,7 +131,7 @@ msgstr "Η φόρμα υποβλήθηκε! Ελέγξτε την κονσόλα
 msgid "From date"
 msgstr "Από ημερομηνία"
 
-#: src/i18n.js:60
+#: src/i18n.js:59
 msgid "Loading..."
 msgstr "Φόρτωση..."
 
@@ -139,71 +139,83 @@ msgstr "Φόρτωση..."
 #~ msgid "Maximum number of airports selected"
 #~ msgstr ""
 
-#: src/i18n.js:41
+#: src/i18n.js:43
 msgid "mm/dd/yyyy"
 msgstr "dd/mm/yyyy"
 
-#: src/i18n.js:40
+#: src/i18n.js:42
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
-#: src/i18n.js:71
+#: src/i18n.js:70
 msgid "My Requests"
 msgstr "Τα αιτήματά μου"
 
-#: src/i18n.js:88
+#: src/i18n.js:87
 msgid "New"
 msgstr "Νέο"
 
-#: src/i18n.js:86
+#: src/i18n.js:85
 msgid "Next"
 msgstr "Επόμενο"
 
-#: src/i18n.js:45
-msgid "no matching airports found, try to write in english"
-msgstr "Δεν βρέθηκαν αεροδρόμια που να ταιριάζουν, δοκιμάστε να γράψετε στα αγγλικά"
+#: src/i18n.js:39
+msgid "No end date"
+msgstr ""
 
-#: src/i18n.js:78
+#: src/i18n.js:45
+#~ msgid "no matching airports found, try to write in english"
+#~ msgstr "Δεν βρέθηκαν αεροδρόμια που να ταιριάζουν, δοκιμάστε να γράψετε στα αγγλικά"
+
+#: src/i18n.js:47
+msgid "no matching cities found, try to write in english"
+msgstr ""
+
+#: src/i18n.js:77
 msgid "No requests with this status."
 msgstr "Δεν υπάρχουν αιτήματα με αυτήν την κατάσταση."
 
-#: src/i18n.js:87
+#: src/i18n.js:86
 msgid "Page"
 msgstr "Σελίδα"
 
-#: src/i18n.js:67
+#: src/i18n.js:66
 msgid "Please select a date"
 msgstr "Επιλέξτε μια ημερομηνία"
 
-#: src/i18n.js:64
+#: src/i18n.js:63
 msgid "Please select a start date"
 msgstr "Επιλέξτε μια ημερομηνία έναρξης"
 
-#: src/i18n.js:65
+#: src/i18n.js:64
 msgid "Please select an end date"
 msgstr "Επιλέξτε μια ημερομηνία λήξης"
 
 #: src/i18n.js:46
-msgid "Please select departure and arrival airports from the list"
-msgstr "Επιλέξτε τα αεροδρόμια αναχώρησης και άφιξης από τη λίστα"
+#~ msgid "Please select departure and arrival airports from the list"
+#~ msgstr "Επιλέξτε τα αεροδρόμια αναχώρησης και άφιξης από τη λίστα"
 
-#: src/i18n.js:85
+#: src/i18n.js:48
+msgid "Please select departure and arrival cities from the list"
+msgstr ""
+
+#: src/i18n.js:84
 msgid "Previous"
 msgstr "Προηγούμενο"
 
-#: src/i18n.js:47
+#: src/i18n.js:49
 msgid "Remove"
 msgstr "Αφαίρεση"
 
-#: src/i18n.js:77
+#: src/i18n.js:76
 msgid "Request details"
 msgstr "Ζητήστε λεπτομέρειες"
 
-#: src/i18n.js:84
+#: src/i18n.js:83
 msgid "Request pagination"
 msgstr "Ζητήστε σελιδοποίηση"
 
-#: src/i18n.js:89
+#: src/i18n.js:88
 msgid "Role"
 msgstr "Ρόλος"
 
@@ -211,26 +223,30 @@ msgstr "Ρόλος"
 msgid "Sender"
 msgstr "Αποστολέας"
 
-#: src/i18n.js:83
+#: src/i18n.js:82
 msgid "Status"
 msgstr "Κατάσταση"
 
-#: src/i18n.js:63
+#: src/i18n.js:62
 msgid "Submit request"
 msgstr "Υποβολή αιτήματος"
 
-#: src/i18n.js:66
+#: src/i18n.js:65
 msgid "The start date cannot be after the end date"
 msgstr "Η ημερομηνία έναρξης δεν μπορεί να είναι μετά την ημερομηνία λήξης"
 
-#: src/i18n.js:38
+#: src/i18n.js:40
 msgid "To date"
 msgstr "Μέχρι σήμερα"
 
-#: src/i18n.js:69
+#: src/i18n.js:38
+msgid "To date (optional)"
+msgstr ""
+
+#: src/i18n.js:68
 msgid "User Not Found"
 msgstr "Ο χρήστης δεν βρέθηκε"
 
-#: src/i18n.js:70
+#: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "Δεν είστε εγγεγραμμένος στο σύστημα. Εγγραφείτε πρώτα μέσω του ρομπότ του Telegram."
