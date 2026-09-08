@@ -6,11 +6,12 @@ from fastapi_pagination.ext.sqlalchemy import apaginate
 from sqlalchemy import func, select
 from sqlalchemy.orm import selectinload
 
+from src.config import Settings, get_settings
 from src.database import City, RequestStatus, User, async_session_maker
 from src.database import Request as TravelRequest
 from src.requests.schemas import RequestCreateSchema
 
-MAX_ACTIVE_REQUESTS_PER_USER = 5
+cfg: Settings = get_settings()
 
 
 def _city_relationships():
@@ -57,7 +58,7 @@ async def create_user_request(
                     TravelRequest.date_to >= today,
                 )
             )
-            if active_count >= MAX_ACTIVE_REQUESTS_PER_USER:
+            if active_count >= cfg.MAX_ACTIVE_REQUESTS_PER_USER:
                 raise HTTPException(
                     status_code=status.HTTP_409_CONFLICT,
                     detail=(

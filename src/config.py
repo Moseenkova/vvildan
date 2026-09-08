@@ -42,6 +42,7 @@ class Settings(BaseSettings):
 
     DEV_CHAT_ID: int | None = None
     TELEGRAM_AUTH_MAX_AGE_SECONDS: int = 300
+    MAX_ACTIVE_REQUESTS_PER_USER: int = 5
 
     @model_validator(mode="after")
     def use_test_database(self) -> "Settings":
