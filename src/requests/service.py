@@ -1,12 +1,16 @@
+from datetime import datetime, timezone
+
 from fastapi import HTTPException, status
 from fastapi_pagination import Page
 from fastapi_pagination.ext.sqlalchemy import apaginate
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.orm import selectinload
 
-from src.database import City, RequestStatus, async_session_maker
+from src.database import City, RequestStatus, User, async_session_maker
 from src.database import Request as TravelRequest
 from src.requests.schemas import RequestCreateSchema
+
+MAX_ACTIVE_REQUESTS_PER_USER = 5
 
 
 def _city_relationships():
@@ -40,11 +44,30 @@ async def create_user_request(
     city_ids = set(payload.departure_city_ids + payload.arrival_city_ids)
 
     async with async_session_maker() as session:
+        # Serialize creation for this user so concurrent submissions cannot exceed the cap.
+        await session.execute(select(User.id).where(User.id == user_id).with_for_update())
+        today = datetime.now(timezone.utc).date()
+        if payload.date_to >= today:
+            active_count = await session.scalar(
+                select(func.count())
+                .select_from(TravelRequest)
+                .where(
+                    TravelRequest.user_id == user_id,
+                    TravelRequest.status == RequestStatus.active,
+                    TravelRequest.date_to >= today,
+                )
+            )
+            if active_count >= MAX_ACTIVE_REQUESTS_PER_USER:
+                raise HTTPException(
+                    status_code=status.HTTP_409_CONFLICT,
+                    detail=(
+                        "You can have at most 5 active requests " "with an end date today or later."
+                    ),
+                )
+
         cities = (
             await session.scalars(
-                select(City)
-                .where(City.id.in_(city_ids))
-                .options(selectinload(City.country))
+                select(City).where(City.id.in_(city_ids)).options(selectinload(City.country))
             )
         ).all()
         cities_by_id = {city.id: city for city in cities}
