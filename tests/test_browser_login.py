@@ -62,9 +62,12 @@ async def login_nonce(client):
 
 
 @pytest.mark.asyncio
-async def test_browser_login_returns_usable_token_and_consumes_nonce(client, factory, signing_key):
+@pytest.mark.parametrize("id_type", [int, str])
+async def test_browser_login_returns_usable_token_and_consumes_nonce(
+    client, factory, signing_key, id_type
+):
     user = await factory.User()
-    token = signed_token(signing_key, user.tg_id, await login_nonce(client))
+    token = signed_token(signing_key, id_type(user.tg_id), await login_nonce(client))
     response = await client.post("/api/auth/telegram", json={"id_token": token})
     assert response.status_code == 200
     assert get_settings().REFRESH_COOKIE_NAME in response.cookies
@@ -92,6 +95,14 @@ async def test_browser_login_returns_usable_token_and_consumes_nonce(client, fac
         {"id": None},
         {"id": True},
         {"id": -1},
+        {"id": ""},
+        {"id": "invalid"},
+        {"id": "123.5"},
+        {"id": "-1"},
+        {"id": "0"},
+        {"id": "１２３"},
+        {"id": "9223372036854775808"},
+        {"id": 123.5},
         {"sub": None},
     ],
 )

@@ -83,7 +83,16 @@ async def authenticate_telegram_id_token(id_token: str, nonce: str) -> dict[str,
             reject_telegram_login("expired_id_token")
         # The OIDC subject is not the Bot API user ID. Request profile scope and use id.
         telegram_id = claims.get("id")
-        if not isinstance(telegram_id, int) or isinstance(telegram_id, bool) or telegram_id <= 0:
+        # Telegram can encode the signed profile ID as a JSON number or decimal string.
+        if isinstance(telegram_id, str):
+            if not (telegram_id.isascii() and telegram_id.isdecimal() and len(telegram_id) <= 19):
+                reject_telegram_login("invalid_profile_id")
+            telegram_id = int(telegram_id)
+        if (
+            not isinstance(telegram_id, int)
+            or isinstance(telegram_id, bool)
+            or not 0 < telegram_id < 2**63
+        ):
             logger.warning(
                 "Telegram profile ID type: %s; claim names: %s",
                 type(telegram_id).__name__,
