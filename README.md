@@ -81,16 +81,32 @@ restore db
 ./scripts/restore_backup.sh backups/vvildan_20260902_cities.dump
 
 
-### Browser Telegram login
+### Telegram authentication
 
-Opening `/webapp/` in a browser shows Telegram login before the request forms.
-The login widget uses the existing `BOT_TOKEN`; no frontend secret is needed.
-In @BotFather, use `/setdomain` for that bot and link `labhealth.pro` (or the
-hostname of your deployment). Rebuild/redeploy the API and frontend together.
-Users must first register through the bot. Mini App launch authentication remains
-supported. Browser login signatures and timestamps are verified by the API.
+- Set the bot's Mini App/webapp button URL to `https://labhealth.pro/webapp/`
+  (no trailing dot). It must be a Telegram Web App button, not a plain URL button.
+  The Mini App SDK loads before React and supplies `initData`; the API verifies
+  its signature and age, then logs the user in automatically without a login button.
+- Browser visitors to `https://labhealth.pro/` see **Log in with Telegram**.
+  Browser visits to `/webapp/` use the same login screen.
+  The current [Telegram Login SDK](https://core.telegram.org/bots/telegram-login)
+  opens a popup and returns an ID token. The API verifies Telegram's RS256 signature,
+  issuer, audience, expiry, issue time and the session-bound nonce before using the
+  profile `id` to find the registered bot user. An OIDC `sub` is not a Bot API user ID.
+- Users must first register through the bot, regardless of the login entry point.
 
+In BotFather, select your bot, open **Login Widget**, add `https://labhealth.pro`
+to **Allowed URLs**, and copy its **Client ID** to `TELEGRAM_LOGIN_CLIENT_ID` in `.env`.
+Keep the default **RS256** signing algorithm. This popup SDK flow does not need a
+Client Secret or a redirect callback URL. The previous legacy widget `/setdomain`
+setup alone is not the configuration for this flow.
+
+Rebuild the API and frontend together: `docker compose up -d --build api frontend`.
 The production frontend is built with `/webapp/` as its public asset base.
-The frontend Nginx supports both preserved and stripped `/webapp/` proxy prefixes;
-keep `/api/` routed to the API. After frontend changes, rebuild its image with
-`docker compose up -d --build frontend`.
+The frontend Nginx supports both preserved and stripped `/webapp/` proxy prefixes,
+and serves the app at `/` as well. The public reverse proxy must route the homepage
+to this frontend instead of the default Nginx welcome page. See
+[`deploy/nginx/labhealth-locations.conf`](deploy/nginx/labhealth-locations.conf) for
+the location block to install in your existing HTTPS server configuration.
+Do not use `Cross-Origin-Opener-Policy: same-origin`; Telegram's popup needs
+`same-origin-allow-popups` or no COOP header.

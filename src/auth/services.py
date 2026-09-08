@@ -1,6 +1,3 @@
-import hashlib
-import hmac
-import time
 from datetime import datetime, timedelta, timezone
 from typing import Any
 
@@ -44,9 +41,7 @@ async def _get_user_by_telegram_id(telegram_id: int) -> User | None:
 
 async def _get_refresh_token(token_id: object) -> RefreshToken | None:
     async with async_session_maker() as session:
-        return await session.scalar(
-            select(RefreshToken).where(RefreshToken.token_id == token_id)
-        )
+        return await session.scalar(select(RefreshToken).where(RefreshToken.token_id == token_id))
 
 
 async def _save_refresh_token(user_id: int, token: dict[str, Any]) -> None:
@@ -87,9 +82,7 @@ async def authenticate_telegram_user(telegram_id: int) -> dict[str, Any]:
 async def authenticate_telegram_init_data(init_data: str) -> dict[str, Any]:
     """Authenticate a Mini App user from Telegram-signed launch data."""
     try:
-        telegram_data = safe_parse_webapp_init_data(
-            cfg.BOT_TOKEN.get_secret_value(), init_data
-        )
+        telegram_data = safe_parse_webapp_init_data(cfg.BOT_TOKEN.get_secret_value(), init_data)
     except ValueError as exc:
         raise AuthFailedException from exc
 
@@ -143,18 +136,3 @@ async def logout_user(access_token: str) -> None:
         await _delete_refresh_tokens(RefreshToken.user_id == user_id)
     except Exception:
         pass
-
-
-async def authenticate_telegram_widget(data: dict[str, Any]) -> dict[str, Any]:
-    """Verify Login Widget data using its distinct Telegram signing scheme."""
-    check_string = "\n".join(
-        f"{key}={value}" for key, value in sorted(data.items()) if key != "hash"
-    )
-    secret = hashlib.sha256(cfg.BOT_TOKEN.get_secret_value().encode()).digest()
-    expected = hmac.new(secret, check_string.encode(), hashlib.sha256).hexdigest()
-    if not hmac.compare_digest(expected, data["hash"]):
-        raise AuthFailedException
-    age = time.time() - data["auth_date"]
-    if age < -30 or age > cfg.TELEGRAM_AUTH_MAX_AGE_SECONDS:
-        raise AuthFailedException
-    return await authenticate_telegram_user(data["id"])

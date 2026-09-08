@@ -1,17 +1,20 @@
+import secrets
+import time
 from typing import Annotated
 
 from aiogram import Bot
-from fastapi import APIRouter, Cookie, Depends, HTTPException, Response, status
+from fastapi import APIRouter, Cookie, Depends, HTTPException, Request, Response, status
 
 from src.auth.deps import oauth2_scheme
-from src.auth.schemas import TelegramLoginSchema, TelegramWidgetLoginSchema
+from src.auth.exceptions import AuthFailedException
+from src.auth.schemas import TelegramBrowserLoginSchema, TelegramLoginSchema
 from src.auth.services import (
     authenticate_telegram_init_data,
     authenticate_telegram_user,
-    authenticate_telegram_widget,
     logout_user,
     rotate_refresh_token,
 )
+from src.auth.telegram_login import authenticate_telegram_id_token
 from src.config import Settings, get_settings
 
 cfg: Settings = get_settings()
@@ -77,15 +80,33 @@ async def logout(
 
 
 @auth_router.get("/telegram/config")
-async def telegram_login_config():
+async def telegram_login_config(request: Request, response: Response):
+    if cfg.TELEGRAM_LOGIN_CLIENT_ID is None:
+        raise HTTPException(503, "Telegram browser login is not configured")
     async with Bot(token=cfg.BOT_TOKEN.get_secret_value()) as bot:
         user = await bot.get_me()
-    return {"bot_username": user.username}
+    nonce = secrets.token_urlsafe(32)
+    request.session["telegram_login"] = {"nonce": nonce, "created_at": time.time()}
+    response.headers["Cache-Control"] = "no-store"
+    return {
+        "bot_username": user.username,
+        "client_id": cfg.TELEGRAM_LOGIN_CLIENT_ID,
+        "nonce": nonce,
+    }
 
 
 @auth_router.post("/telegram")
-async def telegram_browser_login(payload: TelegramWidgetLoginSchema, response: Response):
-    token_pair = await authenticate_telegram_widget(payload.model_dump(exclude_none=True))
+async def telegram_browser_login(
+    payload: TelegramBrowserLoginSchema, request: Request, response: Response
+):
+    pending = request.session.pop("telegram_login", None)
+    if (
+        not pending
+        or not 0 <= time.time() - pending["created_at"] <= cfg.TELEGRAM_AUTH_MAX_AGE_SECONDS
+    ):
+        raise AuthFailedException
+    token_pair = await authenticate_telegram_id_token(payload.id_token, pending["nonce"])
+    response.headers["Cache-Control"] = "no-store"
     response.set_cookie(
         key=cfg.REFRESH_COOKIE_NAME,
         value=token_pair["refresh"]["token"],

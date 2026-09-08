@@ -1,0 +1,82 @@
+"""Verify current Telegram Login SDK ID tokens independently of Mini App initData."""
+
+import asyncio
+import hmac
+import json
+import time
+from typing import Any
+from urllib.error import URLError
+from urllib.request import urlopen
+
+from fastapi import HTTPException
+from jose import JWTError, jwt
+
+from src.auth.exceptions import AuthFailedException
+from src.auth.services import authenticate_telegram_user
+from src.config import get_settings
+
+ISSUER = "https://oauth.telegram.org"
+JWKS_URL = f"{ISSUER}/.well-known/jwks.json"
+_jwks_cache: dict[str, Any] = {}
+_jwks_expires = 0.0
+
+
+def _download_jwks() -> dict[str, Any]:
+    with urlopen(JWKS_URL, timeout=10) as response:
+        return json.load(response)
+
+
+async def get_telegram_jwks() -> dict[str, Any]:
+    global _jwks_cache, _jwks_expires
+    if time.monotonic() >= _jwks_expires:
+        try:
+            keys = await asyncio.to_thread(_download_jwks)
+            if not isinstance(keys, dict) or not isinstance(keys.get("keys"), list):
+                raise ValueError("Invalid Telegram keys")
+        except (URLError, TimeoutError, ValueError) as exc:
+            raise HTTPException(503, "Telegram login is temporarily unavailable") from exc
+        _jwks_cache = keys
+        _jwks_expires = time.monotonic() + 300
+    return _jwks_cache
+
+
+async def authenticate_telegram_id_token(id_token: str, nonce: str) -> dict[str, Any]:
+    cfg = get_settings()
+    if cfg.TELEGRAM_LOGIN_CLIENT_ID is None:
+        raise HTTPException(503, "Telegram browser login is not configured")
+    try:
+        header = jwt.get_unverified_header(id_token)
+        if header.get("alg") != "RS256":
+            raise AuthFailedException
+        keys = await get_telegram_jwks()
+        claims = jwt.decode(
+            id_token,
+            keys,
+            algorithms=["RS256"],
+            issuer=ISSUER,
+            audience=str(cfg.TELEGRAM_LOGIN_CLIENT_ID),
+            options={
+                "require_exp": True,
+                "require_iat": True,
+                "require_aud": True,
+                "require_iss": True,
+                "require_sub": True,
+            },
+        )
+        signed_nonce = claims.get("nonce")
+        if not isinstance(signed_nonce, str) or not hmac.compare_digest(
+            signed_nonce.encode(), nonce.encode()
+        ):
+            raise AuthFailedException
+        issued_at = claims["iat"]
+        if not isinstance(issued_at, int) or isinstance(issued_at, bool):
+            raise AuthFailedException
+        if not -30 <= time.time() - issued_at <= cfg.TELEGRAM_AUTH_MAX_AGE_SECONDS:
+            raise AuthFailedException
+        # The OIDC subject is not the Bot API user ID. Request profile scope and use id.
+        telegram_id = claims.get("id")
+        if not isinstance(telegram_id, int) or isinstance(telegram_id, bool) or telegram_id <= 0:
+            raise AuthFailedException
+    except (JWTError, ValueError, TypeError, KeyError) as exc:
+        raise AuthFailedException from exc
+    return await authenticate_telegram_user(telegram_id)
