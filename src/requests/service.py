@@ -49,7 +49,7 @@ async def create_user_request(
         await session.execute(select(User.id).where(User.id == user_id).with_for_update())
         today = datetime.now(timezone.utc).date()
         if payload.date_to >= today:
-            active_count = await session.scalar(
+            active_count_result = await session.execute(
                 select(func.count())
                 .select_from(TravelRequest)
                 .where(
@@ -58,6 +58,7 @@ async def create_user_request(
                     TravelRequest.date_to >= today,
                 )
             )
+            active_count = active_count_result.scalar_one()
             if active_count >= cfg.MAX_ACTIVE_REQUESTS_PER_USER:
                 raise HTTPException(
                     status_code=status.HTTP_409_CONFLICT,
