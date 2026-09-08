@@ -11,39 +11,39 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:73
+#: src/i18n.js:72
 msgid "Active"
 msgstr "Ativo"
 
-#: src/i18n.js:72
+#: src/i18n.js:71
 msgid "All statuses"
 msgstr "Todos os status"
 
-#: src/i18n.js:43
+#: src/i18n.js:45
 msgid "Arrival"
 msgstr "Chegada"
 
 #: src/i18n.js:53
-msgid "Arrival airport"
-msgstr "Aeroporto de chegada"
+#~ msgid "Arrival airport"
+#~ msgstr "Aeroporto de chegada"
 
-#: src/i18n.js:51
+#: src/i18n.js:53
 msgid "Arrival city"
 msgstr "Cidade de chegada"
 
-#: src/i18n.js:50
+#: src/i18n.js:52
 msgid "Arrival country"
 msgstr "País de chegada"
 
-#: src/i18n.js:61
+#: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "Comentários sobre bagagem"
 
-#: src/i18n.js:74
+#: src/i18n.js:73
 msgid "Cancelled"
 msgstr "Cancelado"
 
-#: src/i18n.js:59
+#: src/i18n.js:58
 msgid "Choose a city first"
 msgstr "Escolha uma cidade primeiro"
 
@@ -51,23 +51,23 @@ msgstr "Escolha uma cidade primeiro"
 msgid "Choose a country first"
 msgstr "Escolha um país primeiro"
 
-#: src/i18n.js:80
+#: src/i18n.js:79
 msgid "Close"
 msgstr "Fechar"
 
-#: src/i18n.js:81
+#: src/i18n.js:80
 msgid "Comment"
 msgstr "Comentário"
 
-#: src/i18n.js:75
+#: src/i18n.js:74
 msgid "Completed"
 msgstr "Concluído"
 
-#: src/i18n.js:79
+#: src/i18n.js:78
 msgid "Could not load your requests."
 msgstr "Não foi possível carregar suas solicitações."
 
-#: src/i18n.js:44
+#: src/i18n.js:46
 msgid "Country or city"
 msgstr "País ou cidade"
 
@@ -75,27 +75,27 @@ msgstr "País ou cidade"
 msgid "Courier"
 msgstr "Correio"
 
-#: src/i18n.js:82
+#: src/i18n.js:81
 msgid "Created"
 msgstr "Criado"
 
-#: src/i18n.js:39
+#: src/i18n.js:41
 msgid "Date"
 msgstr "Data"
 
-#: src/i18n.js:42
+#: src/i18n.js:44
 msgid "Departure"
 msgstr "Partida"
 
 #: src/i18n.js:52
-msgid "Departure airport"
-msgstr "Aeroporto de partida"
+#~ msgid "Departure airport"
+#~ msgstr "Aeroporto de partida"
 
-#: src/i18n.js:49
+#: src/i18n.js:51
 msgid "Departure city"
 msgstr "Cidade de partida"
 
-#: src/i18n.js:48
+#: src/i18n.js:50
 msgid "Departure country"
 msgstr "País de partida"
 
@@ -112,18 +112,18 @@ msgid "Enter or choose a city"
 msgstr "Insira ou escolha uma cidade"
 
 #: src/i18n.js:58
-msgid "Enter or choose an airport"
-msgstr "Insira ou escolha um aeroporto"
+#~ msgid "Enter or choose an airport"
+#~ msgstr "Insira ou escolha um aeroporto"
 
-#: src/i18n.js:76
+#: src/i18n.js:75
 msgid "Expired"
 msgstr "Expirado"
 
-#: src/i18n.js:62
+#: src/i18n.js:61
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "Por exemplo: Roupas 5kg, documentos, eletrônicos"
 
-#: src/i18n.js:68
+#: src/i18n.js:67
 msgid "Form submitted! Check the console for data."
 msgstr "Formulário enviado! Verifique os dados do console."
 
@@ -131,7 +131,7 @@ msgstr "Formulário enviado! Verifique os dados do console."
 msgid "From date"
 msgstr "A partir da data"
 
-#: src/i18n.js:60
+#: src/i18n.js:59
 msgid "Loading..."
 msgstr "Carregando..."
 
@@ -139,71 +139,83 @@ msgstr "Carregando..."
 #~ msgid "Maximum number of airports selected"
 #~ msgstr ""
 
-#: src/i18n.js:41
+#: src/i18n.js:43
 msgid "mm/dd/yyyy"
 msgstr "dd/mm/yyyy"
 
-#: src/i18n.js:40
+#: src/i18n.js:42
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
-#: src/i18n.js:71
+#: src/i18n.js:70
 msgid "My Requests"
 msgstr "Meus pedidos"
 
-#: src/i18n.js:88
+#: src/i18n.js:87
 msgid "New"
 msgstr "Novo"
 
-#: src/i18n.js:86
+#: src/i18n.js:85
 msgid "Next"
 msgstr "Próximo"
 
-#: src/i18n.js:45
-msgid "no matching airports found, try to write in english"
-msgstr "Nenhum aeroporto correspondente foi encontrado, tente escrever em inglês"
+#: src/i18n.js:39
+msgid "No end date"
+msgstr ""
 
-#: src/i18n.js:78
+#: src/i18n.js:45
+#~ msgid "no matching airports found, try to write in english"
+#~ msgstr "Nenhum aeroporto correspondente foi encontrado, tente escrever em inglês"
+
+#: src/i18n.js:47
+msgid "no matching cities found, try to write in english"
+msgstr ""
+
+#: src/i18n.js:77
 msgid "No requests with this status."
 msgstr "Nenhuma solicitação com esse status."
 
-#: src/i18n.js:87
+#: src/i18n.js:86
 msgid "Page"
 msgstr "Página"
 
-#: src/i18n.js:67
+#: src/i18n.js:66
 msgid "Please select a date"
 msgstr "Selecione uma data"
 
-#: src/i18n.js:64
+#: src/i18n.js:63
 msgid "Please select a start date"
 msgstr "Selecione uma data de início"
 
-#: src/i18n.js:65
+#: src/i18n.js:64
 msgid "Please select an end date"
 msgstr "Selecione uma data de término"
 
 #: src/i18n.js:46
-msgid "Please select departure and arrival airports from the list"
-msgstr "Selecione os aeroportos de partida e chegada na lista"
+#~ msgid "Please select departure and arrival airports from the list"
+#~ msgstr "Selecione os aeroportos de partida e chegada na lista"
 
-#: src/i18n.js:85
+#: src/i18n.js:48
+msgid "Please select departure and arrival cities from the list"
+msgstr ""
+
+#: src/i18n.js:84
 msgid "Previous"
 msgstr "Anterior"
 
-#: src/i18n.js:47
+#: src/i18n.js:49
 msgid "Remove"
 msgstr "Remover"
 
-#: src/i18n.js:77
+#: src/i18n.js:76
 msgid "Request details"
 msgstr "Solicitar detalhes"
 
-#: src/i18n.js:84
+#: src/i18n.js:83
 msgid "Request pagination"
 msgstr "Solicitar paginação"
 
-#: src/i18n.js:89
+#: src/i18n.js:88
 msgid "Role"
 msgstr "Função"
 
@@ -211,26 +223,30 @@ msgstr "Função"
 msgid "Sender"
 msgstr "Remetente"
 
-#: src/i18n.js:83
+#: src/i18n.js:82
 msgid "Status"
 msgstr "Estado"
 
-#: src/i18n.js:63
+#: src/i18n.js:62
 msgid "Submit request"
 msgstr "Enviar solicitação"
 
-#: src/i18n.js:66
+#: src/i18n.js:65
 msgid "The start date cannot be after the end date"
 msgstr "A data de início não pode ser posterior à data de término"
 
-#: src/i18n.js:38
+#: src/i18n.js:40
 msgid "To date"
 msgstr "A data"
 
-#: src/i18n.js:69
+#: src/i18n.js:38
+msgid "To date (optional)"
+msgstr ""
+
+#: src/i18n.js:68
 msgid "User Not Found"
 msgstr "Usuário não encontrado"
 
-#: src/i18n.js:70
+#: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "Você não está cadastrado no sistema. Por favor, registre-se primeiro através do bot do Telegram."

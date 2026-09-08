@@ -119,7 +119,7 @@ class Request(Base):
     role: Mapped[RequestRole] = mapped_column(Enum(RequestRole), index=True)
 
     date_from: Mapped[date] = mapped_column(Date)
-    date_to: Mapped[date] = mapped_column(Date)
+    date_to: Mapped[date | None] = mapped_column(Date)
 
     departure_cities: Mapped[list["City"]] = relationship(
         secondary=request_departure_cities,

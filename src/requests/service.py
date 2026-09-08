@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 from fastapi import HTTPException, status
 from fastapi_pagination import Page
 from fastapi_pagination.ext.sqlalchemy import apaginate
-from sqlalchemy import func, select
+from sqlalchemy import func, or_, select
 from sqlalchemy.orm import selectinload
 
 from src.config import Settings, get_settings
@@ -48,14 +48,14 @@ async def create_user_request(
         # Serialize creation for this user so concurrent submissions cannot exceed the cap.
         await session.execute(select(User.id).where(User.id == user_id).with_for_update())
         today = datetime.now(timezone.utc).date()
-        if payload.date_to >= today:
+        if payload.date_to is None or payload.date_to >= today:
             active_count_result = await session.execute(
                 select(func.count())
                 .select_from(TravelRequest)
                 .where(
                     TravelRequest.user_id == user_id,
                     TravelRequest.status == RequestStatus.active,
-                    TravelRequest.date_to >= today,
+                    or_(TravelRequest.date_to.is_(None), TravelRequest.date_to >= today),
                 )
             )
             active_count = active_count_result.scalar_one()
@@ -63,7 +63,8 @@ async def create_user_request(
                 raise HTTPException(
                     status_code=status.HTTP_409_CONFLICT,
                     detail=(
-                        "You can have at most 5 active requests " "with an end date today or later."
+                        "You can have at most 5 active requests "
+                        "with no end date or an end date today or later."
                     ),
                 )
 

@@ -11,39 +11,39 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:73
+#: src/i18n.js:72
 msgid "Active"
 msgstr "Activ"
 
-#: src/i18n.js:72
+#: src/i18n.js:71
 msgid "All statuses"
 msgstr "Toate stările"
 
-#: src/i18n.js:43
+#: src/i18n.js:45
 msgid "Arrival"
 msgstr "Sosire"
 
 #: src/i18n.js:53
-msgid "Arrival airport"
-msgstr "Aeroportul de sosire"
+#~ msgid "Arrival airport"
+#~ msgstr "Aeroportul de sosire"
 
-#: src/i18n.js:51
+#: src/i18n.js:53
 msgid "Arrival city"
 msgstr "Orașul de sosire"
 
-#: src/i18n.js:50
+#: src/i18n.js:52
 msgid "Arrival country"
 msgstr "Țara de sosire"
 
-#: src/i18n.js:61
+#: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "Comentarii la bagaje"
 
-#: src/i18n.js:74
+#: src/i18n.js:73
 msgid "Cancelled"
 msgstr "Anulat"
 
-#: src/i18n.js:59
+#: src/i18n.js:58
 msgid "Choose a city first"
 msgstr "Alege mai întâi un oraș"
 
@@ -51,23 +51,23 @@ msgstr "Alege mai întâi un oraș"
 msgid "Choose a country first"
 msgstr "Alegeți mai întâi o țară"
 
-#: src/i18n.js:80
+#: src/i18n.js:79
 msgid "Close"
 msgstr "Închide"
 
-#: src/i18n.js:81
+#: src/i18n.js:80
 msgid "Comment"
 msgstr "Comentariu"
 
-#: src/i18n.js:75
+#: src/i18n.js:74
 msgid "Completed"
 msgstr "Terminat"
 
-#: src/i18n.js:79
+#: src/i18n.js:78
 msgid "Could not load your requests."
 msgstr "Nu s-au putut încărca solicitările dvs."
 
-#: src/i18n.js:44
+#: src/i18n.js:46
 msgid "Country or city"
 msgstr "Țară sau oraș"
 
@@ -75,27 +75,27 @@ msgstr "Țară sau oraș"
 msgid "Courier"
 msgstr "Curier"
 
-#: src/i18n.js:82
+#: src/i18n.js:81
 msgid "Created"
 msgstr "Creat"
 
-#: src/i18n.js:39
+#: src/i18n.js:41
 msgid "Date"
 msgstr "Data"
 
-#: src/i18n.js:42
+#: src/i18n.js:44
 msgid "Departure"
 msgstr "Plecare"
 
 #: src/i18n.js:52
-msgid "Departure airport"
-msgstr "Aeroportul de plecare"
+#~ msgid "Departure airport"
+#~ msgstr "Aeroportul de plecare"
 
-#: src/i18n.js:49
+#: src/i18n.js:51
 msgid "Departure city"
 msgstr "Orașul de plecare"
 
-#: src/i18n.js:48
+#: src/i18n.js:50
 msgid "Departure country"
 msgstr "Țara de plecare"
 
@@ -112,18 +112,18 @@ msgid "Enter or choose a city"
 msgstr "Introduceți sau alegeți un oraș"
 
 #: src/i18n.js:58
-msgid "Enter or choose an airport"
-msgstr "Intrați sau alegeți un aeroport"
+#~ msgid "Enter or choose an airport"
+#~ msgstr "Intrați sau alegeți un aeroport"
 
-#: src/i18n.js:76
+#: src/i18n.js:75
 msgid "Expired"
 msgstr "A expirat"
 
-#: src/i18n.js:62
+#: src/i18n.js:61
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "De exemplu: Haine 5 kg, documente, electronice"
 
-#: src/i18n.js:68
+#: src/i18n.js:67
 msgid "Form submitted! Check the console for data."
 msgstr "Formular trimis! Verificați consola pentru date."
 
@@ -131,7 +131,7 @@ msgstr "Formular trimis! Verificați consola pentru date."
 msgid "From date"
 msgstr "De la data"
 
-#: src/i18n.js:60
+#: src/i18n.js:59
 msgid "Loading..."
 msgstr "Încărcare..."
 
@@ -139,71 +139,83 @@ msgstr "Încărcare..."
 #~ msgid "Maximum number of airports selected"
 #~ msgstr ""
 
-#: src/i18n.js:41
+#: src/i18n.js:43
 msgid "mm/dd/yyyy"
 msgstr "dd/mm/yyyy"
 
-#: src/i18n.js:40
+#: src/i18n.js:42
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
-#: src/i18n.js:71
+#: src/i18n.js:70
 msgid "My Requests"
 msgstr "Cererile mele"
 
-#: src/i18n.js:88
+#: src/i18n.js:87
 msgid "New"
 msgstr "Nou"
 
-#: src/i18n.js:86
+#: src/i18n.js:85
 msgid "Next"
 msgstr "În continuare"
 
-#: src/i18n.js:45
-msgid "no matching airports found, try to write in english"
-msgstr "Nu s-au găsit aeroporturi corespunzătoare, încercați să scrieți în engleză"
+#: src/i18n.js:39
+msgid "No end date"
+msgstr ""
 
-#: src/i18n.js:78
+#: src/i18n.js:45
+#~ msgid "no matching airports found, try to write in english"
+#~ msgstr "Nu s-au găsit aeroporturi corespunzătoare, încercați să scrieți în engleză"
+
+#: src/i18n.js:47
+msgid "no matching cities found, try to write in english"
+msgstr ""
+
+#: src/i18n.js:77
 msgid "No requests with this status."
 msgstr "Nu există solicitări cu acest statut."
 
-#: src/i18n.js:87
+#: src/i18n.js:86
 msgid "Page"
 msgstr "Pagina"
 
-#: src/i18n.js:67
+#: src/i18n.js:66
 msgid "Please select a date"
 msgstr "Vă rugăm să selectați o dată"
 
-#: src/i18n.js:64
+#: src/i18n.js:63
 msgid "Please select a start date"
 msgstr "Vă rugăm să selectați o dată de începere"
 
-#: src/i18n.js:65
+#: src/i18n.js:64
 msgid "Please select an end date"
 msgstr "Vă rugăm să selectați o dată de încheiere"
 
 #: src/i18n.js:46
-msgid "Please select departure and arrival airports from the list"
-msgstr "Selectați aeroporturile de plecare și sosire din listă"
+#~ msgid "Please select departure and arrival airports from the list"
+#~ msgstr "Selectați aeroporturile de plecare și sosire din listă"
 
-#: src/i18n.js:85
+#: src/i18n.js:48
+msgid "Please select departure and arrival cities from the list"
+msgstr ""
+
+#: src/i18n.js:84
 msgid "Previous"
 msgstr "Anterior"
 
-#: src/i18n.js:47
+#: src/i18n.js:49
 msgid "Remove"
 msgstr "Elimină"
 
-#: src/i18n.js:77
+#: src/i18n.js:76
 msgid "Request details"
 msgstr "Solicitați detalii"
 
-#: src/i18n.js:84
+#: src/i18n.js:83
 msgid "Request pagination"
 msgstr "Solicitați paginarea"
 
-#: src/i18n.js:89
+#: src/i18n.js:88
 msgid "Role"
 msgstr "Rol"
 
@@ -211,26 +223,30 @@ msgstr "Rol"
 msgid "Sender"
 msgstr "Expeditor"
 
-#: src/i18n.js:83
+#: src/i18n.js:82
 msgid "Status"
 msgstr "Stare"
 
-#: src/i18n.js:63
+#: src/i18n.js:62
 msgid "Submit request"
 msgstr "Trimiteți cererea"
 
-#: src/i18n.js:66
+#: src/i18n.js:65
 msgid "The start date cannot be after the end date"
 msgstr "Data de început nu poate fi după data de încheiere"
 
-#: src/i18n.js:38
+#: src/i18n.js:40
 msgid "To date"
 msgstr "Până în prezent"
 
-#: src/i18n.js:69
+#: src/i18n.js:38
+msgid "To date (optional)"
+msgstr ""
+
+#: src/i18n.js:68
 msgid "User Not Found"
 msgstr "Utilizatorul nu a fost găsit"
 
-#: src/i18n.js:70
+#: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "Nu sunteți înregistrat în sistem. Vă rugăm să vă înregistrați mai întâi prin botul Telegram."

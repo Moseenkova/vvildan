@@ -36,6 +36,7 @@ async def test_active_request_limit_is_shared_across_roles(auth_ac, factory):
     assert fifth.status_code == 201
 
     payload["role"] = "courier"
+    payload["dateTo"] = payload["dateFrom"]
     sixth = await auth_ac.client.post("/api/requests", json=payload)
     assert sixth.status_code == 409
     assert "at most 5 active requests" in sixth.json()["detail"]

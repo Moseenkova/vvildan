@@ -11,39 +11,39 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:73
+#: src/i18n.js:72
 msgid "Active"
 msgstr "Faol"
 
-#: src/i18n.js:72
+#: src/i18n.js:71
 msgid "All statuses"
 msgstr "Barcha holatlar"
 
-#: src/i18n.js:43
+#: src/i18n.js:45
 msgid "Arrival"
 msgstr "Yetib kelish"
 
 #: src/i18n.js:53
-msgid "Arrival airport"
-msgstr "Aeroportga kelish"
+#~ msgid "Arrival airport"
+#~ msgstr "Aeroportga kelish"
 
-#: src/i18n.js:51
+#: src/i18n.js:53
 msgid "Arrival city"
 msgstr "Kelish shahri"
 
-#: src/i18n.js:50
+#: src/i18n.js:52
 msgid "Arrival country"
 msgstr "Kelgan mamlakat"
 
-#: src/i18n.js:61
+#: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "Bagaj sharhlari"
 
-#: src/i18n.js:74
+#: src/i18n.js:73
 msgid "Cancelled"
 msgstr "Bekor qilingan"
 
-#: src/i18n.js:59
+#: src/i18n.js:58
 msgid "Choose a city first"
 msgstr "Avval shaharni tanlang"
 
@@ -51,23 +51,23 @@ msgstr "Avval shaharni tanlang"
 msgid "Choose a country first"
 msgstr "Avval mamlakatni tanlang"
 
-#: src/i18n.js:80
+#: src/i18n.js:79
 msgid "Close"
 msgstr "Yopish"
 
-#: src/i18n.js:81
+#: src/i18n.js:80
 msgid "Comment"
 msgstr "Izoh"
 
-#: src/i18n.js:75
+#: src/i18n.js:74
 msgid "Completed"
 msgstr "Bajarildi"
 
-#: src/i18n.js:79
+#: src/i18n.js:78
 msgid "Could not load your requests."
 msgstr "So‘rovlaringizni yuklab bo‘lmadi."
 
-#: src/i18n.js:44
+#: src/i18n.js:46
 msgid "Country or city"
 msgstr "Mamlakat yoki shahar"
 
@@ -75,27 +75,27 @@ msgstr "Mamlakat yoki shahar"
 msgid "Courier"
 msgstr "Kuryer"
 
-#: src/i18n.js:82
+#: src/i18n.js:81
 msgid "Created"
 msgstr "Yaratilgan"
 
-#: src/i18n.js:39
+#: src/i18n.js:41
 msgid "Date"
 msgstr "Sana"
 
-#: src/i18n.js:42
+#: src/i18n.js:44
 msgid "Departure"
 msgstr "Jo‘nab ketish"
 
 #: src/i18n.js:52
-msgid "Departure airport"
-msgstr "Uchish aeroporti"
+#~ msgid "Departure airport"
+#~ msgstr "Uchish aeroporti"
 
-#: src/i18n.js:49
+#: src/i18n.js:51
 msgid "Departure city"
 msgstr "Chiqish shahri"
 
-#: src/i18n.js:48
+#: src/i18n.js:50
 msgid "Departure country"
 msgstr "Ketish mamlakati"
 
@@ -112,18 +112,18 @@ msgid "Enter or choose a city"
 msgstr "Shaharni kiriting yoki tanlang"
 
 #: src/i18n.js:58
-msgid "Enter or choose an airport"
-msgstr "Aeroportni kiriting yoki tanlang"
+#~ msgid "Enter or choose an airport"
+#~ msgstr "Aeroportni kiriting yoki tanlang"
 
-#: src/i18n.js:76
+#: src/i18n.js:75
 msgid "Expired"
 msgstr "Muddati tugagan"
 
-#: src/i18n.js:62
+#: src/i18n.js:61
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "Masalan: Kiyim-kechak 5 kg, hujjatlar, elektronika"
 
-#: src/i18n.js:68
+#: src/i18n.js:67
 msgid "Form submitted! Check the console for data."
 msgstr "Shakl topshirildi! Ma'lumotlar uchun konsolni tekshiring."
 
@@ -131,7 +131,7 @@ msgstr "Shakl topshirildi! Ma'lumotlar uchun konsolni tekshiring."
 msgid "From date"
 msgstr "Sanadan boshlab"
 
-#: src/i18n.js:60
+#: src/i18n.js:59
 msgid "Loading..."
 msgstr "Yuklanmoqda..."
 
@@ -139,71 +139,83 @@ msgstr "Yuklanmoqda..."
 #~ msgid "Maximum number of airports selected"
 #~ msgstr ""
 
-#: src/i18n.js:41
+#: src/i18n.js:43
 msgid "mm/dd/yyyy"
 msgstr "dd/mm/yyyy"
 
-#: src/i18n.js:40
+#: src/i18n.js:42
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
-#: src/i18n.js:71
+#: src/i18n.js:70
 msgid "My Requests"
 msgstr "Mening so'rovlarim"
 
-#: src/i18n.js:88
+#: src/i18n.js:87
 msgid "New"
 msgstr "Yangi"
 
-#: src/i18n.js:86
+#: src/i18n.js:85
 msgid "Next"
 msgstr "Keyingi"
 
-#: src/i18n.js:45
-msgid "no matching airports found, try to write in english"
-msgstr "Mos aeroportlar topilmadi, ingliz tilida yozib ko‘ring"
+#: src/i18n.js:39
+msgid "No end date"
+msgstr ""
 
-#: src/i18n.js:78
+#: src/i18n.js:45
+#~ msgid "no matching airports found, try to write in english"
+#~ msgstr "Mos aeroportlar topilmadi, ingliz tilida yozib ko‘ring"
+
+#: src/i18n.js:47
+msgid "no matching cities found, try to write in english"
+msgstr ""
+
+#: src/i18n.js:77
 msgid "No requests with this status."
 msgstr "Bu holatga ega soʻrovlar yoʻq."
 
-#: src/i18n.js:87
+#: src/i18n.js:86
 msgid "Page"
 msgstr "Sahifa"
 
-#: src/i18n.js:67
+#: src/i18n.js:66
 msgid "Please select a date"
 msgstr "Iltimos, sana tanlang"
 
-#: src/i18n.js:64
+#: src/i18n.js:63
 msgid "Please select a start date"
 msgstr "Iltimos, boshlanish sanasini tanlang"
 
-#: src/i18n.js:65
+#: src/i18n.js:64
 msgid "Please select an end date"
 msgstr "Tugash sanasini tanlang"
 
 #: src/i18n.js:46
-msgid "Please select departure and arrival airports from the list"
-msgstr "Ro‘yxatdan jo‘nash va yetib kelish aeroportlarini tanlang"
+#~ msgid "Please select departure and arrival airports from the list"
+#~ msgstr "Ro‘yxatdan jo‘nash va yetib kelish aeroportlarini tanlang"
 
-#: src/i18n.js:85
+#: src/i18n.js:48
+msgid "Please select departure and arrival cities from the list"
+msgstr ""
+
+#: src/i18n.js:84
 msgid "Previous"
 msgstr "Oldingi"
 
-#: src/i18n.js:47
+#: src/i18n.js:49
 msgid "Remove"
 msgstr "Olib tashlash"
 
-#: src/i18n.js:77
+#: src/i18n.js:76
 msgid "Request details"
 msgstr "Tafsilotlarni so'rash"
 
-#: src/i18n.js:84
+#: src/i18n.js:83
 msgid "Request pagination"
 msgstr "Sahifani so'rash"
 
-#: src/i18n.js:89
+#: src/i18n.js:88
 msgid "Role"
 msgstr "Rol"
 
@@ -211,26 +223,30 @@ msgstr "Rol"
 msgid "Sender"
 msgstr "Yuboruvchi"
 
-#: src/i18n.js:83
+#: src/i18n.js:82
 msgid "Status"
 msgstr "Status"
 
-#: src/i18n.js:63
+#: src/i18n.js:62
 msgid "Submit request"
 msgstr "So'rov yuborish"
 
-#: src/i18n.js:66
+#: src/i18n.js:65
 msgid "The start date cannot be after the end date"
 msgstr "Boshlanish sanasi tugash sanasidan keyin bo'lishi mumkin emas"
 
-#: src/i18n.js:38
+#: src/i18n.js:40
 msgid "To date"
 msgstr "Hozirgi kungacha"
 
-#: src/i18n.js:69
+#: src/i18n.js:38
+msgid "To date (optional)"
+msgstr ""
+
+#: src/i18n.js:68
 msgid "User Not Found"
 msgstr "Foydalanuvchi topilmadi"
 
-#: src/i18n.js:70
+#: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "Siz tizimda ro'yxatdan o'tmagansiz. Iltimos, avval Telegram boti orqali ro‘yxatdan o‘ting."

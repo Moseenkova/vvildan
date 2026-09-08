@@ -11,39 +11,39 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:73
+#: src/i18n.js:72
 msgid "Active"
 msgstr "ಸಕ್ರಿಯ"
 
-#: src/i18n.js:72
+#: src/i18n.js:71
 msgid "All statuses"
 msgstr "ಎಲ್ಲಾ ಸ್ಥಿತಿಗಳು"
 
-#: src/i18n.js:43
+#: src/i18n.js:45
 msgid "Arrival"
 msgstr "ಆಗಮನ"
 
 #: src/i18n.js:53
-msgid "Arrival airport"
-msgstr "ಆಗಮನ ವಿಮಾನ ನಿಲ್ದಾಣ"
+#~ msgid "Arrival airport"
+#~ msgstr "ಆಗಮನ ವಿಮಾನ ನಿಲ್ದಾಣ"
 
-#: src/i18n.js:51
+#: src/i18n.js:53
 msgid "Arrival city"
 msgstr "ಆಗಮನ ನಗರ"
 
-#: src/i18n.js:50
+#: src/i18n.js:52
 msgid "Arrival country"
 msgstr "ಆಗಮನದ ದೇಶ"
 
-#: src/i18n.js:61
+#: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "ಬ್ಯಾಗೇಜ್ ಕಾಮೆಂಟ್‌ಗಳು"
 
-#: src/i18n.js:74
+#: src/i18n.js:73
 msgid "Cancelled"
 msgstr "ರದ್ದುಗೊಳಿಸಲಾಗಿದೆ"
 
-#: src/i18n.js:59
+#: src/i18n.js:58
 msgid "Choose a city first"
 msgstr "ಮೊದಲು ನಗರವನ್ನು ಆರಿಸಿ"
 
@@ -51,23 +51,23 @@ msgstr "ಮೊದಲು ನಗರವನ್ನು ಆರಿಸಿ"
 msgid "Choose a country first"
 msgstr "ಮೊದಲು ದೇಶವನ್ನು ಆರಿಸಿ"
 
-#: src/i18n.js:80
+#: src/i18n.js:79
 msgid "Close"
 msgstr "ಮುಚ್ಚಿ"
 
-#: src/i18n.js:81
+#: src/i18n.js:80
 msgid "Comment"
 msgstr "ಕಾಮೆಂಟ್ ಮಾಡಿ"
 
-#: src/i18n.js:75
+#: src/i18n.js:74
 msgid "Completed"
 msgstr "ಪೂರ್ಣಗೊಂಡಿದೆ"
 
-#: src/i18n.js:79
+#: src/i18n.js:78
 msgid "Could not load your requests."
 msgstr "ನಿಮ್ಮ ವಿನಂತಿಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ."
 
-#: src/i18n.js:44
+#: src/i18n.js:46
 msgid "Country or city"
 msgstr "ದೇಶ ಅಥವಾ ನಗರ"
 
@@ -75,27 +75,27 @@ msgstr "ದೇಶ ಅಥವಾ ನಗರ"
 msgid "Courier"
 msgstr "ಕೊರಿಯರ್"
 
-#: src/i18n.js:82
+#: src/i18n.js:81
 msgid "Created"
 msgstr "ರಚಿಸಲಾಗಿದೆ"
 
-#: src/i18n.js:39
+#: src/i18n.js:41
 msgid "Date"
 msgstr "ದಿನಾಂಕ"
 
-#: src/i18n.js:42
+#: src/i18n.js:44
 msgid "Departure"
 msgstr "ನಿರ್ಗಮನ"
 
 #: src/i18n.js:52
-msgid "Departure airport"
-msgstr "ನಿರ್ಗಮನ ವಿಮಾನ ನಿಲ್ದಾಣ"
+#~ msgid "Departure airport"
+#~ msgstr "ನಿರ್ಗಮನ ವಿಮಾನ ನಿಲ್ದಾಣ"
 
-#: src/i18n.js:49
+#: src/i18n.js:51
 msgid "Departure city"
 msgstr "ನಿರ್ಗಮನ ನಗರ"
 
-#: src/i18n.js:48
+#: src/i18n.js:50
 msgid "Departure country"
 msgstr "ನಿರ್ಗಮನ ದೇಶ"
 
@@ -112,18 +112,18 @@ msgid "Enter or choose a city"
 msgstr "ನಗರವನ್ನು ನಮೂದಿಸಿ ಅಥವಾ ಆಯ್ಕೆಮಾಡಿ"
 
 #: src/i18n.js:58
-msgid "Enter or choose an airport"
-msgstr "ವಿಮಾನ ನಿಲ್ದಾಣವನ್ನು ನಮೂದಿಸಿ ಅಥವಾ ಆಯ್ಕೆಮಾಡಿ"
+#~ msgid "Enter or choose an airport"
+#~ msgstr "ವಿಮಾನ ನಿಲ್ದಾಣವನ್ನು ನಮೂದಿಸಿ ಅಥವಾ ಆಯ್ಕೆಮಾಡಿ"
 
-#: src/i18n.js:76
+#: src/i18n.js:75
 msgid "Expired"
 msgstr "ಅವಧಿ ಮೀರಿದೆ"
 
-#: src/i18n.js:62
+#: src/i18n.js:61
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "ಉದಾಹರಣೆಗೆ: ಬಟ್ಟೆ 5 ಕೆಜಿ, ದಾಖಲೆಗಳು, ಎಲೆಕ್ಟ್ರಾನಿಕ್ಸ್"
 
-#: src/i18n.js:68
+#: src/i18n.js:67
 msgid "Form submitted! Check the console for data."
 msgstr "ಫಾರ್ಮ್ ಸಲ್ಲಿಸಲಾಗಿದೆ! ಡೇಟಾಕ್ಕಾಗಿ ಕನ್ಸೋಲ್ ಅನ್ನು ಪರಿಶೀಲಿಸಿ."
 
@@ -131,7 +131,7 @@ msgstr "ಫಾರ್ಮ್ ಸಲ್ಲಿಸಲಾಗಿದೆ! ಡೇಟಾಕ
 msgid "From date"
 msgstr "ದಿನಾಂಕದಿಂದ"
 
-#: src/i18n.js:60
+#: src/i18n.js:59
 msgid "Loading..."
 msgstr "ಲೋಡ್ ಆಗುತ್ತಿದೆ..."
 
@@ -139,71 +139,83 @@ msgstr "ಲೋಡ್ ಆಗುತ್ತಿದೆ..."
 #~ msgid "Maximum number of airports selected"
 #~ msgstr ""
 
-#: src/i18n.js:41
+#: src/i18n.js:43
 msgid "mm/dd/yyyy"
 msgstr "dd/mm/yyyy"
 
-#: src/i18n.js:40
+#: src/i18n.js:42
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
-#: src/i18n.js:71
+#: src/i18n.js:70
 msgid "My Requests"
 msgstr "ನನ್ನ ವಿನಂತಿಗಳು"
 
-#: src/i18n.js:88
+#: src/i18n.js:87
 msgid "New"
 msgstr "ಹೊಸದು"
 
-#: src/i18n.js:86
+#: src/i18n.js:85
 msgid "Next"
 msgstr "ಮುಂದೆ"
 
-#: src/i18n.js:45
-msgid "no matching airports found, try to write in english"
-msgstr "ಹೊಂದಿಕೆಯಾಗುವ ಯಾವುದೇ ವಿಮಾನ ನಿಲ್ದಾಣ ಕಂಡುಬಂದಿಲ್ಲ, ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಬರೆಯಲು ಪ್ರಯತ್ನಿಸಿ"
+#: src/i18n.js:39
+msgid "No end date"
+msgstr ""
 
-#: src/i18n.js:78
+#: src/i18n.js:45
+#~ msgid "no matching airports found, try to write in english"
+#~ msgstr "ಹೊಂದಿಕೆಯಾಗುವ ಯಾವುದೇ ವಿಮಾನ ನಿಲ್ದಾಣ ಕಂಡುಬಂದಿಲ್ಲ, ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಬರೆಯಲು ಪ್ರಯತ್ನಿಸಿ"
+
+#: src/i18n.js:47
+msgid "no matching cities found, try to write in english"
+msgstr ""
+
+#: src/i18n.js:77
 msgid "No requests with this status."
 msgstr "ಈ ಸ್ಥಿತಿಯೊಂದಿಗೆ ಯಾವುದೇ ವಿನಂತಿಗಳಿಲ್ಲ."
 
-#: src/i18n.js:87
+#: src/i18n.js:86
 msgid "Page"
 msgstr "ಪುಟ"
 
-#: src/i18n.js:67
+#: src/i18n.js:66
 msgid "Please select a date"
 msgstr "ದಯವಿಟ್ಟು ದಿನಾಂಕವನ್ನು ಆಯ್ಕೆಮಾಡಿ"
 
-#: src/i18n.js:64
+#: src/i18n.js:63
 msgid "Please select a start date"
 msgstr "ದಯವಿಟ್ಟು ಪ್ರಾರಂಭ ದಿನಾಂಕವನ್ನು ಆಯ್ಕೆಮಾಡಿ"
 
-#: src/i18n.js:65
+#: src/i18n.js:64
 msgid "Please select an end date"
 msgstr "ದಯವಿಟ್ಟು ಅಂತಿಮ ದಿನಾಂಕವನ್ನು ಆಯ್ಕೆಮಾಡಿ"
 
 #: src/i18n.js:46
-msgid "Please select departure and arrival airports from the list"
-msgstr "ದಯವಿಟ್ಟು ಪಟ್ಟಿಯಿಂದ ನಿರ್ಗಮನ ಮತ್ತು ಆಗಮನದ ವಿಮಾನ ನಿಲ್ದಾಣಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ"
+#~ msgid "Please select departure and arrival airports from the list"
+#~ msgstr "ದಯವಿಟ್ಟು ಪಟ್ಟಿಯಿಂದ ನಿರ್ಗಮನ ಮತ್ತು ಆಗಮನದ ವಿಮಾನ ನಿಲ್ದಾಣಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ"
 
-#: src/i18n.js:85
+#: src/i18n.js:48
+msgid "Please select departure and arrival cities from the list"
+msgstr ""
+
+#: src/i18n.js:84
 msgid "Previous"
 msgstr "ಹಿಂದಿನ"
 
-#: src/i18n.js:47
+#: src/i18n.js:49
 msgid "Remove"
 msgstr "ತೆಗೆದುಹಾಕಿ"
 
-#: src/i18n.js:77
+#: src/i18n.js:76
 msgid "Request details"
 msgstr "ವಿವರಗಳನ್ನು ವಿನಂತಿಸಿ"
 
-#: src/i18n.js:84
+#: src/i18n.js:83
 msgid "Request pagination"
 msgstr "ಪುಟ ವಿನ್ಯಾಸವನ್ನು ವಿನಂತಿಸಿ"
 
-#: src/i18n.js:89
+#: src/i18n.js:88
 msgid "Role"
 msgstr "ಪಾತ್ರ"
 
@@ -211,26 +223,30 @@ msgstr "ಪಾತ್ರ"
 msgid "Sender"
 msgstr "ಕಳುಹಿಸುವವರು"
 
-#: src/i18n.js:83
+#: src/i18n.js:82
 msgid "Status"
 msgstr "ಸ್ಥಿತಿ"
 
-#: src/i18n.js:63
+#: src/i18n.js:62
 msgid "Submit request"
 msgstr "ವಿನಂತಿಯನ್ನು ಸಲ್ಲಿಸಿ"
 
-#: src/i18n.js:66
+#: src/i18n.js:65
 msgid "The start date cannot be after the end date"
 msgstr "ಪ್ರಾರಂಭ ದಿನಾಂಕವು ಅಂತಿಮ ದಿನಾಂಕದ ನಂತರ ಇರುವಂತಿಲ್ಲ"
 
-#: src/i18n.js:38
+#: src/i18n.js:40
 msgid "To date"
 msgstr "ಇಲ್ಲಿಯವರೆಗೆ"
 
-#: src/i18n.js:69
+#: src/i18n.js:38
+msgid "To date (optional)"
+msgstr ""
+
+#: src/i18n.js:68
 msgid "User Not Found"
 msgstr "ಬಳಕೆದಾರ ಕಂಡುಬಂದಿಲ್ಲ"
 
-#: src/i18n.js:70
+#: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "ನೀವು ವ್ಯವಸ್ಥೆಯಲ್ಲಿ ನೋಂದಾಯಿಸಲಾಗಿಲ್ಲ. ದಯವಿಟ್ಟು ಮೊದಲು ಟೆಲಿಗ್ರಾಮ್ ಬಾಟ್ ಮೂಲಕ ನೋಂದಾಯಿಸಿ."

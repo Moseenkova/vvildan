@@ -11,39 +11,39 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:73
+#: src/i18n.js:72
 msgid "Active"
 msgstr "Actief"
 
-#: src/i18n.js:72
+#: src/i18n.js:71
 msgid "All statuses"
 msgstr "Alle statussen"
 
-#: src/i18n.js:43
+#: src/i18n.js:45
 msgid "Arrival"
 msgstr "Aankomst"
 
 #: src/i18n.js:53
-msgid "Arrival airport"
-msgstr "Aankomst luchthaven"
+#~ msgid "Arrival airport"
+#~ msgstr "Aankomst luchthaven"
 
-#: src/i18n.js:51
+#: src/i18n.js:53
 msgid "Arrival city"
 msgstr "Aankomst stad"
 
-#: src/i18n.js:50
+#: src/i18n.js:52
 msgid "Arrival country"
 msgstr "Land van aankomst"
 
-#: src/i18n.js:61
+#: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "Opmerkingen over bagage"
 
-#: src/i18n.js:74
+#: src/i18n.js:73
 msgid "Cancelled"
 msgstr "Geannuleerd"
 
-#: src/i18n.js:59
+#: src/i18n.js:58
 msgid "Choose a city first"
 msgstr "Kies eerst een stad"
 
@@ -51,23 +51,23 @@ msgstr "Kies eerst een stad"
 msgid "Choose a country first"
 msgstr "Kies eerst een land"
 
-#: src/i18n.js:80
+#: src/i18n.js:79
 msgid "Close"
 msgstr "Sluiten"
 
-#: src/i18n.js:81
+#: src/i18n.js:80
 msgid "Comment"
 msgstr "Commentaar"
 
-#: src/i18n.js:75
+#: src/i18n.js:74
 msgid "Completed"
 msgstr "Voltooid"
 
-#: src/i18n.js:79
+#: src/i18n.js:78
 msgid "Could not load your requests."
 msgstr "Kan uw verzoeken niet laden."
 
-#: src/i18n.js:44
+#: src/i18n.js:46
 msgid "Country or city"
 msgstr "Land of stad"
 
@@ -75,27 +75,27 @@ msgstr "Land of stad"
 msgid "Courier"
 msgstr "Koerier"
 
-#: src/i18n.js:82
+#: src/i18n.js:81
 msgid "Created"
 msgstr "Gemaakt"
 
-#: src/i18n.js:39
+#: src/i18n.js:41
 msgid "Date"
 msgstr "Datum"
 
-#: src/i18n.js:42
+#: src/i18n.js:44
 msgid "Departure"
 msgstr "Vertrek"
 
 #: src/i18n.js:52
-msgid "Departure airport"
-msgstr "Luchthaven van vertrek"
+#~ msgid "Departure airport"
+#~ msgstr "Luchthaven van vertrek"
 
-#: src/i18n.js:49
+#: src/i18n.js:51
 msgid "Departure city"
 msgstr "Vertrek stad"
 
-#: src/i18n.js:48
+#: src/i18n.js:50
 msgid "Departure country"
 msgstr "Land van vertrek"
 
@@ -112,18 +112,18 @@ msgid "Enter or choose a city"
 msgstr "Voer een stad in of kies een stad"
 
 #: src/i18n.js:58
-msgid "Enter or choose an airport"
-msgstr "Voer een luchthaven in of kies deze"
+#~ msgid "Enter or choose an airport"
+#~ msgstr "Voer een luchthaven in of kies deze"
 
-#: src/i18n.js:76
+#: src/i18n.js:75
 msgid "Expired"
 msgstr "Verlopen"
 
-#: src/i18n.js:62
+#: src/i18n.js:61
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "Bijvoorbeeld: Kleding 5 kg, documenten, elektronica"
 
-#: src/i18n.js:68
+#: src/i18n.js:67
 msgid "Form submitted! Check the console for data."
 msgstr "Formulier ingediend! Controleer de console op gegevens."
 
@@ -131,7 +131,7 @@ msgstr "Formulier ingediend! Controleer de console op gegevens."
 msgid "From date"
 msgstr "Vanaf datum"
 
-#: src/i18n.js:60
+#: src/i18n.js:59
 msgid "Loading..."
 msgstr "Laden..."
 
@@ -139,71 +139,83 @@ msgstr "Laden..."
 #~ msgid "Maximum number of airports selected"
 #~ msgstr ""
 
-#: src/i18n.js:41
+#: src/i18n.js:43
 msgid "mm/dd/yyyy"
 msgstr "dd/mm/yyyy"
 
-#: src/i18n.js:40
+#: src/i18n.js:42
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
-#: src/i18n.js:71
+#: src/i18n.js:70
 msgid "My Requests"
 msgstr "Mijn verzoeken"
 
-#: src/i18n.js:88
+#: src/i18n.js:87
 msgid "New"
 msgstr "Nieuw"
 
-#: src/i18n.js:86
+#: src/i18n.js:85
 msgid "Next"
 msgstr "Volgende"
 
-#: src/i18n.js:45
-msgid "no matching airports found, try to write in english"
-msgstr "Geen overeenkomende luchthavens gevonden, probeer in het Engels te schrijven"
+#: src/i18n.js:39
+msgid "No end date"
+msgstr ""
 
-#: src/i18n.js:78
+#: src/i18n.js:45
+#~ msgid "no matching airports found, try to write in english"
+#~ msgstr "Geen overeenkomende luchthavens gevonden, probeer in het Engels te schrijven"
+
+#: src/i18n.js:47
+msgid "no matching cities found, try to write in english"
+msgstr ""
+
+#: src/i18n.js:77
 msgid "No requests with this status."
 msgstr "Geen verzoeken met deze status."
 
-#: src/i18n.js:87
+#: src/i18n.js:86
 msgid "Page"
 msgstr "Pagina"
 
-#: src/i18n.js:67
+#: src/i18n.js:66
 msgid "Please select a date"
 msgstr "Selecteer een datum"
 
-#: src/i18n.js:64
+#: src/i18n.js:63
 msgid "Please select a start date"
 msgstr "Selecteer een startdatum"
 
-#: src/i18n.js:65
+#: src/i18n.js:64
 msgid "Please select an end date"
 msgstr "Selecteer een einddatum"
 
 #: src/i18n.js:46
-msgid "Please select departure and arrival airports from the list"
-msgstr "Selecteer de vertrek- en aankomstluchthaven in de lijst"
+#~ msgid "Please select departure and arrival airports from the list"
+#~ msgstr "Selecteer de vertrek- en aankomstluchthaven in de lijst"
 
-#: src/i18n.js:85
+#: src/i18n.js:48
+msgid "Please select departure and arrival cities from the list"
+msgstr ""
+
+#: src/i18n.js:84
 msgid "Previous"
 msgstr "Vorige"
 
-#: src/i18n.js:47
+#: src/i18n.js:49
 msgid "Remove"
 msgstr "Verwijderen"
 
-#: src/i18n.js:77
+#: src/i18n.js:76
 msgid "Request details"
 msgstr "Vraag details aan"
 
-#: src/i18n.js:84
+#: src/i18n.js:83
 msgid "Request pagination"
 msgstr "Vraag paginering aan"
 
-#: src/i18n.js:89
+#: src/i18n.js:88
 msgid "Role"
 msgstr "Rol"
 
@@ -211,26 +223,30 @@ msgstr "Rol"
 msgid "Sender"
 msgstr "Afzender"
 
-#: src/i18n.js:83
+#: src/i18n.js:82
 msgid "Status"
 msgstr "Status"
 
-#: src/i18n.js:63
+#: src/i18n.js:62
 msgid "Submit request"
 msgstr "Verzoek indienen"
 
-#: src/i18n.js:66
+#: src/i18n.js:65
 msgid "The start date cannot be after the end date"
 msgstr "De startdatum mag niet na de einddatum liggen"
 
-#: src/i18n.js:38
+#: src/i18n.js:40
 msgid "To date"
 msgstr "Tot op heden"
 
-#: src/i18n.js:69
+#: src/i18n.js:38
+msgid "To date (optional)"
+msgstr ""
+
+#: src/i18n.js:68
 msgid "User Not Found"
 msgstr "Gebruiker niet gevonden"
 
-#: src/i18n.js:70
+#: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "U bent niet geregistreerd in het systeem. Registreer u eerst via de Telegram-bot."

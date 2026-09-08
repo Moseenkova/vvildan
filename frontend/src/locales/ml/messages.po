@@ -11,39 +11,39 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:73
+#: src/i18n.js:72
 msgid "Active"
 msgstr "സജീവമാണ്"
 
-#: src/i18n.js:72
+#: src/i18n.js:71
 msgid "All statuses"
 msgstr "എല്ലാ സ്റ്റാറ്റസുകളും"
 
-#: src/i18n.js:43
+#: src/i18n.js:45
 msgid "Arrival"
 msgstr "എത്തിച്ചേരൽ"
 
 #: src/i18n.js:53
-msgid "Arrival airport"
-msgstr "എത്തിച്ചേരൽ വിമാനത്താവളം"
+#~ msgid "Arrival airport"
+#~ msgstr "എത്തിച്ചേരൽ വിമാനത്താവളം"
 
-#: src/i18n.js:51
+#: src/i18n.js:53
 msgid "Arrival city"
 msgstr "എത്തിച്ചേരുന്ന നഗരം"
 
-#: src/i18n.js:50
+#: src/i18n.js:52
 msgid "Arrival country"
 msgstr "വരവ് രാജ്യം"
 
-#: src/i18n.js:61
+#: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "ബാഗേജ് കമൻ്റുകൾ"
 
-#: src/i18n.js:74
+#: src/i18n.js:73
 msgid "Cancelled"
 msgstr "റദ്ദാക്കി"
 
-#: src/i18n.js:59
+#: src/i18n.js:58
 msgid "Choose a city first"
 msgstr "ആദ്യം ഒരു നഗരം തിരഞ്ഞെടുക്കുക"
 
@@ -51,23 +51,23 @@ msgstr "ആദ്യം ഒരു നഗരം തിരഞ്ഞെടുക്
 msgid "Choose a country first"
 msgstr "ആദ്യം ഒരു രാജ്യം തിരഞ്ഞെടുക്കുക"
 
-#: src/i18n.js:80
+#: src/i18n.js:79
 msgid "Close"
 msgstr "അടയ്ക്കുക"
 
-#: src/i18n.js:81
+#: src/i18n.js:80
 msgid "Comment"
 msgstr "അഭിപ്രായം"
 
-#: src/i18n.js:75
+#: src/i18n.js:74
 msgid "Completed"
 msgstr "പൂർത്തിയാക്കി"
 
-#: src/i18n.js:79
+#: src/i18n.js:78
 msgid "Could not load your requests."
 msgstr "നിങ്ങളുടെ അഭ്യർത്ഥനകൾ ലോഡ് ചെയ്യാനായില്ല."
 
-#: src/i18n.js:44
+#: src/i18n.js:46
 msgid "Country or city"
 msgstr "രാജ്യം അല്ലെങ്കിൽ നഗരം"
 
@@ -75,27 +75,27 @@ msgstr "രാജ്യം അല്ലെങ്കിൽ നഗരം"
 msgid "Courier"
 msgstr "കൊറിയർ"
 
-#: src/i18n.js:82
+#: src/i18n.js:81
 msgid "Created"
 msgstr "സൃഷ്ടിച്ചത്"
 
-#: src/i18n.js:39
+#: src/i18n.js:41
 msgid "Date"
 msgstr "തീയതി"
 
-#: src/i18n.js:42
+#: src/i18n.js:44
 msgid "Departure"
 msgstr "പുറപ്പെടൽ"
 
 #: src/i18n.js:52
-msgid "Departure airport"
-msgstr "പുറപ്പെടുന്ന വിമാനത്താവളം"
+#~ msgid "Departure airport"
+#~ msgstr "പുറപ്പെടുന്ന വിമാനത്താവളം"
 
-#: src/i18n.js:49
+#: src/i18n.js:51
 msgid "Departure city"
 msgstr "പുറപ്പെടുന്ന നഗരം"
 
-#: src/i18n.js:48
+#: src/i18n.js:50
 msgid "Departure country"
 msgstr "പുറപ്പെടുന്ന രാജ്യം"
 
@@ -112,18 +112,18 @@ msgid "Enter or choose a city"
 msgstr "ഒരു നഗരം നൽകുക അല്ലെങ്കിൽ തിരഞ്ഞെടുക്കുക"
 
 #: src/i18n.js:58
-msgid "Enter or choose an airport"
-msgstr "ഒരു വിമാനത്താവളം നൽകുക അല്ലെങ്കിൽ തിരഞ്ഞെടുക്കുക"
+#~ msgid "Enter or choose an airport"
+#~ msgstr "ഒരു വിമാനത്താവളം നൽകുക അല്ലെങ്കിൽ തിരഞ്ഞെടുക്കുക"
 
-#: src/i18n.js:76
+#: src/i18n.js:75
 msgid "Expired"
 msgstr "കാലഹരണപ്പെട്ടു"
 
-#: src/i18n.js:62
+#: src/i18n.js:61
 msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "ഉദാഹരണത്തിന്: വസ്ത്രങ്ങൾ 5 കിലോ, പ്രമാണങ്ങൾ, ഇലക്ട്രോണിക്സ്"
 
-#: src/i18n.js:68
+#: src/i18n.js:67
 msgid "Form submitted! Check the console for data."
 msgstr "ഫോം സമർപ്പിച്ചു! ഡാറ്റയ്ക്കായി കൺസോൾ പരിശോധിക്കുക."
 
@@ -131,7 +131,7 @@ msgstr "ഫോം സമർപ്പിച്ചു! ഡാറ്റയ്ക്
 msgid "From date"
 msgstr "തീയതി മുതൽ"
 
-#: src/i18n.js:60
+#: src/i18n.js:59
 msgid "Loading..."
 msgstr "ലോഡ് ചെയ്യുന്നു..."
 
@@ -139,71 +139,83 @@ msgstr "ലോഡ് ചെയ്യുന്നു..."
 #~ msgid "Maximum number of airports selected"
 #~ msgstr ""
 
-#: src/i18n.js:41
+#: src/i18n.js:43
 msgid "mm/dd/yyyy"
 msgstr "dd/mm/yyyy"
 
-#: src/i18n.js:40
+#: src/i18n.js:42
 msgid "MM/dd/yyyy"
 msgstr "dd/MM/yyyy"
 
-#: src/i18n.js:71
+#: src/i18n.js:70
 msgid "My Requests"
 msgstr "എൻ്റെ അഭ്യർത്ഥനകൾ"
 
-#: src/i18n.js:88
+#: src/i18n.js:87
 msgid "New"
 msgstr "പുതിയത്"
 
-#: src/i18n.js:86
+#: src/i18n.js:85
 msgid "Next"
 msgstr "അടുത്തത്"
 
-#: src/i18n.js:45
-msgid "no matching airports found, try to write in english"
-msgstr "പൊരുത്തപ്പെടുന്ന വിമാനത്താവളങ്ങളൊന്നും കണ്ടെത്തിയില്ല, ഇംഗ്ലീഷിൽ എഴുതാൻ ശ്രമിക്കുക"
+#: src/i18n.js:39
+msgid "No end date"
+msgstr ""
 
-#: src/i18n.js:78
+#: src/i18n.js:45
+#~ msgid "no matching airports found, try to write in english"
+#~ msgstr "പൊരുത്തപ്പെടുന്ന വിമാനത്താവളങ്ങളൊന്നും കണ്ടെത്തിയില്ല, ഇംഗ്ലീഷിൽ എഴുതാൻ ശ്രമിക്കുക"
+
+#: src/i18n.js:47
+msgid "no matching cities found, try to write in english"
+msgstr ""
+
+#: src/i18n.js:77
 msgid "No requests with this status."
 msgstr "ഈ സ്റ്റാറ്റസിനൊപ്പം അഭ്യർത്ഥനകളൊന്നുമില്ല."
 
-#: src/i18n.js:87
+#: src/i18n.js:86
 msgid "Page"
 msgstr "പേജ്"
 
-#: src/i18n.js:67
+#: src/i18n.js:66
 msgid "Please select a date"
 msgstr "ദയവായി ഒരു തീയതി തിരഞ്ഞെടുക്കുക"
 
-#: src/i18n.js:64
+#: src/i18n.js:63
 msgid "Please select a start date"
 msgstr "ദയവായി ഒരു ആരംഭ തീയതി തിരഞ്ഞെടുക്കുക"
 
-#: src/i18n.js:65
+#: src/i18n.js:64
 msgid "Please select an end date"
 msgstr "ദയവായി ഒരു അവസാന തീയതി തിരഞ്ഞെടുക്കുക"
 
 #: src/i18n.js:46
-msgid "Please select departure and arrival airports from the list"
-msgstr "പട്ടികയിൽ നിന്ന് പുറപ്പെടൽ, എത്തിച്ചേരൽ വിമാനത്താവളങ്ങൾ തിരഞ്ഞെടുക്കുക"
+#~ msgid "Please select departure and arrival airports from the list"
+#~ msgstr "പട്ടികയിൽ നിന്ന് പുറപ്പെടൽ, എത്തിച്ചേരൽ വിമാനത്താവളങ്ങൾ തിരഞ്ഞെടുക്കുക"
 
-#: src/i18n.js:85
+#: src/i18n.js:48
+msgid "Please select departure and arrival cities from the list"
+msgstr ""
+
+#: src/i18n.js:84
 msgid "Previous"
 msgstr "മുമ്പത്തെ"
 
-#: src/i18n.js:47
+#: src/i18n.js:49
 msgid "Remove"
 msgstr "നീക്കം ചെയ്യുക"
 
-#: src/i18n.js:77
+#: src/i18n.js:76
 msgid "Request details"
 msgstr "വിശദാംശങ്ങൾ അഭ്യർത്ഥിക്കുക"
 
-#: src/i18n.js:84
+#: src/i18n.js:83
 msgid "Request pagination"
 msgstr "പേജിനേഷൻ അഭ്യർത്ഥിക്കുക"
 
-#: src/i18n.js:89
+#: src/i18n.js:88
 msgid "Role"
 msgstr "പങ്ക്"
 
@@ -211,26 +223,30 @@ msgstr "പങ്ക്"
 msgid "Sender"
 msgstr "അയച്ചയാൾ"
 
-#: src/i18n.js:83
+#: src/i18n.js:82
 msgid "Status"
 msgstr "നില"
 
-#: src/i18n.js:63
+#: src/i18n.js:62
 msgid "Submit request"
 msgstr "അപേക്ഷ സമർപ്പിക്കുക"
 
-#: src/i18n.js:66
+#: src/i18n.js:65
 msgid "The start date cannot be after the end date"
 msgstr "ആരംഭ തീയതി അവസാന തീയതിക്ക് ശേഷമായിരിക്കരുത്"
 
-#: src/i18n.js:38
+#: src/i18n.js:40
 msgid "To date"
 msgstr "തീയതി"
 
-#: src/i18n.js:69
+#: src/i18n.js:38
+msgid "To date (optional)"
+msgstr ""
+
+#: src/i18n.js:68
 msgid "User Not Found"
 msgstr "ഉപയോക്താവിനെ കണ്ടെത്തിയില്ല"
 
-#: src/i18n.js:70
+#: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "നിങ്ങൾ സിസ്റ്റത്തിൽ രജിസ്റ്റർ ചെയ്തിട്ടില്ല. ദയവായി ആദ്യം ടെലിഗ്രാം ബോട്ട് വഴി രജിസ്റ്റർ ചെയ്യുക."

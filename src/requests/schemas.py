@@ -28,7 +28,7 @@ class RequestSchema(BaseModel):
     id: int
     role: str
     date_from: date
-    date_to: date
+    date_to: date | None
     departure_cities: list[RequestCitySchema]
     arrival_cities: list[RequestCitySchema]
     comment: str
@@ -46,13 +46,9 @@ class RequestCreateSchema(BaseModel):
 
     role: RequestRole
     date_from: date = Field(alias="dateFrom")
-    date_to: date = Field(alias="dateTo")
-    departure_city_ids: list[int] = Field(
-        alias="departureCityIds", min_length=1, max_length=5
-    )
-    arrival_city_ids: list[int] = Field(
-        alias="arrivalCityIds", min_length=1, max_length=5
-    )
+    date_to: date | None = Field(default=None, alias="dateTo")
+    departure_city_ids: list[int] = Field(alias="departureCityIds", min_length=1, max_length=5)
+    arrival_city_ids: list[int] = Field(alias="arrivalCityIds", min_length=1, max_length=5)
     comment: Optional[str] = Field(None, alias="baggageComments", max_length=512)
 
     @field_validator("comment")
@@ -62,7 +58,9 @@ class RequestCreateSchema(BaseModel):
 
     @model_validator(mode="after")
     def validate_request(self) -> "RequestCreateSchema":
-        if self.date_from > self.date_to:
+        if self.role == RequestRole.courier and self.date_to != self.date_from:
+            raise ValueError("courier requests require dateTo to equal dateFrom")
+        if self.date_to is not None and self.date_from > self.date_to:
             raise ValueError("dateFrom must be on or before dateTo")
         if len(set(self.departure_city_ids)) != len(self.departure_city_ids):
             raise ValueError("departureCityIds must not contain duplicates")
@@ -71,7 +69,5 @@ class RequestCreateSchema(BaseModel):
         if self.role == RequestRole.courier and (
             len(self.departure_city_ids) != 1 or len(self.arrival_city_ids) != 1
         ):
-            raise ValueError(
-                "courier requests require one departure and one arrival city"
-            )
+            raise ValueError("courier requests require one departure and one arrival city")
         return self

@@ -9,5 +9,4 @@ add red dot on my-requests if new match
 celery task to daily backup db 14 copies max
 
 
-add open requests with no closed date/optional date-to
 test run docker compose
