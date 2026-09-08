@@ -79,3 +79,13 @@ PGPASSWORD='postgres' psql -U postgres -d courier -h localhost
 
 restore db
 ./scripts/restore_backup.sh backups/vvildan_20260902_cities.dump
+
+
+### Browser Telegram login
+
+Opening `/webapp/` in a browser shows Telegram login before the request forms.
+The login widget uses the existing `BOT_TOKEN`; no frontend secret is needed.
+In @BotFather, use `/setdomain` for that bot and link `labhealth.pro` (or the
+hostname of your deployment). Rebuild/redeploy the API and frontend together.
+Users must first register through the bot. Mini App launch authentication remains
+supported. Browser login signatures and timestamps are verified by the API.

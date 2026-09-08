@@ -1,3 +1,6 @@
+import hashlib
+import hmac
+import time
 from datetime import datetime, timedelta, timezone
 from typing import Any
 
@@ -140,3 +143,18 @@ async def logout_user(access_token: str) -> None:
         await _delete_refresh_tokens(RefreshToken.user_id == user_id)
     except Exception:
         pass
+
+
+async def authenticate_telegram_widget(data: dict[str, Any]) -> dict[str, Any]:
+    """Verify Login Widget data using its distinct Telegram signing scheme."""
+    check_string = "\n".join(
+        f"{key}={value}" for key, value in sorted(data.items()) if key != "hash"
+    )
+    secret = hashlib.sha256(cfg.BOT_TOKEN.get_secret_value().encode()).digest()
+    expected = hmac.new(secret, check_string.encode(), hashlib.sha256).hexdigest()
+    if not hmac.compare_digest(expected, data["hash"]):
+        raise AuthFailedException
+    age = time.time() - data["auth_date"]
+    if age < -30 or age > cfg.TELEGRAM_AUTH_MAX_AGE_SECONDS:
+        raise AuthFailedException
+    return await authenticate_telegram_user(data["id"])

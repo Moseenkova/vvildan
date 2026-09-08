@@ -1,12 +1,14 @@
 from typing import Annotated
 
+from aiogram import Bot
 from fastapi import APIRouter, Cookie, Depends, HTTPException, Response, status
 
 from src.auth.deps import oauth2_scheme
-from src.auth.schemas import TelegramLoginSchema
+from src.auth.schemas import TelegramLoginSchema, TelegramWidgetLoginSchema
 from src.auth.services import (
     authenticate_telegram_init_data,
     authenticate_telegram_user,
+    authenticate_telegram_widget,
     logout_user,
     rotate_refresh_token,
 )
@@ -72,3 +74,27 @@ async def logout(
     await logout_user(token)
     response.delete_cookie(cfg.REFRESH_COOKIE_NAME)
     return {"msg": "Successfully logout"}
+
+
+@auth_router.get("/telegram/config")
+async def telegram_login_config():
+    async with Bot(token=cfg.BOT_TOKEN.get_secret_value()) as bot:
+        user = await bot.get_me()
+    return {"bot_username": user.username}
+
+
+@auth_router.post("/telegram")
+async def telegram_browser_login(payload: TelegramWidgetLoginSchema, response: Response):
+    token_pair = await authenticate_telegram_widget(payload.model_dump(exclude_none=True))
+    response.set_cookie(
+        key=cfg.REFRESH_COOKIE_NAME,
+        value=token_pair["refresh"]["token"],
+        httponly=True,
+        secure=cfg.MODE == "PROD",
+        samesite="lax",
+        max_age=cfg.REFRESH_TOKEN_EXPIRES_MINUTES * 60,
+    )
+    return {
+        "access_token": token_pair["access"]["token"],
+        "expire": token_pair["access"]["expire"],
+    }

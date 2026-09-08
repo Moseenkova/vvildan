@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Determine base URL depending on env, if using Vite proxy it's just /
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL || "";
 
 const api = axios.create({
   baseURL: API_URL,
@@ -27,7 +27,7 @@ api.interceptors.response.use(
     const originalRequest = error.config;
 
     // If the error is 401 and we haven't retried yet
-    if (error.response?.status === 401 && !originalRequest._retry) {
+    if (error.response?.status === 401 && !originalRequest._retry && !originalRequest.url.startsWith("/api/auth/")) {
       originalRequest._retry = true;
 
       try {
@@ -43,7 +43,7 @@ api.interceptors.response.use(
       } catch (refreshError) {
         // If refresh fails (e.g. invalid refresh token), user must login again
         localStorage.removeItem("access_token");
-        // We could emit an event here to notify the app to show a login screen or redirect
+        window.dispatchEvent(new Event("auth-required"));
         return Promise.reject(refreshError);
       }
     }
