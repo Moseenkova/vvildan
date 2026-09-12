@@ -11,6 +11,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr ""
+
 #: src/i18n.js:72
 msgid "Active"
 msgstr "Aktif"
@@ -62,6 +66,14 @@ msgstr "Komentar"
 #: src/i18n.js:74
 msgid "Completed"
 msgstr "Rampung"
+
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr ""
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr ""
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
@@ -143,6 +155,14 @@ msgstr "Loading..."
 msgid "Looking for courier"
 msgstr "Nggoleki kurir"
 
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr ""
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr ""
+
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
 #~ msgstr ""
@@ -163,6 +183,10 @@ msgstr "Panjalukku"
 msgid "New"
 msgstr "Anyar"
 
+#: src/i18n.js:90
+msgid "New matches"
+msgstr ""
+
 #: src/i18n.js:86
 msgid "Next"
 msgstr "Sabanjure"
@@ -170,6 +194,10 @@ msgstr "Sabanjure"
 #: src/i18n.js:39
 msgid "No end date"
 msgstr "Ora ana tanggal pungkasan"
+
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr ""
 
 #: src/i18n.js:45
 #~ msgid "no matching airports found, try to write in english"
@@ -211,6 +239,14 @@ msgstr ""
 msgid "Previous"
 msgstr "Sadurunge"
 
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr ""
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr ""
+
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "Busak"
@@ -219,7 +255,7 @@ msgstr "Busak"
 msgid "Request pagination"
 msgstr "Njaluk pagination"
 
-#: src/i18n.js:89
+#: src/i18n.js:99
 msgid "Role"
 msgstr "peran"
 
@@ -254,3 +290,7 @@ msgstr "Pangguna Ora Ditemokake"
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "Sampeyan ora kadhaptar ing sistem. Mangga ndhaftar liwat bot Telegram dhisik."
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr ""

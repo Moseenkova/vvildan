@@ -11,6 +11,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr ""
+
 #: src/i18n.js:72
 msgid "Active"
 msgstr "ਕਿਰਿਆਸ਼ੀਲ"
@@ -62,6 +66,14 @@ msgstr "ਟਿੱਪਣੀ"
 #: src/i18n.js:74
 msgid "Completed"
 msgstr "ਪੂਰਾ ਹੋਇਆ"
+
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr ""
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr ""
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
@@ -143,6 +155,14 @@ msgstr "ਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ..."
 msgid "Looking for courier"
 msgstr "ਕੁਰੀਅਰ ਦੀ ਭਾਲ"
 
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr ""
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr ""
+
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
 #~ msgstr ""
@@ -163,6 +183,10 @@ msgstr "ਮੇਰੀਆਂ ਬੇਨਤੀਆਂ"
 msgid "New"
 msgstr "ਨਵਾਂ"
 
+#: src/i18n.js:90
+msgid "New matches"
+msgstr ""
+
 #: src/i18n.js:86
 msgid "Next"
 msgstr "ਅੱਗੇ"
@@ -170,6 +194,10 @@ msgstr "ਅੱਗੇ"
 #: src/i18n.js:39
 msgid "No end date"
 msgstr "ਕੋਈ ਸਮਾਪਤੀ ਮਿਤੀ ਨਹੀਂ"
+
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr ""
 
 #: src/i18n.js:45
 #~ msgid "no matching airports found, try to write in english"
@@ -211,6 +239,14 @@ msgstr ""
 msgid "Previous"
 msgstr "ਪਿਛਲਾ"
 
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr ""
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr ""
+
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "ਹਟਾਓ"
@@ -219,7 +255,7 @@ msgstr "ਹਟਾਓ"
 msgid "Request pagination"
 msgstr "ਪੰਨਾ ਨੰਬਰ ਲਗਾਉਣ ਲਈ ਬੇਨਤੀ ਕਰੋ"
 
-#: src/i18n.js:89
+#: src/i18n.js:99
 msgid "Role"
 msgstr "ਭੂਮਿਕਾ"
 
@@ -254,3 +290,7 @@ msgstr "ਉਪਭੋਗਤਾ ਨਹੀਂ ਮਿਲਿਆ"
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "ਤੁਸੀਂ ਸਿਸਟਮ ਵਿੱਚ ਰਜਿਸਟਰਡ ਨਹੀਂ ਹੋ। ਕਿਰਪਾ ਕਰਕੇ ਪਹਿਲਾਂ ਟੈਲੀਗ੍ਰਾਮ ਬੋਟ ਰਾਹੀਂ ਰਜਿਸਟਰ ਕਰੋ।"
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr ""

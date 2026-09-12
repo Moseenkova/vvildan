@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr "Accepted"
+
 #: src/i18n.js:72
 msgid "Active"
 msgstr "Active"
@@ -64,6 +68,14 @@ msgstr "Comment"
 #: src/i18n.js:74
 msgid "Completed"
 msgstr "Completed"
+
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr "Contacted"
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr "Could not load your matches."
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
@@ -145,6 +157,14 @@ msgstr "Loading..."
 msgid "Looking for courier"
 msgstr "Looking for courier"
 
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr "Matched with"
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr "Matches"
+
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
 #~ msgstr "Maximum number of airports selected"
@@ -165,6 +185,10 @@ msgstr "My Requests"
 msgid "New"
 msgstr "New"
 
+#: src/i18n.js:90
+msgid "New matches"
+msgstr "New matches"
+
 #: src/i18n.js:86
 msgid "Next"
 msgstr "Next"
@@ -172,6 +196,10 @@ msgstr "Next"
 #: src/i18n.js:39
 msgid "No end date"
 msgstr "No end date"
+
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr "No matches yet."
 
 #: src/i18n.js:45
 #~ msgid "no matching airports found, try to write in english"
@@ -213,6 +241,14 @@ msgstr "Please select departure and arrival cities from the list"
 msgid "Previous"
 msgstr "Previous"
 
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr "Proposed"
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr "Rejected"
+
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "Remove"
@@ -221,7 +257,7 @@ msgstr "Remove"
 msgid "Request pagination"
 msgstr "Request pagination"
 
-#: src/i18n.js:89
+#: src/i18n.js:99
 msgid "Role"
 msgstr "Role"
 
@@ -256,3 +292,7 @@ msgstr "User Not Found"
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "You are not registered in the system. Please register through the Telegram bot first."
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr "Your request"

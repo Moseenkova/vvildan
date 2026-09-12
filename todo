@@ -1,3 +1,4 @@
+matching flow, add 3rd tab in sidebar for candidates with short candidate detail and rating and comments of other users and history of trips and scores and comments, date of registration
 notify abount new matching requests
 cache latest reqeusts search in my_requests
 
@@ -10,5 +11,3 @@ celery task to daily backup db 14 copies max
 
 
 test run docker compose
-
-add translation to support

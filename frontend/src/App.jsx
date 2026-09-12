@@ -292,6 +292,52 @@ function RequestDetails({ request, onClose, t, language }) {
   )
 }
 
+function MatchesList({ matches, loading, error, t, language }) {
+  const route = (request) => {
+    const from = request.departure_cities.map((city) => city.name).join(', ')
+    const to = request.arrival_cities.map((city) => city.name).join(', ')
+    return `${from} → ${to}`
+  }
+
+  const dates = (request) => {
+    const from = formatLocalizedDate(request.date_from, language)
+    const to = formatLocalizedDate(request.date_to, language)
+    if (!request.date_from) return to
+    if (!request.date_to) return `${from} – ${t.noEndDate}`
+    if (request.date_from === request.date_to) return from
+    return `${from} – ${to}`
+  }
+
+  return (
+    <section className="matches-panel">
+      <div className="requests-heading">
+        <h2>{t.matches}</h2>
+        <span>{matches.length}</span>
+      </div>
+      <div className="match-list">
+        {loading && <p className="request-message">{t.loading}</p>}
+        {!loading && error && <p className="request-message request-error">{t.failedToLoadMatches}</p>}
+        {!loading && !error && matches.length === 0 && <p className="request-message">{t.noMatches}</p>}
+        {!loading && !error && matches.map((match) => (
+          <article className={`match-card ${match.is_new ? 'match-new' : ''}`} key={match.id}>
+            <div className="request-card-topline">
+              <strong>{t.matchedWith}: {match.matching_user.name}</strong>
+              <span className={`status-badge status-${match.status}`}>{t[match.status] || match.status}</span>
+            </div>
+            {match.matching_user.username && <span className="match-username">@{match.matching_user.username}</span>}
+            <span className="request-route">{route(match.matching_request)}</span>
+            <span className="request-date">{dates(match.matching_request)}</span>
+            {match.matching_request.comment && (
+              <p className="match-comment"><strong>{t.comment}:</strong> {match.matching_request.comment}</p>
+            )}
+            <span className="match-own-request">{t.yourRequest} #{match.own_request.id}</span>
+          </article>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 function App() {
   const { _ } = useLingui()
   const language = locale
@@ -307,7 +353,9 @@ function App() {
     return () => window.removeEventListener('auth-required', requireLogin)
   }, [])
   const [role, setRole] = useState('sender')
-  const [activePage, setActivePage] = useState('new')
+  const [activePage, setActivePage] = useState(() => (
+    new URLSearchParams(window.location.search).get('tab') === 'matches' ? 'matches' : 'new'
+  ))
   const [userNotFound, setUserNotFound] = useState(false)
   const [form, setForm] = useState({
     dateFrom: null,
@@ -328,6 +376,10 @@ function App() {
   const [requestsError, setRequestsError] = useState(false)
   const [requestStatus, setRequestStatus] = useState('all')
   const [selectedRequest, setSelectedRequest] = useState(null)
+  const [matches, setMatches] = useState([])
+  const [matchesLoading, setMatchesLoading] = useState(true)
+  const [matchesError, setMatchesError] = useState(false)
+  const matchesRequestRef = useRef(0)
 
   const loadRequests = async (page = 1, status = requestStatus) => {
     setRequestsLoading(true)
@@ -356,6 +408,32 @@ function App() {
     }
   }
 
+  const loadMatches = async (markSeen = false, silent = false) => {
+    const requestId = ++matchesRequestRef.current
+    if (!silent) setMatchesLoading(true)
+    setMatchesError(false)
+    try {
+      const { data } = await api.get('/api/matches', { params: { language } })
+      if (requestId !== matchesRequestRef.current) return
+      const nextMatches = Array.isArray(data) ? data : []
+      setMatches(nextMatches)
+      if (markSeen && nextMatches.some((match) => match.is_new)) {
+        try {
+          await api.post('/api/matches/seen')
+          setMatches((current) => current.map((match) => ({ ...match, is_new: false })))
+        } catch (error) {
+          console.error('Failed to mark matches as seen:', error)
+        }
+      }
+    } catch (error) {
+      if (requestId !== matchesRequestRef.current) return
+      console.error('Failed to load matches:', error)
+      setMatchesError(true)
+    } finally {
+      if (!silent && requestId === matchesRequestRef.current) setMatchesLoading(false)
+    }
+  }
+
   useEffect(() => {
     document.documentElement.lang = language
     document.documentElement.dir = ['ar', 'fa', 'ps', 'sd', 'ur'].includes(language) ? 'rtl' : 'ltr'
@@ -367,7 +445,7 @@ function App() {
       if (!initData && !isDev) {
         if (localStorage.getItem('access_token')) {
           setAuthState('authenticated')
-          await loadRequests(1)
+          await Promise.all([loadRequests(1), loadMatches(false)])
         } else {
           setAuthState('login')
           setRequestsLoading(false)
@@ -380,7 +458,7 @@ function App() {
           : await api.post('/api/auth/dev-login')
         localStorage.setItem('access_token', data.access_token)
         setAuthState('authenticated')
-        await loadRequests(1)
+        await Promise.all([loadRequests(1), loadMatches(false)])
       } catch (error) {
         setAuthState(initData ? 'telegram-error' : 'login')
         console.error('Authentication failed:', error)
@@ -391,6 +469,21 @@ function App() {
     // Authentication and the first page are initialized when the locale changes.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [language])
+
+  useEffect(() => {
+    if (authState !== 'authenticated') return undefined
+    if (activePage === 'matches') loadMatches(true)
+
+    const refreshMatches = () => loadMatches(activePage === 'matches', true)
+    const interval = window.setInterval(refreshMatches, 30000)
+    window.addEventListener('focus', refreshMatches)
+    return () => {
+      window.clearInterval(interval)
+      window.removeEventListener('focus', refreshMatches)
+    }
+    // Match refreshes intentionally follow authentication and the open tab.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activePage, authState, language])
 
   const changeRequestsPage = async (page) => {
     if (page < 1 || page > requestsPagination.pages || page === requestsPagination.page) return
@@ -469,6 +562,7 @@ function App() {
       setDepartureCities([])
       setArrivalCities([])
       await loadRequests(1)
+      await loadMatches(activePage === 'matches')
       alert(t.submitted)
     } catch (error) {
       console.error('Failed to submit request:', error)
@@ -502,6 +596,16 @@ function App() {
       <div className="role-selector page-navigation">
         <button type="button" onClick={() => setActivePage('new')} className={`role-button ${activePage === 'new' ? 'active' : ''}`}>{t.newRequest}</button>
         <button type="button" onClick={() => setActivePage('requests')} className={`role-button ${activePage === 'requests' ? 'active' : ''}`}>{t.myRequests}</button>
+        <button
+          type="button"
+          onClick={() => setActivePage('matches')}
+          className={`role-button match-tab ${activePage === 'matches' ? 'active' : ''}`}
+        >
+          {t.matches}
+          {matches.some((match) => match.is_new) && (
+            <span className="new-match-dot" aria-label={t.newMatches} role="status" />
+          )}
+        </button>
       </div>
 
       {activePage === 'new' ? (
@@ -540,8 +644,10 @@ function App() {
         </div>
         <button type="submit" className="submit-button">{t.submit}</button>
       </form>
-      ) : (
+      ) : activePage === 'requests' ? (
         <RequestSidebar requests={requests} pagination={requestsPagination} loading={requestsLoading} error={requestsError} status={requestStatus} onStatusChange={changeRequestStatus} onPageChange={changeRequestsPage} onSelect={setSelectedRequest} t={t} language={language} />
+      ) : (
+        <MatchesList matches={matches} loading={matchesLoading} error={matchesError} t={t} language={language} />
       )}
       </main>
       <RequestDetails request={selectedRequest} onClose={() => setSelectedRequest(null)} t={t} language={language} />

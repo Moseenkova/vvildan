@@ -11,6 +11,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr ""
+
 #: src/i18n.js:72
 msgid "Active"
 msgstr "활성"
@@ -62,6 +66,14 @@ msgstr "댓글"
 #: src/i18n.js:74
 msgid "Completed"
 msgstr "완료됨"
+
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr ""
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr ""
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
@@ -143,6 +155,14 @@ msgstr "로드 중..."
 msgid "Looking for courier"
 msgstr "배송 기사 찾는 중"
 
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr ""
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr ""
+
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
 #~ msgstr ""
@@ -163,6 +183,10 @@ msgstr "내 요청"
 msgid "New"
 msgstr "새로운"
 
+#: src/i18n.js:90
+msgid "New matches"
+msgstr ""
+
 #: src/i18n.js:86
 msgid "Next"
 msgstr "다음"
@@ -170,6 +194,10 @@ msgstr "다음"
 #: src/i18n.js:39
 msgid "No end date"
 msgstr "종료일 없음"
+
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr ""
 
 #: src/i18n.js:45
 #~ msgid "no matching airports found, try to write in english"
@@ -211,6 +239,14 @@ msgstr ""
 msgid "Previous"
 msgstr "이전"
 
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr ""
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr ""
+
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "삭제"
@@ -219,7 +255,7 @@ msgstr "삭제"
 msgid "Request pagination"
 msgstr "페이지 매김 요청"
 
-#: src/i18n.js:89
+#: src/i18n.js:99
 msgid "Role"
 msgstr "역할"
 
@@ -254,3 +290,7 @@ msgstr "사용자를 찾을 수 없음"
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "귀하는 시스템에 등록되어 있지 않습니다. 먼저 텔레그램 봇을 통해 회원가입을 해주세요."
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr ""

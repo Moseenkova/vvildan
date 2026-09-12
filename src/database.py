@@ -188,6 +188,8 @@ class Match(Base):
         default=MatchStatus.proposed,
         server_default=MatchStatus.proposed.value,
     )
+    sender_seen_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+    courier_seen_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
 
     __table_args__ = (
         UniqueConstraint(

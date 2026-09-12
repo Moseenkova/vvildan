@@ -31,7 +31,7 @@ class RequestSchema(BaseModel):
     date_to: date | None
     departure_cities: list[RequestCitySchema]
     arrival_cities: list[RequestCitySchema]
-    comment: str
+    comment: str | None
     status: str
     created_at: datetime
 

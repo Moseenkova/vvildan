@@ -1,3 +1,5 @@
+import logging
+
 from jinja2 import PackageLoader
 from sqladmin import Admin, ModelView
 from sqladmin.authentication import AuthenticationBackend
@@ -18,6 +20,7 @@ from src.database import (
     async_session_maker,
     engine,
 )
+from src.matches.service import notify_match_users
 
 
 class AdminAuthentication(AuthenticationBackend):
@@ -61,7 +64,18 @@ class RequestView(ModelView, model=Request):
 
 
 class MatchView(ModelView, model=Match):
-    pass
+    form_excluded_columns = [Match.sender_seen_at, Match.courier_seen_at]
+
+    async def after_model_change(self, data, model, is_created, request):
+        if not is_created:
+            return None
+        try:
+            await notify_match_users(model.id)
+        except Exception:
+            # The match is already committed; a Telegram outage must not make the
+            # admin retry and accidentally create a duplicate match.
+            logging.exception("Could not notify users about match %s", model.id)
+        return None
 
 
 class CountryView(ModelView, model=Country):
