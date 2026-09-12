@@ -259,7 +259,7 @@ function RequestSidebar({ requests, pagination, loading, error, status, onStatus
   )
 }
 
-function RequestDetails({ request, onClose, t, language }) {
+function RequestDetails({ request, hideCreated = false, onClose, t, language }) {
   if (!request) return null
   const cities = (items) => items.map((city) => (
     `${city.name}, ${city.country_name}`
@@ -285,7 +285,7 @@ function RequestDetails({ request, onClose, t, language }) {
           <div><dt>{t.departure}</dt><dd className="multiline">{cities(request.departure_cities)}</dd></div>
           <div><dt>{t.arrival}</dt><dd className="multiline">{cities(request.arrival_cities)}</dd></div>
           {request.comment && <div><dt>{t.comment}</dt><dd>{request.comment}</dd></div>}
-          <div><dt>{t.created}</dt><dd>{formatLocalizedDate(request.created_at, language)}</dd></div>
+          {!hideCreated && <div><dt>{t.created}</dt><dd>{formatLocalizedDate(request.created_at, language)}</dd></div>}
         </dl>
       </section>
     </div>
@@ -381,6 +381,7 @@ function App() {
   const [requestsError, setRequestsError] = useState(false)
   const [requestStatus, setRequestStatus] = useState('all')
   const [selectedRequest, setSelectedRequest] = useState(null)
+  const [selectedRequestFromMatches, setSelectedRequestFromMatches] = useState(false)
   const [matches, setMatches] = useState([])
   const [matchesLoading, setMatchesLoading] = useState(true)
   const [matchesError, setMatchesError] = useState(false)
@@ -509,7 +510,10 @@ function App() {
     const linkedCandidate = matches.find(
       (match) => match.matching_request.id === deepLink.requestId,
     )
-    if (linkedCandidate) setSelectedRequest(linkedCandidate.matching_request)
+    if (linkedCandidate) {
+      setSelectedRequestFromMatches(true)
+      setSelectedRequest(linkedCandidate.matching_request)
+    }
     deepLink.opened = true
   }, [activePage, matches, matchesLoading])
 
@@ -673,12 +677,18 @@ function App() {
         <button type="submit" className="submit-button">{t.submit}</button>
       </form>
       ) : activePage === 'requests' ? (
-        <RequestSidebar requests={requests} pagination={requestsPagination} loading={requestsLoading} error={requestsError} status={requestStatus} onStatusChange={changeRequestStatus} onPageChange={changeRequestsPage} onSelect={setSelectedRequest} t={t} language={language} />
+        <RequestSidebar requests={requests} pagination={requestsPagination} loading={requestsLoading} error={requestsError} status={requestStatus} onStatusChange={changeRequestStatus} onPageChange={changeRequestsPage} onSelect={(request) => {
+          setSelectedRequestFromMatches(false)
+          setSelectedRequest(request)
+        }} t={t} language={language} />
       ) : (
-        <MatchesList matches={matches} loading={matchesLoading} error={matchesError} onSelect={setSelectedRequest} t={t} language={language} />
+        <MatchesList matches={matches} loading={matchesLoading} error={matchesError} onSelect={(request) => {
+          setSelectedRequestFromMatches(true)
+          setSelectedRequest(request)
+        }} t={t} language={language} />
       )}
       </main>
-      <RequestDetails request={selectedRequest} onClose={() => setSelectedRequest(null)} t={t} language={language} />
+      <RequestDetails request={selectedRequest} hideCreated={selectedRequestFromMatches} onClose={() => setSelectedRequest(null)} t={t} language={language} />
     </div>
   )
 }
