@@ -41,9 +41,7 @@ async def _get_user_by_telegram_id(telegram_id: int) -> User | None:
 
 async def _get_refresh_token(token_id: object) -> RefreshToken | None:
     async with async_session_maker() as session:
-        return await session.scalar(
-            select(RefreshToken).where(RefreshToken.token_id == token_id)
-        )
+        return await session.scalar(select(RefreshToken).where(RefreshToken.token_id == token_id))
 
 
 async def _save_refresh_token(user_id: int, token: dict[str, Any]) -> None:
@@ -84,9 +82,7 @@ async def authenticate_telegram_user(telegram_id: int) -> dict[str, Any]:
 async def authenticate_telegram_init_data(init_data: str) -> dict[str, Any]:
     """Authenticate a Mini App user from Telegram-signed launch data."""
     try:
-        telegram_data = safe_parse_webapp_init_data(
-            cfg.BOT_TOKEN.get_secret_value(), init_data
-        )
+        telegram_data = safe_parse_webapp_init_data(cfg.BOT_TOKEN.get_secret_value(), init_data)
     except ValueError as exc:
         raise AuthFailedException from exc
 

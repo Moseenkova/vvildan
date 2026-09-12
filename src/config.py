@@ -40,6 +40,9 @@ class Settings(BaseSettings):
     SUPPORT_GROUP_ADMIN_IDS: Annotated[tuple[int, ...], NoDecode]
     TELEGRAM_SECRET_TOKEN: str = "abcdefghijklmnopqrstuvwxyz"
 
+    TELEGRAM_LOGIN_CLIENT_ID: int | None = None
+    TELEGRAM_LOGIN_CLIENT_SECRET: str | None = None
+
     DEV_CHAT_ID: int | None = None
     TELEGRAM_AUTH_MAX_AGE_SECONDS: int = 300
     MAX_ACTIVE_REQUESTS_PER_USER: int = 5

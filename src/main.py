@@ -10,7 +10,11 @@ from src.requests import requests_router
 from src.search import search_router
 
 app = FastAPI()
-app.add_middleware(SessionMiddleware, secret_key=get_settings().SECRET_KEY)
+app.add_middleware(
+    SessionMiddleware,
+    secret_key=get_settings().SECRET_KEY,
+    https_only=get_settings().MODE == "PROD",
+)
 
 app.add_middleware(
     CORSMiddleware,

@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import DatePicker, { registerLocale } from 'react-datepicker'
 import { enUS, ru } from 'date-fns/locale'
 import { useLingui } from '@lingui/react/macro'
 import 'react-datepicker/dist/react-datepicker.css'
 import api from './api'
+import TelegramLogin from './TelegramLogin'
 import { getMessages, locale } from './i18n'
 import './App.css'
 
@@ -230,6 +231,16 @@ function App() {
   const { _ } = useLingui()
   const language = locale
   const t = getMessages(_)
+  const [authState, setAuthState] = useState('loading')
+  const onBrowserLogin = useCallback((token) => {
+    localStorage.setItem('access_token', token)
+    window.location.reload()
+  }, [])
+  useEffect(() => {
+    const requireLogin = () => setAuthState(window.Telegram?.WebApp?.initData ? 'telegram-error' : 'login')
+    window.addEventListener('auth-required', requireLogin)
+    return () => window.removeEventListener('auth-required', requireLogin)
+  }, [])
   const [role, setRole] = useState('sender')
   const [activePage, setActivePage] = useState('new')
   const [userNotFound, setUserNotFound] = useState(false)
@@ -288,8 +299,13 @@ function App() {
       const initData = window.Telegram?.WebApp?.initData
       const isDev = import.meta.env.VITE_DEV_ENV === 'true'
       if (!initData && !isDev) {
-        if (localStorage.getItem('access_token')) await loadRequests(1)
-        else setRequestsLoading(false)
+        if (localStorage.getItem('access_token')) {
+          setAuthState('authenticated')
+          await loadRequests(1)
+        } else {
+          setAuthState('login')
+          setRequestsLoading(false)
+        }
         return
       }
       try {
@@ -297,8 +313,10 @@ function App() {
           ? await api.post('/api/auth/login', { init_data: initData })
           : await api.post('/api/auth/dev-login')
         localStorage.setItem('access_token', data.access_token)
+        setAuthState('authenticated')
         await loadRequests(1)
       } catch (error) {
+        setAuthState(initData ? 'telegram-error' : 'login')
         console.error('Authentication failed:', error)
         if (error.response?.status === 404) setUserNotFound(true)
       }
@@ -390,6 +408,16 @@ function App() {
       alert(error.response?.data?.detail || 'Failed to submit request')
     }
   }
+
+  if (authState === 'telegram-error' && !userNotFound) return (
+    <main className="app-container not-found">
+      <h1>Unable to sign in through Telegram</h1>
+      <p role="alert">Please reopen this app from the bot to refresh your Telegram session, or try again.</p>
+      <button type="button" onClick={() => window.location.reload()}>Try again</button>
+    </main>
+  )
+  if (authState === 'loading') return <main className="app-container"><p role="status">{t.loading}</p></main>
+  if (authState === 'login' && !userNotFound) return <TelegramLogin onLogin={onBrowserLogin} registrationMessage={t.registrationRequired} />
 
   if (userNotFound) {
     return (
