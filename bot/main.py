@@ -10,10 +10,12 @@ from aiogram.filters import Command, CommandObject, CommandStart
 from aiogram.types import Message
 from aiogram.utils.markdown import hbold
 
+from bot.translation import needs_translation, translate_topic_text
 from bot.translations import get_welcome_message
 from bot.utils import (
     create_customer_tg_topic,
-    get_customer_chat_id_by_topic_id,
+    get_customer_topic_by_customer_chat_id,
+    get_customer_topic_by_topic_id,
     get_topic_id_by_customer_chat_id,
     update_customer_topic_language,
 )
@@ -99,6 +101,34 @@ async def customer_message(message: Message, bot: Bot) -> None:
 
     topic_id = await get_or_create_customer_topic(message, bot)
 
+    topic = await get_customer_topic_by_customer_chat_id(message.chat.id)
+    language_code = topic.language_code if topic else None
+    original_text = message.text or message.caption
+    if needs_translation(language_code) and original_text:
+        translated = await translate_topic_text(
+            topic_id,
+            original_text,
+            source_language=language_code,
+            target_language="ru",
+            direction="customer to support",
+        )
+        admin_text = f"{original_text}\n\n{translated}"
+        if message.text is not None:
+            await bot.send_message(
+                chat_id=cfg.SUPPORT_GROUP_ID,
+                message_thread_id=topic_id,
+                text=admin_text,
+                parse_mode=None,
+            )
+        else:
+            await message.copy_to(
+                chat_id=cfg.SUPPORT_GROUP_ID,
+                message_thread_id=topic_id,
+                caption=admin_text,
+                parse_mode=None,
+            )
+        return
+
     try:
         await message.send_copy(
             chat_id=cfg.SUPPORT_GROUP_ID,
@@ -158,8 +188,8 @@ async def admin_reply(message: Message, bot: Bot) -> None:
     if topic_id is None:
         return
 
-    customer_id = await get_customer_chat_id_by_topic_id(topic_id)
-    if customer_id is None:
+    topic = await get_customer_topic_by_topic_id(topic_id)
+    if topic is None:
         await bot.send_message(
             chat_id=cfg.SUPPORT_GROUP_ID,
             message_thread_id=topic_id,
@@ -167,7 +197,32 @@ async def admin_reply(message: Message, bot: Bot) -> None:
         )
         return
 
+    customer_id = topic.customer_chat_id
+
     if message.forum_topic_created or message.forum_topic_closed:
+        return
+
+    original_text = message.text or message.caption
+    if needs_translation(topic.language_code) and original_text:
+        translated = await translate_topic_text(
+            topic_id,
+            original_text,
+            source_language="ru",
+            target_language=topic.language_code,
+            direction="support to customer",
+        )
+        if message.text is not None:
+            await bot.send_message(
+                chat_id=customer_id,
+                text=translated,
+                parse_mode=None,
+            )
+        else:
+            await message.copy_to(
+                chat_id=customer_id,
+                caption=translated,
+                parse_mode=None,
+            )
         return
 
     try:

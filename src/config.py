@@ -40,6 +40,9 @@ class Settings(BaseSettings):
     SUPPORT_GROUP_ADMIN_IDS: Annotated[tuple[int, ...], NoDecode]
     TELEGRAM_SECRET_TOKEN: str = "abcdefghijklmnopqrstuvwxyz"
 
+    OPENAI_API_KEY: SecretStr | None = None
+    OPENAI_TRANSLATION_MODEL: str = "gpt-4.1-mini"
+
     TELEGRAM_LOGIN_CLIENT_ID: int | None = None
     TELEGRAM_LOGIN_CLIENT_SECRET: str | None = None
 
