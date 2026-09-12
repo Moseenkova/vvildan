@@ -8,7 +8,11 @@ from pydantic import SecretStr
 from sqlalchemy import select
 
 from src.database import Match, RequestRole, User, async_session_maker
-from src.matches.service import get_user_matches, notify_match_users
+from src.matches.service import (
+    get_user_matches,
+    notify_match_users,
+    notify_request_candidates,
+)
 from tests.conftest import AuthenticatedClient
 from tests.factories import FactoryNamespace
 
@@ -232,3 +236,80 @@ async def test_notify_match_users_sends_details_and_webapp_button(
     button = sender_message["reply_markup"].inline_keyboard[0][0]
     assert button.web_app.url == "https://example.com/webapp/?tab=matches"
     fake_bot.session.close.assert_awaited_once()
+
+
+@pytest.mark.asyncio
+async def test_notify_request_candidates_sends_new_request_and_matches_link(
+    factory: FactoryNamespace,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    sender = await factory.User(tg_id=2001, name="Sender")
+    courier = await factory.User(tg_id=2002, name="New Courier")
+    departure = await factory.City(name="Moscow")
+    arrival = await factory.City(name="Istanbul")
+    sender_request = await factory.Request(
+        user=sender,
+        role=RequestRole.sender,
+        date_from=date(2026, 9, 12),
+        date_to=None,
+        departure_cities=[departure],
+        arrival_cities=[arrival],
+    )
+    courier_request = await factory.Request(
+        user=courier,
+        role=RequestRole.courier,
+        date_from=date(2026, 9, 13),
+        date_to=date(2026, 9, 13),
+        departure_cities=[departure],
+        arrival_cities=[arrival],
+        comment="Electronics only",
+    )
+    fake_bot = SimpleNamespace(
+        send_message=AsyncMock(),
+        session=SimpleNamespace(close=AsyncMock()),
+    )
+    monkeypatch.setattr("src.matches.service.Bot", lambda token: fake_bot)
+    settings = SimpleNamespace(
+        BOT_TOKEN=SecretStr("123:test"),
+        BASE_URL="https://example.com",
+    )
+
+    await notify_request_candidates(courier_request.id, settings)
+
+    fake_bot.send_message.assert_awaited_once()
+    notification = fake_bot.send_message.await_args.kwargs
+    assert notification["chat_id"] == sender.tg_id
+    assert f"#{sender_request.id}" in notification["text"]
+    assert "New Courier" in notification["text"]
+    assert "Moscow → Istanbul" in notification["text"]
+    assert "Electronics only" in notification["text"]
+    button = notification["reply_markup"].inline_keyboard[0][0]
+    assert button.web_app.url == "https://example.com/webapp/?tab=matches"
+    fake_bot.session.close.assert_awaited_once()
+
+
+@pytest.mark.asyncio
+async def test_creating_request_triggers_candidate_notifications(
+    auth_ac: AuthenticatedClient,
+    factory: FactoryNamespace,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    departure = await factory.City(name="Moscow")
+    arrival = await factory.City(name="Istanbul")
+    notify = AsyncMock()
+    monkeypatch.setattr("src.matches.service.notify_request_candidates", notify)
+
+    response = await auth_ac.client.post(
+        "/api/requests",
+        json={
+            "role": "courier",
+            "dateFrom": "2026-09-13",
+            "dateTo": "2026-09-13",
+            "departureCityIds": [departure.id],
+            "arrivalCityIds": [arrival.id],
+            "baggageComments": "Electronics only",
+        },
+    )
+
+    assert response.status_code == 201
+    notify.assert_awaited_once_with(response.json()["id"])

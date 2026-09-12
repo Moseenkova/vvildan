@@ -41,6 +41,50 @@ def _match_relationships():
     )
 
 
+def _candidate_statement(own: TravelRequest, user_id: int):
+    departure_ids = [city.id for city in own.departure_cities]
+    arrival_ids = [city.id for city in own.arrival_cities]
+    if not departure_ids or not arrival_ids:
+        return None
+
+    if own.role == RequestRole.sender:
+        opposite_role = RequestRole.courier
+        date_condition = and_(
+            *([TravelRequest.date_from >= own.date_from] if own.date_from is not None else []),
+            *([TravelRequest.date_from <= own.date_to] if own.date_to is not None else []),
+        )
+    else:
+        opposite_role = RequestRole.sender
+        date_condition = and_(
+            or_(
+                TravelRequest.date_from.is_(None),
+                TravelRequest.date_from <= own.date_from,
+            ),
+            or_(
+                TravelRequest.date_to.is_(None),
+                TravelRequest.date_to >= own.date_from,
+            ),
+        )
+
+    return (
+        select(TravelRequest)
+        .where(
+            TravelRequest.user_id != user_id,
+            TravelRequest.role == opposite_role,
+            TravelRequest.status == RequestStatus.active,
+            TravelRequest.departure_cities.any(City.id.in_(departure_ids)),
+            TravelRequest.arrival_cities.any(City.id.in_(arrival_ids)),
+            date_condition,
+        )
+        .options(
+            selectinload(TravelRequest.user),
+            selectinload(TravelRequest.departure_cities).selectinload(City.country),
+            selectinload(TravelRequest.arrival_cities).selectinload(City.country),
+        )
+        .order_by(TravelRequest.created_at.desc())
+    )
+
+
 async def _localized_requests(session, requests, language: str):
     language = language.lower().replace("_", "-").split("-", 1)[0]
     cities = {
@@ -140,53 +184,10 @@ async def get_user_matches(user_id: int, language: str = "en") -> list[MatchSche
         candidates = []
         candidate_pair_keys = set()
         for own in own_requests:
-            departure_ids = [city.id for city in own.departure_cities]
-            arrival_ids = [city.id for city in own.arrival_cities]
-            if not departure_ids or not arrival_ids:
+            statement = _candidate_statement(own, user_id)
+            if statement is None:
                 continue
-
-            if own.role == RequestRole.sender:
-                opposite_role = RequestRole.courier
-                date_condition = and_(
-                    *(
-                        [TravelRequest.date_from >= own.date_from]
-                        if own.date_from is not None
-                        else []
-                    ),
-                    *([TravelRequest.date_from <= own.date_to] if own.date_to is not None else []),
-                )
-            else:
-                opposite_role = RequestRole.sender
-                date_condition = and_(
-                    or_(
-                        TravelRequest.date_from.is_(None),
-                        TravelRequest.date_from <= own.date_from,
-                    ),
-                    or_(
-                        TravelRequest.date_to.is_(None),
-                        TravelRequest.date_to >= own.date_from,
-                    ),
-                )
-
-            rows = (
-                await session.scalars(
-                    select(TravelRequest)
-                    .where(
-                        TravelRequest.user_id != user_id,
-                        TravelRequest.role == opposite_role,
-                        TravelRequest.status == RequestStatus.active,
-                        TravelRequest.departure_cities.any(City.id.in_(departure_ids)),
-                        TravelRequest.arrival_cities.any(City.id.in_(arrival_ids)),
-                        date_condition,
-                    )
-                    .options(
-                        selectinload(TravelRequest.user),
-                        selectinload(TravelRequest.departure_cities).selectinload(City.country),
-                        selectinload(TravelRequest.arrival_cities).selectinload(City.country),
-                    )
-                    .order_by(TravelRequest.created_at.desc())
-                )
-            ).all()
+            rows = (await session.scalars(statement)).all()
             for candidate in rows:
                 pair = (
                     (own.id, candidate.id)
@@ -285,6 +286,66 @@ def _request_summary(request: TravelRequest) -> str:
         dates = f"{request.date_from or 'any date'} – {request.date_to or 'no end date'}"
     comment = f"\nComment: {request.comment}" if request.comment else ""
     return f"{departure} → {arrival}\nDate: {dates}{comment}"
+
+
+async def notify_request_candidates(
+    request_id: int,
+    settings: Settings | None = None,
+) -> None:
+    settings = settings or get_settings()
+    async with async_session_maker() as session:
+        request = await session.scalar(
+            select(TravelRequest)
+            .where(TravelRequest.id == request_id)
+            .options(
+                selectinload(TravelRequest.user),
+                selectinload(TravelRequest.departure_cities).selectinload(City.country),
+                selectinload(TravelRequest.arrival_cities).selectinload(City.country),
+            )
+        )
+        if request is None:
+            return
+        statement = _candidate_statement(request, request.user_id)
+        if statement is None:
+            return
+        candidates = (await session.scalars(statement)).all()
+
+    requests_by_user = {}
+    for candidate in candidates:
+        requests_by_user.setdefault(candidate.user.tg_id, []).append(candidate)
+    if not requests_by_user:
+        return
+
+    webapp_url = f"{settings.BASE_URL.rstrip('/')}/webapp/?tab=matches"
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(text="Open matches", web_app=WebAppInfo(url=webapp_url))]
+        ]
+    )
+    bot = Bot(token=settings.BOT_TOKEN.get_secret_value())
+    try:
+        for tg_id, matching_requests in requests_by_user.items():
+            request_numbers = ", ".join(f"#{item.id}" for item in matching_requests)
+            try:
+                await bot.send_message(
+                    chat_id=tg_id,
+                    text=(
+                        f"A new candidate matches your request(s) {request_numbers}!\n\n"
+                        f"Candidate: {request.user.name}\n"
+                        f"{_request_summary(request)}\n\n"
+                        "Click Open matches to view the candidate in the web app."
+                    ),
+                    reply_markup=keyboard,
+                    parse_mode=None,
+                )
+            except Exception:
+                logging.exception(
+                    "Could not notify Telegram user %s about request %s",
+                    tg_id,
+                    request_id,
+                )
+    finally:
+        await bot.session.close()
 
 
 async def notify_match_users(match_id: int, settings: Settings | None = None) -> None:
