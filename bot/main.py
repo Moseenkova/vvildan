@@ -73,14 +73,16 @@ async def get_or_create_customer_topic(message: Message, bot: Bot) -> int:
     await create_customer_tg_topic(customer_id, topic_id)
 
     username = f"@{user.username}" if user and user.username else "none"
+    language = user.language_code if user and user.language_code else "unknown"
     await bot.send_message(
         chat_id=cfg.SUPPORT_GROUP_ID,
         message_thread_id=topic_id,
         text=(
-            f"<b>Новое обращение</b>\n"
-            f"Имя: {display_name}\n"
+            f"<b>New support request</b>\n"
+            f"Name: {display_name}\n"
             f"Telegram ID: <code>{customer_id}</code>\n"
-            f"Username: {username}"
+            f"Username: {username}\n"
+            f"Language: {language}"
         ),
     )
 

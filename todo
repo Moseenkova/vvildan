@@ -10,3 +10,5 @@ celery task to daily backup db 14 copies max
 
 
 test run docker compose
+
+add translation to support
