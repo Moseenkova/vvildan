@@ -118,7 +118,7 @@ class Request(Base):
     user: Mapped["User"] = relationship(back_populates="requests")
     role: Mapped[RequestRole] = mapped_column(Enum(RequestRole), index=True)
 
-    date_from: Mapped[date] = mapped_column(Date)
+    date_from: Mapped[date | None] = mapped_column(Date)
     date_to: Mapped[date | None] = mapped_column(Date)
 
     departure_cities: Mapped[list["City"]] = relationship(
@@ -148,7 +148,13 @@ class Request(Base):
         cascade="all, delete-orphan",
     )
 
-    __table_args__ = (CheckConstraint("date_from <= date_to", name="ck_requests_date_range"),)
+    __table_args__ = (
+        CheckConstraint("date_from <= date_to", name="ck_requests_date_range"),
+        CheckConstraint(
+            "date_from IS NOT NULL OR date_to IS NOT NULL",
+            name="ck_requests_has_date",
+        ),
+    )
 
     def __str__(self) -> str:
         return f"{self.role.value} #{self.id}: {self.date_from} – {self.date_to}"

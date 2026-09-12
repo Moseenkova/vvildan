@@ -4,21 +4,27 @@ import pytest
 
 
 @pytest.mark.asyncio
-@pytest.mark.parametrize("end_date", [None, "omitted"])
-async def test_open_sender_request(auth_ac, factory, end_date):
+@pytest.mark.parametrize(
+    "dates,expected",
+    [
+        ({"dateFrom": "2026-09-10"}, ("2026-09-10", None)),
+        ({"dateFrom": "2026-09-10", "dateTo": None}, ("2026-09-10", None)),
+        ({"dateTo": "2026-09-12"}, (None, "2026-09-12")),
+        ({"dateFrom": None, "dateTo": "2026-09-12"}, (None, "2026-09-12")),
+    ],
+)
+async def test_sender_request_accepts_either_date_boundary(auth_ac, factory, dates, expected):
     city = await factory.City()
     payload = {
         "role": "sender",
-        "dateFrom": "2026-09-10",
+        **dates,
         "departureCityIds": [city.id],
         "arrivalCityIds": [city.id],
         "baggageComments": "Parcel",
     }
-    if end_date is None:
-        payload["dateTo"] = None
     response = await auth_ac.client.post("/api/requests", json=payload)
     assert response.status_code == 201
-    assert response.json()["date_to"] is None
+    assert (response.json()["date_from"], response.json()["date_to"]) == expected
     rows = (await auth_ac.client.get("/api/requests")).json()
     assert rows["items"] == [response.json()]
 
@@ -31,7 +37,8 @@ async def test_open_sender_request(auth_ac, factory, end_date):
         ("courier", {"dateFrom": "2026-09-10", "dateTo": None}),
         ("courier", {"dateFrom": "2026-09-10", "dateTo": "2026-09-11"}),
         ("courier", {"dateTo": "2026-09-10"}),
-        ("sender", {"dateTo": "2026-09-10"}),
+        ("sender", {}),
+        ("sender", {"dateFrom": None, "dateTo": None}),
         ("sender", {"dateFrom": "2026-09-10", "dateTo": "2026-09-09"}),
     ],
 )
