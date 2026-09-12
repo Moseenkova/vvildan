@@ -13,12 +13,17 @@ async def get_topic_id_by_customer_chat_id(customer_chat_id: int) -> int | None:
         return result.scalar_one_or_none()
 
 
-async def create_customer_tg_topic(customer_chat_id: int, topic_id: int) -> int:
+async def create_customer_tg_topic(
+    customer_chat_id: int,
+    topic_id: int,
+    language_code: str | None,
+) -> int:
     async with async_session_maker() as session:
         session.add(
             CustomerTgTopic(
                 customer_chat_id=customer_chat_id,
                 topic_id=topic_id,
+                language_code=language_code,
             )
         )
         await session.commit()
@@ -29,8 +34,6 @@ async def create_customer_tg_topic(customer_chat_id: int, topic_id: int) -> int:
 async def get_customer_chat_id_by_topic_id(topic_id: int) -> int | None:
     async with async_session_maker() as session:
         result = await session.execute(
-            select(CustomerTgTopic.customer_chat_id).where(
-                CustomerTgTopic.topic_id == topic_id
-            )
+            select(CustomerTgTopic.customer_chat_id).where(CustomerTgTopic.topic_id == topic_id)
         )
         return result.scalar_one_or_none()

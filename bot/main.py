@@ -62,6 +62,7 @@ async def get_or_create_customer_topic(message: Message, bot: Bot) -> int:
 
     user = message.from_user
     display_name = user.full_name if user else str(customer_id)
+    language_code = user.language_code if user else None
 
     topic = await bot.create_forum_topic(
         chat_id=cfg.SUPPORT_GROUP_ID,
@@ -70,10 +71,10 @@ async def get_or_create_customer_topic(message: Message, bot: Bot) -> int:
 
     topic_id = topic.message_thread_id
 
-    await create_customer_tg_topic(customer_id, topic_id)
+    await create_customer_tg_topic(customer_id, topic_id, language_code)
 
     username = f"@{user.username}" if user and user.username else "none"
-    language = user.language_code if user and user.language_code else "unknown"
+    language = language_code or "unknown"
     await bot.send_message(
         chat_id=cfg.SUPPORT_GROUP_ID,
         message_thread_id=topic_id,
