@@ -51,11 +51,11 @@ msgstr "මුලින්ම නගරයක් තෝරන්න"
 msgid "Choose a country first"
 msgstr "මුලින්ම රටක් තෝරන්න"
 
-#: src/i18n.js:79
+#: src/i18n.js:80
 msgid "Close"
 msgstr "වසන්න"
 
-#: src/i18n.js:80
+#: src/i18n.js:81
 msgid "Comment"
 msgstr "අදහස් දක්වන්න"
 
@@ -63,7 +63,7 @@ msgstr "අදහස් දක්වන්න"
 msgid "Completed"
 msgstr "සම්පූර්ණ කළා"
 
-#: src/i18n.js:78
+#: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "ඔබගේ ඉල්ලීම් පූරණය කළ නොහැකි විය."
 
@@ -75,7 +75,7 @@ msgstr "රට හෝ නගරය"
 msgid "Courier"
 msgstr "කුරියර්"
 
-#: src/i18n.js:81
+#: src/i18n.js:82
 msgid "Created"
 msgstr "නිර්මාණය කළා"
 
@@ -124,16 +124,24 @@ msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "උදාහරණයක් ලෙස: ඇඳුම් 5 kg, ලේඛන, ඉලෙක්ට්රොනික උපකරණ"
 
 #: src/i18n.js:67
-msgid "Form submitted! Check the console for data."
-msgstr "පෝරමය ඉදිරිපත් කළා! දත්ත සඳහා කොන්සෝලය පරීක්ෂා කරන්න."
+msgid "Form submitted!"
+msgstr "පෝරමය ඉදිරිපත් කළා!"
 
 #: src/i18n.js:37
 msgid "From date"
 msgstr "දින සිට"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "මම ගමන් මලු රැගෙන යන්නම්"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "පූරණය වෙමින්..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "කුරියර්වරයෙකු සොයමින්"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -151,17 +159,17 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "මගේ ඉල්ලීම්"
 
-#: src/i18n.js:87
+#: src/i18n.js:88
 msgid "New"
 msgstr "අලුත්"
 
-#: src/i18n.js:85
+#: src/i18n.js:86
 msgid "Next"
 msgstr "ඊළඟට"
 
 #: src/i18n.js:39
 msgid "No end date"
-msgstr ""
+msgstr "අවසන් දිනයක් නැත"
 
 #: src/i18n.js:45
 #~ msgid "no matching airports found, try to write in english"
@@ -171,11 +179,11 @@ msgstr ""
 msgid "no matching cities found, try to write in english"
 msgstr ""
 
-#: src/i18n.js:77
+#: src/i18n.js:78
 msgid "No requests with this status."
 msgstr "මෙම තත්ත්වය සමඟ ඉල්ලීම් නැත."
 
-#: src/i18n.js:86
+#: src/i18n.js:87
 msgid "Page"
 msgstr "පිටුව"
 
@@ -199,7 +207,7 @@ msgstr "කරුණාකර අවසන් දිනයක් තෝරන්
 msgid "Please select departure and arrival cities from the list"
 msgstr ""
 
-#: src/i18n.js:84
+#: src/i18n.js:85
 msgid "Previous"
 msgstr "පෙර"
 
@@ -207,15 +215,11 @@ msgstr "පෙර"
 msgid "Remove"
 msgstr "ඉවත් කරන්න"
 
-#: src/i18n.js:76
-msgid "Request details"
-msgstr "විස්තර ඉල්ලන්න"
-
-#: src/i18n.js:83
+#: src/i18n.js:84
 msgid "Request pagination"
 msgstr "පේජිනේෂන් ඉල්ලන්න"
 
-#: src/i18n.js:88
+#: src/i18n.js:89
 msgid "Role"
 msgstr "භූමිකාව"
 
@@ -223,7 +227,7 @@ msgstr "භූමිකාව"
 msgid "Sender"
 msgstr "යවන්නා"
 
-#: src/i18n.js:82
+#: src/i18n.js:83
 msgid "Status"
 msgstr "තත්ත්වය"
 

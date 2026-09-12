@@ -51,11 +51,11 @@ msgstr "最初に都市を選択してください"
 msgid "Choose a country first"
 msgstr "最初に国を選択してください"
 
-#: src/i18n.js:79
+#: src/i18n.js:80
 msgid "Close"
 msgstr "閉じる"
 
-#: src/i18n.js:80
+#: src/i18n.js:81
 msgid "Comment"
 msgstr "コメント"
 
@@ -63,7 +63,7 @@ msgstr "コメント"
 msgid "Completed"
 msgstr "完了"
 
-#: src/i18n.js:78
+#: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "リクエストを読み込めませんでした。"
 
@@ -75,7 +75,7 @@ msgstr "国または都市"
 msgid "Courier"
 msgstr "宅配便"
 
-#: src/i18n.js:81
+#: src/i18n.js:82
 msgid "Created"
 msgstr "作成されました"
 
@@ -124,16 +124,24 @@ msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "例: 衣類 5 kg、書類、電子機器"
 
 #: src/i18n.js:67
-msgid "Form submitted! Check the console for data."
-msgstr "フォームが送信されました!コンソールでデータを確認してください。"
+msgid "Form submitted!"
+msgstr "フォームが送信されました!"
 
 #: src/i18n.js:37
 msgid "From date"
 msgstr "日付から"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "荷物を運びます"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "読み込み中..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "配達員を探しています"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -151,17 +159,17 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "私のリクエスト"
 
-#: src/i18n.js:87
+#: src/i18n.js:88
 msgid "New"
 msgstr "新しい"
 
-#: src/i18n.js:85
+#: src/i18n.js:86
 msgid "Next"
 msgstr "次へ"
 
 #: src/i18n.js:39
 msgid "No end date"
-msgstr ""
+msgstr "終了日なし"
 
 #: src/i18n.js:45
 #~ msgid "no matching airports found, try to write in english"
@@ -171,11 +179,11 @@ msgstr ""
 msgid "no matching cities found, try to write in english"
 msgstr ""
 
-#: src/i18n.js:77
+#: src/i18n.js:78
 msgid "No requests with this status."
 msgstr "このステータスのリクエストはありません。"
 
-#: src/i18n.js:86
+#: src/i18n.js:87
 msgid "Page"
 msgstr "ページ"
 
@@ -199,7 +207,7 @@ msgstr "終了日を選択してください"
 msgid "Please select departure and arrival cities from the list"
 msgstr ""
 
-#: src/i18n.js:84
+#: src/i18n.js:85
 msgid "Previous"
 msgstr "前へ"
 
@@ -207,15 +215,11 @@ msgstr "前へ"
 msgid "Remove"
 msgstr "削除"
 
-#: src/i18n.js:76
-msgid "Request details"
-msgstr "リクエストの詳細"
-
-#: src/i18n.js:83
+#: src/i18n.js:84
 msgid "Request pagination"
 msgstr "ページネーションのリクエスト"
 
-#: src/i18n.js:88
+#: src/i18n.js:89
 msgid "Role"
 msgstr "役割"
 
@@ -223,7 +227,7 @@ msgstr "役割"
 msgid "Sender"
 msgstr "送信者"
 
-#: src/i18n.js:82
+#: src/i18n.js:83
 msgid "Status"
 msgstr "ステータス"
 

@@ -51,11 +51,11 @@ msgstr "Chọn một thành phố đầu tiên"
 msgid "Choose a country first"
 msgstr "Chọn quốc gia trước"
 
-#: src/i18n.js:79
+#: src/i18n.js:80
 msgid "Close"
 msgstr "Đóng"
 
-#: src/i18n.js:80
+#: src/i18n.js:81
 msgid "Comment"
 msgstr "Bình luận"
 
@@ -63,7 +63,7 @@ msgstr "Bình luận"
 msgid "Completed"
 msgstr "Đã hoàn thành"
 
-#: src/i18n.js:78
+#: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "Không thể tải yêu cầu của bạn."
 
@@ -75,7 +75,7 @@ msgstr "Quốc gia hoặc thành phố"
 msgid "Courier"
 msgstr "Chuyển phát nhanh"
 
-#: src/i18n.js:81
+#: src/i18n.js:82
 msgid "Created"
 msgstr "Đã tạo"
 
@@ -124,16 +124,24 @@ msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "Ví dụ: Quần áo 5 kg, tài liệu, đồ điện tử"
 
 #: src/i18n.js:67
-msgid "Form submitted! Check the console for data."
-msgstr "Đã gửi biểu mẫu! Kiểm tra bảng điều khiển để biết dữ liệu."
+msgid "Form submitted!"
+msgstr "Đã gửi biểu mẫu!"
 
 #: src/i18n.js:37
 msgid "From date"
 msgstr "Từ ngày"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "Tôi sẽ mang hành lý"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "Đang tải..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "Đang tìm người vận chuyển"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -151,17 +159,17 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "Yêu cầu của tôi"
 
-#: src/i18n.js:87
+#: src/i18n.js:88
 msgid "New"
 msgstr "Mới"
 
-#: src/i18n.js:85
+#: src/i18n.js:86
 msgid "Next"
 msgstr "Tiếp theo"
 
 #: src/i18n.js:39
 msgid "No end date"
-msgstr ""
+msgstr "Không có ngày kết thúc"
 
 #: src/i18n.js:45
 #~ msgid "no matching airports found, try to write in english"
@@ -171,11 +179,11 @@ msgstr ""
 msgid "no matching cities found, try to write in english"
 msgstr ""
 
-#: src/i18n.js:77
+#: src/i18n.js:78
 msgid "No requests with this status."
 msgstr "Không có yêu cầu nào có trạng thái này."
 
-#: src/i18n.js:86
+#: src/i18n.js:87
 msgid "Page"
 msgstr "Trang"
 
@@ -199,7 +207,7 @@ msgstr "Vui lòng chọn ngày kết thúc"
 msgid "Please select departure and arrival cities from the list"
 msgstr ""
 
-#: src/i18n.js:84
+#: src/i18n.js:85
 msgid "Previous"
 msgstr "trước đó"
 
@@ -207,15 +215,11 @@ msgstr "trước đó"
 msgid "Remove"
 msgstr "Xóa"
 
-#: src/i18n.js:76
-msgid "Request details"
-msgstr "Yêu cầu chi tiết"
-
-#: src/i18n.js:83
+#: src/i18n.js:84
 msgid "Request pagination"
 msgstr "Yêu cầu phân trang"
 
-#: src/i18n.js:88
+#: src/i18n.js:89
 msgid "Role"
 msgstr "Vai trò"
 
@@ -223,7 +227,7 @@ msgstr "Vai trò"
 msgid "Sender"
 msgstr "Người gửi"
 
-#: src/i18n.js:82
+#: src/i18n.js:83
 msgid "Status"
 msgstr "Trạng thái"
 

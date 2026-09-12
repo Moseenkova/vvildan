@@ -51,11 +51,11 @@ msgstr "Wählen Sie zunächst eine Stadt"
 msgid "Choose a country first"
 msgstr "Wählen Sie zunächst ein Land aus"
 
-#: src/i18n.js:79
+#: src/i18n.js:80
 msgid "Close"
 msgstr "Schließen"
 
-#: src/i18n.js:80
+#: src/i18n.js:81
 msgid "Comment"
 msgstr "Kommentar"
 
@@ -63,7 +63,7 @@ msgstr "Kommentar"
 msgid "Completed"
 msgstr "Abgeschlossen"
 
-#: src/i18n.js:78
+#: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "Ihre Anfragen konnten nicht geladen werden."
 
@@ -75,7 +75,7 @@ msgstr "Land oder Stadt"
 msgid "Courier"
 msgstr "Kurier"
 
-#: src/i18n.js:81
+#: src/i18n.js:82
 msgid "Created"
 msgstr "Erstellt"
 
@@ -124,16 +124,24 @@ msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "Zum Beispiel: Kleidung 5 kg, Dokumente, Elektronik"
 
 #: src/i18n.js:67
-msgid "Form submitted! Check the console for data."
-msgstr "Formular eingereicht! Überprüfen Sie die Konsole auf Daten."
+msgid "Form submitted!"
+msgstr "Formular eingereicht!"
 
 #: src/i18n.js:37
 msgid "From date"
 msgstr "Ab Datum"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "Ich nehme Gepäck mit"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "Laden..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "Kurier gesucht"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -151,17 +159,17 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "Meine Wünsche"
 
-#: src/i18n.js:87
+#: src/i18n.js:88
 msgid "New"
 msgstr "Neu"
 
-#: src/i18n.js:85
+#: src/i18n.js:86
 msgid "Next"
 msgstr "Als nächstes"
 
 #: src/i18n.js:39
 msgid "No end date"
-msgstr ""
+msgstr "Kein Enddatum"
 
 #: src/i18n.js:45
 #~ msgid "no matching airports found, try to write in english"
@@ -171,11 +179,11 @@ msgstr ""
 msgid "no matching cities found, try to write in english"
 msgstr ""
 
-#: src/i18n.js:77
+#: src/i18n.js:78
 msgid "No requests with this status."
 msgstr "Keine Anfragen mit diesem Status."
 
-#: src/i18n.js:86
+#: src/i18n.js:87
 msgid "Page"
 msgstr "Seite"
 
@@ -199,7 +207,7 @@ msgstr "Bitte wählen Sie ein Enddatum aus"
 msgid "Please select departure and arrival cities from the list"
 msgstr ""
 
-#: src/i18n.js:84
+#: src/i18n.js:85
 msgid "Previous"
 msgstr "Zurück"
 
@@ -207,15 +215,11 @@ msgstr "Zurück"
 msgid "Remove"
 msgstr "Entfernen"
 
-#: src/i18n.js:76
-msgid "Request details"
-msgstr "Details anfordern"
-
-#: src/i18n.js:83
+#: src/i18n.js:84
 msgid "Request pagination"
 msgstr "Paginierung anfordern"
 
-#: src/i18n.js:88
+#: src/i18n.js:89
 msgid "Role"
 msgstr "Rolle"
 
@@ -223,7 +227,7 @@ msgstr "Rolle"
 msgid "Sender"
 msgstr "Absender"
 
-#: src/i18n.js:82
+#: src/i18n.js:83
 msgid "Status"
 msgstr "Status"
 

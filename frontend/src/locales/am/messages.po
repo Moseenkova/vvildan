@@ -51,11 +51,11 @@ msgstr "መጀመሪያ ከተማ ይምረጡ"
 msgid "Choose a country first"
 msgstr "መጀመሪያ አገር ይምረጡ"
 
-#: src/i18n.js:79
+#: src/i18n.js:80
 msgid "Close"
 msgstr "ዝጋ"
 
-#: src/i18n.js:80
+#: src/i18n.js:81
 msgid "Comment"
 msgstr "አስተያየት"
 
@@ -63,7 +63,7 @@ msgstr "አስተያየት"
 msgid "Completed"
 msgstr "ተጠናቀቀ"
 
-#: src/i18n.js:78
+#: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "ጥያቄዎችዎን መጫን አልተቻለም።"
 
@@ -75,7 +75,7 @@ msgstr "አገር ወይም ከተማ"
 msgid "Courier"
 msgstr "መልእክተኛ"
 
-#: src/i18n.js:81
+#: src/i18n.js:82
 msgid "Created"
 msgstr "ተፈጠረ"
 
@@ -124,16 +124,24 @@ msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "ለምሳሌ: አልባሳት 5 ኪ.ግ, ሰነዶች, ኤሌክትሮኒክስ"
 
 #: src/i18n.js:67
-msgid "Form submitted! Check the console for data."
-msgstr "ቅጽ ገብቷል! መረጃ ለማግኘት ኮንሶሉን ያረጋግጡ።"
+msgid "Form submitted!"
+msgstr "ቅጽ ገብቷል!"
 
 #: src/i18n.js:37
 msgid "From date"
 msgstr "ከቀን"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "ሻንጣ እወስዳለሁ"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "በመጫን ላይ..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "መልእክተኛ በመፈለግ ላይ"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -151,17 +159,17 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "የእኔ ጥያቄዎች"
 
-#: src/i18n.js:87
+#: src/i18n.js:88
 msgid "New"
 msgstr "አዲስ"
 
-#: src/i18n.js:85
+#: src/i18n.js:86
 msgid "Next"
 msgstr "ቀጥሎ"
 
 #: src/i18n.js:39
 msgid "No end date"
-msgstr ""
+msgstr "የማብቂያ ቀን የለም"
 
 #: src/i18n.js:45
 #~ msgid "no matching airports found, try to write in english"
@@ -171,11 +179,11 @@ msgstr ""
 msgid "no matching cities found, try to write in english"
 msgstr ""
 
-#: src/i18n.js:77
+#: src/i18n.js:78
 msgid "No requests with this status."
 msgstr "በዚህ ሁኔታ ምንም ጥያቄዎች የሉም።"
 
-#: src/i18n.js:86
+#: src/i18n.js:87
 msgid "Page"
 msgstr "ገጽ"
 
@@ -199,7 +207,7 @@ msgstr "እባክዎ የማለቂያ ቀን ይምረጡ"
 msgid "Please select departure and arrival cities from the list"
 msgstr ""
 
-#: src/i18n.js:84
+#: src/i18n.js:85
 msgid "Previous"
 msgstr "ቀዳሚ"
 
@@ -207,15 +215,11 @@ msgstr "ቀዳሚ"
 msgid "Remove"
 msgstr "አስወግድ"
 
-#: src/i18n.js:76
-msgid "Request details"
-msgstr "ዝርዝሮችን ይጠይቁ"
-
-#: src/i18n.js:83
+#: src/i18n.js:84
 msgid "Request pagination"
 msgstr "የገጽ ገጽን ጠይቅ"
 
-#: src/i18n.js:88
+#: src/i18n.js:89
 msgid "Role"
 msgstr "ሚና"
 
@@ -223,7 +227,7 @@ msgstr "ሚና"
 msgid "Sender"
 msgstr "ላኪ"
 
-#: src/i18n.js:82
+#: src/i18n.js:83
 msgid "Status"
 msgstr "ሁኔታ"
 

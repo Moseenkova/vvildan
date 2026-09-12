@@ -51,11 +51,11 @@ msgstr "ابتدا یک شهر را انتخاب کنید"
 msgid "Choose a country first"
 msgstr "ابتدا یک کشور را انتخاب کنید"
 
-#: src/i18n.js:79
+#: src/i18n.js:80
 msgid "Close"
 msgstr "بستن"
 
-#: src/i18n.js:80
+#: src/i18n.js:81
 msgid "Comment"
 msgstr "نظر دهید"
 
@@ -63,7 +63,7 @@ msgstr "نظر دهید"
 msgid "Completed"
 msgstr "تکمیل شد"
 
-#: src/i18n.js:78
+#: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "درخواست های شما بارگیری نشد."
 
@@ -75,7 +75,7 @@ msgstr "کشور یا شهر"
 msgid "Courier"
 msgstr "پیک"
 
-#: src/i18n.js:81
+#: src/i18n.js:82
 msgid "Created"
 msgstr "ایجاد شد"
 
@@ -124,16 +124,24 @@ msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "به عنوان مثال: لباس 5 کیلوگرم، اسناد، الکترونیک"
 
 #: src/i18n.js:67
-msgid "Form submitted! Check the console for data."
-msgstr "فرم ارسال شد! کنسول را برای اطلاعات بررسی کنید."
+msgid "Form submitted!"
+msgstr "فرم ارسال شد!"
 
 #: src/i18n.js:37
 msgid "From date"
 msgstr "از تاریخ"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "بار حمل می‌کنم"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "در حال بارگیری..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "در جستجوی پیک"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -151,17 +159,17 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "درخواست های من"
 
-#: src/i18n.js:87
+#: src/i18n.js:88
 msgid "New"
 msgstr "جدید"
 
-#: src/i18n.js:85
+#: src/i18n.js:86
 msgid "Next"
 msgstr "بعدی"
 
 #: src/i18n.js:39
 msgid "No end date"
-msgstr ""
+msgstr "بدون تاریخ پایان"
 
 #: src/i18n.js:45
 #~ msgid "no matching airports found, try to write in english"
@@ -171,11 +179,11 @@ msgstr ""
 msgid "no matching cities found, try to write in english"
 msgstr ""
 
-#: src/i18n.js:77
+#: src/i18n.js:78
 msgid "No requests with this status."
 msgstr "هیچ درخواستی با این وضعیت وجود ندارد."
 
-#: src/i18n.js:86
+#: src/i18n.js:87
 msgid "Page"
 msgstr "صفحه"
 
@@ -199,7 +207,7 @@ msgstr "لطفاً تاریخ پایان را انتخاب کنید"
 msgid "Please select departure and arrival cities from the list"
 msgstr ""
 
-#: src/i18n.js:84
+#: src/i18n.js:85
 msgid "Previous"
 msgstr "قبلی"
 
@@ -207,15 +215,11 @@ msgstr "قبلی"
 msgid "Remove"
 msgstr "حذف"
 
-#: src/i18n.js:76
-msgid "Request details"
-msgstr "درخواست جزئیات"
-
-#: src/i18n.js:83
+#: src/i18n.js:84
 msgid "Request pagination"
 msgstr "درخواست صفحه بندی"
 
-#: src/i18n.js:88
+#: src/i18n.js:89
 msgid "Role"
 msgstr "نقش"
 
@@ -223,7 +227,7 @@ msgstr "نقش"
 msgid "Sender"
 msgstr "فرستنده"
 
-#: src/i18n.js:82
+#: src/i18n.js:83
 msgid "Status"
 msgstr "وضعیت"
 

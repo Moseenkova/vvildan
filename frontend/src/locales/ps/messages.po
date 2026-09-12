@@ -51,11 +51,11 @@ msgstr "لومړی ښار غوره کړئ"
 msgid "Choose a country first"
 msgstr "لومړی یو هیواد غوره کړئ"
 
-#: src/i18n.js:79
+#: src/i18n.js:80
 msgid "Close"
 msgstr "تړل"
 
-#: src/i18n.js:80
+#: src/i18n.js:81
 msgid "Comment"
 msgstr "تبصره"
 
@@ -63,7 +63,7 @@ msgstr "تبصره"
 msgid "Completed"
 msgstr "بشپړ شو"
 
-#: src/i18n.js:78
+#: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "ستاسو غوښتنې نشي پورته کولی."
 
@@ -75,7 +75,7 @@ msgstr "هېواد یا ښار"
 msgid "Courier"
 msgstr "کوریر"
 
-#: src/i18n.js:81
+#: src/i18n.js:82
 msgid "Created"
 msgstr "جوړ کړی"
 
@@ -124,16 +124,24 @@ msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "د مثال په توګه: جامې 5 کیلوګرامه، اسناد، بریښنایی توکي"
 
 #: src/i18n.js:67
-msgid "Form submitted! Check the console for data."
-msgstr "فورمه وسپارل شوه! د معلوماتو لپاره کنسول چیک کړئ."
+msgid "Form submitted!"
+msgstr "فورمه وسپارل شوه!"
 
 #: src/i18n.js:37
 msgid "From date"
 msgstr "له نیټې څخه"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "زه به سامان یوسم"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "بار کول..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "د کوریر په لټه کې"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -151,17 +159,17 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "زما غوښتنې"
 
-#: src/i18n.js:87
+#: src/i18n.js:88
 msgid "New"
 msgstr "نوی"
 
-#: src/i18n.js:85
+#: src/i18n.js:86
 msgid "Next"
 msgstr "بل"
 
 #: src/i18n.js:39
 msgid "No end date"
-msgstr ""
+msgstr "د پای نېټه نشته"
 
 #: src/i18n.js:45
 #~ msgid "no matching airports found, try to write in english"
@@ -171,11 +179,11 @@ msgstr ""
 msgid "no matching cities found, try to write in english"
 msgstr ""
 
-#: src/i18n.js:77
+#: src/i18n.js:78
 msgid "No requests with this status."
 msgstr "د دې حالت سره هیڅ غوښتنه نشته."
 
-#: src/i18n.js:86
+#: src/i18n.js:87
 msgid "Page"
 msgstr "پاڼه"
 
@@ -199,7 +207,7 @@ msgstr "مهرباني وکړئ د پای نیټه وټاکئ"
 msgid "Please select departure and arrival cities from the list"
 msgstr ""
 
-#: src/i18n.js:84
+#: src/i18n.js:85
 msgid "Previous"
 msgstr "مخکینی"
 
@@ -207,15 +215,11 @@ msgstr "مخکینی"
 msgid "Remove"
 msgstr "لرې کول"
 
-#: src/i18n.js:76
-msgid "Request details"
-msgstr "د توضیحاتو غوښتنه وکړئ"
-
-#: src/i18n.js:83
+#: src/i18n.js:84
 msgid "Request pagination"
 msgstr "د صفحې غوښتنه وکړئ"
 
-#: src/i18n.js:88
+#: src/i18n.js:89
 msgid "Role"
 msgstr "رول"
 
@@ -223,7 +227,7 @@ msgstr "رول"
 msgid "Sender"
 msgstr "لیږونکی"
 
-#: src/i18n.js:82
+#: src/i18n.js:83
 msgid "Status"
 msgstr "حالت"
 

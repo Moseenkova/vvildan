@@ -51,11 +51,11 @@ msgstr "ആദ്യം ഒരു നഗരം തിരഞ്ഞെടുക്
 msgid "Choose a country first"
 msgstr "ആദ്യം ഒരു രാജ്യം തിരഞ്ഞെടുക്കുക"
 
-#: src/i18n.js:79
+#: src/i18n.js:80
 msgid "Close"
 msgstr "അടയ്ക്കുക"
 
-#: src/i18n.js:80
+#: src/i18n.js:81
 msgid "Comment"
 msgstr "അഭിപ്രായം"
 
@@ -63,7 +63,7 @@ msgstr "അഭിപ്രായം"
 msgid "Completed"
 msgstr "പൂർത്തിയാക്കി"
 
-#: src/i18n.js:78
+#: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "നിങ്ങളുടെ അഭ്യർത്ഥനകൾ ലോഡ് ചെയ്യാനായില്ല."
 
@@ -75,7 +75,7 @@ msgstr "രാജ്യം അല്ലെങ്കിൽ നഗരം"
 msgid "Courier"
 msgstr "കൊറിയർ"
 
-#: src/i18n.js:81
+#: src/i18n.js:82
 msgid "Created"
 msgstr "സൃഷ്ടിച്ചത്"
 
@@ -124,16 +124,24 @@ msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "ഉദാഹരണത്തിന്: വസ്ത്രങ്ങൾ 5 കിലോ, പ്രമാണങ്ങൾ, ഇലക്ട്രോണിക്സ്"
 
 #: src/i18n.js:67
-msgid "Form submitted! Check the console for data."
-msgstr "ഫോം സമർപ്പിച്ചു! ഡാറ്റയ്ക്കായി കൺസോൾ പരിശോധിക്കുക."
+msgid "Form submitted!"
+msgstr "ഫോം സമർപ്പിച്ചു!"
 
 #: src/i18n.js:37
 msgid "From date"
 msgstr "തീയതി മുതൽ"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "ഞാൻ ലഗേജ് കൊണ്ടുപോകാം"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "ലോഡ് ചെയ്യുന്നു..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "കൊറിയറെ തിരയുന്നു"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -151,17 +159,17 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "എൻ്റെ അഭ്യർത്ഥനകൾ"
 
-#: src/i18n.js:87
+#: src/i18n.js:88
 msgid "New"
 msgstr "പുതിയത്"
 
-#: src/i18n.js:85
+#: src/i18n.js:86
 msgid "Next"
 msgstr "അടുത്തത്"
 
 #: src/i18n.js:39
 msgid "No end date"
-msgstr ""
+msgstr "അവസാന തീയതി ഇല്ല"
 
 #: src/i18n.js:45
 #~ msgid "no matching airports found, try to write in english"
@@ -171,11 +179,11 @@ msgstr ""
 msgid "no matching cities found, try to write in english"
 msgstr ""
 
-#: src/i18n.js:77
+#: src/i18n.js:78
 msgid "No requests with this status."
 msgstr "ഈ സ്റ്റാറ്റസിനൊപ്പം അഭ്യർത്ഥനകളൊന്നുമില്ല."
 
-#: src/i18n.js:86
+#: src/i18n.js:87
 msgid "Page"
 msgstr "പേജ്"
 
@@ -199,7 +207,7 @@ msgstr "ദയവായി ഒരു അവസാന തീയതി തിര�
 msgid "Please select departure and arrival cities from the list"
 msgstr ""
 
-#: src/i18n.js:84
+#: src/i18n.js:85
 msgid "Previous"
 msgstr "മുമ്പത്തെ"
 
@@ -207,15 +215,11 @@ msgstr "മുമ്പത്തെ"
 msgid "Remove"
 msgstr "നീക്കം ചെയ്യുക"
 
-#: src/i18n.js:76
-msgid "Request details"
-msgstr "വിശദാംശങ്ങൾ അഭ്യർത്ഥിക്കുക"
-
-#: src/i18n.js:83
+#: src/i18n.js:84
 msgid "Request pagination"
 msgstr "പേജിനേഷൻ അഭ്യർത്ഥിക്കുക"
 
-#: src/i18n.js:88
+#: src/i18n.js:89
 msgid "Role"
 msgstr "പങ്ക്"
 
@@ -223,7 +227,7 @@ msgstr "പങ്ക്"
 msgid "Sender"
 msgstr "അയച്ചയാൾ"
 
-#: src/i18n.js:82
+#: src/i18n.js:83
 msgid "Status"
 msgstr "നില"
 

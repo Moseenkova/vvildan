@@ -51,11 +51,11 @@ msgstr "اختر المدينة أولاً"
 msgid "Choose a country first"
 msgstr "اختر بلدًا أولاً"
 
-#: src/i18n.js:79
+#: src/i18n.js:80
 msgid "Close"
 msgstr "إغلاق"
 
-#: src/i18n.js:80
+#: src/i18n.js:81
 msgid "Comment"
 msgstr "التعليق"
 
@@ -63,7 +63,7 @@ msgstr "التعليق"
 msgid "Completed"
 msgstr "مكتمل"
 
-#: src/i18n.js:78
+#: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "تعذر تحميل طلباتك."
 
@@ -75,7 +75,7 @@ msgstr "البلد أو المدينة"
 msgid "Courier"
 msgstr "ساعي"
 
-#: src/i18n.js:81
+#: src/i18n.js:82
 msgid "Created"
 msgstr "تم إنشاؤها"
 
@@ -124,16 +124,24 @@ msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "على سبيل المثال: ملابس 5 كجم، مستندات، إلكترونيات"
 
 #: src/i18n.js:67
-msgid "Form submitted! Check the console for data."
-msgstr "تم إرسال النموذج! تحقق من وحدة التحكم للبيانات."
+msgid "Form submitted!"
+msgstr "تم إرسال النموذج!"
 
 #: src/i18n.js:37
 msgid "From date"
 msgstr "من تاريخ"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "سأحمل الأمتعة"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "تحميل..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "البحث عن مندوب توصيل"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -151,17 +159,17 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "طلباتي"
 
-#: src/i18n.js:87
+#: src/i18n.js:88
 msgid "New"
 msgstr "جديد"
 
-#: src/i18n.js:85
+#: src/i18n.js:86
 msgid "Next"
 msgstr "التالي"
 
 #: src/i18n.js:39
 msgid "No end date"
-msgstr ""
+msgstr "لا يوجد تاريخ انتهاء"
 
 #: src/i18n.js:45
 #~ msgid "no matching airports found, try to write in english"
@@ -171,11 +179,11 @@ msgstr ""
 msgid "no matching cities found, try to write in english"
 msgstr ""
 
-#: src/i18n.js:77
+#: src/i18n.js:78
 msgid "No requests with this status."
 msgstr "لا توجد طلبات بهذه الحالة."
 
-#: src/i18n.js:86
+#: src/i18n.js:87
 msgid "Page"
 msgstr "الصفحة"
 
@@ -199,7 +207,7 @@ msgstr "الرجاء تحديد تاريخ الانتهاء"
 msgid "Please select departure and arrival cities from the list"
 msgstr ""
 
-#: src/i18n.js:84
+#: src/i18n.js:85
 msgid "Previous"
 msgstr "السابق"
 
@@ -207,15 +215,11 @@ msgstr "السابق"
 msgid "Remove"
 msgstr "إزالة"
 
-#: src/i18n.js:76
-msgid "Request details"
-msgstr "تفاصيل الطلب"
-
-#: src/i18n.js:83
+#: src/i18n.js:84
 msgid "Request pagination"
 msgstr "طلب ترقيم الصفحات"
 
-#: src/i18n.js:88
+#: src/i18n.js:89
 msgid "Role"
 msgstr "الدور"
 
@@ -223,7 +227,7 @@ msgstr "الدور"
 msgid "Sender"
 msgstr "مرسل"
 
-#: src/i18n.js:82
+#: src/i18n.js:83
 msgid "Status"
 msgstr "الحالة"
 

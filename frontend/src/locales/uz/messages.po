@@ -51,11 +51,11 @@ msgstr "Avval shaharni tanlang"
 msgid "Choose a country first"
 msgstr "Avval mamlakatni tanlang"
 
-#: src/i18n.js:79
+#: src/i18n.js:80
 msgid "Close"
 msgstr "Yopish"
 
-#: src/i18n.js:80
+#: src/i18n.js:81
 msgid "Comment"
 msgstr "Izoh"
 
@@ -63,7 +63,7 @@ msgstr "Izoh"
 msgid "Completed"
 msgstr "Bajarildi"
 
-#: src/i18n.js:78
+#: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "So‘rovlaringizni yuklab bo‘lmadi."
 
@@ -75,7 +75,7 @@ msgstr "Mamlakat yoki shahar"
 msgid "Courier"
 msgstr "Kuryer"
 
-#: src/i18n.js:81
+#: src/i18n.js:82
 msgid "Created"
 msgstr "Yaratilgan"
 
@@ -124,16 +124,24 @@ msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "Masalan: Kiyim-kechak 5 kg, hujjatlar, elektronika"
 
 #: src/i18n.js:67
-msgid "Form submitted! Check the console for data."
-msgstr "Shakl topshirildi! Ma'lumotlar uchun konsolni tekshiring."
+msgid "Form submitted!"
+msgstr "Shakl topshirildi!"
 
 #: src/i18n.js:37
 msgid "From date"
 msgstr "Sanadan boshlab"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "Bagaj olib ketaman"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "Yuklanmoqda..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "Kuryer qidirilmoqda"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -151,17 +159,17 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "Mening so'rovlarim"
 
-#: src/i18n.js:87
+#: src/i18n.js:88
 msgid "New"
 msgstr "Yangi"
 
-#: src/i18n.js:85
+#: src/i18n.js:86
 msgid "Next"
 msgstr "Keyingi"
 
 #: src/i18n.js:39
 msgid "No end date"
-msgstr ""
+msgstr "Tugash sanasi yo‘q"
 
 #: src/i18n.js:45
 #~ msgid "no matching airports found, try to write in english"
@@ -171,11 +179,11 @@ msgstr ""
 msgid "no matching cities found, try to write in english"
 msgstr ""
 
-#: src/i18n.js:77
+#: src/i18n.js:78
 msgid "No requests with this status."
 msgstr "Bu holatga ega soʻrovlar yoʻq."
 
-#: src/i18n.js:86
+#: src/i18n.js:87
 msgid "Page"
 msgstr "Sahifa"
 
@@ -199,7 +207,7 @@ msgstr "Tugash sanasini tanlang"
 msgid "Please select departure and arrival cities from the list"
 msgstr ""
 
-#: src/i18n.js:84
+#: src/i18n.js:85
 msgid "Previous"
 msgstr "Oldingi"
 
@@ -207,15 +215,11 @@ msgstr "Oldingi"
 msgid "Remove"
 msgstr "Olib tashlash"
 
-#: src/i18n.js:76
-msgid "Request details"
-msgstr "Tafsilotlarni so'rash"
-
-#: src/i18n.js:83
+#: src/i18n.js:84
 msgid "Request pagination"
 msgstr "Sahifani so'rash"
 
-#: src/i18n.js:88
+#: src/i18n.js:89
 msgid "Role"
 msgstr "Rol"
 
@@ -223,7 +227,7 @@ msgstr "Rol"
 msgid "Sender"
 msgstr "Yuboruvchi"
 
-#: src/i18n.js:82
+#: src/i18n.js:83
 msgid "Status"
 msgstr "Status"
 

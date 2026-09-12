@@ -51,11 +51,11 @@ msgstr "पहिले कवनो शहर चुनीं"
 msgid "Choose a country first"
 msgstr "पहिले कवनो देश चुनीं"
 
-#: src/i18n.js:79
+#: src/i18n.js:80
 msgid "Close"
 msgstr "बंद कर दीं"
 
-#: src/i18n.js:80
+#: src/i18n.js:81
 msgid "Comment"
 msgstr "टिप्पणी करीं"
 
@@ -63,7 +63,7 @@ msgstr "टिप्पणी करीं"
 msgid "Completed"
 msgstr "पूरा हो गइल बा"
 
-#: src/i18n.js:78
+#: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "राउर निहोरा लोड ना हो सकल."
 
@@ -75,7 +75,7 @@ msgstr "देश भा शहर"
 msgid "Courier"
 msgstr "कुरियर के बा"
 
-#: src/i18n.js:81
+#: src/i18n.js:82
 msgid "Created"
 msgstr "बनावल गइल बा"
 
@@ -124,16 +124,24 @@ msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "जइसे कि : कपड़ा 5 किलो, दस्तावेज, इलेक्ट्रॉनिक्स"
 
 #: src/i18n.js:67
-msgid "Form submitted! Check the console for data."
-msgstr "फार्म जमा हो गइल बा! डेटा खातिर कंसोल के जांच करीं।"
+msgid "Form submitted!"
+msgstr "फार्म जमा हो गइल बा!"
 
 #: src/i18n.js:37
 msgid "From date"
 msgstr "आज से लेके अब तक के बा"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "हम सामान ले जइब"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "लोड हो रहल बा..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "कूरियर के तलाश बा"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -151,17 +159,17 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "हमार निहोरा बा"
 
-#: src/i18n.js:87
+#: src/i18n.js:88
 msgid "New"
 msgstr "नया बा"
 
-#: src/i18n.js:85
+#: src/i18n.js:86
 msgid "Next"
 msgstr "आगे के बात बा"
 
 #: src/i18n.js:39
 msgid "No end date"
-msgstr ""
+msgstr "समाप्ति तिथि नइखे"
 
 #: src/i18n.js:45
 #~ msgid "no matching airports found, try to write in english"
@@ -171,11 +179,11 @@ msgstr ""
 msgid "no matching cities found, try to write in english"
 msgstr ""
 
-#: src/i18n.js:77
+#: src/i18n.js:78
 msgid "No requests with this status."
 msgstr "एह स्टेटस वाला कवनो निहोरा ना."
 
-#: src/i18n.js:86
+#: src/i18n.js:87
 msgid "Page"
 msgstr "पन्ना के बा"
 
@@ -199,7 +207,7 @@ msgstr "कृपया एगो अंतिम तिथि चुनीं"
 msgid "Please select departure and arrival cities from the list"
 msgstr ""
 
-#: src/i18n.js:84
+#: src/i18n.js:85
 msgid "Previous"
 msgstr "पिछला बा"
 
@@ -207,15 +215,11 @@ msgstr "पिछला बा"
 msgid "Remove"
 msgstr "हटाईं"
 
-#: src/i18n.js:76
-msgid "Request details"
-msgstr "विवरण के निहोरा कइल जाव"
-
-#: src/i18n.js:83
+#: src/i18n.js:84
 msgid "Request pagination"
 msgstr "पृष्ठांकन के निहोरा कइल जाव"
 
-#: src/i18n.js:88
+#: src/i18n.js:89
 msgid "Role"
 msgstr "भूमिका के बा"
 
@@ -223,7 +227,7 @@ msgstr "भूमिका के बा"
 msgid "Sender"
 msgstr "प्रेषक के बा"
 
-#: src/i18n.js:82
+#: src/i18n.js:83
 msgid "Status"
 msgstr "स्टेटस के बा"
 

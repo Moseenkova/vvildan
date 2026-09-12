@@ -51,11 +51,11 @@ msgstr "首先选择城市"
 msgid "Choose a country first"
 msgstr "首先选择一个国家"
 
-#: src/i18n.js:79
+#: src/i18n.js:80
 msgid "Close"
 msgstr "关闭"
 
-#: src/i18n.js:80
+#: src/i18n.js:81
 msgid "Comment"
 msgstr "评论"
 
@@ -63,7 +63,7 @@ msgstr "评论"
 msgid "Completed"
 msgstr "已完成"
 
-#: src/i18n.js:78
+#: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "无法加载您的请求。"
 
@@ -75,7 +75,7 @@ msgstr "国家或城市"
 msgid "Courier"
 msgstr "导游"
 
-#: src/i18n.js:81
+#: src/i18n.js:82
 msgid "Created"
 msgstr "已创建"
 
@@ -124,16 +124,24 @@ msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "例如：5公斤的衣服、文件、电子产品"
 
 #: src/i18n.js:67
-msgid "Form submitted! Check the console for data."
-msgstr "表格已提交！检查控制台的数据。"
+msgid "Form submitted!"
+msgstr "表格已提交！"
 
 #: src/i18n.js:37
 msgid "From date"
 msgstr "开始日期"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "我会携带行李"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "加载中..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "寻找配送员"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -151,17 +159,17 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "我的要求"
 
-#: src/i18n.js:87
+#: src/i18n.js:88
 msgid "New"
 msgstr "新"
 
-#: src/i18n.js:85
+#: src/i18n.js:86
 msgid "Next"
 msgstr "下一步"
 
 #: src/i18n.js:39
 msgid "No end date"
-msgstr ""
+msgstr "无结束日期"
 
 #: src/i18n.js:45
 #~ msgid "no matching airports found, try to write in english"
@@ -171,11 +179,11 @@ msgstr ""
 msgid "no matching cities found, try to write in english"
 msgstr ""
 
-#: src/i18n.js:77
+#: src/i18n.js:78
 msgid "No requests with this status."
 msgstr "没有此状态的请求。"
 
-#: src/i18n.js:86
+#: src/i18n.js:87
 msgid "Page"
 msgstr "页面"
 
@@ -199,7 +207,7 @@ msgstr "请选择结束日期"
 msgid "Please select departure and arrival cities from the list"
 msgstr ""
 
-#: src/i18n.js:84
+#: src/i18n.js:85
 msgid "Previous"
 msgstr "上一页"
 
@@ -207,15 +215,11 @@ msgstr "上一页"
 msgid "Remove"
 msgstr "移除"
 
-#: src/i18n.js:76
-msgid "Request details"
-msgstr "索取详情"
-
-#: src/i18n.js:83
+#: src/i18n.js:84
 msgid "Request pagination"
 msgstr "请求分页"
 
-#: src/i18n.js:88
+#: src/i18n.js:89
 msgid "Role"
 msgstr "角色"
 
@@ -223,7 +227,7 @@ msgstr "角色"
 msgid "Sender"
 msgstr "发件人"
 
-#: src/i18n.js:82
+#: src/i18n.js:83
 msgid "Status"
 msgstr "状态"
 

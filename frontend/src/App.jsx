@@ -11,6 +11,23 @@ import './App.css'
 registerLocale('en', enUS)
 registerLocale('ru', ru)
 
+const formatLocalizedDate = (value, language) => {
+  if (!value) return ''
+
+  const dateOnlyParts = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value)
+  const date = dateOnlyParts
+    ? new Date(Number(dateOnlyParts[1]), Number(dateOnlyParts[2]) - 1, Number(dateOnlyParts[3]))
+    : new Date(value)
+
+  if (Number.isNaN(date.getTime())) return value
+
+  return new Intl.DateTimeFormat(language === 'en' ? 'en-GB' : language, {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  }).format(date)
+}
+
 function CitySearch({ id, label, placeholder, selected, maxSelections, onSelect, onRemove, t }) {
   const [query, setQuery] = useState('')
   const [results, setResults] = useState([])
@@ -172,7 +189,7 @@ function CitySearch({ id, label, placeholder, selected, maxSelections, onSelect,
   )
 }
 
-function RequestSidebar({ requests, pagination, loading, error, status, onStatusChange, onPageChange, onSelect, t }) {
+function RequestSidebar({ requests, pagination, loading, error, status, onStatusChange, onPageChange, onSelect, t, language }) {
   const route = (request) => {
     const from = request.departure_cities.map((city) => city.name).join(', ')
     const to = request.arrival_cities.map((city) => city.name).join(', ')
@@ -180,10 +197,12 @@ function RequestSidebar({ requests, pagination, loading, error, status, onStatus
   }
 
   const dates = (request) => {
-    if (!request.date_from) return request.date_to
-    if (!request.date_to) return `${request.date_from} – ${t.noEndDate}`
-    if (request.date_from === request.date_to) return request.date_from
-    return `${request.date_from} – ${request.date_to}`
+    const from = formatLocalizedDate(request.date_from, language)
+    const to = formatLocalizedDate(request.date_to, language)
+    if (!request.date_from) return to
+    if (!request.date_to) return `${from} – ${t.noEndDate}`
+    if (request.date_from === request.date_to) return from
+    return `${from} – ${to}`
   }
 
   return (
@@ -240,7 +259,7 @@ function RequestSidebar({ requests, pagination, loading, error, status, onStatus
   )
 }
 
-function RequestDetails({ request, onClose, t }) {
+function RequestDetails({ request, onClose, t, language }) {
   if (!request) return null
   const cities = (items) => items.map((city) => (
     `${city.name}, ${city.country_name}`
@@ -252,19 +271,21 @@ function RequestDetails({ request, onClose, t }) {
         <div className="details-header">
           <div>
             <p>#{request.id}</p>
-            <h2 id="request-details-title">{t.requestDetails}</h2>
+            <h2 id="request-details-title">
+              {request.role === 'sender' ? t.lookingForCourier : t.willTakeLuggage}
+            </h2>
           </div>
           <button type="button" onClick={onClose} aria-label={t.close}>×</button>
         </div>
         <dl>
           <div><dt>{t.status}</dt><dd><span className={`status-badge status-${request.status}`}>{t[request.status] || request.status}</span></dd></div>
-          {request.date_from && <div><dt>{request.role === 'sender' ? t.dateFrom : t.date}</dt><dd>{request.date_from}</dd></div>}
-          {request.role === 'sender' && request.date_to && request.date_to !== request.date_from && <div><dt>{t.dateTo}</dt><dd>{request.date_to}</dd></div>}
+          {request.date_from && <div><dt>{request.role === 'sender' ? t.dateFrom : t.date}</dt><dd>{formatLocalizedDate(request.date_from, language)}</dd></div>}
+          {request.role === 'sender' && request.date_to && request.date_to !== request.date_from && <div><dt>{t.dateTo}</dt><dd>{formatLocalizedDate(request.date_to, language)}</dd></div>}
           {request.role === 'sender' && request.date_from && !request.date_to && <div><dt>{t.dateTo}</dt><dd>{t.noEndDate}</dd></div>}
           <div><dt>{t.departure}</dt><dd className="multiline">{cities(request.departure_cities)}</dd></div>
           <div><dt>{t.arrival}</dt><dd className="multiline">{cities(request.arrival_cities)}</dd></div>
           {request.comment && <div><dt>{t.comment}</dt><dd>{request.comment}</dd></div>}
-          <div><dt>{t.created}</dt><dd>{new Date(request.created_at).toLocaleString()}</dd></div>
+          <div><dt>{t.created}</dt><dd>{formatLocalizedDate(request.created_at, language)}</dd></div>
         </dl>
       </section>
     </div>
@@ -520,10 +541,10 @@ function App() {
         <button type="submit" className="submit-button">{t.submit}</button>
       </form>
       ) : (
-        <RequestSidebar requests={requests} pagination={requestsPagination} loading={requestsLoading} error={requestsError} status={requestStatus} onStatusChange={changeRequestStatus} onPageChange={changeRequestsPage} onSelect={setSelectedRequest} t={t} />
+        <RequestSidebar requests={requests} pagination={requestsPagination} loading={requestsLoading} error={requestsError} status={requestStatus} onStatusChange={changeRequestStatus} onPageChange={changeRequestsPage} onSelect={setSelectedRequest} t={t} language={language} />
       )}
       </main>
-      <RequestDetails request={selectedRequest} onClose={() => setSelectedRequest(null)} t={t} />
+      <RequestDetails request={selectedRequest} onClose={() => setSelectedRequest(null)} t={t} language={language} />
     </div>
   )
 }

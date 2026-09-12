@@ -51,11 +51,11 @@ msgstr "પ્રથમ શહેર પસંદ કરો"
 msgid "Choose a country first"
 msgstr "પ્રથમ દેશ પસંદ કરો"
 
-#: src/i18n.js:79
+#: src/i18n.js:80
 msgid "Close"
 msgstr "બંધ કરો"
 
-#: src/i18n.js:80
+#: src/i18n.js:81
 msgid "Comment"
 msgstr "ટિપ્પણી"
 
@@ -63,7 +63,7 @@ msgstr "ટિપ્પણી"
 msgid "Completed"
 msgstr "પૂર્ણ થયું"
 
-#: src/i18n.js:78
+#: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "તમારી વિનંતીઓ લોડ કરી શકાઈ નથી."
 
@@ -75,7 +75,7 @@ msgstr "દેશ અથવા શહેર"
 msgid "Courier"
 msgstr "કુરિયર"
 
-#: src/i18n.js:81
+#: src/i18n.js:82
 msgid "Created"
 msgstr "બનાવ્યું"
 
@@ -124,16 +124,24 @@ msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "ઉદાહરણ તરીકે: કપડાં 5 કિલો, દસ્તાવેજો, ઇલેક્ટ્રોનિક્સ"
 
 #: src/i18n.js:67
-msgid "Form submitted! Check the console for data."
-msgstr "ફોર્મ સબમિટ કર્યું! ડેટા માટે કન્સોલ તપાસો."
+msgid "Form submitted!"
+msgstr "ફોર્મ સબમિટ કર્યું!"
 
 #: src/i18n.js:37
 msgid "From date"
 msgstr "તારીખથી"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "હું સામાન લઈ જઈશ"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "લોડ કરી રહ્યું છે..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "કુરિયરની શોધમાં"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -151,17 +159,17 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "મારી વિનંતીઓ"
 
-#: src/i18n.js:87
+#: src/i18n.js:88
 msgid "New"
 msgstr "નવી"
 
-#: src/i18n.js:85
+#: src/i18n.js:86
 msgid "Next"
 msgstr "આગળ"
 
 #: src/i18n.js:39
 msgid "No end date"
-msgstr ""
+msgstr "કોઈ સમાપ્તિ તારીખ નથી"
 
 #: src/i18n.js:45
 #~ msgid "no matching airports found, try to write in english"
@@ -171,11 +179,11 @@ msgstr ""
 msgid "no matching cities found, try to write in english"
 msgstr ""
 
-#: src/i18n.js:77
+#: src/i18n.js:78
 msgid "No requests with this status."
 msgstr "આ સ્થિતિ સાથે કોઈ વિનંતીઓ નથી."
 
-#: src/i18n.js:86
+#: src/i18n.js:87
 msgid "Page"
 msgstr "પૃષ્ઠ"
 
@@ -199,7 +207,7 @@ msgstr "કૃપા કરીને સમાપ્તિ તારીખ પ�
 msgid "Please select departure and arrival cities from the list"
 msgstr ""
 
-#: src/i18n.js:84
+#: src/i18n.js:85
 msgid "Previous"
 msgstr "ગત"
 
@@ -207,15 +215,11 @@ msgstr "ગત"
 msgid "Remove"
 msgstr "દૂર કરો"
 
-#: src/i18n.js:76
-msgid "Request details"
-msgstr "વિગતોની વિનંતી કરો"
-
-#: src/i18n.js:83
+#: src/i18n.js:84
 msgid "Request pagination"
 msgstr "પૃષ્ઠ ક્રમાંકન માટે વિનંતી કરો"
 
-#: src/i18n.js:88
+#: src/i18n.js:89
 msgid "Role"
 msgstr "ભૂમિકા"
 
@@ -223,7 +227,7 @@ msgstr "ભૂમિકા"
 msgid "Sender"
 msgstr "મોકલનાર"
 
-#: src/i18n.js:82
+#: src/i18n.js:83
 msgid "Status"
 msgstr "સ્થિતિ"
 
