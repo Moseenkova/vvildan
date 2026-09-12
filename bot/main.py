@@ -10,10 +10,17 @@ from aiogram.filters import Command, CommandObject, CommandStart
 from aiogram.types import Message
 from aiogram.utils.markdown import hbold
 
+from bot.media import (
+    get_transcribable_media,
+    media_is_within_duration_limit,
+    transcribe_and_translate_media,
+)
+from bot.translation import needs_translation, translate_topic_text
 from bot.translations import get_welcome_message
 from bot.utils import (
     create_customer_tg_topic,
-    get_customer_chat_id_by_topic_id,
+    get_customer_topic_by_customer_chat_id,
+    get_customer_topic_by_topic_id,
     get_topic_id_by_customer_chat_id,
     update_customer_topic_language,
 )
@@ -22,6 +29,29 @@ from src.database import User, async_session_maker, get_or_create
 
 cfg: Settings = get_settings()
 form_router = Router()
+TELEGRAM_TEXT_LIMIT = 4096
+# Keep download, synchronous OpenAI work, response chaining, and delivery ordered.
+_message_translation_lock = asyncio.Lock()
+
+
+async def send_plain_text(
+    bot: Bot,
+    chat_id: int,
+    text: str,
+    *,
+    message_thread_id: int | None = None,
+) -> None:
+    for start in range(0, len(text), TELEGRAM_TEXT_LIMIT):
+        chunk = text[start : start + TELEGRAM_TEXT_LIMIT]
+        if message_thread_id is None:
+            await bot.send_message(chat_id=chat_id, text=chunk, parse_mode=None)
+        else:
+            await bot.send_message(
+                chat_id=chat_id,
+                message_thread_id=message_thread_id,
+                text=chunk,
+                parse_mode=None,
+            )
 
 
 @form_router.message(CommandStart(), F.chat.type == ChatType.PRIVATE)
@@ -99,6 +129,58 @@ async def customer_message(message: Message, bot: Bot) -> None:
 
     topic_id = await get_or_create_customer_topic(message, bot)
 
+    topic = await get_customer_topic_by_customer_chat_id(message.chat.id)
+    language_code = topic.language_code if topic else None
+    transcribable_media = get_transcribable_media(message)
+    if (
+        needs_translation(language_code)
+        and transcribable_media
+        and media_is_within_duration_limit(message)
+    ):
+        async with _message_translation_lock:
+            try:
+                original_text, translated = await transcribe_and_translate_media(
+                    message,
+                    bot,
+                    topic_id,
+                    source_language=language_code,
+                    target_language="ru",
+                    direction="customer to support",
+                )
+            except Exception:
+                logging.exception("Could not translate customer media in topic %s", topic_id)
+            else:
+                await message.send_copy(
+                    chat_id=cfg.SUPPORT_GROUP_ID,
+                    message_thread_id=topic_id,
+                )
+                await send_plain_text(
+                    bot,
+                    cfg.SUPPORT_GROUP_ID,
+                    f"{original_text}\n\n{translated}",
+                    message_thread_id=topic_id,
+                )
+                return
+
+    original_text = message.text
+    if needs_translation(language_code) and original_text:
+        async with _message_translation_lock:
+            translated = await translate_topic_text(
+                topic_id,
+                original_text,
+                source_language=language_code,
+                target_language="ru",
+                direction="customer to support",
+            )
+            admin_text = f"{original_text}\n\n{translated}"
+            await send_plain_text(
+                bot,
+                cfg.SUPPORT_GROUP_ID,
+                admin_text,
+                message_thread_id=topic_id,
+            )
+        return
+
     try:
         await message.send_copy(
             chat_id=cfg.SUPPORT_GROUP_ID,
@@ -158,8 +240,8 @@ async def admin_reply(message: Message, bot: Bot) -> None:
     if topic_id is None:
         return
 
-    customer_id = await get_customer_chat_id_by_topic_id(topic_id)
-    if customer_id is None:
+    topic = await get_customer_topic_by_topic_id(topic_id)
+    if topic is None:
         await bot.send_message(
             chat_id=cfg.SUPPORT_GROUP_ID,
             message_thread_id=topic_id,
@@ -167,7 +249,45 @@ async def admin_reply(message: Message, bot: Bot) -> None:
         )
         return
 
+    customer_id = topic.customer_chat_id
+
     if message.forum_topic_created or message.forum_topic_closed:
+        return
+
+    transcribable_media = get_transcribable_media(message)
+    if (
+        needs_translation(topic.language_code)
+        and transcribable_media
+        and media_is_within_duration_limit(message)
+    ):
+        async with _message_translation_lock:
+            try:
+                _, translated = await transcribe_and_translate_media(
+                    message,
+                    bot,
+                    topic_id,
+                    source_language="ru",
+                    target_language=topic.language_code,
+                    direction="support to customer",
+                )
+            except Exception:
+                logging.exception("Could not translate admin media in topic %s", topic_id)
+            else:
+                await message.send_copy(chat_id=customer_id)
+                await send_plain_text(bot, customer_id, translated)
+                return
+
+    original_text = message.text
+    if needs_translation(topic.language_code) and original_text:
+        async with _message_translation_lock:
+            translated = await translate_topic_text(
+                topic_id,
+                original_text,
+                source_language="ru",
+                target_language=topic.language_code,
+                direction="support to customer",
+            )
+            await send_plain_text(bot, customer_id, translated)
         return
 
     try:
