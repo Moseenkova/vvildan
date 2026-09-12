@@ -35,6 +35,10 @@ msgstr "வருகை நகரம்"
 msgid "Arrival country"
 msgstr "வருகை நாடு"
 
+#: src/i18n.js:107
+msgid "Back"
+msgstr ""
+
 #: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "பேக்கேஜ் கருத்துகள்"
@@ -71,9 +75,17 @@ msgstr "தொடர்பு கொள்ளப்பட்டது"
 msgid "Could not load your matches."
 msgstr "உங்கள் பொருத்தங்களை ஏற்ற முடியவில்லை."
 
+#: src/i18n.js:110
+msgid "Could not load your messages."
+msgstr ""
+
 #: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "உங்கள் கோரிக்கைகளை ஏற்ற முடியவில்லை."
+
+#: src/i18n.js:111
+msgid "Could not send your message."
+msgstr ""
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -151,6 +163,14 @@ msgstr "இவருடன் பொருத்தம்"
 msgid "Matches"
 msgstr "பொருத்தங்கள்"
 
+#: src/i18n.js:102
+msgid "Message to"
+msgstr ""
+
+#: src/i18n.js:100
+msgid "Messages"
+msgstr ""
+
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
 msgstr "dd/mm/yyyy"
@@ -186,6 +206,10 @@ msgstr "இதுவரை பொருத்தங்கள் இல்லை.
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
 msgstr "பொருந்தும் நகரங்கள் கிடைக்கவில்லை, ஆங்கிலத்தில் எழுத முயற்சிக்கவும்"
+
+#: src/i18n.js:109
+msgid "No messages yet."
+msgstr ""
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -235,9 +259,17 @@ msgstr "பேஜினேஷனைக் கோருங்கள்"
 msgid "Role"
 msgstr "பங்கு"
 
+#: src/i18n.js:104
+msgid "Send"
+msgstr ""
+
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "அனுப்புபவர்"
+
+#: src/i18n.js:105
+msgid "Sending..."
+msgstr ""
 
 #: src/i18n.js:83
 msgid "Status"
@@ -259,9 +291,25 @@ msgstr "இன்றுவரை"
 msgid "To date (optional)"
 msgstr "முடிவு தேதி (விருப்பத்தேர்வு)"
 
+#: src/i18n.js:108
+msgid "Unread messages"
+msgstr ""
+
 #: src/i18n.js:68
 msgid "User Not Found"
 msgstr "பயனர் கிடைக்கவில்லை"
+
+#: src/i18n.js:101
+msgid "Write message"
+msgstr ""
+
+#: src/i18n.js:103
+msgid "Write your message..."
+msgstr ""
+
+#: src/i18n.js:106
+msgid "You"
+msgstr ""
 
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."

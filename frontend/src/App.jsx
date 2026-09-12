@@ -292,7 +292,7 @@ function RequestDetails({ request, hideCreated = false, onClose, t, language }) 
   )
 }
 
-function MatchesList({ matches, loading, error, onSelect, t, language }) {
+function MatchesList({ matches, loading, error, onSelect, onMessage, t, language }) {
   const route = (request) => {
     const from = request.departure_cities.map((city) => city.name).join(', ')
     const to = request.arrival_cities.map((city) => city.name).join(', ')
@@ -319,26 +319,111 @@ function MatchesList({ matches, loading, error, onSelect, t, language }) {
         {!loading && error && <p className="request-message request-error">{t.failedToLoadMatches}</p>}
         {!loading && !error && matches.length === 0 && <p className="request-message">{t.noMatches}</p>}
         {!loading && !error && matches.map((match) => (
-          <button
-            type="button"
+          <article
             className={`match-card ${match.is_new ? 'match-new' : ''}`}
             key={`${match.is_candidate ? 'candidate' : 'match'}-${match.own_request.id}-${match.id}`}
-            onClick={() => onSelect(match.matching_request)}
           >
-            <div className="request-card-topline">
-              <strong>{t.matchedWith}: {match.matching_user.name}</strong>
-              <span className={`status-badge status-${match.status}`}>{t[match.status] || match.status}</span>
-            </div>
-            {match.matching_user.username && <span className="match-username">@{match.matching_user.username}</span>}
-            <span className="request-route">{route(match.matching_request)}</span>
-            <span className="request-date">{dates(match.matching_request)}</span>
-            {match.matching_request.comment && (
-              <p className="match-comment"><strong>{t.comment}:</strong> {match.matching_request.comment}</p>
-            )}
-            <span className="match-own-request">{t.yourRequest} #{match.own_request.id}</span>
+            <button type="button" className="match-details-button" onClick={() => onSelect(match.matching_request)}>
+              <span className="request-card-topline">
+                <strong>{t.matchedWith}: {match.matching_user.name}</strong>
+                <span className={`status-badge status-${match.status}`}>{t[match.status] || match.status}</span>
+              </span>
+              {match.matching_user.username && <span className="match-username">@{match.matching_user.username}</span>}
+              <span className="request-route">{route(match.matching_request)}</span>
+              <span className="request-date">{dates(match.matching_request)}</span>
+              {match.matching_request.comment && (
+                <span className="match-comment"><strong>{t.comment}:</strong> {match.matching_request.comment}</span>
+              )}
+              <span className="match-own-request">{t.yourRequest} #{match.own_request.id}</span>
+            </button>
+            <button type="button" className="message-candidate-button" onClick={() => onMessage(match)}>{t.writeMessage}</button>
+          </article>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function MessageComposer({ match, sending, onClose, onSend, t }) {
+  const [body, setBody] = useState('')
+  const submit = (event) => {
+    event.preventDefault()
+    if (body.trim()) onSend(body.trim())
+  }
+  return (
+    <div className="details-backdrop" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && onClose()}>
+      <section className="message-composer" role="dialog" aria-modal="true" aria-labelledby="message-composer-title">
+        <div className="details-header">
+          <h2 id="message-composer-title">{t.messageTo} {match.matching_user.name}</h2>
+          <button type="button" onClick={onClose} aria-label={t.close}>×</button>
+        </div>
+        <form onSubmit={submit}>
+          <textarea autoFocus value={body} maxLength={2000} onChange={(event) => setBody(event.target.value)} placeholder={t.writeYourMessage} />
+          <button type="submit" className="submit-button" disabled={sending || !body.trim()}>{sending ? t.sending : t.send}</button>
+        </form>
+      </section>
+    </div>
+  )
+}
+
+function DialogsList({ dialogs, loading, error, onSelect, t, language }) {
+  const time = (value) => new Intl.DateTimeFormat(language, {
+    month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit',
+  }).format(new Date(value))
+  return (
+    <section className="messages-panel">
+      <div className="requests-heading"><h2>{t.messages}</h2><span>{dialogs.length}</span></div>
+      <div className="dialog-list">
+        {loading && <p className="request-message">{t.loading}</p>}
+        {!loading && error && <p className="request-message request-error">{t.failedToLoadMessages}</p>}
+        {!loading && !error && dialogs.length === 0 && <p className="request-message">{t.noMessages}</p>}
+        {!loading && !error && dialogs.map((dialog) => (
+          <button type="button" className={`dialog-card ${dialog.unread_count ? 'dialog-unread' : ''}`} key={dialog.id} onClick={() => onSelect(dialog.id)}>
+            <span className="dialog-card-header">
+              <strong>{dialog.other_user.name}</strong>
+              <span>{time(dialog.latest_message.created_at)}</span>
+            </span>
+            <span className="dialog-preview">
+              <span>{dialog.latest_message.is_mine ? `${t.you}: ` : ''}{dialog.latest_message.body}</span>
+              {dialog.unread_count > 0 && <i className="dialog-unread-dot" aria-label={t.unreadMessages} />}
+            </span>
           </button>
         ))}
       </div>
+    </section>
+  )
+}
+
+function DialogView({ dialog, loading, sending, onBack, onSend, t, language }) {
+  const [body, setBody] = useState('')
+  const endRef = useRef(null)
+  useEffect(() => { endRef.current?.scrollIntoView({ behavior: 'smooth' }) }, [dialog?.messages.length])
+  const submit = async (event) => {
+    event.preventDefault()
+    if (!body.trim()) return
+    const sent = await onSend(body.trim())
+    if (sent) setBody('')
+  }
+  const time = (value) => new Intl.DateTimeFormat(language, { hour: '2-digit', minute: '2-digit' }).format(new Date(value))
+  if (loading || !dialog) return <p className="request-message">{t.loading}</p>
+  return (
+    <section className="dialog-view">
+      <header className="dialog-header">
+        <button type="button" onClick={onBack} aria-label={t.back}>‹</button>
+        <div><strong>{dialog.other_user.name}</strong>{dialog.other_user.username && <span>@{dialog.other_user.username}</span>}</div>
+      </header>
+      <div className="message-thread">
+        {dialog.messages.map((message) => (
+          <div className={`message-bubble ${message.is_mine ? 'message-mine' : 'message-theirs'}`} key={message.id}>
+            <span>{message.body}</span><time>{time(message.created_at)}</time>
+          </div>
+        ))}
+        <div ref={endRef} />
+      </div>
+      <form className="dialog-send-form" onSubmit={submit}>
+        <textarea value={body} maxLength={2000} rows="1" onChange={(event) => setBody(event.target.value)} placeholder={t.writeYourMessage} />
+        <button type="submit" disabled={sending || !body.trim()}>{t.send}</button>
+      </form>
     </section>
   )
 }
@@ -359,7 +444,9 @@ function App() {
   }, [])
   const [role, setRole] = useState('sender')
   const [activePage, setActivePage] = useState(() => (
-    new URLSearchParams(window.location.search).get('tab') === 'matches' ? 'matches' : 'new'
+    ['matches', 'messages'].includes(new URLSearchParams(window.location.search).get('tab'))
+      ? new URLSearchParams(window.location.search).get('tab')
+      : 'new'
   ))
   const [userNotFound, setUserNotFound] = useState(false)
   const [form, setForm] = useState({
@@ -393,6 +480,14 @@ function App() {
     ),
     opened: false,
   })
+  const [dialogs, setDialogs] = useState([])
+  const [dialogsLoading, setDialogsLoading] = useState(true)
+  const [dialogsError, setDialogsError] = useState(false)
+  const [selectedDialog, setSelectedDialog] = useState(null)
+  const [dialogLoading, setDialogLoading] = useState(false)
+  const [messageSending, setMessageSending] = useState(false)
+  const [composingMatch, setComposingMatch] = useState(null)
+  const dialogDeepLinkRef = useRef(Number.parseInt(new URLSearchParams(window.location.search).get('dialog'), 10))
 
   const loadRequests = async (page = 1, status = requestStatus) => {
     setRequestsLoading(true)
@@ -447,6 +542,33 @@ function App() {
     }
   }
 
+  const loadDialogs = async (silent = false) => {
+    if (!silent) setDialogsLoading(true)
+    setDialogsError(false)
+    try {
+      const { data } = await api.get('/api/messages')
+      setDialogs(Array.isArray(data) ? data : [])
+    } catch (error) {
+      console.error('Failed to load messages:', error)
+      setDialogsError(true)
+    } finally {
+      if (!silent) setDialogsLoading(false)
+    }
+  }
+
+  const openDialog = async (dialogId, silent = false) => {
+    if (!silent) setDialogLoading(true)
+    try {
+      const { data } = await api.get(`/api/messages/${dialogId}`)
+      setSelectedDialog(data)
+      setDialogs((current) => current.map((dialog) => dialog.id === dialogId ? { ...dialog, unread_count: 0 } : dialog))
+    } catch (error) {
+      console.error('Failed to load dialog:', error)
+    } finally {
+      if (!silent) setDialogLoading(false)
+    }
+  }
+
   useEffect(() => {
     document.documentElement.lang = language
     document.documentElement.dir = ['ar', 'fa', 'ps', 'sd', 'ur'].includes(language) ? 'rtl' : 'ltr'
@@ -458,7 +580,7 @@ function App() {
       if (!initData && !isDev) {
         if (localStorage.getItem('access_token')) {
           setAuthState('authenticated')
-          await Promise.all([loadRequests(1), loadMatches(false)])
+          await Promise.all([loadRequests(1), loadMatches(false), loadDialogs()])
         } else {
           setAuthState('login')
           setRequestsLoading(false)
@@ -471,7 +593,7 @@ function App() {
           : await api.post('/api/auth/dev-login')
         localStorage.setItem('access_token', data.access_token)
         setAuthState('authenticated')
-        await Promise.all([loadRequests(1), loadMatches(false)])
+        await Promise.all([loadRequests(1), loadMatches(false), loadDialogs()])
       } catch (error) {
         setAuthState(initData ? 'telegram-error' : 'login')
         console.error('Authentication failed:', error)
@@ -497,6 +619,30 @@ function App() {
     // Match refreshes intentionally follow authentication and the open tab.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activePage, authState, language])
+
+  useEffect(() => {
+    if (authState !== 'authenticated') return undefined
+    if (activePage === 'messages') {
+      loadDialogs(true)
+      if (selectedDialog) openDialog(selectedDialog.id, true)
+      else if (Number.isInteger(dialogDeepLinkRef.current)) {
+        openDialog(dialogDeepLinkRef.current)
+        dialogDeepLinkRef.current = null
+      }
+    }
+    const refresh = () => {
+      loadDialogs(true)
+      if (activePage === 'messages' && selectedDialog) openDialog(selectedDialog.id, true)
+    }
+    const interval = window.setInterval(refresh, 15000)
+    window.addEventListener('focus', refresh)
+    return () => {
+      window.clearInterval(interval)
+      window.removeEventListener('focus', refresh)
+    }
+    // Message refreshes intentionally follow authentication and the selected dialog.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activePage, authState, selectedDialog?.id])
 
   useEffect(() => {
     const deepLink = candidateDeepLinkRef.current
@@ -602,6 +748,42 @@ function App() {
     }
   }
 
+  const sendFromMatch = async (body) => {
+    setMessageSending(true)
+    try {
+      const { data } = await api.post('/api/messages/from-match', {
+        own_request_id: composingMatch.own_request.id,
+        matching_request_id: composingMatch.matching_request.id,
+        body,
+      })
+      setComposingMatch(null)
+      setSelectedDialog(data)
+      setActivePage('messages')
+      await loadDialogs(true)
+    } catch (error) {
+      console.error('Failed to send message:', error)
+      alert(error.response?.data?.detail || t.failedToSendMessage)
+    } finally {
+      setMessageSending(false)
+    }
+  }
+
+  const sendReply = async (body) => {
+    setMessageSending(true)
+    try {
+      const { data } = await api.post(`/api/messages/${selectedDialog.id}`, { body })
+      setSelectedDialog(data)
+      await loadDialogs(true)
+      return true
+    } catch (error) {
+      console.error('Failed to send message:', error)
+      alert(error.response?.data?.detail || t.failedToSendMessage)
+      return false
+    } finally {
+      setMessageSending(false)
+    }
+  }
+
   if (authState === 'telegram-error' && !userNotFound) return (
     <main className="app-container not-found">
       <h1>Unable to sign in through Telegram</h1>
@@ -637,6 +819,10 @@ function App() {
           {matches.some((match) => match.is_new) && (
             <span className="new-match-dot" aria-label={t.newMatches} role="status" />
           )}
+        </button>
+        <button type="button" onClick={() => setActivePage('messages')} className={`role-button message-tab ${activePage === 'messages' ? 'active' : ''}`}>
+          {t.messages}
+          {dialogs.some((dialog) => dialog.unread_count > 0) && <span className="new-match-dot" aria-label={t.unreadMessages} role="status" />}
         </button>
       </div>
 
@@ -681,14 +867,19 @@ function App() {
           setSelectedRequestFromMatches(false)
           setSelectedRequest(request)
         }} t={t} language={language} />
-      ) : (
-        <MatchesList matches={matches} loading={matchesLoading} error={matchesError} onSelect={(request) => {
+      ) : activePage === 'matches' ? (
+        <MatchesList matches={matches} loading={matchesLoading} error={matchesError} onMessage={setComposingMatch} onSelect={(request) => {
           setSelectedRequestFromMatches(true)
           setSelectedRequest(request)
         }} t={t} language={language} />
+      ) : selectedDialog ? (
+        <DialogView dialog={selectedDialog} loading={dialogLoading} sending={messageSending} onBack={() => setSelectedDialog(null)} onSend={sendReply} t={t} language={language} />
+      ) : (
+        <DialogsList dialogs={dialogs} loading={dialogsLoading} error={dialogsError} onSelect={openDialog} t={t} language={language} />
       )}
       </main>
       <RequestDetails request={selectedRequest} hideCreated={selectedRequestFromMatches} onClose={() => setSelectedRequest(null)} t={t} language={language} />
+      {composingMatch && <MessageComposer match={composingMatch} sending={messageSending} onClose={() => setComposingMatch(null)} onSend={sendFromMatch} t={t} />}
     </div>
   )
 }
