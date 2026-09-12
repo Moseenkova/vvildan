@@ -12,9 +12,10 @@ requests_router = APIRouter(prefix="/api/requests", tags=["Requests"])
 @requests_router.get("", response_model=Page[RequestSchema])
 async def get_my_requests(
     status: RequestStatus | None = Query(None),
+    language: str = Query("en", min_length=2, max_length=16),
     user=Depends(get_current_user),
 ):
-    return await get_user_requests(user.id, status)
+    return await get_user_requests(user.id, status, language)
 
 
 @requests_router.post(
