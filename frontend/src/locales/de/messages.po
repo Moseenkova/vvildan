@@ -1,0 +1,272 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr "Akzeptiert"
+
+#: src/i18n.js:72
+msgid "Active"
+msgstr "Aktiv"
+
+#: src/i18n.js:71
+msgid "All statuses"
+msgstr "Alle Status"
+
+#: src/i18n.js:45
+msgid "Arrival"
+msgstr "Ankunft"
+
+#: src/i18n.js:53
+msgid "Arrival city"
+msgstr "Ankunftsort"
+
+#: src/i18n.js:52
+msgid "Arrival country"
+msgstr "Ankunftsland"
+
+#: src/i18n.js:60
+msgid "Baggage comments"
+msgstr "Kommentare zum Gepäck"
+
+#: src/i18n.js:73
+msgid "Cancelled"
+msgstr "Abgesagt"
+
+#: src/i18n.js:58
+msgid "Choose a city first"
+msgstr "Wählen Sie zunächst eine Stadt"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "Wählen Sie zunächst ein Land aus"
+
+#: src/i18n.js:80
+msgid "Close"
+msgstr "Schließen"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "Kommentar"
+
+#: src/i18n.js:74
+msgid "Completed"
+msgstr "Abgeschlossen"
+
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr "Kontaktiert"
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr "Deine Treffer konnten nicht geladen werden."
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "Ihre Anfragen konnten nicht geladen werden."
+
+#: src/i18n.js:46
+msgid "Country or city"
+msgstr "Land oder Stadt"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "Kurier"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "Erstellt"
+
+#: src/i18n.js:41
+msgid "Date"
+msgstr "Datum"
+
+#: src/i18n.js:44
+msgid "Departure"
+msgstr "Abflug"
+
+#: src/i18n.js:51
+msgid "Departure city"
+msgstr "Abflugort"
+
+#: src/i18n.js:50
+msgid "Departure country"
+msgstr "Abflugland"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "Geben Sie eine Stadt ein"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "Geben Sie ein Land ein"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "Geben Sie eine Stadt ein oder wählen Sie sie aus"
+
+#: src/i18n.js:75
+msgid "Expired"
+msgstr "Abgelaufen"
+
+#: src/i18n.js:61
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "Zum Beispiel: Kleidung 5 kg, Dokumente, Elektronik"
+
+#: src/i18n.js:67
+msgid "Form submitted!"
+msgstr "Formular eingereicht!"
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "Ab Datum"
+
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "Ich nehme Gepäck mit"
+
+#: src/i18n.js:59
+msgid "Loading..."
+msgstr "Laden..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "Kurier gesucht"
+
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr "Übereinstimmung mit"
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr "Treffer"
+
+#: src/i18n.js:43
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:42
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:70
+msgid "My Requests"
+msgstr "Meine Wünsche"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "Neu"
+
+#: src/i18n.js:90
+msgid "New matches"
+msgstr "Neue Treffer"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "Als nächstes"
+
+#: src/i18n.js:39
+msgid "No end date"
+msgstr "Kein Enddatum"
+
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr "Noch keine Treffer."
+
+#: src/i18n.js:47
+msgid "no matching cities found, try to write in english"
+msgstr "Keine passenden Städte gefunden, versuche es auf Englisch"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "Keine Anfragen mit diesem Status."
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "Seite"
+
+#: src/i18n.js:66
+msgid "Please select a date"
+msgstr "Bitte wählen Sie ein Datum aus"
+
+#: src/i18n.js:63
+msgid "Please select a start date"
+msgstr "Bitte wählen Sie ein Startdatum aus"
+
+#: src/i18n.js:64
+msgid "Please select an end date"
+msgstr "Bitte wählen Sie ein Enddatum aus"
+
+#: src/i18n.js:48
+msgid "Please select departure and arrival cities from the list"
+msgstr "Bitte wähle Abfahrts- und Ankunftsstadt aus der Liste aus"
+
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "Zurück"
+
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr "Vorgeschlagen"
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr "Abgelehnt"
+
+#: src/i18n.js:49
+msgid "Remove"
+msgstr "Entfernen"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "Paginierung anfordern"
+
+#: src/i18n.js:99
+msgid "Role"
+msgstr "Rolle"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "Absender"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "Status"
+
+#: src/i18n.js:62
+msgid "Submit request"
+msgstr "Anfrage abschicken"
+
+#: src/i18n.js:65
+msgid "The start date cannot be after the end date"
+msgstr "Das Startdatum darf nicht nach dem Enddatum liegen"
+
+#: src/i18n.js:40
+msgid "To date"
+msgstr "Miteinander ausgehen"
+
+#: src/i18n.js:38
+msgid "To date (optional)"
+msgstr "Bis Datum (optional)"
+
+#: src/i18n.js:68
+msgid "User Not Found"
+msgstr "Benutzer nicht gefunden"
+
+#: src/i18n.js:69
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "Sie sind nicht im System registriert. Bitte registrieren Sie sich zunächst über den Telegram-Bot."
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr "Deine Anfrage"

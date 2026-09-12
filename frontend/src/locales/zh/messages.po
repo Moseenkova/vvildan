@@ -1,0 +1,272 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr "已接受"
+
+#: src/i18n.js:72
+msgid "Active"
+msgstr "活跃"
+
+#: src/i18n.js:71
+msgid "All statuses"
+msgstr "所有状态"
+
+#: src/i18n.js:45
+msgid "Arrival"
+msgstr "到达"
+
+#: src/i18n.js:53
+msgid "Arrival city"
+msgstr "到达城市"
+
+#: src/i18n.js:52
+msgid "Arrival country"
+msgstr "到达国家"
+
+#: src/i18n.js:60
+msgid "Baggage comments"
+msgstr "行李备注"
+
+#: src/i18n.js:73
+msgid "Cancelled"
+msgstr "取消"
+
+#: src/i18n.js:58
+msgid "Choose a city first"
+msgstr "首先选择城市"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "首先选择一个国家"
+
+#: src/i18n.js:80
+msgid "Close"
+msgstr "关闭"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "评论"
+
+#: src/i18n.js:74
+msgid "Completed"
+msgstr "已完成"
+
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr "已联系"
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr "无法加载您的匹配结果。"
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "无法加载您的请求。"
+
+#: src/i18n.js:46
+msgid "Country or city"
+msgstr "国家或城市"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "导游"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "已创建"
+
+#: src/i18n.js:41
+msgid "Date"
+msgstr "日期"
+
+#: src/i18n.js:44
+msgid "Departure"
+msgstr "出发"
+
+#: src/i18n.js:51
+msgid "Departure city"
+msgstr "出发城市"
+
+#: src/i18n.js:50
+msgid "Departure country"
+msgstr "出发国家"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "输入城市"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "入境"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "输入或选择城市"
+
+#: src/i18n.js:75
+msgid "Expired"
+msgstr "已过期"
+
+#: src/i18n.js:61
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "例如：5公斤的衣服、文件、电子产品"
+
+#: src/i18n.js:67
+msgid "Form submitted!"
+msgstr "表格已提交！"
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "开始日期"
+
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "我会携带行李"
+
+#: src/i18n.js:59
+msgid "Loading..."
+msgstr "加载中..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "寻找配送员"
+
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr "匹配对象"
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr "匹配"
+
+#: src/i18n.js:43
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:42
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:70
+msgid "My Requests"
+msgstr "我的要求"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "新"
+
+#: src/i18n.js:90
+msgid "New matches"
+msgstr "新匹配"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "下一步"
+
+#: src/i18n.js:39
+msgid "No end date"
+msgstr "无结束日期"
+
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr "暂无匹配。"
+
+#: src/i18n.js:47
+msgid "no matching cities found, try to write in english"
+msgstr "未找到匹配的城市，请尝试使用英语输入"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "没有此状态的请求。"
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "页面"
+
+#: src/i18n.js:66
+msgid "Please select a date"
+msgstr "请选择日期"
+
+#: src/i18n.js:63
+msgid "Please select a start date"
+msgstr "请选择开始日期"
+
+#: src/i18n.js:64
+msgid "Please select an end date"
+msgstr "请选择结束日期"
+
+#: src/i18n.js:48
+msgid "Please select departure and arrival cities from the list"
+msgstr "请从列表中选择出发城市和到达城市"
+
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "上一页"
+
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr "已提议"
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr "已拒绝"
+
+#: src/i18n.js:49
+msgid "Remove"
+msgstr "移除"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "请求分页"
+
+#: src/i18n.js:99
+msgid "Role"
+msgstr "角色"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "发件人"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "状态"
+
+#: src/i18n.js:62
+msgid "Submit request"
+msgstr "提交请求"
+
+#: src/i18n.js:65
+msgid "The start date cannot be after the end date"
+msgstr "开始日期不能晚于结束日期"
+
+#: src/i18n.js:40
+msgid "To date"
+msgstr "迄今为止"
+
+#: src/i18n.js:38
+msgid "To date (optional)"
+msgstr "结束日期（可选）"
+
+#: src/i18n.js:68
+msgid "User Not Found"
+msgstr "未找到用户"
+
+#: src/i18n.js:69
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "您尚未在系统中注册。请先通过 Telegram 机器人注册。"
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr "您的请求"

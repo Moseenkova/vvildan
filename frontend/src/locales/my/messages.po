@@ -1,0 +1,272 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: my\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr "လက်ခံပြီး"
+
+#: src/i18n.js:72
+msgid "Active"
+msgstr "လှုပ်လှုပ်ရှားရှား"
+
+#: src/i18n.js:71
+msgid "All statuses"
+msgstr "အခြေအနေအားလုံး"
+
+#: src/i18n.js:45
+msgid "Arrival"
+msgstr "ဆိုက်ရောက်"
+
+#: src/i18n.js:53
+msgid "Arrival city"
+msgstr "ရောက်ရောက်ချင်းမြို့"
+
+#: src/i18n.js:52
+msgid "Arrival country"
+msgstr "ဆိုက်ရောက်ဗီဇာ"
+
+#: src/i18n.js:60
+msgid "Baggage comments"
+msgstr "ခရီးဆောင်အိတ်မှတ်ချက်"
+
+#: src/i18n.js:73
+msgid "Cancelled"
+msgstr "ဖျက်သိမ်းလိုက်သည်။"
+
+#: src/i18n.js:58
+msgid "Choose a city first"
+msgstr "မြို့ကို အရင်ရွေးပါ။"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "နိုင်ငံကို အရင်ရွေးပါ။"
+
+#: src/i18n.js:80
+msgid "Close"
+msgstr "ပိတ်လိုက်"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "မှတ်ချက်"
+
+#: src/i18n.js:74
+msgid "Completed"
+msgstr "ပြီးသွားပြီ"
+
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr "ဆက်သွယ်ပြီး"
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr "သင့်ကိုက်ညီမှုများကို ဖွင့်၍မရပါ။"
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "သင့်တောင်းဆိုချက်များကို တင်၍မရပါ။"
+
+#: src/i18n.js:46
+msgid "Country or city"
+msgstr "နိုင်ငံ သို့မဟုတ် မြို့"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "ချော"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "ဖန်တီးခဲ့သည်။"
+
+#: src/i18n.js:41
+msgid "Date"
+msgstr "ရက်စွဲ"
+
+#: src/i18n.js:44
+msgid "Departure"
+msgstr "ထွက်ခွာ"
+
+#: src/i18n.js:51
+msgid "Departure city"
+msgstr "ထွက်ခွာမည့်မြို့"
+
+#: src/i18n.js:50
+msgid "Departure country"
+msgstr "နိုင်ငံသို့ထွက်ခွာ"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "မြို့ကိုဝင်ပါ။"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "နိုင်ငံတစ်ခုဝင်ပါ။"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "ဝင်ပါ သို့မဟုတ် မြို့ကို ရွေးပါ။"
+
+#: src/i18n.js:75
+msgid "Expired"
+msgstr "သက်တမ်းကုန်သွားပြီ"
+
+#: src/i18n.js:61
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "ဥပမာ- အဝတ်အစား 5 ကီလိုဂရမ်၊ စာရွက်စာတမ်းများ၊ လျှပ်စစ်ပစ္စည်းများ"
+
+#: src/i18n.js:67
+msgid "Form submitted!"
+msgstr "ဖောင်တင်ပြီးပါပြီ။"
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "ရက်စွဲမှ"
+
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "ခရီးဆောင်အိတ် ယူသွားမည်"
+
+#: src/i18n.js:59
+msgid "Loading..."
+msgstr "ဖွင့်နေသည်..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "ပို့ဆောင်သူ ရှာနေသည်"
+
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr "နှင့် ကိုက်ညီသည်"
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr "ကိုက်ညီမှုများ"
+
+#: src/i18n.js:43
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:42
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:70
+msgid "My Requests"
+msgstr "ကျွန်ုပ်၏တောင်းဆိုမှုများ"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "အသစ်"
+
+#: src/i18n.js:90
+msgid "New matches"
+msgstr "ကိုက်ညီမှုအသစ်များ"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "နောက်တစ်ခု"
+
+#: src/i18n.js:39
+msgid "No end date"
+msgstr "ပြီးဆုံးရက် မရှိပါ"
+
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr "ကိုက်ညီမှု မရှိသေးပါ။"
+
+#: src/i18n.js:47
+msgid "no matching cities found, try to write in english"
+msgstr "ကိုက်ညီသောမြို့ မတွေ့ပါ၊ အင်္ဂလိပ်လို ရေးကြည့်ပါ"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "ဤအခြေအနေအတွက် တောင်းဆိုချက်မရှိပါ။"
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "စာမျက်နှာ"
+
+#: src/i18n.js:66
+msgid "Please select a date"
+msgstr "ရက်စွဲတစ်ခုကို ရွေးပါ။"
+
+#: src/i18n.js:63
+msgid "Please select a start date"
+msgstr "ကျေးဇူးပြု၍ စတင်မည့်ရက်စွဲကို ရွေးပါ။"
+
+#: src/i18n.js:64
+msgid "Please select an end date"
+msgstr "ကျေးဇူးပြု၍ ကုန်ဆုံးရက်ကို ရွေးပါ။"
+
+#: src/i18n.js:48
+msgid "Please select departure and arrival cities from the list"
+msgstr "စာရင်းမှ ထွက်ခွာမည့်မြို့နှင့် ရောက်ရှိမည့်မြို့ကို ရွေးပါ"
+
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "အရင်"
+
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr "အဆိုပြုထားသည်"
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr "ပယ်ချပြီး"
+
+#: src/i18n.js:49
+msgid "Remove"
+msgstr "ဖယ်ရှားရန်"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "အမည်စာရင်းတောင်းဆိုပါ။"
+
+#: src/i18n.js:99
+msgid "Role"
+msgstr "အခန်းကဏ္ဍ"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "ပေးပို့သူ"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "အဆင့်အတန်း"
+
+#: src/i18n.js:62
+msgid "Submit request"
+msgstr "တောင်းဆိုချက်ကို တင်ပြပါ။"
+
+#: src/i18n.js:65
+msgid "The start date cannot be after the end date"
+msgstr "စတင်သည့်ရက်စွဲသည် ပြီးဆုံးသည့်ရက်စွဲပြီးနောက် မဖြစ်ရပါ။"
+
+#: src/i18n.js:40
+msgid "To date"
+msgstr "ယနေ့အထိ"
+
+#: src/i18n.js:38
+msgid "To date (optional)"
+msgstr "နောက်ဆုံးရက် (ရွေးချယ်နိုင်)"
+
+#: src/i18n.js:68
+msgid "User Not Found"
+msgstr "အသုံးပြုသူ ရှာမတွေ့ပါ။"
+
+#: src/i18n.js:69
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "သင်သည် စနစ်တွင် စာရင်းသွင်းမထားပါ။ ကျေးဇူးပြု၍ Telegram bot မှတဆင့် စာရင်းသွင်းပါ။"
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr "သင့်တောင်းဆိုချက်"

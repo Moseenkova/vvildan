@@ -1,0 +1,272 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr "Přijato"
+
+#: src/i18n.js:72
+msgid "Active"
+msgstr "Aktivní"
+
+#: src/i18n.js:71
+msgid "All statuses"
+msgstr "Všechny stavy"
+
+#: src/i18n.js:45
+msgid "Arrival"
+msgstr "Přílet"
+
+#: src/i18n.js:53
+msgid "Arrival city"
+msgstr "Příjezdové město"
+
+#: src/i18n.js:52
+msgid "Arrival country"
+msgstr "Země příjezdu"
+
+#: src/i18n.js:60
+msgid "Baggage comments"
+msgstr "Komentáře k zavazadlům"
+
+#: src/i18n.js:73
+msgid "Cancelled"
+msgstr "Zrušeno"
+
+#: src/i18n.js:58
+msgid "Choose a city first"
+msgstr "Nejprve vyberte město"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "Nejprve vyberte zemi"
+
+#: src/i18n.js:80
+msgid "Close"
+msgstr "Zavřít"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "Komentář"
+
+#: src/i18n.js:74
+msgid "Completed"
+msgstr "Dokončeno"
+
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr "Kontaktováno"
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr "Vaše shody se nepodařilo načíst."
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "Vaše požadavky se nepodařilo načíst."
+
+#: src/i18n.js:46
+msgid "Country or city"
+msgstr "Země nebo město"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "Kurýr"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "Vytvořeno"
+
+#: src/i18n.js:41
+msgid "Date"
+msgstr "Datum"
+
+#: src/i18n.js:44
+msgid "Departure"
+msgstr "Odlet"
+
+#: src/i18n.js:51
+msgid "Departure city"
+msgstr "Město odjezdu"
+
+#: src/i18n.js:50
+msgid "Departure country"
+msgstr "Země odjezdu"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "Zadejte město"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "Zadejte zemi"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "Zadejte nebo vyberte město"
+
+#: src/i18n.js:75
+msgid "Expired"
+msgstr "Platnost vypršela"
+
+#: src/i18n.js:61
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "Například: Oblečení 5 kg, doklady, elektronika"
+
+#: src/i18n.js:67
+msgid "Form submitted!"
+msgstr "Formulář odeslán!"
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "Od data"
+
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "Vezmu zavazadlo"
+
+#: src/i18n.js:59
+msgid "Loading..."
+msgstr "Načítání..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "Hledá se kurýr"
+
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr "Shoda s uživatelem"
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr "Shody"
+
+#: src/i18n.js:43
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:42
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:70
+msgid "My Requests"
+msgstr "Moje požadavky"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "Nové"
+
+#: src/i18n.js:90
+msgid "New matches"
+msgstr "Nové shody"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "Další"
+
+#: src/i18n.js:39
+msgid "No end date"
+msgstr "Bez data ukončení"
+
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr "Zatím žádné shody."
+
+#: src/i18n.js:47
+msgid "no matching cities found, try to write in english"
+msgstr "Nebyla nalezena žádná odpovídající města, zkuste psát anglicky"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "Žádné žádosti s tímto stavem."
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "stránku"
+
+#: src/i18n.js:66
+msgid "Please select a date"
+msgstr "Vyberte prosím datum"
+
+#: src/i18n.js:63
+msgid "Please select a start date"
+msgstr "Vyberte datum zahájení"
+
+#: src/i18n.js:64
+msgid "Please select an end date"
+msgstr "Vyberte prosím datum ukončení"
+
+#: src/i18n.js:48
+msgid "Please select departure and arrival cities from the list"
+msgstr "Vyberte prosím města odjezdu a příjezdu ze seznamu"
+
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "Předchozí"
+
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr "Navrženo"
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr "Odmítnuto"
+
+#: src/i18n.js:49
+msgid "Remove"
+msgstr "Odebrat"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "Vyžádejte si stránkování"
+
+#: src/i18n.js:99
+msgid "Role"
+msgstr "Role"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "Odesílatel"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "Stav"
+
+#: src/i18n.js:62
+msgid "Submit request"
+msgstr "Odeslat žádost"
+
+#: src/i18n.js:65
+msgid "The start date cannot be after the end date"
+msgstr "Datum zahájení nemůže být pozdější než datum ukončení"
+
+#: src/i18n.js:40
+msgid "To date"
+msgstr "K dnešnímu dni"
+
+#: src/i18n.js:38
+msgid "To date (optional)"
+msgstr "Datum do (volitelné)"
+
+#: src/i18n.js:68
+msgid "User Not Found"
+msgstr "Uživatel nenalezen"
+
+#: src/i18n.js:69
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "Nejste registrováni v systému. Nejprve se prosím zaregistrujte prostřednictvím robota Telegram."
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr "Váš požadavek"

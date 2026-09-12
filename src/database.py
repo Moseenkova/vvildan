@@ -1,38 +1,36 @@
 import enum
+import hashlib
+import hmac
+import os
 from datetime import date, datetime
-from os import getenv
 from typing import List, Optional
 
-from dotenv import load_dotenv
 from sqlalchemy import (
     BigInteger,
+    CheckConstraint,
+    Column,
     Date,
     DateTime,
     Enum,
     ForeignKey,
+    Index,
+    String,
+    Table,
     UniqueConstraint,
     func,
-    insert,
     select,
 )
-from sqlalchemy.dialects.postgresql import JSON
-from sqlalchemy.exc import NoResultFound
-from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
-from sqlalchemy.orm import (
-    DeclarativeBase,
-    Mapped,
-    mapped_column,
-    relationship,
-    sessionmaker,
-)
+from sqlalchemy.dialects.postgresql import insert
+from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
-load_dotenv()
-DATABASE_URL = getenv("DATABASE_URL")
+from src.config import Settings, get_settings
 
+cfg: Settings = get_settings()
 
-engine = create_async_engine(DATABASE_URL)
+engine = create_async_engine(cfg.DATABASE_URL)
 
-async_session_maker = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
+async_session_maker = async_sessionmaker(engine, expire_on_commit=False)
 
 
 class Base(DeclarativeBase):
@@ -44,130 +42,277 @@ class User(Base):
     __tablename__ = "users"
     tg_id: Mapped[int] = mapped_column(BigInteger)
     name: Mapped[str]
-    phone: Mapped[Optional[int]]
-    courier: Mapped["Courier"] = relationship(back_populates="user")
-    sender: Mapped["Sender"] = relationship(back_populates="user")
+    phone: Mapped[Optional[str]]
+    username: Mapped[Optional[str]] = mapped_column(
+        String(64), unique=True, index=True, default=None
+    )
+    language_code: Mapped[Optional[str]] = mapped_column(String(16), default=None)
+    password_hash: Mapped[Optional[str]] = mapped_column(String(256), default=None)
+    is_superuser: Mapped[bool] = mapped_column(default=False, server_default="false")
+    matches_seen_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+    refresh_tokens: Mapped[List["RefreshToken"]] = relationship(back_populates="user")
+    requests: Mapped[list["Request"]] = relationship(
+        back_populates="user", cascade="all, delete-orphan"
+    )
 
     __table_args__ = (UniqueConstraint("tg_id"),)
 
+    def __str__(self) -> str:
+        return self.username or self.name
 
-class Courier(Base):
-    __tablename__ = "couriers"
-    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
-    user: Mapped["User"] = relationship(back_populates="courier")
-    requests = relationship("Request", back_populates="courier")
+    @staticmethod
+    def hash_password(password: str) -> str:
+        salt = os.urandom(16)
+        iterations = 600_000
+        digest = hashlib.pbkdf2_hmac("sha256", password.encode(), salt, iterations)
+        return f"pbkdf2_sha256${iterations}${salt.hex()}${digest.hex()}"
 
-    __table_args__ = (UniqueConstraint("user_id"),)
-
-
-class Sender(Base):
-    __tablename__ = "senders"
-    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
-    user: Mapped["User"] = relationship(back_populates="sender")
-    requests: Mapped["Request"] = relationship(back_populates="sender")
-    requests = relationship("Request", back_populates="sender")
-
-    __table_args__ = (UniqueConstraint("user_id"),)
-
-
-# TODO может быть наоброт порядок
-class BaggageKind(enum.StrEnum):
-    usual = "usual"
-    liquid = "liquid"
-    expensive = "expensive"
-    document = "document"
-    troublesome = "troublesome"
-    other = "other"
+    def verify_password(self, password: str) -> bool:
+        if self.password_hash is None:
+            return False
+        try:
+            algorithm, iterations, salt, expected = self.password_hash.split("$", 3)
+            if algorithm != "pbkdf2_sha256":
+                return False
+            actual = hashlib.pbkdf2_hmac(
+                "sha256", password.encode(), bytes.fromhex(salt), int(iterations)
+            ).hex()
+        except (TypeError, ValueError):
+            return False
+        return hmac.compare_digest(actual, expected)
 
 
-RU_LABELS = {
-    BaggageKind.usual: "Обычный",
-    BaggageKind.liquid: "Жидкость",
-    BaggageKind.document: "Документ",
-    BaggageKind.troublesome: "Проблемный",
-    BaggageKind.usual: "Обычный",
-}
+class RequestStatus(enum.Enum):
+    active = "active"
+    cancelled = "cancelled"
+    completed = "completed"
+    expired = "expired"
 
 
-class VolumeKind(enum.Enum):
-    kilo = 1
-    liter = 2
-    piece = 3
+request_departure_cities = Table(
+    "request_departure_cities",
+    Base.metadata,
+    Column("request_id", ForeignKey("requests.id", ondelete="CASCADE"), primary_key=True),
+    Column("city_id", ForeignKey("cities.id", ondelete="CASCADE"), primary_key=True),
+)
 
 
-class Status(enum.Enum):
-    new = 1
-    pending = 2
-    accepted = 3
-    rejected = 4
-    fulfilled = 5
+request_arrival_cities = Table(
+    "request_arrival_cities",
+    Base.metadata,
+    Column("request_id", ForeignKey("requests.id", ondelete="CASCADE"), primary_key=True),
+    Column("city_id", ForeignKey("cities.id", ondelete="CASCADE"), primary_key=True),
+)
+
+
+class RequestRole(enum.Enum):
+    sender = "sender"
+    courier = "courier"
 
 
 class Request(Base):
     __tablename__ = "requests"
-    sender_id: Mapped[int] = mapped_column(ForeignKey("senders.id"), nullable=True)
-    sender: Mapped["Sender"] = relationship(back_populates="requests")
-    courier_id: Mapped[int] = mapped_column(ForeignKey("couriers.id"), nullable=True)
-    courier: Mapped["Courier"] = relationship(back_populates="requests")
-    origin_id: Mapped[int] = mapped_column(ForeignKey("user_cities.id"))
-    destination_id: Mapped[int] = mapped_column(ForeignKey("user_cities.id"))
 
-    origin: Mapped["UserCity"] = relationship(
-        foreign_keys=[origin_id], backref="requests_from"
+    user_id: Mapped[int] = mapped_column(
+        ForeignKey("users.id", ondelete="CASCADE"),
+        index=True,
     )
-    destination: Mapped["UserCity"] = relationship(
-        foreign_keys=[destination_id], backref="requests_to"
+    user: Mapped["User"] = relationship(back_populates="requests")
+    role: Mapped[RequestRole] = mapped_column(Enum(RequestRole), index=True)
+
+    date_from: Mapped[date | None] = mapped_column(Date)
+    date_to: Mapped[date | None] = mapped_column(Date)
+
+    departure_cities: Mapped[list["City"]] = relationship(
+        secondary=request_departure_cities,
+        back_populates="departure_requests",
     )
-    date: Mapped[date] = mapped_column(Date, nullable=True)
-    date_to: Mapped[date] = mapped_column(Date, nullable=True)
-    date_from: Mapped[date] = mapped_column(Date, nullable=True)
-    baggage_types: Mapped[list] = mapped_column(JSON, nullable=False)
-    comment: Mapped[str] = mapped_column()
-    status: Mapped[str] = mapped_column(Enum(Status))
+    arrival_cities: Mapped[list["City"]] = relationship(
+        secondary=request_arrival_cities,
+        back_populates="arrival_requests",
+    )
+
+    comment: Mapped[str | None] = mapped_column(String(512), nullable=True, default=None)
+    status: Mapped[RequestStatus] = mapped_column(
+        Enum(RequestStatus),
+        default=RequestStatus.active,
+        server_default=RequestStatus.active.value,
+        index=True,
+    )
+    sender_matches: Mapped[list["Match"]] = relationship(
+        back_populates="sender_request",
+        foreign_keys="Match.sender_request_id",
+        cascade="all, delete-orphan",
+    )
+    courier_matches: Mapped[list["Match"]] = relationship(
+        back_populates="courier_request",
+        foreign_keys="Match.courier_request_id",
+        cascade="all, delete-orphan",
+    )
+
+    __table_args__ = (
+        CheckConstraint("date_from <= date_to", name="ck_requests_date_range"),
+        CheckConstraint(
+            "date_from IS NOT NULL OR date_to IS NOT NULL",
+            name="ck_requests_has_date",
+        ),
+    )
+
+    def __str__(self) -> str:
+        return f"{self.role.value} #{self.id}: {self.date_from} – {self.date_to}"
+
+
+class MatchStatus(enum.Enum):
+    proposed = "proposed"
+    contacted = "contacted"
+    accepted = "accepted"
+    rejected = "rejected"
+    completed = "completed"
+
+
+class Match(Base):
+    __tablename__ = "matches"
+
+    sender_request_id: Mapped[int] = mapped_column(
+        ForeignKey("requests.id", ondelete="CASCADE"),
+    )
+    sender_request: Mapped["Request"] = relationship(
+        back_populates="sender_matches", foreign_keys=[sender_request_id]
+    )
+    courier_request_id: Mapped[int] = mapped_column(
+        ForeignKey("requests.id", ondelete="CASCADE"),
+    )
+    courier_request: Mapped["Request"] = relationship(
+        back_populates="courier_matches", foreign_keys=[courier_request_id]
+    )
+    status: Mapped[MatchStatus] = mapped_column(
+        Enum(MatchStatus),
+        default=MatchStatus.proposed,
+        server_default=MatchStatus.proposed.value,
+    )
+    sender_seen_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+    courier_seen_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+
+    __table_args__ = (
+        UniqueConstraint(
+            "sender_request_id",
+            "courier_request_id",
+        ),
+        CheckConstraint(
+            "sender_request_id <> courier_request_id",
+            name="ck_matches_different_requests",
+        ),
+    )
+
+    def __str__(self) -> str:
+        return f"Match #{self.id} ({self.status.value})"
 
 
 class Country(Base):
     __tablename__ = "countries"
     name: Mapped[str]
-    cities: Mapped["City"] = relationship(back_populates="country")
+    iso_code: Mapped[Optional[str]] = mapped_column(unique=True)
+    cities: Mapped[List["City"]] = relationship(back_populates="country")
+    localized_names: Mapped[List["CountryName"]] = relationship(
+        back_populates="country", cascade="all, delete-orphan"
+    )
 
     __table_args__ = (UniqueConstraint("name"),)
+
+    def __str__(self) -> str:
+        return self.name
 
 
 class City(Base):
     __tablename__ = "cities"
     name: Mapped[str]
+    population: Mapped[int] = mapped_column(BigInteger, default=0, index=True)
     country_id: Mapped[int] = mapped_column(ForeignKey("countries.id"))
     country: Mapped["Country"] = relationship(back_populates="cities")
-    user_cities: Mapped[List["UserCity"]] = relationship(back_populates="city")
+    localized_names: Mapped[List["CityName"]] = relationship(
+        back_populates="city", cascade="all, delete-orphan"
+    )
+    departure_requests: Mapped[List["Request"]] = relationship(
+        secondary=request_departure_cities,
+        back_populates="departure_cities",
+    )
+    arrival_requests: Mapped[List["Request"]] = relationship(
+        secondary=request_arrival_cities,
+        back_populates="arrival_cities",
+    )
 
-    __table_args__ = (UniqueConstraint("name"),)
+    __table_args__ = (UniqueConstraint("country_id", "name"),)
+
+    def __str__(self) -> str:
+        return self.name
 
 
-class UserCity(Base):
-    __tablename__ = "user_cities"
+class CountryName(Base):
+    __tablename__ = "country_names"
+    country_id: Mapped[int] = mapped_column(
+        ForeignKey("countries.id", ondelete="CASCADE"), index=True
+    )
+    language_code: Mapped[str] = mapped_column(index=True)
     name: Mapped[str]
-    created_by_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
-    city_id: Mapped[Optional[int]] = mapped_column(ForeignKey("cities.id"))
-    city: Mapped[Optional["City"]] = relationship(back_populates="user_cities")
+    country: Mapped["Country"] = relationship(back_populates="localized_names")
 
-    __table_args__ = (UniqueConstraint("name"),)
+    __table_args__ = (
+        UniqueConstraint("country_id", "language_code", "name"),
+        Index("ix_country_names_language_name", "language_code", "name"),
+    )
+
+    def __str__(self) -> str:
+        return f"{self.name} ({self.language_code})"
+
+
+class CityName(Base):
+    __tablename__ = "city_names"
+    city_id: Mapped[int] = mapped_column(ForeignKey("cities.id", ondelete="CASCADE"), index=True)
+    language_code: Mapped[str] = mapped_column(index=True)
+    name: Mapped[str]
+    city: Mapped["City"] = relationship(back_populates="localized_names")
+
+    __table_args__ = (
+        UniqueConstraint("city_id", "language_code", "name"),
+        Index("ix_city_names_language_name", "language_code", "name"),
+    )
+
+    def __str__(self) -> str:
+        return f"{self.name} ({self.language_code})"
+
+
+class RefreshToken(Base):
+    __tablename__ = "refresh_tokens"
+    token_id: Mapped[str] = mapped_column(unique=True, index=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
+    user: Mapped["User"] = relationship(back_populates="refresh_tokens")
+    expire: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+
+    def __str__(self) -> str:
+        return f"Refresh token #{self.id}"
+
+
+class CustomerTgTopic(Base):
+    __tablename__ = "customer_tg_topics"
+
+    customer_chat_id: Mapped[int] = mapped_column(BigInteger, unique=True, index=True)
+    topic_id: Mapped[int] = mapped_column(BigInteger, unique=True, index=True)
+    language_code: Mapped[Optional[str]]
+    last_openai_response_id: Mapped[Optional[str]] = mapped_column(String(255))
+
+    def __str__(self) -> str:
+        return f"Chat {self.customer_chat_id} / topic {self.topic_id}"
 
 
 async def get_or_create(session, model, defaults=None, **kwargs):
-    if defaults is None:
-        defaults = {}
+    params = {**kwargs, **(defaults or {})}
+    query = insert(model).values(**params).on_conflict_do_nothing().returning(model)
+    result = await session.execute(query)
+    instance = result.scalars().one_or_none()
 
-    try:
-        query = select(model).filter_by(**kwargs)
-        result = await session.execute(query)
-        instance = result.scalars().one()
-        return instance, False
-
-    except NoResultFound:
-        params = {**kwargs, **defaults}
-        query = insert(model).values(**params).returning(model)
-        result = await session.execute(query)
+    if instance is not None:
         await session.commit()
-        instance = result.scalars().one()
         return instance, True
+
+    result = await session.execute(select(model).filter_by(**kwargs))
+    return result.scalars().one(), False

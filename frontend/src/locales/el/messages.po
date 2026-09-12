@@ -1,0 +1,272 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr "Αποδεκτό"
+
+#: src/i18n.js:72
+msgid "Active"
+msgstr "Ενεργός"
+
+#: src/i18n.js:71
+msgid "All statuses"
+msgstr "Όλες οι καταστάσεις"
+
+#: src/i18n.js:45
+msgid "Arrival"
+msgstr "Άφιξη"
+
+#: src/i18n.js:53
+msgid "Arrival city"
+msgstr "Πόλη άφιξης"
+
+#: src/i18n.js:52
+msgid "Arrival country"
+msgstr "Χώρα άφιξης"
+
+#: src/i18n.js:60
+msgid "Baggage comments"
+msgstr "Σχόλια για τις αποσκευές"
+
+#: src/i18n.js:73
+msgid "Cancelled"
+msgstr "Ακυρώθηκε"
+
+#: src/i18n.js:58
+msgid "Choose a city first"
+msgstr "Επιλέξτε πρώτα μια πόλη"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "Επιλέξτε μια χώρα πρώτα"
+
+#: src/i18n.js:80
+msgid "Close"
+msgstr "Κλείσιμο"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "Σχόλιο"
+
+#: src/i18n.js:74
+msgid "Completed"
+msgstr "Ολοκληρώθηκε"
+
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr "Έγινε επικοινωνία"
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr "Δεν ήταν δυνατή η φόρτωση των αντιστοιχιών σας."
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "Δεν ήταν δυνατή η φόρτωση των αιτημάτων σας."
+
+#: src/i18n.js:46
+msgid "Country or city"
+msgstr "Χώρα ή πόλη"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "Μεταφορέας"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "Δημιουργήθηκε"
+
+#: src/i18n.js:41
+msgid "Date"
+msgstr "Ημερομηνία"
+
+#: src/i18n.js:44
+msgid "Departure"
+msgstr "Αναχώρηση"
+
+#: src/i18n.js:51
+msgid "Departure city"
+msgstr "Πόλη αναχώρησης"
+
+#: src/i18n.js:50
+msgid "Departure country"
+msgstr "Χώρα αναχώρησης"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "Εισαγάγετε μια πόλη"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "Εισαγάγετε μια χώρα"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "Εισαγάγετε ή επιλέξτε μια πόλη"
+
+#: src/i18n.js:75
+msgid "Expired"
+msgstr "Λήξη"
+
+#: src/i18n.js:61
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "Για παράδειγμα: Ρούχα 5 κιλών, έγγραφα, ηλεκτρονικά"
+
+#: src/i18n.js:67
+msgid "Form submitted!"
+msgstr "Η φόρμα υποβλήθηκε!"
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "Από ημερομηνία"
+
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "Θα πάρω αποσκευές"
+
+#: src/i18n.js:59
+msgid "Loading..."
+msgstr "Φόρτωση..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "Αναζήτηση μεταφορέα"
+
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr "Αντιστοίχιση με"
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr "Αντιστοιχίες"
+
+#: src/i18n.js:43
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:42
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:70
+msgid "My Requests"
+msgstr "Τα αιτήματά μου"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "Νέο"
+
+#: src/i18n.js:90
+msgid "New matches"
+msgstr "Νέες αντιστοιχίες"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "Επόμενο"
+
+#: src/i18n.js:39
+msgid "No end date"
+msgstr "Χωρίς ημερομηνία λήξης"
+
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr "Δεν υπάρχουν ακόμη αντιστοιχίες."
+
+#: src/i18n.js:47
+msgid "no matching cities found, try to write in english"
+msgstr "Δεν βρέθηκαν πόλεις που να ταιριάζουν, δοκιμάστε να γράψετε στα αγγλικά"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "Δεν υπάρχουν αιτήματα με αυτήν την κατάσταση."
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "Σελίδα"
+
+#: src/i18n.js:66
+msgid "Please select a date"
+msgstr "Επιλέξτε μια ημερομηνία"
+
+#: src/i18n.js:63
+msgid "Please select a start date"
+msgstr "Επιλέξτε μια ημερομηνία έναρξης"
+
+#: src/i18n.js:64
+msgid "Please select an end date"
+msgstr "Επιλέξτε μια ημερομηνία λήξης"
+
+#: src/i18n.js:48
+msgid "Please select departure and arrival cities from the list"
+msgstr "Επιλέξτε πόλεις αναχώρησης και άφιξης από τη λίστα"
+
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "Προηγούμενο"
+
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr "Προτεινόμενο"
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr "Απορρίφθηκε"
+
+#: src/i18n.js:49
+msgid "Remove"
+msgstr "Αφαίρεση"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "Ζητήστε σελιδοποίηση"
+
+#: src/i18n.js:99
+msgid "Role"
+msgstr "Ρόλος"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "Αποστολέας"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "Κατάσταση"
+
+#: src/i18n.js:62
+msgid "Submit request"
+msgstr "Υποβολή αιτήματος"
+
+#: src/i18n.js:65
+msgid "The start date cannot be after the end date"
+msgstr "Η ημερομηνία έναρξης δεν μπορεί να είναι μετά την ημερομηνία λήξης"
+
+#: src/i18n.js:40
+msgid "To date"
+msgstr "Μέχρι σήμερα"
+
+#: src/i18n.js:38
+msgid "To date (optional)"
+msgstr "Έως ημερομηνία (προαιρετικό)"
+
+#: src/i18n.js:68
+msgid "User Not Found"
+msgstr "Ο χρήστης δεν βρέθηκε"
+
+#: src/i18n.js:69
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "Δεν είστε εγγεγραμμένος στο σύστημα. Εγγραφείτε πρώτα μέσω του ρομπότ του Telegram."
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr "Το αίτημά σας"

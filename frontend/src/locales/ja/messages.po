@@ -1,0 +1,272 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr "承認済み"
+
+#: src/i18n.js:72
+msgid "Active"
+msgstr "アクティブ"
+
+#: src/i18n.js:71
+msgid "All statuses"
+msgstr "すべてのステータス"
+
+#: src/i18n.js:45
+msgid "Arrival"
+msgstr "到着"
+
+#: src/i18n.js:53
+msgid "Arrival city"
+msgstr "到着都市"
+
+#: src/i18n.js:52
+msgid "Arrival country"
+msgstr "到着国"
+
+#: src/i18n.js:60
+msgid "Baggage comments"
+msgstr "手荷物に関するコメント"
+
+#: src/i18n.js:73
+msgid "Cancelled"
+msgstr "キャンセルされました"
+
+#: src/i18n.js:58
+msgid "Choose a city first"
+msgstr "最初に都市を選択してください"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "最初に国を選択してください"
+
+#: src/i18n.js:80
+msgid "Close"
+msgstr "閉じる"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "コメント"
+
+#: src/i18n.js:74
+msgid "Completed"
+msgstr "完了"
+
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr "連絡済み"
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr "マッチングを読み込めませんでした。"
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "リクエストを読み込めませんでした。"
+
+#: src/i18n.js:46
+msgid "Country or city"
+msgstr "国または都市"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "宅配便"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "作成されました"
+
+#: src/i18n.js:41
+msgid "Date"
+msgstr "日付"
+
+#: src/i18n.js:44
+msgid "Departure"
+msgstr "出発"
+
+#: src/i18n.js:51
+msgid "Departure city"
+msgstr "出発都市"
+
+#: src/i18n.js:50
+msgid "Departure country"
+msgstr "出発国"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "都市を入力してください"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "国を入力してください"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "都市を入力または選択します"
+
+#: src/i18n.js:75
+msgid "Expired"
+msgstr "期限切れ"
+
+#: src/i18n.js:61
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "例: 衣類 5 kg、書類、電子機器"
+
+#: src/i18n.js:67
+msgid "Form submitted!"
+msgstr "フォームが送信されました!"
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "日付から"
+
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "荷物を運びます"
+
+#: src/i18n.js:59
+msgid "Loading..."
+msgstr "読み込み中..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "配達員を探しています"
+
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr "マッチした相手"
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr "マッチング"
+
+#: src/i18n.js:43
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:42
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:70
+msgid "My Requests"
+msgstr "私のリクエスト"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "新しい"
+
+#: src/i18n.js:90
+msgid "New matches"
+msgstr "新しいマッチング"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "次へ"
+
+#: src/i18n.js:39
+msgid "No end date"
+msgstr "終了日なし"
+
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr "まだマッチングはありません。"
+
+#: src/i18n.js:47
+msgid "no matching cities found, try to write in english"
+msgstr "一致する都市が見つかりません。英語で入力してみてください"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "このステータスのリクエストはありません。"
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "ページ"
+
+#: src/i18n.js:66
+msgid "Please select a date"
+msgstr "日付を選択してください"
+
+#: src/i18n.js:63
+msgid "Please select a start date"
+msgstr "開始日を選択してください"
+
+#: src/i18n.js:64
+msgid "Please select an end date"
+msgstr "終了日を選択してください"
+
+#: src/i18n.js:48
+msgid "Please select departure and arrival cities from the list"
+msgstr "リストから出発都市と到着都市を選択してください"
+
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "前へ"
+
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr "提案済み"
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr "拒否済み"
+
+#: src/i18n.js:49
+msgid "Remove"
+msgstr "削除"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "ページネーションのリクエスト"
+
+#: src/i18n.js:99
+msgid "Role"
+msgstr "役割"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "送信者"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "ステータス"
+
+#: src/i18n.js:62
+msgid "Submit request"
+msgstr "リクエストを送信する"
+
+#: src/i18n.js:65
+msgid "The start date cannot be after the end date"
+msgstr "開始日を終了日以降にすることはできません"
+
+#: src/i18n.js:40
+msgid "To date"
+msgstr "現在まで"
+
+#: src/i18n.js:38
+msgid "To date (optional)"
+msgstr "終了日（任意）"
+
+#: src/i18n.js:68
+msgid "User Not Found"
+msgstr "ユーザーが見つかりません"
+
+#: src/i18n.js:69
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "あなたはシステムに登録されていません。まずは Telegram ボットを通じて登録してください。"
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr "あなたのリクエスト"

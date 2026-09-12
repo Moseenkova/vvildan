@@ -1,0 +1,272 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sw\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr "Imekubaliwa"
+
+#: src/i18n.js:72
+msgid "Active"
+msgstr "Inayotumika"
+
+#: src/i18n.js:71
+msgid "All statuses"
+msgstr "Hali zote"
+
+#: src/i18n.js:45
+msgid "Arrival"
+msgstr "Kuwasili"
+
+#: src/i18n.js:53
+msgid "Arrival city"
+msgstr "Mji wa kuwasili"
+
+#: src/i18n.js:52
+msgid "Arrival country"
+msgstr "Nchi ya kuwasili"
+
+#: src/i18n.js:60
+msgid "Baggage comments"
+msgstr "Maoni ya mizigo"
+
+#: src/i18n.js:73
+msgid "Cancelled"
+msgstr "Imeghairiwa"
+
+#: src/i18n.js:58
+msgid "Choose a city first"
+msgstr "Chagua jiji kwanza"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "Chagua nchi kwanza"
+
+#: src/i18n.js:80
+msgid "Close"
+msgstr "Funga"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "Maoni"
+
+#: src/i18n.js:74
+msgid "Completed"
+msgstr "Imekamilika"
+
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr "Imewasiliana"
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr "Imeshindikana kupakia zinazolingana nawe."
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "Haikuweza kupakia maombi yako."
+
+#: src/i18n.js:46
+msgid "Country or city"
+msgstr "Nchi au jiji"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "Courier"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "Imeundwa"
+
+#: src/i18n.js:41
+msgid "Date"
+msgstr "Tarehe"
+
+#: src/i18n.js:44
+msgid "Departure"
+msgstr "Kuondoka"
+
+#: src/i18n.js:51
+msgid "Departure city"
+msgstr "Jiji la kuondoka"
+
+#: src/i18n.js:50
+msgid "Departure country"
+msgstr "Nchi ya kuondoka"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "Ingiza jiji"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "Ingiza nchi"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "Ingiza au uchague jiji"
+
+#: src/i18n.js:75
+msgid "Expired"
+msgstr "Muda wake umeisha"
+
+#: src/i18n.js:61
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "Kwa mfano: Nguo za kilo 5, nyaraka, umeme"
+
+#: src/i18n.js:67
+msgid "Form submitted!"
+msgstr "Fomu imewasilishwa!"
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "Kuanzia tarehe"
+
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "Nitabeba mizigo"
+
+#: src/i18n.js:59
+msgid "Loading..."
+msgstr "Inapakia..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "Inatafuta msafirishaji"
+
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr "Imelinganishwa na"
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr "Zinazolingana"
+
+#: src/i18n.js:43
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:42
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:70
+msgid "My Requests"
+msgstr "Maombi Yangu"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "Mpya"
+
+#: src/i18n.js:90
+msgid "New matches"
+msgstr "Ulinganisho mpya"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "Inayofuata"
+
+#: src/i18n.js:39
+msgid "No end date"
+msgstr "Hakuna tarehe ya mwisho"
+
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr "Bado hakuna zinazolingana."
+
+#: src/i18n.js:47
+msgid "no matching cities found, try to write in english"
+msgstr "Hakuna miji inayolingana iliyopatikana, jaribu kuandika kwa Kiingereza"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "Hakuna maombi yenye hali hii."
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "Ukurasa"
+
+#: src/i18n.js:66
+msgid "Please select a date"
+msgstr "Tafadhali chagua tarehe"
+
+#: src/i18n.js:63
+msgid "Please select a start date"
+msgstr "Tafadhali chagua tarehe ya kuanza"
+
+#: src/i18n.js:64
+msgid "Please select an end date"
+msgstr "Tafadhali chagua tarehe ya mwisho"
+
+#: src/i18n.js:48
+msgid "Please select departure and arrival cities from the list"
+msgstr "Tafadhali chagua miji ya kuondoka na kuwasili kutoka kwenye orodha"
+
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "Iliyotangulia"
+
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr "Imependekezwa"
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr "Imekataliwa"
+
+#: src/i18n.js:49
+msgid "Remove"
+msgstr "Ondoa"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "Omba pagination"
+
+#: src/i18n.js:99
+msgid "Role"
+msgstr "Jukumu"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "Mtumaji"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "Hali"
+
+#: src/i18n.js:62
+msgid "Submit request"
+msgstr "Wasilisha ombi"
+
+#: src/i18n.js:65
+msgid "The start date cannot be after the end date"
+msgstr "Tarehe ya kuanza haiwezi kuwa baada ya tarehe ya mwisho"
+
+#: src/i18n.js:40
+msgid "To date"
+msgstr "Hadi sasa"
+
+#: src/i18n.js:38
+msgid "To date (optional)"
+msgstr "Hadi tarehe (si lazima)"
+
+#: src/i18n.js:68
+msgid "User Not Found"
+msgstr "Mtumiaji Hajapatikana"
+
+#: src/i18n.js:69
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "Hujasajiliwa kwenye mfumo. Tafadhali jisajili kupitia boti ya Telegram kwanza."
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr "Ombi lako"

@@ -1,0 +1,272 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: kn\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr "ಸ್ವೀಕರಿಸಲಾಗಿದೆ"
+
+#: src/i18n.js:72
+msgid "Active"
+msgstr "ಸಕ್ರಿಯ"
+
+#: src/i18n.js:71
+msgid "All statuses"
+msgstr "ಎಲ್ಲಾ ಸ್ಥಿತಿಗಳು"
+
+#: src/i18n.js:45
+msgid "Arrival"
+msgstr "ಆಗಮನ"
+
+#: src/i18n.js:53
+msgid "Arrival city"
+msgstr "ಆಗಮನ ನಗರ"
+
+#: src/i18n.js:52
+msgid "Arrival country"
+msgstr "ಆಗಮನದ ದೇಶ"
+
+#: src/i18n.js:60
+msgid "Baggage comments"
+msgstr "ಬ್ಯಾಗೇಜ್ ಕಾಮೆಂಟ್‌ಗಳು"
+
+#: src/i18n.js:73
+msgid "Cancelled"
+msgstr "ರದ್ದುಗೊಳಿಸಲಾಗಿದೆ"
+
+#: src/i18n.js:58
+msgid "Choose a city first"
+msgstr "ಮೊದಲು ನಗರವನ್ನು ಆರಿಸಿ"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "ಮೊದಲು ದೇಶವನ್ನು ಆರಿಸಿ"
+
+#: src/i18n.js:80
+msgid "Close"
+msgstr "ಮುಚ್ಚಿ"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "ಕಾಮೆಂಟ್ ಮಾಡಿ"
+
+#: src/i18n.js:74
+msgid "Completed"
+msgstr "ಪೂರ್ಣಗೊಂಡಿದೆ"
+
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr "ಸಂಪರ್ಕಿಸಲಾಗಿದೆ"
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr "ನಿಮ್ಮ ಹೊಂದಾಣಿಕೆಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ."
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "ನಿಮ್ಮ ವಿನಂತಿಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ."
+
+#: src/i18n.js:46
+msgid "Country or city"
+msgstr "ದೇಶ ಅಥವಾ ನಗರ"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "ಕೊರಿಯರ್"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "ರಚಿಸಲಾಗಿದೆ"
+
+#: src/i18n.js:41
+msgid "Date"
+msgstr "ದಿನಾಂಕ"
+
+#: src/i18n.js:44
+msgid "Departure"
+msgstr "ನಿರ್ಗಮನ"
+
+#: src/i18n.js:51
+msgid "Departure city"
+msgstr "ನಿರ್ಗಮನ ನಗರ"
+
+#: src/i18n.js:50
+msgid "Departure country"
+msgstr "ನಿರ್ಗಮನ ದೇಶ"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "ನಗರವನ್ನು ನಮೂದಿಸಿ"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "ದೇಶವನ್ನು ನಮೂದಿಸಿ"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "ನಗರವನ್ನು ನಮೂದಿಸಿ ಅಥವಾ ಆಯ್ಕೆಮಾಡಿ"
+
+#: src/i18n.js:75
+msgid "Expired"
+msgstr "ಅವಧಿ ಮೀರಿದೆ"
+
+#: src/i18n.js:61
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "ಉದಾಹರಣೆಗೆ: ಬಟ್ಟೆ 5 ಕೆಜಿ, ದಾಖಲೆಗಳು, ಎಲೆಕ್ಟ್ರಾನಿಕ್ಸ್"
+
+#: src/i18n.js:67
+msgid "Form submitted!"
+msgstr "ಫಾರ್ಮ್ ಸಲ್ಲಿಸಲಾಗಿದೆ!"
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "ದಿನಾಂಕದಿಂದ"
+
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "ನಾನು ಸಾಮಾನು ತೆಗೆದುಕೊಂಡು ಹೋಗುತ್ತೇನೆ"
+
+#: src/i18n.js:59
+msgid "Loading..."
+msgstr "ಲೋಡ್ ಆಗುತ್ತಿದೆ..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "ಕೊರಿಯರ್‌ಗಾಗಿ ಹುಡುಕಲಾಗುತ್ತಿದೆ"
+
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr "ಇವರೊಂದಿಗೆ ಹೊಂದಾಣಿಕೆ"
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr "ಹೊಂದಾಣಿಕೆಗಳು"
+
+#: src/i18n.js:43
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:42
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:70
+msgid "My Requests"
+msgstr "ನನ್ನ ವಿನಂತಿಗಳು"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "ಹೊಸದು"
+
+#: src/i18n.js:90
+msgid "New matches"
+msgstr "ಹೊಸ ಹೊಂದಾಣಿಕೆಗಳು"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "ಮುಂದೆ"
+
+#: src/i18n.js:39
+msgid "No end date"
+msgstr "ಅಂತಿಮ ದಿನಾಂಕವಿಲ್ಲ"
+
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr "ಇನ್ನೂ ಯಾವುದೇ ಹೊಂದಾಣಿಕೆಗಳಿಲ್ಲ."
+
+#: src/i18n.js:47
+msgid "no matching cities found, try to write in english"
+msgstr "ಹೊಂದಾಣಿಕೆಯ ನಗರಗಳು ಕಂಡುಬಂದಿಲ್ಲ, ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಬರೆಯಲು ಪ್ರಯತ್ನಿಸಿ"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "ಈ ಸ್ಥಿತಿಯೊಂದಿಗೆ ಯಾವುದೇ ವಿನಂತಿಗಳಿಲ್ಲ."
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "ಪುಟ"
+
+#: src/i18n.js:66
+msgid "Please select a date"
+msgstr "ದಯವಿಟ್ಟು ದಿನಾಂಕವನ್ನು ಆಯ್ಕೆಮಾಡಿ"
+
+#: src/i18n.js:63
+msgid "Please select a start date"
+msgstr "ದಯವಿಟ್ಟು ಪ್ರಾರಂಭ ದಿನಾಂಕವನ್ನು ಆಯ್ಕೆಮಾಡಿ"
+
+#: src/i18n.js:64
+msgid "Please select an end date"
+msgstr "ದಯವಿಟ್ಟು ಅಂತಿಮ ದಿನಾಂಕವನ್ನು ಆಯ್ಕೆಮಾಡಿ"
+
+#: src/i18n.js:48
+msgid "Please select departure and arrival cities from the list"
+msgstr "ದಯವಿಟ್ಟು ಪಟ್ಟಿಯಿಂದ ನಿರ್ಗಮನ ಮತ್ತು ಆಗಮನ ನಗರಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ"
+
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "ಹಿಂದಿನ"
+
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr "ಪ್ರಸ್ತಾಪಿಸಲಾಗಿದೆ"
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr "ತಿರಸ್ಕರಿಸಲಾಗಿದೆ"
+
+#: src/i18n.js:49
+msgid "Remove"
+msgstr "ತೆಗೆದುಹಾಕಿ"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "ಪುಟ ವಿನ್ಯಾಸವನ್ನು ವಿನಂತಿಸಿ"
+
+#: src/i18n.js:99
+msgid "Role"
+msgstr "ಪಾತ್ರ"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "ಕಳುಹಿಸುವವರು"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "ಸ್ಥಿತಿ"
+
+#: src/i18n.js:62
+msgid "Submit request"
+msgstr "ವಿನಂತಿಯನ್ನು ಸಲ್ಲಿಸಿ"
+
+#: src/i18n.js:65
+msgid "The start date cannot be after the end date"
+msgstr "ಪ್ರಾರಂಭ ದಿನಾಂಕವು ಅಂತಿಮ ದಿನಾಂಕದ ನಂತರ ಇರುವಂತಿಲ್ಲ"
+
+#: src/i18n.js:40
+msgid "To date"
+msgstr "ಇಲ್ಲಿಯವರೆಗೆ"
+
+#: src/i18n.js:38
+msgid "To date (optional)"
+msgstr "ಕೊನೆಯ ದಿನಾಂಕ (ಐಚ್ಛಿಕ)"
+
+#: src/i18n.js:68
+msgid "User Not Found"
+msgstr "ಬಳಕೆದಾರ ಕಂಡುಬಂದಿಲ್ಲ"
+
+#: src/i18n.js:69
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "ನೀವು ವ್ಯವಸ್ಥೆಯಲ್ಲಿ ನೋಂದಾಯಿಸಲಾಗಿಲ್ಲ. ದಯವಿಟ್ಟು ಮೊದಲು ಟೆಲಿಗ್ರಾಮ್ ಬಾಟ್ ಮೂಲಕ ನೋಂದಾಯಿಸಿ."
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr "ನಿಮ್ಮ ವಿನಂತಿ"

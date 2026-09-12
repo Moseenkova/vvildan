@@ -1,0 +1,272 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr "Elfogadva"
+
+#: src/i18n.js:72
+msgid "Active"
+msgstr "Aktív"
+
+#: src/i18n.js:71
+msgid "All statuses"
+msgstr "Minden állapot"
+
+#: src/i18n.js:45
+msgid "Arrival"
+msgstr "Érkezés"
+
+#: src/i18n.js:53
+msgid "Arrival city"
+msgstr "Érkezés város"
+
+#: src/i18n.js:52
+msgid "Arrival country"
+msgstr "Érkezési ország"
+
+#: src/i18n.js:60
+msgid "Baggage comments"
+msgstr "Poggyász megjegyzések"
+
+#: src/i18n.js:73
+msgid "Cancelled"
+msgstr "Törölve"
+
+#: src/i18n.js:58
+msgid "Choose a city first"
+msgstr "Először válasszon várost"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "Először válasszon országot"
+
+#: src/i18n.js:80
+msgid "Close"
+msgstr "Bezárás"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "Megjegyzés"
+
+#: src/i18n.js:74
+msgid "Completed"
+msgstr "Befejezve"
+
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr "Kapcsolatfelvétel megtörtént"
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr "Nem sikerült betölteni a találataidat."
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "Nem sikerült betölteni a kéréseket."
+
+#: src/i18n.js:46
+msgid "Country or city"
+msgstr "Ország vagy város"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "Futár"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "Létrehozva"
+
+#: src/i18n.js:41
+msgid "Date"
+msgstr "Dátum"
+
+#: src/i18n.js:44
+msgid "Departure"
+msgstr "Indulás"
+
+#: src/i18n.js:51
+msgid "Departure city"
+msgstr "Indulási város"
+
+#: src/i18n.js:50
+msgid "Departure country"
+msgstr "Indulási ország"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "Adjon meg egy várost"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "Adjon meg egy országot"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "Írja be vagy válasszon egy várost"
+
+#: src/i18n.js:75
+msgid "Expired"
+msgstr "Lejárt"
+
+#: src/i18n.js:61
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "Például: Ruhák 5 kg, dokumentumok, elektronika"
+
+#: src/i18n.js:67
+msgid "Form submitted!"
+msgstr "Űrlap beküldve!"
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "A dátumtól kezdve"
+
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "Csomagot viszek"
+
+#: src/i18n.js:59
+msgid "Loading..."
+msgstr "Terhelés..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "Futárt keres"
+
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr "Párosítva vele"
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr "Találatok"
+
+#: src/i18n.js:43
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:42
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:70
+msgid "My Requests"
+msgstr "Saját kéréseim"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "Új"
+
+#: src/i18n.js:90
+msgid "New matches"
+msgstr "Új találatok"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "Következő"
+
+#: src/i18n.js:39
+msgid "No end date"
+msgstr "Nincs befejezési dátum"
+
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr "Még nincsenek találatok."
+
+#: src/i18n.js:47
+msgid "no matching cities found, try to write in english"
+msgstr "Nem található megfelelő város, próbálj angolul írni"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "Nincsenek ilyen állapotú kérések."
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "oldal"
+
+#: src/i18n.js:66
+msgid "Please select a date"
+msgstr "Kérjük, válasszon dátumot"
+
+#: src/i18n.js:63
+msgid "Please select a start date"
+msgstr "Kérjük, válasszon kezdési dátumot"
+
+#: src/i18n.js:64
+msgid "Please select an end date"
+msgstr "Kérjük, válasszon egy befejezési dátumot"
+
+#: src/i18n.js:48
+msgid "Please select departure and arrival cities from the list"
+msgstr "Válaszd ki az indulási és érkezési várost a listából"
+
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "Előző"
+
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr "Javasolt"
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr "Elutasítva"
+
+#: src/i18n.js:49
+msgid "Remove"
+msgstr "Eltávolítás"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "Lapozás kérése"
+
+#: src/i18n.js:99
+msgid "Role"
+msgstr "Szerep"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "Feladó"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "Állapot"
+
+#: src/i18n.js:62
+msgid "Submit request"
+msgstr "Kérelem benyújtása"
+
+#: src/i18n.js:65
+msgid "The start date cannot be after the end date"
+msgstr "A kezdő dátum nem lehet későbbi a befejezési dátumnál"
+
+#: src/i18n.js:40
+msgid "To date"
+msgstr "A mai napig"
+
+#: src/i18n.js:38
+msgid "To date (optional)"
+msgstr "Befejező dátum (nem kötelező)"
+
+#: src/i18n.js:68
+msgid "User Not Found"
+msgstr "Felhasználó nem található"
+
+#: src/i18n.js:69
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "Nem vagy regisztrálva a rendszerben. Kérjük, először regisztráljon a Telegram roboton keresztül."
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr "A kérésed"

@@ -1,0 +1,272 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: am\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr "ተቀባይነት አግኝቷል"
+
+#: src/i18n.js:72
+msgid "Active"
+msgstr "ንቁ"
+
+#: src/i18n.js:71
+msgid "All statuses"
+msgstr "ሁሉም ሁኔታዎች"
+
+#: src/i18n.js:45
+msgid "Arrival"
+msgstr "መድረሻ"
+
+#: src/i18n.js:53
+msgid "Arrival city"
+msgstr "መድረሻ ከተማ"
+
+#: src/i18n.js:52
+msgid "Arrival country"
+msgstr "መድረሻ ሀገር"
+
+#: src/i18n.js:60
+msgid "Baggage comments"
+msgstr "የሻንጣ አስተያየቶች"
+
+#: src/i18n.js:73
+msgid "Cancelled"
+msgstr "ተሰርዟል።"
+
+#: src/i18n.js:58
+msgid "Choose a city first"
+msgstr "መጀመሪያ ከተማ ይምረጡ"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "መጀመሪያ አገር ይምረጡ"
+
+#: src/i18n.js:80
+msgid "Close"
+msgstr "ዝጋ"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "አስተያየት"
+
+#: src/i18n.js:74
+msgid "Completed"
+msgstr "ተጠናቀቀ"
+
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr "ተገናኝቷል"
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr "ተዛማጆችዎን መጫን አልተቻለም።"
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "ጥያቄዎችዎን መጫን አልተቻለም።"
+
+#: src/i18n.js:46
+msgid "Country or city"
+msgstr "አገር ወይም ከተማ"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "መልእክተኛ"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "ተፈጠረ"
+
+#: src/i18n.js:41
+msgid "Date"
+msgstr "ቀን"
+
+#: src/i18n.js:44
+msgid "Departure"
+msgstr "መነሻ"
+
+#: src/i18n.js:51
+msgid "Departure city"
+msgstr "የመነሻ ከተማ"
+
+#: src/i18n.js:50
+msgid "Departure country"
+msgstr "የመነሻ ሀገር"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "ከተማ ግባ"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "አገር ግባ"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "ከተማ ይግቡ ወይም ይምረጡ"
+
+#: src/i18n.js:75
+msgid "Expired"
+msgstr "ጊዜው አልፎበታል።"
+
+#: src/i18n.js:61
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "ለምሳሌ: አልባሳት 5 ኪ.ግ, ሰነዶች, ኤሌክትሮኒክስ"
+
+#: src/i18n.js:67
+msgid "Form submitted!"
+msgstr "ቅጽ ገብቷል!"
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "ከቀን"
+
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "ሻንጣ እወስዳለሁ"
+
+#: src/i18n.js:59
+msgid "Loading..."
+msgstr "በመጫን ላይ..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "መልእክተኛ በመፈለግ ላይ"
+
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr "የተዛመደው"
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr "ተዛማጆች"
+
+#: src/i18n.js:43
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:42
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:70
+msgid "My Requests"
+msgstr "የእኔ ጥያቄዎች"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "አዲስ"
+
+#: src/i18n.js:90
+msgid "New matches"
+msgstr "አዲስ ተዛማጆች"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "ቀጥሎ"
+
+#: src/i18n.js:39
+msgid "No end date"
+msgstr "የማብቂያ ቀን የለም"
+
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr "እስካሁን ምንም ተዛማጅ የለም።"
+
+#: src/i18n.js:47
+msgid "no matching cities found, try to write in english"
+msgstr "ምንም ተዛማጅ ከተማ አልተገኘም፣ በእንግሊዝኛ ለመጻፍ ይሞክሩ"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "በዚህ ሁኔታ ምንም ጥያቄዎች የሉም።"
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "ገጽ"
+
+#: src/i18n.js:66
+msgid "Please select a date"
+msgstr "እባክዎ ቀን ይምረጡ"
+
+#: src/i18n.js:63
+msgid "Please select a start date"
+msgstr "እባክዎ የመጀመሪያ ቀን ይምረጡ"
+
+#: src/i18n.js:64
+msgid "Please select an end date"
+msgstr "እባክዎ የማለቂያ ቀን ይምረጡ"
+
+#: src/i18n.js:48
+msgid "Please select departure and arrival cities from the list"
+msgstr "እባክዎ የመነሻና የመድረሻ ከተሞችን ከዝርዝሩ ይምረጡ"
+
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "ቀዳሚ"
+
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr "የቀረበ"
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr "ውድቅ ተደርጓል"
+
+#: src/i18n.js:49
+msgid "Remove"
+msgstr "አስወግድ"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "የገጽ ገጽን ጠይቅ"
+
+#: src/i18n.js:99
+msgid "Role"
+msgstr "ሚና"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "ላኪ"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "ሁኔታ"
+
+#: src/i18n.js:62
+msgid "Submit request"
+msgstr "ጥያቄ አስገባ"
+
+#: src/i18n.js:65
+msgid "The start date cannot be after the end date"
+msgstr "የመጀመርያው ቀን ከመጨረሻው ቀን በኋላ ሊሆን አይችልም።"
+
+#: src/i18n.js:40
+msgid "To date"
+msgstr "እስከ ዛሬ ድረስ"
+
+#: src/i18n.js:38
+msgid "To date (optional)"
+msgstr "እስከ ቀን (አማራጭ)"
+
+#: src/i18n.js:68
+msgid "User Not Found"
+msgstr "ተጠቃሚ አልተገኘም።"
+
+#: src/i18n.js:69
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "በስርዓቱ ውስጥ አልተመዘገቡም። እባክዎ በቅድሚያ በቴሌግራም ቦት ይመዝገቡ።"
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr "ጥያቄዎ"

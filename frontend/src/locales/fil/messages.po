@@ -1,0 +1,272 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fil\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr "Tinanggap"
+
+#: src/i18n.js:72
+msgid "Active"
+msgstr "Aktibo"
+
+#: src/i18n.js:71
+msgid "All statuses"
+msgstr "Lahat ng status"
+
+#: src/i18n.js:45
+msgid "Arrival"
+msgstr "Pagdating"
+
+#: src/i18n.js:53
+msgid "Arrival city"
+msgstr "Lungsod ng pagdating"
+
+#: src/i18n.js:52
+msgid "Arrival country"
+msgstr "Bansa ng pagdating"
+
+#: src/i18n.js:60
+msgid "Baggage comments"
+msgstr "Mga komento sa bagahe"
+
+#: src/i18n.js:73
+msgid "Cancelled"
+msgstr "Kinansela"
+
+#: src/i18n.js:58
+msgid "Choose a city first"
+msgstr "Pumili muna ng lungsod"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "Pumili muna ng bansa"
+
+#: src/i18n.js:80
+msgid "Close"
+msgstr "Isara"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "Magkomento"
+
+#: src/i18n.js:74
+msgid "Completed"
+msgstr "Nakumpleto"
+
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr "Nakontak"
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr "Hindi ma-load ang iyong mga tugma."
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "Hindi ma-load ang iyong mga kahilingan."
+
+#: src/i18n.js:46
+msgid "Country or city"
+msgstr "Bansa o lungsod"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "Courier"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "Nilikha"
+
+#: src/i18n.js:41
+msgid "Date"
+msgstr "Petsa"
+
+#: src/i18n.js:44
+msgid "Departure"
+msgstr "Pag-alis"
+
+#: src/i18n.js:51
+msgid "Departure city"
+msgstr "Lungsod ng pag-alis"
+
+#: src/i18n.js:50
+msgid "Departure country"
+msgstr "Bansa ng pag-alis"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "Pumasok sa isang lungsod"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "Pumasok sa isang bansa"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "Pumasok o pumili ng lungsod"
+
+#: src/i18n.js:75
+msgid "Expired"
+msgstr "Nag-expire na"
+
+#: src/i18n.js:61
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "Halimbawa: Damit 5 kg, mga dokumento, electronics"
+
+#: src/i18n.js:67
+msgid "Form submitted!"
+msgstr "Naisumite ang form!"
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "Mula sa petsa"
+
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "Magdadala ako ng bagahe"
+
+#: src/i18n.js:59
+msgid "Loading..."
+msgstr "Naglo-load..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "Naghahanap ng courier"
+
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr "Katugma ni"
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr "Mga tugma"
+
+#: src/i18n.js:43
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:42
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:70
+msgid "My Requests"
+msgstr "Aking Mga Kahilingan"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "Bago"
+
+#: src/i18n.js:90
+msgid "New matches"
+msgstr "Mga bagong tugma"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "Susunod"
+
+#: src/i18n.js:39
+msgid "No end date"
+msgstr "Walang petsa ng pagtatapos"
+
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr "Wala pang mga tugma."
+
+#: src/i18n.js:47
+msgid "no matching cities found, try to write in english"
+msgstr "Walang nahanap na tumutugmang lungsod, subukang magsulat sa Ingles"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "Walang mga kahilingan na may ganitong katayuan."
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "Pahina"
+
+#: src/i18n.js:66
+msgid "Please select a date"
+msgstr "Mangyaring pumili ng petsa"
+
+#: src/i18n.js:63
+msgid "Please select a start date"
+msgstr "Mangyaring pumili ng petsa ng pagsisimula"
+
+#: src/i18n.js:64
+msgid "Please select an end date"
+msgstr "Mangyaring pumili ng petsa ng pagtatapos"
+
+#: src/i18n.js:48
+msgid "Please select departure and arrival cities from the list"
+msgstr "Piliin ang lungsod ng pag-alis at pagdating mula sa listahan"
+
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "Nakaraang"
+
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr "Iminungkahi"
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr "Tinanggihan"
+
+#: src/i18n.js:49
+msgid "Remove"
+msgstr "Alisin"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "Humiling ng pagination"
+
+#: src/i18n.js:99
+msgid "Role"
+msgstr "Tungkulin"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "Nagpadala"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "Katayuan"
+
+#: src/i18n.js:62
+msgid "Submit request"
+msgstr "Magsumite ng kahilingan"
+
+#: src/i18n.js:65
+msgid "The start date cannot be after the end date"
+msgstr "Ang petsa ng pagsisimula ay hindi maaaring pagkatapos ng petsa ng pagtatapos"
+
+#: src/i18n.js:40
+msgid "To date"
+msgstr "Hanggang ngayon"
+
+#: src/i18n.js:38
+msgid "To date (optional)"
+msgstr "Hanggang petsa (opsyonal)"
+
+#: src/i18n.js:68
+msgid "User Not Found"
+msgstr "Hindi Nahanap ang User"
+
+#: src/i18n.js:69
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "Hindi ka nakarehistro sa system. Mangyaring magparehistro muna sa pamamagitan ng Telegram bot."
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr "Ang iyong kahilingan"

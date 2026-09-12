@@ -5,6 +5,8 @@ import sys
 from datetime import datetime, timedelta
 from os import getenv
 
+# Ваш код здесь
+import database
 from aiogram import Bot, Dispatcher, F, Router, types
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
@@ -13,14 +15,9 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.types import CallbackQuery, Message
 from aiogram.utils.markdown import hbold
-from dotenv import load_dotenv
-from sqlalchemy import insert, select
-from sqlalchemy.orm import joinedload
-
-# Ваш код здесь
-import database
 from database import (
     RU_LABELS,
+    Airport,
     Country,
     Courier,
     Request,
@@ -30,6 +27,7 @@ from database import (
     async_session_maker,
     get_or_create,
 )
+from dotenv import load_dotenv
 from my_keyboards import (
     BaggageKindCallback,
     BaggageKinds,
@@ -43,6 +41,8 @@ from my_keyboards import (
     final_keyboard,
     role_markup,
 )
+from sqlalchemy import select
+from sqlalchemy.orm import joinedload, selectinload
 
 load_dotenv()
 TOKEN = getenv("BOT_TOKEN")
@@ -75,6 +75,7 @@ async def command_start_handler(message: Message, state: FSMContext) -> None:
             defaults={"name": message.chat.full_name},
             tg_id=message.chat.id,
         )
+
     await message.answer(
         f"Привет, {hbold(message.from_user.full_name)}!\nВыбери свою роль.",
         reply_markup=role_markup,
@@ -86,15 +87,13 @@ async def command_reqs_handler(message: Message, state: FSMContext) -> None:
     async with async_session_maker() as session:
         # Выполняем запрос, чтобы найти все заявки для отправителя
 
-        user = await session.execute(
-            select(User).filter(User.tg_id == message.from_user.id)
-        )
+        user = await session.execute(select(User).filter(User.tg_id == message.from_user.id))
         user = user.scalars().one_or_none()
 
         sender_reqs = await session.execute(
             select(Request)
-            .options(joinedload(Request.origin))
-            .options(joinedload(Request.destination))
+            .options(selectinload(Request.departure_airports))
+            .options(selectinload(Request.arrival_airports))
             .join(Sender, Sender.id == Request.sender_id)
             .filter(Sender.user_id == user.id)
         )
@@ -105,28 +104,29 @@ async def command_reqs_handler(message: Message, state: FSMContext) -> None:
         if sender_reqs:
             "\n".join(
                 [
-                    f"From: {req.origin.name}, to: {req.destination.name}, "
-                    #    f"period: {req.date.strftime('%Y-%m-%d')} - {req.date.strftime('%Y-%m-%d')}, "
+                    f"From: {', '.join(a.name for a in req.departure_airports)}, "
+                    f"to: {', '.join(a.name for a in req.arrival_airports)}, "
+                    # f"period: {req.date.strftime('%Y-%m-%d')} - "
+                    # f"{req.date.strftime('%Y-%m-%d')}, "
                     f"baggage_types: {req.baggage_types}, "
                     for req in sender_reqs
                 ]
             )
             req_dict = {
-                req.id: f"From: {req.origin.name}, to: {req.destination.name}, "
+                req.id: f"From: {', '.join(a.name for a in req.departure_airports)}, "
+                f"to: {', '.join(a.name for a in req.arrival_airports)}, "
                 # f"Date: {req.date.strftime('%Y-%m-%d')}, "  исправить на date from и date to
                 f"baggage_types: {req.baggage_types}, "
                 for req in sender_reqs
             }
             for id in req_dict:
-                await message.answer(
-                    req_dict[id], reply_markup=cancel_req_inline_kb(id)
-                )
+                await message.answer(req_dict[id], reply_markup=cancel_req_inline_kb(id))
         #
 
         courier_reqs = await session.execute(
             select(Request)
-            .options(joinedload(Request.origin))
-            .options(joinedload(Request.destination))
+            .options(selectinload(Request.departure_airports))
+            .options(selectinload(Request.arrival_airports))
             .join(Courier, Courier.id == Request.courier_id)
             .filter(Courier.user_id == user.id)
         )
@@ -136,22 +136,22 @@ async def command_reqs_handler(message: Message, state: FSMContext) -> None:
             # Если заявки найдены, отправляем их в виде сообщения
             "\n".join(
                 [
-                    f"From: {req.origin.name}, to: {req.destination.name}, "
+                    f"From: {', '.join(a.name for a in req.departure_airports)}, "
+                    f"to: {', '.join(a.name for a in req.arrival_airports)}, "
                     f"Date: {req.date.strftime('%Y-%m-%d')}, "
                     f"baggage_types: {req.baggage_types}, "
                     for req in courier_reqs
                 ]
             )
             req_dict = {
-                req.id: f"From: {req.origin.name}, to: {req.destination.name}, "
+                req.id: f"From: {', '.join(a.name for a in req.departure_airports)}, "
+                f"to: {', '.join(a.name for a in req.arrival_airports)}, "
                 f"Date: {req.date.strftime('%Y-%m-%d')}, "
                 f"baggage_types: {req.baggage_types}, "
                 for req in courier_reqs
             }
             for id in req_dict:
-                await message.answer(
-                    req_dict[id], reply_markup=cancel_req_inline_kb(id)
-                )
+                await message.answer(req_dict[id], reply_markup=cancel_req_inline_kb(id))
 
 
 @form_router.callback_query(CancelReqCallback.filter())
@@ -161,14 +161,10 @@ async def cancel_request_button_handler(
 ) -> None:
     async with async_session_maker() as session:
         # Выполняем запрос для получения объекта Request
-        result = await session.execute(
-            select(Request).filter(Request.id == callback_data.id)
-        )
+        result = await session.execute(select(Request).filter(Request.id == callback_data.id))
 
         # Получаем объект Request из результата
-        request = (
-            result.scalars().first()
-        )  # Используем scalars() для получения первого объекта
+        request = result.scalars().first()  # Используем scalars() для получения первого объекта
 
         if request:  # Проверяем, существует ли объект
             await session.delete(request)  # Удаляем объект
@@ -194,9 +190,7 @@ async def role_button_handler(
     callback_query: CallbackQuery, callback_data: RoleCallback, state: FSMContext
 ):
     await state.set_state(Form.city_from_name)
-    answer = await callback_query.message.answer(
-        "Отправить из:\n(введите название города)"
-    )
+    answer = await callback_query.message.answer("Отправить из:\n(введите название города)")
     await state.set_data({"role": callback_data.model, "message_id": answer.message_id})
     await callback_query.message.delete()
     model = getattr(database, callback_data.model)
@@ -229,9 +223,7 @@ async def process_city_from(message: Message, state: FSMContext) -> None:
     await state.update_data(city_from_name=message.text)
     text = f"Отправить\nИз: {message.text}"
     data = await state.get_data()
-    await bot.edit_message_text(
-        text=text, chat_id=message.chat.id, message_id=data["message_id"]
-    )
+    await bot.edit_message_text(text=text, chat_id=message.chat.id, message_id=data["message_id"])
     await message.delete()
     await state.set_state(Form.city_to_name)
     await message.answer("Отправить в:\n(введите название города)")
@@ -256,9 +248,7 @@ async def process_city_to(message: Message, state: FSMContext) -> None:
     await state.update_data(city_to_name=message.text)
     data = await state.get_data()
     text = f"Отправить\nИз: {data['city_from_name']}\nВ: {message.text}"
-    await bot.edit_message_text(
-        text=text, chat_id=message.chat.id, message_id=data["message_id"]
-    )
+    await bot.edit_message_text(text=text, chat_id=message.chat.id, message_id=data["message_id"])
     await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id - 1)
     await message.delete()
     if data["role"] == RoleModelEnum.courier:
@@ -266,9 +256,7 @@ async def process_city_to(message: Message, state: FSMContext) -> None:
         await message.answer("Пожалуйста, введите дату в формате ДД.ММ.ГГГГ.")
     elif data["role"] == RoleModelEnum.sender:
         await state.set_state(Form.period)
-        await message.answer(
-            "Пожалуйста, введите период в формате ДД.ММ.ГГГГ-ДД.ММ.ГГГГ."
-        )
+        await message.answer("Пожалуйста, введите период в формате ДД.ММ.ГГГГ-ДД.ММ.ГГГГ.")
 
 
 @form_router.message(Form.date)
@@ -298,15 +286,14 @@ async def process_date(message: Message, state: FSMContext) -> None:
         return
     data = await state.get_data()
     await state.update_data(date=message.text)
-    text = f"Отправить\nИз: {data['city_from_name']}\nВ: {data['city_to_name']}\nдата: {message.text}"
-    await bot.edit_message_text(
-        text=text, chat_id=message.chat.id, message_id=data["message_id"]
+    text = (
+        f"Отправить\nИз: {data['city_from_name']}\nВ: {data['city_to_name']}\n"
+        f"дата: {message.text}"
     )
+    await bot.edit_message_text(text=text, chat_id=message.chat.id, message_id=data["message_id"])
     await state.set_state(Form.baggage_types)
 
-    await message.answer(
-        text="Выберите багаж", reply_markup=await baggage_type_keyboard()
-    )
+    await message.answer(text="Выберите багаж", reply_markup=await baggage_type_keyboard())
 
 
 @form_router.message(Form.period)
@@ -320,39 +307,42 @@ async def prosses_period(message: Message, state: FSMContext) -> None:
     except Exception:
         await state.set_state(Form.period)
         await message.answer(
-            f"{message.text} неккоректная дата\nПожалуйста, введите дату в формате ДД.ММ.ГГГГ-ДД.ММ.ГГГГ."
+            f"{message.text} неккоректная дата\nПожалуйста, введите дату в формате "
+            "ДД.ММ.ГГГГ-ДД.ММ.ГГГГ."
         )
         return
 
     if date_from > date_to:
         await state.set_state(Form.period)
         await message.answer(
-            f"{message.text} неправильно указан период \n Пожалуйста, введите дату в формате ДД.ММ.ГГГГ-ДД.ММ.ГГГГ."
+            f"{message.text} неправильно указан период \n Пожалуйста, введите дату "
+            "в формате ДД.ММ.ГГГГ-ДД.ММ.ГГГГ."
         )
         return
     if date_from < datetime.now():
         await state.set_state(Form.period)
         await message.answer(
-            f"{message.text} неправильно указан период \n Ваша дата из прошлого, введите актуальную дату в формате ДД.ММ.ГГГГ-ДД.ММ.ГГГГ."
+            f"{message.text} неправильно указан период \n Ваша дата из прошлого, "
+            "введите актуальную дату в формате ДД.ММ.ГГГГ-ДД.ММ.ГГГГ."
         )
         return
     if date_to > datetime.now() + timedelta(days=60):
         await state.set_state(Form.period)
         await message.answer(
-            f"{message.text} неправильно указан период \n Выберите дату на ближайшие 2 месяца в формате ДД.ММ.ГГГГ-ДД.ММ.ГГГГ."
+            f"{message.text} неправильно указан период \n Выберите дату на ближайшие "
+            "2 месяца в формате ДД.ММ.ГГГГ-ДД.ММ.ГГГГ."
         )
         return
     data = await state.get_data()
     await state.update_data(date_from=date_string[0], date_to=date_string[1])
-    text = f"Отправить\nИз: {data['city_from_name']}\nВ: {data['city_to_name']}\nпериод: {message.text}"
-    await bot.edit_message_text(
-        text=text, chat_id=message.chat.id, message_id=data["message_id"]
+    text = (
+        f"Отправить\nИз: {data['city_from_name']}\nВ: {data['city_to_name']}\n"
+        f"период: {message.text}"
     )
+    await bot.edit_message_text(text=text, chat_id=message.chat.id, message_id=data["message_id"])
     await state.set_state(Form.baggage_types)
 
-    await message.answer(
-        text="Выберите багаж", reply_markup=await baggage_type_keyboard()
-    )
+    await message.answer(text="Выберите багаж", reply_markup=await baggage_type_keyboard())
 
 
 @form_router.callback_query(BaggageKindCallback.filter())
@@ -392,9 +382,7 @@ async def baggage_kind_button_handler(
         return
 
     if callback_data.kind in baggage_types:
-        await callback_query.answer(
-            text=f"{callback_data.kind.value} уже выбран", show_alert=True
-        )
+        await callback_query.answer(text=f"{callback_data.kind.value} уже выбран", show_alert=True)
         return
 
     await callback_query.message.delete()
@@ -431,9 +419,7 @@ async def process_comment(message: Message, state: FSMContext) -> None:
         + f"тип: {chosen_types}"
         f"\nкомментарий: {message.text}"
     )
-    await bot.edit_message_text(
-        text=text, chat_id=message.chat.id, message_id=data["message_id"]
-    )
+    await bot.edit_message_text(text=text, chat_id=message.chat.id, message_id=data["message_id"])
     await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id - 1)
     await message.delete()
 
@@ -441,9 +427,7 @@ async def process_comment(message: Message, state: FSMContext) -> None:
 
 
 @form_router.callback_query(RoleCallback.filter(F.text == "courier"))
-async def courier_button_handler(
-    callback_query: CallbackQuery, callback_data: RoleCallback
-):
+async def courier_button_handler(callback_query: CallbackQuery, callback_data: RoleCallback):
     await callback_query.message.answer(
         "Отправить из:", reply_markup=await country_keyboard(direction="from")
     )
@@ -465,9 +449,7 @@ async def courier_button_handler(
 async def absent_country_from_button_handler(
     callback_query: CallbackQuery, callback_data: GeneralCallback
 ):
-    await callback_query.message.answer(
-        "Свайп на лево и введите название страны отправления"
-    )
+    await callback_query.message.answer("Свайп на лево и введите название страны отправления")
     await callback_query.message.delete()
     await callback_query.answer()
 
@@ -476,9 +458,7 @@ async def absent_country_from_button_handler(
 async def absent_country_to_button_handler(
     callback_query: CallbackQuery, callback_data: GeneralCallback
 ):
-    await callback_query.message.answer(
-        "Свайп на лево и введите название страны прибытия"
-    )
+    await callback_query.message.answer("Свайп на лево и введите название страны прибытия")
     await callback_query.message.delete()
     await callback_query.answer()
 
@@ -492,10 +472,7 @@ async def text_input_handler(message: Message, state: FSMContext) -> None:
         await answer.delete()
         return
 
-    if (
-        message.reply_to_message.text
-        == "Свайп на лево и введите название страны отправления"
-    ):
+    if message.reply_to_message.text == "Свайп на лево и введите название страны отправления":
         async with async_session_maker() as session:
             user, _ = await get_or_create(
                 session,
@@ -508,14 +485,9 @@ async def text_input_handler(message: Message, state: FSMContext) -> None:
             )
 
         await message.reply_to_message.edit_text(f"Отправить из: {message.text}")
-        await message.answer(
-            "Отправить в:", reply_markup=await country_keyboard(direction="to")
-        )
+        await message.answer("Отправить в:", reply_markup=await country_keyboard(direction="to"))
 
-    if (
-        message.reply_to_message.text
-        == "Свайп на лево и введите название страны прибытия"
-    ):
+    if message.reply_to_message.text == "Свайп на лево и введите название страны прибытия":
         async with async_session_maker() as session:
             user, _ = await get_or_create(
                 session,
@@ -549,13 +521,11 @@ async def command_finish_handler(
         date_from_obj = datetime.strptime(data["date_from"], "%d.%m.%Y").date()
         date_to_obj = datetime.strptime(data["date_to"], "%d.%m.%Y").date()
     params = {
-        "origin_id": data["city_from_id"],
-        "destination_id": data["city_to_id"],
         "date": date_obj,
         "date_from": date_from_obj,
         "date_to": date_to_obj,
         "baggage_types": baggage_types,
-        "status": database.Status.new,
+        "status": database.RequestStatus.new,
         "comment": data["comment"],
     }
     role = data.get("role")
@@ -579,9 +549,26 @@ async def command_finish_handler(
             result = await session.execute(query)
             sender = result.scalars().one_or_none()
             params["sender_id"] = sender.id
-        query = insert(Request).values(**params).returning(Request.id)
-        result = await session.execute(query)
-        request_id = result.scalar()
+        departure_airport_ids = data.get("departure_airport_ids", [data["city_from_id"]])
+        arrival_airport_ids = data.get("arrival_airport_ids", [data["city_to_id"]])
+        departure_airports = list(
+            (await session.execute(select(Airport).where(Airport.id.in_(departure_airport_ids))))
+            .scalars()
+            .all()
+        )
+        arrival_airports = list(
+            (await session.execute(select(Airport).where(Airport.id.in_(arrival_airport_ids))))
+            .scalars()
+            .all()
+        )
+        request = Request(
+            **params,
+            departure_airports=departure_airports,
+            arrival_airports=arrival_airports,
+        )
+        session.add(request)
+        await session.flush()
+        request_id = request.id
         await session.commit()
         await state.update_data(request_id=request_id)
 
@@ -590,13 +577,13 @@ async def command_finish_handler(
             query = (
                 select(Request)
                 .options(
-                    joinedload(Request.origin),
-                    joinedload(Request.destination),
+                    selectinload(Request.departure_airports),
+                    selectinload(Request.arrival_airports),
                     joinedload(Request.courier).joinedload(Courier.user),
                 )
                 .filter(
-                    Request.origin_id == params["origin_id"],
-                    Request.destination_id == params["destination_id"],
+                    Request.departure_airports.any(Airport.id.in_(departure_airport_ids)),
+                    Request.arrival_airports.any(Airport.id.in_(arrival_airport_ids)),
                     Request.date >= params["date_from"],
                     Request.date <= params["date_to"],
                 )
@@ -605,13 +592,13 @@ async def command_finish_handler(
             query = (
                 select(Request)
                 .options(
-                    joinedload(Request.origin),
-                    joinedload(Request.destination),
+                    selectinload(Request.departure_airports),
+                    selectinload(Request.arrival_airports),
                     joinedload(Request.sender).joinedload(Sender.user),
                 )
                 .filter(
-                    Request.origin_id == params["origin_id"],
-                    Request.destination_id == params["destination_id"],
+                    Request.departure_airports.any(Airport.id.in_(departure_airport_ids)),
+                    Request.arrival_airports.any(Airport.id.in_(arrival_airport_ids)),
                     Request.date_from <= params["date"],
                     Request.date_to >= params["date"],
                 )
@@ -625,11 +612,9 @@ async def command_finish_handler(
         for r in requests:
             courier_name = r.courier.user.name
             date_str = r.date.strftime("%d.%m.%Y")
-            origin_city = r.origin.name
-            destination_city = r.destination.name
-            r_baggage_types = [
-                RU_LABELS.get(kind, kind) for kind in json.loads(r.baggage_types)
-            ]
+            origin_city = ", ".join(airport.name for airport in r.departure_airports)
+            destination_city = ", ".join(airport.name for airport in r.arrival_airports)
+            r_baggage_types = [RU_LABELS.get(kind, kind) for kind in json.loads(r.baggage_types)]
 
             msg_to_sender = (
                 f"Курьер: {courier_name}\n"
@@ -657,11 +642,9 @@ async def command_finish_handler(
             sender_name = r.sender.user.name
             date_from_str = r.date_from.strftime("%d.%m.%Y")
             date_to_str = r.date_to.strftime("%d.%m.%Y")
-            origin_city = r.origin.name
-            destination_city = r.destination.name
-            r_baggage_types = [
-                RU_LABELS.get(kind, kind) for kind in json.loads(r.baggage_types)
-            ]
+            origin_city = ", ".join(airport.name for airport in r.departure_airports)
+            destination_city = ", ".join(airport.name for airport in r.arrival_airports)
+            r_baggage_types = [RU_LABELS.get(kind, kind) for kind in json.loads(r.baggage_types)]
 
             msg_to_courier = (
                 f"Отправитель: {sender_name}\n"
@@ -684,9 +667,7 @@ async def command_finish_handler(
             await callback_query.message.answer(msg_to_courier)
             await bot.send_message(r.sender.user.tg_id, msg_to_sender)
 
-    await bot.delete_message(
-        callback_query.message.chat.id, callback_query.message.message_id
-    )
+    await bot.delete_message(callback_query.message.chat.id, callback_query.message.message_id)
 
 
 # тип багажа на русски

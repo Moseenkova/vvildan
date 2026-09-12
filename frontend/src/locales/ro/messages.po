@@ -1,0 +1,272 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ro\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr "Acceptat"
+
+#: src/i18n.js:72
+msgid "Active"
+msgstr "Activ"
+
+#: src/i18n.js:71
+msgid "All statuses"
+msgstr "Toate stările"
+
+#: src/i18n.js:45
+msgid "Arrival"
+msgstr "Sosire"
+
+#: src/i18n.js:53
+msgid "Arrival city"
+msgstr "Orașul de sosire"
+
+#: src/i18n.js:52
+msgid "Arrival country"
+msgstr "Țara de sosire"
+
+#: src/i18n.js:60
+msgid "Baggage comments"
+msgstr "Comentarii la bagaje"
+
+#: src/i18n.js:73
+msgid "Cancelled"
+msgstr "Anulat"
+
+#: src/i18n.js:58
+msgid "Choose a city first"
+msgstr "Alege mai întâi un oraș"
+
+#: src/i18n.js:55
+msgid "Choose a country first"
+msgstr "Alegeți mai întâi o țară"
+
+#: src/i18n.js:80
+msgid "Close"
+msgstr "Închide"
+
+#: src/i18n.js:81
+msgid "Comment"
+msgstr "Comentariu"
+
+#: src/i18n.js:74
+msgid "Completed"
+msgstr "Terminat"
+
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr "Contactat"
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr "Nu s-au putut încărca potrivirile tale."
+
+#: src/i18n.js:79
+msgid "Could not load your requests."
+msgstr "Nu s-au putut încărca solicitările dvs."
+
+#: src/i18n.js:46
+msgid "Country or city"
+msgstr "Țară sau oraș"
+
+#: src/i18n.js:36
+msgid "Courier"
+msgstr "Curier"
+
+#: src/i18n.js:82
+msgid "Created"
+msgstr "Creat"
+
+#: src/i18n.js:41
+msgid "Date"
+msgstr "Data"
+
+#: src/i18n.js:44
+msgid "Departure"
+msgstr "Plecare"
+
+#: src/i18n.js:51
+msgid "Departure city"
+msgstr "Orașul de plecare"
+
+#: src/i18n.js:50
+msgid "Departure country"
+msgstr "Țara de plecare"
+
+#: src/i18n.js:57
+msgid "Enter a city"
+msgstr "Intrați într-un oraș"
+
+#: src/i18n.js:54
+msgid "Enter a country"
+msgstr "Intrați într-o țară"
+
+#: src/i18n.js:56
+msgid "Enter or choose a city"
+msgstr "Introduceți sau alegeți un oraș"
+
+#: src/i18n.js:75
+msgid "Expired"
+msgstr "A expirat"
+
+#: src/i18n.js:61
+msgid "For example: Clothes 5 kg, documents, electronics"
+msgstr "De exemplu: Haine 5 kg, documente, electronice"
+
+#: src/i18n.js:67
+msgid "Form submitted!"
+msgstr "Formular trimis!"
+
+#: src/i18n.js:37
+msgid "From date"
+msgstr "De la data"
+
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "Voi lua bagaje"
+
+#: src/i18n.js:59
+msgid "Loading..."
+msgstr "Încărcare..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "În căutarea unui curier"
+
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr "Potrivire cu"
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr "Potriviri"
+
+#: src/i18n.js:43
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
+#: src/i18n.js:42
+msgid "MM/dd/yyyy"
+msgstr "dd/MM/yyyy"
+
+#: src/i18n.js:70
+msgid "My Requests"
+msgstr "Cererile mele"
+
+#: src/i18n.js:88
+msgid "New"
+msgstr "Nou"
+
+#: src/i18n.js:90
+msgid "New matches"
+msgstr "Potriviri noi"
+
+#: src/i18n.js:86
+msgid "Next"
+msgstr "În continuare"
+
+#: src/i18n.js:39
+msgid "No end date"
+msgstr "Fără dată de încheiere"
+
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr "Nicio potrivire încă."
+
+#: src/i18n.js:47
+msgid "no matching cities found, try to write in english"
+msgstr "Nu s-au găsit orașe potrivite, încearcă să scrii în engleză"
+
+#: src/i18n.js:78
+msgid "No requests with this status."
+msgstr "Nu există solicitări cu acest statut."
+
+#: src/i18n.js:87
+msgid "Page"
+msgstr "Pagina"
+
+#: src/i18n.js:66
+msgid "Please select a date"
+msgstr "Vă rugăm să selectați o dată"
+
+#: src/i18n.js:63
+msgid "Please select a start date"
+msgstr "Vă rugăm să selectați o dată de începere"
+
+#: src/i18n.js:64
+msgid "Please select an end date"
+msgstr "Vă rugăm să selectați o dată de încheiere"
+
+#: src/i18n.js:48
+msgid "Please select departure and arrival cities from the list"
+msgstr "Selectează orașele de plecare și sosire din listă"
+
+#: src/i18n.js:85
+msgid "Previous"
+msgstr "Anterior"
+
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr "Propus"
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr "Respins"
+
+#: src/i18n.js:49
+msgid "Remove"
+msgstr "Elimină"
+
+#: src/i18n.js:84
+msgid "Request pagination"
+msgstr "Solicitați paginarea"
+
+#: src/i18n.js:99
+msgid "Role"
+msgstr "Rol"
+
+#: src/i18n.js:35
+msgid "Sender"
+msgstr "Expeditor"
+
+#: src/i18n.js:83
+msgid "Status"
+msgstr "Stare"
+
+#: src/i18n.js:62
+msgid "Submit request"
+msgstr "Trimiteți cererea"
+
+#: src/i18n.js:65
+msgid "The start date cannot be after the end date"
+msgstr "Data de început nu poate fi după data de încheiere"
+
+#: src/i18n.js:40
+msgid "To date"
+msgstr "Până în prezent"
+
+#: src/i18n.js:38
+msgid "To date (optional)"
+msgstr "Data de încheiere (opțional)"
+
+#: src/i18n.js:68
+msgid "User Not Found"
+msgstr "Utilizatorul nu a fost găsit"
+
+#: src/i18n.js:69
+msgid "You are not registered in the system. Please register through the Telegram bot first."
+msgstr "Nu sunteți înregistrat în sistem. Vă rugăm să vă înregistrați mai întâi prin botul Telegram."
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr "Solicitarea ta"
