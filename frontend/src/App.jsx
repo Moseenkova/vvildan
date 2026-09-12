@@ -316,6 +316,7 @@ function App() {
         params: {
           page,
           size: requestsPagination.size,
+          language,
           ...(status !== 'all' && { status }),
         },
       })

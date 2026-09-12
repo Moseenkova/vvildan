@@ -4,8 +4,8 @@ import pytest
 from httpx import AsyncClient
 from sqlalchemy import select
 
+from src.database import CityName, CountryName, RequestRole, RequestStatus, async_session_maker
 from src.database import Request as TravelRequest
-from src.database import RequestRole, RequestStatus, async_session_maker
 from tests.conftest import AuthenticatedClient
 from tests.factories import FactoryNamespace
 
@@ -107,6 +107,42 @@ async def test_get_my_requests_filters_real_rows_by_status(
     assert body["total"] == 1
     assert [item["id"] for item in body["items"]] == [completed.id]
     assert active.id not in [item["id"] for item in body["items"]]
+
+
+@pytest.mark.asyncio
+async def test_get_my_requests_localizes_city_names(
+    auth_ac: AuthenticatedClient,
+    factory: FactoryNamespace,
+) -> None:
+    city = await factory.City(name="Moscow", country__name="Russia")
+    await factory.Request(
+        user=auth_ac.current_user,
+        departure_cities=[city],
+        arrival_cities=[city],
+    )
+    async with async_session_maker() as session:
+        session.add_all(
+            [
+                CityName(city_id=city.id, language_code="en", name="Moscow"),
+                CityName(city_id=city.id, language_code="ru", name="Москва"),
+                CountryName(country_id=city.country_id, language_code="en", name="Russia"),
+                CountryName(country_id=city.country_id, language_code="ru", name="Россия"),
+            ]
+        )
+        await session.commit()
+
+    response = await auth_ac.client.get(
+        "/api/requests",
+        params={"language": "ru-RU"},
+    )
+
+    assert response.status_code == 200
+    localized_city = response.json()["items"][0]["departure_cities"][0]
+    assert localized_city == {
+        "id": city.id,
+        "name": "Москва",
+        "country_name": "Россия",
+    }
 
 
 @pytest.mark.asyncio
