@@ -293,6 +293,7 @@ class CustomerTgTopic(Base):
 
     customer_chat_id: Mapped[int] = mapped_column(BigInteger, unique=True, index=True)
     topic_id: Mapped[int] = mapped_column(BigInteger, unique=True, index=True)
+    language_code: Mapped[Optional[str]]
 
     def __str__(self) -> str:
         return f"Chat {self.customer_chat_id} / topic {self.topic_id}"

@@ -1,11 +1,12 @@
 import asyncio
 import logging
+import re
 import sys
 
 from aiogram import Bot, Dispatcher, F, Router
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ChatType, ParseMode
-from aiogram.filters import Command, CommandStart
+from aiogram.filters import Command, CommandObject, CommandStart
 from aiogram.types import Message
 from aiogram.utils.markdown import hbold
 
@@ -14,6 +15,7 @@ from bot.utils import (
     create_customer_tg_topic,
     get_customer_chat_id_by_topic_id,
     get_topic_id_by_customer_chat_id,
+    update_customer_topic_language,
 )
 from src.config import Settings, get_settings
 from src.database import User, async_session_maker, get_or_create
@@ -62,6 +64,7 @@ async def get_or_create_customer_topic(message: Message, bot: Bot) -> int:
 
     user = message.from_user
     display_name = user.full_name if user else str(customer_id)
+    language_code = user.language_code if user else None
 
     topic = await bot.create_forum_topic(
         chat_id=cfg.SUPPORT_GROUP_ID,
@@ -70,17 +73,19 @@ async def get_or_create_customer_topic(message: Message, bot: Bot) -> int:
 
     topic_id = topic.message_thread_id
 
-    await create_customer_tg_topic(customer_id, topic_id)
+    await create_customer_tg_topic(customer_id, topic_id, language_code)
 
     username = f"@{user.username}" if user and user.username else "none"
+    language = language_code or "unknown"
     await bot.send_message(
         chat_id=cfg.SUPPORT_GROUP_ID,
         message_thread_id=topic_id,
         text=(
-            f"<b>Новое обращение</b>\n"
-            f"Имя: {display_name}\n"
+            f"<b>New support request</b>\n"
+            f"Name: {display_name}\n"
             f"Telegram ID: <code>{customer_id}</code>\n"
-            f"Username: {username}"
+            f"Username: {username}\n"
+            f"Language: {language}"
         ),
     )
 
@@ -105,6 +110,43 @@ async def customer_message(message: Message, bot: Bot) -> None:
             message_thread_id=topic_id,
             text="[This message type cannot be copied]",
         )
+
+
+@form_router.message(Command("language"), F.chat.id == cfg.SUPPORT_GROUP_ID)
+async def command_language(message: Message, command: CommandObject) -> None:
+    if not message.from_user or message.from_user.id not in cfg.SUPPORT_GROUP_ADMIN_IDS:
+        return
+
+    topic_id = message.message_thread_id
+    if topic_id is None:
+        await message.answer("Use /language &lt;code&gt; inside a customer topic.")
+        return
+
+    language_code = (command.args or "").strip().lower().replace("_", "-")
+    if not re.fullmatch(r"[a-z]{2,3}(?:-[a-z0-9]{2,8})*", language_code):
+        await message.answer("Usage: /language &lt;code&gt; (for example, /language en)")
+        return
+
+    updated = await update_customer_topic_language(topic_id, language_code)
+    if not updated:
+        await message.answer(f"Topic <code>{topic_id}</code> was not found in the database.")
+        return
+
+    await message.answer(f"Topic language updated to <code>{language_code}</code>.")
+
+
+@form_router.message(Command("about"), F.chat.id == cfg.SUPPORT_GROUP_ID)
+async def command_about(message: Message) -> None:
+    if not message.from_user or message.from_user.id not in cfg.SUPPORT_GROUP_ADMIN_IDS:
+        return
+
+    await message.answer(
+        "<b>Available admin commands</b>\n\n"
+        "/about — Show this command list.\n"
+        "/id — Show the current chat, topic, and user IDs.\n"
+        "/language &lt;code&gt; — Change the customer's language for the current topic "
+        "(for example, /language en)."
+    )
 
 
 @form_router.message(F.chat.id == cfg.SUPPORT_GROUP_ID)
