@@ -243,7 +243,7 @@ async def test_notify_request_candidates_sends_new_request_and_matches_link(
     factory: FactoryNamespace,
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    sender = await factory.User(tg_id=2001, name="Sender")
+    sender = await factory.User(tg_id=2001, name="Sender", language_code="ru-RU")
     courier = await factory.User(tg_id=2002, name="New Courier")
     departure = await factory.City(name="Moscow")
     arrival = await factory.City(name="Istanbul")
@@ -280,10 +280,12 @@ async def test_notify_request_candidates_sends_new_request_and_matches_link(
     notification = fake_bot.send_message.await_args.kwargs
     assert notification["chat_id"] == sender.tg_id
     assert f"#{sender_request.id}" in notification["text"]
-    assert "New Courier" in notification["text"]
+    assert "Новый кандидат" in notification["text"]
+    assert "Кандидат: New Courier" in notification["text"]
     assert "Moscow → Istanbul" in notification["text"]
     assert "Electronics only" in notification["text"]
     button = notification["reply_markup"].inline_keyboard[0][0]
+    assert button.text == "Открыть совпадения"
     assert button.web_app.url == "https://example.com/webapp/?tab=matches"
     fake_bot.session.close.assert_awaited_once()
 

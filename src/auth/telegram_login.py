@@ -102,4 +102,8 @@ async def authenticate_telegram_id_token(id_token: str, nonce: str) -> dict[str,
     except (JWTError, ValueError, TypeError, KeyError) as exc:
         logger.warning("Telegram ID token validation: %s: %s", type(exc).__name__, str(exc))
         reject_telegram_login("invalid_id_token")
-    return await authenticate_telegram_user(telegram_id)
+    locale = claims.get("locale")
+    return await authenticate_telegram_user(
+        telegram_id,
+        locale if isinstance(locale, str) else None,
+    )

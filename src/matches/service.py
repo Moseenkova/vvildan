@@ -6,6 +6,7 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
 from sqlalchemy import and_, or_, select, update
 from sqlalchemy.orm import selectinload
 
+from bot.notifications import get_candidate_notification, normalize_language
 from src.config import Settings, get_settings
 from src.database import (
     City,
@@ -309,6 +310,11 @@ async def notify_request_candidates(
         if statement is None:
             return
         candidates = (await session.scalars(statement)).all()
+        localized_requests = {}
+        for language in {normalize_language(item.user.language_code) for item in candidates}:
+            localized_requests[language] = (
+                await _localized_requests(session, [request], language)
+            )[request.id]
 
     requests_by_user = {}
     for candidate in candidates:
@@ -317,24 +323,36 @@ async def notify_request_candidates(
         return
 
     webapp_url = f"{settings.BASE_URL.rstrip('/')}/webapp/?tab=matches"
-    keyboard = InlineKeyboardMarkup(
-        inline_keyboard=[
-            [InlineKeyboardButton(text="Open matches", web_app=WebAppInfo(url=webapp_url))]
-        ]
-    )
     bot = Bot(token=settings.BOT_TOKEN.get_secret_value())
     try:
         for tg_id, matching_requests in requests_by_user.items():
             request_numbers = ", ".join(f"#{item.id}" for item in matching_requests)
+            recipient = matching_requests[0].user
+            localized_request = localized_requests[normalize_language(recipient.language_code)]
+            notification, button_text = get_candidate_notification(
+                recipient.language_code,
+                request_numbers=request_numbers,
+                candidate_name=request.user.name,
+                departure=", ".join(city.name for city in localized_request.departure_cities),
+                arrival=", ".join(city.name for city in localized_request.arrival_cities),
+                date_from=localized_request.date_from,
+                date_to=localized_request.date_to,
+                comment=localized_request.comment,
+            )
+            keyboard = InlineKeyboardMarkup(
+                inline_keyboard=[
+                    [
+                        InlineKeyboardButton(
+                            text=button_text,
+                            web_app=WebAppInfo(url=webapp_url),
+                        )
+                    ]
+                ]
+            )
             try:
                 await bot.send_message(
                     chat_id=tg_id,
-                    text=(
-                        f"A new candidate matches your request(s) {request_numbers}!\n\n"
-                        f"Candidate: {request.user.name}\n"
-                        f"{_request_summary(request)}\n\n"
-                        "Click Open matches to view the candidate in the web app."
-                    ),
+                    text=notification,
                     reply_markup=keyboard,
                     parse_mode=None,
                 )

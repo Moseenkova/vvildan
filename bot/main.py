@@ -58,15 +58,20 @@ async def send_plain_text(
 async def command_start_handler(message: Message) -> None:
     user = message.from_user
     language_code = user.language_code if user else None
+    if language_code:
+        language_code = language_code.lower().replace("_", "-")[:16]
     full_name = user.full_name if user else message.chat.full_name
 
     async with async_session_maker() as session:
-        await get_or_create(
+        stored_user, _ = await get_or_create(
             session,
             User,
-            defaults={"name": full_name},
+            defaults={"name": full_name, "language_code": language_code},
             tg_id=message.chat.id,
         )
+        if language_code and stored_user.language_code != language_code:
+            stored_user.language_code = language_code.lower().replace("_", "-")[:16]
+            await session.commit()
 
     await message.answer(
         get_welcome_message(

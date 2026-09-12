@@ -69,10 +69,21 @@ async def decode_access_token(token: str) -> dict[str, object]:
         raise TokenNotFoundException() from exc
 
 
-async def authenticate_telegram_user(telegram_id: int) -> dict[str, Any]:
+async def authenticate_telegram_user(
+    telegram_id: int,
+    language_code: str | None = None,
+) -> dict[str, Any]:
     user = await _get_user_by_telegram_id(telegram_id)
     if not user:
         raise UserNotFoundException
+
+    if language_code:
+        normalized_language = language_code.lower().replace("_", "-")[:16]
+        async with async_session_maker() as session:
+            stored_user = await session.get(User, user.id)
+            stored_user.language_code = normalized_language
+            await session.commit()
+            user.language_code = normalized_language
 
     token_pair = create_token_pair(user=user)
     await _save_refresh_token(user.id, token_pair["refresh"])
@@ -97,7 +108,10 @@ async def authenticate_telegram_init_data(init_data: str) -> dict[str, Any]:
     if auth_date > now + timedelta(seconds=30) or now - auth_date > max_age:
         raise AuthFailedException
 
-    return await authenticate_telegram_user(telegram_data.user.id)
+    return await authenticate_telegram_user(
+        telegram_data.user.id,
+        telegram_data.user.language_code,
+    )
 
 
 async def rotate_refresh_token(refresh_token: str | None) -> dict[str, Any]:
