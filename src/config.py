@@ -21,6 +21,7 @@ class Settings(BaseSettings):
 
     ALLOWED_HOSTS: str = "localhost,0.0.0.0,127.0.0.1,test"
     BASE_URL: str = "https://dev.courier.ru"
+    WEBAPP_URL: str = "https://labhealth.pro/webapp/"
 
     SECRET_KEY: str = "xxx"
     ALGORITHM: str = "HS256"

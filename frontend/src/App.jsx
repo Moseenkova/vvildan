@@ -383,6 +383,13 @@ function App() {
   const [matchesLoading, setMatchesLoading] = useState(true)
   const [matchesError, setMatchesError] = useState(false)
   const matchesRequestRef = useRef(0)
+  const candidateDeepLinkRef = useRef({
+    requestId: Number.parseInt(
+      new URLSearchParams(window.location.search).get('candidate'),
+      10,
+    ),
+    opened: false,
+  })
 
   const loadRequests = async (page = 1, status = requestStatus) => {
     setRequestsLoading(true)
@@ -487,6 +494,22 @@ function App() {
     // Match refreshes intentionally follow authentication and the open tab.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activePage, authState, language])
+
+  useEffect(() => {
+    const deepLink = candidateDeepLinkRef.current
+    if (
+      activePage !== 'matches'
+      || matchesLoading
+      || deepLink.opened
+      || !Number.isInteger(deepLink.requestId)
+    ) return
+
+    const linkedCandidate = matches.find(
+      (match) => match.matching_request.id === deepLink.requestId,
+    )
+    if (linkedCandidate) setSelectedRequest(linkedCandidate.matching_request)
+    deepLink.opened = true
+  }, [activePage, matches, matchesLoading])
 
   const changeRequestsPage = async (page) => {
     if (page < 1 || page > requestsPagination.pages || page === requestsPagination.page) return

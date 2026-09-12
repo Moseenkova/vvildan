@@ -87,6 +87,8 @@ restore db
   (no trailing dot). It must be a Telegram Web App button, not a plain URL button.
   The Mini App SDK loads before React and supplies `initData`; the API verifies
   its signature and age, then logs the user in automatically without a login button.
+- Set `WEBAPP_URL=https://labhealth.pro/webapp/` in the backend environment. Match
+  notification buttons use this value and add `?tab=matches` automatically.
 - Browser visitors to `https://labhealth.pro/` see **Log in with Telegram**.
   Browser visits to `/webapp/` use the same login screen.
   The current [Telegram Login SDK](https://core.telegram.org/bots/telegram-login)

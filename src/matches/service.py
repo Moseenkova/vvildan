@@ -1,5 +1,6 @@
 import logging
 from datetime import datetime, timezone
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 from aiogram import Bot
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
@@ -289,6 +290,18 @@ def _request_summary(request: TravelRequest) -> str:
     return f"{departure} → {arrival}\nDate: {dates}{comment}"
 
 
+def _matches_webapp_url(
+    settings: Settings,
+    candidate_request_id: int | None = None,
+) -> str:
+    parts = urlsplit(settings.WEBAPP_URL)
+    query = dict(parse_qsl(parts.query, keep_blank_values=True))
+    query["tab"] = "matches"
+    if candidate_request_id is not None:
+        query["candidate"] = str(candidate_request_id)
+    return urlunsplit((parts.scheme, parts.netloc, parts.path, urlencode(query), parts.fragment))
+
+
 async def notify_request_candidates(
     request_id: int,
     settings: Settings | None = None,
@@ -322,7 +335,7 @@ async def notify_request_candidates(
     if not requests_by_user:
         return
 
-    webapp_url = f"{settings.BASE_URL.rstrip('/')}/webapp/?tab=matches"
+    webapp_url = _matches_webapp_url(settings, request.id)
     bot = Bot(token=settings.BOT_TOKEN.get_secret_value())
     try:
         for tg_id, matching_requests in requests_by_user.items():
@@ -375,12 +388,6 @@ async def notify_match_users(match_id: int, settings: Settings | None = None) ->
         if match is None:
             return
 
-    webapp_url = f"{settings.BASE_URL.rstrip('/')}/webapp/?tab=matches"
-    keyboard = InlineKeyboardMarkup(
-        inline_keyboard=[
-            [InlineKeyboardButton(text="Open matches", web_app=WebAppInfo(url=webapp_url))]
-        ]
-    )
     recipients = (
         (match.sender_request.user, match.sender_request, match.courier_request),
         (match.courier_request.user, match.courier_request, match.sender_request),
@@ -392,6 +399,18 @@ async def notify_match_users(match_id: int, settings: Settings | None = None) ->
             if user.tg_id in delivered_to:
                 continue
             delivered_to.add(user.tg_id)
+            keyboard = InlineKeyboardMarkup(
+                inline_keyboard=[
+                    [
+                        InlineKeyboardButton(
+                            text="Open matches",
+                            web_app=WebAppInfo(
+                                url=_matches_webapp_url(settings, matching_request.id)
+                            ),
+                        )
+                    ]
+                ]
+            )
             try:
                 await bot.send_message(
                     chat_id=user.tg_id,

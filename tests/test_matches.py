@@ -222,7 +222,7 @@ async def test_notify_match_users_sends_details_and_webapp_button(
     monkeypatch.setattr("src.matches.service.Bot", lambda token: fake_bot)
     settings = SimpleNamespace(
         BOT_TOKEN=SecretStr("123:test"),
-        BASE_URL="https://example.com",
+        WEBAPP_URL="https://example.com/custom-app/",
     )
 
     await notify_match_users(match.id, settings)
@@ -234,7 +234,9 @@ async def test_notify_match_users_sends_details_and_webapp_button(
     assert "Jakarta → Singapore" in sender_message["text"]
     assert "Documents" in sender_message["text"]
     button = sender_message["reply_markup"].inline_keyboard[0][0]
-    assert button.web_app.url == "https://example.com/webapp/?tab=matches"
+    assert button.web_app.url == (
+        f"https://example.com/custom-app/?tab=matches&candidate={courier_request.id}"
+    )
     fake_bot.session.close.assert_awaited_once()
 
 
@@ -271,7 +273,7 @@ async def test_notify_request_candidates_sends_new_request_and_matches_link(
     monkeypatch.setattr("src.matches.service.Bot", lambda token: fake_bot)
     settings = SimpleNamespace(
         BOT_TOKEN=SecretStr("123:test"),
-        BASE_URL="https://example.com",
+        WEBAPP_URL="https://example.com/custom-app/",
     )
 
     await notify_request_candidates(courier_request.id, settings)
@@ -286,7 +288,9 @@ async def test_notify_request_candidates_sends_new_request_and_matches_link(
     assert "Electronics only" in notification["text"]
     button = notification["reply_markup"].inline_keyboard[0][0]
     assert button.text == "Открыть совпадения"
-    assert button.web_app.url == "https://example.com/webapp/?tab=matches"
+    assert button.web_app.url == (
+        f"https://example.com/custom-app/?tab=matches&candidate={courier_request.id}"
+    )
     fake_bot.session.close.assert_awaited_once()
 
 
