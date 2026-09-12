@@ -131,6 +131,10 @@ msgstr "ቅጽ ገብቷል!"
 msgid "From date"
 msgstr "ከቀን"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "ሻንጣ እወስዳለሁ"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "በመጫን ላይ..."
@@ -138,10 +142,6 @@ msgstr "በመጫን ላይ..."
 #: src/i18n.js:76
 msgid "Looking for courier"
 msgstr "መልእክተኛ በመፈለግ ላይ"
-
-#: src/i18n.js:77
-msgid "Looking for sender"
-msgstr "ላኪ በመፈለግ ላይ"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -214,8 +214,6 @@ msgstr "ቀዳሚ"
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "አስወግድ"
-
-#: src/i18n.js:76
 
 #: src/i18n.js:84
 msgid "Request pagination"

@@ -131,6 +131,10 @@ msgstr "Formulário enviado!"
 msgid "From date"
 msgstr "A partir da data"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "Vou levar bagagem"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "Carregando..."
@@ -138,10 +142,6 @@ msgstr "Carregando..."
 #: src/i18n.js:76
 msgid "Looking for courier"
 msgstr "Procurando entregador"
-
-#: src/i18n.js:77
-msgid "Looking for sender"
-msgstr "Procurando remetente"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -214,8 +214,6 @@ msgstr "Anterior"
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "Remover"
-
-#: src/i18n.js:76
 
 #: src/i18n.js:84
 msgid "Request pagination"

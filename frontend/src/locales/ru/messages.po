@@ -131,6 +131,10 @@ msgstr "Форма отправлена!"
 msgid "From date"
 msgstr "В период с даты"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "Возьму багаж"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "Загрузка..."
@@ -138,10 +142,6 @@ msgstr "Загрузка..."
 #: src/i18n.js:76
 msgid "Looking for courier"
 msgstr "Ищу курьера"
-
-#: src/i18n.js:77
-msgid "Looking for sender"
-msgstr "Ищу отправителя"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -214,8 +214,6 @@ msgstr "Предыдущий"
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "Удалить"
-
-#: src/i18n.js:76
 
 #: src/i18n.js:84
 msgid "Request pagination"

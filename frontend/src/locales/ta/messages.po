@@ -131,6 +131,10 @@ msgstr "படிவம் சமர்ப்பிக்கப்பட்ட�
 msgid "From date"
 msgstr "தேதியிலிருந்து"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "நான் சாமான்களை எடுத்துச் செல்வேன்"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "ஏற்றுகிறது..."
@@ -138,10 +142,6 @@ msgstr "ஏற்றுகிறது..."
 #: src/i18n.js:76
 msgid "Looking for courier"
 msgstr "கூரியரைத் தேடுகிறது"
-
-#: src/i18n.js:77
-msgid "Looking for sender"
-msgstr "அனுப்புநரைத் தேடுகிறது"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -214,8 +214,6 @@ msgstr "முந்தைய"
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "அகற்று"
-
-#: src/i18n.js:76
 
 #: src/i18n.js:84
 msgid "Request pagination"

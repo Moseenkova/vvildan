@@ -131,6 +131,10 @@ msgstr "ဖောင်တင်ပြီးပါပြီ။"
 msgid "From date"
 msgstr "ရက်စွဲမှ"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "ခရီးဆောင်အိတ် ယူသွားမည်"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "ဖွင့်နေသည်..."
@@ -138,10 +142,6 @@ msgstr "ဖွင့်နေသည်..."
 #: src/i18n.js:76
 msgid "Looking for courier"
 msgstr "ပို့ဆောင်သူ ရှာနေသည်"
-
-#: src/i18n.js:77
-msgid "Looking for sender"
-msgstr "ပေးပို့သူ ရှာနေသည်"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -214,8 +214,6 @@ msgstr "အရင်"
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "ဖယ်ရှားရန်"
-
-#: src/i18n.js:76
 
 #: src/i18n.js:84
 msgid "Request pagination"

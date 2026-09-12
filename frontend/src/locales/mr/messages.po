@@ -131,6 +131,10 @@ msgstr "फॉर्म सबमिट केला!"
 msgid "From date"
 msgstr "तारखेपासून"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "मी सामान घेऊन जाईन"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "लोड करत आहे..."
@@ -138,10 +142,6 @@ msgstr "लोड करत आहे..."
 #: src/i18n.js:76
 msgid "Looking for courier"
 msgstr "कुरिअर शोधत आहे"
-
-#: src/i18n.js:77
-msgid "Looking for sender"
-msgstr "पाठवणारा शोधत आहे"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -214,8 +214,6 @@ msgstr "मागील"
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "काढून टाका"
-
-#: src/i18n.js:76
 
 #: src/i18n.js:84
 msgid "Request pagination"

@@ -131,6 +131,10 @@ msgstr "An ƙaddamar da fom!"
 msgid "From date"
 msgstr "Daga kwanan wata"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "Zan ɗauki kaya"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "Ana lodawa..."
@@ -138,10 +142,6 @@ msgstr "Ana lodawa..."
 #: src/i18n.js:76
 msgid "Looking for courier"
 msgstr "Ana neman mai kai kaya"
-
-#: src/i18n.js:77
-msgid "Looking for sender"
-msgstr "Ana neman mai aikawa"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -214,8 +214,6 @@ msgstr "A baya"
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "Cire"
-
-#: src/i18n.js:76
 
 #: src/i18n.js:84
 msgid "Request pagination"

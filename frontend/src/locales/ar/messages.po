@@ -131,6 +131,10 @@ msgstr "تم إرسال النموذج!"
 msgid "From date"
 msgstr "من تاريخ"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "سأحمل الأمتعة"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "تحميل..."
@@ -138,10 +142,6 @@ msgstr "تحميل..."
 #: src/i18n.js:76
 msgid "Looking for courier"
 msgstr "البحث عن مندوب توصيل"
-
-#: src/i18n.js:77
-msgid "Looking for sender"
-msgstr "البحث عن مُرسِل"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -214,8 +214,6 @@ msgstr "السابق"
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "إزالة"
-
-#: src/i18n.js:76
 
 #: src/i18n.js:84
 msgid "Request pagination"

@@ -131,6 +131,10 @@ msgstr "පෝරමය ඉදිරිපත් කළා!"
 msgid "From date"
 msgstr "දින සිට"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "මම ගමන් මලු රැගෙන යන්නම්"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "පූරණය වෙමින්..."
@@ -138,10 +142,6 @@ msgstr "පූරණය වෙමින්..."
 #: src/i18n.js:76
 msgid "Looking for courier"
 msgstr "කුරියර්වරයෙකු සොයමින්"
-
-#: src/i18n.js:77
-msgid "Looking for sender"
-msgstr "යවන්නෙකු සොයමින්"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -214,8 +214,6 @@ msgstr "පෙර"
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "ඉවත් කරන්න"
-
-#: src/i18n.js:76
 
 #: src/i18n.js:84
 msgid "Request pagination"

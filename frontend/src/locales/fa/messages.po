@@ -131,6 +131,10 @@ msgstr "فرم ارسال شد!"
 msgid "From date"
 msgstr "از تاریخ"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "بار حمل می‌کنم"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "در حال بارگیری..."
@@ -138,10 +142,6 @@ msgstr "در حال بارگیری..."
 #: src/i18n.js:76
 msgid "Looking for courier"
 msgstr "در جستجوی پیک"
-
-#: src/i18n.js:77
-msgid "Looking for sender"
-msgstr "در جستجوی فرستنده"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -214,8 +214,6 @@ msgstr "قبلی"
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "حذف"
-
-#: src/i18n.js:76
 
 #: src/i18n.js:84
 msgid "Request pagination"

@@ -131,6 +131,10 @@ msgstr "ఫారమ్ సమర్పించబడింది!"
 msgid "From date"
 msgstr "తేదీ నుండి"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "నేను సామాను తీసుకెళ్తాను"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "లోడ్ అవుతోంది..."
@@ -138,10 +142,6 @@ msgstr "లోడ్ అవుతోంది..."
 #: src/i18n.js:76
 msgid "Looking for courier"
 msgstr "కొరియర్ కోసం వెతుకుతున్నారు"
-
-#: src/i18n.js:77
-msgid "Looking for sender"
-msgstr "పంపేవారి కోసం వెతుకుతున్నారు"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -214,8 +214,6 @@ msgstr "మునుపటి"
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "తొలగించు"
-
-#: src/i18n.js:76
 
 #: src/i18n.js:84
 msgid "Request pagination"

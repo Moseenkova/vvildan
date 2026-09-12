@@ -131,6 +131,10 @@ msgstr "Fomu imewasilishwa!"
 msgid "From date"
 msgstr "Kuanzia tarehe"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "Nitabeba mizigo"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "Inapakia..."
@@ -138,10 +142,6 @@ msgstr "Inapakia..."
 #: src/i18n.js:76
 msgid "Looking for courier"
 msgstr "Inatafuta msafirishaji"
-
-#: src/i18n.js:77
-msgid "Looking for sender"
-msgstr "Inatafuta mtumaji"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -214,8 +214,6 @@ msgstr "Iliyotangulia"
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "Ondoa"
-
-#: src/i18n.js:76
 
 #: src/i18n.js:84
 msgid "Request pagination"

@@ -131,6 +131,10 @@ msgstr "Naisumite ang form!"
 msgid "From date"
 msgstr "Mula sa petsa"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "Magdadala ako ng bagahe"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "Naglo-load..."
@@ -138,10 +142,6 @@ msgstr "Naglo-load..."
 #: src/i18n.js:76
 msgid "Looking for courier"
 msgstr "Naghahanap ng courier"
-
-#: src/i18n.js:77
-msgid "Looking for sender"
-msgstr "Naghahanap ng sender"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -214,8 +214,6 @@ msgstr "Nakaraang"
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "Alisin"
-
-#: src/i18n.js:76
 
 #: src/i18n.js:84
 msgid "Request pagination"

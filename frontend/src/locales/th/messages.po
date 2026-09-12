@@ -131,6 +131,10 @@ msgstr "ส่งแบบฟอร์มแล้ว!"
 msgid "From date"
 msgstr "จากวันที่"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "ฉันจะรับสัมภาระ"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "กำลังโหลด..."
@@ -138,10 +142,6 @@ msgstr "กำลังโหลด..."
 #: src/i18n.js:76
 msgid "Looking for courier"
 msgstr "กำลังมองหาผู้จัดส่ง"
-
-#: src/i18n.js:77
-msgid "Looking for sender"
-msgstr "กำลังมองหาผู้ส่ง"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -214,8 +214,6 @@ msgstr "ก่อนหน้า"
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "ลบ"
-
-#: src/i18n.js:76
 
 #: src/i18n.js:84
 msgid "Request pagination"

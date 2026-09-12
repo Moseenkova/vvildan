@@ -131,6 +131,10 @@ msgstr "Form gönderildi!"
 msgid "From date"
 msgstr "Tarihten itibaren"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "Bagaj alacağım"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "Yükleniyor..."
@@ -138,10 +142,6 @@ msgstr "Yükleniyor..."
 #: src/i18n.js:76
 msgid "Looking for courier"
 msgstr "Kurye aranıyor"
-
-#: src/i18n.js:77
-msgid "Looking for sender"
-msgstr "Gönderici aranıyor"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -214,8 +214,6 @@ msgstr "Önceki"
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "Kaldır"
-
-#: src/i18n.js:76
 
 #: src/i18n.js:84
 msgid "Request pagination"

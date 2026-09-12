@@ -131,6 +131,10 @@ msgstr "ഫോം സമർപ്പിച്ചു!"
 msgid "From date"
 msgstr "തീയതി മുതൽ"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "ഞാൻ ലഗേജ് കൊണ്ടുപോകാം"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "ലോഡ് ചെയ്യുന്നു..."
@@ -138,10 +142,6 @@ msgstr "ലോഡ് ചെയ്യുന്നു..."
 #: src/i18n.js:76
 msgid "Looking for courier"
 msgstr "കൊറിയറെ തിരയുന്നു"
-
-#: src/i18n.js:77
-msgid "Looking for sender"
-msgstr "അയയ്ക്കുന്നയാളെ തിരയുന്നു"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -214,8 +214,6 @@ msgstr "മുമ്പത്തെ"
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "നീക്കം ചെയ്യുക"
-
-#: src/i18n.js:76
 
 #: src/i18n.js:84
 msgid "Request pagination"

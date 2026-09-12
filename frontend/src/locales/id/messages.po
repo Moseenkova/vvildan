@@ -131,6 +131,10 @@ msgstr "Formulir telah diserahkan!"
 msgid "From date"
 msgstr "Sejak tanggal"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "Saya akan membawa bagasi"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "Memuat..."
@@ -138,10 +142,6 @@ msgstr "Memuat..."
 #: src/i18n.js:76
 msgid "Looking for courier"
 msgstr "Mencari kurir"
-
-#: src/i18n.js:77
-msgid "Looking for sender"
-msgstr "Mencari pengirim"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -214,8 +214,6 @@ msgstr "Sebelumnya"
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "Hapus"
-
-#: src/i18n.js:76
 
 #: src/i18n.js:84
 msgid "Request pagination"

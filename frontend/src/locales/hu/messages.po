@@ -131,6 +131,10 @@ msgstr "Űrlap beküldve!"
 msgid "From date"
 msgstr "A dátumtól kezdve"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "Csomagot viszek"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "Terhelés..."
@@ -138,10 +142,6 @@ msgstr "Terhelés..."
 #: src/i18n.js:76
 msgid "Looking for courier"
 msgstr "Futárt keres"
-
-#: src/i18n.js:77
-msgid "Looking for sender"
-msgstr "Feladót keres"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -214,8 +214,6 @@ msgstr "Előző"
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "Eltávolítás"
-
-#: src/i18n.js:76
 
 #: src/i18n.js:84
 msgid "Request pagination"

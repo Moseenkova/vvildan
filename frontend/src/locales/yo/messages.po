@@ -131,6 +131,10 @@ msgstr "Fọọmu silẹ!"
 msgid "From date"
 msgstr "Lati ọjọ"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "Màá gbé ẹrù"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "Nkojọpọ..."
@@ -138,10 +142,6 @@ msgstr "Nkojọpọ..."
 #: src/i18n.js:76
 msgid "Looking for courier"
 msgstr "Ń wá olùgbé ẹrù"
-
-#: src/i18n.js:77
-msgid "Looking for sender"
-msgstr "Ń wá olùfiranṣẹ́"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -214,8 +214,6 @@ msgstr "Ti tẹlẹ"
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "Yọ kúrò"
-
-#: src/i18n.js:76
 
 #: src/i18n.js:84
 msgid "Request pagination"

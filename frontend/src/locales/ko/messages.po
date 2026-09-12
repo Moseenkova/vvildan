@@ -131,6 +131,10 @@ msgstr "양식이 제출되었습니다!"
 msgid "From date"
 msgstr "날짜부터"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "짐을 가져가겠습니다"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "로드 중..."
@@ -138,10 +142,6 @@ msgstr "로드 중..."
 #: src/i18n.js:76
 msgid "Looking for courier"
 msgstr "배송 기사 찾는 중"
-
-#: src/i18n.js:77
-msgid "Looking for sender"
-msgstr "발송인 찾는 중"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -214,8 +214,6 @@ msgstr "이전"
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "삭제"
-
-#: src/i18n.js:76
 
 #: src/i18n.js:84
 msgid "Request pagination"

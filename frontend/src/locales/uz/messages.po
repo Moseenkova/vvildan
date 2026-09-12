@@ -131,6 +131,10 @@ msgstr "Shakl topshirildi!"
 msgid "From date"
 msgstr "Sanadan boshlab"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "Bagaj olib ketaman"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "Yuklanmoqda..."
@@ -138,10 +142,6 @@ msgstr "Yuklanmoqda..."
 #: src/i18n.js:76
 msgid "Looking for courier"
 msgstr "Kuryer qidirilmoqda"
-
-#: src/i18n.js:77
-msgid "Looking for sender"
-msgstr "Jo‘natuvchi qidirilmoqda"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -214,8 +214,6 @@ msgstr "Oldingi"
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "Olib tashlash"
-
-#: src/i18n.js:76
 
 #: src/i18n.js:84
 msgid "Request pagination"

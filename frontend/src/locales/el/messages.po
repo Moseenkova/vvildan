@@ -131,6 +131,10 @@ msgstr "Η φόρμα υποβλήθηκε!"
 msgid "From date"
 msgstr "Από ημερομηνία"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "Θα πάρω αποσκευές"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "Φόρτωση..."
@@ -138,10 +142,6 @@ msgstr "Φόρτωση..."
 #: src/i18n.js:76
 msgid "Looking for courier"
 msgstr "Αναζήτηση μεταφορέα"
-
-#: src/i18n.js:77
-msgid "Looking for sender"
-msgstr "Αναζήτηση αποστολέα"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -214,8 +214,6 @@ msgstr "Προηγούμενο"
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "Αφαίρεση"
-
-#: src/i18n.js:76
 
 #: src/i18n.js:84
 msgid "Request pagination"

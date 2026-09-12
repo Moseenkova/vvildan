@@ -131,6 +131,10 @@ msgstr "Formulář odeslán!"
 msgid "From date"
 msgstr "Od data"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "Vezmu zavazadlo"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "Načítání..."
@@ -138,10 +142,6 @@ msgstr "Načítání..."
 #: src/i18n.js:76
 msgid "Looking for courier"
 msgstr "Hledá se kurýr"
-
-#: src/i18n.js:77
-msgid "Looking for sender"
-msgstr "Hledá se odesílatel"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -214,8 +214,6 @@ msgstr "Předchozí"
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "Odebrat"
-
-#: src/i18n.js:76
 
 #: src/i18n.js:84
 msgid "Request pagination"

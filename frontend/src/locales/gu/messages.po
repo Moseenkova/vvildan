@@ -131,6 +131,10 @@ msgstr "ફોર્મ સબમિટ કર્યું!"
 msgid "From date"
 msgstr "તારીખથી"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "હું સામાન લઈ જઈશ"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "લોડ કરી રહ્યું છે..."
@@ -138,10 +142,6 @@ msgstr "લોડ કરી રહ્યું છે..."
 #: src/i18n.js:76
 msgid "Looking for courier"
 msgstr "કુરિયરની શોધમાં"
-
-#: src/i18n.js:77
-msgid "Looking for sender"
-msgstr "મોકલનારની શોધમાં"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -214,8 +214,6 @@ msgstr "ગત"
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "દૂર કરો"
-
-#: src/i18n.js:76
 
 #: src/i18n.js:84
 msgid "Request pagination"

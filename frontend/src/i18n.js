@@ -74,7 +74,7 @@ export const getMessages = (_) => ({
   completed: _(msg`Completed`),
   expired: _(msg`Expired`),
   lookingForCourier: _(msg`Looking for courier`),
-  lookingForSender: _(msg`Looking for sender`),
+  willTakeLuggage: _(msg`I will take luggage`),
   noRequests: _(msg`No requests with this status.`),
   failedToLoadRequests: _(msg`Could not load your requests.`),
   close: _(msg`Close`),

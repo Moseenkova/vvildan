@@ -131,6 +131,10 @@ msgstr "フォームが送信されました!"
 msgid "From date"
 msgstr "日付から"
 
+#: src/i18n.js:77
+msgid "I will take luggage"
+msgstr "荷物を運びます"
+
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "読み込み中..."
@@ -138,10 +142,6 @@ msgstr "読み込み中..."
 #: src/i18n.js:76
 msgid "Looking for courier"
 msgstr "配達員を探しています"
-
-#: src/i18n.js:77
-msgid "Looking for sender"
-msgstr "発送者を探しています"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -214,8 +214,6 @@ msgstr "前へ"
 #: src/i18n.js:49
 msgid "Remove"
 msgstr "削除"
-
-#: src/i18n.js:76
 
 #: src/i18n.js:84
 msgid "Request pagination"
