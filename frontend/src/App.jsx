@@ -143,6 +143,13 @@ function RequestSidebar({ requests, pagination, loading, error, status, onStatus
     return `${from} → ${to}`
   }
 
+  const dates = (request) => {
+    if (!request.date_from) return request.date_to
+    if (!request.date_to) return `${request.date_from} – ${t.noEndDate}`
+    if (request.date_from === request.date_to) return request.date_from
+    return `${request.date_from} – ${request.date_to}`
+  }
+
   return (
     <aside className="requests-sidebar">
       <div className="requests-heading">
@@ -170,7 +177,7 @@ function RequestSidebar({ requests, pagination, loading, error, status, onStatus
               <span className={`status-badge status-${request.status}`}>{t[request.status] || request.status}</span>
             </span>
             <span className="request-route">{route(request)}</span>
-            <span className="request-date">{request.date_from}{request.date_to !== request.date_from ? ` – ${request.date_to || t.noEndDate}` : ''}</span>
+            <span className="request-date">{dates(request)}</span>
           </button>
         ))}
       </div>
@@ -215,8 +222,9 @@ function RequestDetails({ request, onClose, t }) {
         </div>
         <dl>
           <div><dt>{t.status}</dt><dd><span className={`status-badge status-${request.status}`}>{t[request.status] || request.status}</span></dd></div>
-          <div><dt>{request.role === 'sender' ? t.dateFrom : t.date}</dt><dd>{request.date_from}</dd></div>
-          {request.date_to !== request.date_from && <div><dt>{t.dateTo}</dt><dd>{request.date_to || t.noEndDate}</dd></div>}
+          {request.date_from && <div><dt>{request.role === 'sender' ? t.dateFrom : t.date}</dt><dd>{request.date_from}</dd></div>}
+          {request.role === 'sender' && request.date_to && request.date_to !== request.date_from && <div><dt>{t.dateTo}</dt><dd>{request.date_to}</dd></div>}
+          {request.role === 'sender' && request.date_from && !request.date_to && <div><dt>{t.dateTo}</dt><dd>{t.noEndDate}</dd></div>}
           <div><dt>{t.departure}</dt><dd className="multiline">{cities(request.departure_cities)}</dd></div>
           <div><dt>{t.arrival}</dt><dd className="multiline">{cities(request.arrival_cities)}</dd></div>
           {request.comment && <div><dt>{t.comment}</dt><dd>{request.comment}</dd></div>}
@@ -370,8 +378,8 @@ function App() {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    if (role === 'sender' && !form.dateFrom) {
-      alert(t.selectDateFrom)
+    if (role === 'sender' && !form.dateFrom && !form.dateTo) {
+      alert(`${t.selectDateFrom} / ${t.selectDateTo}`)
       return
     }
     if (role === 'sender' && form.dateTo && form.dateFrom > form.dateTo) {
@@ -387,11 +395,12 @@ function App() {
       return
     }
 
-    const requestDate = role === 'sender' ? form.dateFrom : form.courierDate
     const submissionData = {
       role,
-      dateFrom: formatDateToString(requestDate),
-      dateTo: role === 'sender' && !form.dateTo ? null : formatDateToString(role === 'sender' ? form.dateTo : requestDate),
+      dateFrom: formatDateToString(role === 'sender' ? form.dateFrom : form.courierDate) || null,
+      dateTo: role === 'sender'
+        ? formatDateToString(form.dateTo) || null
+        : formatDateToString(form.courierDate),
       departureCityIds: departureCities.map((city) => city.id),
       arrivalCityIds: arrivalCities.map((city) => city.id),
       baggageComments: form.baggageComments,
@@ -450,10 +459,10 @@ function App() {
           <>
             <div className="form-group">
               <label htmlFor="dateFrom">{t.dateFrom}</label>
-              <DatePicker id="dateFrom" selected={form.dateFrom} onChange={(date) => setField('dateFrom', date)} dateFormat={t.dateFormat} placeholderText={t.datePlaceholder} locale={language === 'ru' ? 'ru' : 'en'} className="date-picker-input" required minDate={new Date()} />
+              <DatePicker id="dateFrom" selected={form.dateFrom} onChange={(date) => setField('dateFrom', date)} dateFormat={t.dateFormat} placeholderText={t.datePlaceholder} locale={language === 'ru' ? 'ru' : 'en'} className="date-picker-input" isClearable minDate={new Date()} maxDate={form.dateTo || undefined} />
             </div>
             <div className="form-group">
-              <label htmlFor="dateTo">{t.dateToOptional}</label>
+              <label htmlFor="dateTo">{t.dateTo}</label>
               <DatePicker id="dateTo" selected={form.dateTo} onChange={(date) => setField('dateTo', date)} dateFormat={t.dateFormat} placeholderText={t.datePlaceholder} locale={language === 'ru' ? 'ru' : 'en'} className="date-picker-input" isClearable minDate={form.dateFrom || new Date()} />
             </div>
           </>

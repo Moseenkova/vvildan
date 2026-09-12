@@ -27,7 +27,7 @@ class RequestSchema(BaseModel):
 
     id: int
     role: str
-    date_from: date
+    date_from: date | None
     date_to: date | None
     departure_cities: list[RequestCitySchema]
     arrival_cities: list[RequestCitySchema]
@@ -45,7 +45,7 @@ class RequestCreateSchema(BaseModel):
     model_config = ConfigDict(populate_by_name=True)
 
     role: RequestRole
-    date_from: date = Field(alias="dateFrom")
+    date_from: date | None = Field(default=None, alias="dateFrom")
     date_to: date | None = Field(default=None, alias="dateTo")
     departure_city_ids: list[int] = Field(alias="departureCityIds", min_length=1, max_length=5)
     arrival_city_ids: list[int] = Field(alias="arrivalCityIds", min_length=1, max_length=5)
@@ -58,9 +58,17 @@ class RequestCreateSchema(BaseModel):
 
     @model_validator(mode="after")
     def validate_request(self) -> "RequestCreateSchema":
-        if self.role == RequestRole.courier and self.date_to != self.date_from:
+        if self.role == RequestRole.courier and (
+            self.date_from is None or self.date_to != self.date_from
+        ):
             raise ValueError("courier requests require dateTo to equal dateFrom")
-        if self.date_to is not None and self.date_from > self.date_to:
+        if self.role == RequestRole.sender and self.date_from is None and self.date_to is None:
+            raise ValueError("sender requests require dateFrom or dateTo")
+        if (
+            self.date_from is not None
+            and self.date_to is not None
+            and self.date_from > self.date_to
+        ):
             raise ValueError("dateFrom must be on or before dateTo")
         if len(set(self.departure_city_ids)) != len(self.departure_city_ids):
             raise ValueError("departureCityIds must not contain duplicates")
