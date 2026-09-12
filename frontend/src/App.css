@@ -461,6 +461,24 @@
   background: #dbe9fa;
 }
 
+.city-add-button {
+  align-self: flex-start;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid #b9cce2;
+  border-radius: 50%;
+  background: #eef5ff;
+  color: #24415f;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.city-add-button:hover {
+  background: #dbe9fa;
+}
+
 .not-found {
   text-align: center;
   padding: 50px 20px;
@@ -486,23 +504,6 @@
 
 .dropdown-item:active {
   background-color: #e0e0e0;
-}
-
-.dropdown-item-checkbox {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-
-.dropdown-item-checkbox input[type="checkbox"] {
-  flex: 0 0 auto;
-  width: 18px;
-  height: 18px;
-  margin: 1px 0 0;
-  padding: 0;
-  appearance: auto;
-  accent-color: #007bff;
-  pointer-events: none;
 }
 
 .submit-button {

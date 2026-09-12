@@ -15,8 +15,11 @@ function CitySearch({ id, label, placeholder, selected, maxSelections, onSelect,
   const [query, setQuery] = useState('')
   const [results, setResults] = useState([])
   const [open, setOpen] = useState(false)
+  const [showSearch, setShowSearch] = useState(selected.length === 0)
   const [loading, setLoading] = useState(false)
   const containerRef = useRef(null)
+  const inputRef = useRef(null)
+  const focusSearchRef = useRef(false)
   const timeoutRef = useRef(null)
   const requestRef = useRef(0)
 
@@ -30,6 +33,18 @@ function CitySearch({ id, label, placeholder, selected, maxSelections, onSelect,
       clearTimeout(timeoutRef.current)
     }
   }, [])
+
+  useEffect(() => {
+    if (selected.length === 0) setShowSearch(true)
+    if (selected.length >= maxSelections) setShowSearch(false)
+  }, [maxSelections, selected.length])
+
+  useEffect(() => {
+    if (showSearch && focusSearchRef.current) {
+      inputRef.current?.focus()
+      focusSearchRef.current = false
+    }
+  }, [showSearch])
 
   const search = async (query) => {
     const trimmedQuery = query.trim()
@@ -67,6 +82,30 @@ function CitySearch({ id, label, placeholder, selected, maxSelections, onSelect,
   const atLimit = selected.length >= maxSelections
   const isMultiple = maxSelections > 1
 
+  const handleSelect = (city) => {
+    onSelect(city)
+    clearTimeout(timeoutRef.current)
+    requestRef.current += 1
+    setQuery('')
+    setResults([])
+    setOpen(false)
+    setLoading(false)
+    setShowSearch(false)
+  }
+
+  const handleRemove = (cityId) => {
+    onRemove(cityId)
+    if (selected.length === 1) setShowSearch(true)
+  }
+
+  const showAddSearch = () => {
+    focusSearchRef.current = true
+    setQuery('')
+    setResults([])
+    setOpen(false)
+    setShowSearch(true)
+  }
+
   return (
     <div className="form-group">
       <label htmlFor={id}>{label}</label>
@@ -75,14 +114,23 @@ function CitySearch({ id, label, placeholder, selected, maxSelections, onSelect,
           {selected.map((city) => (
             <div className="city-selection" key={city.id}>
               <span>{city.name}, {city.country_name}</span>
-              <button type="button" onClick={() => onRemove(city.id)} aria-label={`${t.remove} ${city.name}`}>×</button>
+              <button type="button" onClick={() => handleRemove(city.id)} aria-label={`${t.remove} ${city.name}`}>−</button>
             </div>
           ))}
         </div>
       )}
-      {!atLimit && (
+      {isMultiple && selected.length > 0 && !atLimit && !showSearch && (
+        <button
+          type="button"
+          className="city-add-button"
+          onClick={showAddSearch}
+          aria-label={`${label}: ${placeholder}`}
+        >+</button>
+      )}
+      {!atLimit && showSearch && (
         <div className="dropdown-container" ref={containerRef}>
           <input
+            ref={inputRef}
             id={id}
             type="text"
             value={query}
@@ -100,31 +148,19 @@ function CitySearch({ id, label, placeholder, selected, maxSelections, onSelect,
           <div id={`${id}-results`} className="dropdown-list" role="listbox">
             {loading ? (
               <div className="dropdown-message">{t.loading}</div>
-            ) : results.some((city) => isMultiple || !selected.some((item) => item.id === city.id)) ? (
-              results.filter((city) => isMultiple || !selected.some((item) => item.id === city.id)).map((city) => {
-                const isSelected = selected.some((item) => item.id === city.id)
-                return (
+            ) : results.some((city) => !selected.some((item) => item.id === city.id)) ? (
+              results.filter((city) => !selected.some((item) => item.id === city.id)).map((city) => (
                 <button
                   type="button"
                   role="option"
-                  aria-selected={isSelected}
-                  className={`dropdown-item ${isMultiple ? 'dropdown-item-checkbox' : ''}`}
+                  aria-selected="false"
+                  className="dropdown-item"
                   key={city.id}
-                  onClick={() => {
-                    if (isSelected) onRemove(city.id)
-                    else onSelect(city)
-                    if (!isMultiple) {
-                      setQuery('')
-                      setResults([])
-                      setOpen(false)
-                    }
-                  }}
+                  onClick={() => handleSelect(city)}
                 >
-                  {isMultiple && <input type="checkbox" checked={isSelected} readOnly tabIndex={-1} />}
                   <span>{city.name}, {city.country_name}</span>
                 </button>
-                )
-              })
+              ))
             ) : (
               <div className="dropdown-message">{t.noCitiesFound}</div>
             )}
