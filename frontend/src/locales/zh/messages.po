@@ -35,6 +35,10 @@ msgstr "到达城市"
 msgid "Arrival country"
 msgstr "到达国家"
 
+#: src/i18n.js:107
+msgid "Back"
+msgstr ""
+
 #: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "行李备注"
@@ -71,9 +75,17 @@ msgstr "已联系"
 msgid "Could not load your matches."
 msgstr "无法加载您的匹配结果。"
 
+#: src/i18n.js:110
+msgid "Could not load your messages."
+msgstr ""
+
 #: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "无法加载您的请求。"
+
+#: src/i18n.js:111
+msgid "Could not send your message."
+msgstr ""
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -151,6 +163,14 @@ msgstr "匹配对象"
 msgid "Matches"
 msgstr "匹配"
 
+#: src/i18n.js:102
+msgid "Message to"
+msgstr ""
+
+#: src/i18n.js:100
+msgid "Messages"
+msgstr ""
+
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
 msgstr "dd/mm/yyyy"
@@ -186,6 +206,10 @@ msgstr "暂无匹配。"
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
 msgstr "未找到匹配的城市，请尝试使用英语输入"
+
+#: src/i18n.js:109
+msgid "No messages yet."
+msgstr ""
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -235,9 +259,17 @@ msgstr "请求分页"
 msgid "Role"
 msgstr "角色"
 
+#: src/i18n.js:104
+msgid "Send"
+msgstr ""
+
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "发件人"
+
+#: src/i18n.js:105
+msgid "Sending..."
+msgstr ""
 
 #: src/i18n.js:83
 msgid "Status"
@@ -259,9 +291,25 @@ msgstr "迄今为止"
 msgid "To date (optional)"
 msgstr "结束日期（可选）"
 
+#: src/i18n.js:108
+msgid "Unread messages"
+msgstr ""
+
 #: src/i18n.js:68
 msgid "User Not Found"
 msgstr "未找到用户"
+
+#: src/i18n.js:101
+msgid "Write message"
+msgstr ""
+
+#: src/i18n.js:103
+msgid "Write your message..."
+msgstr ""
+
+#: src/i18n.js:106
+msgid "You"
+msgstr ""
 
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."

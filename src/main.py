@@ -7,6 +7,7 @@ from src.admin import setup_admin
 from src.auth.routers import auth_router
 from src.config import get_settings
 from src.matches import matches_router
+from src.messages import messages_router
 from src.requests import requests_router
 from src.search import search_router
 
@@ -28,6 +29,7 @@ app.add_middleware(
 app.include_router(auth_router)
 app.include_router(requests_router)
 app.include_router(matches_router)
+app.include_router(messages_router)
 app.include_router(search_router)
 setup_admin(app)
 

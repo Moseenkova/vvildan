@@ -97,6 +97,18 @@ export const getMessages = (_) => ({
   accepted: _(msg`Accepted`),
   rejected: _(msg`Rejected`),
   role: _(msg`Role`),
+  messages: _(msg`Messages`),
+  writeMessage: _(msg`Write message`),
+  messageTo: _(msg`Message to`),
+  writeYourMessage: _(msg`Write your message...`),
+  send: _(msg`Send`),
+  sending: _(msg`Sending...`),
+  you: _(msg`You`),
+  back: _(msg`Back`),
+  unreadMessages: _(msg`Unread messages`),
+  noMessages: _(msg`No messages yet.`),
+  failedToLoadMessages: _(msg`Could not load your messages.`),
+  failedToSendMessage: _(msg`Could not send your message.`),
 })
 
 export { i18n }

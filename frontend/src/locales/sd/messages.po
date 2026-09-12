@@ -35,6 +35,10 @@ msgstr "آمد شهر"
 msgid "Arrival country"
 msgstr "آمد ملڪ"
 
+#: src/i18n.js:107
+msgid "Back"
+msgstr ""
+
 #: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "سامان جا رايا"
@@ -71,9 +75,17 @@ msgstr "رابطو ڪيو ويو"
 msgid "Could not load your matches."
 msgstr "توهان جا ميچ لوڊ نه ٿي سگهيا."
 
+#: src/i18n.js:110
+msgid "Could not load your messages."
+msgstr ""
+
 #: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "توھان جون درخواستون لوڊ نه ٿي سگھيون."
+
+#: src/i18n.js:111
+msgid "Could not send your message."
+msgstr ""
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -151,6 +163,14 @@ msgstr "سان ميچ ٿيو"
 msgid "Matches"
 msgstr "ميچ"
 
+#: src/i18n.js:102
+msgid "Message to"
+msgstr ""
+
+#: src/i18n.js:100
+msgid "Messages"
+msgstr ""
+
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
 msgstr "dd/mm/yyyy"
@@ -186,6 +206,10 @@ msgstr "اڃا تائين ڪو ميچ ناهي."
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
 msgstr "ڪو به ملندڙ شهر نه مليو، انگريزي ۾ لکڻ جي ڪوشش ڪريو"
+
+#: src/i18n.js:109
+msgid "No messages yet."
+msgstr ""
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -235,9 +259,17 @@ msgstr "صفحو جي درخواست ڪريو"
 msgid "Role"
 msgstr "ڪردار"
 
+#: src/i18n.js:104
+msgid "Send"
+msgstr ""
+
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "موڪليندڙ"
+
+#: src/i18n.js:105
+msgid "Sending..."
+msgstr ""
 
 #: src/i18n.js:83
 msgid "Status"
@@ -259,9 +291,25 @@ msgstr "تاريخ تائين"
 msgid "To date (optional)"
 msgstr "آخري تاريخ (اختياري)"
 
+#: src/i18n.js:108
+msgid "Unread messages"
+msgstr ""
+
 #: src/i18n.js:68
 msgid "User Not Found"
 msgstr "استعمال ڪندڙ نه مليو"
+
+#: src/i18n.js:101
+msgid "Write message"
+msgstr ""
+
+#: src/i18n.js:103
+msgid "Write your message..."
+msgstr ""
+
+#: src/i18n.js:106
+msgid "You"
+msgstr ""
 
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."

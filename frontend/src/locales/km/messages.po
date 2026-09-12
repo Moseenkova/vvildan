@@ -35,6 +35,10 @@ msgstr "ទីក្រុងមកដល់"
 msgid "Arrival country"
 msgstr "ប្រទេសមកដល់"
 
+#: src/i18n.js:107
+msgid "Back"
+msgstr ""
+
 #: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "មតិយោបល់លើឥវ៉ាន់"
@@ -71,9 +75,17 @@ msgstr "បានទាក់ទង"
 msgid "Could not load your matches."
 msgstr "មិនអាចផ្ទុកការផ្គូផ្គងរបស់អ្នកបានទេ។"
 
+#: src/i18n.js:110
+msgid "Could not load your messages."
+msgstr ""
+
 #: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "មិនអាចផ្ទុកសំណើរបស់អ្នកបានទេ។"
+
+#: src/i18n.js:111
+msgid "Could not send your message."
+msgstr ""
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -151,6 +163,14 @@ msgstr "ផ្គូផ្គងជាមួយ"
 msgid "Matches"
 msgstr "ការផ្គូផ្គង"
 
+#: src/i18n.js:102
+msgid "Message to"
+msgstr ""
+
+#: src/i18n.js:100
+msgid "Messages"
+msgstr ""
+
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
 msgstr "dd/mm/yyyy"
@@ -186,6 +206,10 @@ msgstr "មិនទាន់មានការផ្គូផ្គងទេ។
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
 msgstr "រកមិនឃើញទីក្រុងដែលត្រូវគ្នាទេ សូមសាកល្បងសរសេរជាភាសាអង់គ្លេស"
+
+#: src/i18n.js:109
+msgid "No messages yet."
+msgstr ""
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -235,9 +259,17 @@ msgstr "ស្នើសុំ​ការ​ដាក់​ទំព័រ"
 msgid "Role"
 msgstr "តួនាទី"
 
+#: src/i18n.js:104
+msgid "Send"
+msgstr ""
+
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "អ្នកផ្ញើ"
+
+#: src/i18n.js:105
+msgid "Sending..."
+msgstr ""
 
 #: src/i18n.js:83
 msgid "Status"
@@ -259,9 +291,25 @@ msgstr "មកដល់បច្ចុប្បន្ន"
 msgid "To date (optional)"
 msgstr "ដល់កាលបរិច្ឆេទ (ស្រេចចិត្ត)"
 
+#: src/i18n.js:108
+msgid "Unread messages"
+msgstr ""
+
 #: src/i18n.js:68
 msgid "User Not Found"
 msgstr "រកមិនឃើញអ្នកប្រើប្រាស់"
+
+#: src/i18n.js:101
+msgid "Write message"
+msgstr ""
+
+#: src/i18n.js:103
+msgid "Write your message..."
+msgstr ""
+
+#: src/i18n.js:106
+msgid "You"
+msgstr ""
 
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."

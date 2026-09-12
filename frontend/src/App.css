@@ -247,7 +247,8 @@
 }
 
 .page-navigation .role-button {
-  padding-inline: 10px;
+  padding-inline: 6px;
+  font-size: 14px;
 }
 
 .new-match-dot {
@@ -287,6 +288,92 @@
   cursor: pointer;
   transition: border-color .2s ease, box-shadow .2s ease;
 }
+
+.match-details-button {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+.message-candidate-button {
+  align-self: flex-start;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 7px;
+  background: #007bff;
+  color: #fff;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.message-composer {
+  width: min(440px, 100%);
+  margin-top: auto;
+  padding: 20px;
+  border-radius: 18px 18px 0 0;
+  background: #fff;
+}
+
+.message-composer h2 { margin: 0; font-size: 19px; }
+.message-composer form { display: flex; flex-direction: column; gap: 12px; margin-top: 18px; }
+.message-composer textarea,
+.dialog-send-form textarea {
+  min-height: 90px;
+  padding: 12px;
+  border: 1px solid #d8dce2;
+  border-radius: 8px;
+  font: inherit;
+  resize: vertical;
+}
+
+.messages-panel,
+.dialog-list { display: flex; flex-direction: column; gap: 16px; }
+.dialog-list { gap: 8px; }
+.dialog-card {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 13px;
+  border: 1px solid #e3e6ea;
+  border-radius: 9px;
+  background: #fff;
+  color: #333;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+.dialog-card.dialog-unread { border-color: #f6a8b8; background: #fffafb; }
+.dialog-card-header,
+.dialog-preview { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.dialog-card-header > span { color: #737b85; font-size: 11px; }
+.dialog-preview > span { overflow: hidden; color: #5f6872; font-size: 14px; text-overflow: ellipsis; white-space: nowrap; }
+.dialog-unread-dot { flex: 0 0 auto; width: 9px; height: 9px; border-radius: 50%; background: #e11d48; }
+
+.dialog-view { display: flex; flex-direction: column; height: calc(100vh - 125px); min-height: 430px; }
+.dialog-header { display: flex; align-items: center; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid #eee; }
+.dialog-header > button { border: 0; background: transparent; color: #0066d6; font-size: 34px; cursor: pointer; }
+.dialog-header div { display: flex; flex-direction: column; gap: 2px; }
+.dialog-header span { color: #737b85; font-size: 12px; }
+.message-thread { display: flex; flex: 1; flex-direction: column; gap: 8px; padding: 14px 0; overflow-y: auto; }
+.message-bubble { display: flex; flex-direction: column; gap: 4px; max-width: 82%; padding: 9px 11px; border-radius: 12px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.message-bubble time { align-self: flex-end; color: #737b85; font-size: 10px; }
+.message-mine { align-self: flex-end; border-bottom-right-radius: 3px; background: #dcecff; }
+.message-theirs { align-self: flex-start; border-bottom-left-radius: 3px; background: #f0f2f4; }
+.dialog-send-form { display: flex; align-items: flex-end; gap: 8px; padding-top: 10px; border-top: 1px solid #eee; }
+.dialog-send-form textarea { flex: 1; min-height: 42px; max-height: 110px; resize: none; }
+.dialog-send-form button { padding: 12px; border: 0; border-radius: 8px; background: #007bff; color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
+.dialog-send-form button:disabled,
+.message-composer button:disabled { opacity: .55; cursor: default; }
 
 .match-card:hover,
 .match-card:focus-visible {
