@@ -37,3 +37,19 @@ async def get_customer_chat_id_by_topic_id(topic_id: int) -> int | None:
             select(CustomerTgTopic.customer_chat_id).where(CustomerTgTopic.topic_id == topic_id)
         )
         return result.scalar_one_or_none()
+
+
+async def update_customer_topic_language(
+    topic_id: int,
+    language_code: str,
+) -> bool:
+    async with async_session_maker() as session:
+        topic = await session.scalar(
+            select(CustomerTgTopic).where(CustomerTgTopic.topic_id == topic_id)
+        )
+        if topic is None:
+            return False
+
+        topic.language_code = language_code
+        await session.commit()
+        return True
