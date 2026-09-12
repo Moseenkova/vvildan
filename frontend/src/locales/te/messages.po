@@ -51,11 +51,11 @@ msgstr "ముందుగా ఒక నగరాన్ని ఎంచుకో
 msgid "Choose a country first"
 msgstr "ముందుగా దేశాన్ని ఎంచుకోండి"
 
-#: src/i18n.js:79
+#: src/i18n.js:80
 msgid "Close"
 msgstr "మూసివేయి"
 
-#: src/i18n.js:80
+#: src/i18n.js:81
 msgid "Comment"
 msgstr "వ్యాఖ్యానించండి"
 
@@ -63,7 +63,7 @@ msgstr "వ్యాఖ్యానించండి"
 msgid "Completed"
 msgstr "పూర్తయింది"
 
-#: src/i18n.js:78
+#: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "మీ అభ్యర్థనలను లోడ్ చేయడం సాధ్యపడలేదు."
 
@@ -75,7 +75,7 @@ msgstr "దేశం లేదా నగరం"
 msgid "Courier"
 msgstr "కొరియర్"
 
-#: src/i18n.js:81
+#: src/i18n.js:82
 msgid "Created"
 msgstr "సృష్టించబడింది"
 
@@ -124,8 +124,8 @@ msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "ఉదాహరణకు: బట్టలు 5 కిలోలు, పత్రాలు, ఎలక్ట్రానిక్స్"
 
 #: src/i18n.js:67
-msgid "Form submitted! Check the console for data."
-msgstr "ఫారమ్ సమర్పించబడింది! డేటా కోసం కన్సోల్‌ని తనిఖీ చేయండి."
+msgid "Form submitted!"
+msgstr "ఫారమ్ సమర్పించబడింది!"
 
 #: src/i18n.js:37
 msgid "From date"
@@ -134,6 +134,14 @@ msgstr "తేదీ నుండి"
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "లోడ్ అవుతోంది..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "కొరియర్ కోసం వెతుకుతున్నారు"
+
+#: src/i18n.js:77
+msgid "Looking for sender"
+msgstr "పంపేవారి కోసం వెతుకుతున్నారు"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -151,17 +159,17 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "నా అభ్యర్థనలు"
 
-#: src/i18n.js:87
+#: src/i18n.js:88
 msgid "New"
 msgstr "కొత్తది"
 
-#: src/i18n.js:85
+#: src/i18n.js:86
 msgid "Next"
 msgstr "తదుపరి"
 
 #: src/i18n.js:39
 msgid "No end date"
-msgstr ""
+msgstr "ముగింపు తేదీ లేదు"
 
 #: src/i18n.js:45
 #~ msgid "no matching airports found, try to write in english"
@@ -171,11 +179,11 @@ msgstr ""
 msgid "no matching cities found, try to write in english"
 msgstr ""
 
-#: src/i18n.js:77
+#: src/i18n.js:78
 msgid "No requests with this status."
 msgstr "ఈ స్థితితో అభ్యర్థనలు లేవు."
 
-#: src/i18n.js:86
+#: src/i18n.js:87
 msgid "Page"
 msgstr "పేజీ"
 
@@ -199,7 +207,7 @@ msgstr "దయచేసి ముగింపు తేదీని ఎంచు
 msgid "Please select departure and arrival cities from the list"
 msgstr ""
 
-#: src/i18n.js:84
+#: src/i18n.js:85
 msgid "Previous"
 msgstr "మునుపటి"
 
@@ -208,14 +216,12 @@ msgid "Remove"
 msgstr "తొలగించు"
 
 #: src/i18n.js:76
-msgid "Request details"
-msgstr "వివరాలను అభ్యర్థించండి"
 
-#: src/i18n.js:83
+#: src/i18n.js:84
 msgid "Request pagination"
 msgstr "పేజీని అభ్యర్థించండి"
 
-#: src/i18n.js:88
+#: src/i18n.js:89
 msgid "Role"
 msgstr "పాత్ర"
 
@@ -223,7 +229,7 @@ msgstr "పాత్ర"
 msgid "Sender"
 msgstr "పంపినవారు"
 
-#: src/i18n.js:82
+#: src/i18n.js:83
 msgid "Status"
 msgstr "స్థితి"
 

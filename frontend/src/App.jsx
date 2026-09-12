@@ -271,7 +271,9 @@ function RequestDetails({ request, onClose, t, language }) {
         <div className="details-header">
           <div>
             <p>#{request.id}</p>
-            <h2 id="request-details-title">{t.requestDetails}</h2>
+            <h2 id="request-details-title">
+              {request.role === 'sender' ? t.lookingForCourier : t.lookingForSender}
+            </h2>
           </div>
           <button type="button" onClick={onClose} aria-label={t.close}>×</button>
         </div>

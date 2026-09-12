@@ -51,11 +51,11 @@ msgstr "Επιλέξτε πρώτα μια πόλη"
 msgid "Choose a country first"
 msgstr "Επιλέξτε μια χώρα πρώτα"
 
-#: src/i18n.js:79
+#: src/i18n.js:80
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: src/i18n.js:80
+#: src/i18n.js:81
 msgid "Comment"
 msgstr "Σχόλιο"
 
@@ -63,7 +63,7 @@ msgstr "Σχόλιο"
 msgid "Completed"
 msgstr "Ολοκληρώθηκε"
 
-#: src/i18n.js:78
+#: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "Δεν ήταν δυνατή η φόρτωση των αιτημάτων σας."
 
@@ -75,7 +75,7 @@ msgstr "Χώρα ή πόλη"
 msgid "Courier"
 msgstr "Μεταφορέας"
 
-#: src/i18n.js:81
+#: src/i18n.js:82
 msgid "Created"
 msgstr "Δημιουργήθηκε"
 
@@ -124,8 +124,8 @@ msgid "For example: Clothes 5 kg, documents, electronics"
 msgstr "Για παράδειγμα: Ρούχα 5 κιλών, έγγραφα, ηλεκτρονικά"
 
 #: src/i18n.js:67
-msgid "Form submitted! Check the console for data."
-msgstr "Η φόρμα υποβλήθηκε! Ελέγξτε την κονσόλα για δεδομένα."
+msgid "Form submitted!"
+msgstr "Η φόρμα υποβλήθηκε!"
 
 #: src/i18n.js:37
 msgid "From date"
@@ -134,6 +134,14 @@ msgstr "Από ημερομηνία"
 #: src/i18n.js:59
 msgid "Loading..."
 msgstr "Φόρτωση..."
+
+#: src/i18n.js:76
+msgid "Looking for courier"
+msgstr "Αναζήτηση μεταφορέα"
+
+#: src/i18n.js:77
+msgid "Looking for sender"
+msgstr "Αναζήτηση αποστολέα"
 
 #: src/i18n.js:47
 #~ msgid "Maximum number of airports selected"
@@ -151,17 +159,17 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "Τα αιτήματά μου"
 
-#: src/i18n.js:87
+#: src/i18n.js:88
 msgid "New"
 msgstr "Νέο"
 
-#: src/i18n.js:85
+#: src/i18n.js:86
 msgid "Next"
 msgstr "Επόμενο"
 
 #: src/i18n.js:39
 msgid "No end date"
-msgstr ""
+msgstr "Χωρίς ημερομηνία λήξης"
 
 #: src/i18n.js:45
 #~ msgid "no matching airports found, try to write in english"
@@ -171,11 +179,11 @@ msgstr ""
 msgid "no matching cities found, try to write in english"
 msgstr ""
 
-#: src/i18n.js:77
+#: src/i18n.js:78
 msgid "No requests with this status."
 msgstr "Δεν υπάρχουν αιτήματα με αυτήν την κατάσταση."
 
-#: src/i18n.js:86
+#: src/i18n.js:87
 msgid "Page"
 msgstr "Σελίδα"
 
@@ -199,7 +207,7 @@ msgstr "Επιλέξτε μια ημερομηνία λήξης"
 msgid "Please select departure and arrival cities from the list"
 msgstr ""
 
-#: src/i18n.js:84
+#: src/i18n.js:85
 msgid "Previous"
 msgstr "Προηγούμενο"
 
@@ -208,14 +216,12 @@ msgid "Remove"
 msgstr "Αφαίρεση"
 
 #: src/i18n.js:76
-msgid "Request details"
-msgstr "Ζητήστε λεπτομέρειες"
 
-#: src/i18n.js:83
+#: src/i18n.js:84
 msgid "Request pagination"
 msgstr "Ζητήστε σελιδοποίηση"
 
-#: src/i18n.js:88
+#: src/i18n.js:89
 msgid "Role"
 msgstr "Ρόλος"
 
@@ -223,7 +229,7 @@ msgstr "Ρόλος"
 msgid "Sender"
 msgstr "Αποστολέας"
 
-#: src/i18n.js:82
+#: src/i18n.js:83
 msgid "Status"
 msgstr "Κατάσταση"
 
