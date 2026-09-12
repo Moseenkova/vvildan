@@ -74,3 +74,19 @@ async def test_admin_can_update_customer_topic_language(monkeypatch) -> None:
 
     update_language.assert_awaited_once_with(456, "pt-br")
     message.answer.assert_awaited_once_with("Topic language updated to <code>pt-br</code>.")
+
+
+@pytest.mark.asyncio
+async def test_about_lists_available_admin_commands() -> None:
+    message = SimpleNamespace(
+        from_user=SimpleNamespace(id=bot_main.cfg.SUPPORT_GROUP_ADMIN_IDS[0]),
+        answer=AsyncMock(),
+    )
+
+    await bot_main.command_about(message)
+
+    message.answer.assert_awaited_once()
+    command_list = message.answer.await_args.args[0]
+    assert "/about" in command_list
+    assert "/id" in command_list
+    assert "/language &lt;code&gt;" in command_list

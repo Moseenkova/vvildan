@@ -135,6 +135,20 @@ async def command_language(message: Message, command: CommandObject) -> None:
     await message.answer(f"Topic language updated to <code>{language_code}</code>.")
 
 
+@form_router.message(Command("about"), F.chat.id == cfg.SUPPORT_GROUP_ID)
+async def command_about(message: Message) -> None:
+    if not message.from_user or message.from_user.id not in cfg.SUPPORT_GROUP_ADMIN_IDS:
+        return
+
+    await message.answer(
+        "<b>Available admin commands</b>\n\n"
+        "/about — Show this command list.\n"
+        "/id — Show the current chat, topic, and user IDs.\n"
+        "/language &lt;code&gt; — Change the customer's language for the current topic "
+        "(for example, /language en)."
+    )
+
+
 @form_router.message(F.chat.id == cfg.SUPPORT_GROUP_ID)
 async def admin_reply(message: Message, bot: Bot) -> None:
     if not message.from_user or message.from_user.id not in cfg.SUPPORT_GROUP_ADMIN_IDS:
