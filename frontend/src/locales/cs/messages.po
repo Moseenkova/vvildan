@@ -11,6 +11,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr "Přijato"
+
 #: src/i18n.js:72
 msgid "Active"
 msgstr "Aktivní"
@@ -22,10 +26,6 @@ msgstr "Všechny stavy"
 #: src/i18n.js:45
 msgid "Arrival"
 msgstr "Přílet"
-
-#: src/i18n.js:53
-#~ msgid "Arrival airport"
-#~ msgstr "Příletové letiště"
 
 #: src/i18n.js:53
 msgid "Arrival city"
@@ -63,6 +63,14 @@ msgstr "Komentář"
 msgid "Completed"
 msgstr "Dokončeno"
 
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr "Kontaktováno"
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr "Vaše shody se nepodařilo načíst."
+
 #: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "Vaše požadavky se nepodařilo načíst."
@@ -87,10 +95,6 @@ msgstr "Datum"
 msgid "Departure"
 msgstr "Odlet"
 
-#: src/i18n.js:52
-#~ msgid "Departure airport"
-#~ msgstr "Odletové letiště"
-
 #: src/i18n.js:51
 msgid "Departure city"
 msgstr "Město odjezdu"
@@ -110,10 +114,6 @@ msgstr "Zadejte zemi"
 #: src/i18n.js:56
 msgid "Enter or choose a city"
 msgstr "Zadejte nebo vyberte město"
-
-#: src/i18n.js:58
-#~ msgid "Enter or choose an airport"
-#~ msgstr "Zadejte nebo vyberte letiště"
 
 #: src/i18n.js:75
 msgid "Expired"
@@ -143,9 +143,13 @@ msgstr "Načítání..."
 msgid "Looking for courier"
 msgstr "Hledá se kurýr"
 
-#: src/i18n.js:47
-#~ msgid "Maximum number of airports selected"
-#~ msgstr ""
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr "Shoda s uživatelem"
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr "Shody"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -163,6 +167,10 @@ msgstr "Moje požadavky"
 msgid "New"
 msgstr "Nové"
 
+#: src/i18n.js:90
+msgid "New matches"
+msgstr "Nové shody"
+
 #: src/i18n.js:86
 msgid "Next"
 msgstr "Další"
@@ -171,13 +179,13 @@ msgstr "Další"
 msgid "No end date"
 msgstr "Bez data ukončení"
 
-#: src/i18n.js:45
-#~ msgid "no matching airports found, try to write in english"
-#~ msgstr "Nebylo nalezeno žádné odpovídající letiště, zkuste psát anglicky"
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr "Zatím žádné shody."
 
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
-msgstr ""
+msgstr "Nebyla nalezena žádná odpovídající města, zkuste psát anglicky"
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -199,17 +207,21 @@ msgstr "Vyberte datum zahájení"
 msgid "Please select an end date"
 msgstr "Vyberte prosím datum ukončení"
 
-#: src/i18n.js:46
-#~ msgid "Please select departure and arrival airports from the list"
-#~ msgstr "Vyberte prosím ze seznamu letiště odletu a příletu"
-
 #: src/i18n.js:48
 msgid "Please select departure and arrival cities from the list"
-msgstr ""
+msgstr "Vyberte prosím města odjezdu a příjezdu ze seznamu"
 
 #: src/i18n.js:85
 msgid "Previous"
 msgstr "Předchozí"
+
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr "Navrženo"
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr "Odmítnuto"
 
 #: src/i18n.js:49
 msgid "Remove"
@@ -219,7 +231,7 @@ msgstr "Odebrat"
 msgid "Request pagination"
 msgstr "Vyžádejte si stránkování"
 
-#: src/i18n.js:89
+#: src/i18n.js:99
 msgid "Role"
 msgstr "Role"
 
@@ -245,7 +257,7 @@ msgstr "K dnešnímu dni"
 
 #: src/i18n.js:38
 msgid "To date (optional)"
-msgstr ""
+msgstr "Datum do (volitelné)"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -254,3 +266,7 @@ msgstr "Uživatel nenalezen"
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "Nejste registrováni v systému. Nejprve se prosím zaregistrujte prostřednictvím robota Telegram."
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr "Váš požadavek"

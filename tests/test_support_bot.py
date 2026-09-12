@@ -7,7 +7,7 @@ from sqlalchemy import select
 import bot.main as bot_main
 import bot.translation as translation
 from bot.utils import create_customer_tg_topic, update_customer_topic_language
-from src.database import CustomerTgTopic, async_session_maker
+from src.database import CustomerTgTopic, User, async_session_maker
 
 
 @pytest.mark.asyncio
@@ -35,6 +35,25 @@ async def test_create_customer_tg_topic_saves_language_code(database) -> None:
     assert updated_topic.last_openai_response_id is None
 
     assert await update_customer_topic_language(999, "en") is False
+
+
+@pytest.mark.asyncio
+async def test_start_saves_telegram_user_language(factory) -> None:
+    user = await factory.User(tg_id=123, language_code=None)
+    message = SimpleNamespace(
+        chat=SimpleNamespace(id=123, full_name="Test User"),
+        from_user=SimpleNamespace(
+            full_name="Test User",
+            language_code="id",
+        ),
+        answer=AsyncMock(),
+    )
+
+    await bot_main.command_start_handler(message)
+
+    async with async_session_maker() as session:
+        stored_user = await session.get(User, user.id)
+    assert stored_user.language_code == "id"
 
 
 @pytest.mark.asyncio

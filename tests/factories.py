@@ -8,7 +8,16 @@ from factory.declarations import PostGeneration, Sequence, SubFactory
 from factory.faker import Faker
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.database import City, Country, Request, RequestRole, RequestStatus, User
+from src.database import (
+    City,
+    Country,
+    Match,
+    MatchStatus,
+    Request,
+    RequestRole,
+    RequestStatus,
+    User,
+)
 
 Model = TypeVar("Model")
 
@@ -81,6 +90,16 @@ class RequestFactory(BaseFactory):
     arrival_cities = PostGeneration(_set_arrival_cities)
 
 
+class MatchFactory(BaseFactory):
+    class Meta:  # pyright: ignore[reportIncompatibleVariableOverride]
+        model = Match
+
+    id = None
+    sender_request = SubFactory(RequestFactory, role=RequestRole.sender)
+    courier_request = SubFactory(RequestFactory, role=RequestRole.courier)
+    status = MatchStatus.proposed
+
+
 class AsyncModelFactory(Generic[Model]):
     def __init__(self, session: AsyncSession, model_factory: type[BaseFactory]) -> None:
         self.session = session
@@ -102,6 +121,7 @@ class FactoryNamespace:
     Country: AsyncFactoryCall
     City: AsyncFactoryCall
     Request: AsyncFactoryCall
+    Match: AsyncFactoryCall
 
 
 def build_factory_namespace(session: AsyncSession) -> FactoryNamespace:
@@ -110,4 +130,5 @@ def build_factory_namespace(session: AsyncSession) -> FactoryNamespace:
         Country=AsyncModelFactory[Country](session, CountryFactory),
         City=AsyncModelFactory[City](session, CityFactory),
         Request=AsyncModelFactory[Request](session, RequestFactory),
+        Match=AsyncModelFactory[Match](session, MatchFactory),
     )

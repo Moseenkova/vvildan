@@ -1,3 +1,4 @@
+import logging
 from datetime import datetime, timezone
 
 from fastapi import HTTPException, status
@@ -176,10 +177,24 @@ async def create_user_request(
         session.add(request)
         await session.commit()
 
-        return (
+        created_request = (
             await session.scalars(
                 select(TravelRequest)
                 .where(TravelRequest.id == request.id)
                 .options(*_city_relationships())
             )
         ).one()
+
+    try:
+        from src.matches.service import notify_request_candidates
+
+        await notify_request_candidates(created_request.id)
+    except Exception:
+        # The request is already committed. Notification delivery must not make
+        # the client retry and create a duplicate request.
+        logging.exception(
+            "Could not notify matching candidates about request %s",
+            created_request.id,
+        )
+
+    return created_request

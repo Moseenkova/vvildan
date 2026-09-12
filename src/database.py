@@ -46,8 +46,10 @@ class User(Base):
     username: Mapped[Optional[str]] = mapped_column(
         String(64), unique=True, index=True, default=None
     )
+    language_code: Mapped[Optional[str]] = mapped_column(String(16), default=None)
     password_hash: Mapped[Optional[str]] = mapped_column(String(256), default=None)
     is_superuser: Mapped[bool] = mapped_column(default=False, server_default="false")
+    matches_seen_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
     refresh_tokens: Mapped[List["RefreshToken"]] = relationship(back_populates="user")
     requests: Mapped[list["Request"]] = relationship(
         back_populates="user", cascade="all, delete-orphan"
@@ -188,6 +190,8 @@ class Match(Base):
         default=MatchStatus.proposed,
         server_default=MatchStatus.proposed.value,
     )
+    sender_seen_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+    courier_seen_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
 
     __table_args__ = (
         UniqueConstraint(

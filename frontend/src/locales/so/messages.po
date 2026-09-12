@@ -11,6 +11,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr "La aqbalay"
+
 #: src/i18n.js:72
 msgid "Active"
 msgstr "Firfircoon"
@@ -22,10 +26,6 @@ msgstr "Dhammaan heerarka"
 #: src/i18n.js:45
 msgid "Arrival"
 msgstr "Imaansho"
-
-#: src/i18n.js:53
-#~ msgid "Arrival airport"
-#~ msgstr "Gegida dayuuradaha"
 
 #: src/i18n.js:53
 msgid "Arrival city"
@@ -63,6 +63,14 @@ msgstr "Faallo"
 msgid "Completed"
 msgstr "Dhammaystiran"
 
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr "Waa lala xiriiray"
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr "Lama soo rari karin iswaafajintaada."
+
 #: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "Waa la shubi waayay codsiyadaada"
@@ -87,10 +95,6 @@ msgstr "Taariikhda"
 msgid "Departure"
 msgstr "Bixitaan"
 
-#: src/i18n.js:52
-#~ msgid "Departure airport"
-#~ msgstr "Gegida dayuuradaha"
-
 #: src/i18n.js:51
 msgid "Departure city"
 msgstr "Magaalada bixitaan"
@@ -110,10 +114,6 @@ msgstr "Dal gal"
 #: src/i18n.js:56
 msgid "Enter or choose a city"
 msgstr "Gali ama door magaalo"
-
-#: src/i18n.js:58
-#~ msgid "Enter or choose an airport"
-#~ msgstr "Geli ama door garoonka diyaaradaha"
 
 #: src/i18n.js:75
 msgid "Expired"
@@ -143,9 +143,13 @@ msgstr "Soodejinaya..."
 msgid "Looking for courier"
 msgstr "Waxaa la raadinayaa qaade"
 
-#: src/i18n.js:47
-#~ msgid "Maximum number of airports selected"
-#~ msgstr ""
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr "La waafajiyey"
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr "Iswaafajinta"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -163,6 +167,10 @@ msgstr "Codsiyadayda"
 msgid "New"
 msgstr "Cusub"
 
+#: src/i18n.js:90
+msgid "New matches"
+msgstr "Iswaafajin cusub"
+
 #: src/i18n.js:86
 msgid "Next"
 msgstr "Xiga"
@@ -171,13 +179,13 @@ msgstr "Xiga"
 msgid "No end date"
 msgstr "Ma jiro taariikh dhammaad"
 
-#: src/i18n.js:45
-#~ msgid "no matching airports found, try to write in english"
-#~ msgstr "Lama helin garoomo diyaaradeed oo ku habboon, isku day inaad Ingiriisi ku qorto"
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr "Weli iswaafajin ma jiro."
 
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
-msgstr ""
+msgstr "Magaalo ku habboon lama helin, isku day inaad Ingiriisi ku qorto"
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -199,17 +207,21 @@ msgstr "Fadlan door taariikhda bilowga"
 msgid "Please select an end date"
 msgstr "Fadlan door taariikhda dhamaadka"
 
-#: src/i18n.js:46
-#~ msgid "Please select departure and arrival airports from the list"
-#~ msgstr "Fadlan liiska ka dooro garoomada bixitaanka iyo imaanshaha"
-
 #: src/i18n.js:48
 msgid "Please select departure and arrival cities from the list"
-msgstr ""
+msgstr "Fadlan liiska ka dooro magaalooyinka bixitaanka iyo imaanshaha"
 
 #: src/i18n.js:85
 msgid "Previous"
 msgstr "Hore"
+
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr "La soo jeediyey"
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr "La diiday"
 
 #: src/i18n.js:49
 msgid "Remove"
@@ -219,7 +231,7 @@ msgstr "Ka saar"
 msgid "Request pagination"
 msgstr "Codso bogga"
 
-#: src/i18n.js:89
+#: src/i18n.js:99
 msgid "Role"
 msgstr "Doorka"
 
@@ -245,7 +257,7 @@ msgstr "Ilaa hadda"
 
 #: src/i18n.js:38
 msgid "To date (optional)"
-msgstr ""
+msgstr "Taariikhda dhammaadka (ikhtiyaari)"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -254,3 +266,7 @@ msgstr "Isticmaalaha Lama Helin"
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "Kuma diiwaan gashanayn nidaamka. Fadlan marka hore iska diiwaan geli botka Telegramka."
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr "Codsigaaga"

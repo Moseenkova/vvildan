@@ -5,15 +5,20 @@ import time
 from urllib.parse import urlencode
 
 import pytest
+from sqlalchemy import select
 
 from src.config import get_settings
+from src.database import User, async_session_maker
 
 
-def signed_init_data(user_id, age=0):
+def signed_init_data(user_id, age=0, language_code=None):
+    telegram_user = {"id": user_id, "first_name": "Telegram user"}
+    if language_code:
+        telegram_user["language_code"] = language_code
     data = {
         "auth_date": str(int(time.time()) - age),
         "query_id": "mini-app-launch",
-        "user": json.dumps({"id": user_id, "first_name": "Telegram user"}),
+        "user": json.dumps(telegram_user),
     }
     secret = hmac.new(
         b"WebAppData", get_settings().BOT_TOKEN.get_secret_value().encode(), hashlib.sha256
@@ -35,6 +40,21 @@ async def test_miniapp_login_needs_no_browser_login_configuration(client, factor
         "/api/requests", headers={"Authorization": f'Bearer {response.json()["access_token"]}'}
     )
     assert requests.status_code == 200
+
+
+@pytest.mark.asyncio
+async def test_miniapp_login_saves_telegram_language(client, factory):
+    user = await factory.User(language_code=None)
+
+    response = await client.post(
+        "/api/auth/login",
+        json={"init_data": signed_init_data(user.tg_id, language_code="ru-RU")},
+    )
+
+    assert response.status_code == 200
+    async with async_session_maker() as session:
+        stored_user = await session.scalar(select(User).where(User.id == user.id))
+    assert stored_user.language_code == "ru-ru"
 
 
 @pytest.mark.asyncio

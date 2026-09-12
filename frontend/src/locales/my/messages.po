@@ -11,6 +11,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr "လက်ခံပြီး"
+
 #: src/i18n.js:72
 msgid "Active"
 msgstr "လှုပ်လှုပ်ရှားရှား"
@@ -22,10 +26,6 @@ msgstr "အခြေအနေအားလုံး"
 #: src/i18n.js:45
 msgid "Arrival"
 msgstr "ဆိုက်ရောက်"
-
-#: src/i18n.js:53
-#~ msgid "Arrival airport"
-#~ msgstr "လေဆိပ်ရောက်သည်။"
 
 #: src/i18n.js:53
 msgid "Arrival city"
@@ -63,6 +63,14 @@ msgstr "မှတ်ချက်"
 msgid "Completed"
 msgstr "ပြီးသွားပြီ"
 
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr "ဆက်သွယ်ပြီး"
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr "သင့်ကိုက်ညီမှုများကို ဖွင့်၍မရပါ။"
+
 #: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "သင့်တောင်းဆိုချက်များကို တင်၍မရပါ။"
@@ -87,10 +95,6 @@ msgstr "ရက်စွဲ"
 msgid "Departure"
 msgstr "ထွက်ခွာ"
 
-#: src/i18n.js:52
-#~ msgid "Departure airport"
-#~ msgstr "ထွက်ခွာမည့်လေဆိပ်"
-
 #: src/i18n.js:51
 msgid "Departure city"
 msgstr "ထွက်ခွာမည့်မြို့"
@@ -110,10 +114,6 @@ msgstr "နိုင်ငံတစ်ခုဝင်ပါ။"
 #: src/i18n.js:56
 msgid "Enter or choose a city"
 msgstr "ဝင်ပါ သို့မဟုတ် မြို့ကို ရွေးပါ။"
-
-#: src/i18n.js:58
-#~ msgid "Enter or choose an airport"
-#~ msgstr "ဝင်ပါ သို့မဟုတ် လေဆိပ်တစ်ခုကို ရွေးချယ်ပါ။"
 
 #: src/i18n.js:75
 msgid "Expired"
@@ -143,9 +143,13 @@ msgstr "ဖွင့်နေသည်..."
 msgid "Looking for courier"
 msgstr "ပို့ဆောင်သူ ရှာနေသည်"
 
-#: src/i18n.js:47
-#~ msgid "Maximum number of airports selected"
-#~ msgstr ""
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr "နှင့် ကိုက်ညီသည်"
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr "ကိုက်ညီမှုများ"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -163,6 +167,10 @@ msgstr "ကျွန်ုပ်၏တောင်းဆိုမှုမျာ
 msgid "New"
 msgstr "အသစ်"
 
+#: src/i18n.js:90
+msgid "New matches"
+msgstr "ကိုက်ညီမှုအသစ်များ"
+
 #: src/i18n.js:86
 msgid "Next"
 msgstr "နောက်တစ်ခု"
@@ -171,13 +179,13 @@ msgstr "နောက်တစ်ခု"
 msgid "No end date"
 msgstr "ပြီးဆုံးရက် မရှိပါ"
 
-#: src/i18n.js:45
-#~ msgid "no matching airports found, try to write in english"
-#~ msgstr "ကိုက်ညီသော လေဆိပ်များ မတွေ့ပါ၊ အင်္ဂလိပ်လို ရေးကြည့်ပါ"
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr "ကိုက်ညီမှု မရှိသေးပါ။"
 
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
-msgstr ""
+msgstr "ကိုက်ညီသောမြို့ မတွေ့ပါ၊ အင်္ဂလိပ်လို ရေးကြည့်ပါ"
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -199,17 +207,21 @@ msgstr "ကျေးဇူးပြု၍ စတင်မည့်ရက်စ�
 msgid "Please select an end date"
 msgstr "ကျေးဇူးပြု၍ ကုန်ဆုံးရက်ကို ရွေးပါ။"
 
-#: src/i18n.js:46
-#~ msgid "Please select departure and arrival airports from the list"
-#~ msgstr "စာရင်းမှ ထွက်ခွာမည့်နှင့် ဆိုက်ရောက်မည့် လေဆိပ်များကို ရွေးချယ်ပါ"
-
 #: src/i18n.js:48
 msgid "Please select departure and arrival cities from the list"
-msgstr ""
+msgstr "စာရင်းမှ ထွက်ခွာမည့်မြို့နှင့် ရောက်ရှိမည့်မြို့ကို ရွေးပါ"
 
 #: src/i18n.js:85
 msgid "Previous"
 msgstr "အရင်"
+
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr "အဆိုပြုထားသည်"
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr "ပယ်ချပြီး"
 
 #: src/i18n.js:49
 msgid "Remove"
@@ -219,7 +231,7 @@ msgstr "ဖယ်ရှားရန်"
 msgid "Request pagination"
 msgstr "အမည်စာရင်းတောင်းဆိုပါ။"
 
-#: src/i18n.js:89
+#: src/i18n.js:99
 msgid "Role"
 msgstr "အခန်းကဏ္ဍ"
 
@@ -245,7 +257,7 @@ msgstr "ယနေ့အထိ"
 
 #: src/i18n.js:38
 msgid "To date (optional)"
-msgstr ""
+msgstr "နောက်ဆုံးရက် (ရွေးချယ်နိုင်)"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -254,3 +266,7 @@ msgstr "အသုံးပြုသူ ရှာမတွေ့ပါ။"
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "သင်သည် စနစ်တွင် စာရင်းသွင်းမထားပါ။ ကျေးဇူးပြု၍ Telegram bot မှတဆင့် စာရင်းသွင်းပါ။"
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr "သင့်တောင်းဆိုချက်"

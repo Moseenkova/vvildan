@@ -11,6 +11,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr "Αποδεκτό"
+
 #: src/i18n.js:72
 msgid "Active"
 msgstr "Ενεργός"
@@ -22,10 +26,6 @@ msgstr "Όλες οι καταστάσεις"
 #: src/i18n.js:45
 msgid "Arrival"
 msgstr "Άφιξη"
-
-#: src/i18n.js:53
-#~ msgid "Arrival airport"
-#~ msgstr "Αεροδρόμιο άφιξης"
 
 #: src/i18n.js:53
 msgid "Arrival city"
@@ -63,6 +63,14 @@ msgstr "Σχόλιο"
 msgid "Completed"
 msgstr "Ολοκληρώθηκε"
 
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr "Έγινε επικοινωνία"
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr "Δεν ήταν δυνατή η φόρτωση των αντιστοιχιών σας."
+
 #: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "Δεν ήταν δυνατή η φόρτωση των αιτημάτων σας."
@@ -87,10 +95,6 @@ msgstr "Ημερομηνία"
 msgid "Departure"
 msgstr "Αναχώρηση"
 
-#: src/i18n.js:52
-#~ msgid "Departure airport"
-#~ msgstr "Αεροδρόμιο αναχώρησης"
-
 #: src/i18n.js:51
 msgid "Departure city"
 msgstr "Πόλη αναχώρησης"
@@ -110,10 +114,6 @@ msgstr "Εισαγάγετε μια χώρα"
 #: src/i18n.js:56
 msgid "Enter or choose a city"
 msgstr "Εισαγάγετε ή επιλέξτε μια πόλη"
-
-#: src/i18n.js:58
-#~ msgid "Enter or choose an airport"
-#~ msgstr "Μπείτε ή επιλέξτε ένα αεροδρόμιο"
 
 #: src/i18n.js:75
 msgid "Expired"
@@ -143,9 +143,13 @@ msgstr "Φόρτωση..."
 msgid "Looking for courier"
 msgstr "Αναζήτηση μεταφορέα"
 
-#: src/i18n.js:47
-#~ msgid "Maximum number of airports selected"
-#~ msgstr ""
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr "Αντιστοίχιση με"
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr "Αντιστοιχίες"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -163,6 +167,10 @@ msgstr "Τα αιτήματά μου"
 msgid "New"
 msgstr "Νέο"
 
+#: src/i18n.js:90
+msgid "New matches"
+msgstr "Νέες αντιστοιχίες"
+
 #: src/i18n.js:86
 msgid "Next"
 msgstr "Επόμενο"
@@ -171,13 +179,13 @@ msgstr "Επόμενο"
 msgid "No end date"
 msgstr "Χωρίς ημερομηνία λήξης"
 
-#: src/i18n.js:45
-#~ msgid "no matching airports found, try to write in english"
-#~ msgstr "Δεν βρέθηκαν αεροδρόμια που να ταιριάζουν, δοκιμάστε να γράψετε στα αγγλικά"
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr "Δεν υπάρχουν ακόμη αντιστοιχίες."
 
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
-msgstr ""
+msgstr "Δεν βρέθηκαν πόλεις που να ταιριάζουν, δοκιμάστε να γράψετε στα αγγλικά"
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -199,17 +207,21 @@ msgstr "Επιλέξτε μια ημερομηνία έναρξης"
 msgid "Please select an end date"
 msgstr "Επιλέξτε μια ημερομηνία λήξης"
 
-#: src/i18n.js:46
-#~ msgid "Please select departure and arrival airports from the list"
-#~ msgstr "Επιλέξτε τα αεροδρόμια αναχώρησης και άφιξης από τη λίστα"
-
 #: src/i18n.js:48
 msgid "Please select departure and arrival cities from the list"
-msgstr ""
+msgstr "Επιλέξτε πόλεις αναχώρησης και άφιξης από τη λίστα"
 
 #: src/i18n.js:85
 msgid "Previous"
 msgstr "Προηγούμενο"
+
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr "Προτεινόμενο"
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr "Απορρίφθηκε"
 
 #: src/i18n.js:49
 msgid "Remove"
@@ -219,7 +231,7 @@ msgstr "Αφαίρεση"
 msgid "Request pagination"
 msgstr "Ζητήστε σελιδοποίηση"
 
-#: src/i18n.js:89
+#: src/i18n.js:99
 msgid "Role"
 msgstr "Ρόλος"
 
@@ -245,7 +257,7 @@ msgstr "Μέχρι σήμερα"
 
 #: src/i18n.js:38
 msgid "To date (optional)"
-msgstr ""
+msgstr "Έως ημερομηνία (προαιρετικό)"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -254,3 +266,7 @@ msgstr "Ο χρήστης δεν βρέθηκε"
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "Δεν είστε εγγεγραμμένος στο σύστημα. Εγγραφείτε πρώτα μέσω του ρομπότ του Telegram."
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr "Το αίτημά σας"

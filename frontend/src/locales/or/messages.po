@@ -11,6 +11,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr "ଗ୍ରହଣ କରାଯାଇଛି"
+
 #: src/i18n.js:72
 msgid "Active"
 msgstr "ସକ୍ରିୟ |"
@@ -22,10 +26,6 @@ msgstr "ସମସ୍ତ ସ୍ଥିତି"
 #: src/i18n.js:45
 msgid "Arrival"
 msgstr "ଆଗମନ"
-
-#: src/i18n.js:53
-#~ msgid "Arrival airport"
-#~ msgstr "ବିମାନ ବନ୍ଦର"
 
 #: src/i18n.js:53
 msgid "Arrival city"
@@ -63,6 +63,14 @@ msgstr "ମନ୍ତବ୍ୟ ଦିଅନ୍ତୁ |"
 msgid "Completed"
 msgstr "ସମାପ୍ତ"
 
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr "ଯୋଗାଯୋଗ କରାଯାଇଛି"
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr "ଆପଣଙ୍କ ମେଳଗୁଡ଼ିକ ଲୋଡ୍ ହୋଇପାରିଲା ନାହିଁ।"
+
 #: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "ତୁମର ଅନୁରୋଧ ଲୋଡ୍ କରିପାରିଲା ନାହିଁ |"
@@ -87,10 +95,6 @@ msgstr "ତାରିଖ"
 msgid "Departure"
 msgstr "ପ୍ରସ୍ଥାନ"
 
-#: src/i18n.js:52
-#~ msgid "Departure airport"
-#~ msgstr "ବିମାନ ବନ୍ଦର"
-
 #: src/i18n.js:51
 msgid "Departure city"
 msgstr "ପ୍ରସ୍ଥାନ ସହର"
@@ -110,10 +114,6 @@ msgstr "ଏକ ଦେଶ ପ୍ରବେଶ କରନ୍ତୁ |"
 #: src/i18n.js:56
 msgid "Enter or choose a city"
 msgstr "ଏକ ସହର ପ୍ରବେଶ କିମ୍ବା ବାଛନ୍ତୁ |"
-
-#: src/i18n.js:58
-#~ msgid "Enter or choose an airport"
-#~ msgstr "ଏକ ବିମାନବନ୍ଦର ପ୍ରବେଶ କିମ୍ବା ବାଛନ୍ତୁ |"
 
 #: src/i18n.js:75
 msgid "Expired"
@@ -143,9 +143,13 @@ msgstr "ଲୋଡିଂ ..."
 msgid "Looking for courier"
 msgstr "କୋରିଅର୍ ଖୋଜାଯାଉଛି"
 
-#: src/i18n.js:47
-#~ msgid "Maximum number of airports selected"
-#~ msgstr ""
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr "ଏହାଙ୍କ ସହ ମେଳ"
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr "ମେଳଗୁଡ଼ିକ"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -163,6 +167,10 @@ msgstr "ମୋର ଅନୁରୋଧ"
 msgid "New"
 msgstr "ନୂତନ"
 
+#: src/i18n.js:90
+msgid "New matches"
+msgstr "ନୂଆ ମେଳ"
+
 #: src/i18n.js:86
 msgid "Next"
 msgstr "ପରବର୍ତ୍ତୀ"
@@ -171,13 +179,13 @@ msgstr "ପରବର୍ତ୍ତୀ"
 msgid "No end date"
 msgstr "କୌଣସି ଶେଷ ତାରିଖ ନାହିଁ"
 
-#: src/i18n.js:45
-#~ msgid "no matching airports found, try to write in english"
-#~ msgstr "କୌଣସି ମେଳ ଖାଉଥିବା ବିମାନବନ୍ଦର ମିଳିଲା ନାହିଁ, ଇଂରାଜୀରେ ଲେଖିବାକୁ ଚେଷ୍ଟା କରନ୍ତୁ"
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr "ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ମେଳ ନାହିଁ।"
 
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
-msgstr ""
+msgstr "କୌଣସି ମେଳ ଖାଉଥିବା ସହର ମିଳିଲା ନାହିଁ, ଇଂରାଜୀରେ ଲେଖି ଚେଷ୍ଟା କରନ୍ତୁ"
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -199,17 +207,21 @@ msgstr "ଦୟାକରି ଏକ ଆରମ୍ଭ ତାରିଖ ଚୟନ କ�
 msgid "Please select an end date"
 msgstr "ଦୟାକରି ଏକ ଶେଷ ତାରିଖ ଚୟନ କରନ୍ତୁ |"
 
-#: src/i18n.js:46
-#~ msgid "Please select departure and arrival airports from the list"
-#~ msgstr "ଦୟାକରି ତାଲିକାରୁ ପ୍ରସ୍ଥାନ ଏବଂ ଆଗମନ ବିମାନବନ୍ଦର ବାଛନ୍ତୁ"
-
 #: src/i18n.js:48
 msgid "Please select departure and arrival cities from the list"
-msgstr ""
+msgstr "ଦୟାକରି ତାଲିକାରୁ ପ୍ରସ୍ଥାନ ଓ ପହଞ୍ଚିବା ସହର ବାଛନ୍ତୁ"
 
 #: src/i18n.js:85
 msgid "Previous"
 msgstr "ପୂର୍ବ"
+
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr "ପ୍ରସ୍ତାବିତ"
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr "ପ୍ରତ୍ୟାଖ୍ୟାନ"
 
 #: src/i18n.js:49
 msgid "Remove"
@@ -219,7 +231,7 @@ msgstr "ହଟାନ୍ତୁ"
 msgid "Request pagination"
 msgstr "ପୃଷ୍ଠା ଅନୁରୋଧ |"
 
-#: src/i18n.js:89
+#: src/i18n.js:99
 msgid "Role"
 msgstr "ଭୂମିକା"
 
@@ -245,7 +257,7 @@ msgstr "ଆଜି ପର୍ଯ୍ୟନ୍ତ"
 
 #: src/i18n.js:38
 msgid "To date (optional)"
-msgstr ""
+msgstr "ଶେଷ ତାରିଖ (ଇଚ୍ଛାଧୀନ)"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -254,3 +266,7 @@ msgstr "ଉପଯୋଗକର୍ତ୍ତା ମିଳିଲା ନାହିଁ 
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "ଆପଣ ସିଷ୍ଟମରେ ପଞ୍ଜିକୃତ ନୁହଁନ୍ତି | ଦୟାକରି ପ୍ରଥମେ ଟେଲିଗ୍ରାମ ବଟ୍ ମାଧ୍ୟମରେ ପଞ୍ଜିକରଣ କର |"
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr "ଆପଣଙ୍କ ଅନୁରୋଧ"

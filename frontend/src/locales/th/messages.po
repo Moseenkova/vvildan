@@ -11,6 +11,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr "ยอมรับแล้ว"
+
 #: src/i18n.js:72
 msgid "Active"
 msgstr "ใช้งานอยู่"
@@ -22,10 +26,6 @@ msgstr "สถานะทั้งหมด"
 #: src/i18n.js:45
 msgid "Arrival"
 msgstr "ขาเข้า"
-
-#: src/i18n.js:53
-#~ msgid "Arrival airport"
-#~ msgstr "สนามบินขาเข้า"
 
 #: src/i18n.js:53
 msgid "Arrival city"
@@ -63,6 +63,14 @@ msgstr "ความคิดเห็น"
 msgid "Completed"
 msgstr "เสร็จสิ้น"
 
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr "ติดต่อแล้ว"
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr "ไม่สามารถโหลดรายการที่ตรงกันของคุณได้"
+
 #: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "ไม่สามารถโหลดคำขอของคุณได้"
@@ -87,10 +95,6 @@ msgstr "วันที่"
 msgid "Departure"
 msgstr "ขาออก"
 
-#: src/i18n.js:52
-#~ msgid "Departure airport"
-#~ msgstr "สนามบินขาออก"
-
 #: src/i18n.js:51
 msgid "Departure city"
 msgstr "เมืองต้นทาง"
@@ -110,10 +114,6 @@ msgstr "ป้อนประเทศ"
 #: src/i18n.js:56
 msgid "Enter or choose a city"
 msgstr "ป้อนหรือเลือกเมือง"
-
-#: src/i18n.js:58
-#~ msgid "Enter or choose an airport"
-#~ msgstr "เข้าหรือเลือกสนามบิน"
 
 #: src/i18n.js:75
 msgid "Expired"
@@ -143,9 +143,13 @@ msgstr "กำลังโหลด..."
 msgid "Looking for courier"
 msgstr "กำลังมองหาผู้จัดส่ง"
 
-#: src/i18n.js:47
-#~ msgid "Maximum number of airports selected"
-#~ msgstr ""
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr "ตรงกับ"
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr "รายการที่ตรงกัน"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -163,6 +167,10 @@ msgstr "คำขอของฉัน"
 msgid "New"
 msgstr "ใหม่"
 
+#: src/i18n.js:90
+msgid "New matches"
+msgstr "รายการที่ตรงกันใหม่"
+
 #: src/i18n.js:86
 msgid "Next"
 msgstr "ถัดไป"
@@ -171,13 +179,13 @@ msgstr "ถัดไป"
 msgid "No end date"
 msgstr "ไม่มีวันที่สิ้นสุด"
 
-#: src/i18n.js:45
-#~ msgid "no matching airports found, try to write in english"
-#~ msgstr "ไม่พบสนามบินที่ตรงกัน ลองเขียนเป็นภาษาอังกฤษ"
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr "ยังไม่มีรายการที่ตรงกัน"
 
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
-msgstr ""
+msgstr "ไม่พบเมืองที่ตรงกัน ลองเขียนเป็นภาษาอังกฤษ"
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -199,17 +207,21 @@ msgstr "โปรดเลือกวันที่เริ่มต้น"
 msgid "Please select an end date"
 msgstr "โปรดเลือกวันที่สิ้นสุด"
 
-#: src/i18n.js:46
-#~ msgid "Please select departure and arrival airports from the list"
-#~ msgstr "โปรดเลือกสนามบินต้นทางและปลายทางจากรายการ"
-
 #: src/i18n.js:48
 msgid "Please select departure and arrival cities from the list"
-msgstr ""
+msgstr "โปรดเลือกเมืองต้นทางและปลายทางจากรายการ"
 
 #: src/i18n.js:85
 msgid "Previous"
 msgstr "ก่อนหน้า"
+
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr "เสนอแล้ว"
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr "ปฏิเสธแล้ว"
 
 #: src/i18n.js:49
 msgid "Remove"
@@ -219,7 +231,7 @@ msgstr "ลบ"
 msgid "Request pagination"
 msgstr "ขอแบ่งหน้า"
 
-#: src/i18n.js:89
+#: src/i18n.js:99
 msgid "Role"
 msgstr "บทบาท"
 
@@ -245,7 +257,7 @@ msgstr "จนถึงปัจจุบัน"
 
 #: src/i18n.js:38
 msgid "To date (optional)"
-msgstr ""
+msgstr "ถึงวันที่ (ไม่บังคับ)"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -254,3 +266,7 @@ msgstr "ไม่พบผู้ใช้"
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "คุณไม่ได้ลงทะเบียนในระบบ กรุณาลงทะเบียนผ่านบอท Telegram ก่อน"
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr "คำขอของคุณ"

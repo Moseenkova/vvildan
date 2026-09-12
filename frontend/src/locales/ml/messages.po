@@ -11,6 +11,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr "അംഗീകരിച്ചു"
+
 #: src/i18n.js:72
 msgid "Active"
 msgstr "സജീവമാണ്"
@@ -22,10 +26,6 @@ msgstr "എല്ലാ സ്റ്റാറ്റസുകളും"
 #: src/i18n.js:45
 msgid "Arrival"
 msgstr "എത്തിച്ചേരൽ"
-
-#: src/i18n.js:53
-#~ msgid "Arrival airport"
-#~ msgstr "എത്തിച്ചേരൽ വിമാനത്താവളം"
 
 #: src/i18n.js:53
 msgid "Arrival city"
@@ -63,6 +63,14 @@ msgstr "അഭിപ്രായം"
 msgid "Completed"
 msgstr "പൂർത്തിയാക്കി"
 
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr "ബന്ധപ്പെട്ടു"
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr "നിങ്ങളുടെ പൊരുത്തങ്ങൾ ലോഡ് ചെയ്യാനായില്ല."
+
 #: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "നിങ്ങളുടെ അഭ്യർത്ഥനകൾ ലോഡ് ചെയ്യാനായില്ല."
@@ -87,10 +95,6 @@ msgstr "തീയതി"
 msgid "Departure"
 msgstr "പുറപ്പെടൽ"
 
-#: src/i18n.js:52
-#~ msgid "Departure airport"
-#~ msgstr "പുറപ്പെടുന്ന വിമാനത്താവളം"
-
 #: src/i18n.js:51
 msgid "Departure city"
 msgstr "പുറപ്പെടുന്ന നഗരം"
@@ -110,10 +114,6 @@ msgstr "ഒരു രാജ്യം നൽകുക"
 #: src/i18n.js:56
 msgid "Enter or choose a city"
 msgstr "ഒരു നഗരം നൽകുക അല്ലെങ്കിൽ തിരഞ്ഞെടുക്കുക"
-
-#: src/i18n.js:58
-#~ msgid "Enter or choose an airport"
-#~ msgstr "ഒരു വിമാനത്താവളം നൽകുക അല്ലെങ്കിൽ തിരഞ്ഞെടുക്കുക"
 
 #: src/i18n.js:75
 msgid "Expired"
@@ -143,9 +143,13 @@ msgstr "ലോഡ് ചെയ്യുന്നു..."
 msgid "Looking for courier"
 msgstr "കൊറിയറെ തിരയുന്നു"
 
-#: src/i18n.js:47
-#~ msgid "Maximum number of airports selected"
-#~ msgstr ""
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr "ഇവരുമായി പൊരുത്തപ്പെട്ടു"
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr "പൊരുത്തങ്ങൾ"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -163,6 +167,10 @@ msgstr "എൻ്റെ അഭ്യർത്ഥനകൾ"
 msgid "New"
 msgstr "പുതിയത്"
 
+#: src/i18n.js:90
+msgid "New matches"
+msgstr "പുതിയ പൊരുത്തങ്ങൾ"
+
 #: src/i18n.js:86
 msgid "Next"
 msgstr "അടുത്തത്"
@@ -171,13 +179,13 @@ msgstr "അടുത്തത്"
 msgid "No end date"
 msgstr "അവസാന തീയതി ഇല്ല"
 
-#: src/i18n.js:45
-#~ msgid "no matching airports found, try to write in english"
-#~ msgstr "പൊരുത്തപ്പെടുന്ന വിമാനത്താവളങ്ങളൊന്നും കണ്ടെത്തിയില്ല, ഇംഗ്ലീഷിൽ എഴുതാൻ ശ്രമിക്കുക"
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr "ഇതുവരെ പൊരുത്തങ്ങളൊന്നുമില്ല."
 
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
-msgstr ""
+msgstr "പൊരുത്തപ്പെടുന്ന നഗരങ്ങളൊന്നും കണ്ടെത്തിയില്ല, ഇംഗ്ലീഷിൽ എഴുതാൻ ശ്രമിക്കുക"
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -199,17 +207,21 @@ msgstr "ദയവായി ഒരു ആരംഭ തീയതി തിരഞ�
 msgid "Please select an end date"
 msgstr "ദയവായി ഒരു അവസാന തീയതി തിരഞ്ഞെടുക്കുക"
 
-#: src/i18n.js:46
-#~ msgid "Please select departure and arrival airports from the list"
-#~ msgstr "പട്ടികയിൽ നിന്ന് പുറപ്പെടൽ, എത്തിച്ചേരൽ വിമാനത്താവളങ്ങൾ തിരഞ്ഞെടുക്കുക"
-
 #: src/i18n.js:48
 msgid "Please select departure and arrival cities from the list"
-msgstr ""
+msgstr "പട്ടികയിൽ നിന്ന് പുറപ്പെടൽ, എത്തിച്ചേരൽ നഗരങ്ങൾ തിരഞ്ഞെടുക്കുക"
 
 #: src/i18n.js:85
 msgid "Previous"
 msgstr "മുമ്പത്തെ"
+
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr "നിർദ്ദേശിച്ചത്"
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr "നിരസിച്ചു"
 
 #: src/i18n.js:49
 msgid "Remove"
@@ -219,7 +231,7 @@ msgstr "നീക്കം ചെയ്യുക"
 msgid "Request pagination"
 msgstr "പേജിനേഷൻ അഭ്യർത്ഥിക്കുക"
 
-#: src/i18n.js:89
+#: src/i18n.js:99
 msgid "Role"
 msgstr "പങ്ക്"
 
@@ -245,7 +257,7 @@ msgstr "തീയതി"
 
 #: src/i18n.js:38
 msgid "To date (optional)"
-msgstr ""
+msgstr "അവസാന തീയതി (ഐച്ഛികം)"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -254,3 +266,7 @@ msgstr "ഉപയോക്താവിനെ കണ്ടെത്തിയി�
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "നിങ്ങൾ സിസ്റ്റത്തിൽ രജിസ്റ്റർ ചെയ്തിട്ടില്ല. ദയവായി ആദ്യം ടെലിഗ്രാം ബോട്ട് വഴി രജിസ്റ്റർ ചെയ്യുക."
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr "നിങ്ങളുടെ അഭ്യർത്ഥന"

@@ -11,6 +11,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr "ಸ್ವೀಕರಿಸಲಾಗಿದೆ"
+
 #: src/i18n.js:72
 msgid "Active"
 msgstr "ಸಕ್ರಿಯ"
@@ -22,10 +26,6 @@ msgstr "ಎಲ್ಲಾ ಸ್ಥಿತಿಗಳು"
 #: src/i18n.js:45
 msgid "Arrival"
 msgstr "ಆಗಮನ"
-
-#: src/i18n.js:53
-#~ msgid "Arrival airport"
-#~ msgstr "ಆಗಮನ ವಿಮಾನ ನಿಲ್ದಾಣ"
 
 #: src/i18n.js:53
 msgid "Arrival city"
@@ -63,6 +63,14 @@ msgstr "ಕಾಮೆಂಟ್ ಮಾಡಿ"
 msgid "Completed"
 msgstr "ಪೂರ್ಣಗೊಂಡಿದೆ"
 
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr "ಸಂಪರ್ಕಿಸಲಾಗಿದೆ"
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr "ನಿಮ್ಮ ಹೊಂದಾಣಿಕೆಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ."
+
 #: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "ನಿಮ್ಮ ವಿನಂತಿಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ."
@@ -87,10 +95,6 @@ msgstr "ದಿನಾಂಕ"
 msgid "Departure"
 msgstr "ನಿರ್ಗಮನ"
 
-#: src/i18n.js:52
-#~ msgid "Departure airport"
-#~ msgstr "ನಿರ್ಗಮನ ವಿಮಾನ ನಿಲ್ದಾಣ"
-
 #: src/i18n.js:51
 msgid "Departure city"
 msgstr "ನಿರ್ಗಮನ ನಗರ"
@@ -110,10 +114,6 @@ msgstr "ದೇಶವನ್ನು ನಮೂದಿಸಿ"
 #: src/i18n.js:56
 msgid "Enter or choose a city"
 msgstr "ನಗರವನ್ನು ನಮೂದಿಸಿ ಅಥವಾ ಆಯ್ಕೆಮಾಡಿ"
-
-#: src/i18n.js:58
-#~ msgid "Enter or choose an airport"
-#~ msgstr "ವಿಮಾನ ನಿಲ್ದಾಣವನ್ನು ನಮೂದಿಸಿ ಅಥವಾ ಆಯ್ಕೆಮಾಡಿ"
 
 #: src/i18n.js:75
 msgid "Expired"
@@ -143,9 +143,13 @@ msgstr "ಲೋಡ್ ಆಗುತ್ತಿದೆ..."
 msgid "Looking for courier"
 msgstr "ಕೊರಿಯರ್‌ಗಾಗಿ ಹುಡುಕಲಾಗುತ್ತಿದೆ"
 
-#: src/i18n.js:47
-#~ msgid "Maximum number of airports selected"
-#~ msgstr ""
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr "ಇವರೊಂದಿಗೆ ಹೊಂದಾಣಿಕೆ"
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr "ಹೊಂದಾಣಿಕೆಗಳು"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -163,6 +167,10 @@ msgstr "ನನ್ನ ವಿನಂತಿಗಳು"
 msgid "New"
 msgstr "ಹೊಸದು"
 
+#: src/i18n.js:90
+msgid "New matches"
+msgstr "ಹೊಸ ಹೊಂದಾಣಿಕೆಗಳು"
+
 #: src/i18n.js:86
 msgid "Next"
 msgstr "ಮುಂದೆ"
@@ -171,13 +179,13 @@ msgstr "ಮುಂದೆ"
 msgid "No end date"
 msgstr "ಅಂತಿಮ ದಿನಾಂಕವಿಲ್ಲ"
 
-#: src/i18n.js:45
-#~ msgid "no matching airports found, try to write in english"
-#~ msgstr "ಹೊಂದಿಕೆಯಾಗುವ ಯಾವುದೇ ವಿಮಾನ ನಿಲ್ದಾಣ ಕಂಡುಬಂದಿಲ್ಲ, ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಬರೆಯಲು ಪ್ರಯತ್ನಿಸಿ"
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr "ಇನ್ನೂ ಯಾವುದೇ ಹೊಂದಾಣಿಕೆಗಳಿಲ್ಲ."
 
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
-msgstr ""
+msgstr "ಹೊಂದಾಣಿಕೆಯ ನಗರಗಳು ಕಂಡುಬಂದಿಲ್ಲ, ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಬರೆಯಲು ಪ್ರಯತ್ನಿಸಿ"
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -199,17 +207,21 @@ msgstr "ದಯವಿಟ್ಟು ಪ್ರಾರಂಭ ದಿನಾಂಕವನ�
 msgid "Please select an end date"
 msgstr "ದಯವಿಟ್ಟು ಅಂತಿಮ ದಿನಾಂಕವನ್ನು ಆಯ್ಕೆಮಾಡಿ"
 
-#: src/i18n.js:46
-#~ msgid "Please select departure and arrival airports from the list"
-#~ msgstr "ದಯವಿಟ್ಟು ಪಟ್ಟಿಯಿಂದ ನಿರ್ಗಮನ ಮತ್ತು ಆಗಮನದ ವಿಮಾನ ನಿಲ್ದಾಣಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ"
-
 #: src/i18n.js:48
 msgid "Please select departure and arrival cities from the list"
-msgstr ""
+msgstr "ದಯವಿಟ್ಟು ಪಟ್ಟಿಯಿಂದ ನಿರ್ಗಮನ ಮತ್ತು ಆಗಮನ ನಗರಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ"
 
 #: src/i18n.js:85
 msgid "Previous"
 msgstr "ಹಿಂದಿನ"
+
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr "ಪ್ರಸ್ತಾಪಿಸಲಾಗಿದೆ"
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr "ತಿರಸ್ಕರಿಸಲಾಗಿದೆ"
 
 #: src/i18n.js:49
 msgid "Remove"
@@ -219,7 +231,7 @@ msgstr "ತೆಗೆದುಹಾಕಿ"
 msgid "Request pagination"
 msgstr "ಪುಟ ವಿನ್ಯಾಸವನ್ನು ವಿನಂತಿಸಿ"
 
-#: src/i18n.js:89
+#: src/i18n.js:99
 msgid "Role"
 msgstr "ಪಾತ್ರ"
 
@@ -245,7 +257,7 @@ msgstr "ಇಲ್ಲಿಯವರೆಗೆ"
 
 #: src/i18n.js:38
 msgid "To date (optional)"
-msgstr ""
+msgstr "ಕೊನೆಯ ದಿನಾಂಕ (ಐಚ್ಛಿಕ)"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -254,3 +266,7 @@ msgstr "ಬಳಕೆದಾರ ಕಂಡುಬಂದಿಲ್ಲ"
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "ನೀವು ವ್ಯವಸ್ಥೆಯಲ್ಲಿ ನೋಂದಾಯಿಸಲಾಗಿಲ್ಲ. ದಯವಿಟ್ಟು ಮೊದಲು ಟೆಲಿಗ್ರಾಮ್ ಬಾಟ್ ಮೂಲಕ ನೋಂದಾಯಿಸಿ."
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr "ನಿಮ್ಮ ವಿನಂತಿ"

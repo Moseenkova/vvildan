@@ -11,6 +11,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr "Qabul qilindi"
+
 #: src/i18n.js:72
 msgid "Active"
 msgstr "Faol"
@@ -22,10 +26,6 @@ msgstr "Barcha holatlar"
 #: src/i18n.js:45
 msgid "Arrival"
 msgstr "Yetib kelish"
-
-#: src/i18n.js:53
-#~ msgid "Arrival airport"
-#~ msgstr "Aeroportga kelish"
 
 #: src/i18n.js:53
 msgid "Arrival city"
@@ -63,6 +63,14 @@ msgstr "Izoh"
 msgid "Completed"
 msgstr "Bajarildi"
 
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr "Bog‘lanildi"
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr "Mosliklaringizni yuklab bo‘lmadi."
+
 #: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "So‘rovlaringizni yuklab bo‘lmadi."
@@ -87,10 +95,6 @@ msgstr "Sana"
 msgid "Departure"
 msgstr "Jo‘nab ketish"
 
-#: src/i18n.js:52
-#~ msgid "Departure airport"
-#~ msgstr "Uchish aeroporti"
-
 #: src/i18n.js:51
 msgid "Departure city"
 msgstr "Chiqish shahri"
@@ -110,10 +114,6 @@ msgstr "Mamlakatni kiriting"
 #: src/i18n.js:56
 msgid "Enter or choose a city"
 msgstr "Shaharni kiriting yoki tanlang"
-
-#: src/i18n.js:58
-#~ msgid "Enter or choose an airport"
-#~ msgstr "Aeroportni kiriting yoki tanlang"
 
 #: src/i18n.js:75
 msgid "Expired"
@@ -143,9 +143,13 @@ msgstr "Yuklanmoqda..."
 msgid "Looking for courier"
 msgstr "Kuryer qidirilmoqda"
 
-#: src/i18n.js:47
-#~ msgid "Maximum number of airports selected"
-#~ msgstr ""
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr "Mos kelgan foydalanuvchi"
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr "Mosliklar"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -163,6 +167,10 @@ msgstr "Mening so'rovlarim"
 msgid "New"
 msgstr "Yangi"
 
+#: src/i18n.js:90
+msgid "New matches"
+msgstr "Yangi mosliklar"
+
 #: src/i18n.js:86
 msgid "Next"
 msgstr "Keyingi"
@@ -171,13 +179,13 @@ msgstr "Keyingi"
 msgid "No end date"
 msgstr "Tugash sanasi yo‘q"
 
-#: src/i18n.js:45
-#~ msgid "no matching airports found, try to write in english"
-#~ msgstr "Mos aeroportlar topilmadi, ingliz tilida yozib ko‘ring"
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr "Hozircha mosliklar yo‘q."
 
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
-msgstr ""
+msgstr "Mos shaharlar topilmadi, ingliz tilida yozib ko‘ring"
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -199,17 +207,21 @@ msgstr "Iltimos, boshlanish sanasini tanlang"
 msgid "Please select an end date"
 msgstr "Tugash sanasini tanlang"
 
-#: src/i18n.js:46
-#~ msgid "Please select departure and arrival airports from the list"
-#~ msgstr "Ro‘yxatdan jo‘nash va yetib kelish aeroportlarini tanlang"
-
 #: src/i18n.js:48
 msgid "Please select departure and arrival cities from the list"
-msgstr ""
+msgstr "Ro‘yxatdan jo‘nash va yetib kelish shaharlarini tanlang"
 
 #: src/i18n.js:85
 msgid "Previous"
 msgstr "Oldingi"
+
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr "Taklif qilindi"
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr "Rad etildi"
 
 #: src/i18n.js:49
 msgid "Remove"
@@ -219,7 +231,7 @@ msgstr "Olib tashlash"
 msgid "Request pagination"
 msgstr "Sahifani so'rash"
 
-#: src/i18n.js:89
+#: src/i18n.js:99
 msgid "Role"
 msgstr "Rol"
 
@@ -245,7 +257,7 @@ msgstr "Hozirgi kungacha"
 
 #: src/i18n.js:38
 msgid "To date (optional)"
-msgstr ""
+msgstr "Tugash sanasi (ixtiyoriy)"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -254,3 +266,7 @@ msgstr "Foydalanuvchi topilmadi"
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "Siz tizimda ro'yxatdan o'tmagansiz. Iltimos, avval Telegram boti orqali ro‘yxatdan o‘ting."
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr "Sizning so‘rovingiz"

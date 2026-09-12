@@ -11,6 +11,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr "Прийнято"
+
 #: src/i18n.js:72
 msgid "Active"
 msgstr "Активний"
@@ -22,10 +26,6 @@ msgstr "Всі статуси"
 #: src/i18n.js:45
 msgid "Arrival"
 msgstr "Прибуття"
-
-#: src/i18n.js:53
-#~ msgid "Arrival airport"
-#~ msgstr "Аеропорт прибуття"
 
 #: src/i18n.js:53
 msgid "Arrival city"
@@ -63,6 +63,14 @@ msgstr "коментар"
 msgid "Completed"
 msgstr "Виконано"
 
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr "Зв’язалися"
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr "Не вдалося завантажити ваші збіги."
+
 #: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "Не вдалося завантажити ваші запити."
@@ -87,10 +95,6 @@ msgstr "Дата"
 msgid "Departure"
 msgstr "Відправлення"
 
-#: src/i18n.js:52
-#~ msgid "Departure airport"
-#~ msgstr "Аеропорт вильоту"
-
 #: src/i18n.js:51
 msgid "Departure city"
 msgstr "Місто відправлення"
@@ -110,10 +114,6 @@ msgstr "Введіть країну"
 #: src/i18n.js:56
 msgid "Enter or choose a city"
 msgstr "Введіть або виберіть місто"
-
-#: src/i18n.js:58
-#~ msgid "Enter or choose an airport"
-#~ msgstr "Введіть або виберіть аеропорт"
 
 #: src/i18n.js:75
 msgid "Expired"
@@ -143,9 +143,13 @@ msgstr "Завантаження..."
 msgid "Looking for courier"
 msgstr "Шукаю кур’єра"
 
-#: src/i18n.js:47
-#~ msgid "Maximum number of airports selected"
-#~ msgstr ""
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr "Збіг із"
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr "Збіги"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -163,6 +167,10 @@ msgstr "Мої запити"
 msgid "New"
 msgstr "новий"
 
+#: src/i18n.js:90
+msgid "New matches"
+msgstr "Нові збіги"
+
 #: src/i18n.js:86
 msgid "Next"
 msgstr "Далі"
@@ -171,13 +179,13 @@ msgstr "Далі"
 msgid "No end date"
 msgstr "Без дати завершення"
 
-#: src/i18n.js:45
-#~ msgid "no matching airports found, try to write in english"
-#~ msgstr "Відповідних аеропортів не знайдено, спробуйте написати англійською"
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr "Збігів поки немає."
 
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
-msgstr ""
+msgstr "Відповідних міст не знайдено, спробуйте написати англійською"
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -199,17 +207,21 @@ msgstr "Виберіть дату початку"
 msgid "Please select an end date"
 msgstr "Виберіть кінцеву дату"
 
-#: src/i18n.js:46
-#~ msgid "Please select departure and arrival airports from the list"
-#~ msgstr "Виберіть аеропорти відправлення та прибуття зі списку"
-
 #: src/i18n.js:48
 msgid "Please select departure and arrival cities from the list"
-msgstr ""
+msgstr "Виберіть міста відправлення та прибуття зі списку"
 
 #: src/i18n.js:85
 msgid "Previous"
 msgstr "Попередній"
+
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr "Запропоновано"
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr "Відхилено"
 
 #: src/i18n.js:49
 msgid "Remove"
@@ -219,7 +231,7 @@ msgstr "Видалити"
 msgid "Request pagination"
 msgstr "Запит на сторінки"
 
-#: src/i18n.js:89
+#: src/i18n.js:99
 msgid "Role"
 msgstr "Роль"
 
@@ -245,7 +257,7 @@ msgstr "На сьогоднішній день"
 
 #: src/i18n.js:38
 msgid "To date (optional)"
-msgstr ""
+msgstr "Дата завершення (необов’язково)"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -254,3 +266,7 @@ msgstr "Користувача не знайдено"
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "Ви не зареєстровані в системі. Будь ласка, спочатку зареєструйтеся через бот Telegram."
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr "Ваш запит"

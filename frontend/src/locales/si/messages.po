@@ -11,6 +11,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr "පිළිගන්නා ලදී"
+
 #: src/i18n.js:72
 msgid "Active"
 msgstr "ක්රියාකාරී"
@@ -22,10 +26,6 @@ msgstr "සියලුම තත්ව"
 #: src/i18n.js:45
 msgid "Arrival"
 msgstr "පැමිණීම"
-
-#: src/i18n.js:53
-#~ msgid "Arrival airport"
-#~ msgstr "පැමිණීමේ ගුවන් තොටුපළ"
 
 #: src/i18n.js:53
 msgid "Arrival city"
@@ -63,6 +63,14 @@ msgstr "අදහස් දක්වන්න"
 msgid "Completed"
 msgstr "සම්පූර්ණ කළා"
 
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr "සම්බන්ධ කර ගන්නා ලදී"
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr "ඔබගේ ගැළපීම් පූරණය කළ නොහැකි විය."
+
 #: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "ඔබගේ ඉල්ලීම් පූරණය කළ නොහැකි විය."
@@ -87,10 +95,6 @@ msgstr "දිනය"
 msgid "Departure"
 msgstr "පිටත්වීම"
 
-#: src/i18n.js:52
-#~ msgid "Departure airport"
-#~ msgstr "පිටත්වීමේ ගුවන් තොටුපළ"
-
 #: src/i18n.js:51
 msgid "Departure city"
 msgstr "පිටත්වීමේ නගරය"
@@ -110,10 +114,6 @@ msgstr "රටක් ඇතුළු කරන්න"
 #: src/i18n.js:56
 msgid "Enter or choose a city"
 msgstr "නගරයක් ඇතුළු කරන්න හෝ තෝරන්න"
-
-#: src/i18n.js:58
-#~ msgid "Enter or choose an airport"
-#~ msgstr "ගුවන් තොටුපළක් ඇතුළු කරන්න හෝ තෝරන්න"
 
 #: src/i18n.js:75
 msgid "Expired"
@@ -143,9 +143,13 @@ msgstr "පූරණය වෙමින්..."
 msgid "Looking for courier"
 msgstr "කුරියර්වරයෙකු සොයමින්"
 
-#: src/i18n.js:47
-#~ msgid "Maximum number of airports selected"
-#~ msgstr ""
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr "ගැළපුණේ"
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr "ගැළපීම්"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -163,6 +167,10 @@ msgstr "මගේ ඉල්ලීම්"
 msgid "New"
 msgstr "අලුත්"
 
+#: src/i18n.js:90
+msgid "New matches"
+msgstr "නව ගැළපීම්"
+
 #: src/i18n.js:86
 msgid "Next"
 msgstr "ඊළඟට"
@@ -171,13 +179,13 @@ msgstr "ඊළඟට"
 msgid "No end date"
 msgstr "අවසන් දිනයක් නැත"
 
-#: src/i18n.js:45
-#~ msgid "no matching airports found, try to write in english"
-#~ msgstr "ගැළපෙන ගුවන් තොටුපළක් හමු නොවීය, ඉංග්‍රීසියෙන් ලිවීමට උත්සාහ කරන්න"
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr "තවම ගැළපීම් නොමැත."
 
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
-msgstr ""
+msgstr "ගැළපෙන නගර හමු නොවීය, ඉංග්‍රීසියෙන් ලිවීමට උත්සාහ කරන්න"
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -199,17 +207,21 @@ msgstr "කරුණාකර ආරම්භක දිනයක් තෝරන
 msgid "Please select an end date"
 msgstr "කරුණාකර අවසන් දිනයක් තෝරන්න"
 
-#: src/i18n.js:46
-#~ msgid "Please select departure and arrival airports from the list"
-#~ msgstr "කරුණාකර ලැයිස්තුවෙන් පිටත්වීමේ සහ පැමිණීමේ ගුවන් තොටුපළ තෝරන්න"
-
 #: src/i18n.js:48
 msgid "Please select departure and arrival cities from the list"
-msgstr ""
+msgstr "කරුණාකර ලැයිස්තුවෙන් පිටත්වීමේ සහ පැමිණීමේ නගර තෝරන්න"
 
 #: src/i18n.js:85
 msgid "Previous"
 msgstr "පෙර"
+
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr "යෝජිත"
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr "ප්‍රතික්ෂේපිත"
 
 #: src/i18n.js:49
 msgid "Remove"
@@ -219,7 +231,7 @@ msgstr "ඉවත් කරන්න"
 msgid "Request pagination"
 msgstr "පේජිනේෂන් ඉල්ලන්න"
 
-#: src/i18n.js:89
+#: src/i18n.js:99
 msgid "Role"
 msgstr "භූමිකාව"
 
@@ -245,7 +257,7 @@ msgstr "අදට"
 
 #: src/i18n.js:38
 msgid "To date (optional)"
-msgstr ""
+msgstr "අවසන් දිනය (විකල්ප)"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -254,3 +266,7 @@ msgstr "පරිශීලක හමු නොවීය"
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "ඔබ පද්ධතියේ ලියාපදිංචි වී නොමැත. කරුණාකර පළමුව Telegram bot හරහා ලියාපදිංචි වන්න."
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr "ඔබගේ ඉල්ලීම"

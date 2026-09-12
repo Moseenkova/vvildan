@@ -11,6 +11,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/i18n.js:97
+msgid "Accepted"
+msgstr "Aceptado"
+
 #: src/i18n.js:72
 msgid "Active"
 msgstr "Activo"
@@ -22,10 +26,6 @@ msgstr "Todos los estados"
 #: src/i18n.js:45
 msgid "Arrival"
 msgstr "Llegada"
-
-#: src/i18n.js:53
-#~ msgid "Arrival airport"
-#~ msgstr "Aeropuerto de llegada"
 
 #: src/i18n.js:53
 msgid "Arrival city"
@@ -63,6 +63,14 @@ msgstr "Comentario"
 msgid "Completed"
 msgstr "Completado"
 
+#: src/i18n.js:96
+msgid "Contacted"
+msgstr "Contactado"
+
+#: src/i18n.js:92
+msgid "Could not load your matches."
+msgstr "No se pudieron cargar tus coincidencias."
+
 #: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "No se pudieron cargar sus solicitudes."
@@ -87,10 +95,6 @@ msgstr "Fecha"
 msgid "Departure"
 msgstr "Salida"
 
-#: src/i18n.js:52
-#~ msgid "Departure airport"
-#~ msgstr "Aeropuerto de salida"
-
 #: src/i18n.js:51
 msgid "Departure city"
 msgstr "Ciudad de salida"
@@ -110,10 +114,6 @@ msgstr "Introduce un país"
 #: src/i18n.js:56
 msgid "Enter or choose a city"
 msgstr "Introduce o elige una ciudad"
-
-#: src/i18n.js:58
-#~ msgid "Enter or choose an airport"
-#~ msgstr "Introduce o elige un aeropuerto"
 
 #: src/i18n.js:75
 msgid "Expired"
@@ -143,9 +143,13 @@ msgstr "Cargando..."
 msgid "Looking for courier"
 msgstr "Buscando mensajero"
 
-#: src/i18n.js:47
-#~ msgid "Maximum number of airports selected"
-#~ msgstr ""
+#: src/i18n.js:93
+msgid "Matched with"
+msgstr "Coincidencia con"
+
+#: src/i18n.js:89
+msgid "Matches"
+msgstr "Coincidencias"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -163,6 +167,10 @@ msgstr "Mis solicitudes"
 msgid "New"
 msgstr "Nuevo"
 
+#: src/i18n.js:90
+msgid "New matches"
+msgstr "Nuevas coincidencias"
+
 #: src/i18n.js:86
 msgid "Next"
 msgstr "Siguiente"
@@ -171,13 +179,13 @@ msgstr "Siguiente"
 msgid "No end date"
 msgstr "Sin fecha de finalización"
 
-#: src/i18n.js:45
-#~ msgid "no matching airports found, try to write in english"
-#~ msgstr "No se encontraron aeropuertos coincidentes, intenta escribir en inglés"
+#: src/i18n.js:91
+msgid "No matches yet."
+msgstr "Aún no hay coincidencias."
 
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
-msgstr ""
+msgstr "No se encontraron ciudades coincidentes; intenta escribir en inglés"
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -199,17 +207,21 @@ msgstr "Por favor seleccione una fecha de inicio"
 msgid "Please select an end date"
 msgstr "Por favor seleccione una fecha de finalización"
 
-#: src/i18n.js:46
-#~ msgid "Please select departure and arrival airports from the list"
-#~ msgstr "Selecciona los aeropuertos de salida y llegada de la lista"
-
 #: src/i18n.js:48
 msgid "Please select departure and arrival cities from the list"
-msgstr ""
+msgstr "Selecciona las ciudades de salida y llegada de la lista"
 
 #: src/i18n.js:85
 msgid "Previous"
 msgstr "Anterior"
+
+#: src/i18n.js:95
+msgid "Proposed"
+msgstr "Propuesto"
+
+#: src/i18n.js:98
+msgid "Rejected"
+msgstr "Rechazado"
 
 #: src/i18n.js:49
 msgid "Remove"
@@ -219,7 +231,7 @@ msgstr "Eliminar"
 msgid "Request pagination"
 msgstr "Solicitar paginación"
 
-#: src/i18n.js:89
+#: src/i18n.js:99
 msgid "Role"
 msgstr "Rol"
 
@@ -245,7 +257,7 @@ msgstr "Hasta la fecha"
 
 #: src/i18n.js:38
 msgid "To date (optional)"
-msgstr ""
+msgstr "Fecha final (opcional)"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -254,3 +266,7 @@ msgstr "Usuario no encontrado"
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "No estás registrado en el sistema. Primero regístrese a través del bot de Telegram."
+
+#: src/i18n.js:94
+msgid "Your request"
+msgstr "Tu solicitud"

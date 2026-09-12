@@ -86,6 +86,16 @@ export const getMessages = (_) => ({
   next: _(msg`Next`),
   page: _(msg`Page`),
   newRequest: _(msg`New`),
+  matches: _(msg`Matches`),
+  newMatches: _(msg`New matches`),
+  noMatches: _(msg`No matches yet.`),
+  failedToLoadMatches: _(msg`Could not load your matches.`),
+  matchedWith: _(msg`Matched with`),
+  yourRequest: _(msg`Your request`),
+  proposed: _(msg`Proposed`),
+  contacted: _(msg`Contacted`),
+  accepted: _(msg`Accepted`),
+  rejected: _(msg`Rejected`),
   role: _(msg`Role`),
 })
 
