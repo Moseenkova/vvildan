@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/i18n.js:97
 msgid "Accepted"
-msgstr ""
+msgstr "已接受"
 
 #: src/i18n.js:72
 msgid "Active"
@@ -26,10 +26,6 @@ msgstr "所有状态"
 #: src/i18n.js:45
 msgid "Arrival"
 msgstr "到达"
-
-#: src/i18n.js:53
-#~ msgid "Arrival airport"
-#~ msgstr "到达机场"
 
 #: src/i18n.js:53
 msgid "Arrival city"
@@ -69,11 +65,11 @@ msgstr "已完成"
 
 #: src/i18n.js:96
 msgid "Contacted"
-msgstr ""
+msgstr "已联系"
 
 #: src/i18n.js:92
 msgid "Could not load your matches."
-msgstr ""
+msgstr "无法加载您的匹配结果。"
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
@@ -99,10 +95,6 @@ msgstr "日期"
 msgid "Departure"
 msgstr "出发"
 
-#: src/i18n.js:52
-#~ msgid "Departure airport"
-#~ msgstr "出发机场"
-
 #: src/i18n.js:51
 msgid "Departure city"
 msgstr "出发城市"
@@ -122,10 +114,6 @@ msgstr "入境"
 #: src/i18n.js:56
 msgid "Enter or choose a city"
 msgstr "输入或选择城市"
-
-#: src/i18n.js:58
-#~ msgid "Enter or choose an airport"
-#~ msgstr "输入或选择机场"
 
 #: src/i18n.js:75
 msgid "Expired"
@@ -157,15 +145,11 @@ msgstr "寻找配送员"
 
 #: src/i18n.js:93
 msgid "Matched with"
-msgstr ""
+msgstr "匹配对象"
 
 #: src/i18n.js:89
 msgid "Matches"
-msgstr ""
-
-#: src/i18n.js:47
-#~ msgid "Maximum number of airports selected"
-#~ msgstr ""
+msgstr "匹配"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -185,7 +169,7 @@ msgstr "新"
 
 #: src/i18n.js:90
 msgid "New matches"
-msgstr ""
+msgstr "新匹配"
 
 #: src/i18n.js:86
 msgid "Next"
@@ -197,15 +181,11 @@ msgstr "无结束日期"
 
 #: src/i18n.js:91
 msgid "No matches yet."
-msgstr ""
-
-#: src/i18n.js:45
-#~ msgid "no matching airports found, try to write in english"
-#~ msgstr "未找到匹配的机场，请尝试用英语输入"
+msgstr "暂无匹配。"
 
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
-msgstr ""
+msgstr "未找到匹配的城市，请尝试使用英语输入"
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -227,13 +207,9 @@ msgstr "请选择开始日期"
 msgid "Please select an end date"
 msgstr "请选择结束日期"
 
-#: src/i18n.js:46
-#~ msgid "Please select departure and arrival airports from the list"
-#~ msgstr "请从列表中选择出发和到达机场"
-
 #: src/i18n.js:48
 msgid "Please select departure and arrival cities from the list"
-msgstr ""
+msgstr "请从列表中选择出发城市和到达城市"
 
 #: src/i18n.js:85
 msgid "Previous"
@@ -241,11 +217,11 @@ msgstr "上一页"
 
 #: src/i18n.js:95
 msgid "Proposed"
-msgstr ""
+msgstr "已提议"
 
 #: src/i18n.js:98
 msgid "Rejected"
-msgstr ""
+msgstr "已拒绝"
 
 #: src/i18n.js:49
 msgid "Remove"
@@ -281,7 +257,7 @@ msgstr "迄今为止"
 
 #: src/i18n.js:38
 msgid "To date (optional)"
-msgstr ""
+msgstr "结束日期（可选）"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -293,4 +269,4 @@ msgstr "您尚未在系统中注册。请先通过 Telegram 机器人注册。"
 
 #: src/i18n.js:94
 msgid "Your request"
-msgstr ""
+msgstr "您的请求"

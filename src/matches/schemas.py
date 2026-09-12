@@ -15,6 +15,7 @@ class MatchSchema(BaseModel):
     status: str
     created_at: datetime
     is_new: bool
+    is_candidate: bool
     own_request: RequestSchema
     matching_request: RequestSchema
     matching_user: MatchUserSchema

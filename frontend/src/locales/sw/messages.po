@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/i18n.js:97
 msgid "Accepted"
-msgstr ""
+msgstr "Imekubaliwa"
 
 #: src/i18n.js:72
 msgid "Active"
@@ -26,10 +26,6 @@ msgstr "Hali zote"
 #: src/i18n.js:45
 msgid "Arrival"
 msgstr "Kuwasili"
-
-#: src/i18n.js:53
-#~ msgid "Arrival airport"
-#~ msgstr "Uwanja wa ndege wa kuwasili"
 
 #: src/i18n.js:53
 msgid "Arrival city"
@@ -69,11 +65,11 @@ msgstr "Imekamilika"
 
 #: src/i18n.js:96
 msgid "Contacted"
-msgstr ""
+msgstr "Imewasiliana"
 
 #: src/i18n.js:92
 msgid "Could not load your matches."
-msgstr ""
+msgstr "Imeshindikana kupakia zinazolingana nawe."
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
@@ -99,10 +95,6 @@ msgstr "Tarehe"
 msgid "Departure"
 msgstr "Kuondoka"
 
-#: src/i18n.js:52
-#~ msgid "Departure airport"
-#~ msgstr "Uwanja wa ndege wa kuondoka"
-
 #: src/i18n.js:51
 msgid "Departure city"
 msgstr "Jiji la kuondoka"
@@ -122,10 +114,6 @@ msgstr "Ingiza nchi"
 #: src/i18n.js:56
 msgid "Enter or choose a city"
 msgstr "Ingiza au uchague jiji"
-
-#: src/i18n.js:58
-#~ msgid "Enter or choose an airport"
-#~ msgstr "Ingiza au chagua uwanja wa ndege"
 
 #: src/i18n.js:75
 msgid "Expired"
@@ -157,15 +145,11 @@ msgstr "Inatafuta msafirishaji"
 
 #: src/i18n.js:93
 msgid "Matched with"
-msgstr ""
+msgstr "Imelinganishwa na"
 
 #: src/i18n.js:89
 msgid "Matches"
-msgstr ""
-
-#: src/i18n.js:47
-#~ msgid "Maximum number of airports selected"
-#~ msgstr ""
+msgstr "Zinazolingana"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -185,7 +169,7 @@ msgstr "Mpya"
 
 #: src/i18n.js:90
 msgid "New matches"
-msgstr ""
+msgstr "Ulinganisho mpya"
 
 #: src/i18n.js:86
 msgid "Next"
@@ -197,15 +181,11 @@ msgstr "Hakuna tarehe ya mwisho"
 
 #: src/i18n.js:91
 msgid "No matches yet."
-msgstr ""
-
-#: src/i18n.js:45
-#~ msgid "no matching airports found, try to write in english"
-#~ msgstr "Hakuna viwanja vya ndege vinavyolingana vilivyopatikana, jaribu kuandika kwa Kiingereza"
+msgstr "Bado hakuna zinazolingana."
 
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
-msgstr ""
+msgstr "Hakuna miji inayolingana iliyopatikana, jaribu kuandika kwa Kiingereza"
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -227,13 +207,9 @@ msgstr "Tafadhali chagua tarehe ya kuanza"
 msgid "Please select an end date"
 msgstr "Tafadhali chagua tarehe ya mwisho"
 
-#: src/i18n.js:46
-#~ msgid "Please select departure and arrival airports from the list"
-#~ msgstr "Tafadhali chagua viwanja vya ndege vya kuondoka na kuwasili kutoka kwenye orodha"
-
 #: src/i18n.js:48
 msgid "Please select departure and arrival cities from the list"
-msgstr ""
+msgstr "Tafadhali chagua miji ya kuondoka na kuwasili kutoka kwenye orodha"
 
 #: src/i18n.js:85
 msgid "Previous"
@@ -241,11 +217,11 @@ msgstr "Iliyotangulia"
 
 #: src/i18n.js:95
 msgid "Proposed"
-msgstr ""
+msgstr "Imependekezwa"
 
 #: src/i18n.js:98
 msgid "Rejected"
-msgstr ""
+msgstr "Imekataliwa"
 
 #: src/i18n.js:49
 msgid "Remove"
@@ -281,7 +257,7 @@ msgstr "Hadi sasa"
 
 #: src/i18n.js:38
 msgid "To date (optional)"
-msgstr ""
+msgstr "Hadi tarehe (si lazima)"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -293,4 +269,4 @@ msgstr "Hujasajiliwa kwenye mfumo. Tafadhali jisajili kupitia boti ya Telegram k
 
 #: src/i18n.js:94
 msgid "Your request"
-msgstr ""
+msgstr "Ombi lako"

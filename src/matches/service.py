@@ -3,11 +3,20 @@ from datetime import datetime, timezone
 
 from aiogram import Bot
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
-from sqlalchemy import or_, select, update
+from sqlalchemy import and_, or_, select, update
 from sqlalchemy.orm import selectinload
 
 from src.config import Settings, get_settings
-from src.database import City, CityName, CountryName, Match, async_session_maker
+from src.database import (
+    City,
+    CityName,
+    CountryName,
+    Match,
+    RequestRole,
+    RequestStatus,
+    User,
+    async_session_maker,
+)
 from src.database import Request as TravelRequest
 from src.matches.schemas import MatchSchema, MatchUserSchema
 from src.requests.schemas import RequestCitySchema, RequestSchema
@@ -99,6 +108,7 @@ async def _localized_requests(session, requests, language: str):
 
 async def get_user_matches(user_id: int, language: str = "en") -> list[MatchSchema]:
     async with async_session_maker() as session:
+        user = await session.get(User, user_id)
         matches = (
             await session.scalars(
                 select(Match)
@@ -112,13 +122,91 @@ async def get_user_matches(user_id: int, language: str = "en") -> list[MatchSche
                 .order_by(Match.created_at.desc())
             )
         ).all()
+        own_requests = (
+            await session.scalars(
+                select(TravelRequest)
+                .where(
+                    TravelRequest.user_id == user_id,
+                    TravelRequest.status == RequestStatus.active,
+                )
+                .options(
+                    selectinload(TravelRequest.departure_cities).selectinload(City.country),
+                    selectinload(TravelRequest.arrival_cities).selectinload(City.country),
+                )
+            )
+        ).all()
+
+        matched_pairs = {(match.sender_request_id, match.courier_request_id) for match in matches}
+        candidates = []
+        candidate_pair_keys = set()
+        for own in own_requests:
+            departure_ids = [city.id for city in own.departure_cities]
+            arrival_ids = [city.id for city in own.arrival_cities]
+            if not departure_ids or not arrival_ids:
+                continue
+
+            if own.role == RequestRole.sender:
+                opposite_role = RequestRole.courier
+                date_condition = and_(
+                    *(
+                        [TravelRequest.date_from >= own.date_from]
+                        if own.date_from is not None
+                        else []
+                    ),
+                    *([TravelRequest.date_from <= own.date_to] if own.date_to is not None else []),
+                )
+            else:
+                opposite_role = RequestRole.sender
+                date_condition = and_(
+                    or_(
+                        TravelRequest.date_from.is_(None),
+                        TravelRequest.date_from <= own.date_from,
+                    ),
+                    or_(
+                        TravelRequest.date_to.is_(None),
+                        TravelRequest.date_to >= own.date_from,
+                    ),
+                )
+
+            rows = (
+                await session.scalars(
+                    select(TravelRequest)
+                    .where(
+                        TravelRequest.user_id != user_id,
+                        TravelRequest.role == opposite_role,
+                        TravelRequest.status == RequestStatus.active,
+                        TravelRequest.departure_cities.any(City.id.in_(departure_ids)),
+                        TravelRequest.arrival_cities.any(City.id.in_(arrival_ids)),
+                        date_condition,
+                    )
+                    .options(
+                        selectinload(TravelRequest.user),
+                        selectinload(TravelRequest.departure_cities).selectinload(City.country),
+                        selectinload(TravelRequest.arrival_cities).selectinload(City.country),
+                    )
+                    .order_by(TravelRequest.created_at.desc())
+                )
+            ).all()
+            for candidate in rows:
+                pair = (
+                    (own.id, candidate.id)
+                    if own.role == RequestRole.sender
+                    else (candidate.id, own.id)
+                )
+                pair_key = (own.id, candidate.id)
+                if pair in matched_pairs or pair_key in candidate_pair_keys:
+                    continue
+                candidate_pair_keys.add(pair_key)
+                candidates.append((own, candidate))
+
         request_schemas = await _localized_requests(
             session,
             [
                 request
                 for match in matches
                 for request in (match.sender_request, match.courier_request)
-            ],
+            ]
+            + [request for pair in candidates for request in pair],
             language,
         )
 
@@ -134,6 +222,7 @@ async def get_user_matches(user_id: int, language: str = "en") -> list[MatchSche
                     status=match.status.value,
                     created_at=match.created_at,
                     is_new=seen_at is None,
+                    is_candidate=False,
                     own_request=request_schemas[own.id],
                     matching_request=request_schemas[matching.id],
                     matching_user=MatchUserSchema(
@@ -142,12 +231,32 @@ async def get_user_matches(user_id: int, language: str = "en") -> list[MatchSche
                     ),
                 )
             )
-        return result
+        for own, candidate in candidates:
+            available_at = max(own.created_at, candidate.created_at)
+            result.append(
+                MatchSchema(
+                    id=candidate.id,
+                    status="proposed",
+                    created_at=available_at,
+                    is_new=user.matches_seen_at is None or available_at > user.matches_seen_at,
+                    is_candidate=True,
+                    own_request=request_schemas[own.id],
+                    matching_request=request_schemas[candidate.id],
+                    matching_user=MatchUserSchema(
+                        name=candidate.user.name,
+                        username=candidate.user.username,
+                    ),
+                )
+            )
+        return sorted(result, key=lambda item: item.created_at, reverse=True)
 
 
 async def mark_user_matches_seen(user_id: int) -> None:
     seen_at = datetime.now(timezone.utc).replace(tzinfo=None)
     async with async_session_maker() as session:
+        await session.execute(
+            update(User).where(User.id == user_id).values(matches_seen_at=seen_at)
+        )
         await session.execute(
             update(Match)
             .where(

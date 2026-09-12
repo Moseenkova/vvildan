@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/i18n.js:97
 msgid "Accepted"
-msgstr ""
+msgstr "સ્વીકાર્યું"
 
 #: src/i18n.js:72
 msgid "Active"
@@ -26,10 +26,6 @@ msgstr "બધી સ્થિતિઓ"
 #: src/i18n.js:45
 msgid "Arrival"
 msgstr "આગમન"
-
-#: src/i18n.js:53
-#~ msgid "Arrival airport"
-#~ msgstr "આગમન એરપોર્ટ"
 
 #: src/i18n.js:53
 msgid "Arrival city"
@@ -69,11 +65,11 @@ msgstr "પૂર્ણ થયું"
 
 #: src/i18n.js:96
 msgid "Contacted"
-msgstr ""
+msgstr "સંપર્ક કર્યો"
 
 #: src/i18n.js:92
 msgid "Could not load your matches."
-msgstr ""
+msgstr "તમારા મેળ લોડ થઈ શક્યા નહીં."
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
@@ -99,10 +95,6 @@ msgstr "તારીખ"
 msgid "Departure"
 msgstr "પ્રસ્થાન"
 
-#: src/i18n.js:52
-#~ msgid "Departure airport"
-#~ msgstr "પ્રસ્થાન એરપોર્ટ"
-
 #: src/i18n.js:51
 msgid "Departure city"
 msgstr "પ્રસ્થાન શહેર"
@@ -122,10 +114,6 @@ msgstr "એક દેશ દાખલ કરો"
 #: src/i18n.js:56
 msgid "Enter or choose a city"
 msgstr "શહેર દાખલ કરો અથવા પસંદ કરો"
-
-#: src/i18n.js:58
-#~ msgid "Enter or choose an airport"
-#~ msgstr "દાખલ કરો અથવા એરપોર્ટ પસંદ કરો"
 
 #: src/i18n.js:75
 msgid "Expired"
@@ -157,15 +145,11 @@ msgstr "કુરિયરની શોધમાં"
 
 #: src/i18n.js:93
 msgid "Matched with"
-msgstr ""
+msgstr "આની સાથે મેળ"
 
 #: src/i18n.js:89
 msgid "Matches"
-msgstr ""
-
-#: src/i18n.js:47
-#~ msgid "Maximum number of airports selected"
-#~ msgstr ""
+msgstr "મેળ"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -185,7 +169,7 @@ msgstr "નવી"
 
 #: src/i18n.js:90
 msgid "New matches"
-msgstr ""
+msgstr "નવા મેળ"
 
 #: src/i18n.js:86
 msgid "Next"
@@ -197,15 +181,11 @@ msgstr "કોઈ સમાપ્તિ તારીખ નથી"
 
 #: src/i18n.js:91
 msgid "No matches yet."
-msgstr ""
-
-#: src/i18n.js:45
-#~ msgid "no matching airports found, try to write in english"
-#~ msgstr "મેળ ખાતું કોઈ હવાઈમથક મળ્યું નથી, અંગ્રેજીમાં લખવાનો પ્રયાસ કરો"
+msgstr "હજુ સુધી કોઈ મેળ નથી."
 
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
-msgstr ""
+msgstr "મેળ ખાતું કોઈ શહેર મળ્યું નથી, અંગ્રેજીમાં લખવાનો પ્રયાસ કરો"
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -227,13 +207,9 @@ msgstr "કૃપા કરીને પ્રારંભ તારીખ પ�
 msgid "Please select an end date"
 msgstr "કૃપા કરીને સમાપ્તિ તારીખ પસંદ કરો"
 
-#: src/i18n.js:46
-#~ msgid "Please select departure and arrival airports from the list"
-#~ msgstr "કૃપા કરીને સૂચિમાંથી પ્રસ્થાન અને આગમન હવાઈમથકો પસંદ કરો"
-
 #: src/i18n.js:48
 msgid "Please select departure and arrival cities from the list"
-msgstr ""
+msgstr "કૃપા કરીને સૂચિમાંથી પ્રસ્થાન અને આગમન શહેરો પસંદ કરો"
 
 #: src/i18n.js:85
 msgid "Previous"
@@ -241,11 +217,11 @@ msgstr "ગત"
 
 #: src/i18n.js:95
 msgid "Proposed"
-msgstr ""
+msgstr "પ્રસ્તાવિત"
 
 #: src/i18n.js:98
 msgid "Rejected"
-msgstr ""
+msgstr "નકાર્યું"
 
 #: src/i18n.js:49
 msgid "Remove"
@@ -281,7 +257,7 @@ msgstr "આજની તારીખે"
 
 #: src/i18n.js:38
 msgid "To date (optional)"
-msgstr ""
+msgstr "અંતિમ તારીખ (વૈકલ્પિક)"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -293,4 +269,4 @@ msgstr "તમે સિસ્ટમમાં નોંધાયેલા નથ
 
 #: src/i18n.js:94
 msgid "Your request"
-msgstr ""
+msgstr "તમારી વિનંતી"

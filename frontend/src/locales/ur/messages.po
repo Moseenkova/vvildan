@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/i18n.js:97
 msgid "Accepted"
-msgstr ""
+msgstr "قبول شدہ"
 
 #: src/i18n.js:72
 msgid "Active"
@@ -26,10 +26,6 @@ msgstr "تمام سٹیٹس"
 #: src/i18n.js:45
 msgid "Arrival"
 msgstr "آمد"
-
-#: src/i18n.js:53
-#~ msgid "Arrival airport"
-#~ msgstr "آمد ہوائی اڈے"
 
 #: src/i18n.js:53
 msgid "Arrival city"
@@ -69,11 +65,11 @@ msgstr "مکمل"
 
 #: src/i18n.js:96
 msgid "Contacted"
-msgstr ""
+msgstr "رابطہ کیا گیا"
 
 #: src/i18n.js:92
 msgid "Could not load your matches."
-msgstr ""
+msgstr "آپ کے میچ لوڈ نہیں کیے جا سکے۔"
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
@@ -99,10 +95,6 @@ msgstr "تاریخ"
 msgid "Departure"
 msgstr "روانگی"
 
-#: src/i18n.js:52
-#~ msgid "Departure airport"
-#~ msgstr "روانگی ہوائی اڈے"
-
 #: src/i18n.js:51
 msgid "Departure city"
 msgstr "روانگی شہر"
@@ -122,10 +114,6 @@ msgstr "ایک ملک درج کریں۔"
 #: src/i18n.js:56
 msgid "Enter or choose a city"
 msgstr "شہر درج کریں یا منتخب کریں۔"
-
-#: src/i18n.js:58
-#~ msgid "Enter or choose an airport"
-#~ msgstr "داخل ہوں یا ہوائی اڈے کا انتخاب کریں۔"
 
 #: src/i18n.js:75
 msgid "Expired"
@@ -157,15 +145,11 @@ msgstr "کوریئر کی تلاش"
 
 #: src/i18n.js:93
 msgid "Matched with"
-msgstr ""
+msgstr "اس کے ساتھ میچ"
 
 #: src/i18n.js:89
 msgid "Matches"
-msgstr ""
-
-#: src/i18n.js:47
-#~ msgid "Maximum number of airports selected"
-#~ msgstr ""
+msgstr "میچز"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -185,7 +169,7 @@ msgstr "نیا"
 
 #: src/i18n.js:90
 msgid "New matches"
-msgstr ""
+msgstr "نئے میچز"
 
 #: src/i18n.js:86
 msgid "Next"
@@ -197,15 +181,11 @@ msgstr "اختتامی تاریخ نہیں ہے"
 
 #: src/i18n.js:91
 msgid "No matches yet."
-msgstr ""
-
-#: src/i18n.js:45
-#~ msgid "no matching airports found, try to write in english"
-#~ msgstr "کوئی مماثل ہوائی اڈہ نہیں ملا، انگریزی میں لکھنے کی کوشش کریں"
+msgstr "ابھی کوئی میچ نہیں ہے۔"
 
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
-msgstr ""
+msgstr "کوئی مماثل شہر نہیں ملا، انگریزی میں لکھنے کی کوشش کریں"
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -227,13 +207,9 @@ msgstr "براہ کرم آغاز کی تاریخ منتخب کریں۔"
 msgid "Please select an end date"
 msgstr "براہ کرم ایک اختتامی تاریخ منتخب کریں۔"
 
-#: src/i18n.js:46
-#~ msgid "Please select departure and arrival airports from the list"
-#~ msgstr "براہ کرم فہرست سے روانگی اور آمد کے ہوائی اڈے منتخب کریں"
-
 #: src/i18n.js:48
 msgid "Please select departure and arrival cities from the list"
-msgstr ""
+msgstr "براہ کرم فہرست سے روانگی اور آمد کے شہر منتخب کریں"
 
 #: src/i18n.js:85
 msgid "Previous"
@@ -241,11 +217,11 @@ msgstr "پچھلا"
 
 #: src/i18n.js:95
 msgid "Proposed"
-msgstr ""
+msgstr "تجویز کردہ"
 
 #: src/i18n.js:98
 msgid "Rejected"
-msgstr ""
+msgstr "مسترد شدہ"
 
 #: src/i18n.js:49
 msgid "Remove"
@@ -281,7 +257,7 @@ msgstr "آج تک"
 
 #: src/i18n.js:38
 msgid "To date (optional)"
-msgstr ""
+msgstr "آخری تاریخ (اختیاری)"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -293,4 +269,4 @@ msgstr "آپ سسٹم میں رجسٹرڈ نہیں ہیں۔ براہ کرم پہ
 
 #: src/i18n.js:94
 msgid "Your request"
-msgstr ""
+msgstr "آپ کی درخواست"

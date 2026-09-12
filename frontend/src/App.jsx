@@ -319,7 +319,10 @@ function MatchesList({ matches, loading, error, t, language }) {
         {!loading && error && <p className="request-message request-error">{t.failedToLoadMatches}</p>}
         {!loading && !error && matches.length === 0 && <p className="request-message">{t.noMatches}</p>}
         {!loading && !error && matches.map((match) => (
-          <article className={`match-card ${match.is_new ? 'match-new' : ''}`} key={match.id}>
+          <article
+            className={`match-card ${match.is_new ? 'match-new' : ''}`}
+            key={`${match.is_candidate ? 'candidate' : 'match'}-${match.own_request.id}-${match.id}`}
+          >
             <div className="request-card-topline">
               <strong>{t.matchedWith}: {match.matching_user.name}</strong>
               <span className={`status-badge status-${match.status}`}>{t[match.status] || match.status}</span>

@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/i18n.js:97
 msgid "Accepted"
-msgstr ""
+msgstr "承認済み"
 
 #: src/i18n.js:72
 msgid "Active"
@@ -26,10 +26,6 @@ msgstr "すべてのステータス"
 #: src/i18n.js:45
 msgid "Arrival"
 msgstr "到着"
-
-#: src/i18n.js:53
-#~ msgid "Arrival airport"
-#~ msgstr "到着空港"
 
 #: src/i18n.js:53
 msgid "Arrival city"
@@ -69,11 +65,11 @@ msgstr "完了"
 
 #: src/i18n.js:96
 msgid "Contacted"
-msgstr ""
+msgstr "連絡済み"
 
 #: src/i18n.js:92
 msgid "Could not load your matches."
-msgstr ""
+msgstr "マッチングを読み込めませんでした。"
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
@@ -99,10 +95,6 @@ msgstr "日付"
 msgid "Departure"
 msgstr "出発"
 
-#: src/i18n.js:52
-#~ msgid "Departure airport"
-#~ msgstr "出発空港"
-
 #: src/i18n.js:51
 msgid "Departure city"
 msgstr "出発都市"
@@ -122,10 +114,6 @@ msgstr "国を入力してください"
 #: src/i18n.js:56
 msgid "Enter or choose a city"
 msgstr "都市を入力または選択します"
-
-#: src/i18n.js:58
-#~ msgid "Enter or choose an airport"
-#~ msgstr "空港を入力または選択してください"
 
 #: src/i18n.js:75
 msgid "Expired"
@@ -157,15 +145,11 @@ msgstr "配達員を探しています"
 
 #: src/i18n.js:93
 msgid "Matched with"
-msgstr ""
+msgstr "マッチした相手"
 
 #: src/i18n.js:89
 msgid "Matches"
-msgstr ""
-
-#: src/i18n.js:47
-#~ msgid "Maximum number of airports selected"
-#~ msgstr ""
+msgstr "マッチング"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -185,7 +169,7 @@ msgstr "新しい"
 
 #: src/i18n.js:90
 msgid "New matches"
-msgstr ""
+msgstr "新しいマッチング"
 
 #: src/i18n.js:86
 msgid "Next"
@@ -197,15 +181,11 @@ msgstr "終了日なし"
 
 #: src/i18n.js:91
 msgid "No matches yet."
-msgstr ""
-
-#: src/i18n.js:45
-#~ msgid "no matching airports found, try to write in english"
-#~ msgstr "一致する空港が見つかりません。英語で入力してみてください"
+msgstr "まだマッチングはありません。"
 
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
-msgstr ""
+msgstr "一致する都市が見つかりません。英語で入力してみてください"
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -227,13 +207,9 @@ msgstr "開始日を選択してください"
 msgid "Please select an end date"
 msgstr "終了日を選択してください"
 
-#: src/i18n.js:46
-#~ msgid "Please select departure and arrival airports from the list"
-#~ msgstr "リストから出発空港と到着空港を選択してください"
-
 #: src/i18n.js:48
 msgid "Please select departure and arrival cities from the list"
-msgstr ""
+msgstr "リストから出発都市と到着都市を選択してください"
 
 #: src/i18n.js:85
 msgid "Previous"
@@ -241,11 +217,11 @@ msgstr "前へ"
 
 #: src/i18n.js:95
 msgid "Proposed"
-msgstr ""
+msgstr "提案済み"
 
 #: src/i18n.js:98
 msgid "Rejected"
-msgstr ""
+msgstr "拒否済み"
 
 #: src/i18n.js:49
 msgid "Remove"
@@ -281,7 +257,7 @@ msgstr "現在まで"
 
 #: src/i18n.js:38
 msgid "To date (optional)"
-msgstr ""
+msgstr "終了日（任意）"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -293,4 +269,4 @@ msgstr "あなたはシステムに登録されていません。まずは Teleg
 
 #: src/i18n.js:94
 msgid "Your request"
-msgstr ""
+msgstr "あなたのリクエスト"

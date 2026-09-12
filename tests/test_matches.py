@@ -7,8 +7,8 @@ from httpx import AsyncClient
 from pydantic import SecretStr
 from sqlalchemy import select
 
-from src.database import Match, RequestRole, async_session_maker
-from src.matches.service import notify_match_users
+from src.database import Match, RequestRole, User, async_session_maker
+from src.matches.service import get_user_matches, notify_match_users
 from tests.conftest import AuthenticatedClient
 from tests.factories import FactoryNamespace
 
@@ -55,6 +55,7 @@ async def test_get_matches_returns_only_current_users_matches(
     body = response.json()[0]
     assert body["id"] == match.id
     assert body["is_new"] is True
+    assert body["is_candidate"] is False
     assert body["own_request"]["id"] == sender_request.id
     assert body["matching_request"]["id"] == courier_request.id
     assert body["matching_user"] == {"name": "Matching Courier", "username": "courier"}
@@ -79,6 +80,8 @@ async def test_mark_matches_seen_updates_only_current_users_side(
         stored = (await session.scalars(select(Match).where(Match.id == match.id))).one()
         assert stored.sender_seen_at is not None
         assert stored.courier_seen_at is None
+        stored_user = await session.get(User, auth_ac.current_user.id)
+        assert stored_user.matches_seen_at is not None
 
     matches_response = await auth_ac.client.get("/api/matches")
     assert matches_response.json()[0]["is_new"] is False
@@ -88,6 +91,95 @@ async def test_mark_matches_seen_updates_only_current_users_side(
 async def test_matches_require_authentication(client: AsyncClient) -> None:
     assert (await client.get("/api/matches")).status_code == 401
     assert (await client.post("/api/matches/seen")).status_code == 401
+
+
+@pytest.mark.asyncio
+async def test_get_matches_includes_compatible_candidate_requests(
+    auth_ac: AuthenticatedClient,
+    factory: FactoryNamespace,
+) -> None:
+    departure = await factory.City(name="Moscow")
+    arrival = await factory.City(name="Istanbul")
+    other_arrival = await factory.City(name="Paris")
+    sender_request = await factory.Request(
+        user=auth_ac.current_user,
+        role=RequestRole.sender,
+        date_from=date(2026, 9, 12),
+        date_to=None,
+        departure_cities=[departure],
+        arrival_cities=[arrival],
+    )
+    courier = await factory.User(name="Candidate Courier", username="candidate")
+    candidate_request = await factory.Request(
+        user=courier,
+        role=RequestRole.courier,
+        date_from=date(2026, 9, 13),
+        date_to=date(2026, 9, 13),
+        departure_cities=[departure],
+        arrival_cities=[arrival],
+        comment="Electronics only",
+    )
+    await factory.Request(
+        role=RequestRole.courier,
+        date_from=date(2026, 9, 11),
+        date_to=date(2026, 9, 11),
+        departure_cities=[departure],
+        arrival_cities=[arrival],
+    )
+    await factory.Request(
+        role=RequestRole.courier,
+        date_from=date(2026, 9, 13),
+        date_to=date(2026, 9, 13),
+        departure_cities=[departure],
+        arrival_cities=[other_arrival],
+    )
+
+    response = await auth_ac.client.get("/api/matches")
+
+    assert response.status_code == 200
+    assert len(response.json()) == 1
+    body = response.json()[0]
+    assert body["id"] == candidate_request.id
+    assert body["is_candidate"] is True
+    assert body["is_new"] is True
+    assert body["own_request"]["id"] == sender_request.id
+    assert body["matching_user"]["name"] == "Candidate Courier"
+
+    assert (await auth_ac.client.post("/api/matches/seen")).status_code == 204
+    assert (await auth_ac.client.get("/api/matches")).json()[0]["is_new"] is False
+
+
+@pytest.mark.asyncio
+async def test_courier_sees_compatible_sender_candidate(
+    factory: FactoryNamespace,
+) -> None:
+    departure = await factory.City(name="Moscow")
+    arrival = await factory.City(name="Istanbul")
+    sender = await factory.User(name="Candidate Sender")
+    sender_request = await factory.Request(
+        user=sender,
+        role=RequestRole.sender,
+        date_from=date(2026, 9, 12),
+        date_to=None,
+        departure_cities=[departure],
+        arrival_cities=[arrival],
+    )
+    courier = await factory.User(name="Courier")
+    courier_request = await factory.Request(
+        user=courier,
+        role=RequestRole.courier,
+        date_from=date(2026, 9, 13),
+        date_to=date(2026, 9, 13),
+        departure_cities=[departure],
+        arrival_cities=[arrival],
+    )
+
+    matches = await get_user_matches(courier.id)
+
+    assert len(matches) == 1
+    assert matches[0].is_candidate is True
+    assert matches[0].own_request.id == courier_request.id
+    assert matches[0].matching_request.id == sender_request.id
 
 
 @pytest.mark.asyncio

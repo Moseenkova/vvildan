@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/i18n.js:97
 msgid "Accepted"
-msgstr ""
+msgstr "Kabul edildi"
 
 #: src/i18n.js:72
 msgid "Active"
@@ -26,10 +26,6 @@ msgstr "Tüm durumlar"
 #: src/i18n.js:45
 msgid "Arrival"
 msgstr "Varış"
-
-#: src/i18n.js:53
-#~ msgid "Arrival airport"
-#~ msgstr "Varış havaalanı"
 
 #: src/i18n.js:53
 msgid "Arrival city"
@@ -69,11 +65,11 @@ msgstr "Tamamlandı"
 
 #: src/i18n.js:96
 msgid "Contacted"
-msgstr ""
+msgstr "İletişime geçildi"
 
 #: src/i18n.js:92
 msgid "Could not load your matches."
-msgstr ""
+msgstr "Eşleşmeleriniz yüklenemedi."
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
@@ -99,10 +95,6 @@ msgstr "Tarih"
 msgid "Departure"
 msgstr "Kalkış"
 
-#: src/i18n.js:52
-#~ msgid "Departure airport"
-#~ msgstr "Kalkış havaalanı"
-
 #: src/i18n.js:51
 msgid "Departure city"
 msgstr "Kalkış şehri"
@@ -122,10 +114,6 @@ msgstr "Bir ülke girin"
 #: src/i18n.js:56
 msgid "Enter or choose a city"
 msgstr "Bir şehir girin veya seçin"
-
-#: src/i18n.js:58
-#~ msgid "Enter or choose an airport"
-#~ msgstr "Bir havaalanı girin veya seçin"
 
 #: src/i18n.js:75
 msgid "Expired"
@@ -157,15 +145,11 @@ msgstr "Kurye aranıyor"
 
 #: src/i18n.js:93
 msgid "Matched with"
-msgstr ""
+msgstr "Eşleşilen kişi"
 
 #: src/i18n.js:89
 msgid "Matches"
-msgstr ""
-
-#: src/i18n.js:47
-#~ msgid "Maximum number of airports selected"
-#~ msgstr ""
+msgstr "Eşleşmeler"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -185,7 +169,7 @@ msgstr "Yeni"
 
 #: src/i18n.js:90
 msgid "New matches"
-msgstr ""
+msgstr "Yeni eşleşmeler"
 
 #: src/i18n.js:86
 msgid "Next"
@@ -197,15 +181,11 @@ msgstr "Bitiş tarihi yok"
 
 #: src/i18n.js:91
 msgid "No matches yet."
-msgstr ""
-
-#: src/i18n.js:45
-#~ msgid "no matching airports found, try to write in english"
-#~ msgstr "Eşleşen havaalanı bulunamadı, İngilizce yazmayı deneyin"
+msgstr "Henüz eşleşme yok."
 
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
-msgstr ""
+msgstr "Eşleşen şehir bulunamadı, İngilizce yazmayı deneyin"
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -227,13 +207,9 @@ msgstr "Lütfen bir başlangıç ​​tarihi seçin"
 msgid "Please select an end date"
 msgstr "Lütfen bir bitiş tarihi seçin"
 
-#: src/i18n.js:46
-#~ msgid "Please select departure and arrival airports from the list"
-#~ msgstr "Lütfen listeden kalkış ve varış havaalanlarını seçin"
-
 #: src/i18n.js:48
 msgid "Please select departure and arrival cities from the list"
-msgstr ""
+msgstr "Lütfen listeden kalkış ve varış şehirlerini seçin"
 
 #: src/i18n.js:85
 msgid "Previous"
@@ -241,11 +217,11 @@ msgstr "Önceki"
 
 #: src/i18n.js:95
 msgid "Proposed"
-msgstr ""
+msgstr "Önerildi"
 
 #: src/i18n.js:98
 msgid "Rejected"
-msgstr ""
+msgstr "Reddedildi"
 
 #: src/i18n.js:49
 msgid "Remove"
@@ -281,7 +257,7 @@ msgstr "Bugüne kadar"
 
 #: src/i18n.js:38
 msgid "To date (optional)"
-msgstr ""
+msgstr "Bitiş tarihi (isteğe bağlı)"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -293,4 +269,4 @@ msgstr "Sisteme kayıtlı değilsiniz. Lütfen önce Telegram botu aracılığı
 
 #: src/i18n.js:94
 msgid "Your request"
-msgstr ""
+msgstr "Talebiniz"

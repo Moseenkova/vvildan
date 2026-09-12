@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/i18n.js:97
 msgid "Accepted"
-msgstr ""
+msgstr "Akzeptiert"
 
 #: src/i18n.js:72
 msgid "Active"
@@ -26,10 +26,6 @@ msgstr "Alle Status"
 #: src/i18n.js:45
 msgid "Arrival"
 msgstr "Ankunft"
-
-#: src/i18n.js:53
-#~ msgid "Arrival airport"
-#~ msgstr "Ankunftsflughafen"
 
 #: src/i18n.js:53
 msgid "Arrival city"
@@ -69,11 +65,11 @@ msgstr "Abgeschlossen"
 
 #: src/i18n.js:96
 msgid "Contacted"
-msgstr ""
+msgstr "Kontaktiert"
 
 #: src/i18n.js:92
 msgid "Could not load your matches."
-msgstr ""
+msgstr "Deine Treffer konnten nicht geladen werden."
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
@@ -99,10 +95,6 @@ msgstr "Datum"
 msgid "Departure"
 msgstr "Abflug"
 
-#: src/i18n.js:52
-#~ msgid "Departure airport"
-#~ msgstr "Abflughafen"
-
 #: src/i18n.js:51
 msgid "Departure city"
 msgstr "Abflugort"
@@ -122,10 +114,6 @@ msgstr "Geben Sie ein Land ein"
 #: src/i18n.js:56
 msgid "Enter or choose a city"
 msgstr "Geben Sie eine Stadt ein oder wählen Sie sie aus"
-
-#: src/i18n.js:58
-#~ msgid "Enter or choose an airport"
-#~ msgstr "Geben Sie einen Flughafen ein oder wählen Sie ihn aus"
 
 #: src/i18n.js:75
 msgid "Expired"
@@ -157,15 +145,11 @@ msgstr "Kurier gesucht"
 
 #: src/i18n.js:93
 msgid "Matched with"
-msgstr ""
+msgstr "Übereinstimmung mit"
 
 #: src/i18n.js:89
 msgid "Matches"
-msgstr ""
-
-#: src/i18n.js:47
-#~ msgid "Maximum number of airports selected"
-#~ msgstr ""
+msgstr "Treffer"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -185,7 +169,7 @@ msgstr "Neu"
 
 #: src/i18n.js:90
 msgid "New matches"
-msgstr ""
+msgstr "Neue Treffer"
 
 #: src/i18n.js:86
 msgid "Next"
@@ -197,15 +181,11 @@ msgstr "Kein Enddatum"
 
 #: src/i18n.js:91
 msgid "No matches yet."
-msgstr ""
-
-#: src/i18n.js:45
-#~ msgid "no matching airports found, try to write in english"
-#~ msgstr "Keine passenden Flughäfen gefunden, versuche es auf Englisch"
+msgstr "Noch keine Treffer."
 
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
-msgstr ""
+msgstr "Keine passenden Städte gefunden, versuche es auf Englisch"
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -227,13 +207,9 @@ msgstr "Bitte wählen Sie ein Startdatum aus"
 msgid "Please select an end date"
 msgstr "Bitte wählen Sie ein Enddatum aus"
 
-#: src/i18n.js:46
-#~ msgid "Please select departure and arrival airports from the list"
-#~ msgstr "Bitte wähle den Abflug- und Ankunftsflughafen aus der Liste aus"
-
 #: src/i18n.js:48
 msgid "Please select departure and arrival cities from the list"
-msgstr ""
+msgstr "Bitte wähle Abfahrts- und Ankunftsstadt aus der Liste aus"
 
 #: src/i18n.js:85
 msgid "Previous"
@@ -241,11 +217,11 @@ msgstr "Zurück"
 
 #: src/i18n.js:95
 msgid "Proposed"
-msgstr ""
+msgstr "Vorgeschlagen"
 
 #: src/i18n.js:98
 msgid "Rejected"
-msgstr ""
+msgstr "Abgelehnt"
 
 #: src/i18n.js:49
 msgid "Remove"
@@ -281,7 +257,7 @@ msgstr "Miteinander ausgehen"
 
 #: src/i18n.js:38
 msgid "To date (optional)"
-msgstr ""
+msgstr "Bis Datum (optional)"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -293,4 +269,4 @@ msgstr "Sie sind nicht im System registriert. Bitte registrieren Sie sich zunäc
 
 #: src/i18n.js:94
 msgid "Your request"
-msgstr ""
+msgstr "Deine Anfrage"

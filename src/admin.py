@@ -55,8 +55,8 @@ class AdminAuthentication(AuthenticationBackend):
 
 
 class UserView(ModelView, model=User):
-    column_exclude_list = [User.password_hash, User.refresh_tokens]
-    form_excluded_columns = [User.password_hash]
+    column_exclude_list = [User.password_hash, User.refresh_tokens, User.matches_seen_at]
+    form_excluded_columns = [User.password_hash, User.matches_seen_at]
 
 
 class RequestView(ModelView, model=Request):

@@ -30,10 +30,6 @@ msgid "Arrival"
 msgstr "Arrival"
 
 #: src/i18n.js:53
-#~ msgid "Arrival airport"
-#~ msgstr "Arrival airport"
-
-#: src/i18n.js:53
 msgid "Arrival city"
 msgstr "Arrival city"
 
@@ -101,10 +97,6 @@ msgstr "Date"
 msgid "Departure"
 msgstr "Departure"
 
-#: src/i18n.js:52
-#~ msgid "Departure airport"
-#~ msgstr "Departure airport"
-
 #: src/i18n.js:51
 msgid "Departure city"
 msgstr "Departure city"
@@ -124,10 +116,6 @@ msgstr "Enter a country"
 #: src/i18n.js:56
 msgid "Enter or choose a city"
 msgstr "Enter or choose a city"
-
-#: src/i18n.js:58
-#~ msgid "Enter or choose an airport"
-#~ msgstr "Enter or choose an airport"
 
 #: src/i18n.js:75
 msgid "Expired"
@@ -165,10 +153,6 @@ msgstr "Matched with"
 msgid "Matches"
 msgstr "Matches"
 
-#: src/i18n.js:47
-#~ msgid "Maximum number of airports selected"
-#~ msgstr "Maximum number of airports selected"
-
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
 msgstr "mm/dd/yyyy"
@@ -201,10 +185,6 @@ msgstr "No end date"
 msgid "No matches yet."
 msgstr "No matches yet."
 
-#: src/i18n.js:45
-#~ msgid "no matching airports found, try to write in english"
-#~ msgstr "no matching airports found, try to write in english"
-
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
 msgstr "no matching cities found, try to write in english"
@@ -228,10 +208,6 @@ msgstr "Please select a start date"
 #: src/i18n.js:64
 msgid "Please select an end date"
 msgstr "Please select an end date"
-
-#: src/i18n.js:46
-#~ msgid "Please select departure and arrival airports from the list"
-#~ msgstr "Please select departure and arrival airports from the list"
 
 #: src/i18n.js:48
 msgid "Please select departure and arrival cities from the list"

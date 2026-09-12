@@ -48,6 +48,7 @@ class User(Base):
     )
     password_hash: Mapped[Optional[str]] = mapped_column(String(256), default=None)
     is_superuser: Mapped[bool] = mapped_column(default=False, server_default="false")
+    matches_seen_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
     refresh_tokens: Mapped[List["RefreshToken"]] = relationship(back_populates="user")
     requests: Mapped[list["Request"]] = relationship(
         back_populates="user", cascade="all, delete-orphan"

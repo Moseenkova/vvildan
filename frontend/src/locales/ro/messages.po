@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/i18n.js:97
 msgid "Accepted"
-msgstr ""
+msgstr "Acceptat"
 
 #: src/i18n.js:72
 msgid "Active"
@@ -26,10 +26,6 @@ msgstr "Toate stările"
 #: src/i18n.js:45
 msgid "Arrival"
 msgstr "Sosire"
-
-#: src/i18n.js:53
-#~ msgid "Arrival airport"
-#~ msgstr "Aeroportul de sosire"
 
 #: src/i18n.js:53
 msgid "Arrival city"
@@ -69,11 +65,11 @@ msgstr "Terminat"
 
 #: src/i18n.js:96
 msgid "Contacted"
-msgstr ""
+msgstr "Contactat"
 
 #: src/i18n.js:92
 msgid "Could not load your matches."
-msgstr ""
+msgstr "Nu s-au putut încărca potrivirile tale."
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
@@ -99,10 +95,6 @@ msgstr "Data"
 msgid "Departure"
 msgstr "Plecare"
 
-#: src/i18n.js:52
-#~ msgid "Departure airport"
-#~ msgstr "Aeroportul de plecare"
-
 #: src/i18n.js:51
 msgid "Departure city"
 msgstr "Orașul de plecare"
@@ -122,10 +114,6 @@ msgstr "Intrați într-o țară"
 #: src/i18n.js:56
 msgid "Enter or choose a city"
 msgstr "Introduceți sau alegeți un oraș"
-
-#: src/i18n.js:58
-#~ msgid "Enter or choose an airport"
-#~ msgstr "Intrați sau alegeți un aeroport"
 
 #: src/i18n.js:75
 msgid "Expired"
@@ -157,15 +145,11 @@ msgstr "În căutarea unui curier"
 
 #: src/i18n.js:93
 msgid "Matched with"
-msgstr ""
+msgstr "Potrivire cu"
 
 #: src/i18n.js:89
 msgid "Matches"
-msgstr ""
-
-#: src/i18n.js:47
-#~ msgid "Maximum number of airports selected"
-#~ msgstr ""
+msgstr "Potriviri"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -185,7 +169,7 @@ msgstr "Nou"
 
 #: src/i18n.js:90
 msgid "New matches"
-msgstr ""
+msgstr "Potriviri noi"
 
 #: src/i18n.js:86
 msgid "Next"
@@ -197,15 +181,11 @@ msgstr "Fără dată de încheiere"
 
 #: src/i18n.js:91
 msgid "No matches yet."
-msgstr ""
-
-#: src/i18n.js:45
-#~ msgid "no matching airports found, try to write in english"
-#~ msgstr "Nu s-au găsit aeroporturi corespunzătoare, încercați să scrieți în engleză"
+msgstr "Nicio potrivire încă."
 
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
-msgstr ""
+msgstr "Nu s-au găsit orașe potrivite, încearcă să scrii în engleză"
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -227,13 +207,9 @@ msgstr "Vă rugăm să selectați o dată de începere"
 msgid "Please select an end date"
 msgstr "Vă rugăm să selectați o dată de încheiere"
 
-#: src/i18n.js:46
-#~ msgid "Please select departure and arrival airports from the list"
-#~ msgstr "Selectați aeroporturile de plecare și sosire din listă"
-
 #: src/i18n.js:48
 msgid "Please select departure and arrival cities from the list"
-msgstr ""
+msgstr "Selectează orașele de plecare și sosire din listă"
 
 #: src/i18n.js:85
 msgid "Previous"
@@ -241,11 +217,11 @@ msgstr "Anterior"
 
 #: src/i18n.js:95
 msgid "Proposed"
-msgstr ""
+msgstr "Propus"
 
 #: src/i18n.js:98
 msgid "Rejected"
-msgstr ""
+msgstr "Respins"
 
 #: src/i18n.js:49
 msgid "Remove"
@@ -281,7 +257,7 @@ msgstr "Până în prezent"
 
 #: src/i18n.js:38
 msgid "To date (optional)"
-msgstr ""
+msgstr "Data de încheiere (opțional)"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -293,4 +269,4 @@ msgstr "Nu sunteți înregistrat în sistem. Vă rugăm să vă înregistrați m
 
 #: src/i18n.js:94
 msgid "Your request"
-msgstr ""
+msgstr "Solicitarea ta"

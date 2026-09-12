@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/i18n.js:97
 msgid "Accepted"
-msgstr ""
+msgstr "ఆమోదించబడింది"
 
 #: src/i18n.js:72
 msgid "Active"
@@ -26,10 +26,6 @@ msgstr "అన్ని హోదాలు"
 #: src/i18n.js:45
 msgid "Arrival"
 msgstr "రాక"
-
-#: src/i18n.js:53
-#~ msgid "Arrival airport"
-#~ msgstr "రాక విమానాశ్రయం"
 
 #: src/i18n.js:53
 msgid "Arrival city"
@@ -69,11 +65,11 @@ msgstr "పూర్తయింది"
 
 #: src/i18n.js:96
 msgid "Contacted"
-msgstr ""
+msgstr "సంప్రదించబడింది"
 
 #: src/i18n.js:92
 msgid "Could not load your matches."
-msgstr ""
+msgstr "మీ సరిపోలికలను లోడ్ చేయడం సాధ్యం కాలేదు."
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
@@ -99,10 +95,6 @@ msgstr "తేదీ"
 msgid "Departure"
 msgstr "బయలుదేరు"
 
-#: src/i18n.js:52
-#~ msgid "Departure airport"
-#~ msgstr "బయలుదేరే విమానాశ్రయం"
-
 #: src/i18n.js:51
 msgid "Departure city"
 msgstr "బయలుదేరే నగరం"
@@ -122,10 +114,6 @@ msgstr "ఒక దేశాన్ని నమోదు చేయండి"
 #: src/i18n.js:56
 msgid "Enter or choose a city"
 msgstr "నగరాన్ని నమోదు చేయండి లేదా ఎంచుకోండి"
-
-#: src/i18n.js:58
-#~ msgid "Enter or choose an airport"
-#~ msgstr "విమానాశ్రయాన్ని నమోదు చేయండి లేదా ఎంచుకోండి"
 
 #: src/i18n.js:75
 msgid "Expired"
@@ -157,15 +145,11 @@ msgstr "కొరియర్ కోసం వెతుకుతున్నా�
 
 #: src/i18n.js:93
 msgid "Matched with"
-msgstr ""
+msgstr "వీరితో సరిపోలింది"
 
 #: src/i18n.js:89
 msgid "Matches"
-msgstr ""
-
-#: src/i18n.js:47
-#~ msgid "Maximum number of airports selected"
-#~ msgstr ""
+msgstr "సరిపోలికలు"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -185,7 +169,7 @@ msgstr "కొత్తది"
 
 #: src/i18n.js:90
 msgid "New matches"
-msgstr ""
+msgstr "కొత్త సరిపోలికలు"
 
 #: src/i18n.js:86
 msgid "Next"
@@ -197,15 +181,11 @@ msgstr "ముగింపు తేదీ లేదు"
 
 #: src/i18n.js:91
 msgid "No matches yet."
-msgstr ""
-
-#: src/i18n.js:45
-#~ msgid "no matching airports found, try to write in english"
-#~ msgstr "సరిపోలే విమానాశ్రయాలు ఏవీ కనుగొనబడలేదు, ఆంగ్లంలో రాయడానికి ప్రయత్నించండి"
+msgstr "ఇంకా సరిపోలికలు లేవు."
 
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
-msgstr ""
+msgstr "సరిపోలే నగరాలు కనుగొనబడలేదు, ఆంగ్లంలో రాయడానికి ప్రయత్నించండి"
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -227,13 +207,9 @@ msgstr "దయచేసి ప్రారంభ తేదీని ఎంచు
 msgid "Please select an end date"
 msgstr "దయచేసి ముగింపు తేదీని ఎంచుకోండి"
 
-#: src/i18n.js:46
-#~ msgid "Please select departure and arrival airports from the list"
-#~ msgstr "దయచేసి జాబితా నుండి బయలుదేరే మరియు చేరుకునే విమానాశ్రయాలను ఎంచుకోండి"
-
 #: src/i18n.js:48
 msgid "Please select departure and arrival cities from the list"
-msgstr ""
+msgstr "దయచేసి జాబితా నుండి బయలుదేరే మరియు చేరుకునే నగరాలను ఎంచుకోండి"
 
 #: src/i18n.js:85
 msgid "Previous"
@@ -241,11 +217,11 @@ msgstr "మునుపటి"
 
 #: src/i18n.js:95
 msgid "Proposed"
-msgstr ""
+msgstr "ప్రతిపాదించబడింది"
 
 #: src/i18n.js:98
 msgid "Rejected"
-msgstr ""
+msgstr "తిరస్కరించబడింది"
 
 #: src/i18n.js:49
 msgid "Remove"
@@ -281,7 +257,7 @@ msgstr "ఇప్పటి వరకు"
 
 #: src/i18n.js:38
 msgid "To date (optional)"
-msgstr ""
+msgstr "చివరి తేదీ (ఐచ్ఛికం)"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -293,4 +269,4 @@ msgstr "మీరు సిస్టమ్‌లో నమోదు చేయబ
 
 #: src/i18n.js:94
 msgid "Your request"
-msgstr ""
+msgstr "మీ అభ్యర్థన"
