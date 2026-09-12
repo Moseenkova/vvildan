@@ -1,5 +1,6 @@
 import asyncio
 from functools import lru_cache
+from pathlib import Path
 
 from openai import OpenAI
 
@@ -16,8 +17,7 @@ Preserve meaning, tone, names, URLs, emoji, line breaks, and Telegram-style form
 Use earlier turns only to resolve context and ambiguity. Never answer the message or add commentary.
 Return only the translated message."""
 
-# One lock deliberately serializes both directions. The response ID is fetched while
-# holding it, so every request continues from the response saved by the prior request.
+# This lock protects direct OpenAI calls and response-chain updates in both directions.
 _translation_lock = asyncio.Lock()
 
 
@@ -59,6 +59,20 @@ def translate_text(
     return translated, response.id
 
 
+def transcribe_audio(audio_path: Path) -> str:
+    """Transcribe a local audio file with the synchronous OpenAI client."""
+    with audio_path.open("rb") as audio_file:
+        transcription = get_openai_client().audio.transcriptions.create(
+            model=get_settings().OPENAI_TRANSCRIPTION_MODEL,
+            file=audio_file,
+        )
+
+    transcript = transcription.text.strip()
+    if not transcript:
+        raise RuntimeError("OpenAI returned an empty transcription")
+    return transcript
+
+
 async def translate_topic_text(
     topic_id: int,
     text: str,
@@ -84,6 +98,36 @@ async def translate_topic_text(
         if not updated:
             raise LookupError(f"Customer topic {topic_id} was not found")
         return translated
+
+
+async def translate_topic_audio(
+    topic_id: int,
+    audio_path: Path,
+    *,
+    source_language: str,
+    target_language: str,
+    direction: str,
+    caption: str | None = None,
+) -> tuple[str, str]:
+    """Synchronously transcribe and translate one media message under the shared lock."""
+    async with _translation_lock:
+        topic = await get_customer_topic_by_topic_id(topic_id)
+        if topic is None:
+            raise LookupError(f"Customer topic {topic_id} was not found")
+
+        transcript = transcribe_audio(audio_path)
+        original_text = "\n\n".join(part for part in (caption, transcript) if part)
+        translated, response_id = translate_text(
+            original_text,
+            source_language=source_language,
+            target_language=target_language,
+            direction=direction,
+            previous_response_id=topic.last_openai_response_id,
+        )
+        updated = await update_customer_topic_response_id(topic_id, response_id)
+        if not updated:
+            raise LookupError(f"Customer topic {topic_id} was not found")
+        return original_text, translated
 
 
 def needs_translation(language_code: str | None) -> bool:

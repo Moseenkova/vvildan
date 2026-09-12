@@ -42,6 +42,7 @@ class Settings(BaseSettings):
 
     OPENAI_API_KEY: SecretStr | None = None
     OPENAI_TRANSLATION_MODEL: str = "gpt-4.1-mini"
+    OPENAI_TRANSCRIPTION_MODEL: str = "gpt-4o-mini-transcribe"
 
     TELEGRAM_LOGIN_CLIENT_ID: int | None = None
     TELEGRAM_LOGIN_CLIENT_SECRET: str | None = None

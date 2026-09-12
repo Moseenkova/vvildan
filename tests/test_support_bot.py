@@ -226,3 +226,160 @@ async def test_translation_calls_continue_from_saved_response_id(database, monke
         topic = await session.scalar(select(CustomerTgTopic))
     assert topic is not None
     assert topic.last_openai_response_id == "response-2"
+
+
+@pytest.mark.asyncio
+async def test_customer_audio_is_transcribed_and_translated(monkeypatch) -> None:
+    monkeypatch.setattr(
+        bot_main,
+        "get_or_create_customer_topic",
+        AsyncMock(return_value=456),
+    )
+    monkeypatch.setattr(
+        bot_main,
+        "get_customer_topic_by_customer_chat_id",
+        AsyncMock(return_value=SimpleNamespace(language_code="id")),
+    )
+    process_media = AsyncMock(return_value=("Halo dari audio", "Привет из аудио"))
+    monkeypatch.setattr(bot_main, "transcribe_and_translate_media", process_media)
+
+    message = SimpleNamespace(
+        chat=SimpleNamespace(id=123),
+        from_user=SimpleNamespace(id=123),
+        voice=SimpleNamespace(duration=42),
+        text=None,
+        caption=None,
+        send_copy=AsyncMock(),
+    )
+    bot = SimpleNamespace(send_message=AsyncMock())
+
+    await bot_main.customer_message(message, bot)
+
+    process_media.assert_awaited_once_with(
+        message,
+        bot,
+        456,
+        source_language="id",
+        target_language="ru",
+        direction="customer to support",
+    )
+    message.send_copy.assert_awaited_once_with(
+        chat_id=bot_main.cfg.SUPPORT_GROUP_ID,
+        message_thread_id=456,
+    )
+    bot.send_message.assert_awaited_once_with(
+        chat_id=bot_main.cfg.SUPPORT_GROUP_ID,
+        message_thread_id=456,
+        text="Halo dari audio\n\nПривет из аудио",
+        parse_mode=None,
+    )
+
+
+@pytest.mark.asyncio
+async def test_audio_over_ten_minutes_is_resent_without_translation(monkeypatch) -> None:
+    monkeypatch.setattr(
+        bot_main,
+        "get_or_create_customer_topic",
+        AsyncMock(return_value=456),
+    )
+    monkeypatch.setattr(
+        bot_main,
+        "get_customer_topic_by_customer_chat_id",
+        AsyncMock(return_value=SimpleNamespace(language_code="id")),
+    )
+    process_media = AsyncMock()
+    monkeypatch.setattr(bot_main, "transcribe_and_translate_media", process_media)
+
+    message = SimpleNamespace(
+        chat=SimpleNamespace(id=123),
+        from_user=SimpleNamespace(id=123),
+        audio=SimpleNamespace(duration=601),
+        text=None,
+        caption=None,
+        send_copy=AsyncMock(),
+    )
+    bot = SimpleNamespace(send_message=AsyncMock())
+
+    await bot_main.customer_message(message, bot)
+
+    process_media.assert_not_awaited()
+    message.send_copy.assert_awaited_once_with(
+        chat_id=bot_main.cfg.SUPPORT_GROUP_ID,
+        message_thread_id=456,
+    )
+    bot.send_message.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_other_message_types_are_resent_without_translation(monkeypatch) -> None:
+    monkeypatch.setattr(
+        bot_main,
+        "get_or_create_customer_topic",
+        AsyncMock(return_value=456),
+    )
+    monkeypatch.setattr(
+        bot_main,
+        "get_customer_topic_by_customer_chat_id",
+        AsyncMock(return_value=SimpleNamespace(language_code="id")),
+    )
+    translate = AsyncMock()
+    monkeypatch.setattr(bot_main, "translate_topic_text", translate)
+
+    message = SimpleNamespace(
+        chat=SimpleNamespace(id=123),
+        from_user=SimpleNamespace(id=123),
+        photo=[SimpleNamespace(file_id="photo")],
+        text=None,
+        caption="A photo caption",
+        send_copy=AsyncMock(),
+    )
+    bot = SimpleNamespace(send_message=AsyncMock())
+
+    await bot_main.customer_message(message, bot)
+
+    translate.assert_not_awaited()
+    message.send_copy.assert_awaited_once_with(
+        chat_id=bot_main.cfg.SUPPORT_GROUP_ID,
+        message_thread_id=456,
+    )
+    bot.send_message.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_admin_video_is_transcribed_and_translated(monkeypatch) -> None:
+    monkeypatch.setattr(
+        bot_main,
+        "get_customer_topic_by_topic_id",
+        AsyncMock(return_value=SimpleNamespace(customer_chat_id=123, language_code="id")),
+    )
+    process_media = AsyncMock(return_value=("Русская речь", "Ucapan Rusia"))
+    monkeypatch.setattr(bot_main, "transcribe_and_translate_media", process_media)
+
+    message = SimpleNamespace(
+        from_user=SimpleNamespace(id=bot_main.cfg.SUPPORT_GROUP_ADMIN_IDS[0]),
+        message_thread_id=456,
+        forum_topic_created=None,
+        forum_topic_closed=None,
+        video=SimpleNamespace(duration=60),
+        text=None,
+        caption=None,
+        send_copy=AsyncMock(),
+    )
+    bot = SimpleNamespace(send_message=AsyncMock())
+
+    await bot_main.admin_reply(message, bot)
+
+    process_media.assert_awaited_once_with(
+        message,
+        bot,
+        456,
+        source_language="ru",
+        target_language="id",
+        direction="support to customer",
+    )
+    message.send_copy.assert_awaited_once_with(chat_id=123)
+    bot.send_message.assert_awaited_once_with(
+        chat_id=123,
+        text="Ucapan Rusia",
+        parse_mode=None,
+    )
