@@ -282,6 +282,17 @@
   border-radius: 8px;
   background: #fff;
   color: #333;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.match-card:hover,
+.match-card:focus-visible {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 2px 9px rgba(0, 123, 255, .12);
 }
 
 .match-card.match-new {

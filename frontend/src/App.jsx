@@ -292,7 +292,7 @@ function RequestDetails({ request, onClose, t, language }) {
   )
 }
 
-function MatchesList({ matches, loading, error, t, language }) {
+function MatchesList({ matches, loading, error, onSelect, t, language }) {
   const route = (request) => {
     const from = request.departure_cities.map((city) => city.name).join(', ')
     const to = request.arrival_cities.map((city) => city.name).join(', ')
@@ -319,9 +319,11 @@ function MatchesList({ matches, loading, error, t, language }) {
         {!loading && error && <p className="request-message request-error">{t.failedToLoadMatches}</p>}
         {!loading && !error && matches.length === 0 && <p className="request-message">{t.noMatches}</p>}
         {!loading && !error && matches.map((match) => (
-          <article
+          <button
+            type="button"
             className={`match-card ${match.is_new ? 'match-new' : ''}`}
             key={`${match.is_candidate ? 'candidate' : 'match'}-${match.own_request.id}-${match.id}`}
+            onClick={() => onSelect(match.matching_request)}
           >
             <div className="request-card-topline">
               <strong>{t.matchedWith}: {match.matching_user.name}</strong>
@@ -334,7 +336,7 @@ function MatchesList({ matches, loading, error, t, language }) {
               <p className="match-comment"><strong>{t.comment}:</strong> {match.matching_request.comment}</p>
             )}
             <span className="match-own-request">{t.yourRequest} #{match.own_request.id}</span>
-          </article>
+          </button>
         ))}
       </div>
     </section>
@@ -673,7 +675,7 @@ function App() {
       ) : activePage === 'requests' ? (
         <RequestSidebar requests={requests} pagination={requestsPagination} loading={requestsLoading} error={requestsError} status={requestStatus} onStatusChange={changeRequestStatus} onPageChange={changeRequestsPage} onSelect={setSelectedRequest} t={t} language={language} />
       ) : (
-        <MatchesList matches={matches} loading={matchesLoading} error={matchesError} t={t} language={language} />
+        <MatchesList matches={matches} loading={matchesLoading} error={matchesError} onSelect={setSelectedRequest} t={t} language={language} />
       )}
       </main>
       <RequestDetails request={selectedRequest} onClose={() => setSelectedRequest(null)} t={t} language={language} />
