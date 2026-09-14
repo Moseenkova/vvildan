@@ -5,9 +5,10 @@ from unittest.mock import AsyncMock
 import pytest
 from httpx import ASGITransport, AsyncClient
 from pydantic import SecretStr
+from sqlalchemy import select
 
 from src.auth.utils import create_token_pair
-from src.database import RequestRole
+from src.database import Match, MatchStatus, RequestRole, async_session_maker
 from src.main import app
 from src.messages.service import notify_message_recipient
 from tests.conftest import AuthenticatedClient
@@ -62,6 +63,22 @@ async def test_match_message_creates_dialog_and_unread_message(
     assert dialog["messages"][0]["body"] == "Can you carry documents?"
     assert dialog["messages"][0]["is_mine"] is True
     notify.assert_awaited_once()
+
+    async with async_session_maker() as session:
+        stored_match = await session.scalar(
+            select(Match).where(
+                Match.sender_request_id == own.id,
+                Match.courier_request_id == matching.id,
+            )
+        )
+        assert stored_match is not None
+        assert stored_match.status == MatchStatus.contacted
+
+    matches_response = await auth_ac.client.get("/api/matches")
+    assert matches_response.status_code == 200
+    assert matches_response.json()[0]["id"] == stored_match.id
+    assert matches_response.json()[0]["status"] == "contacted"
+    assert matches_response.json()[0]["is_candidate"] is False
 
     recipient_token = create_token_pair(recipient)["access"]["token"]
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:

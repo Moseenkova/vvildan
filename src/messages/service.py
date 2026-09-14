@@ -9,7 +9,16 @@ from sqlalchemy import or_, select, update
 from sqlalchemy.orm import selectinload
 
 from src.config import Settings, get_settings
-from src.database import Conversation, Match, Message, Request, User, async_session_maker
+from src.database import (
+    Conversation,
+    Match,
+    MatchStatus,
+    Message,
+    Request,
+    RequestRole,
+    User,
+    async_session_maker,
+)
 from src.matches.service import _candidate_statement
 from src.messages.schemas import (
     DialogMessagesSchema,
@@ -189,6 +198,28 @@ async def _requests_are_a_match(session, user_id: int, own: Request, matching: R
     return candidate_id is not None
 
 
+async def _mark_requests_as_contacted(session, own: Request, matching: Request) -> Match:
+    sender_id, courier_id = (
+        (own.id, matching.id) if own.role == RequestRole.sender else (matching.id, own.id)
+    )
+    match = await session.scalar(
+        select(Match).where(
+            Match.sender_request_id == sender_id,
+            Match.courier_request_id == courier_id,
+        )
+    )
+    if match is None:
+        match = Match(
+            sender_request_id=sender_id,
+            courier_request_id=courier_id,
+            status=MatchStatus.contacted,
+        )
+        session.add(match)
+    elif match.status == MatchStatus.proposed:
+        match.status = MatchStatus.contacted
+    return match
+
+
 async def create_match_message(
     user_id: int, payload: SendMatchMessageSchema
 ) -> DialogMessagesSchema:
@@ -215,6 +246,8 @@ async def create_match_message(
             or not await _requests_are_a_match(session, user_id, own, matching)
         ):
             raise HTTPException(status_code=404, detail="Matching candidate not found")
+
+        await _mark_requests_as_contacted(session, own, matching)
 
         one_id, two_id = sorted((user_id, matching.user_id))
         conversation = await session.scalar(
