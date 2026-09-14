@@ -37,7 +37,7 @@ msgstr "بلد الوصول"
 
 #: src/i18n.js:107
 msgid "Back"
-msgstr ""
+msgstr "رجوع"
 
 #: src/i18n.js:60
 msgid "Baggage comments"
@@ -77,7 +77,7 @@ msgstr "تعذر تحميل المطابقات الخاصة بك."
 
 #: src/i18n.js:110
 msgid "Could not load your messages."
-msgstr ""
+msgstr "تعذر تحميل رسائلك."
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
@@ -85,7 +85,7 @@ msgstr "تعذر تحميل طلباتك."
 
 #: src/i18n.js:111
 msgid "Could not send your message."
-msgstr ""
+msgstr "تعذر إرسال رسالتك."
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -165,11 +165,11 @@ msgstr "المطابقات"
 
 #: src/i18n.js:102
 msgid "Message to"
-msgstr ""
+msgstr "رسالة إلى"
 
 #: src/i18n.js:100
 msgid "Messages"
-msgstr ""
+msgstr "الرسائل"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -209,7 +209,7 @@ msgstr "لم يتم العثور على مدن مطابقة، حاول الكت�
 
 #: src/i18n.js:109
 msgid "No messages yet."
-msgstr ""
+msgstr "لا توجد رسائل بعد."
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -261,7 +261,7 @@ msgstr "الدور"
 
 #: src/i18n.js:104
 msgid "Send"
-msgstr ""
+msgstr "إرسال"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -269,7 +269,7 @@ msgstr "مرسل"
 
 #: src/i18n.js:105
 msgid "Sending..."
-msgstr ""
+msgstr "جارٍ الإرسال..."
 
 #: src/i18n.js:83
 msgid "Status"
@@ -293,7 +293,7 @@ msgstr "إلى تاريخ (اختياري)"
 
 #: src/i18n.js:108
 msgid "Unread messages"
-msgstr ""
+msgstr "رسائل غير مقروءة"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -301,15 +301,15 @@ msgstr "لم يتم العثور على المستخدم"
 
 #: src/i18n.js:101
 msgid "Write message"
-msgstr ""
+msgstr "كتابة رسالة"
 
 #: src/i18n.js:103
 msgid "Write your message..."
-msgstr ""
+msgstr "اكتب رسالتك..."
 
 #: src/i18n.js:106
 msgid "You"
-msgstr ""
+msgstr "أنت"
 
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."

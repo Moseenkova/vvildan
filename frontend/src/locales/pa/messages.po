@@ -37,7 +37,7 @@ msgstr "ਆਗਮਨ ਦੇਸ਼"
 
 #: src/i18n.js:107
 msgid "Back"
-msgstr ""
+msgstr "ਪਿੱਛੇ"
 
 #: src/i18n.js:60
 msgid "Baggage comments"
@@ -77,7 +77,7 @@ msgstr "ਤੁਹਾਡੇ ਮੇਲ ਲੋਡ ਨਹੀਂ ਕੀਤੇ ਜਾ 
 
 #: src/i18n.js:110
 msgid "Could not load your messages."
-msgstr ""
+msgstr "ਤੁਹਾਡੇ ਸੁਨੇਹੇ ਲੋਡ ਨਹੀਂ ਕੀਤੇ ਜਾ ਸਕੇ।"
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
@@ -85,7 +85,7 @@ msgstr "ਤੁਹਾਡੀਆਂ ਬੇਨਤੀਆਂ ਨੂੰ ਲੋਡ ਨ�
 
 #: src/i18n.js:111
 msgid "Could not send your message."
-msgstr ""
+msgstr "ਤੁਹਾਡਾ ਸੁਨੇਹਾ ਭੇਜਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ।"
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -165,11 +165,11 @@ msgstr "ਮੇਲ"
 
 #: src/i18n.js:102
 msgid "Message to"
-msgstr ""
+msgstr "ਇਸ ਨੂੰ ਸੁਨੇਹਾ"
 
 #: src/i18n.js:100
 msgid "Messages"
-msgstr ""
+msgstr "ਸੁਨੇਹੇ"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -209,7 +209,7 @@ msgstr "ਕੋਈ ਮੇਲ ਖਾਂਦਾ ਸ਼ਹਿਰ ਨਹੀਂ ਮਿ�
 
 #: src/i18n.js:109
 msgid "No messages yet."
-msgstr ""
+msgstr "ਹਾਲੇ ਕੋਈ ਸੁਨੇਹੇ ਨਹੀਂ ਹਨ।"
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -261,7 +261,7 @@ msgstr "ਭੂਮਿਕਾ"
 
 #: src/i18n.js:104
 msgid "Send"
-msgstr ""
+msgstr "ਭੇਜੋ"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -269,7 +269,7 @@ msgstr "ਭੇਜਣ ਵਾਲਾ"
 
 #: src/i18n.js:105
 msgid "Sending..."
-msgstr ""
+msgstr "ਭੇਜਿਆ ਜਾ ਰਿਹਾ ਹੈ..."
 
 #: src/i18n.js:83
 msgid "Status"
@@ -293,7 +293,7 @@ msgstr "ਅੰਤਿਮ ਮਿਤੀ (ਵਿਕਲਪਿਕ)"
 
 #: src/i18n.js:108
 msgid "Unread messages"
-msgstr ""
+msgstr "ਨਾ-ਪੜ੍ਹੇ ਸੁਨੇਹੇ"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -301,15 +301,15 @@ msgstr "ਉਪਭੋਗਤਾ ਨਹੀਂ ਮਿਲਿਆ"
 
 #: src/i18n.js:101
 msgid "Write message"
-msgstr ""
+msgstr "ਸੁਨੇਹਾ ਲਿਖੋ"
 
 #: src/i18n.js:103
 msgid "Write your message..."
-msgstr ""
+msgstr "ਆਪਣਾ ਸੁਨੇਹਾ ਲਿਖੋ..."
 
 #: src/i18n.js:106
 msgid "You"
-msgstr ""
+msgstr "ਤੁਸੀਂ"
 
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."

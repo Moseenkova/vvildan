@@ -37,7 +37,7 @@ msgstr "آمد ملڪ"
 
 #: src/i18n.js:107
 msgid "Back"
-msgstr ""
+msgstr "پوئتي"
 
 #: src/i18n.js:60
 msgid "Baggage comments"
@@ -77,7 +77,7 @@ msgstr "توهان جا ميچ لوڊ نه ٿي سگهيا."
 
 #: src/i18n.js:110
 msgid "Could not load your messages."
-msgstr ""
+msgstr "توهان جا پيغام لوڊ نه ٿي سگهيا."
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
@@ -85,7 +85,7 @@ msgstr "توھان جون درخواستون لوڊ نه ٿي سگھيون."
 
 #: src/i18n.js:111
 msgid "Could not send your message."
-msgstr ""
+msgstr "توهان جو پيغام موڪلي نه سگهيو."
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -165,11 +165,11 @@ msgstr "ميچ"
 
 #: src/i18n.js:102
 msgid "Message to"
-msgstr ""
+msgstr "ڏانهن پيغام"
 
 #: src/i18n.js:100
 msgid "Messages"
-msgstr ""
+msgstr "پيغام"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -209,7 +209,7 @@ msgstr "ڪو به ملندڙ شهر نه مليو، انگريزي ۾ لکڻ ج�
 
 #: src/i18n.js:109
 msgid "No messages yet."
-msgstr ""
+msgstr "اڃا تائين ڪوبه پيغام ناهي."
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -261,7 +261,7 @@ msgstr "ڪردار"
 
 #: src/i18n.js:104
 msgid "Send"
-msgstr ""
+msgstr "موڪليو"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -269,7 +269,7 @@ msgstr "موڪليندڙ"
 
 #: src/i18n.js:105
 msgid "Sending..."
-msgstr ""
+msgstr "موڪلي رهيو آهي..."
 
 #: src/i18n.js:83
 msgid "Status"
@@ -293,7 +293,7 @@ msgstr "آخري تاريخ (اختياري)"
 
 #: src/i18n.js:108
 msgid "Unread messages"
-msgstr ""
+msgstr "اڻ پڙهيل پيغام"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -301,15 +301,15 @@ msgstr "استعمال ڪندڙ نه مليو"
 
 #: src/i18n.js:101
 msgid "Write message"
-msgstr ""
+msgstr "پيغام لکو"
 
 #: src/i18n.js:103
 msgid "Write your message..."
-msgstr ""
+msgstr "پنهنجو پيغام لکو..."
 
 #: src/i18n.js:106
 msgid "You"
-msgstr ""
+msgstr "توهان"
 
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."

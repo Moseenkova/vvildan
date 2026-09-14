@@ -37,7 +37,7 @@ msgstr "Χώρα άφιξης"
 
 #: src/i18n.js:107
 msgid "Back"
-msgstr ""
+msgstr "Πίσω"
 
 #: src/i18n.js:60
 msgid "Baggage comments"
@@ -77,7 +77,7 @@ msgstr "Δεν ήταν δυνατή η φόρτωση των αντιστοιχ
 
 #: src/i18n.js:110
 msgid "Could not load your messages."
-msgstr ""
+msgstr "Δεν ήταν δυνατή η φόρτωση των μηνυμάτων σας."
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
@@ -85,7 +85,7 @@ msgstr "Δεν ήταν δυνατή η φόρτωση των αιτημάτων
 
 #: src/i18n.js:111
 msgid "Could not send your message."
-msgstr ""
+msgstr "Δεν ήταν δυνατή η αποστολή του μηνύματός σας."
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -165,11 +165,11 @@ msgstr "Αντιστοιχίες"
 
 #: src/i18n.js:102
 msgid "Message to"
-msgstr ""
+msgstr "Μήνυμα προς"
 
 #: src/i18n.js:100
 msgid "Messages"
-msgstr ""
+msgstr "Μηνύματα"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -209,7 +209,7 @@ msgstr "Δεν βρέθηκαν πόλεις που να ταιριάζουν, �
 
 #: src/i18n.js:109
 msgid "No messages yet."
-msgstr ""
+msgstr "Δεν υπάρχουν ακόμη μηνύματα."
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -261,7 +261,7 @@ msgstr "Ρόλος"
 
 #: src/i18n.js:104
 msgid "Send"
-msgstr ""
+msgstr "Αποστολή"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -269,7 +269,7 @@ msgstr "Αποστολέας"
 
 #: src/i18n.js:105
 msgid "Sending..."
-msgstr ""
+msgstr "Αποστολή..."
 
 #: src/i18n.js:83
 msgid "Status"
@@ -293,7 +293,7 @@ msgstr "Έως ημερομηνία (προαιρετικό)"
 
 #: src/i18n.js:108
 msgid "Unread messages"
-msgstr ""
+msgstr "Μη αναγνωσμένα μηνύματα"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -301,15 +301,15 @@ msgstr "Ο χρήστης δεν βρέθηκε"
 
 #: src/i18n.js:101
 msgid "Write message"
-msgstr ""
+msgstr "Γράψτε μήνυμα"
 
 #: src/i18n.js:103
 msgid "Write your message..."
-msgstr ""
+msgstr "Γράψτε το μήνυμά σας..."
 
 #: src/i18n.js:106
 msgid "You"
-msgstr ""
+msgstr "Εσείς"
 
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."

@@ -37,7 +37,7 @@ msgstr "വരവ് രാജ്യം"
 
 #: src/i18n.js:107
 msgid "Back"
-msgstr ""
+msgstr "തിരികെ"
 
 #: src/i18n.js:60
 msgid "Baggage comments"
@@ -77,7 +77,7 @@ msgstr "നിങ്ങളുടെ പൊരുത്തങ്ങൾ ലോഡ�
 
 #: src/i18n.js:110
 msgid "Could not load your messages."
-msgstr ""
+msgstr "നിങ്ങളുടെ സന്ദേശങ്ങൾ ലോഡ് ചെയ്യാനായില്ല."
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
@@ -85,7 +85,7 @@ msgstr "നിങ്ങളുടെ അഭ്യർത്ഥനകൾ ലോഡ�
 
 #: src/i18n.js:111
 msgid "Could not send your message."
-msgstr ""
+msgstr "നിങ്ങളുടെ സന്ദേശം അയയ്ക്കാനായില്ല."
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -165,11 +165,11 @@ msgstr "പൊരുത്തങ്ങൾ"
 
 #: src/i18n.js:102
 msgid "Message to"
-msgstr ""
+msgstr "ഇവർക്ക് സന്ദേശം"
 
 #: src/i18n.js:100
 msgid "Messages"
-msgstr ""
+msgstr "സന്ദേശങ്ങൾ"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -209,7 +209,7 @@ msgstr "പൊരുത്തപ്പെടുന്ന നഗരങ്ങള�
 
 #: src/i18n.js:109
 msgid "No messages yet."
-msgstr ""
+msgstr "ഇതുവരെ സന്ദേശങ്ങളൊന്നുമില്ല."
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -261,7 +261,7 @@ msgstr "പങ്ക്"
 
 #: src/i18n.js:104
 msgid "Send"
-msgstr ""
+msgstr "അയയ്ക്കുക"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -269,7 +269,7 @@ msgstr "അയച്ചയാൾ"
 
 #: src/i18n.js:105
 msgid "Sending..."
-msgstr ""
+msgstr "അയയ്ക്കുന്നു..."
 
 #: src/i18n.js:83
 msgid "Status"
@@ -293,7 +293,7 @@ msgstr "അവസാന തീയതി (ഐച്ഛികം)"
 
 #: src/i18n.js:108
 msgid "Unread messages"
-msgstr ""
+msgstr "വായിക്കാത്ത സന്ദേശങ്ങൾ"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -301,15 +301,15 @@ msgstr "ഉപയോക്താവിനെ കണ്ടെത്തിയി�
 
 #: src/i18n.js:101
 msgid "Write message"
-msgstr ""
+msgstr "സന്ദേശം എഴുതുക"
 
 #: src/i18n.js:103
 msgid "Write your message..."
-msgstr ""
+msgstr "നിങ്ങളുടെ സന്ദേശം എഴുതുക..."
 
 #: src/i18n.js:106
 msgid "You"
-msgstr ""
+msgstr "നിങ്ങൾ"
 
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."

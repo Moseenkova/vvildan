@@ -37,7 +37,7 @@ msgstr "आगमन देश"
 
 #: src/i18n.js:107
 msgid "Back"
-msgstr ""
+msgstr "पछाडि"
 
 #: src/i18n.js:60
 msgid "Baggage comments"
@@ -77,7 +77,7 @@ msgstr "तपाईंका मिलानहरू लोड गर्न �
 
 #: src/i18n.js:110
 msgid "Could not load your messages."
-msgstr ""
+msgstr "तपाईंका सन्देशहरू लोड गर्न सकिएन।"
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
@@ -85,7 +85,7 @@ msgstr "तपाईंका अनुरोधहरू लोड गर्न
 
 #: src/i18n.js:111
 msgid "Could not send your message."
-msgstr ""
+msgstr "तपाईंको सन्देश पठाउन सकिएन।"
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -165,11 +165,11 @@ msgstr "मिलानहरू"
 
 #: src/i18n.js:102
 msgid "Message to"
-msgstr ""
+msgstr "यसलाई सन्देश"
 
 #: src/i18n.js:100
 msgid "Messages"
-msgstr ""
+msgstr "सन्देशहरू"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -209,7 +209,7 @@ msgstr "मिल्ने सहर फेला परेन, अंग्र�
 
 #: src/i18n.js:109
 msgid "No messages yet."
-msgstr ""
+msgstr "अहिलेसम्म कुनै सन्देश छैन।"
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -261,7 +261,7 @@ msgstr "भूमिका"
 
 #: src/i18n.js:104
 msgid "Send"
-msgstr ""
+msgstr "पठाउनुहोस्"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -269,7 +269,7 @@ msgstr "प्रेषक"
 
 #: src/i18n.js:105
 msgid "Sending..."
-msgstr ""
+msgstr "पठाउँदै..."
 
 #: src/i18n.js:83
 msgid "Status"
@@ -293,7 +293,7 @@ msgstr "अन्तिम मिति (वैकल्पिक)"
 
 #: src/i18n.js:108
 msgid "Unread messages"
-msgstr ""
+msgstr "नपढिएका सन्देशहरू"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -301,15 +301,15 @@ msgstr "प्रयोगकर्ता फेला परेन"
 
 #: src/i18n.js:101
 msgid "Write message"
-msgstr ""
+msgstr "सन्देश लेख्नुहोस्"
 
 #: src/i18n.js:103
 msgid "Write your message..."
-msgstr ""
+msgstr "आफ्नो सन्देश लेख्नुहोस्..."
 
 #: src/i18n.js:106
 msgid "You"
-msgstr ""
+msgstr "तपाईं"
 
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."

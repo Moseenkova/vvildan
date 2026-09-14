@@ -37,7 +37,7 @@ msgstr "Země příjezdu"
 
 #: src/i18n.js:107
 msgid "Back"
-msgstr ""
+msgstr "Zpět"
 
 #: src/i18n.js:60
 msgid "Baggage comments"
@@ -77,7 +77,7 @@ msgstr "Vaše shody se nepodařilo načíst."
 
 #: src/i18n.js:110
 msgid "Could not load your messages."
-msgstr ""
+msgstr "Vaše zprávy se nepodařilo načíst."
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
@@ -85,7 +85,7 @@ msgstr "Vaše požadavky se nepodařilo načíst."
 
 #: src/i18n.js:111
 msgid "Could not send your message."
-msgstr ""
+msgstr "Vaši zprávu se nepodařilo odeslat."
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -165,11 +165,11 @@ msgstr "Shody"
 
 #: src/i18n.js:102
 msgid "Message to"
-msgstr ""
+msgstr "Zpráva pro"
 
 #: src/i18n.js:100
 msgid "Messages"
-msgstr ""
+msgstr "Zprávy"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -209,7 +209,7 @@ msgstr "Nebyla nalezena žádná odpovídající města, zkuste psát anglicky"
 
 #: src/i18n.js:109
 msgid "No messages yet."
-msgstr ""
+msgstr "Zatím žádné zprávy."
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -261,7 +261,7 @@ msgstr "Role"
 
 #: src/i18n.js:104
 msgid "Send"
-msgstr ""
+msgstr "Odeslat"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -269,7 +269,7 @@ msgstr "Odesílatel"
 
 #: src/i18n.js:105
 msgid "Sending..."
-msgstr ""
+msgstr "Odesílání..."
 
 #: src/i18n.js:83
 msgid "Status"
@@ -293,7 +293,7 @@ msgstr "Datum do (volitelné)"
 
 #: src/i18n.js:108
 msgid "Unread messages"
-msgstr ""
+msgstr "Nepřečtené zprávy"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -301,15 +301,15 @@ msgstr "Uživatel nenalezen"
 
 #: src/i18n.js:101
 msgid "Write message"
-msgstr ""
+msgstr "Napsat zprávu"
 
 #: src/i18n.js:103
 msgid "Write your message..."
-msgstr ""
+msgstr "Napište zprávu..."
 
 #: src/i18n.js:106
 msgid "You"
-msgstr ""
+msgstr "Vy"
 
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."

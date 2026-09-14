@@ -37,7 +37,7 @@ msgstr "Nchi ya kuwasili"
 
 #: src/i18n.js:107
 msgid "Back"
-msgstr ""
+msgstr "Rudi"
 
 #: src/i18n.js:60
 msgid "Baggage comments"
@@ -77,7 +77,7 @@ msgstr "Imeshindikana kupakia zinazolingana nawe."
 
 #: src/i18n.js:110
 msgid "Could not load your messages."
-msgstr ""
+msgstr "Imeshindikana kupakia ujumbe wako."
 
 #: src/i18n.js:79
 msgid "Could not load your requests."
@@ -85,7 +85,7 @@ msgstr "Haikuweza kupakia maombi yako."
 
 #: src/i18n.js:111
 msgid "Could not send your message."
-msgstr ""
+msgstr "Imeshindikana kutuma ujumbe wako."
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -165,11 +165,11 @@ msgstr "Zinazolingana"
 
 #: src/i18n.js:102
 msgid "Message to"
-msgstr ""
+msgstr "Ujumbe kwa"
 
 #: src/i18n.js:100
 msgid "Messages"
-msgstr ""
+msgstr "Ujumbe"
 
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
@@ -209,7 +209,7 @@ msgstr "Hakuna miji inayolingana iliyopatikana, jaribu kuandika kwa Kiingereza"
 
 #: src/i18n.js:109
 msgid "No messages yet."
-msgstr ""
+msgstr "Bado hakuna ujumbe."
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -261,7 +261,7 @@ msgstr "Jukumu"
 
 #: src/i18n.js:104
 msgid "Send"
-msgstr ""
+msgstr "Tuma"
 
 #: src/i18n.js:35
 msgid "Sender"
@@ -269,7 +269,7 @@ msgstr "Mtumaji"
 
 #: src/i18n.js:105
 msgid "Sending..."
-msgstr ""
+msgstr "Inatuma..."
 
 #: src/i18n.js:83
 msgid "Status"
@@ -293,7 +293,7 @@ msgstr "Hadi tarehe (si lazima)"
 
 #: src/i18n.js:108
 msgid "Unread messages"
-msgstr ""
+msgstr "Ujumbe ambao haujasomwa"
 
 #: src/i18n.js:68
 msgid "User Not Found"
@@ -301,15 +301,15 @@ msgstr "Mtumiaji Hajapatikana"
 
 #: src/i18n.js:101
 msgid "Write message"
-msgstr ""
+msgstr "Andika ujumbe"
 
 #: src/i18n.js:103
 msgid "Write your message..."
-msgstr ""
+msgstr "Andika ujumbe wako..."
 
 #: src/i18n.js:106
 msgid "You"
-msgstr ""
+msgstr "Wewe"
 
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
