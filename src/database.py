@@ -54,6 +54,16 @@ class User(Base):
     requests: Mapped[list["Request"]] = relationship(
         back_populates="user", cascade="all, delete-orphan"
     )
+    conversations_as_user_one: Mapped[list["Conversation"]] = relationship(
+        back_populates="user_one",
+        foreign_keys="Conversation.user_one_id",
+        passive_deletes=True,
+    )
+    conversations_as_user_two: Mapped[list["Conversation"]] = relationship(
+        back_populates="user_two",
+        foreign_keys="Conversation.user_two_id",
+        passive_deletes=True,
+    )
 
     __table_args__ = (UniqueConstraint("tg_id"),)
 
@@ -206,6 +216,42 @@ class Match(Base):
 
     def __str__(self) -> str:
         return f"Match #{self.id} ({self.status.value})"
+
+
+class Conversation(Base):
+    __tablename__ = "conversations"
+
+    user_one_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    user_two_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    user_one: Mapped["User"] = relationship(
+        back_populates="conversations_as_user_one", foreign_keys=[user_one_id]
+    )
+    user_two: Mapped["User"] = relationship(
+        back_populates="conversations_as_user_two", foreign_keys=[user_two_id]
+    )
+    messages: Mapped[list["Message"]] = relationship(
+        back_populates="conversation", cascade="all, delete-orphan"
+    )
+
+    __table_args__ = (
+        UniqueConstraint("user_one_id", "user_two_id"),
+        CheckConstraint("user_one_id < user_two_id", name="ck_conversations_user_order"),
+    )
+
+
+class Message(Base):
+    __tablename__ = "messages"
+
+    conversation_id: Mapped[int] = mapped_column(
+        ForeignKey("conversations.id", ondelete="CASCADE"), index=True
+    )
+    sender_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    body: Mapped[str] = mapped_column(String(2000))
+    read_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+    conversation: Mapped["Conversation"] = relationship(back_populates="messages")
+    sender: Mapped["User"] = relationship()
+
+    __table_args__ = (Index("ix_messages_conversation_created", "conversation_id", "created_at"),)
 
 
 class Country(Base):

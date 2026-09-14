@@ -37,6 +37,10 @@ msgstr "Arrival city"
 msgid "Arrival country"
 msgstr "Arrival country"
 
+#: src/i18n.js:107
+msgid "Back"
+msgstr "Back"
+
 #: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "Baggage comments"
@@ -73,9 +77,17 @@ msgstr "Contacted"
 msgid "Could not load your matches."
 msgstr "Could not load your matches."
 
+#: src/i18n.js:110
+msgid "Could not load your messages."
+msgstr "Could not load your messages."
+
 #: src/i18n.js:79
 msgid "Could not load your requests."
 msgstr "Could not load your requests."
+
+#: src/i18n.js:111
+msgid "Could not send your message."
+msgstr "Could not send your message."
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -153,6 +165,14 @@ msgstr "Matched with"
 msgid "Matches"
 msgstr "Matches"
 
+#: src/i18n.js:102
+msgid "Message to"
+msgstr "Message to"
+
+#: src/i18n.js:100
+msgid "Messages"
+msgstr "Messages"
+
 #: src/i18n.js:43
 msgid "mm/dd/yyyy"
 msgstr "mm/dd/yyyy"
@@ -188,6 +208,10 @@ msgstr "No matches yet."
 #: src/i18n.js:47
 msgid "no matching cities found, try to write in english"
 msgstr "no matching cities found, try to write in english"
+
+#: src/i18n.js:109
+msgid "No messages yet."
+msgstr "No messages yet."
 
 #: src/i18n.js:78
 msgid "No requests with this status."
@@ -237,9 +261,17 @@ msgstr "Request pagination"
 msgid "Role"
 msgstr "Role"
 
+#: src/i18n.js:104
+msgid "Send"
+msgstr "Send"
+
 #: src/i18n.js:35
 msgid "Sender"
 msgstr "Sender"
+
+#: src/i18n.js:105
+msgid "Sending..."
+msgstr "Sending..."
 
 #: src/i18n.js:83
 msgid "Status"
@@ -261,9 +293,25 @@ msgstr "To date"
 msgid "To date (optional)"
 msgstr "To date (optional)"
 
+#: src/i18n.js:108
+msgid "Unread messages"
+msgstr "Unread messages"
+
 #: src/i18n.js:68
 msgid "User Not Found"
 msgstr "User Not Found"
+
+#: src/i18n.js:101
+msgid "Write message"
+msgstr "Write message"
+
+#: src/i18n.js:103
+msgid "Write your message..."
+msgstr "Write your message..."
+
+#: src/i18n.js:106
+msgid "You"
+msgstr "You"
 
 #: src/i18n.js:69
 msgid "You are not registered in the system. Please register through the Telegram bot first."
