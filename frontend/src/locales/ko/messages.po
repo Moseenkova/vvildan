@@ -11,7 +11,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:97
+#: src/i18n.js:101
 msgid "Accepted"
 msgstr "수락됨"
 
@@ -35,13 +35,17 @@ msgstr "도착 도시"
 msgid "Arrival country"
 msgstr "도착 국가"
 
-#: src/i18n.js:107
+#: src/i18n.js:111
 msgid "Back"
 msgstr "뒤로"
 
 #: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "수하물 관련 사항"
+
+#: src/i18n.js:80
+msgid "Cancel request"
+msgstr ""
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -55,11 +59,11 @@ msgstr "먼저 도시를 선택하세요"
 msgid "Choose a country first"
 msgstr "먼저 국가를 선택하세요"
 
-#: src/i18n.js:80
+#: src/i18n.js:84
 msgid "Close"
 msgstr "닫기"
 
-#: src/i18n.js:81
+#: src/i18n.js:85
 msgid "Comment"
 msgstr "댓글"
 
@@ -67,15 +71,15 @@ msgstr "댓글"
 msgid "Completed"
 msgstr "완료됨"
 
-#: src/i18n.js:96
+#: src/i18n.js:100
 msgid "Contacted"
 msgstr "연락함"
 
-#: src/i18n.js:92
+#: src/i18n.js:96
 msgid "Could not load your matches."
 msgstr "매칭을 불러올 수 없습니다."
 
-#: src/i18n.js:110
+#: src/i18n.js:114
 msgid "Could not load your messages."
 msgstr "메시지를 불러올 수 없습니다."
 
@@ -83,9 +87,13 @@ msgstr "메시지를 불러올 수 없습니다."
 msgid "Could not load your requests."
 msgstr "요청을 로드할 수 없습니다."
 
-#: src/i18n.js:111
+#: src/i18n.js:115
 msgid "Could not send your message."
 msgstr "메시지를 보낼 수 없습니다."
+
+#: src/i18n.js:83
+msgid "Could not update this request."
+msgstr ""
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -95,7 +103,7 @@ msgstr "국가 또는 도시"
 msgid "Courier"
 msgstr "급사"
 
-#: src/i18n.js:82
+#: src/i18n.js:86
 msgid "Created"
 msgstr "생성됨"
 
@@ -155,19 +163,19 @@ msgstr "로드 중..."
 msgid "Looking for courier"
 msgstr "배송 기사 찾는 중"
 
-#: src/i18n.js:93
+#: src/i18n.js:97
 msgid "Matched with"
 msgstr "매칭 상대"
 
-#: src/i18n.js:89
+#: src/i18n.js:93
 msgid "Matches"
 msgstr "매칭"
 
-#: src/i18n.js:102
+#: src/i18n.js:106
 msgid "Message to"
 msgstr "메시지 수신자"
 
-#: src/i18n.js:100
+#: src/i18n.js:104
 msgid "Messages"
 msgstr "메시지"
 
@@ -183,15 +191,15 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "내 요청"
 
-#: src/i18n.js:88
+#: src/i18n.js:92
 msgid "New"
 msgstr "새로운"
 
-#: src/i18n.js:90
+#: src/i18n.js:94
 msgid "New matches"
 msgstr "새 매칭"
 
-#: src/i18n.js:86
+#: src/i18n.js:90
 msgid "Next"
 msgstr "다음"
 
@@ -199,7 +207,7 @@ msgstr "다음"
 msgid "No end date"
 msgstr "종료일 없음"
 
-#: src/i18n.js:91
+#: src/i18n.js:95
 msgid "No matches yet."
 msgstr "아직 매칭이 없습니다."
 
@@ -207,7 +215,7 @@ msgstr "아직 매칭이 없습니다."
 msgid "no matching cities found, try to write in english"
 msgstr "일치하는 도시를 찾지 못했습니다. 영어로 입력해 보세요"
 
-#: src/i18n.js:109
+#: src/i18n.js:113
 msgid "No messages yet."
 msgstr "아직 메시지가 없습니다."
 
@@ -215,7 +223,7 @@ msgstr "아직 메시지가 없습니다."
 msgid "No requests with this status."
 msgstr "이 상태의 요청이 없습니다."
 
-#: src/i18n.js:87
+#: src/i18n.js:91
 msgid "Page"
 msgstr "페이지"
 
@@ -235,15 +243,19 @@ msgstr "종료일을 선택하세요."
 msgid "Please select departure and arrival cities from the list"
 msgstr "목록에서 출발 도시와 도착 도시를 선택해 주세요"
 
-#: src/i18n.js:85
+#: src/i18n.js:89
 msgid "Previous"
 msgstr "이전"
 
-#: src/i18n.js:95
+#: src/i18n.js:99
 msgid "Proposed"
 msgstr "제안됨"
 
-#: src/i18n.js:98
+#: src/i18n.js:81
+msgid "Reactivate request"
+msgstr ""
+
+#: src/i18n.js:102
 msgid "Rejected"
 msgstr "거절됨"
 
@@ -251,15 +263,15 @@ msgstr "거절됨"
 msgid "Remove"
 msgstr "삭제"
 
-#: src/i18n.js:84
+#: src/i18n.js:88
 msgid "Request pagination"
 msgstr "페이지 매김 요청"
 
-#: src/i18n.js:99
+#: src/i18n.js:103
 msgid "Role"
 msgstr "역할"
 
-#: src/i18n.js:104
+#: src/i18n.js:108
 msgid "Send"
 msgstr "보내기"
 
@@ -267,11 +279,11 @@ msgstr "보내기"
 msgid "Sender"
 msgstr "보내는 사람"
 
-#: src/i18n.js:105
+#: src/i18n.js:109
 msgid "Sending..."
 msgstr "보내는 중..."
 
-#: src/i18n.js:83
+#: src/i18n.js:87
 msgid "Status"
 msgstr "상태"
 
@@ -291,23 +303,27 @@ msgstr "현재까지"
 msgid "To date (optional)"
 msgstr "종료일(선택 사항)"
 
-#: src/i18n.js:108
+#: src/i18n.js:112
 msgid "Unread messages"
 msgstr "읽지 않은 메시지"
+
+#: src/i18n.js:82
+msgid "Updating..."
+msgstr ""
 
 #: src/i18n.js:68
 msgid "User Not Found"
 msgstr "사용자를 찾을 수 없음"
 
-#: src/i18n.js:101
+#: src/i18n.js:105
 msgid "Write message"
 msgstr "메시지 쓰기"
 
-#: src/i18n.js:103
+#: src/i18n.js:107
 msgid "Write your message..."
 msgstr "메시지를 입력하세요..."
 
-#: src/i18n.js:106
+#: src/i18n.js:110
 msgid "You"
 msgstr "나"
 
@@ -315,6 +331,6 @@ msgstr "나"
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "귀하는 시스템에 등록되어 있지 않습니다. 먼저 텔레그램 봇을 통해 회원가입을 해주세요."
 
-#: src/i18n.js:94
+#: src/i18n.js:98
 msgid "Your request"
 msgstr "내 요청"

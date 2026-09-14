@@ -259,7 +259,7 @@ function RequestSidebar({ requests, pagination, loading, error, status, onStatus
   )
 }
 
-function RequestDetails({ request, hideCreated = false, onClose, t, language }) {
+function RequestDetails({ request, hideCreated = false, onClose, onStatusChange, statusUpdating = false, t, language }) {
   if (!request) return null
   const cities = (items) => items.map((city) => (
     `${city.name}, ${city.country_name}`
@@ -287,6 +287,18 @@ function RequestDetails({ request, hideCreated = false, onClose, t, language }) 
           {request.comment && <div><dt>{t.comment}</dt><dd>{request.comment}</dd></div>}
           {!hideCreated && <div><dt>{t.created}</dt><dd>{formatLocalizedDate(request.created_at, language)}</dd></div>}
         </dl>
+        {onStatusChange && (request.can_cancel || request.can_reactivate) && (
+          <button
+            type="button"
+            className={`request-status-button ${request.can_cancel ? 'cancel' : 'reactivate'}`}
+            disabled={statusUpdating}
+            onClick={() => onStatusChange(request.can_cancel ? 'cancelled' : 'active')}
+          >
+            {statusUpdating
+              ? t.updatingRequest
+              : request.can_cancel ? t.cancelRequest : t.reactivateRequest}
+          </button>
+        )}
       </section>
     </div>
   )
@@ -469,6 +481,7 @@ function App() {
   const [requestStatus, setRequestStatus] = useState('all')
   const [selectedRequest, setSelectedRequest] = useState(null)
   const [selectedRequestFromMatches, setSelectedRequestFromMatches] = useState(false)
+  const [requestStatusUpdating, setRequestStatusUpdating] = useState(false)
   const [matches, setMatches] = useState([])
   const [matchesLoading, setMatchesLoading] = useState(true)
   const [matchesError, setMatchesError] = useState(false)
@@ -675,6 +688,31 @@ function App() {
     await loadRequests(1, status)
   }
 
+  const updateSelectedRequestStatus = async (status) => {
+    if (!selectedRequest || selectedRequestFromMatches) return
+    setRequestStatusUpdating(true)
+    try {
+      const { data } = await api.patch(`/api/requests/${selectedRequest.id}/status`, { status })
+      const statusUpdate = {
+        status: data.status,
+        can_cancel: data.can_cancel,
+        can_reactivate: data.can_reactivate,
+      }
+      setSelectedRequest((current) => current?.id === data.id
+        ? { ...current, ...statusUpdate }
+        : current)
+      await Promise.all([
+        loadRequests(1, requestStatus),
+        loadMatches(activePage === 'matches'),
+      ])
+    } catch (error) {
+      console.error('Failed to update request:', error)
+      alert(error.response?.data?.detail || t.failedToUpdateRequest)
+    } finally {
+      setRequestStatusUpdating(false)
+    }
+  }
+
   const setField = (field, value) => setForm((previous) => ({ ...previous, [field]: value }))
 
   const formatDateToString = (date) => {
@@ -878,7 +916,7 @@ function App() {
         <DialogsList dialogs={dialogs} loading={dialogsLoading} error={dialogsError} onSelect={openDialog} t={t} language={language} />
       )}
       </main>
-      <RequestDetails request={selectedRequest} hideCreated={selectedRequestFromMatches} onClose={() => setSelectedRequest(null)} t={t} language={language} />
+      <RequestDetails request={selectedRequest} hideCreated={selectedRequestFromMatches} onClose={() => setSelectedRequest(null)} onStatusChange={selectedRequestFromMatches ? undefined : updateSelectedRequestStatus} statusUpdating={requestStatusUpdating} t={t} language={language} />
       {composingMatch && <MessageComposer match={composingMatch} sending={messageSending} onClose={() => setComposingMatch(null)} onSend={sendFromMatch} t={t} />}
     </div>
   )

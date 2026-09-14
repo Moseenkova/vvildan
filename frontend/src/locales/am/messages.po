@@ -11,7 +11,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:97
+#: src/i18n.js:101
 msgid "Accepted"
 msgstr "ተቀባይነት አግኝቷል"
 
@@ -35,13 +35,17 @@ msgstr "መድረሻ ከተማ"
 msgid "Arrival country"
 msgstr "መድረሻ ሀገር"
 
-#: src/i18n.js:107
+#: src/i18n.js:111
 msgid "Back"
 msgstr "ተመለስ"
 
 #: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "የሻንጣ አስተያየቶች"
+
+#: src/i18n.js:80
+msgid "Cancel request"
+msgstr ""
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -55,11 +59,11 @@ msgstr "መጀመሪያ ከተማ ይምረጡ"
 msgid "Choose a country first"
 msgstr "መጀመሪያ አገር ይምረጡ"
 
-#: src/i18n.js:80
+#: src/i18n.js:84
 msgid "Close"
 msgstr "ዝጋ"
 
-#: src/i18n.js:81
+#: src/i18n.js:85
 msgid "Comment"
 msgstr "አስተያየት"
 
@@ -67,15 +71,15 @@ msgstr "አስተያየት"
 msgid "Completed"
 msgstr "ተጠናቀቀ"
 
-#: src/i18n.js:96
+#: src/i18n.js:100
 msgid "Contacted"
 msgstr "ተገናኝቷል"
 
-#: src/i18n.js:92
+#: src/i18n.js:96
 msgid "Could not load your matches."
 msgstr "ተዛማጆችዎን መጫን አልተቻለም።"
 
-#: src/i18n.js:110
+#: src/i18n.js:114
 msgid "Could not load your messages."
 msgstr "መልዕክቶችዎን መጫን አልተቻለም።"
 
@@ -83,9 +87,13 @@ msgstr "መልዕክቶችዎን መጫን አልተቻለም።"
 msgid "Could not load your requests."
 msgstr "ጥያቄዎችዎን መጫን አልተቻለም።"
 
-#: src/i18n.js:111
+#: src/i18n.js:115
 msgid "Could not send your message."
 msgstr "መልዕክትዎን መላክ አልተቻለም።"
+
+#: src/i18n.js:83
+msgid "Could not update this request."
+msgstr ""
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -95,7 +103,7 @@ msgstr "አገር ወይም ከተማ"
 msgid "Courier"
 msgstr "መልእክተኛ"
 
-#: src/i18n.js:82
+#: src/i18n.js:86
 msgid "Created"
 msgstr "ተፈጠረ"
 
@@ -155,19 +163,19 @@ msgstr "በመጫን ላይ..."
 msgid "Looking for courier"
 msgstr "መልእክተኛ በመፈለግ ላይ"
 
-#: src/i18n.js:93
+#: src/i18n.js:97
 msgid "Matched with"
 msgstr "የተዛመደው"
 
-#: src/i18n.js:89
+#: src/i18n.js:93
 msgid "Matches"
 msgstr "ተዛማጆች"
 
-#: src/i18n.js:102
+#: src/i18n.js:106
 msgid "Message to"
 msgstr "መልዕክት ለ"
 
-#: src/i18n.js:100
+#: src/i18n.js:104
 msgid "Messages"
 msgstr "መልዕክቶች"
 
@@ -183,15 +191,15 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "የእኔ ጥያቄዎች"
 
-#: src/i18n.js:88
+#: src/i18n.js:92
 msgid "New"
 msgstr "አዲስ"
 
-#: src/i18n.js:90
+#: src/i18n.js:94
 msgid "New matches"
 msgstr "አዲስ ተዛማጆች"
 
-#: src/i18n.js:86
+#: src/i18n.js:90
 msgid "Next"
 msgstr "ቀጥሎ"
 
@@ -199,7 +207,7 @@ msgstr "ቀጥሎ"
 msgid "No end date"
 msgstr "የማብቂያ ቀን የለም"
 
-#: src/i18n.js:91
+#: src/i18n.js:95
 msgid "No matches yet."
 msgstr "እስካሁን ምንም ተዛማጅ የለም።"
 
@@ -207,7 +215,7 @@ msgstr "እስካሁን ምንም ተዛማጅ የለም።"
 msgid "no matching cities found, try to write in english"
 msgstr "ምንም ተዛማጅ ከተማ አልተገኘም፣ በእንግሊዝኛ ለመጻፍ ይሞክሩ"
 
-#: src/i18n.js:109
+#: src/i18n.js:113
 msgid "No messages yet."
 msgstr "እስካሁን ምንም መልዕክት የለም።"
 
@@ -215,7 +223,7 @@ msgstr "እስካሁን ምንም መልዕክት የለም።"
 msgid "No requests with this status."
 msgstr "በዚህ ሁኔታ ምንም ጥያቄዎች የሉም።"
 
-#: src/i18n.js:87
+#: src/i18n.js:91
 msgid "Page"
 msgstr "ገጽ"
 
@@ -235,15 +243,19 @@ msgstr "እባክዎ የማለቂያ ቀን ይምረጡ"
 msgid "Please select departure and arrival cities from the list"
 msgstr "እባክዎ የመነሻና የመድረሻ ከተሞችን ከዝርዝሩ ይምረጡ"
 
-#: src/i18n.js:85
+#: src/i18n.js:89
 msgid "Previous"
 msgstr "ቀዳሚ"
 
-#: src/i18n.js:95
+#: src/i18n.js:99
 msgid "Proposed"
 msgstr "የቀረበ"
 
-#: src/i18n.js:98
+#: src/i18n.js:81
+msgid "Reactivate request"
+msgstr ""
+
+#: src/i18n.js:102
 msgid "Rejected"
 msgstr "ውድቅ ተደርጓል"
 
@@ -251,15 +263,15 @@ msgstr "ውድቅ ተደርጓል"
 msgid "Remove"
 msgstr "አስወግድ"
 
-#: src/i18n.js:84
+#: src/i18n.js:88
 msgid "Request pagination"
 msgstr "የገጽ ገጽን ጠይቅ"
 
-#: src/i18n.js:99
+#: src/i18n.js:103
 msgid "Role"
 msgstr "ሚና"
 
-#: src/i18n.js:104
+#: src/i18n.js:108
 msgid "Send"
 msgstr "ላክ"
 
@@ -267,11 +279,11 @@ msgstr "ላክ"
 msgid "Sender"
 msgstr "ላኪ"
 
-#: src/i18n.js:105
+#: src/i18n.js:109
 msgid "Sending..."
 msgstr "በመላክ ላይ..."
 
-#: src/i18n.js:83
+#: src/i18n.js:87
 msgid "Status"
 msgstr "ሁኔታ"
 
@@ -291,23 +303,27 @@ msgstr "እስከ ዛሬ ድረስ"
 msgid "To date (optional)"
 msgstr "እስከ ቀን (አማራጭ)"
 
-#: src/i18n.js:108
+#: src/i18n.js:112
 msgid "Unread messages"
 msgstr "ያልተነበቡ መልዕክቶች"
+
+#: src/i18n.js:82
+msgid "Updating..."
+msgstr ""
 
 #: src/i18n.js:68
 msgid "User Not Found"
 msgstr "ተጠቃሚ አልተገኘም።"
 
-#: src/i18n.js:101
+#: src/i18n.js:105
 msgid "Write message"
 msgstr "መልዕክት ጻፍ"
 
-#: src/i18n.js:103
+#: src/i18n.js:107
 msgid "Write your message..."
 msgstr "መልዕክትዎን ይጻፉ..."
 
-#: src/i18n.js:106
+#: src/i18n.js:110
 msgid "You"
 msgstr "እርስዎ"
 
@@ -315,6 +331,6 @@ msgstr "እርስዎ"
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "በስርዓቱ ውስጥ አልተመዘገቡም። እባክዎ በቅድሚያ በቴሌግራም ቦት ይመዝገቡ።"
 
-#: src/i18n.js:94
+#: src/i18n.js:98
 msgid "Your request"
 msgstr "ጥያቄዎ"

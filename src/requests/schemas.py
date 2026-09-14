@@ -1,4 +1,4 @@
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 from html import escape
 from typing import Optional
 
@@ -11,7 +11,7 @@ from pydantic import (
     model_validator,
 )
 
-from src.database import RequestRole
+from src.database import RequestRole, RequestStatus
 
 
 class RequestCitySchema(BaseModel):
@@ -34,11 +34,24 @@ class RequestSchema(BaseModel):
     comment: str | None
     status: str
     created_at: datetime
+    can_cancel: bool = False
+    can_reactivate: bool = False
 
     @field_validator("role", "status", mode="before")
     @classmethod
     def enum_value(cls, value: object) -> object:
         return getattr(value, "value", value)
+
+    @model_validator(mode="after")
+    def available_status_actions(self) -> "RequestSchema":
+        has_not_closed = self.date_to is None or self.date_to >= datetime.now(timezone.utc).date()
+        self.can_cancel = self.status == "active" and has_not_closed
+        self.can_reactivate = self.status == "cancelled" and has_not_closed
+        return self
+
+
+class RequestStatusUpdateSchema(BaseModel):
+    status: RequestStatus
 
 
 class RequestCreateSchema(BaseModel):

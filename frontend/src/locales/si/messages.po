@@ -11,7 +11,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:97
+#: src/i18n.js:101
 msgid "Accepted"
 msgstr "පිළිගන්නා ලදී"
 
@@ -35,13 +35,17 @@ msgstr "පැමිණීමේ නගරය"
 msgid "Arrival country"
 msgstr "පැමිණීමේ රට"
 
-#: src/i18n.js:107
+#: src/i18n.js:111
 msgid "Back"
 msgstr "ආපසු"
 
 #: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "ගමන් මලු අදහස්"
+
+#: src/i18n.js:80
+msgid "Cancel request"
+msgstr ""
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -55,11 +59,11 @@ msgstr "මුලින්ම නගරයක් තෝරන්න"
 msgid "Choose a country first"
 msgstr "මුලින්ම රටක් තෝරන්න"
 
-#: src/i18n.js:80
+#: src/i18n.js:84
 msgid "Close"
 msgstr "වසන්න"
 
-#: src/i18n.js:81
+#: src/i18n.js:85
 msgid "Comment"
 msgstr "අදහස් දක්වන්න"
 
@@ -67,15 +71,15 @@ msgstr "අදහස් දක්වන්න"
 msgid "Completed"
 msgstr "සම්පූර්ණ කළා"
 
-#: src/i18n.js:96
+#: src/i18n.js:100
 msgid "Contacted"
 msgstr "සම්බන්ධ කර ගන්නා ලදී"
 
-#: src/i18n.js:92
+#: src/i18n.js:96
 msgid "Could not load your matches."
 msgstr "ඔබගේ ගැළපීම් පූරණය කළ නොහැකි විය."
 
-#: src/i18n.js:110
+#: src/i18n.js:114
 msgid "Could not load your messages."
 msgstr "ඔබගේ පණිවිඩ පූරණය කළ නොහැකි විය."
 
@@ -83,9 +87,13 @@ msgstr "ඔබගේ පණිවිඩ පූරණය කළ නොහැක�
 msgid "Could not load your requests."
 msgstr "ඔබගේ ඉල්ලීම් පූරණය කළ නොහැකි විය."
 
-#: src/i18n.js:111
+#: src/i18n.js:115
 msgid "Could not send your message."
 msgstr "ඔබගේ පණිවිඩය යැවීමට නොහැකි විය."
+
+#: src/i18n.js:83
+msgid "Could not update this request."
+msgstr ""
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -95,7 +103,7 @@ msgstr "රට හෝ නගරය"
 msgid "Courier"
 msgstr "කුරියර්"
 
-#: src/i18n.js:82
+#: src/i18n.js:86
 msgid "Created"
 msgstr "නිර්මාණය කළා"
 
@@ -155,19 +163,19 @@ msgstr "පූරණය වෙමින්..."
 msgid "Looking for courier"
 msgstr "කුරියර්වරයෙකු සොයමින්"
 
-#: src/i18n.js:93
+#: src/i18n.js:97
 msgid "Matched with"
 msgstr "ගැළපුණේ"
 
-#: src/i18n.js:89
+#: src/i18n.js:93
 msgid "Matches"
 msgstr "ගැළපීම්"
 
-#: src/i18n.js:102
+#: src/i18n.js:106
 msgid "Message to"
 msgstr "වෙත පණිවිඩය"
 
-#: src/i18n.js:100
+#: src/i18n.js:104
 msgid "Messages"
 msgstr "පණිවිඩ"
 
@@ -183,15 +191,15 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "මගේ ඉල්ලීම්"
 
-#: src/i18n.js:88
+#: src/i18n.js:92
 msgid "New"
 msgstr "අලුත්"
 
-#: src/i18n.js:90
+#: src/i18n.js:94
 msgid "New matches"
 msgstr "නව ගැළපීම්"
 
-#: src/i18n.js:86
+#: src/i18n.js:90
 msgid "Next"
 msgstr "ඊළඟට"
 
@@ -199,7 +207,7 @@ msgstr "ඊළඟට"
 msgid "No end date"
 msgstr "අවසන් දිනයක් නැත"
 
-#: src/i18n.js:91
+#: src/i18n.js:95
 msgid "No matches yet."
 msgstr "තවම ගැළපීම් නොමැත."
 
@@ -207,7 +215,7 @@ msgstr "තවම ගැළපීම් නොමැත."
 msgid "no matching cities found, try to write in english"
 msgstr "ගැළපෙන නගර හමු නොවීය, ඉංග්‍රීසියෙන් ලිවීමට උත්සාහ කරන්න"
 
-#: src/i18n.js:109
+#: src/i18n.js:113
 msgid "No messages yet."
 msgstr "තවම පණිවිඩ නොමැත."
 
@@ -215,7 +223,7 @@ msgstr "තවම පණිවිඩ නොමැත."
 msgid "No requests with this status."
 msgstr "මෙම තත්ත්වය සමඟ ඉල්ලීම් නැත."
 
-#: src/i18n.js:87
+#: src/i18n.js:91
 msgid "Page"
 msgstr "පිටුව"
 
@@ -235,15 +243,19 @@ msgstr "කරුණාකර අවසන් දිනයක් තෝරන්
 msgid "Please select departure and arrival cities from the list"
 msgstr "කරුණාකර ලැයිස්තුවෙන් පිටත්වීමේ සහ පැමිණීමේ නගර තෝරන්න"
 
-#: src/i18n.js:85
+#: src/i18n.js:89
 msgid "Previous"
 msgstr "පෙර"
 
-#: src/i18n.js:95
+#: src/i18n.js:99
 msgid "Proposed"
 msgstr "යෝජිත"
 
-#: src/i18n.js:98
+#: src/i18n.js:81
+msgid "Reactivate request"
+msgstr ""
+
+#: src/i18n.js:102
 msgid "Rejected"
 msgstr "ප්‍රතික්ෂේපිත"
 
@@ -251,15 +263,15 @@ msgstr "ප්‍රතික්ෂේපිත"
 msgid "Remove"
 msgstr "ඉවත් කරන්න"
 
-#: src/i18n.js:84
+#: src/i18n.js:88
 msgid "Request pagination"
 msgstr "පේජිනේෂන් ඉල්ලන්න"
 
-#: src/i18n.js:99
+#: src/i18n.js:103
 msgid "Role"
 msgstr "භූමිකාව"
 
-#: src/i18n.js:104
+#: src/i18n.js:108
 msgid "Send"
 msgstr "යවන්න"
 
@@ -267,11 +279,11 @@ msgstr "යවන්න"
 msgid "Sender"
 msgstr "යවන්නා"
 
-#: src/i18n.js:105
+#: src/i18n.js:109
 msgid "Sending..."
 msgstr "යවමින්..."
 
-#: src/i18n.js:83
+#: src/i18n.js:87
 msgid "Status"
 msgstr "තත්ත්වය"
 
@@ -291,23 +303,27 @@ msgstr "අදට"
 msgid "To date (optional)"
 msgstr "අවසන් දිනය (විකල්ප)"
 
-#: src/i18n.js:108
+#: src/i18n.js:112
 msgid "Unread messages"
 msgstr "නොකියවූ පණිවිඩ"
+
+#: src/i18n.js:82
+msgid "Updating..."
+msgstr ""
 
 #: src/i18n.js:68
 msgid "User Not Found"
 msgstr "පරිශීලක හමු නොවීය"
 
-#: src/i18n.js:101
+#: src/i18n.js:105
 msgid "Write message"
 msgstr "පණිවිඩයක් ලියන්න"
 
-#: src/i18n.js:103
+#: src/i18n.js:107
 msgid "Write your message..."
 msgstr "ඔබගේ පණිවිඩය ලියන්න..."
 
-#: src/i18n.js:106
+#: src/i18n.js:110
 msgid "You"
 msgstr "ඔබ"
 
@@ -315,6 +331,6 @@ msgstr "ඔබ"
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "ඔබ පද්ධතියේ ලියාපදිංචි වී නොමැත. කරුණාකර පළමුව Telegram bot හරහා ලියාපදිංචි වන්න."
 
-#: src/i18n.js:94
+#: src/i18n.js:98
 msgid "Your request"
 msgstr "ඔබගේ ඉල්ලීම"

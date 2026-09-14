@@ -11,7 +11,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:97
+#: src/i18n.js:101
 msgid "Accepted"
 msgstr "स्वीकृत"
 
@@ -35,13 +35,17 @@ msgstr "आगमन सहर"
 msgid "Arrival country"
 msgstr "आगमन देश"
 
-#: src/i18n.js:107
+#: src/i18n.js:111
 msgid "Back"
 msgstr "पछाडि"
 
 #: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "सामान टिप्पणीहरू"
+
+#: src/i18n.js:80
+msgid "Cancel request"
+msgstr ""
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -55,11 +59,11 @@ msgstr "पहिले शहर छान्नुहोस्"
 msgid "Choose a country first"
 msgstr "पहिले देश छान्नुहोस्"
 
-#: src/i18n.js:80
+#: src/i18n.js:84
 msgid "Close"
 msgstr "बन्द गर्नुहोस्"
 
-#: src/i18n.js:81
+#: src/i18n.js:85
 msgid "Comment"
 msgstr "टिप्पणी गर्नुहोस्"
 
@@ -67,15 +71,15 @@ msgstr "टिप्पणी गर्नुहोस्"
 msgid "Completed"
 msgstr "पूरा भयो"
 
-#: src/i18n.js:96
+#: src/i18n.js:100
 msgid "Contacted"
 msgstr "सम्पर्क गरिएको"
 
-#: src/i18n.js:92
+#: src/i18n.js:96
 msgid "Could not load your matches."
 msgstr "तपाईंका मिलानहरू लोड गर्न सकिएन।"
 
-#: src/i18n.js:110
+#: src/i18n.js:114
 msgid "Could not load your messages."
 msgstr "तपाईंका सन्देशहरू लोड गर्न सकिएन।"
 
@@ -83,9 +87,13 @@ msgstr "तपाईंका सन्देशहरू लोड गर्न
 msgid "Could not load your requests."
 msgstr "तपाईंका अनुरोधहरू लोड गर्न सकिएन।"
 
-#: src/i18n.js:111
+#: src/i18n.js:115
 msgid "Could not send your message."
 msgstr "तपाईंको सन्देश पठाउन सकिएन।"
+
+#: src/i18n.js:83
+msgid "Could not update this request."
+msgstr ""
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -95,7 +103,7 @@ msgstr "देश वा सहर"
 msgid "Courier"
 msgstr "कुरियर"
 
-#: src/i18n.js:82
+#: src/i18n.js:86
 msgid "Created"
 msgstr "सिर्जना गरियो"
 
@@ -155,19 +163,19 @@ msgstr "लोड गर्दै..."
 msgid "Looking for courier"
 msgstr "कुरियरको खोजीमा"
 
-#: src/i18n.js:93
+#: src/i18n.js:97
 msgid "Matched with"
 msgstr "यससँग मिलान"
 
-#: src/i18n.js:89
+#: src/i18n.js:93
 msgid "Matches"
 msgstr "मिलानहरू"
 
-#: src/i18n.js:102
+#: src/i18n.js:106
 msgid "Message to"
 msgstr "यसलाई सन्देश"
 
-#: src/i18n.js:100
+#: src/i18n.js:104
 msgid "Messages"
 msgstr "सन्देशहरू"
 
@@ -183,15 +191,15 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "मेरा अनुरोधहरू"
 
-#: src/i18n.js:88
+#: src/i18n.js:92
 msgid "New"
 msgstr "नयाँ"
 
-#: src/i18n.js:90
+#: src/i18n.js:94
 msgid "New matches"
 msgstr "नयाँ मिलानहरू"
 
-#: src/i18n.js:86
+#: src/i18n.js:90
 msgid "Next"
 msgstr "अर्को"
 
@@ -199,7 +207,7 @@ msgstr "अर्को"
 msgid "No end date"
 msgstr "अन्तिम मिति छैन"
 
-#: src/i18n.js:91
+#: src/i18n.js:95
 msgid "No matches yet."
 msgstr "अहिलेसम्म कुनै मिलान छैन।"
 
@@ -207,7 +215,7 @@ msgstr "अहिलेसम्म कुनै मिलान छैन।"
 msgid "no matching cities found, try to write in english"
 msgstr "मिल्ने सहर फेला परेन, अंग्रेजीमा लेख्ने प्रयास गर्नुहोस्"
 
-#: src/i18n.js:109
+#: src/i18n.js:113
 msgid "No messages yet."
 msgstr "अहिलेसम्म कुनै सन्देश छैन।"
 
@@ -215,7 +223,7 @@ msgstr "अहिलेसम्म कुनै सन्देश छैन।
 msgid "No requests with this status."
 msgstr "यो स्थिति संग कुनै अनुरोध छैन।"
 
-#: src/i18n.js:87
+#: src/i18n.js:91
 msgid "Page"
 msgstr "पृष्ठ"
 
@@ -235,15 +243,19 @@ msgstr "कृपया अन्त्य मिति चयन गर्न�
 msgid "Please select departure and arrival cities from the list"
 msgstr "कृपया सूचीबाट प्रस्थान र आगमन सहर छान्नुहोस्"
 
-#: src/i18n.js:85
+#: src/i18n.js:89
 msgid "Previous"
 msgstr "अघिल्लो"
 
-#: src/i18n.js:95
+#: src/i18n.js:99
 msgid "Proposed"
 msgstr "प्रस्तावित"
 
-#: src/i18n.js:98
+#: src/i18n.js:81
+msgid "Reactivate request"
+msgstr ""
+
+#: src/i18n.js:102
 msgid "Rejected"
 msgstr "अस्वीकृत"
 
@@ -251,15 +263,15 @@ msgstr "अस्वीकृत"
 msgid "Remove"
 msgstr "हटाउनुहोस्"
 
-#: src/i18n.js:84
+#: src/i18n.js:88
 msgid "Request pagination"
 msgstr "पृष्ठांकन अनुरोध गर्नुहोस्"
 
-#: src/i18n.js:99
+#: src/i18n.js:103
 msgid "Role"
 msgstr "भूमिका"
 
-#: src/i18n.js:104
+#: src/i18n.js:108
 msgid "Send"
 msgstr "पठाउनुहोस्"
 
@@ -267,11 +279,11 @@ msgstr "पठाउनुहोस्"
 msgid "Sender"
 msgstr "प्रेषक"
 
-#: src/i18n.js:105
+#: src/i18n.js:109
 msgid "Sending..."
 msgstr "पठाउँदै..."
 
-#: src/i18n.js:83
+#: src/i18n.js:87
 msgid "Status"
 msgstr "स्थिति"
 
@@ -291,23 +303,27 @@ msgstr "आज सम्म"
 msgid "To date (optional)"
 msgstr "अन्तिम मिति (वैकल्पिक)"
 
-#: src/i18n.js:108
+#: src/i18n.js:112
 msgid "Unread messages"
 msgstr "नपढिएका सन्देशहरू"
+
+#: src/i18n.js:82
+msgid "Updating..."
+msgstr ""
 
 #: src/i18n.js:68
 msgid "User Not Found"
 msgstr "प्रयोगकर्ता फेला परेन"
 
-#: src/i18n.js:101
+#: src/i18n.js:105
 msgid "Write message"
 msgstr "सन्देश लेख्नुहोस्"
 
-#: src/i18n.js:103
+#: src/i18n.js:107
 msgid "Write your message..."
 msgstr "आफ्नो सन्देश लेख्नुहोस्..."
 
-#: src/i18n.js:106
+#: src/i18n.js:110
 msgid "You"
 msgstr "तपाईं"
 
@@ -315,6 +331,6 @@ msgstr "तपाईं"
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "तपाईं प्रणालीमा दर्ता हुनुहुन्न। कृपया पहिले टेलिग्राम बोट मार्फत दर्ता गर्नुहोस्।"
 
-#: src/i18n.js:94
+#: src/i18n.js:98
 msgid "Your request"
 msgstr "तपाईंको अनुरोध"
