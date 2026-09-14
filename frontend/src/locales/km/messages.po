@@ -45,7 +45,7 @@ msgstr "មតិយោបល់លើឥវ៉ាន់"
 
 #: src/i18n.js:80
 msgid "Cancel request"
-msgstr ""
+msgstr "បោះបង់សំណើ"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -93,7 +93,7 @@ msgstr "មិនអាចផ្ញើសាររបស់អ្នកបាន
 
 #: src/i18n.js:83
 msgid "Could not update this request."
-msgstr ""
+msgstr "មិនអាចធ្វើបច្ចុប្បន្នភាពសំណើនេះបានទេ។"
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -253,7 +253,7 @@ msgstr "បានស្នើ"
 
 #: src/i18n.js:81
 msgid "Reactivate request"
-msgstr ""
+msgstr "ដំណើរការសំណើឡើងវិញ"
 
 #: src/i18n.js:102
 msgid "Rejected"
@@ -309,7 +309,7 @@ msgstr "សារមិនទាន់អាន"
 
 #: src/i18n.js:82
 msgid "Updating..."
-msgstr ""
+msgstr "កំពុងធ្វើបច្ចុប្បន្នភាព..."
 
 #: src/i18n.js:68
 msgid "User Not Found"

@@ -45,7 +45,7 @@ msgstr "బ్యాగేజీ వ్యాఖ్యలు"
 
 #: src/i18n.js:80
 msgid "Cancel request"
-msgstr ""
+msgstr "అభ్యర్థనను రద్దు చేయండి"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -93,7 +93,7 @@ msgstr "మీ సందేశాన్ని పంపడం సాధ్యం
 
 #: src/i18n.js:83
 msgid "Could not update this request."
-msgstr ""
+msgstr "ఈ అభ్యర్థనను నవీకరించడం సాధ్యం కాలేదు."
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -253,7 +253,7 @@ msgstr "ప్రతిపాదించబడింది"
 
 #: src/i18n.js:81
 msgid "Reactivate request"
-msgstr ""
+msgstr "అభ్యర్థనను మళ్లీ సక్రియం చేయండి"
 
 #: src/i18n.js:102
 msgid "Rejected"
@@ -309,7 +309,7 @@ msgstr "చదవని సందేశాలు"
 
 #: src/i18n.js:82
 msgid "Updating..."
-msgstr ""
+msgstr "నవీకరిస్తోంది..."
 
 #: src/i18n.js:68
 msgid "User Not Found"

@@ -45,7 +45,7 @@ msgstr "Comentarii la bagaje"
 
 #: src/i18n.js:80
 msgid "Cancel request"
-msgstr ""
+msgstr "Anulează solicitarea"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -93,7 +93,7 @@ msgstr "Mesajul tău nu a putut fi trimis."
 
 #: src/i18n.js:83
 msgid "Could not update this request."
-msgstr ""
+msgstr "Această solicitare nu a putut fi actualizată."
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -253,7 +253,7 @@ msgstr "Propus"
 
 #: src/i18n.js:81
 msgid "Reactivate request"
-msgstr ""
+msgstr "Reactivează solicitarea"
 
 #: src/i18n.js:102
 msgid "Rejected"
@@ -309,7 +309,7 @@ msgstr "Mesaje necitite"
 
 #: src/i18n.js:82
 msgid "Updating..."
-msgstr ""
+msgstr "Se actualizează..."
 
 #: src/i18n.js:68
 msgid "User Not Found"

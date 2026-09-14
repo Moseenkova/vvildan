@@ -45,7 +45,7 @@ msgstr "Commenti sui bagagli"
 
 #: src/i18n.js:80
 msgid "Cancel request"
-msgstr ""
+msgstr "Annulla richiesta"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -93,7 +93,7 @@ msgstr "Impossibile inviare il tuo messaggio."
 
 #: src/i18n.js:83
 msgid "Could not update this request."
-msgstr ""
+msgstr "Impossibile aggiornare questa richiesta."
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -253,7 +253,7 @@ msgstr "Proposto"
 
 #: src/i18n.js:81
 msgid "Reactivate request"
-msgstr ""
+msgstr "Riattiva richiesta"
 
 #: src/i18n.js:102
 msgid "Rejected"
@@ -309,7 +309,7 @@ msgstr "Messaggi non letti"
 
 #: src/i18n.js:82
 msgid "Updating..."
-msgstr ""
+msgstr "Aggiornamento..."
 
 #: src/i18n.js:68
 msgid "User Not Found"

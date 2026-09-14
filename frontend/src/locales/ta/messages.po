@@ -45,7 +45,7 @@ msgstr "பேக்கேஜ் கருத்துகள்"
 
 #: src/i18n.js:80
 msgid "Cancel request"
-msgstr ""
+msgstr "கோரிக்கையை ரத்துசெய்"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -93,7 +93,7 @@ msgstr "உங்கள் செய்தியை அனுப்ப முட
 
 #: src/i18n.js:83
 msgid "Could not update this request."
-msgstr ""
+msgstr "இந்தக் கோரிக்கையைப் புதுப்பிக்க முடியவில்லை."
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -253,7 +253,7 @@ msgstr "பரிந்துரைக்கப்பட்டது"
 
 #: src/i18n.js:81
 msgid "Reactivate request"
-msgstr ""
+msgstr "கோரிக்கையை மீண்டும் செயல்படுத்து"
 
 #: src/i18n.js:102
 msgid "Rejected"
@@ -309,7 +309,7 @@ msgstr "படிக்காத செய்திகள்"
 
 #: src/i18n.js:82
 msgid "Updating..."
-msgstr ""
+msgstr "புதுப்பிக்கிறது..."
 
 #: src/i18n.js:68
 msgid "User Not Found"

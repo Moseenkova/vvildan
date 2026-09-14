@@ -45,7 +45,7 @@ msgstr "સામાન ટિપ્પણીઓ"
 
 #: src/i18n.js:80
 msgid "Cancel request"
-msgstr ""
+msgstr "વિનંતી રદ કરો"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -93,7 +93,7 @@ msgstr "તમારો સંદેશ મોકલી શકાયો નથ�
 
 #: src/i18n.js:83
 msgid "Could not update this request."
-msgstr ""
+msgstr "આ વિનંતી અપડેટ કરી શકાઈ નથી."
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -253,7 +253,7 @@ msgstr "પ્રસ્તાવિત"
 
 #: src/i18n.js:81
 msgid "Reactivate request"
-msgstr ""
+msgstr "વિનંતી ફરી સક્રિય કરો"
 
 #: src/i18n.js:102
 msgid "Rejected"
@@ -309,7 +309,7 @@ msgstr "ન વાંચેલા સંદેશા"
 
 #: src/i18n.js:82
 msgid "Updating..."
-msgstr ""
+msgstr "અપડેટ થઈ રહ્યું છે..."
 
 #: src/i18n.js:68
 msgid "User Not Found"

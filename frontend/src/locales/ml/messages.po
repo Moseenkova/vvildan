@@ -45,7 +45,7 @@ msgstr "ബാഗേജ് കമൻ്റുകൾ"
 
 #: src/i18n.js:80
 msgid "Cancel request"
-msgstr ""
+msgstr "അഭ്യർത്ഥന റദ്ദാക്കുക"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -93,7 +93,7 @@ msgstr "നിങ്ങളുടെ സന്ദേശം അയയ്ക്ക�
 
 #: src/i18n.js:83
 msgid "Could not update this request."
-msgstr ""
+msgstr "ഈ അഭ്യർത്ഥന പുതുക്കാനായില്ല."
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -253,7 +253,7 @@ msgstr "നിർദ്ദേശിച്ചത്"
 
 #: src/i18n.js:81
 msgid "Reactivate request"
-msgstr ""
+msgstr "അഭ്യർത്ഥന വീണ്ടും സജീവമാക്കുക"
 
 #: src/i18n.js:102
 msgid "Rejected"
@@ -309,7 +309,7 @@ msgstr "വായിക്കാത്ത സന്ദേശങ്ങൾ"
 
 #: src/i18n.js:82
 msgid "Updating..."
-msgstr ""
+msgstr "പുതുക്കുന്നു..."
 
 #: src/i18n.js:68
 msgid "User Not Found"

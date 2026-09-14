@@ -45,7 +45,7 @@ msgstr "手荷物に関するコメント"
 
 #: src/i18n.js:80
 msgid "Cancel request"
-msgstr ""
+msgstr "リクエストをキャンセル"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -93,7 +93,7 @@ msgstr "メッセージを送信できませんでした。"
 
 #: src/i18n.js:83
 msgid "Could not update this request."
-msgstr ""
+msgstr "このリクエストを更新できませんでした。"
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -253,7 +253,7 @@ msgstr "提案済み"
 
 #: src/i18n.js:81
 msgid "Reactivate request"
-msgstr ""
+msgstr "リクエストを再有効化"
 
 #: src/i18n.js:102
 msgid "Rejected"
@@ -309,7 +309,7 @@ msgstr "未読メッセージ"
 
 #: src/i18n.js:82
 msgid "Updating..."
-msgstr ""
+msgstr "更新中..."
 
 #: src/i18n.js:68
 msgid "User Not Found"

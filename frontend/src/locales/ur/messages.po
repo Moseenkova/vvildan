@@ -45,7 +45,7 @@ msgstr "سامان کے تبصرے"
 
 #: src/i18n.js:80
 msgid "Cancel request"
-msgstr ""
+msgstr "درخواست منسوخ کریں"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -93,7 +93,7 @@ msgstr "آپ کا پیغام نہیں بھیجا جا سکا۔"
 
 #: src/i18n.js:83
 msgid "Could not update this request."
-msgstr ""
+msgstr "اس درخواست کو اپ ڈیٹ نہیں کیا جا سکا۔"
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -253,7 +253,7 @@ msgstr "تجویز کردہ"
 
 #: src/i18n.js:81
 msgid "Reactivate request"
-msgstr ""
+msgstr "درخواست دوبارہ فعال کریں"
 
 #: src/i18n.js:102
 msgid "Rejected"
@@ -309,7 +309,7 @@ msgstr "بغیر پڑھے پیغامات"
 
 #: src/i18n.js:82
 msgid "Updating..."
-msgstr ""
+msgstr "اپ ڈیٹ ہو رہا ہے..."
 
 #: src/i18n.js:68
 msgid "User Not Found"

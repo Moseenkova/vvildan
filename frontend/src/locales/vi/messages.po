@@ -45,7 +45,7 @@ msgstr "Nhận xét về hành lý"
 
 #: src/i18n.js:80
 msgid "Cancel request"
-msgstr ""
+msgstr "Hủy yêu cầu"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -93,7 +93,7 @@ msgstr "Không thể gửi tin nhắn của bạn."
 
 #: src/i18n.js:83
 msgid "Could not update this request."
-msgstr ""
+msgstr "Không thể cập nhật yêu cầu này."
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -253,7 +253,7 @@ msgstr "Được đề xuất"
 
 #: src/i18n.js:81
 msgid "Reactivate request"
-msgstr ""
+msgstr "Kích hoạt lại yêu cầu"
 
 #: src/i18n.js:102
 msgid "Rejected"
@@ -309,7 +309,7 @@ msgstr "Tin nhắn chưa đọc"
 
 #: src/i18n.js:82
 msgid "Updating..."
-msgstr ""
+msgstr "Đang cập nhật..."
 
 #: src/i18n.js:68
 msgid "User Not Found"

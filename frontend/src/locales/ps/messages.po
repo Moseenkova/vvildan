@@ -45,7 +45,7 @@ msgstr "د سامان تبصرې"
 
 #: src/i18n.js:80
 msgid "Cancel request"
-msgstr ""
+msgstr "غوښتنه لغوه کړئ"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -93,7 +93,7 @@ msgstr "ستاسو پیغام ونه لېږل شو."
 
 #: src/i18n.js:83
 msgid "Could not update this request."
-msgstr ""
+msgstr "دا غوښتنه تازه نه شوه."
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -253,7 +253,7 @@ msgstr "وړاندیز شوی"
 
 #: src/i18n.js:81
 msgid "Reactivate request"
-msgstr ""
+msgstr "غوښتنه بیا فعاله کړئ"
 
 #: src/i18n.js:102
 msgid "Rejected"
@@ -309,7 +309,7 @@ msgstr "نالوستل شوي پیغامونه"
 
 #: src/i18n.js:82
 msgid "Updating..."
-msgstr ""
+msgstr "د تازه کولو په حال کې..."
 
 #: src/i18n.js:68
 msgid "User Not Found"

@@ -45,7 +45,7 @@ msgstr "የሻንጣ አስተያየቶች"
 
 #: src/i18n.js:80
 msgid "Cancel request"
-msgstr ""
+msgstr "ጥያቄውን ሰርዝ"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -93,7 +93,7 @@ msgstr "መልዕክትዎን መላክ አልተቻለም።"
 
 #: src/i18n.js:83
 msgid "Could not update this request."
-msgstr ""
+msgstr "ይህን ጥያቄ ማዘመን አልተቻለም።"
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -253,7 +253,7 @@ msgstr "የቀረበ"
 
 #: src/i18n.js:81
 msgid "Reactivate request"
-msgstr ""
+msgstr "ጥያቄውን እንደገና አግብር"
 
 #: src/i18n.js:102
 msgid "Rejected"
@@ -309,7 +309,7 @@ msgstr "ያልተነበቡ መልዕክቶች"
 
 #: src/i18n.js:82
 msgid "Updating..."
-msgstr ""
+msgstr "በማዘመን ላይ..."
 
 #: src/i18n.js:68
 msgid "User Not Found"

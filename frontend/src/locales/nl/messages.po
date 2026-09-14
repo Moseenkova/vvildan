@@ -45,7 +45,7 @@ msgstr "Opmerkingen over bagage"
 
 #: src/i18n.js:80
 msgid "Cancel request"
-msgstr ""
+msgstr "Verzoek annuleren"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -93,7 +93,7 @@ msgstr "Je bericht kon niet worden verzonden."
 
 #: src/i18n.js:83
 msgid "Could not update this request."
-msgstr ""
+msgstr "Dit verzoek kon niet worden bijgewerkt."
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -253,7 +253,7 @@ msgstr "Voorgesteld"
 
 #: src/i18n.js:81
 msgid "Reactivate request"
-msgstr ""
+msgstr "Verzoek opnieuw activeren"
 
 #: src/i18n.js:102
 msgid "Rejected"
@@ -309,7 +309,7 @@ msgstr "Ongelezen berichten"
 
 #: src/i18n.js:82
 msgid "Updating..."
-msgstr ""
+msgstr "Bijwerken..."
 
 #: src/i18n.js:68
 msgid "User Not Found"

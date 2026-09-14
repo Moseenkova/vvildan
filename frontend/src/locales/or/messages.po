@@ -45,7 +45,7 @@ msgstr "ବ୍ୟାଗେଜ୍ ମନ୍ତବ୍ୟଗୁଡିକ |"
 
 #: src/i18n.js:80
 msgid "Cancel request"
-msgstr ""
+msgstr "ଅନୁରୋଧ ବାତିଲ କରନ୍ତୁ"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -93,7 +93,7 @@ msgstr "ଆପଣଙ୍କ ସନ୍ଦେଶ ପଠାଯାଇପାରିଲ�
 
 #: src/i18n.js:83
 msgid "Could not update this request."
-msgstr ""
+msgstr "ଏହି ଅନୁରୋଧକୁ ଅପଡେଟ୍ କରାଯାଇପାରିଲା ନାହିଁ।"
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -253,7 +253,7 @@ msgstr "ପ୍ରସ୍ତାବିତ"
 
 #: src/i18n.js:81
 msgid "Reactivate request"
-msgstr ""
+msgstr "ଅନୁରୋଧ ପୁନଃ ସକ୍ରିୟ କରନ୍ତୁ"
 
 #: src/i18n.js:102
 msgid "Rejected"
@@ -309,7 +309,7 @@ msgstr "ପଢ଼ା ହୋଇନଥିବା ସନ୍ଦେଶ"
 
 #: src/i18n.js:82
 msgid "Updating..."
-msgstr ""
+msgstr "ଅପଡେଟ୍ ହେଉଛି..."
 
 #: src/i18n.js:68
 msgid "User Not Found"

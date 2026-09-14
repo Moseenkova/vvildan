@@ -45,7 +45,7 @@ msgstr "ගමන් මලු අදහස්"
 
 #: src/i18n.js:80
 msgid "Cancel request"
-msgstr ""
+msgstr "ඉල්ලීම අවලංගු කරන්න"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -93,7 +93,7 @@ msgstr "ඔබගේ පණිවිඩය යැවීමට නොහැකි
 
 #: src/i18n.js:83
 msgid "Could not update this request."
-msgstr ""
+msgstr "මෙම ඉල්ලීම යාවත්කාලීන කළ නොහැකි විය."
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -253,7 +253,7 @@ msgstr "යෝජිත"
 
 #: src/i18n.js:81
 msgid "Reactivate request"
-msgstr ""
+msgstr "ඉල්ලීම නැවත සක්‍රිය කරන්න"
 
 #: src/i18n.js:102
 msgid "Rejected"
@@ -309,7 +309,7 @@ msgstr "නොකියවූ පණිවිඩ"
 
 #: src/i18n.js:82
 msgid "Updating..."
-msgstr ""
+msgstr "යාවත්කාලීන වෙමින්..."
 
 #: src/i18n.js:68
 msgid "User Not Found"

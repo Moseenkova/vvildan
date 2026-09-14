@@ -45,7 +45,7 @@ msgstr "Maoni ya mizigo"
 
 #: src/i18n.js:80
 msgid "Cancel request"
-msgstr ""
+msgstr "Ghairi ombi"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -93,7 +93,7 @@ msgstr "Imeshindikana kutuma ujumbe wako."
 
 #: src/i18n.js:83
 msgid "Could not update this request."
-msgstr ""
+msgstr "Ombi hili halikuweza kusasishwa."
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -253,7 +253,7 @@ msgstr "Imependekezwa"
 
 #: src/i18n.js:81
 msgid "Reactivate request"
-msgstr ""
+msgstr "Washa ombi tena"
 
 #: src/i18n.js:102
 msgid "Rejected"
@@ -309,7 +309,7 @@ msgstr "Ujumbe ambao haujasomwa"
 
 #: src/i18n.js:82
 msgid "Updating..."
-msgstr ""
+msgstr "Inasasisha..."
 
 #: src/i18n.js:68
 msgid "User Not Found"

@@ -45,7 +45,7 @@ msgstr "Awọn asọye ẹru"
 
 #: src/i18n.js:80
 msgid "Cancel request"
-msgstr ""
+msgstr "Fagilé ìbéèrè"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -93,7 +93,7 @@ msgstr "A kò lè fi ìfiránṣẹ́ rẹ ránṣẹ́."
 
 #: src/i18n.js:83
 msgid "Could not update this request."
-msgstr ""
+msgstr "A kò lè ṣe àfikún ìbéèrè yìí."
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -253,7 +253,7 @@ msgstr "Ti dabaa"
 
 #: src/i18n.js:81
 msgid "Reactivate request"
-msgstr ""
+msgstr "Mú ìbéèrè ṣiṣẹ́ padà"
 
 #: src/i18n.js:102
 msgid "Rejected"
@@ -309,7 +309,7 @@ msgstr "Àwọn ìfiránṣẹ́ tí a kò tíì kà"
 
 #: src/i18n.js:82
 msgid "Updating..."
-msgstr ""
+msgstr "Ń ṣe àfikún..."
 
 #: src/i18n.js:68
 msgid "User Not Found"

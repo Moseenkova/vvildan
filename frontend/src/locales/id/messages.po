@@ -45,7 +45,7 @@ msgstr "Komentar bagasi"
 
 #: src/i18n.js:80
 msgid "Cancel request"
-msgstr ""
+msgstr "Batalkan permintaan"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -93,7 +93,7 @@ msgstr "Pesan Anda tidak dapat dikirim."
 
 #: src/i18n.js:83
 msgid "Could not update this request."
-msgstr ""
+msgstr "Permintaan ini tidak dapat diperbarui."
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -253,7 +253,7 @@ msgstr "Diusulkan"
 
 #: src/i18n.js:81
 msgid "Reactivate request"
-msgstr ""
+msgstr "Aktifkan kembali permintaan"
 
 #: src/i18n.js:102
 msgid "Rejected"
@@ -309,7 +309,7 @@ msgstr "Pesan belum dibaca"
 
 #: src/i18n.js:82
 msgid "Updating..."
-msgstr ""
+msgstr "Memperbarui..."
 
 #: src/i18n.js:68
 msgid "User Not Found"

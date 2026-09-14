@@ -45,7 +45,7 @@ msgstr "सामान टिप्पणीहरू"
 
 #: src/i18n.js:80
 msgid "Cancel request"
-msgstr ""
+msgstr "अनुरोध रद्द गर्नुहोस्"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -93,7 +93,7 @@ msgstr "तपाईंको सन्देश पठाउन सकिएन
 
 #: src/i18n.js:83
 msgid "Could not update this request."
-msgstr ""
+msgstr "यो अनुरोध अपडेट गर्न सकिएन।"
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -253,7 +253,7 @@ msgstr "प्रस्तावित"
 
 #: src/i18n.js:81
 msgid "Reactivate request"
-msgstr ""
+msgstr "अनुरोध पुनः सक्रिय गर्नुहोस्"
 
 #: src/i18n.js:102
 msgid "Rejected"
@@ -309,7 +309,7 @@ msgstr "नपढिएका सन्देशहरू"
 
 #: src/i18n.js:82
 msgid "Updating..."
-msgstr ""
+msgstr "अपडेट हुँदैछ..."
 
 #: src/i18n.js:68
 msgid "User Not Found"

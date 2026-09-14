@@ -45,7 +45,7 @@ msgstr "ความคิดเห็นเกี่ยวกับสัมภ
 
 #: src/i18n.js:80
 msgid "Cancel request"
-msgstr ""
+msgstr "ยกเลิกคำขอ"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -93,7 +93,7 @@ msgstr "ไม่สามารถส่งข้อความของคุ
 
 #: src/i18n.js:83
 msgid "Could not update this request."
-msgstr ""
+msgstr "ไม่สามารถอัปเดตคำขอนี้ได้"
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -253,7 +253,7 @@ msgstr "เสนอแล้ว"
 
 #: src/i18n.js:81
 msgid "Reactivate request"
-msgstr ""
+msgstr "เปิดใช้งานคำขออีกครั้ง"
 
 #: src/i18n.js:102
 msgid "Rejected"
@@ -309,7 +309,7 @@ msgstr "ข้อความที่ยังไม่ได้อ่าน"
 
 #: src/i18n.js:82
 msgid "Updating..."
-msgstr ""
+msgstr "กำลังอัปเดต..."
 
 #: src/i18n.js:68
 msgid "User Not Found"

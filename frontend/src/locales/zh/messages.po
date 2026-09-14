@@ -45,7 +45,7 @@ msgstr "行李备注"
 
 #: src/i18n.js:80
 msgid "Cancel request"
-msgstr ""
+msgstr "取消请求"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -93,7 +93,7 @@ msgstr "无法发送您的消息。"
 
 #: src/i18n.js:83
 msgid "Could not update this request."
-msgstr ""
+msgstr "无法更新此请求。"
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -253,7 +253,7 @@ msgstr "已提议"
 
 #: src/i18n.js:81
 msgid "Reactivate request"
-msgstr ""
+msgstr "重新激活请求"
 
 #: src/i18n.js:102
 msgid "Rejected"
@@ -309,7 +309,7 @@ msgstr "未读消息"
 
 #: src/i18n.js:82
 msgid "Updating..."
-msgstr ""
+msgstr "正在更新..."
 
 #: src/i18n.js:68
 msgid "User Not Found"

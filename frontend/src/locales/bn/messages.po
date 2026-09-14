@@ -45,7 +45,7 @@ msgstr "লাগেজ মন্তব্য"
 
 #: src/i18n.js:80
 msgid "Cancel request"
-msgstr ""
+msgstr "অনুরোধ বাতিল করুন"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -93,7 +93,7 @@ msgstr "আপনার বার্তা পাঠানো যায়নি
 
 #: src/i18n.js:83
 msgid "Could not update this request."
-msgstr ""
+msgstr "এই অনুরোধটি আপডেট করা যায়নি।"
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -253,7 +253,7 @@ msgstr "প্রস্তাবিত"
 
 #: src/i18n.js:81
 msgid "Reactivate request"
-msgstr ""
+msgstr "অনুরোধ পুনরায় সক্রিয় করুন"
 
 #: src/i18n.js:102
 msgid "Rejected"
@@ -309,7 +309,7 @@ msgstr "অপঠিত বার্তা"
 
 #: src/i18n.js:82
 msgid "Updating..."
-msgstr ""
+msgstr "আপডেট করা হচ্ছে..."
 
 #: src/i18n.js:68
 msgid "User Not Found"

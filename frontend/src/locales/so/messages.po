@@ -45,7 +45,7 @@ msgstr "Faallooyin shandadaha"
 
 #: src/i18n.js:80
 msgid "Cancel request"
-msgstr ""
+msgstr "Jooji codsiga"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -93,7 +93,7 @@ msgstr "Farriintaada lama diri karin."
 
 #: src/i18n.js:83
 msgid "Could not update this request."
-msgstr ""
+msgstr "Codsigan lama cusboonaysiin karin."
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -253,7 +253,7 @@ msgstr "La soo jeediyey"
 
 #: src/i18n.js:81
 msgid "Reactivate request"
-msgstr ""
+msgstr "Dib u hawlgeli codsiga"
 
 #: src/i18n.js:102
 msgid "Rejected"
@@ -309,7 +309,7 @@ msgstr "Farriimaha aan la akhriyin"
 
 #: src/i18n.js:82
 msgid "Updating..."
-msgstr ""
+msgstr "Waa la cusboonaysiinayaa..."
 
 #: src/i18n.js:68
 msgid "User Not Found"

@@ -45,7 +45,7 @@ msgstr "ခရီးဆောင်အိတ်မှတ်ချက်"
 
 #: src/i18n.js:80
 msgid "Cancel request"
-msgstr ""
+msgstr "တောင်းဆိုချက်ကို ပယ်ဖျက်ရန်"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -93,7 +93,7 @@ msgstr "သင့်မက်ဆေ့ချ်ကို ပို့၍မရ�
 
 #: src/i18n.js:83
 msgid "Could not update this request."
-msgstr ""
+msgstr "ဤတောင်းဆိုချက်ကို အပ်ဒိတ်လုပ်၍ မရပါ။"
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -253,7 +253,7 @@ msgstr "အဆိုပြုထားသည်"
 
 #: src/i18n.js:81
 msgid "Reactivate request"
-msgstr ""
+msgstr "တောင်းဆိုချက်ကို ပြန်လည်အသက်သွင်းရန်"
 
 #: src/i18n.js:102
 msgid "Rejected"
@@ -309,7 +309,7 @@ msgstr "မဖတ်ရသေးသော မက်ဆေ့ချ်မျာ�
 
 #: src/i18n.js:82
 msgid "Updating..."
-msgstr ""
+msgstr "အပ်ဒိတ်လုပ်နေသည်..."
 
 #: src/i18n.js:68
 msgid "User Not Found"
