@@ -1,0 +1,125 @@
+import logging
+
+from jinja2 import PackageLoader
+from sqladmin import Admin, ModelView
+from sqladmin.authentication import AuthenticationBackend
+from sqlalchemy import select
+from starlette.requests import Request as StarletteRequest
+
+from src.config import get_settings
+from src.database import (
+    City,
+    CityName,
+    Country,
+    CountryName,
+    CustomerTgTopic,
+    Match,
+    RefreshToken,
+    Request,
+    User,
+    async_session_maker,
+    engine,
+)
+from src.matches.service import notify_match_users
+
+
+class AdminAuthentication(AuthenticationBackend):
+    async def login(self, request: StarletteRequest) -> bool:
+        form = await request.form()
+        username = form.get("username")
+        password = form.get("password")
+        if not isinstance(username, str) or not isinstance(password, str):
+            return False
+
+        async with async_session_maker() as session:
+            user = await session.scalar(select(User).where(User.username == username))
+
+        if user is None or not user.is_superuser or not user.verify_password(password):
+            return False
+
+        request.session.update({"admin_user_id": user.id})
+        return True
+
+    async def logout(self, request: StarletteRequest) -> bool:
+        request.session.clear()
+        return True
+
+    async def authenticate(self, request: StarletteRequest) -> bool:
+        user_id = request.session.get("admin_user_id")
+        if not isinstance(user_id, int):
+            return False
+
+        async with async_session_maker() as session:
+            user = await session.get(User, user_id)
+        return user is not None and user.is_superuser
+
+
+class UserView(ModelView, model=User):
+    column_exclude_list = [User.password_hash, User.refresh_tokens, User.matches_seen_at]
+    form_excluded_columns = [User.password_hash, User.matches_seen_at]
+
+
+class RequestView(ModelView, model=Request):
+    pass
+
+
+class MatchView(ModelView, model=Match):
+    form_excluded_columns = [Match.sender_seen_at, Match.courier_seen_at]
+
+    async def after_model_change(self, data, model, is_created, request):
+        if not is_created:
+            return None
+        try:
+            await notify_match_users(model.id)
+        except Exception:
+            # The match is already committed; a Telegram outage must not make the
+            # admin retry and accidentally create a duplicate match.
+            logging.exception("Could not notify users about match %s", model.id)
+        return None
+
+
+class CountryView(ModelView, model=Country):
+    form_excluded_columns = [Country.localized_names]
+
+
+class CityView(ModelView, model=City):
+    form_excluded_columns = [City.localized_names]
+
+
+class CountryNameView(ModelView, model=CountryName):
+    pass
+
+
+class CityNameView(ModelView, model=CityName):
+    pass
+
+
+class RefreshTokenView(ModelView, model=RefreshToken):
+    pass
+
+
+class CustomerTgTopicView(ModelView, model=CustomerTgTopic):
+    pass
+
+
+def setup_admin(app) -> Admin:
+    admin = Admin(
+        app,
+        engine,
+        authentication_backend=AdminAuthentication(get_settings().SECRET_KEY),
+    )
+    # This app uses bundled templates only; skip the missing local-template fallback.
+    admin.templates.env.loader = PackageLoader("sqladmin", "templates")
+    for view in (
+        UserView,
+        RequestView,
+        MatchView,
+        CountryView,
+        CityView,
+        CountryNameView,
+        CityNameView,
+        RefreshTokenView,
+        CustomerTgTopicView,
+    ):
+        admin.add_view(view)
+    return admin

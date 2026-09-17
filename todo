@@ -1,0 +1,15 @@
+add rating to all users based on registration date and reviews
+matching flow, add 3rd tab in sidebar for candidates with short candidate detail and rating and comments of other users and history of trips and scores and comments, date of registration
+readme, add command for scripts in /stripts with disctription
+if time is passed change request status from active to expired
+celery task to daily backup db 14 copies max
+test run docker compose
+to review button in my requests if there are
+sort my requests by without close date, than by close date in the future and than reverse by open date
+refactor new page, add checkbox no close date
+refactor new page field with city from, city to
+refactor new page, drop the same style as city from city to
+refactor форма отпрвлена white background
+refactor my requests, status white background
+refactor matching, remove matching with: , replace your request #3 with request details, move write button to
+add button on the bottom "help", "report error"
