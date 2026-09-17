@@ -11,7 +11,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:97
+#: src/i18n.js:101
 msgid "Accepted"
 msgstr "已接受"
 
@@ -35,13 +35,17 @@ msgstr "到达城市"
 msgid "Arrival country"
 msgstr "到达国家"
 
-#: src/i18n.js:107
+#: src/i18n.js:111
 msgid "Back"
 msgstr "返回"
 
 #: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "行李备注"
+
+#: src/i18n.js:80
+msgid "Cancel request"
+msgstr "取消请求"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -55,11 +59,11 @@ msgstr "首先选择城市"
 msgid "Choose a country first"
 msgstr "首先选择一个国家"
 
-#: src/i18n.js:80
+#: src/i18n.js:84
 msgid "Close"
 msgstr "关闭"
 
-#: src/i18n.js:81
+#: src/i18n.js:85
 msgid "Comment"
 msgstr "评论"
 
@@ -67,15 +71,15 @@ msgstr "评论"
 msgid "Completed"
 msgstr "已完成"
 
-#: src/i18n.js:96
+#: src/i18n.js:100
 msgid "Contacted"
 msgstr "已联系"
 
-#: src/i18n.js:92
+#: src/i18n.js:96
 msgid "Could not load your matches."
 msgstr "无法加载您的匹配结果。"
 
-#: src/i18n.js:110
+#: src/i18n.js:114
 msgid "Could not load your messages."
 msgstr "无法加载您的消息。"
 
@@ -83,9 +87,13 @@ msgstr "无法加载您的消息。"
 msgid "Could not load your requests."
 msgstr "无法加载您的请求。"
 
-#: src/i18n.js:111
+#: src/i18n.js:115
 msgid "Could not send your message."
 msgstr "无法发送您的消息。"
+
+#: src/i18n.js:83
+msgid "Could not update this request."
+msgstr "无法更新此请求。"
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -95,7 +103,7 @@ msgstr "国家或城市"
 msgid "Courier"
 msgstr "导游"
 
-#: src/i18n.js:82
+#: src/i18n.js:86
 msgid "Created"
 msgstr "已创建"
 
@@ -155,19 +163,19 @@ msgstr "加载中..."
 msgid "Looking for courier"
 msgstr "寻找配送员"
 
-#: src/i18n.js:93
+#: src/i18n.js:97
 msgid "Matched with"
 msgstr "匹配对象"
 
-#: src/i18n.js:89
+#: src/i18n.js:93
 msgid "Matches"
 msgstr "匹配"
 
-#: src/i18n.js:102
+#: src/i18n.js:106
 msgid "Message to"
 msgstr "发送消息给"
 
-#: src/i18n.js:100
+#: src/i18n.js:104
 msgid "Messages"
 msgstr "消息"
 
@@ -183,15 +191,15 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "我的要求"
 
-#: src/i18n.js:88
+#: src/i18n.js:92
 msgid "New"
 msgstr "新"
 
-#: src/i18n.js:90
+#: src/i18n.js:94
 msgid "New matches"
 msgstr "新匹配"
 
-#: src/i18n.js:86
+#: src/i18n.js:90
 msgid "Next"
 msgstr "下一步"
 
@@ -199,7 +207,7 @@ msgstr "下一步"
 msgid "No end date"
 msgstr "无结束日期"
 
-#: src/i18n.js:91
+#: src/i18n.js:95
 msgid "No matches yet."
 msgstr "暂无匹配。"
 
@@ -207,7 +215,7 @@ msgstr "暂无匹配。"
 msgid "no matching cities found, try to write in english"
 msgstr "未找到匹配的城市，请尝试使用英语输入"
 
-#: src/i18n.js:109
+#: src/i18n.js:113
 msgid "No messages yet."
 msgstr "暂无消息。"
 
@@ -215,7 +223,7 @@ msgstr "暂无消息。"
 msgid "No requests with this status."
 msgstr "没有此状态的请求。"
 
-#: src/i18n.js:87
+#: src/i18n.js:91
 msgid "Page"
 msgstr "页面"
 
@@ -235,15 +243,19 @@ msgstr "请选择结束日期"
 msgid "Please select departure and arrival cities from the list"
 msgstr "请从列表中选择出发城市和到达城市"
 
-#: src/i18n.js:85
+#: src/i18n.js:89
 msgid "Previous"
 msgstr "上一页"
 
-#: src/i18n.js:95
+#: src/i18n.js:99
 msgid "Proposed"
 msgstr "已提议"
 
-#: src/i18n.js:98
+#: src/i18n.js:81
+msgid "Reactivate request"
+msgstr "重新激活请求"
+
+#: src/i18n.js:102
 msgid "Rejected"
 msgstr "已拒绝"
 
@@ -251,15 +263,15 @@ msgstr "已拒绝"
 msgid "Remove"
 msgstr "移除"
 
-#: src/i18n.js:84
+#: src/i18n.js:88
 msgid "Request pagination"
 msgstr "请求分页"
 
-#: src/i18n.js:99
+#: src/i18n.js:103
 msgid "Role"
 msgstr "角色"
 
-#: src/i18n.js:104
+#: src/i18n.js:108
 msgid "Send"
 msgstr "发送"
 
@@ -267,11 +279,11 @@ msgstr "发送"
 msgid "Sender"
 msgstr "发件人"
 
-#: src/i18n.js:105
+#: src/i18n.js:109
 msgid "Sending..."
 msgstr "正在发送..."
 
-#: src/i18n.js:83
+#: src/i18n.js:87
 msgid "Status"
 msgstr "状态"
 
@@ -291,23 +303,27 @@ msgstr "迄今为止"
 msgid "To date (optional)"
 msgstr "结束日期（可选）"
 
-#: src/i18n.js:108
+#: src/i18n.js:112
 msgid "Unread messages"
 msgstr "未读消息"
+
+#: src/i18n.js:82
+msgid "Updating..."
+msgstr "正在更新..."
 
 #: src/i18n.js:68
 msgid "User Not Found"
 msgstr "未找到用户"
 
-#: src/i18n.js:101
+#: src/i18n.js:105
 msgid "Write message"
 msgstr "撰写消息"
 
-#: src/i18n.js:103
+#: src/i18n.js:107
 msgid "Write your message..."
 msgstr "请输入您的消息..."
 
-#: src/i18n.js:106
+#: src/i18n.js:110
 msgid "You"
 msgstr "您"
 
@@ -315,6 +331,6 @@ msgstr "您"
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "您尚未在系统中注册。请先通过 Telegram 机器人注册。"
 
-#: src/i18n.js:94
+#: src/i18n.js:98
 msgid "Your request"
 msgstr "您的请求"

@@ -11,7 +11,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:97
+#: src/i18n.js:101
 msgid "Accepted"
 msgstr "Tinanggap"
 
@@ -35,13 +35,17 @@ msgstr "Lungsod ng pagdating"
 msgid "Arrival country"
 msgstr "Bansa ng pagdating"
 
-#: src/i18n.js:107
+#: src/i18n.js:111
 msgid "Back"
 msgstr "Bumalik"
 
 #: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "Mga komento sa bagahe"
+
+#: src/i18n.js:80
+msgid "Cancel request"
+msgstr "Kanselahin ang request"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -55,11 +59,11 @@ msgstr "Pumili muna ng lungsod"
 msgid "Choose a country first"
 msgstr "Pumili muna ng bansa"
 
-#: src/i18n.js:80
+#: src/i18n.js:84
 msgid "Close"
 msgstr "Isara"
 
-#: src/i18n.js:81
+#: src/i18n.js:85
 msgid "Comment"
 msgstr "Magkomento"
 
@@ -67,15 +71,15 @@ msgstr "Magkomento"
 msgid "Completed"
 msgstr "Nakumpleto"
 
-#: src/i18n.js:96
+#: src/i18n.js:100
 msgid "Contacted"
 msgstr "Nakontak"
 
-#: src/i18n.js:92
+#: src/i18n.js:96
 msgid "Could not load your matches."
 msgstr "Hindi ma-load ang iyong mga tugma."
 
-#: src/i18n.js:110
+#: src/i18n.js:114
 msgid "Could not load your messages."
 msgstr "Hindi ma-load ang iyong mga mensahe."
 
@@ -83,9 +87,13 @@ msgstr "Hindi ma-load ang iyong mga mensahe."
 msgid "Could not load your requests."
 msgstr "Hindi ma-load ang iyong mga kahilingan."
 
-#: src/i18n.js:111
+#: src/i18n.js:115
 msgid "Could not send your message."
 msgstr "Hindi maipadala ang iyong mensahe."
+
+#: src/i18n.js:83
+msgid "Could not update this request."
+msgstr "Hindi ma-update ang request na ito."
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -95,7 +103,7 @@ msgstr "Bansa o lungsod"
 msgid "Courier"
 msgstr "Courier"
 
-#: src/i18n.js:82
+#: src/i18n.js:86
 msgid "Created"
 msgstr "Nilikha"
 
@@ -155,19 +163,19 @@ msgstr "Naglo-load..."
 msgid "Looking for courier"
 msgstr "Naghahanap ng courier"
 
-#: src/i18n.js:93
+#: src/i18n.js:97
 msgid "Matched with"
 msgstr "Katugma ni"
 
-#: src/i18n.js:89
+#: src/i18n.js:93
 msgid "Matches"
 msgstr "Mga tugma"
 
-#: src/i18n.js:102
+#: src/i18n.js:106
 msgid "Message to"
 msgstr "Mensahe para kay"
 
-#: src/i18n.js:100
+#: src/i18n.js:104
 msgid "Messages"
 msgstr "Mga mensahe"
 
@@ -183,15 +191,15 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "Aking Mga Kahilingan"
 
-#: src/i18n.js:88
+#: src/i18n.js:92
 msgid "New"
 msgstr "Bago"
 
-#: src/i18n.js:90
+#: src/i18n.js:94
 msgid "New matches"
 msgstr "Mga bagong tugma"
 
-#: src/i18n.js:86
+#: src/i18n.js:90
 msgid "Next"
 msgstr "Susunod"
 
@@ -199,7 +207,7 @@ msgstr "Susunod"
 msgid "No end date"
 msgstr "Walang petsa ng pagtatapos"
 
-#: src/i18n.js:91
+#: src/i18n.js:95
 msgid "No matches yet."
 msgstr "Wala pang mga tugma."
 
@@ -207,7 +215,7 @@ msgstr "Wala pang mga tugma."
 msgid "no matching cities found, try to write in english"
 msgstr "Walang nahanap na tumutugmang lungsod, subukang magsulat sa Ingles"
 
-#: src/i18n.js:109
+#: src/i18n.js:113
 msgid "No messages yet."
 msgstr "Wala pang mga mensahe."
 
@@ -215,7 +223,7 @@ msgstr "Wala pang mga mensahe."
 msgid "No requests with this status."
 msgstr "Walang mga kahilingan na may ganitong katayuan."
 
-#: src/i18n.js:87
+#: src/i18n.js:91
 msgid "Page"
 msgstr "Pahina"
 
@@ -235,15 +243,19 @@ msgstr "Mangyaring pumili ng petsa ng pagtatapos"
 msgid "Please select departure and arrival cities from the list"
 msgstr "Piliin ang lungsod ng pag-alis at pagdating mula sa listahan"
 
-#: src/i18n.js:85
+#: src/i18n.js:89
 msgid "Previous"
 msgstr "Nakaraang"
 
-#: src/i18n.js:95
+#: src/i18n.js:99
 msgid "Proposed"
 msgstr "Iminungkahi"
 
-#: src/i18n.js:98
+#: src/i18n.js:81
+msgid "Reactivate request"
+msgstr "I-reactivate ang request"
+
+#: src/i18n.js:102
 msgid "Rejected"
 msgstr "Tinanggihan"
 
@@ -251,15 +263,15 @@ msgstr "Tinanggihan"
 msgid "Remove"
 msgstr "Alisin"
 
-#: src/i18n.js:84
+#: src/i18n.js:88
 msgid "Request pagination"
 msgstr "Humiling ng pagination"
 
-#: src/i18n.js:99
+#: src/i18n.js:103
 msgid "Role"
 msgstr "Tungkulin"
 
-#: src/i18n.js:104
+#: src/i18n.js:108
 msgid "Send"
 msgstr "Ipadala"
 
@@ -267,11 +279,11 @@ msgstr "Ipadala"
 msgid "Sender"
 msgstr "Nagpadala"
 
-#: src/i18n.js:105
+#: src/i18n.js:109
 msgid "Sending..."
 msgstr "Ipinapadala..."
 
-#: src/i18n.js:83
+#: src/i18n.js:87
 msgid "Status"
 msgstr "Katayuan"
 
@@ -291,23 +303,27 @@ msgstr "Hanggang ngayon"
 msgid "To date (optional)"
 msgstr "Hanggang petsa (opsyonal)"
 
-#: src/i18n.js:108
+#: src/i18n.js:112
 msgid "Unread messages"
 msgstr "Mga hindi pa nababasang mensahe"
+
+#: src/i18n.js:82
+msgid "Updating..."
+msgstr "Ina-update..."
 
 #: src/i18n.js:68
 msgid "User Not Found"
 msgstr "Hindi Nahanap ang User"
 
-#: src/i18n.js:101
+#: src/i18n.js:105
 msgid "Write message"
 msgstr "Sumulat ng mensahe"
 
-#: src/i18n.js:103
+#: src/i18n.js:107
 msgid "Write your message..."
 msgstr "Isulat ang iyong mensahe..."
 
-#: src/i18n.js:106
+#: src/i18n.js:110
 msgid "You"
 msgstr "Ikaw"
 
@@ -315,6 +331,6 @@ msgstr "Ikaw"
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "Hindi ka nakarehistro sa system. Mangyaring magparehistro muna sa pamamagitan ng Telegram bot."
 
-#: src/i18n.js:94
+#: src/i18n.js:98
 msgid "Your request"
 msgstr "Ang iyong kahilingan"

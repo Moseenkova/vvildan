@@ -11,7 +11,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:97
+#: src/i18n.js:101
 msgid "Accepted"
 msgstr "Imekubaliwa"
 
@@ -35,13 +35,17 @@ msgstr "Mji wa kuwasili"
 msgid "Arrival country"
 msgstr "Nchi ya kuwasili"
 
-#: src/i18n.js:107
+#: src/i18n.js:111
 msgid "Back"
 msgstr "Rudi"
 
 #: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "Maoni ya mizigo"
+
+#: src/i18n.js:80
+msgid "Cancel request"
+msgstr "Ghairi ombi"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -55,11 +59,11 @@ msgstr "Chagua jiji kwanza"
 msgid "Choose a country first"
 msgstr "Chagua nchi kwanza"
 
-#: src/i18n.js:80
+#: src/i18n.js:84
 msgid "Close"
 msgstr "Funga"
 
-#: src/i18n.js:81
+#: src/i18n.js:85
 msgid "Comment"
 msgstr "Maoni"
 
@@ -67,15 +71,15 @@ msgstr "Maoni"
 msgid "Completed"
 msgstr "Imekamilika"
 
-#: src/i18n.js:96
+#: src/i18n.js:100
 msgid "Contacted"
 msgstr "Imewasiliana"
 
-#: src/i18n.js:92
+#: src/i18n.js:96
 msgid "Could not load your matches."
 msgstr "Imeshindikana kupakia zinazolingana nawe."
 
-#: src/i18n.js:110
+#: src/i18n.js:114
 msgid "Could not load your messages."
 msgstr "Imeshindikana kupakia ujumbe wako."
 
@@ -83,9 +87,13 @@ msgstr "Imeshindikana kupakia ujumbe wako."
 msgid "Could not load your requests."
 msgstr "Haikuweza kupakia maombi yako."
 
-#: src/i18n.js:111
+#: src/i18n.js:115
 msgid "Could not send your message."
 msgstr "Imeshindikana kutuma ujumbe wako."
+
+#: src/i18n.js:83
+msgid "Could not update this request."
+msgstr "Ombi hili halikuweza kusasishwa."
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -95,7 +103,7 @@ msgstr "Nchi au jiji"
 msgid "Courier"
 msgstr "Courier"
 
-#: src/i18n.js:82
+#: src/i18n.js:86
 msgid "Created"
 msgstr "Imeundwa"
 
@@ -155,19 +163,19 @@ msgstr "Inapakia..."
 msgid "Looking for courier"
 msgstr "Inatafuta msafirishaji"
 
-#: src/i18n.js:93
+#: src/i18n.js:97
 msgid "Matched with"
 msgstr "Imelinganishwa na"
 
-#: src/i18n.js:89
+#: src/i18n.js:93
 msgid "Matches"
 msgstr "Zinazolingana"
 
-#: src/i18n.js:102
+#: src/i18n.js:106
 msgid "Message to"
 msgstr "Ujumbe kwa"
 
-#: src/i18n.js:100
+#: src/i18n.js:104
 msgid "Messages"
 msgstr "Ujumbe"
 
@@ -183,15 +191,15 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "Maombi Yangu"
 
-#: src/i18n.js:88
+#: src/i18n.js:92
 msgid "New"
 msgstr "Mpya"
 
-#: src/i18n.js:90
+#: src/i18n.js:94
 msgid "New matches"
 msgstr "Ulinganisho mpya"
 
-#: src/i18n.js:86
+#: src/i18n.js:90
 msgid "Next"
 msgstr "Inayofuata"
 
@@ -199,7 +207,7 @@ msgstr "Inayofuata"
 msgid "No end date"
 msgstr "Hakuna tarehe ya mwisho"
 
-#: src/i18n.js:91
+#: src/i18n.js:95
 msgid "No matches yet."
 msgstr "Bado hakuna zinazolingana."
 
@@ -207,7 +215,7 @@ msgstr "Bado hakuna zinazolingana."
 msgid "no matching cities found, try to write in english"
 msgstr "Hakuna miji inayolingana iliyopatikana, jaribu kuandika kwa Kiingereza"
 
-#: src/i18n.js:109
+#: src/i18n.js:113
 msgid "No messages yet."
 msgstr "Bado hakuna ujumbe."
 
@@ -215,7 +223,7 @@ msgstr "Bado hakuna ujumbe."
 msgid "No requests with this status."
 msgstr "Hakuna maombi yenye hali hii."
 
-#: src/i18n.js:87
+#: src/i18n.js:91
 msgid "Page"
 msgstr "Ukurasa"
 
@@ -235,15 +243,19 @@ msgstr "Tafadhali chagua tarehe ya mwisho"
 msgid "Please select departure and arrival cities from the list"
 msgstr "Tafadhali chagua miji ya kuondoka na kuwasili kutoka kwenye orodha"
 
-#: src/i18n.js:85
+#: src/i18n.js:89
 msgid "Previous"
 msgstr "Iliyotangulia"
 
-#: src/i18n.js:95
+#: src/i18n.js:99
 msgid "Proposed"
 msgstr "Imependekezwa"
 
-#: src/i18n.js:98
+#: src/i18n.js:81
+msgid "Reactivate request"
+msgstr "Washa ombi tena"
+
+#: src/i18n.js:102
 msgid "Rejected"
 msgstr "Imekataliwa"
 
@@ -251,15 +263,15 @@ msgstr "Imekataliwa"
 msgid "Remove"
 msgstr "Ondoa"
 
-#: src/i18n.js:84
+#: src/i18n.js:88
 msgid "Request pagination"
 msgstr "Omba pagination"
 
-#: src/i18n.js:99
+#: src/i18n.js:103
 msgid "Role"
 msgstr "Jukumu"
 
-#: src/i18n.js:104
+#: src/i18n.js:108
 msgid "Send"
 msgstr "Tuma"
 
@@ -267,11 +279,11 @@ msgstr "Tuma"
 msgid "Sender"
 msgstr "Mtumaji"
 
-#: src/i18n.js:105
+#: src/i18n.js:109
 msgid "Sending..."
 msgstr "Inatuma..."
 
-#: src/i18n.js:83
+#: src/i18n.js:87
 msgid "Status"
 msgstr "Hali"
 
@@ -291,23 +303,27 @@ msgstr "Hadi sasa"
 msgid "To date (optional)"
 msgstr "Hadi tarehe (si lazima)"
 
-#: src/i18n.js:108
+#: src/i18n.js:112
 msgid "Unread messages"
 msgstr "Ujumbe ambao haujasomwa"
+
+#: src/i18n.js:82
+msgid "Updating..."
+msgstr "Inasasisha..."
 
 #: src/i18n.js:68
 msgid "User Not Found"
 msgstr "Mtumiaji Hajapatikana"
 
-#: src/i18n.js:101
+#: src/i18n.js:105
 msgid "Write message"
 msgstr "Andika ujumbe"
 
-#: src/i18n.js:103
+#: src/i18n.js:107
 msgid "Write your message..."
 msgstr "Andika ujumbe wako..."
 
-#: src/i18n.js:106
+#: src/i18n.js:110
 msgid "You"
 msgstr "Wewe"
 
@@ -315,6 +331,6 @@ msgstr "Wewe"
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "Hujasajiliwa kwenye mfumo. Tafadhali jisajili kupitia boti ya Telegram kwanza."
 
-#: src/i18n.js:94
+#: src/i18n.js:98
 msgid "Your request"
 msgstr "Ombi lako"

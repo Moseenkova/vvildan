@@ -11,7 +11,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:97
+#: src/i18n.js:101
 msgid "Accepted"
 msgstr "Đã chấp nhận"
 
@@ -35,13 +35,17 @@ msgstr "Thành phố đến"
 msgid "Arrival country"
 msgstr "Nước đến"
 
-#: src/i18n.js:107
+#: src/i18n.js:111
 msgid "Back"
 msgstr "Quay lại"
 
 #: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "Nhận xét về hành lý"
+
+#: src/i18n.js:80
+msgid "Cancel request"
+msgstr "Hủy yêu cầu"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -55,11 +59,11 @@ msgstr "Chọn một thành phố đầu tiên"
 msgid "Choose a country first"
 msgstr "Chọn quốc gia trước"
 
-#: src/i18n.js:80
+#: src/i18n.js:84
 msgid "Close"
 msgstr "Đóng"
 
-#: src/i18n.js:81
+#: src/i18n.js:85
 msgid "Comment"
 msgstr "Bình luận"
 
@@ -67,15 +71,15 @@ msgstr "Bình luận"
 msgid "Completed"
 msgstr "Đã hoàn thành"
 
-#: src/i18n.js:96
+#: src/i18n.js:100
 msgid "Contacted"
 msgstr "Đã liên hệ"
 
-#: src/i18n.js:92
+#: src/i18n.js:96
 msgid "Could not load your matches."
 msgstr "Không thể tải các kết quả phù hợp của bạn."
 
-#: src/i18n.js:110
+#: src/i18n.js:114
 msgid "Could not load your messages."
 msgstr "Không thể tải tin nhắn của bạn."
 
@@ -83,9 +87,13 @@ msgstr "Không thể tải tin nhắn của bạn."
 msgid "Could not load your requests."
 msgstr "Không thể tải yêu cầu của bạn."
 
-#: src/i18n.js:111
+#: src/i18n.js:115
 msgid "Could not send your message."
 msgstr "Không thể gửi tin nhắn của bạn."
+
+#: src/i18n.js:83
+msgid "Could not update this request."
+msgstr "Không thể cập nhật yêu cầu này."
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -95,7 +103,7 @@ msgstr "Quốc gia hoặc thành phố"
 msgid "Courier"
 msgstr "Chuyển phát nhanh"
 
-#: src/i18n.js:82
+#: src/i18n.js:86
 msgid "Created"
 msgstr "Đã tạo"
 
@@ -155,19 +163,19 @@ msgstr "Đang tải..."
 msgid "Looking for courier"
 msgstr "Đang tìm người vận chuyển"
 
-#: src/i18n.js:93
+#: src/i18n.js:97
 msgid "Matched with"
 msgstr "Phù hợp với"
 
-#: src/i18n.js:89
+#: src/i18n.js:93
 msgid "Matches"
 msgstr "Kết quả phù hợp"
 
-#: src/i18n.js:102
+#: src/i18n.js:106
 msgid "Message to"
 msgstr "Tin nhắn đến"
 
-#: src/i18n.js:100
+#: src/i18n.js:104
 msgid "Messages"
 msgstr "Tin nhắn"
 
@@ -183,15 +191,15 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "Yêu cầu của tôi"
 
-#: src/i18n.js:88
+#: src/i18n.js:92
 msgid "New"
 msgstr "Mới"
 
-#: src/i18n.js:90
+#: src/i18n.js:94
 msgid "New matches"
 msgstr "Kết quả phù hợp mới"
 
-#: src/i18n.js:86
+#: src/i18n.js:90
 msgid "Next"
 msgstr "Tiếp theo"
 
@@ -199,7 +207,7 @@ msgstr "Tiếp theo"
 msgid "No end date"
 msgstr "Không có ngày kết thúc"
 
-#: src/i18n.js:91
+#: src/i18n.js:95
 msgid "No matches yet."
 msgstr "Chưa có kết quả phù hợp."
 
@@ -207,7 +215,7 @@ msgstr "Chưa có kết quả phù hợp."
 msgid "no matching cities found, try to write in english"
 msgstr "Không tìm thấy thành phố phù hợp, hãy thử viết bằng tiếng Anh"
 
-#: src/i18n.js:109
+#: src/i18n.js:113
 msgid "No messages yet."
 msgstr "Chưa có tin nhắn nào."
 
@@ -215,7 +223,7 @@ msgstr "Chưa có tin nhắn nào."
 msgid "No requests with this status."
 msgstr "Không có yêu cầu nào có trạng thái này."
 
-#: src/i18n.js:87
+#: src/i18n.js:91
 msgid "Page"
 msgstr "Trang"
 
@@ -235,15 +243,19 @@ msgstr "Vui lòng chọn ngày kết thúc"
 msgid "Please select departure and arrival cities from the list"
 msgstr "Vui lòng chọn thành phố khởi hành và đến từ danh sách"
 
-#: src/i18n.js:85
+#: src/i18n.js:89
 msgid "Previous"
 msgstr "trước đó"
 
-#: src/i18n.js:95
+#: src/i18n.js:99
 msgid "Proposed"
 msgstr "Được đề xuất"
 
-#: src/i18n.js:98
+#: src/i18n.js:81
+msgid "Reactivate request"
+msgstr "Kích hoạt lại yêu cầu"
+
+#: src/i18n.js:102
 msgid "Rejected"
 msgstr "Đã từ chối"
 
@@ -251,15 +263,15 @@ msgstr "Đã từ chối"
 msgid "Remove"
 msgstr "Xóa"
 
-#: src/i18n.js:84
+#: src/i18n.js:88
 msgid "Request pagination"
 msgstr "Yêu cầu phân trang"
 
-#: src/i18n.js:99
+#: src/i18n.js:103
 msgid "Role"
 msgstr "Vai trò"
 
-#: src/i18n.js:104
+#: src/i18n.js:108
 msgid "Send"
 msgstr "Gửi"
 
@@ -267,11 +279,11 @@ msgstr "Gửi"
 msgid "Sender"
 msgstr "Người gửi"
 
-#: src/i18n.js:105
+#: src/i18n.js:109
 msgid "Sending..."
 msgstr "Đang gửi..."
 
-#: src/i18n.js:83
+#: src/i18n.js:87
 msgid "Status"
 msgstr "Trạng thái"
 
@@ -291,23 +303,27 @@ msgstr "Đến nay"
 msgid "To date (optional)"
 msgstr "Đến ngày (không bắt buộc)"
 
-#: src/i18n.js:108
+#: src/i18n.js:112
 msgid "Unread messages"
 msgstr "Tin nhắn chưa đọc"
+
+#: src/i18n.js:82
+msgid "Updating..."
+msgstr "Đang cập nhật..."
 
 #: src/i18n.js:68
 msgid "User Not Found"
 msgstr "Không tìm thấy người dùng"
 
-#: src/i18n.js:101
+#: src/i18n.js:105
 msgid "Write message"
 msgstr "Viết tin nhắn"
 
-#: src/i18n.js:103
+#: src/i18n.js:107
 msgid "Write your message..."
 msgstr "Viết tin nhắn của bạn..."
 
-#: src/i18n.js:106
+#: src/i18n.js:110
 msgid "You"
 msgstr "Bạn"
 
@@ -315,6 +331,6 @@ msgstr "Bạn"
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "Bạn chưa được đăng ký trong hệ thống. Vui lòng đăng ký thông qua bot Telegram trước."
 
-#: src/i18n.js:94
+#: src/i18n.js:98
 msgid "Your request"
 msgstr "Yêu cầu của bạn"

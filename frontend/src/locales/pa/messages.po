@@ -11,7 +11,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:97
+#: src/i18n.js:101
 msgid "Accepted"
 msgstr "ਸਵੀਕਾਰ ਕੀਤਾ"
 
@@ -35,13 +35,17 @@ msgstr "ਆਗਮਨ ਸ਼ਹਿਰ"
 msgid "Arrival country"
 msgstr "ਆਗਮਨ ਦੇਸ਼"
 
-#: src/i18n.js:107
+#: src/i18n.js:111
 msgid "Back"
 msgstr "ਪਿੱਛੇ"
 
 #: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "ਸਮਾਨ ਦੀਆਂ ਟਿੱਪਣੀਆਂ"
+
+#: src/i18n.js:80
+msgid "Cancel request"
+msgstr "ਬੇਨਤੀ ਰੱਦ ਕਰੋ"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -55,11 +59,11 @@ msgstr "ਪਹਿਲਾਂ ਇੱਕ ਸ਼ਹਿਰ ਚੁਣੋ"
 msgid "Choose a country first"
 msgstr "ਪਹਿਲਾਂ ਇੱਕ ਦੇਸ਼ ਚੁਣੋ"
 
-#: src/i18n.js:80
+#: src/i18n.js:84
 msgid "Close"
 msgstr "ਬੰਦ ਕਰੋ"
 
-#: src/i18n.js:81
+#: src/i18n.js:85
 msgid "Comment"
 msgstr "ਟਿੱਪਣੀ"
 
@@ -67,15 +71,15 @@ msgstr "ਟਿੱਪਣੀ"
 msgid "Completed"
 msgstr "ਪੂਰਾ ਹੋਇਆ"
 
-#: src/i18n.js:96
+#: src/i18n.js:100
 msgid "Contacted"
 msgstr "ਸੰਪਰਕ ਕੀਤਾ"
 
-#: src/i18n.js:92
+#: src/i18n.js:96
 msgid "Could not load your matches."
 msgstr "ਤੁਹਾਡੇ ਮੇਲ ਲੋਡ ਨਹੀਂ ਕੀਤੇ ਜਾ ਸਕੇ।"
 
-#: src/i18n.js:110
+#: src/i18n.js:114
 msgid "Could not load your messages."
 msgstr "ਤੁਹਾਡੇ ਸੁਨੇਹੇ ਲੋਡ ਨਹੀਂ ਕੀਤੇ ਜਾ ਸਕੇ।"
 
@@ -83,9 +87,13 @@ msgstr "ਤੁਹਾਡੇ ਸੁਨੇਹੇ ਲੋਡ ਨਹੀਂ ਕੀਤ�
 msgid "Could not load your requests."
 msgstr "ਤੁਹਾਡੀਆਂ ਬੇਨਤੀਆਂ ਨੂੰ ਲੋਡ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।"
 
-#: src/i18n.js:111
+#: src/i18n.js:115
 msgid "Could not send your message."
 msgstr "ਤੁਹਾਡਾ ਸੁਨੇਹਾ ਭੇਜਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ।"
+
+#: src/i18n.js:83
+msgid "Could not update this request."
+msgstr "ਇਸ ਬੇਨਤੀ ਨੂੰ ਅੱਪਡੇਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।"
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -95,7 +103,7 @@ msgstr "ਦੇਸ਼ ਜਾਂ ਸ਼ਹਿਰ"
 msgid "Courier"
 msgstr "ਕੋਰੀਅਰ"
 
-#: src/i18n.js:82
+#: src/i18n.js:86
 msgid "Created"
 msgstr "ਬਣਾਇਆ"
 
@@ -155,19 +163,19 @@ msgstr "ਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ..."
 msgid "Looking for courier"
 msgstr "ਕੁਰੀਅਰ ਦੀ ਭਾਲ"
 
-#: src/i18n.js:93
+#: src/i18n.js:97
 msgid "Matched with"
 msgstr "ਇਸ ਨਾਲ ਮੇਲ"
 
-#: src/i18n.js:89
+#: src/i18n.js:93
 msgid "Matches"
 msgstr "ਮੇਲ"
 
-#: src/i18n.js:102
+#: src/i18n.js:106
 msgid "Message to"
 msgstr "ਇਸ ਨੂੰ ਸੁਨੇਹਾ"
 
-#: src/i18n.js:100
+#: src/i18n.js:104
 msgid "Messages"
 msgstr "ਸੁਨੇਹੇ"
 
@@ -183,15 +191,15 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "ਮੇਰੀਆਂ ਬੇਨਤੀਆਂ"
 
-#: src/i18n.js:88
+#: src/i18n.js:92
 msgid "New"
 msgstr "ਨਵਾਂ"
 
-#: src/i18n.js:90
+#: src/i18n.js:94
 msgid "New matches"
 msgstr "ਨਵੇਂ ਮੇਲ"
 
-#: src/i18n.js:86
+#: src/i18n.js:90
 msgid "Next"
 msgstr "ਅੱਗੇ"
 
@@ -199,7 +207,7 @@ msgstr "ਅੱਗੇ"
 msgid "No end date"
 msgstr "ਕੋਈ ਸਮਾਪਤੀ ਮਿਤੀ ਨਹੀਂ"
 
-#: src/i18n.js:91
+#: src/i18n.js:95
 msgid "No matches yet."
 msgstr "ਹਾਲੇ ਕੋਈ ਮੇਲ ਨਹੀਂ ਹੈ।"
 
@@ -207,7 +215,7 @@ msgstr "ਹਾਲੇ ਕੋਈ ਮੇਲ ਨਹੀਂ ਹੈ।"
 msgid "no matching cities found, try to write in english"
 msgstr "ਕੋਈ ਮੇਲ ਖਾਂਦਾ ਸ਼ਹਿਰ ਨਹੀਂ ਮਿਲਿਆ, ਅੰਗਰੇਜ਼ੀ ਵਿੱਚ ਲਿਖਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ"
 
-#: src/i18n.js:109
+#: src/i18n.js:113
 msgid "No messages yet."
 msgstr "ਹਾਲੇ ਕੋਈ ਸੁਨੇਹੇ ਨਹੀਂ ਹਨ।"
 
@@ -215,7 +223,7 @@ msgstr "ਹਾਲੇ ਕੋਈ ਸੁਨੇਹੇ ਨਹੀਂ ਹਨ।"
 msgid "No requests with this status."
 msgstr "ਇਸ ਸਥਿਤੀ ਨਾਲ ਕੋਈ ਬੇਨਤੀ ਨਹੀਂ।"
 
-#: src/i18n.js:87
+#: src/i18n.js:91
 msgid "Page"
 msgstr "ਪੰਨਾ"
 
@@ -235,15 +243,19 @@ msgstr "ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਸਮਾਪਤੀ ਮਿਤੀ �
 msgid "Please select departure and arrival cities from the list"
 msgstr "ਕਿਰਪਾ ਕਰਕੇ ਸੂਚੀ ਵਿੱਚੋਂ ਰਵਾਨਗੀ ਅਤੇ ਪਹੁੰਚਣ ਵਾਲੇ ਸ਼ਹਿਰ ਚੁਣੋ"
 
-#: src/i18n.js:85
+#: src/i18n.js:89
 msgid "Previous"
 msgstr "ਪਿਛਲਾ"
 
-#: src/i18n.js:95
+#: src/i18n.js:99
 msgid "Proposed"
 msgstr "ਪ੍ਰਸਤਾਵਿਤ"
 
-#: src/i18n.js:98
+#: src/i18n.js:81
+msgid "Reactivate request"
+msgstr "ਬੇਨਤੀ ਮੁੜ ਸਰਗਰਮ ਕਰੋ"
+
+#: src/i18n.js:102
 msgid "Rejected"
 msgstr "ਰੱਦ ਕੀਤਾ"
 
@@ -251,15 +263,15 @@ msgstr "ਰੱਦ ਕੀਤਾ"
 msgid "Remove"
 msgstr "ਹਟਾਓ"
 
-#: src/i18n.js:84
+#: src/i18n.js:88
 msgid "Request pagination"
 msgstr "ਪੰਨਾ ਨੰਬਰ ਲਗਾਉਣ ਲਈ ਬੇਨਤੀ ਕਰੋ"
 
-#: src/i18n.js:99
+#: src/i18n.js:103
 msgid "Role"
 msgstr "ਭੂਮਿਕਾ"
 
-#: src/i18n.js:104
+#: src/i18n.js:108
 msgid "Send"
 msgstr "ਭੇਜੋ"
 
@@ -267,11 +279,11 @@ msgstr "ਭੇਜੋ"
 msgid "Sender"
 msgstr "ਭੇਜਣ ਵਾਲਾ"
 
-#: src/i18n.js:105
+#: src/i18n.js:109
 msgid "Sending..."
 msgstr "ਭੇਜਿਆ ਜਾ ਰਿਹਾ ਹੈ..."
 
-#: src/i18n.js:83
+#: src/i18n.js:87
 msgid "Status"
 msgstr "ਸਥਿਤੀ"
 
@@ -291,23 +303,27 @@ msgstr "ਮਿਤੀ ਤੱਕ"
 msgid "To date (optional)"
 msgstr "ਅੰਤਿਮ ਮਿਤੀ (ਵਿਕਲਪਿਕ)"
 
-#: src/i18n.js:108
+#: src/i18n.js:112
 msgid "Unread messages"
 msgstr "ਨਾ-ਪੜ੍ਹੇ ਸੁਨੇਹੇ"
+
+#: src/i18n.js:82
+msgid "Updating..."
+msgstr "ਅੱਪਡੇਟ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ..."
 
 #: src/i18n.js:68
 msgid "User Not Found"
 msgstr "ਉਪਭੋਗਤਾ ਨਹੀਂ ਮਿਲਿਆ"
 
-#: src/i18n.js:101
+#: src/i18n.js:105
 msgid "Write message"
 msgstr "ਸੁਨੇਹਾ ਲਿਖੋ"
 
-#: src/i18n.js:103
+#: src/i18n.js:107
 msgid "Write your message..."
 msgstr "ਆਪਣਾ ਸੁਨੇਹਾ ਲਿਖੋ..."
 
-#: src/i18n.js:106
+#: src/i18n.js:110
 msgid "You"
 msgstr "ਤੁਸੀਂ"
 
@@ -315,6 +331,6 @@ msgstr "ਤੁਸੀਂ"
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "ਤੁਸੀਂ ਸਿਸਟਮ ਵਿੱਚ ਰਜਿਸਟਰਡ ਨਹੀਂ ਹੋ। ਕਿਰਪਾ ਕਰਕੇ ਪਹਿਲਾਂ ਟੈਲੀਗ੍ਰਾਮ ਬੋਟ ਰਾਹੀਂ ਰਜਿਸਟਰ ਕਰੋ।"
 
-#: src/i18n.js:94
+#: src/i18n.js:98
 msgid "Your request"
 msgstr "ਤੁਹਾਡੀ ਬੇਨਤੀ"

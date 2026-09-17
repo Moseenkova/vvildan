@@ -11,7 +11,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:97
+#: src/i18n.js:101
 msgid "Accepted"
 msgstr "Elfogadva"
 
@@ -35,13 +35,17 @@ msgstr "Érkezés város"
 msgid "Arrival country"
 msgstr "Érkezési ország"
 
-#: src/i18n.js:107
+#: src/i18n.js:111
 msgid "Back"
 msgstr "Vissza"
 
 #: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "Poggyász megjegyzések"
+
+#: src/i18n.js:80
+msgid "Cancel request"
+msgstr "Kérés lemondása"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -55,11 +59,11 @@ msgstr "Először válasszon várost"
 msgid "Choose a country first"
 msgstr "Először válasszon országot"
 
-#: src/i18n.js:80
+#: src/i18n.js:84
 msgid "Close"
 msgstr "Bezárás"
 
-#: src/i18n.js:81
+#: src/i18n.js:85
 msgid "Comment"
 msgstr "Megjegyzés"
 
@@ -67,15 +71,15 @@ msgstr "Megjegyzés"
 msgid "Completed"
 msgstr "Befejezve"
 
-#: src/i18n.js:96
+#: src/i18n.js:100
 msgid "Contacted"
 msgstr "Kapcsolatfelvétel megtörtént"
 
-#: src/i18n.js:92
+#: src/i18n.js:96
 msgid "Could not load your matches."
 msgstr "Nem sikerült betölteni a találataidat."
 
-#: src/i18n.js:110
+#: src/i18n.js:114
 msgid "Could not load your messages."
 msgstr "Nem sikerült betölteni az üzeneteidet."
 
@@ -83,9 +87,13 @@ msgstr "Nem sikerült betölteni az üzeneteidet."
 msgid "Could not load your requests."
 msgstr "Nem sikerült betölteni a kéréseket."
 
-#: src/i18n.js:111
+#: src/i18n.js:115
 msgid "Could not send your message."
 msgstr "Nem sikerült elküldeni az üzenetedet."
+
+#: src/i18n.js:83
+msgid "Could not update this request."
+msgstr "Ezt a kérést nem sikerült frissíteni."
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -95,7 +103,7 @@ msgstr "Ország vagy város"
 msgid "Courier"
 msgstr "Futár"
 
-#: src/i18n.js:82
+#: src/i18n.js:86
 msgid "Created"
 msgstr "Létrehozva"
 
@@ -155,19 +163,19 @@ msgstr "Terhelés..."
 msgid "Looking for courier"
 msgstr "Futárt keres"
 
-#: src/i18n.js:93
+#: src/i18n.js:97
 msgid "Matched with"
 msgstr "Párosítva vele"
 
-#: src/i18n.js:89
+#: src/i18n.js:93
 msgid "Matches"
 msgstr "Találatok"
 
-#: src/i18n.js:102
+#: src/i18n.js:106
 msgid "Message to"
 msgstr "Üzenet neki:"
 
-#: src/i18n.js:100
+#: src/i18n.js:104
 msgid "Messages"
 msgstr "Üzenetek"
 
@@ -183,15 +191,15 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "Saját kéréseim"
 
-#: src/i18n.js:88
+#: src/i18n.js:92
 msgid "New"
 msgstr "Új"
 
-#: src/i18n.js:90
+#: src/i18n.js:94
 msgid "New matches"
 msgstr "Új találatok"
 
-#: src/i18n.js:86
+#: src/i18n.js:90
 msgid "Next"
 msgstr "Következő"
 
@@ -199,7 +207,7 @@ msgstr "Következő"
 msgid "No end date"
 msgstr "Nincs befejezési dátum"
 
-#: src/i18n.js:91
+#: src/i18n.js:95
 msgid "No matches yet."
 msgstr "Még nincsenek találatok."
 
@@ -207,7 +215,7 @@ msgstr "Még nincsenek találatok."
 msgid "no matching cities found, try to write in english"
 msgstr "Nem található megfelelő város, próbálj angolul írni"
 
-#: src/i18n.js:109
+#: src/i18n.js:113
 msgid "No messages yet."
 msgstr "Még nincsenek üzenetek."
 
@@ -215,7 +223,7 @@ msgstr "Még nincsenek üzenetek."
 msgid "No requests with this status."
 msgstr "Nincsenek ilyen állapotú kérések."
 
-#: src/i18n.js:87
+#: src/i18n.js:91
 msgid "Page"
 msgstr "oldal"
 
@@ -235,15 +243,19 @@ msgstr "Kérjük, válasszon egy befejezési dátumot"
 msgid "Please select departure and arrival cities from the list"
 msgstr "Válaszd ki az indulási és érkezési várost a listából"
 
-#: src/i18n.js:85
+#: src/i18n.js:89
 msgid "Previous"
 msgstr "Előző"
 
-#: src/i18n.js:95
+#: src/i18n.js:99
 msgid "Proposed"
 msgstr "Javasolt"
 
-#: src/i18n.js:98
+#: src/i18n.js:81
+msgid "Reactivate request"
+msgstr "Kérés újraaktiválása"
+
+#: src/i18n.js:102
 msgid "Rejected"
 msgstr "Elutasítva"
 
@@ -251,15 +263,15 @@ msgstr "Elutasítva"
 msgid "Remove"
 msgstr "Eltávolítás"
 
-#: src/i18n.js:84
+#: src/i18n.js:88
 msgid "Request pagination"
 msgstr "Lapozás kérése"
 
-#: src/i18n.js:99
+#: src/i18n.js:103
 msgid "Role"
 msgstr "Szerep"
 
-#: src/i18n.js:104
+#: src/i18n.js:108
 msgid "Send"
 msgstr "Küldés"
 
@@ -267,11 +279,11 @@ msgstr "Küldés"
 msgid "Sender"
 msgstr "Feladó"
 
-#: src/i18n.js:105
+#: src/i18n.js:109
 msgid "Sending..."
 msgstr "Küldés..."
 
-#: src/i18n.js:83
+#: src/i18n.js:87
 msgid "Status"
 msgstr "Állapot"
 
@@ -291,23 +303,27 @@ msgstr "A mai napig"
 msgid "To date (optional)"
 msgstr "Befejező dátum (nem kötelező)"
 
-#: src/i18n.js:108
+#: src/i18n.js:112
 msgid "Unread messages"
 msgstr "Olvasatlan üzenetek"
+
+#: src/i18n.js:82
+msgid "Updating..."
+msgstr "Frissítés..."
 
 #: src/i18n.js:68
 msgid "User Not Found"
 msgstr "Felhasználó nem található"
 
-#: src/i18n.js:101
+#: src/i18n.js:105
 msgid "Write message"
 msgstr "Üzenet írása"
 
-#: src/i18n.js:103
+#: src/i18n.js:107
 msgid "Write your message..."
 msgstr "Írd meg az üzeneted..."
 
-#: src/i18n.js:106
+#: src/i18n.js:110
 msgid "You"
 msgstr "Te"
 
@@ -315,6 +331,6 @@ msgstr "Te"
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "Nem vagy regisztrálva a rendszerben. Kérjük, először regisztráljon a Telegram roboton keresztül."
 
-#: src/i18n.js:94
+#: src/i18n.js:98
 msgid "Your request"
 msgstr "A kérésed"

@@ -11,7 +11,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/i18n.js:97
+#: src/i18n.js:101
 msgid "Accepted"
 msgstr "ยอมรับแล้ว"
 
@@ -35,13 +35,17 @@ msgstr "เมืองที่มาถึง"
 msgid "Arrival country"
 msgstr "ประเทศที่มาถึง"
 
-#: src/i18n.js:107
+#: src/i18n.js:111
 msgid "Back"
 msgstr "ย้อนกลับ"
 
 #: src/i18n.js:60
 msgid "Baggage comments"
 msgstr "ความคิดเห็นเกี่ยวกับสัมภาระ"
+
+#: src/i18n.js:80
+msgid "Cancel request"
+msgstr "ยกเลิกคำขอ"
 
 #: src/i18n.js:73
 msgid "Cancelled"
@@ -55,11 +59,11 @@ msgstr "เลือกเมืองก่อน"
 msgid "Choose a country first"
 msgstr "เลือกประเทศก่อน"
 
-#: src/i18n.js:80
+#: src/i18n.js:84
 msgid "Close"
 msgstr "ปิด"
 
-#: src/i18n.js:81
+#: src/i18n.js:85
 msgid "Comment"
 msgstr "ความคิดเห็น"
 
@@ -67,15 +71,15 @@ msgstr "ความคิดเห็น"
 msgid "Completed"
 msgstr "เสร็จสิ้น"
 
-#: src/i18n.js:96
+#: src/i18n.js:100
 msgid "Contacted"
 msgstr "ติดต่อแล้ว"
 
-#: src/i18n.js:92
+#: src/i18n.js:96
 msgid "Could not load your matches."
 msgstr "ไม่สามารถโหลดรายการที่ตรงกันของคุณได้"
 
-#: src/i18n.js:110
+#: src/i18n.js:114
 msgid "Could not load your messages."
 msgstr "ไม่สามารถโหลดข้อความของคุณได้"
 
@@ -83,9 +87,13 @@ msgstr "ไม่สามารถโหลดข้อความของค
 msgid "Could not load your requests."
 msgstr "ไม่สามารถโหลดคำขอของคุณได้"
 
-#: src/i18n.js:111
+#: src/i18n.js:115
 msgid "Could not send your message."
 msgstr "ไม่สามารถส่งข้อความของคุณได้"
+
+#: src/i18n.js:83
+msgid "Could not update this request."
+msgstr "ไม่สามารถอัปเดตคำขอนี้ได้"
 
 #: src/i18n.js:46
 msgid "Country or city"
@@ -95,7 +103,7 @@ msgstr "ประเทศหรือเมือง"
 msgid "Courier"
 msgstr "จัดส่ง"
 
-#: src/i18n.js:82
+#: src/i18n.js:86
 msgid "Created"
 msgstr "สร้างแล้ว"
 
@@ -155,19 +163,19 @@ msgstr "กำลังโหลด..."
 msgid "Looking for courier"
 msgstr "กำลังมองหาผู้จัดส่ง"
 
-#: src/i18n.js:93
+#: src/i18n.js:97
 msgid "Matched with"
 msgstr "ตรงกับ"
 
-#: src/i18n.js:89
+#: src/i18n.js:93
 msgid "Matches"
 msgstr "รายการที่ตรงกัน"
 
-#: src/i18n.js:102
+#: src/i18n.js:106
 msgid "Message to"
 msgstr "ข้อความถึง"
 
-#: src/i18n.js:100
+#: src/i18n.js:104
 msgid "Messages"
 msgstr "ข้อความ"
 
@@ -183,15 +191,15 @@ msgstr "dd/MM/yyyy"
 msgid "My Requests"
 msgstr "คำขอของฉัน"
 
-#: src/i18n.js:88
+#: src/i18n.js:92
 msgid "New"
 msgstr "ใหม่"
 
-#: src/i18n.js:90
+#: src/i18n.js:94
 msgid "New matches"
 msgstr "รายการที่ตรงกันใหม่"
 
-#: src/i18n.js:86
+#: src/i18n.js:90
 msgid "Next"
 msgstr "ถัดไป"
 
@@ -199,7 +207,7 @@ msgstr "ถัดไป"
 msgid "No end date"
 msgstr "ไม่มีวันที่สิ้นสุด"
 
-#: src/i18n.js:91
+#: src/i18n.js:95
 msgid "No matches yet."
 msgstr "ยังไม่มีรายการที่ตรงกัน"
 
@@ -207,7 +215,7 @@ msgstr "ยังไม่มีรายการที่ตรงกัน"
 msgid "no matching cities found, try to write in english"
 msgstr "ไม่พบเมืองที่ตรงกัน ลองเขียนเป็นภาษาอังกฤษ"
 
-#: src/i18n.js:109
+#: src/i18n.js:113
 msgid "No messages yet."
 msgstr "ยังไม่มีข้อความ"
 
@@ -215,7 +223,7 @@ msgstr "ยังไม่มีข้อความ"
 msgid "No requests with this status."
 msgstr "ไม่มีการร้องขอที่มีสถานะนี้"
 
-#: src/i18n.js:87
+#: src/i18n.js:91
 msgid "Page"
 msgstr "หน้า"
 
@@ -235,15 +243,19 @@ msgstr "โปรดเลือกวันที่สิ้นสุด"
 msgid "Please select departure and arrival cities from the list"
 msgstr "โปรดเลือกเมืองต้นทางและปลายทางจากรายการ"
 
-#: src/i18n.js:85
+#: src/i18n.js:89
 msgid "Previous"
 msgstr "ก่อนหน้า"
 
-#: src/i18n.js:95
+#: src/i18n.js:99
 msgid "Proposed"
 msgstr "เสนอแล้ว"
 
-#: src/i18n.js:98
+#: src/i18n.js:81
+msgid "Reactivate request"
+msgstr "เปิดใช้งานคำขออีกครั้ง"
+
+#: src/i18n.js:102
 msgid "Rejected"
 msgstr "ปฏิเสธแล้ว"
 
@@ -251,15 +263,15 @@ msgstr "ปฏิเสธแล้ว"
 msgid "Remove"
 msgstr "ลบ"
 
-#: src/i18n.js:84
+#: src/i18n.js:88
 msgid "Request pagination"
 msgstr "ขอแบ่งหน้า"
 
-#: src/i18n.js:99
+#: src/i18n.js:103
 msgid "Role"
 msgstr "บทบาท"
 
-#: src/i18n.js:104
+#: src/i18n.js:108
 msgid "Send"
 msgstr "ส่ง"
 
@@ -267,11 +279,11 @@ msgstr "ส่ง"
 msgid "Sender"
 msgstr "ผู้ส่ง"
 
-#: src/i18n.js:105
+#: src/i18n.js:109
 msgid "Sending..."
 msgstr "กำลังส่ง..."
 
-#: src/i18n.js:83
+#: src/i18n.js:87
 msgid "Status"
 msgstr "สถานะ"
 
@@ -291,23 +303,27 @@ msgstr "จนถึงปัจจุบัน"
 msgid "To date (optional)"
 msgstr "ถึงวันที่ (ไม่บังคับ)"
 
-#: src/i18n.js:108
+#: src/i18n.js:112
 msgid "Unread messages"
 msgstr "ข้อความที่ยังไม่ได้อ่าน"
+
+#: src/i18n.js:82
+msgid "Updating..."
+msgstr "กำลังอัปเดต..."
 
 #: src/i18n.js:68
 msgid "User Not Found"
 msgstr "ไม่พบผู้ใช้"
 
-#: src/i18n.js:101
+#: src/i18n.js:105
 msgid "Write message"
 msgstr "เขียนข้อความ"
 
-#: src/i18n.js:103
+#: src/i18n.js:107
 msgid "Write your message..."
 msgstr "เขียนข้อความของคุณ..."
 
-#: src/i18n.js:106
+#: src/i18n.js:110
 msgid "You"
 msgstr "คุณ"
 
@@ -315,6 +331,6 @@ msgstr "คุณ"
 msgid "You are not registered in the system. Please register through the Telegram bot first."
 msgstr "คุณไม่ได้ลงทะเบียนในระบบ กรุณาลงทะเบียนผ่านบอท Telegram ก่อน"
 
-#: src/i18n.js:94
+#: src/i18n.js:98
 msgid "Your request"
 msgstr "คำขอของคุณ"

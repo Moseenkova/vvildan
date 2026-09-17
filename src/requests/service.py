@@ -198,3 +198,84 @@ async def create_user_request(
         )
 
     return created_request
+
+
+async def update_user_request_status(
+    user_id: int,
+    request_id: int,
+    new_status: RequestStatus,
+) -> TravelRequest:
+    if new_status not in {RequestStatus.active, RequestStatus.cancelled}:
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="A request can only be cancelled or reactivated.",
+        )
+
+    async with async_session_maker() as session:
+        # Lock status changes per user so concurrent reactivations cannot bypass the quota.
+        await session.execute(select(User.id).where(User.id == user_id).with_for_update())
+        request = await session.scalar(
+            select(TravelRequest)
+            .where(
+                TravelRequest.id == request_id,
+                TravelRequest.user_id == user_id,
+            )
+            .options(*_city_relationships())
+            .with_for_update()
+        )
+        if request is None:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Request not found.")
+
+        expected_status = (
+            RequestStatus.active
+            if new_status == RequestStatus.cancelled
+            else RequestStatus.cancelled
+        )
+        if request.status != expected_status:
+            action = "cancelled" if new_status == RequestStatus.cancelled else "reactivated"
+            raise HTTPException(
+                status_code=status.HTTP_409_CONFLICT,
+                detail=f"Only {expected_status.value} requests can be {action}.",
+            )
+
+        today = datetime.now(timezone.utc).date()
+        if request.date_to is not None and request.date_to < today:
+            raise HTTPException(
+                status_code=status.HTTP_409_CONFLICT,
+                detail="Requests whose closing date has passed cannot change status.",
+            )
+
+        if new_status == RequestStatus.active:
+            active_count = await session.scalar(
+                select(func.count())
+                .select_from(TravelRequest)
+                .where(
+                    TravelRequest.user_id == user_id,
+                    TravelRequest.status == RequestStatus.active,
+                    or_(TravelRequest.date_to.is_(None), TravelRequest.date_to >= today),
+                )
+            )
+            if active_count >= cfg.MAX_ACTIVE_REQUESTS_PER_USER:
+                raise HTTPException(
+                    status_code=status.HTTP_409_CONFLICT,
+                    detail=(
+                        f"You can have at most {cfg.MAX_ACTIVE_REQUESTS_PER_USER} active "
+                        "requests with no end date or an end date today or later."
+                    ),
+                )
+
+        request.status = new_status
+        await session.commit()
+
+    if new_status == RequestStatus.active:
+        try:
+            from src.matches.service import notify_request_candidates
+
+            await notify_request_candidates(request.id)
+        except Exception:
+            logging.exception(
+                "Could not notify matching candidates about reactivated request %s",
+                request.id,
+            )
+
+    return request

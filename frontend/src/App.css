@@ -213,6 +213,22 @@
 .request-details dd { margin: 0; color: #272b30; }
 .request-details .multiline { white-space: pre-line; }
 
+.request-status-button {
+  width: 100%;
+  margin-top: 24px;
+  padding: 13px 16px;
+  border: 1px solid;
+  border-radius: 8px;
+  background: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.request-status-button.cancel { border-color: #f2a6a0; color: #b42318; }
+.request-status-button.reactivate { border-color: #72c69b; color: #18794e; }
+.request-status-button:disabled { opacity: .55; cursor: default; }
+
 .app-title {
   font-size: 24px;
   font-weight: 600;
